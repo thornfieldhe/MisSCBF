@@ -4,12 +4,10 @@ using Abp.Modules;
 
 namespace SCBF
 {
-    using System.Linq;
-    using System.Linq.Dynamic;
 
     using Microsoft.AspNet.Identity;
 
-    using SCBF.Projects.Dto;
+
     using SCBF.Users;
     using SCBF.Users.Dto;
 
@@ -30,30 +28,6 @@ namespace SCBF
                 .ForMember(m => m.IsActive, n => n.MapFrom(r => true))
                 .ForMember(m => m.EmailAddress, n => n.MapFrom(r => $"{r.UserName}@taf.com"))
                 .ForMember(m => m.Password, n => n.MapFrom(r => new PasswordHasher().HashPassword("11111111")));
-                mapper.CreateMap<Project, ProjectListDto>()
-                    .ForMember(m => m.TaskItems, n => n.MapFrom(r => r.Tasks.Count))
-                    .ForMember(m => m.IsCompleted, n => n.MapFrom(r => r.IsCompleted ? "Y" : "N"))
-                    .ForMember(m => m.Schedule, n => n.MapFrom(r => $"{r.Tasks.Count(t => t.Schedule == 100)}/{r.Tasks.Count}"));
-                mapper.CreateMap<Project, ProjectEditDto>()
-                 .ForMember(m => m.TaskItems, n => n.MapFrom(r => r.Tasks.Count))
-                 .ForMember(m => m.Schedule, n => n.MapFrom(r => $"{r.Tasks.Count(t => t.Schedule == 100)}/{r.Tasks.Count}"));
-                mapper.CreateMap<ProjectTask, ProjectTaskListDto>()
-                    .ForMember(m => m.Schedule, n => n.MapFrom(r => $"{r.Schedule}%"))
-                    .ForMember(m => m.ProjectName, n => n.MapFrom(r => r.Project.Name));
-                mapper.CreateMap<DailyLog, DailyLogListDto>()
-                    .ForMember(m => m.TaskName, n => n.MapFrom(r => r.Task.Name))
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.ResponsiblePerson, n => n.MapFrom(r => r.ResponsiblePerson.Name))
-                    .ForMember(m => m.ProjectName, n => n.MapFrom(r => r.Task.Project.Name));
-                mapper.CreateMap<DailyLog, DailyLogEditDto>()
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
-                mapper.CreateMap<Project, ProjectSummaryDto>()
-                    .ForMember(
-                        m => m.Schedule,
-                        n => n.MapFrom(r => $"{r.Tasks.Count(b => b.Schedule == 100)}/{r.Tasks.Count}"));
-                mapper.CreateMap<DailyLog, DailyLogSummaryDto>()
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.ResponsiblePerson, n => n.MapFrom(r => r.ResponsiblePerson.Name));
             });
         }
 
