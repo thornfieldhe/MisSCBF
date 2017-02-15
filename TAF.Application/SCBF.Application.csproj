@@ -81,6 +81,10 @@
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SharpConfig, Version=1.5.6.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
+      <HintPath>..\packages\sharpconfig.1.5.6\lib\net20\SharpConfig.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -100,29 +104,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TAF.Utility, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TAF.Utility.1.0.0.5\lib\net452\TAF.Utility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="IDefaultEntityApplicationService.cs" />
-    <Compile Include="Projects\DailyLogAppService.cs" />
-    <Compile Include="Projects\Dto\DailyLogSummaryDto.cs" />
-    <Compile Include="Projects\Dto\DateTimeQueryDto.cs" />
-    <Compile Include="Projects\Dto\DailyLogEditDto.cs" />
-    <Compile Include="Projects\Dto\DailyLogListDto.cs" />
-    <Compile Include="Projects\Dto\DailyLogQueryDto.cs" />
-    <Compile Include="Projects\Dto\ProjectEditDto.cs" />
-    <Compile Include="Projects\Dto\ProjectQueryDto.cs" />
-    <Compile Include="Projects\Dto\ProjectTaskEditDto.cs" />
-    <Compile Include="Projects\Dto\ProjectTaskListDto.cs" />
-    <Compile Include="Projects\Dto\ProjectTaskQueryDto.cs" />
-    <Compile Include="Projects\Dto\ProjectTaskSummaryDto.cs" />
-    <Compile Include="Projects\IDailyLogAppService.cs" />
-    <Compile Include="Projects\IProjectAppService.cs" />
-    <Compile Include="Projects\Dto\ProjectListDto.cs" />
-    <Compile Include="Projects\IProjectTaskAppService.cs" />
-    <Compile Include="Projects\ProjectAppService.cs" />
-    <Compile Include="Projects\Dto\ProjectSummaryDto.cs" />
-    <Compile Include="Projects\ProjectTaskAppService.cs" />
     <Compile Include="TAFApplicationModule.cs" />
     <Compile Include="TAFAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
@@ -156,10 +145,6 @@
     <ProjectReference Include="..\TAF.Core\SCBF.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>SCBF.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TAF.Utility\SCBF.Utility.csproj">
-      <Project>{be84d2bb-a0be-4aeb-b535-5a32d9c00f9e}</Project>
-      <Name>SCBF.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

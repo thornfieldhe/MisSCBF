@@ -35,20 +35,6 @@ namespace SCBF.EntityFramework
         public TAFDbContext(DbConnection connection)
             : base(connection, true) { }
 
-        public DbSet<Project> Project
-        {
-            get; set;
-        }
-
-        public DbSet<ProjectTask> ProjectTask
-        {
-            get; set;
-        }
-
-        public DbSet<DailyLog> DailyLog
-        {
-            get; set;
-        }
 
         public DbSet<SysDictionary> Dictionary
         {
@@ -57,8 +43,6 @@ namespace SCBF.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new ProjectTaskMap());
-            modelBuilder.Configurations.Add(new DailyLogMap());
             base.OnModelCreating(modelBuilder);
 
         }

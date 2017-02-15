@@ -16,23 +16,20 @@ namespace SCBF.Web.Controllers
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-
     using Abp.Authorization;
     using Abp.Authorization.Users;
     using Abp.Configuration.Startup;
     using Abp.Domain.Uow;
     using Abp.UI;
     using Abp.Web.Models;
-
     using Microsoft.AspNet.Identity;
     using Microsoft.Owin.Security;
-
     using SCBF.Authorization;
     using SCBF.Authorization.Roles;
     using SCBF.MultiTenancy;
     using SCBF.Users;
-    using SCBF.Utility;
     using SCBF.Web.Models.Account;
+    using TAF.Utility;
 
     public class AccountController : TAFControllerBase
     {

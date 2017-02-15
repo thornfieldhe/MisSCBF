@@ -208,6 +208,10 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SharpConfig, Version=1.5.6.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
+      <HintPath>..\packages\sharpconfig.1.5.6\lib\net20\SharpConfig.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
@@ -278,6 +282,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TAF.Utility, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TAF.Utility.1.0.0.5\lib\net452\TAF.Utility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -779,7 +787,6 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Scripts\dailogSummary.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="log4net.config" />
@@ -790,7 +797,6 @@
     <Content Include="Scripts\Common\layoutBase.js" />
     <Content Include="Scripts\Common\mixin.js" />
     <Content Include="Scripts\Common\template.js" />
-    <Content Include="Scripts\dailyLog.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -843,9 +849,6 @@
     <Content Include="assets\js\sweetalert\sweet-alert.js" />
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
     <Content Include="Scripts\Account\login.js" />
-    <Content Include="Scripts\project.js" />
-    <Content Include="Scripts\projectStatistic.js" />
-    <Content Include="Scripts\projectTask.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -866,10 +869,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DailyLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Controllers\ProjectTaskController.cs" />
     <Compile Include="Controllers\TAFControllerBase.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Global.asax.cs">
@@ -898,12 +898,6 @@
     <Content Include="Views\Account\_ChangePwd.cshtml" />
     <Content Include="Views\Home\_ProductCategory.cshtml" />
     <Content Include="Views\Shared\_Template.cshtml" />
-    <Content Include="Views\Project\_ProjectIndex.cshtml" />
-    <Content Include="Views\ProjectTask\_ProjectTaskIndex.cshtml" />
-    <Content Include="Views\DailyLog\_DailyLogIndex.cshtml" />
-    <Content Include="Views\DailyLog\_DailyLogSummary.cshtml" />
-    <Content Include="Views\Project\_ProjectStatistic.cshtml" />
-    <Content Include="Views\Project\_LoadStatistic.cshtml" />
     <None Include="Properties\PublishProfiles\public.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -929,10 +923,6 @@
     <ProjectReference Include="..\TAF.EntityFramework\SCBF.EntityFramework.csproj">
       <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
       <Name>SCBF.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TAF.Utility\SCBF.Utility.csproj">
-      <Project>{be84d2bb-a0be-4aeb-b535-5a32d9c00f9e}</Project>
-      <Name>SCBF.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\TAF.WebApi\SCBF.WebApi.csproj">
       <Project>{5eb52d3d-09fd-463a-b02a-8d9856bd3724}</Project>

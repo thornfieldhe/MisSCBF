@@ -94,12 +94,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Projects\DailyLog.cs" />
-    <Compile Include="Projects\IDailyLogRepository.cs" />
-    <Compile Include="Projects\IProjectRepository.cs" />
-    <Compile Include="Projects\IProjectTaskRepository.cs" />
-    <Compile Include="Projects\Project.cs" />
-    <Compile Include="Projects\ProjectTask.cs" />
     <Compile Include="SysDictionary\SysDictionary.cs" />
     <Compile Include="SysDictionary\DictionaryCategory.cs" />
     <Compile Include="TAFEntity.cs" />
