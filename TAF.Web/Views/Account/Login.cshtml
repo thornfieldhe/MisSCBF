@@ -1,0 +1,45 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model SCBF.Web.Models.Account.LoginFormViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutWithEmpty.cshtml";
+    ViewBag.Title = "登陆";
+}
+
+<div class="login-container animated fadeInDown " id="form">
+    <validator name="v" >
+        <form  name="form" class="loginbox bg-white widget radius-bordered" 
+              action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST" novalidate>
+            <div class="loginbox-title form-group">亿科环境信息管理系统</div>
+            <div class="loginbox-or form-group">
+                <div class="or-line"></div>
+                <div class="or">登陆</div>
+            </div>
+            <div class="loginbox-textbox form-group"
+                 :class="{'has-error':($v.uname.required && $v.uname.dirty),'has-success':$v.uname.valid}">
+                <span class="input-icon icon-right">
+                    <input type="text" class="form-control" placeholder="用户名" v-model="entity.name" v-validate:uname="{required:true}" />
+                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.uname.required && $v.uname.dirty"></i>
+                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.uname.valid"></i>
+                </span>
+            </div>
+            <div class="loginbox-textbox form-group"
+                 :class="{'has-error':($v.password.required && $v.password.dirty),'has-success':$v.password.valid}">
+                <span class="input-icon icon-right">
+                    <input type="password" class="form-control" placeholder="密码" v-model="entity.password" v-validate:password="{required:true}" />
+                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.password.required && $v.password.dirty"></i>
+                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.password.valid"></i>
+                </span>
+            </div>
+            <div class="loginbox-textbox  has-error" v-if="$v.failData!=''">
+               <small class="help-block" v-text="entity.failData"></small>
+            </div>
+            
+            <div class="loginbox-submit ">
+                <button type="button" class="btn btn-primary btn-block" v-on:click="login " :disabled="!$v.valid">登陆</button>
+            </div>
+        </form>
+        <div class="logobox">
+        </div>
+    </validator>
+</div>

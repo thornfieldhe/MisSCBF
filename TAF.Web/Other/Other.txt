@@ -1,0 +1,9 @@
+﻿//TAFNavigationProvider.cs
+.AddItem(new MenuItemDefinition("menuDailyLogs", L("DailyLog"), url: "#dailyLogs", requiredPermissionName: PermissionNames.Pages))
+
+
+//index.js
+Path.map("#dailyLogs").to(function () { loadPage("/DailyLog/DailyLogList", "工作日志", "dailyLogs", "#menuDailyLogs", false); });
+
+
+

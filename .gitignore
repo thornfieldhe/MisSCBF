@@ -1,0 +1,9 @@
+/TAF.Web/bin/zh-Hans
+/*/bin
+/TAF.Web/log.txt
+*.mdf
+*.ldf
+bin
+obj
+/TAF.Web/App_Data/Logs
+/CodeSmithTemplates

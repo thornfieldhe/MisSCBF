@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <h4 class="widget-caption">选择日期</h4>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="input-icon icon-right">
+                            <input class="form-control  " type="text" id="dateFrom" v-model="queryEntity.dateFrom">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="input-icon icon-right">
+                            <input class="form-control  " type="text" id="dateTo" v-model="queryEntity.dateTo">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn edit" v-on:click="search()"><i class="fa fa-search"></i> 搜索</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="statistics"></div>
+<script src="~/Scripts/projectStatistic.js"></script>
+<script src="~/assets/js/charts/morris/raphael-2.0.2.min.js"></script>
+<script src="~/assets/js/charts/morris/morris.js"></script>
+<script src="~/assets/js/charts/morris/morris-init.js"></script>
+
+

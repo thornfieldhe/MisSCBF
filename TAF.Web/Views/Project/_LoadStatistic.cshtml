@@ -1,0 +1,29 @@
+﻿@model SCBF.Utility.KeyValue<string,string>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption">项目工时汇总(d)</span>
+            </div>
+            <div class="widget-body">
+                <div  id="statisticForProjet"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption">人员工时汇总(d)</span>
+            </div>
+            <div class="widget-body">
+                <div id="statisticForUser"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    @Html.Raw(Model.Key);
+    @Html.Raw(Model.Value);
+</script>

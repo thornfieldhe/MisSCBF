@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="~/assets/img/log.ico" type="image/x-icon">
+    <link id="bootstrap-rtl-link" href="#" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/assets/css/beyond.min.css" rel="stylesheet" />
+    <link href="~/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="~/assets/css/typicons.min.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/js/ztree/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/assets/js/ztree/metro.css" rel="stylesheet" />
+</head>
+<body>
+<div class="loading-container">
+    <div class="loader"></div>
+</div>
+<div id="app">
+    @RenderBody()
+</div>
+   
+    <script src="~/assets/js/LAB.min.js"></script>
+    <script src="~/Scripts/Common/defaultBase.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>
+

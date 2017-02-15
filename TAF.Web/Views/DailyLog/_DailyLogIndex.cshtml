@@ -1,0 +1,211 @@
+﻿@model List<SCBF.Utility.KeyValue<string, Guid>>
+<div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="widget">
+                <div class="widget-header bordered-bottom bordered-primary">
+                    <span class="widget-caption">工作日志</span>
+                </div>
+                <div class="widget-body">
+                    <div class="table-toolbar">
+                        <add-button title="新增"></add-button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover table-bordered ">
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        项目
+                                    </th>
+                                    <th style="width: 200px;">
+                                        任务
+                                    </th>
+                                    <th style="width: 300px;">
+                                        日期
+                                    </th>
+                                    <th style="width: 200px;">
+                                        工作内容
+                                    </th>
+                                    <th style="width: 100px;">
+                                        耗时
+                                    </th>
+                                    <th style="width: 100px;">
+                                        任务进度
+                                    </th>
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                    <tr role="row">
+                                        <th>
+                                            <select id="searchProjectName" style="width: 100%" v-model="queryEntity.projectId">
+                                                <option value="">请选择...</option>
+                                                @{
+                                                    foreach (var item in Model)
+                                                    {
+                                                        <option value="@item.Value">@item.Key</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="起始日期" v-model="queryEntity.dateFrom" id="dateFrom"  readonly="readonly"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="截止日期" v-model="queryEntity.dateTo" id="dateTo"  readonly="readonly"/>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th><search-command></search-command></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.projectName}}</td>
+                                    <td>{{item.taskName}}</td>
+                                    <td>{{item.date}}</td>
+                                    <td>{{item.note}}</td>
+                                    <td>{{item.timeConsuming}}H</td>
+                                    <td>{{item.schedule}}%</td>
+                                    <td>
+                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot is="table-foot" colspan="8"></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="dailyLogFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">项目<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <select id="searchEditProjectId" style="width: 100%" v-model="item.projectId" name="projectId" v-validate:projectId="{required:true}">
+                                    <option value="">请选择...</option>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <option value="@item.Value">@item.Key</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"  :class="{'has-error':($v.taskId.required && $v.taskId.dirty),'has-success':$v.taskId.valid}">
+                            <label class="col-sm-2 control-label no-padding-right">任务<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <select id="searchEditTaskId" style="width: 100%" v-model="item.taskId" name="taskId" v-validate:taskId="{required:true}">
+                                    <option value="">请选择...</option>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <option value="@item.Value">@item.Key</option>
+                                        }
+                                    }
+                                </select>
+                                <small class="help-block" v-if=" $v.taskId.required && $v.taskId.dirty">任务不能为空</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" :class="{'has-error':(($v.date.dateTime||$v.date.required) && $v.date.dirty),'has-success':$v.date.valid}">
+                            <label class="col-sm-2 control-label no-padding-right">日期<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input class="form-control  "  type="text" id="datePickerDate" name="date" v-model="item.date"  v-validate:date="{required:true,dateTime:true}">
+                                        <i class="fa fa-calendar"></i>
+                                </span>                    
+                                <small class="help-block" v-if="$v.date.required && $v.date.dirty">日期不能为空</small>
+                                <small class="help-block" v-if="$v.date.dateTime && $v.date.dirty">日期格式不正确</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" :class="{'has-error':($v.note.required && $v.note.dirty),'has-success':$v.note.valid}">
+                            <label class="col-sm-2 control-label no-padding-right">工作内容<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control " name="note" placeholder="工作内容"  v-model="item.note" rows="10" v-validate:note="{required:true}"></textarea>
+                                <small class="help-block" v-if="$v.note.required && $v.note.dirty">工作内容不能为空</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" :class="{'has-error':$v.timeConsuming.int,'has-success':!$v.timeConsuming.int}">
+                            <label class="col-sm-2 control-label no-padding-right">耗时(H)<span class="red" >*</span> </label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxTimeConsuming">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="TimeConsuming" id="timeConsuming" name="timeConsuming" v-model="item.timeConsuming" v-validate:timeConsuming="{int:true}"/>
+                                </div>
+                                <small class="help-block" v-if="!$v.timeConsuming.int">耗时只能为整数</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">任务进度(%)<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxSchedule">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="Schedule" name="schedule" id="schedule" v-model="item.schedule" v-validate:schedule="{required:true,int:true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/Scripts/dailyLog.js"></script>
+
+
+
