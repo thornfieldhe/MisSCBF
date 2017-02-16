@@ -35,40 +35,17 @@
                             requiredPermissionName: PermissionNames.Pages)))
                 .AddItem(
                     new MenuItemDefinition(
-                        "BaseInfo",
-                        L("工作管理"),
+                        "Storage",
+                        L("仓库管理"),
                         url: "#",
                         icon: "menu-icon fa  fa-calendar",
                         requiredPermissionName: PermissionNames.Pages).AddItem(
                             new MenuItemDefinition(
-                                "menuProjects",
-                                L("项目管理"),
-                                url: "#projects",
+                                "menuBaseInfos",
+                                L("基础信息"),
+                                url: "#storageInfos",
                                 requiredPermissionName: PermissionNames.PagesProjectManager))
-                        .AddItem(
-                            new MenuItemDefinition(
-                                "menuProjectTasks",
-                                L("任务管理"),
-                                url: "#projectTasks",
-                                requiredPermissionName: PermissionNames.PagesProjectManager))
-                        .AddItem(
-                            new MenuItemDefinition(
-                                "menuDailyLogs ",
-                                L("工作日志"),
-                                url: "#dailylogs",
-                                requiredPermissionName: PermissionNames.Pages))
-                                .AddItem(
-                            new MenuItemDefinition(
-                                "menuShowDailyLogs ",
-                                L("工作日志查询"),
-                                url: "#showDdailylogs",
-                                requiredPermissionName: PermissionNames.PagesProjectManager))
-                                .AddItem(
-                                new MenuItemDefinition(
-                                "menuProjectStatistic ",
-                                L("项目统计"),
-                                url: "#projectStatistic",
-                                requiredPermissionName: PermissionNames.PagesProjectManager)));
+                       );
         }
 
         private static ILocalizableString L(string name)

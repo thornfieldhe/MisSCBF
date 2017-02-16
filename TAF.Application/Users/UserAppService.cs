@@ -13,6 +13,8 @@ namespace SCBF.Users
     using Abp.Domain.Repositories;
     using Abp.UI;
 
+    using Microsoft.AspNet.Identity;
+
     using SCBF.Authorization;
     using SCBF.Authorization.Roles;
     using SCBF.Users.Dto;
@@ -134,6 +136,11 @@ namespace SCBF.Users
                     await UserManager.AddToRoleAsync(user.Id, role);
                 }
             }
+        }
+
+        public void ChangePwd(PwdEditDto input)
+        {
+            CheckErrors(this.UserManager.ChangePassword(input.UserId, input.OldPwd, input.NewPwd));
         }
     }
 }

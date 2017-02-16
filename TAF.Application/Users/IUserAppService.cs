@@ -18,5 +18,7 @@ namespace SCBF.Users
     public interface IUserAppService : IBaseEntityApplicationService<UserListDto, UserEditDto, UserQueryDto, long>
     {
         Task<ListResultDto<UserListDto>> GetAllAsync(UserQueryDto request);
+
+        void ChangePwd(PwdEditDto input);
     }
 }

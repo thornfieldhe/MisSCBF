@@ -792,6 +792,7 @@
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\Common\defaultBase.js" />
     <Content Include="Scripts\Common\layoutBase.js" />

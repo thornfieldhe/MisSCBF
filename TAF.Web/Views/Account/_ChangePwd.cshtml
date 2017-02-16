@@ -1,15 +1,64 @@
 ﻿<div class="row">
-    <div class="col-xs-12 col-md-12">
-        <div class="widget">
-            <div class="widget-header bordered-bottom bordered-primary">
-                <h4 class="widget-caption">欢迎</h4>
+    <div class="col-xs-6 col-md-6">
+        <div class="well with-header with-footer">
+            <div class="header bordered-palegreen">修改密码</div>
+            <div class="body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" :class="{'has-error':($v.oldpwd.dirty && $v.oldpwd.required),'has-success':$v.oldpwd.valid}">
+                                        <label class="col-sm-2 control-label no-padding-right">当前密码 <span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <input type="password" class="form-control " placeholder="当前密码" name="oldpwd" v-model="item.oldPwd" v-validate:oldpwd="{required:true}" />
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.oldpwd.required && $v.oldpwd.dirty"></i>
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.oldpwd.valid"></i>
+                                            </span>
+                                            <small class="help-block" v-if="$v.oldpwd.required && $v.oldpwd.dirty">当前密码不能为空</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" :class="{'has-error':$v.newpwd.dirty && ($v.newpwd.required || item.newPwd!==item.confirmPwd),'has-success':$v.newpwd.valid && item.newPwd===item.confirmPwd}">
+                                        <label class="col-sm-2 control-label no-padding-right">新密码<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <input type="password" class="form-control" placeholder="新密码" name="newpwd" v-model="item.newPwd" v-validate:newpwd="{required:true}" />
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.newpwd.required && $v.newpwd.dirty"></i>
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.newpwd.valid"></i>
+                                            </span>
+                                            <small class="help-block" v-if="$v.newpwd.required && $v.newpwd.dirty">新密码不能为空</small>
+                                            <small class="help-block" v-if="$v.newpwd.dirty && item.newPwd!==item.confirmPwd">新密码与确认密码不一致</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" :class="{'has-error':$v.confirmpwd.dirty && ($v.confirmpwd.required || item.newPwd!==item.confirmPwd),'has-success':$v.confirmpwd.valid && item.newPwd===item.confirmPwd}">
+                                        <label class="col-sm-2 control-label no-padding-right">确认密码<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <input type="password" class="form-control" placeholder="确认密码" name="confirmpwd" v-model="item.confirmPwd" v-validate:confirmpwd="{required:true}" />
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.confirmpwd.required && $v.confirmpwd.dirty"></i>
+                                                <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.confirmpwd.valid"></i>
+                                            </span>
+                                            <small class="help-block" v-if="$v.confirmpwd.required && $v.confirmpwd.dirty">确认密码不能为空</small>
+                                            <small class="help-block" v-if="$v.confirmpwd.dirty && item.newPwd!==item.confirmPwd">新密码与确认密码不一致</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
             </div>
-            <div class="widget-body">
-                    <p>
-                        修改密码
-                    </p>
-            </div>
+            <div class="footer"><button type="submit" class="btn btn-primary" v-on:click="saveItem()" disabled="{{$v.invalid}}"><i class='fa fa-floppy-o'></i>更新</button></div>
         </div>
     </div>
 </div>
-
+<script src="~/Scripts/Account/changePwd.js"></script>

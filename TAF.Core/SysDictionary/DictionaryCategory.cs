@@ -11,9 +11,19 @@ namespace SCBF.Dictionary
 {
     public static class DictionaryCategory
     {
+        #region 商品
+
         /// <summary>
-        /// 单位
+        /// 颜色
         /// </summary>
-        public const string Unit = "Unit";
+        public const string Color = "Color";
+
+        /// <summary>
+        /// 品牌
+        /// </summary>
+        public const string Brand = "Brand";
+
+        #endregion
+
     }
 }
