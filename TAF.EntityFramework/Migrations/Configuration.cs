@@ -18,7 +18,7 @@ namespace SCBF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TAF";
+            ContextKey = "SCBF";
         }
 
         protected override void Seed(TAFDbContext context)

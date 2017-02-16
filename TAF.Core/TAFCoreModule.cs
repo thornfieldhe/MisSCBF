@@ -33,7 +33,7 @@ namespace SCBF
                     TAFConsts.LocalizationSourceName,
                     new XmlEmbeddedFileLocalizationDictionaryProvider(
                         Assembly.GetExecutingAssembly(),
-                        "TAF.Localization.Source"
+                        "SCBF.Localization.Source"
                         )
                     )
                 );

@@ -188,11 +188,14 @@
     <Compile Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.Designer.cs">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702151558121_modify1.cs" />
+    <Compile Include="Migrations\201702151558121_modify1.Designer.cs">
+      <DependentUpon>201702151558121_modify1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
-    <Compile Include="Migrations\SeedData\InitUsersCreator.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -264,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.resx">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151558121_modify1.resx">
+      <DependentUpon>201702151558121_modify1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

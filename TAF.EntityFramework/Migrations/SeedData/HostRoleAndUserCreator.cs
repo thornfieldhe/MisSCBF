@@ -74,7 +74,7 @@ namespace SCBF.Migrations.SeedData
                         new User
                         {
                             UserName = User.AdminUserName,
-                            Name = "System",
+                            Name = "系统管理员",
                             Surname = "Administrator",
                             EmailAddress = "admin@aspnetboilerplate.com",
                             IsEmailConfirmed = true,
