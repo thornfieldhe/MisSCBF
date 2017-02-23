@@ -3,34 +3,24 @@ var itemMixin = {
     props: ['id'],
     ready: function () {
     },
-    data:function() {
+    data: function () {
         return {
             editModel: false,
-            onAdd:false
+            onAdd: false
         }
     },
     events: {
         'onNewItem': function () {
-            this.clearItem();
-            this.editModel = false;
             this.onAdd = true;
+            this.editModel = false;
+            this.clearItem();
             this.$resetValidation();
         }
     },
     methods: {
-        get: function (url) {
-            var $this = this;
-            $.get(url, function (e) {
-                $this.item = e.Data;
-                $this.postGet();
-            });
-        },
-        postGet: function () {
-
-        },
         fail: function (r) {
             if (r.validationErrors !== null) {
-                taf.notify.danger(r.validationErrors);
+                taf.notify.danger(r.validationErrors[0].message);
             } else if (r.details !== null) {
                 taf.notify.danger(r.details);
             } else {
@@ -46,11 +36,10 @@ var itemMixin = {
     watch: {
         'item': {
             handler: function (val, oldVal) {
-                if (!this.onAdd) {
-                    this.$validate();
-                } else {
-                    this.onAdd = false;
+                if (this.onAdd) {
                     this.$resetValidation();
+                } else {
+                    this.$validate();
                 }
                 this.$dispatch("onValidate", this.$v.valid);
             },
@@ -70,7 +59,7 @@ var indexMixin = {
         },
         list: {},
         totalCount: 0,
-        isSecondExcute:false
+        isSecondExcute: false
     },
     events: {
         'onAddItem': function (title) {
@@ -93,33 +82,33 @@ var indexMixin = {
     },
     methods: {
         query: function (index) {
-                this.queryEntity.skipCount = this.queryEntity.maxResultCount * index;
-                var $this = this;
-                this.excuteQuery($this);
+            this.queryEntity.skipCount = this.queryEntity.maxResultCount * index;
+            var $this = this;
+            this.excuteQuery($this);
         },
-        delete: function (id) {},
-        bindItems:function($this, r) {
+        delete: function (id) { },
+        bindItems: function ($this, r) {
             $this.list = r.items;
             $this.totalCount = r.totalCount;
         },
         fail: function (r) {
             if (r.validationErrors !== null) {
-                taf.notify.danger(r.validationErrors);
+                taf.notify.danger(r.validationErrors[0].message);
             } else if (r.details !== null) {
                 taf.notify.danger(r.details);
             } else {
                 taf.notify.danger(r.message);
             }
         },
-        done:function(r) {
+        done: function (r) {
             this.query(0);
             $("#deleteItemDialog").modal("hide");
         },
         excuteQuery: function ($this) { }
     },
-    watch:{
+    watch: {
         'totalCount': function (newVal, oldVal) {
-                this.$broadcast("onQuery", newVal);
+            this.$broadcast("onQuery", newVal);
         }
     }
 }

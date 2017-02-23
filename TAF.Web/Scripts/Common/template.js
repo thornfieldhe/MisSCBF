@@ -45,6 +45,7 @@ Vue.component('form-edit', {
         var $this = this;
         $('#addItemModal').on('hide.bs.modal', function () {
             $("#unknownError").show().find(".help-block").html("");
+            $(this).removeData();
         });
     },
     data: function() {

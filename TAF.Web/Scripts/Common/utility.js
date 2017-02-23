@@ -36,6 +36,20 @@ var taf= {
             });
         el.empty().append(txt);
 
+    },
+    // 生成随机数
+    random:function(range) {
+        var num = Math.random();//Math.random()：得到一个0到1之间的随机数
+        return Math.ceil(num * range);//num*80的取值范围在0~10000之间,使用向上取整就可以得到一个1~10000的随机数
+    },
+    //时间选择器初始化属性
+    timepickerOptions: {
+        showMeridian: false,
+        maxHours: 24
+    },
+    //日期选择器初始化属性
+    datepickerOptions: {
+        format: 'yyyy-mm-dd'
     }
 }
 

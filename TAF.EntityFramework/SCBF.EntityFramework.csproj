@@ -188,14 +188,15 @@
     <Compile Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.Designer.cs">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702151558121_modify1.cs" />
-    <Compile Include="Migrations\201702151558121_modify1.Designer.cs">
-      <DependentUpon>201702151558121_modify1.cs</DependentUpon>
+    <Compile Include="Migrations\201702231250225_addtable_layer.cs" />
+    <Compile Include="Migrations\201702231250225_addtable_layer.Designer.cs">
+      <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
+    <Compile Include="Repositories\LayerRepository.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -207,7 +208,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -268,13 +271,11 @@
     <EmbeddedResource Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.resx">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702151558121_modify1.resx">
-      <DependentUpon>201702151558121_modify1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702231250225_addtable_layer.resx">
+      <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

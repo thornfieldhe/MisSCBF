@@ -7,7 +7,8 @@ namespace SCBF
 
     using Microsoft.AspNet.Identity;
 
-
+    using SCBF.BaseInfo;
+    using SCBF.BaseInfo.Dto;
     using SCBF.Users;
     using SCBF.Users.Dto;
 
@@ -28,6 +29,8 @@ namespace SCBF
                 .ForMember(m => m.IsActive, n => n.MapFrom(r => true))
                 .ForMember(m => m.EmailAddress, n => n.MapFrom(r => $"{r.UserName}@taf.com"))
                 .ForMember(m => m.Password, n => n.MapFrom(r => new PasswordHasher().HashPassword("11111111")));
+                mapper.CreateMap<Layer, LayerListDto>();
+                mapper.CreateMap<Layer, LayerEditDto>();
             });
         }
 

@@ -7,32 +7,24 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Dictionary
+namespace SCBF.BaseInfo
 {
     /// <summary>
     /// 系统字典表
     /// </summary>
     public class SysDictionary : TAFEntity
     {
-        /// <summary>
-        /// 使用DictionaryCategory的分类属性
-        /// </summary>
-        public string Key
-        {
-            get; set;
-        }
-
         public string Value
         {
             get; set;
         }
 
-        public string Text
+        public string Note
         {
             get; set;
         }
 
-        public string Note
+        public string Category
         {
             get; set;
         }

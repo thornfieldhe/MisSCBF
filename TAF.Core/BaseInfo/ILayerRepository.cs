@@ -1,19 +1,28 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProductCategory.cs" company="" author="何翔华">
+// <copyright file="ILayerRepository.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   ProductCategory
+//   商品类别仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF
 {
+    using System;
+
+    using Abp.Domain.Repositories;
+
+    using SCBF.BaseInfo;
+
     /// <summary>
-    /// 产品分类
+    /// 商品类别仓储接口
     /// </summary>
-    public class ProductCategory
+    public interface ILayerRepository : IRepository<Layer, Guid>
     {
 
     }
 }
+
+
+

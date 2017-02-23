@@ -6,7 +6,7 @@ namespace SCBF.EntityFramework
     using System.Data.Entity;
 
     using SCBF.Authorization.Roles;
-    using SCBF.Dictionary;
+    using SCBF.BaseInfo;
     using SCBF.MultiTenancy;
     using SCBF.Users;
 
@@ -36,7 +36,12 @@ namespace SCBF.EntityFramework
             : base(connection, true) { }
 
 
-        public DbSet<SysDictionary> Dictionary
+        public DbSet<Layer> Layers
+        {
+            get; set;
+        }
+
+        public DbSet<SysDictionary> SysDictionaries
         {
             get; set;
         }
@@ -44,7 +49,6 @@ namespace SCBF.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
         }
     }
 

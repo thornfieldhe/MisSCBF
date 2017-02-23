@@ -94,9 +94,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Storage\ProductCategory.cs" />
-    <Compile Include="SysDictionary\SysDictionary.cs" />
-    <Compile Include="SysDictionary\DictionaryCategory.cs" />
+    <Compile Include="BaseInfo\ILayerRepository.cs" />
+    <Compile Include="BaseInfo\Layer.cs" />
+    <Compile Include="BaseInfo\SysDictionary.cs" />
+    <Compile Include="BaseInfo\DictionaryCategory.cs" />
     <Compile Include="TAFEntity.cs" />
     <Compile Include="TAFConsts.cs" />
     <Compile Include="TAFCoreModule.cs" />
@@ -128,7 +129,9 @@
     <EmbeddedResource Include="Localization\Source\SCBF-zh-CN.xml" />
     <EmbeddedResource Include="Localization\Source\SCBF.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Storage\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

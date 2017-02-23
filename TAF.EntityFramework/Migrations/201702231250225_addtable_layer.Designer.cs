@@ -7,13 +7,13 @@ namespace SCBF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class modify1 : IMigrationMetadata
+    public sealed partial class addtable_layer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(modify1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addtable_layer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702151558121_modify1"; }
+            get { return "201702231250225_addtable_layer"; }
         }
         
         string IMigrationMetadata.Source

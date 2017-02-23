@@ -110,6 +110,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseInfo\Dto\LayerEditDto.cs" />
+    <Compile Include="BaseInfo\Dto\LayerListDto.cs" />
+    <Compile Include="BaseInfo\Dto\LayerQueryDto.cs" />
+    <Compile Include="BaseInfo\ILayerAppService.cs" />
+    <Compile Include="BaseInfo\LayerAppService.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="IDefaultEntityApplicationService.cs" />
     <Compile Include="TAFApplicationModule.cs" />

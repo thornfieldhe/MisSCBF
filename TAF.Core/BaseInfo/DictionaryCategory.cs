@@ -7,21 +7,26 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Dictionary
+namespace SCBF.BaseInfo
 {
     public static class DictionaryCategory
     {
         #region 商品
 
         /// <summary>
-        /// 颜色
+        /// 商品分类
         /// </summary>
-        public const string Color = "Color";
+        public const string ProductCategory = "ProductCategory";
 
         /// <summary>
-        /// 品牌
+        /// 商品颜色
         /// </summary>
-        public const string Brand = "Brand";
+        public const string ProductColor = "ProductColor";
+
+        /// <summary>
+        /// 商品品牌
+        /// </summary>
+        public const string ProductBrand = "ProductBrand";
 
         #endregion
 

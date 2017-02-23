@@ -39,12 +39,19 @@
                         L("仓库管理"),
                         url: "#",
                         icon: "menu-icon fa  fa-calendar",
-                        requiredPermissionName: PermissionNames.Pages).AddItem(
+                        requiredPermissionName: PermissionNames.Pages)
+                        .AddItem(
                             new MenuItemDefinition(
                                 "menuBaseInfos",
                                 L("基础信息"),
                                 url: "#storageInfos",
-                                requiredPermissionName: PermissionNames.PagesProjectManager))
+                                requiredPermissionName: PermissionNames.PagesAdmins))
+                                .AddItem(
+                            new MenuItemDefinition(
+                                "menuProductCategories",
+                                L("商品分类"),
+                                url: "#productCategories",
+                                requiredPermissionName: PermissionNames.PagesAdmins))
                        );
         }
 
