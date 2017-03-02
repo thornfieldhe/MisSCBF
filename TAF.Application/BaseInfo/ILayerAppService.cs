@@ -9,6 +9,8 @@
 
 namespace SCBF.BaseInfo
 {
+    using System.Collections.Generic;
+
     using SCBF.BaseInfo.Dto;
 
     /// <summary>
@@ -16,7 +18,7 @@ namespace SCBF.BaseInfo
     /// </summary>
     public interface ILayerAppService : IDefaultEntityApplicationService<LayerListDto, LayerEditDto, LayerQueryDto>
     {
-
+        List<TreeItemDto> GetAllByCategory(string category);
     }
 }
 

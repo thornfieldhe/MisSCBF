@@ -1,17 +1,17 @@
 ﻿//taf基础工具
-var taf= { 
+var taf = {
     //订阅器
     subscriber: {
         //新增订阅
-        addSubscriber: function(id, callBack) {
+        addSubscriber: function (id, callBack) {
             erp.subscriber.subscribers[id] = callBack;
         },
         //注销订阅
-        unSubscriber: function(id) {
+        unSubscriber: function (id) {
             delete erp.subscriber.subscribers[id];
         },
         //发布订阅
-        publish: function(id, data) {
+        publish: function (id, data) {
             var item = erp.subscriber.subscribers[id];
             if (item === null || item === 'undefined') return;
             item(data);
@@ -19,10 +19,10 @@ var taf= {
     },
     //通知
     notify: {
-        danger:function(text) {
+        danger: function (text) {
             Notify(text, 'top-right', '5000', 'danger', 'fa-times', true);
         },
-        success:function(text) {
+        success: function (text) {
             Notify(text, 'top-right', '5000', 'success', 'fa-times', true);
         }
     },
@@ -31,14 +31,14 @@ var taf= {
     successiveBindSelect: function (el, list) {
         var txt = '<option value="">请选择...</option>';
         _.forEach(list,
-            function(n, key) {
-                txt += '<option value="'+n.value+'">'+n.key+'</option>';
+            function (n, key) {
+                txt += '<option value="' + n.value + '">' + n.key + '</option>';
             });
         el.empty().append(txt);
 
     },
     // 生成随机数
-    random:function(range) {
+    random: function (range) {
         var num = Math.random();//Math.random()：得到一个0到1之间的随机数
         return Math.ceil(num * range);//num*80的取值范围在0~10000之间,使用向上取整就可以得到一个1~10000的随机数
     },
@@ -54,12 +54,12 @@ var taf= {
 }
 
 Vue.validator('int',
-    function(val) {
+    function (val) {
         return /^\d+$/.test(val);
     });
 Vue.validator('dateTime', function (val) {
-        return /^\d{4}-\d{2}-\d{2}$/.test(val);
-    });
+    return /^\d{4}-\d{2}-\d{2}$/.test(val);
+});
 
 
 

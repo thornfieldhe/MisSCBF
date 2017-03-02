@@ -44,7 +44,7 @@ namespace SCBF.BaseInfo
             var query = this.layerRepository.GetAll()
 
                 .WhereIf(request.PId.HasValue, r => r.PId == request.PId.Value)
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name));
+                .Where(r => r.Category == request.Category);
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
@@ -59,6 +59,15 @@ namespace SCBF.BaseInfo
                     item.PName = item.PId.HasValue ? this.layerRepository.Get(item.PId.Value).Name : string.Empty;
                 });
             return new PagedResultDto<LayerListDto>(count, dtos);
+        }
+
+        public List<TreeItemDto> GetAllByCategory(string category)
+        {
+            var list = this.layerRepository.GetAll()
+                .Where(r => r.Category == category)
+                 .OrderBy(r => r.LevelCode).ToList();
+            return list.MapTo<List<TreeItemDto>>();
+
         }
 
         public LayerEditDto Get(Guid id)

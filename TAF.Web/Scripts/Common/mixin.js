@@ -15,6 +15,7 @@ var itemMixin = {
             this.editModel = false;
             this.clearItem();
             this.$resetValidation();
+            this.onAdd = false;
         }
     },
     methods: {

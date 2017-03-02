@@ -58,18 +58,11 @@ namespace SCBF.BaseInfo.Dto
         {
             get; set;
         }
-        /// <summary>
-        /// 层级
-        /// </summary>
-        public int Level
-        {
-            get; set;
-        }
 
         /// <summary>
-        /// 层级编码
+        /// Category
         /// </summary>
-        public string LevelCode
+        public string Category
         {
             get; set;
         }

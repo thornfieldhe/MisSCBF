@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LayerQueryDto.cs" company=""  author="何翔华">
+// <copyright file="TreeItemDto.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   商品类别查询对象
+//   TreeItemDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,32 +11,33 @@ namespace SCBF.BaseInfo.Dto
 {
     using System;
 
-    using Abp.Application.Services.Dto;
+    using Abp.AutoMapper;
 
     /// <summary>
-    /// 商品类别查询对象
+    /// 
     /// </summary>
-    public class LayerQueryDto : PagedAndSortedResultRequestDto
+    [AutoMap(typeof(Layer))]
+    public class TreeItemDto
     {
-
-        /// <summary>
-        /// PId
-        /// </summary>
-        public Guid? PId
+        public string Name
         {
             get; set;
         }
 
-        /// <summary>
-        /// Category
-        /// </summary>
-        public string Category
+        public Guid Id
+        {
+            get; set;
+        }
+
+        public Guid PId
+        {
+            get; set;
+        }
+
+        public string LevelCode
         {
             get; set;
         }
 
     }
 }
-
-
-

@@ -48,8 +48,8 @@ Vue.component('form-edit', {
             $(this).removeData();
         });
     },
-    data: function() {
-            return { allowSubmit: false };
+    data: function () {
+        return { allowSubmit: false };
     },
     events: {
         'onAddItem': function (title) {
@@ -73,13 +73,13 @@ Vue.component('form-edit', {
 });
 
 //表脚
-var foot=Vue.component('table-foot', {
+var foot = Vue.component('table-foot', {
     template: '#tableFoot',
     props: ['colspan'],
     methods: {
         query: function (index, jq) {
             console.trace();
-            this.from = this.total===0?0:this.pageSize * index + 1;
+            this.from = this.total === 0 ? 0 : this.pageSize * index + 1;
             this.to = this.pageSize * (index + 1) < this.total ? this.pageSize * (index + 1) : this.total;
             this.$dispatch('onChange', index);
         }
@@ -88,7 +88,7 @@ var foot=Vue.component('table-foot', {
         return {
             total: 0,
             from: 0,
-            to:0,
+            to: 0,
             pageSize: taf.defatulPageSize,
             options: {
                 num_edge_entries: 1, //边缘页数
@@ -101,8 +101,8 @@ var foot=Vue.component('table-foot', {
     events: {
         'onQuery': function (totalCount) {
             this.total = totalCount;
-            this.from = this.total === 0 ? 0 :  1;
-            this.to = this.pageSize  < this.total ? this.pageSize  : this.total;
+            this.from = this.total === 0 ? 0 : 1;
+            this.to = this.pageSize < this.total ? this.pageSize : this.total;
             $("#container").pagination(totalCount, this.options);
         }
     }
