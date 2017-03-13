@@ -123,6 +123,11 @@
     <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="IDefaultEntityApplicationService.cs" />
+    <Compile Include="Storage\Dto\ProductEditDto.cs" />
+    <Compile Include="Storage\Dto\ProductListDto.cs" />
+    <Compile Include="Storage\Dto\ProductQueryDto.cs" />
+    <Compile Include="Storage\IProductAppService.cs" />
+    <Compile Include="Storage\ProductAppService.cs" />
     <Compile Include="TAFApplicationModule.cs" />
     <Compile Include="TAFAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />

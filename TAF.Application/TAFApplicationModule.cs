@@ -9,6 +9,8 @@ namespace SCBF
 
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
+    using SCBF.Storage;
+    using SCBF.Storage.Dto;
     using SCBF.Users;
     using SCBF.Users.Dto;
 
@@ -33,6 +35,9 @@ namespace SCBF
                 mapper.CreateMap<Layer, LayerEditDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
+                mapper.CreateMap<Product, ProductListDto>();
+                mapper.CreateMap<Product, ProductEditDto>();
+                mapper.CreateMap<ProductEditDto, Product>();
             });
         }
 

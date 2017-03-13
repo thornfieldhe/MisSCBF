@@ -839,6 +839,7 @@
     <Content Include="assets\js\jquery.blockUI.js" />
     <Content Include="assets\js\jquery-2.2.0.min.map" />
     <Content Include="assets\js\json2.min.js" />
+    <Content Include="Scripts\product.js" />
     <Content Include="Scripts\productCategory.js" />
     <Content Include="Scripts\others\html5shiv.js" />
     <Content Include="Scripts\others\respond.min.js" />
@@ -873,6 +874,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Controllers\SysDictionaryController.cs" />
     <Compile Include="Controllers\TAFControllerBase.cs" />
@@ -906,6 +908,7 @@
     <None Include="Properties\PublishProfiles\public.pubxml" />
     <Content Include="Views\Storage\_ProductCategoryIndex.cshtml" />
     <Content Include="Views\SysDictionary\_SysDictionaryIndex.cshtml" />
+    <Content Include="Views\Product\_ProductIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

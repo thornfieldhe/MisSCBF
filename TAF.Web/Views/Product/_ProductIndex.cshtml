@@ -1,0 +1,250 @@
+﻿@model List<TAF.Utility.KeyValue<string, Guid>>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">商品</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <add-button title="新增"></add-button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        Name
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Specifications
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        PYCode
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Unit
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Unit2
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        UnitConversion
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Color
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Note1
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Note2
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Order
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Name" v-model="queryEntity.name" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Specifications" v-model="queryEntity.specifications" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="PYCode" v-model="queryEntity.pYCode" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Unit" v-model="queryEntity.unit" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Unit2" v-model="queryEntity.unit2" />
+                                    </th>        
+                                    <th>
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Color" v-model="queryEntity.color" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Note1" v-model="queryEntity.note1" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Note2" v-model="queryEntity.note2" />
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Order" v-model="queryEntity.order" />
+                                    </th>        
+                                    <th><search-command></search-command></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.specifications}}</td>
+                                    <td>{{item.pYCode}}</td>
+                                    <td>{{item.unit}}</td>
+                                    <td>{{item.unit2}}</td>
+                                    <td>{{item.unitConversion}}</td>
+                                    <td>{{item.color}}</td>
+                                    <td>{{item.note1}}</td>
+                                    <td>{{item.note2}}</td>
+                                    <td>{{item.order}}</td>
+                                    <td>
+                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="11"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="productFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Name<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="name" v-model="item.name"  v-validate:name="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Specifications<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="specifications" v-model="item.specifications"  v-validate:specifications="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">PYCode<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="pYCode" v-model="item.pYCode"  v-validate:pycode="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Unit<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="unit" v-model="item.unit"  v-validate:unit="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Unit2<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="unit2" v-model="item.unit2"  v-validate:unit2="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">UnitConversion<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxUnitConversion">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="必填" id="unitConversion" name="unitconversion" v-model="item.unitConversion" v-validate:unitconversion="{int:true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Color<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="color" v-model="item.color"  v-validate:color="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note1<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="note1" v-model="item.note1"  v-validate:note1="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note2<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="note2" v-model="item.note2"  v-validate:note2="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Order<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="order" v-model="item.order"  v-validate:order="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/Scripts/product.js"></script>
+
+
+

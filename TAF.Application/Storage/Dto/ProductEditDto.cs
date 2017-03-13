@@ -1,23 +1,34 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Product.cs" company="" author="何翔华">
+// <copyright file="ProductEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Product
+//   商品编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF.Storage.Dto
 {
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 
+    /// 商品编辑对象
     /// </summary>
-    public class Product : TAFEntity
+    [AutoMap(typeof(Product))]
+    public class ProductEditDto
     {
         /// <summary>
-        /// 商品名称
+        /// Id
+        /// </summary>
+        public Guid Id
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Name
         /// </summary>
         public string Name
         {
@@ -33,7 +44,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 规格
+        /// Specifications
         /// </summary>
         public string Specifications
         {
@@ -41,7 +52,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 拼音码
+        /// PYCode
         /// </summary>
         public string PYCode
         {
@@ -49,7 +60,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 单位
+        /// Unit
         /// </summary>
         public string Unit
         {
@@ -57,7 +68,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 辅助单位
+        /// Unit2
         /// </summary>
         public string Unit2
         {
@@ -65,7 +76,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 单位换算
+        /// UnitConversion
         /// </summary>
         public double UnitConversion
         {
@@ -73,7 +84,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 颜色
+        /// Color
         /// </summary>
         public string Color
         {
@@ -89,7 +100,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 备注1
+        /// Note1
         /// </summary>
         public string Note1
         {
@@ -97,7 +108,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 备注2
+        /// Note2
         /// </summary>
         public string Note2
         {
@@ -105,7 +116,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 排序
+        /// Order
         /// </summary>
         public string Order
         {
@@ -113,3 +124,6 @@ namespace SCBF.Storage
         }
     }
 }
+
+
+

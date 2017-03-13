@@ -99,6 +99,7 @@
     <Compile Include="BaseInfo\Layer.cs" />
     <Compile Include="BaseInfo\SysDictionary.cs" />
     <Compile Include="BaseInfo\DictionaryCategory.cs" />
+    <Compile Include="Storage\IProductRepository.cs" />
     <Compile Include="Storage\Product.cs" />
     <Compile Include="TAFEntity.cs" />
     <Compile Include="TAFConsts.cs" />
