@@ -49,17 +49,21 @@ Vue.component('form-edit', {
         });
     },
     data: function () {
-        return { allowSubmit: false };
+        return {
+            allowSubmit: false,
+            editModel:false
+        };
     },
     events: {
         'onAddItem': function (title) {
             this.title = title;
-            console.log(12);
+            this.editModel = false;
             this.$broadcast("onNewItem");
         },
         'onUpdateItem': function (title, id) {
             this.title = title;
             this.id = id;
+            this.editModel = true;
             this.$broadcast("onGetItem", id);
         },
         'onValidate': function (allowValidate) {
@@ -69,6 +73,9 @@ Vue.component('form-edit', {
     methods: {
         saveItem: function () {
             this.$broadcast('onSaveItem');
+        },
+        saveNewItem: function () {
+            this.$broadcast('onSaveNewItem');
         }
     }
 });
@@ -104,7 +111,7 @@ var foot = Vue.component('table-foot', {
             this.total = totalCount;
             this.from = this.total === 0 ? 0 : 1;
             this.to = this.pageSize < this.total ? this.pageSize : this.total;
-            $("#container").pagination(totalCount, this.options);
+            $(".pagination").pagination(totalCount, this.options);
         }
     }
 });

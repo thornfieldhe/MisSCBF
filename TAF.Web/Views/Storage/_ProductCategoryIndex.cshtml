@@ -50,22 +50,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group" :class="{'has-error':($v.name.required && $v.name.dirty),'has-success':$v.name.valid}">
+                        <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">分类名称<span class="red">*</span></label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control" placeholder="分类名称" name="name" v-model="item.name" v-validate:name="{required:true}" />
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.name.required && $v.name.dirty"></i>
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.name.valid"></i>
+                                    <input type="text" class="form-control" placeholder="必填" name="name" v-model="item.name" v-validate:name="{required:true}" />
                                 </span>
-                                <small class="help-block" v-if="$v.name.required && $v.name.dirty">分类名称不能为空</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group" :class="{'has-error':($v.order.int && $v.order.dirty),'has-success':$v.order.valid}">
+                        <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">排序<span class="red">*</span></label>
                             <div class="col-sm-10">
                                 <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxOrder">
@@ -79,7 +76,6 @@
                                     </div>
                                     <input type="text" class="form-control spinbox-input " placeholder="order" id="order" name="order" v-model="item.order" v-validate:order="{required:true,int:true}" />
                                 </div>
-                                <small class="help-block" v-if="$v.order.int && $v.order.dirty">排序只能是整数</small>
                             </div>
                         </div>
                     </div>

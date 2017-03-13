@@ -17,7 +17,7 @@ namespace SCBF.Migrations
                         PYCode = c.String(),
                         Unit = c.String(),
                         Unit2 = c.String(),
-                        UnitConversion = c.String(),
+                        UnitConversion = c.Double(nullable: false),
                         Color = c.String(),
                         Note1 = c.String(),
                         Note2 = c.String(),

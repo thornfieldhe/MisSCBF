@@ -72,10 +72,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
-                    <button type="submit" class="btn btn-primary" v-on:click="saveItem()" disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>保存</button>
+                    <button type="submit" class="btn btn-primary" v-on:click="saveNewItem()" v-show="!editModel" disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>保存新增 </button>
+                    <button type="submit" class="btn btn-primary" v-on:click="saveItem()"  disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
 </template>
+
 

@@ -13,7 +13,7 @@ namespace SCBF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703071251255_addtable_product"; }
+            get { return "201703131528212_addtable_product"; }
         }
         
         string IMigrationMetadata.Source

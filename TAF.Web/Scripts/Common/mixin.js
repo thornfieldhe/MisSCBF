@@ -32,6 +32,10 @@ var itemMixin = {
             this.$dispatch('onChange', 0);
             this.$resetValidation();
             $("#addItemModal").modal("hide");
+        },
+        done2: function (r) {
+            this.$dispatch('onChange', 0);
+            this.clearItem();
         }
     },
     watch: {

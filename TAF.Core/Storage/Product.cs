@@ -57,7 +57,7 @@ namespace SCBF.Storage
         /// <summary>
         /// 单位换算
         /// </summary>
-        public string UnitConversion
+        public double UnitConversion
         {
             get; set;
         }

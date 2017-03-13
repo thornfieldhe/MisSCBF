@@ -27,11 +27,28 @@
         'onSaveItem': function () {
             var $this = this;
             $this.item.order = $('#order').val();
+            if ($this.item.pName==="") {
+                $this.item.pId = "";
+                }
             abp.services.app.layer.saveAsync($this.item)
             .done(function (m) {
                 $this.done();
                 main.loadTree();
                 })
+            .fail(function (m) {
+                $this.fail(m);
+            });
+        },
+        'onSaveNewItem': function () {
+            var $this = this;
+            if ($this.item.pName==="") {
+                $this.item.pId = "";
+            }
+            abp.services.app.layer.saveAsync(this.item)
+            .done(function (m) {
+                $this.done2();
+                main.loadTree();
+            })
             .fail(function (m) {
                 $this.fail(m);
             });
@@ -68,7 +85,6 @@
             if (!$this.editModel) {
                 datas =main.list;
             } else {
-                console.log(11);
                 datas =_.filter(main.list,function(o) {
                     return !_.startsWith(o.levelCode, main.selectNode.levelCode);
                 });
@@ -108,7 +124,20 @@ var main = new Vue({
         },
         selected: false
     },
-    events: {},
+    events: {
+        'onDeleteItem':function() {
+            var $this = this;
+            console.log(555);
+            abp.services.app.layer.delete($this.selectNode.id)
+                .done(function (m) {
+                    $("#deleteItemDialog").modal("hide");
+                    $this.loadTree();
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        }
+    },
     methods: {
         newItem: function() {
             $("#addItemModal").modal("show");
@@ -120,6 +149,15 @@ var main = new Vue({
         },
         deleteItem: function () {
             this.$broadcast('onShowDeleteItem', this.selectNode.name, this.selectNode.id);
+        },
+        fail: function (r) {
+            if (r.validationErrors !== null) {
+                taf.notify.danger(r.validationErrors[0].message);
+            } else if (r.details !== null) {
+                taf.notify.danger(r.details);
+            } else {
+                taf.notify.danger(r.message);
+            }
         },
         loadTree: function () {
             var $this = this;

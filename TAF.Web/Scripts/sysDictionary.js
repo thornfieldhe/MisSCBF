@@ -20,8 +20,17 @@
             var $this = this;
             abp.services.app.sysDictionary.saveAsync($this.item)
             .done(function (m) {
-                $this.$resetValidation();
                 $this.done();
+            })
+            .fail(function (m) {
+                $this.fail(m);
+            });
+        },
+        'onSaveNewItem': function () {
+            var $this = this;
+            abp.services.app.sysDictionary.saveAsync($this.item)
+            .done(function (m) {
+                $this.done2();
             })
             .fail(function (m) {
                 $this.fail(m);
@@ -99,6 +108,7 @@ var main = new Vue({
         },
         delete: function (id) {
             var $this = this;
+            console.log(123);
             abp.services.app.sysDictionary.delete(id)
                 .done(function (m) {
                     $this.done();
@@ -111,7 +121,7 @@ var main = new Vue({
             this.title = title;
             this.category = category;
             $("#addItemModal").modal("show");
-            this.$broadcast('onNewItem', title);
+            this.$broadcast('onAddItem', title);
         }
     }
 });

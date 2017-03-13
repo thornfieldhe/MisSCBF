@@ -22,6 +22,16 @@
                 $this.fail(m);
             });
         },
+        'onSaveNewItem': function () {
+            var $this = this;
+            abp.services.app.user.saveAsync(this.item)
+            .done(function (m) {
+                $this.done2();
+            })
+            .fail(function (m) {
+                $this.fail(m);
+            });
+        },
         'onGetItem': function (id) {
             this.editModel = true;
             var $this = this;

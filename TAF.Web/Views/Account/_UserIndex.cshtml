@@ -82,30 +82,24 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group" :class="{'has-error':($v.loginname.required && $v.loginname.dirty),'has-success':$v.loginname.valid}">
+                        <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">登录名</label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control " placeholder="登录名" name="loginname" v-model="item.userName" disabled="{{editModel}}" v-validate:loginname="{required:true}" />
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.loginname.required && $v.loginname.dirty"></i>
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.loginname.valid"></i>
+                                    <input type="text" class="form-control " placeholder="必填" name="loginname" v-model="item.userName" disabled="{{editModel}}" v-validate:loginname="{required:true}" />
                                 </span>
-                                <small class="help-block" v-if="$v.loginname.required && $v.loginname.dirty">登录名不能为空</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group" :class="{'has-error':($v.username.required && $v.username.dirty),'has-success':$v.username.valid}">
+                        <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">用户</label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control" placeholder="用户" name="name" v-model="item.name" v-validate:username="{required:true}" />
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-remove" v-if="$v.username.required && $v.username.dirty"></i>
-                                    <i class="form-control-feedback bv-no-label glyphicon glyphicon-ok" v-if="$v.username.valid"></i>
+                                    <input type="text" class="form-control" placeholder="必填" name="name" v-model="item.name" v-validate:username="{required:true}" />
                                 </span>
-                                <small class="help-block" v-if="$v.username.required && $v.username.dirty">用户名不能为空</small>
                             </div>
                         </div>
                     </div>
