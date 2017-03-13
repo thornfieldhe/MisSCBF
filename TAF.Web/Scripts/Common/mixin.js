@@ -37,9 +37,7 @@ var itemMixin = {
     watch: {
         'item': {
             handler: function (val, oldVal) {
-                if (this.onAdd) {
-                    this.$resetValidation();
-                } else {
+                if (!this.onAdd) {
                     this.$validate();
                 }
                 this.$dispatch("onValidate", this.$v.valid);
@@ -65,6 +63,7 @@ var indexMixin = {
     events: {
         'onAddItem': function (title) {
             $("#addItemModal").modal("show");
+            console.log(3);
             this.$broadcast("onAddItem", title);
         },
         'onUpdateItem': function (title, id) {

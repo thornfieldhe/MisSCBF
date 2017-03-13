@@ -113,9 +113,14 @@
     <Compile Include="BaseInfo\Dto\LayerEditDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerListDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerQueryDto.cs" />
+    <Compile Include="BaseInfo\Dto\SysDictionaryEditDto.cs" />
+    <Compile Include="BaseInfo\Dto\SysDictionaryListDto.cs" />
+    <Compile Include="BaseInfo\Dto\SysDictionaryQueryDto.cs" />
     <Compile Include="BaseInfo\Dto\TreeItemDto.cs" />
     <Compile Include="BaseInfo\ILayerAppService.cs" />
+    <Compile Include="BaseInfo\ISysDictionaryAppService.cs" />
     <Compile Include="BaseInfo\LayerAppService.cs" />
+    <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="IDefaultEntityApplicationService.cs" />
     <Compile Include="TAFApplicationModule.cs" />

@@ -54,6 +54,7 @@ Vue.component('form-edit', {
     events: {
         'onAddItem': function (title) {
             this.title = title;
+            console.log(12);
             this.$broadcast("onNewItem");
         },
         'onUpdateItem': function (title, id) {

@@ -7,14 +7,14 @@
             <div class="widget-body">
                 <div class="table-toolbar">
                     <button class="btn " v-on:click="newItem()"><i class="fa  fa-plus"></i> 新增</button>
-                    <button type="button" class="btn " disabled="disabled" id="editCatalog">
+                    <button type="button" class="btn "  v-show="selected" id="editCatalog" v-on:click="editItem()">
                         <i class="fa   fa-pencil"></i> 编辑
                     </button>
-                    <button type="button" class="btn  btn-danger" disabled="disabled" id="deleteCatalog">
+                    <button type="button" class="btn  btn-danger" v-show="selected"  id="deleteCatalog" v-on:click="deleteItem()">
                         <i class="fa  fa-trash-o"></i> 删除
                     </button>
                 </div>
-                <div id="catalogTree" class="ztree">
+                <div id="treeCatalog" class="ztree">
                 </div>
             </div>
         </div>
@@ -32,9 +32,9 @@
                             <label class="col-sm-2 control-label no-padding-right">父级分类</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" readonly="readonly"  v-model="item.pName">
+                                    <input type="text" class="form-control"  name="parentName" v-model="item.pName">
                                     <div class="input-group-btn open">
-                                        <a class="btn btn-blue " href="javascript:void(0);" aria-expanded="true" ><i class="fa fa-angle-down"></i></a>
+                                        <a class="btn btn-blue " href="javascript:void(0);" aria-expanded="true" v-on:click="loadTree()"><i class="fa fa-angle-down"></i></a>
                                     </div>
                                 </div>
                                 <div class="dropdown-container">

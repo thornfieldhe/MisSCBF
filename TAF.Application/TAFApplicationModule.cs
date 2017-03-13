@@ -31,6 +31,8 @@ namespace SCBF
                 .ForMember(m => m.Password, n => n.MapFrom(r => new PasswordHasher().HashPassword("11111111")));
                 mapper.CreateMap<Layer, LayerListDto>();
                 mapper.CreateMap<Layer, LayerEditDto>();
+                mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
+                mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
             });
         }
 

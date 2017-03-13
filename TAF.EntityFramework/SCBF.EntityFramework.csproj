@@ -192,11 +192,16 @@
     <Compile Include="Migrations\201702231250225_addtable_layer.Designer.cs">
       <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703071251255_addtable_product.cs" />
+    <Compile Include="Migrations\201703071251255_addtable_product.Designer.cs">
+      <DependentUpon>201703071251255_addtable_product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
+    <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -273,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702231250225_addtable_layer.resx">
       <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703071251255_addtable_product.resx">
+      <DependentUpon>201703071251255_addtable_product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

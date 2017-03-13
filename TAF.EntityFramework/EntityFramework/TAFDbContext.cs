@@ -8,6 +8,7 @@ namespace SCBF.EntityFramework
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
     using SCBF.MultiTenancy;
+    using SCBF.Storage;
     using SCBF.Users;
 
     public class TAFDbContext : AbpZeroDbContext<Tenant, Role, User>
@@ -42,6 +43,11 @@ namespace SCBF.EntityFramework
         }
 
         public DbSet<SysDictionary> SysDictionaries
+        {
+            get; set;
+        }
+
+        public DbSet<Product> Products
         {
             get; set;
         }
