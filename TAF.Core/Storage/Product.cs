@@ -41,6 +41,14 @@ namespace SCBF.Storage
         }
 
         /// <summary>
+        /// 条形码
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 拼音码
         /// </summary>
         public string PYCode
@@ -107,7 +115,7 @@ namespace SCBF.Storage
         /// <summary>
         /// 排序
         /// </summary>
-        public string Order
+        public int Order
         {
             get; set;
         }

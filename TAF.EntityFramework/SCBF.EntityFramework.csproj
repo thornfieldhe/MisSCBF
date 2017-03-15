@@ -204,6 +204,14 @@
     <Compile Include="Migrations\201703131551225_addtable_product3.Designer.cs">
       <DependentUpon>201703131551225_addtable_product3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703141513099_modifytable_product4.cs" />
+    <Compile Include="Migrations\201703141513099_modifytable_product4.Designer.cs">
+      <DependentUpon>201703141513099_modifytable_product4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703141627064_modifytable_product5.cs" />
+    <Compile Include="Migrations\201703141627064_modifytable_product5.Designer.cs">
+      <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -296,6 +304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703131551225_addtable_product3.resx">
       <DependentUpon>201703131551225_addtable_product3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141513099_modifytable_product4.resx">
+      <DependentUpon>201703141513099_modifytable_product4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703141627064_modifytable_product5.resx">
+      <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -12,21 +12,11 @@
         };
     },
     events: {
-        'onSaveItem': function () {
+        'onSaveItem': function (closeModal) {
             var $this = this;
             abp.services.app.user.saveAsync(this.item)
             .done(function (m) {
-                $this.done();
-            })
-            .fail(function (m) {
-                $this.fail(m);
-            });
-        },
-        'onSaveNewItem': function () {
-            var $this = this;
-            abp.services.app.user.saveAsync(this.item)
-            .done(function (m) {
-                $this.done2();
+                $this.done(closeModal);
             })
             .fail(function (m) {
                 $this.fail(m);

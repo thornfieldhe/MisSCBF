@@ -110,18 +110,6 @@ namespace SCBF.BaseInfo
             this.layerRepository.Delete(id);
         }
 
-        public List<LayerListDto> GetAll(string category)
-        {
-            var list = this.layerRepository.GetAllList(r => r.Category == category).MapTo<List<LayerListDto>>();
-            Parallel.ForEach(
-                list,
-                item =>
-                    {
-                        item.PName = item.PId.HasValue ? this.layerRepository.Get(item.PId.Value).Name : string.Empty;
-                    });
-            return list;
-        }
-
         /// <summary>
         /// 获取当前最新层级
         /// </summary>

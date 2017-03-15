@@ -46,12 +46,17 @@
                                 L("基础信息"),
                                 url: "#storageInfos",
                                 requiredPermissionName: PermissionNames.PagesAdmins))
-                                .AddItem(
+                        .AddItem(
                             new MenuItemDefinition(
                                 "menuProductCategories",
                                 L("商品分类"),
                                 url: "#productCategories",
                                 requiredPermissionName: PermissionNames.PagesAdmins))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProducts",
+                            L("商品管理"),
+                            url: "#products",
+                            requiredPermissionName: PermissionNames.Pages))
                        );
         }
 

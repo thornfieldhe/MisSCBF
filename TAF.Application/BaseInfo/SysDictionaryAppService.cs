@@ -79,6 +79,11 @@ namespace SCBF.BaseInfo
         {
             this.sysDictionaryRepository.Delete(id);
         }
+
+        public List<SysDictionaryListDto> GetSimpleList()
+        {
+            return this.sysDictionaryRepository.GetAll().MapTo<List<SysDictionaryListDto>>();
+        }
     }
 }
 

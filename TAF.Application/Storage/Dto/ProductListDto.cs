@@ -36,6 +36,14 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// Name
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Specifications
         /// </summary>
         public string Specifications
@@ -44,25 +52,17 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// Unit
+        /// Color
         /// </summary>
-        public string Unit
+        public string Color
         {
             get; set;
         }
 
         /// <summary>
-        /// Unit2
+        /// 品牌
         /// </summary>
-        public string Unit2
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Order
-        /// </summary>
-        public string Order
+        public string Brand
         {
             get; set;
         }

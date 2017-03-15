@@ -24,7 +24,7 @@
         };
     },
     events: {
-        'onSaveItem': function () {
+        'onSaveItem': function (closeModal) {
             var $this = this;
             $this.item.order = $('#order').val();
             if ($this.item.pName==="") {
@@ -32,23 +32,9 @@
                 }
             abp.services.app.layer.saveAsync($this.item)
             .done(function (m) {
-                $this.done();
+                $this.done(closeModal);
                 main.loadTree();
                 })
-            .fail(function (m) {
-                $this.fail(m);
-            });
-        },
-        'onSaveNewItem': function () {
-            var $this = this;
-            if ($this.item.pName==="") {
-                $this.item.pId = "";
-            }
-            abp.services.app.layer.saveAsync(this.item)
-            .done(function (m) {
-                $this.done2();
-                main.loadTree();
-            })
             .fail(function (m) {
                 $this.fail(m);
             });

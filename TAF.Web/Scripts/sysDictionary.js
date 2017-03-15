@@ -16,21 +16,11 @@
         };
     },
     events: {
-        'onSaveItem': function () {
+        'onSaveItem': function (closeModal) {
             var $this = this;
             abp.services.app.sysDictionary.saveAsync($this.item)
             .done(function (m) {
-                $this.done();
-            })
-            .fail(function (m) {
-                $this.fail(m);
-            });
-        },
-        'onSaveNewItem': function () {
-            var $this = this;
-            abp.services.app.sysDictionary.saveAsync($this.item)
-            .done(function (m) {
-                $this.done2();
+                $this.done(closeModal);
             })
             .fail(function (m) {
                 $this.fail(m);
@@ -71,6 +61,9 @@ var main = new Vue({
             if (id === "pcolor") {
                 $this.title = "颜色";
                 $this.category = "ProductColor";
+            } else if (id === "pstorage") {
+                $this.title = "仓库";
+                $this.category = "Storage";
             } else {
                 $this.title = "品牌";
                 $this.category = "ProductBrand";

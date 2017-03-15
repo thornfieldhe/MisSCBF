@@ -28,6 +28,10 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string ProductBrand = "ProductBrand";
 
+        /// <summary>
+        /// 仓库
+        /// </summary>
+        public const string Storage = "Storage";
         #endregion
 
     }

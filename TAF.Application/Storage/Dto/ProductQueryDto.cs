@@ -44,6 +44,22 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// 条码
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 品牌
+        /// </summary>
+        public string Brand
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 商品分类
         /// </summary>
         public Guid CategoryId

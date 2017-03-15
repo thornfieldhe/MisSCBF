@@ -28,14 +28,14 @@ var itemMixin = {
                 taf.notify.danger(r.message);
             }
         },
-        done: function (r) {
+        done: function (closeModal) {
             this.$dispatch('onChange', 0);
             this.$resetValidation();
-            $("#addItemModal").modal("hide");
-        },
-        done2: function (r) {
-            this.$dispatch('onChange', 0);
-            this.clearItem();
+            if (closeModal) {
+                $("#addItemModal").modal("hide");
+            } else {
+                this.clearItem();
+            }
         }
     },
     watch: {
@@ -67,7 +67,6 @@ var indexMixin = {
     events: {
         'onAddItem': function (title) {
             $("#addItemModal").modal("show");
-            console.log(3);
             this.$broadcast("onAddItem", title);
         },
         'onUpdateItem': function (title, id) {

@@ -72,10 +72,10 @@ Vue.component('form-edit', {
     },
     methods: {
         saveItem: function () {
-            this.$broadcast('onSaveItem');
+            this.$broadcast('onSaveItem',true);
         },
         saveNewItem: function () {
-            this.$broadcast('onSaveNewItem');
+            this.$broadcast('onSaveItem',false);
         }
     }
 });

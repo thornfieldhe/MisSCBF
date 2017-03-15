@@ -52,9 +52,9 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// PYCode
+        /// 条码
         /// </summary>
-        public string PYCode
+        public string Code
         {
             get; set;
         }
@@ -118,7 +118,7 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Order
         /// </summary>
-        public string Order
+        public int Order
         {
             get; set;
         }
