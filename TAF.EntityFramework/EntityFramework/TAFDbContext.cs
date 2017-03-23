@@ -52,6 +52,21 @@ namespace SCBF.EntityFramework
             get; set;
         }
 
+        public DbSet<Stock> Stocks
+        {
+            get; set;
+        }
+
+        public DbSet<Delivery> Deliveries
+        {
+            get; set;
+        }
+
+        public DbSet<Entry> Entries
+        {
+            get; set;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

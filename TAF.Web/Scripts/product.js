@@ -3,9 +3,7 @@
     template: "#productFormBody",
     ready: function () {
         var $this = this;
-        var spinboxUnitConversion = $('#spinboxUnitConversion').spinbox('value', 0);
         var spinboxOrder = $('#spinboxOrder').spinbox('value', 0);
-        spinboxUnitConversion.options.min= 0;
         spinboxOrder.options.min = 0;
         $("#searchBrandItem").select2().on("change", function (e) { $this.item.brand = $("#searchBrandItem").val(); });
         $("#searchColorItem").select2().on("change", function (e) { $this.item.color = $("#searchColorItem").val(); });
@@ -48,7 +46,6 @@
                 .done(function (m) {
                     $this.item = m;
                     $this.item.categoryId = main.queryEntity.categoryId;
-                    $('#spinboxUnitConversion').spinbox('value',$this.item.unitConversion);
                     $('#spinboxOrder').spinbox('value', $this.item.order);
                     $("#searchColorItem").select2().val($this.item.color).trigger("change");
                     $("#searchBrandItem").select2().val($this.item.brand).trigger("change");
@@ -68,7 +65,6 @@
             this.item.unit= "";
             this.item.unit2= "";
             this.item.unitConversion= 0;
-            $('#spinboxUnitConversion').spinbox('value', 0);
             $('#spinboxOrder').spinbox('value', 0);
             this.item.color= "";
             this.item.note1= "";

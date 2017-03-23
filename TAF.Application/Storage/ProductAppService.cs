@@ -19,6 +19,7 @@ namespace SCBF.Storage
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
+    using Abp.UI;
 
     using AutoMapper;
 
@@ -69,6 +70,10 @@ namespace SCBF.Storage
             item.PYCode = item.Name.GetChineseSpell();
             if (input.Id == Guid.Empty)
             {
+                if (this.productRepository.Count(r => r.Code == input.Code) > 0)
+                {
+                    throw new UserFriendlyException("当前商品已存在");
+                }
                 await this.productRepository.InsertAsync(item);
             }
             else

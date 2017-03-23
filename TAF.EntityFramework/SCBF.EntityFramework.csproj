@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201703141627064_modifytable_product5.Designer.cs">
       <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703231243471_addtable_stock.cs" />
+    <Compile Include="Migrations\201703231243471_addtable_stock.Designer.cs">
+      <DependentUpon>201703231243471_addtable_stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -310,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703141627064_modifytable_product5.resx">
       <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231243471_addtable_stock.resx">
+      <DependentUpon>201703231243471_addtable_stock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
