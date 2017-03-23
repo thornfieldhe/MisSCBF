@@ -10,6 +10,7 @@
 namespace SCBF.Storage
 {
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 
@@ -116,6 +117,16 @@ namespace SCBF.Storage
         /// 排序
         /// </summary>
         public int Order
+        {
+            get; set;
+        }
+
+        public virtual List<Delivery> Deliveries
+        {
+            get; set;
+        }
+
+        public virtual List<Entry> Entries
         {
             get; set;
         }

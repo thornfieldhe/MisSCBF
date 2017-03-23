@@ -101,7 +101,12 @@
     <Compile Include="BaseInfo\DictionaryCategory.cs" />
     <Compile Include="Storage\Delivery.cs" />
     <Compile Include="Storage\Entry.cs" />
+    <Compile Include="Storage\DeliveryBill.cs" />
+    <Compile Include="Storage\EntryBill.cs" />
+    <Compile Include="Storage\IEntryBillRepository.cs" />
+    <Compile Include="Storage\IEntryRepository.cs" />
     <Compile Include="Storage\IProductRepository.cs" />
+    <Compile Include="Storage\ITAFRepositoryBase.cs" />
     <Compile Include="Storage\Product.cs" />
     <Compile Include="Storage\Stock.cs" />
     <Compile Include="TAFEntity.cs" />

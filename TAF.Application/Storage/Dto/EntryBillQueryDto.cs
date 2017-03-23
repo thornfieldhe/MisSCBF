@@ -1,61 +1,57 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Entry.cs" company="" author="何翔华">
+// <copyright file="EntryBillQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Entry
+//   入库单查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF.Storage.Dto
 {
     using System;
+    
+    using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 入库
+    /// 入库单查询对象
     /// </summary>
-    public class Entry : TAFEntity
-    {
+    public class EntryBillQueryDto : PagedAndSortedResultRequestDto
+    {  
+        
         /// <summary>
-        /// 产品Id
+        /// StorageId
         /// </summary>
-        public Guid ProductId
+        public Guid? StorageId
         {
             get; set;
-        }
-
-        public virtual Product Product
-        {
-            get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 入库量
+        /// Code
         /// </summary>
-        public decimal Amount
+        public string Code
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 入库单据Id
-        /// </summary>
-        public Guid EntryBillId
-        {
-            get; set;
-        }
-
-        public virtual EntryBill EntryBill
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 备注
+        /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }
-    }
+        }        
+        
+        /// <summary>
+        /// IsSpecial
+        /// </summary>
+        public bool? IsSpecial
+        {
+            get; set;
+        }        
+    } 
 }
+
+
+

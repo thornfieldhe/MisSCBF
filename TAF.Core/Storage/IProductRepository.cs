@@ -18,7 +18,7 @@ namespace SCBF
     /// <summary>
     /// 商品仓储接口
     /// </summary>
-    public interface IProductRepository : IRepository<Product, Guid>
+    public interface IProductRepository : ITAFRepositoryBase<Product>
     {
 
     }

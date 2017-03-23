@@ -1,21 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TAF.cs" company="" author="何翔华">
+// <copyright file="IEntryBillRepository.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   IEntityApplicationService
+//   入库单仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF
 {
 
-    using Abp.Application.Services;
+    using SCBF.Storage;
 
     /// <summary>
-    /// 实体服务基类
+    /// 入库单仓储接口
     /// </summary>
-    public interface IBaseEntityApplicationService : IApplicationService
+    public interface IEntryBillRepository : ITAFRepositoryBase<EntryBill>
     {
+
     }
 }
+
+
+

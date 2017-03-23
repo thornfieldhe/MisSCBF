@@ -1,63 +1,65 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Delivery.cs" company="" author="何翔华">
+// <copyright file="EntryBillListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Delivery
+//   入库单列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF.Storage.Dto
 {
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 出库
+    /// 入库单列表对象
     /// </summary>
-    public class Delivery : TAFEntity
+    [AutoMap(typeof(EntryBill))]
+    public class EntryBillListDto
     {
         /// <summary>
-        /// 产品Id
+        /// Id
         /// </summary>
-        public Guid ProductId
+        public Guid Id
         {
             get; set;
-        }
-
-
-        public virtual Product Product
-        {
-            get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 入库量
+        /// StorageName
         /// </summary>
-        public decimal Amount
+        public string StorageName
         {
             get; set;
-        }
-
+        }    
+        
         /// <summary>
-        /// 出库单据Id
+        /// Code
         /// </summary>
-        public Guid DeliveryBillId
+        public string Code
         {
             get; set;
-        }
-
-
-        public virtual DeliveryBill DeliveryBill
-        {
-            get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 备注
+        /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }
-    }
+        }        
+        
+        /// <summary>
+        /// IsSpecial
+        /// </summary>
+        public bool IsSpecial
+        {
+            get; set;
+        }        
+    } 
 }
+
+
+

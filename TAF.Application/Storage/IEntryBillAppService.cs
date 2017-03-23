@@ -1,21 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TAF.cs" company="" author="何翔华">
+// <copyright file="IEntryBillAppService.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   IEntityApplicationService
+//   入库单应用接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF
+namespace SCBF.Storage
 {
+    using System.Threading.Tasks;
 
-    using Abp.Application.Services;
+    using SCBF.Storage.Dto;
 
     /// <summary>
-    /// 实体服务基类
+    /// 入库单应用接口
     /// </summary>
-    public interface IBaseEntityApplicationService : IApplicationService
+    public interface IEntryBillAppService : IBaseEntityApplicationService
     {
+
+        Task SaveAsync(EntryBillEditDto input);
     }
 }
+
+
+

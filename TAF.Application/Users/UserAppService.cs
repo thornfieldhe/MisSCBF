@@ -41,6 +41,7 @@ namespace SCBF.Users
             _roleManager = roleManager;
         }
 
+
         [AbpAuthorize(PermissionNames.PagesAdmins)]
         public async Task<ListResultDto<UserListDto>> GetAllAsync(UserQueryDto request)
         {
@@ -71,6 +72,7 @@ namespace SCBF.Users
         {
             throw new System.NotImplementedException();
         }
+
 
         [AbpAuthorize(PermissionNames.PagesAdmins)]
         public UserEditDto Get(long id)

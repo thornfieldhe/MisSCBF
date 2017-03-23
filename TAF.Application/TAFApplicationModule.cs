@@ -38,6 +38,12 @@ namespace SCBF
                 mapper.CreateMap<Product, ProductListDto>();
                 mapper.CreateMap<Product, ProductEditDto>();
                 mapper.CreateMap<ProductEditDto, Product>();
+
+                mapper.CreateMap<EntryBillEditDto, EntryBill>();
+                mapper.CreateMap<EntryEditDto, Entry>();
+                mapper.CreateMap<Entry, EntryListDto>()
+                                .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
+                                .ForMember(m => m.StorageName, n => n.MapFrom(r => r.EntryBill.Storage.Value));
             });
         }
 

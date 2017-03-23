@@ -798,6 +798,8 @@
     <Content Include="Scripts\Common\layoutBase.js" />
     <Content Include="Scripts\Common\mixin.js" />
     <Content Include="Scripts\Common\template.js" />
+    <Content Include="Scripts\entry.js" />
+    <Content Include="Scripts\entryBill.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -873,6 +875,8 @@
     <Compile Include="assets\js\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EntryBillController.cs" />
+    <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
@@ -909,6 +913,8 @@
     <Content Include="Views\Storage\_ProductCategoryIndex.cshtml" />
     <Content Include="Views\SysDictionary\_SysDictionaryIndex.cshtml" />
     <Content Include="Views\Product\_ProductIndex.cshtml" />
+    <Content Include="Views\Entry\_EntryIndex.cshtml" />
+    <Content Include="Views\EntryBill\_EntryBillIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

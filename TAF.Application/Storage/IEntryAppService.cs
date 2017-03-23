@@ -1,24 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ILayerAppService.cs" company="" author="何翔华">
+// <copyright file="IEntryAppService.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   商品类别应用接口
+//   入库应用接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo
+namespace SCBF.Storage
 {
     using System.Collections.Generic;
 
-    using SCBF.BaseInfo.Dto;
+    using Abp.Application.Services.Dto;
+
+    using SCBF.Storage.Dto;
 
     /// <summary>
-    /// 商品类别应用接口
+    /// 入库应用接口
     /// </summary>
-    public interface ILayerAppService : IBaseEntityApplicationService
+    public interface IEntryAppService : IBaseEntityApplicationService
     {
-        List<TreeItemDto> GetAllByCategory(string category);
+        ListResultDto<EntryListDto> SaveAll(List<EntryEditDto> list);
     }
 }
 

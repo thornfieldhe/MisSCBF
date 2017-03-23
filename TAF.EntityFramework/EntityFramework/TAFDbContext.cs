@@ -67,8 +67,19 @@ namespace SCBF.EntityFramework
             get; set;
         }
 
+        public DbSet<DeliveryBill> DeliveryBills
+        {
+            get; set;
+        }
+
+        public DbSet<EntryBill> EntrBills
+        {
+            get; set;
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new DeliveryMap());
+            modelBuilder.Configurations.Add(new EntryMap());
             base.OnModelCreating(modelBuilder);
         }
     }

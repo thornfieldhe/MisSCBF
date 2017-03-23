@@ -1,63 +1,74 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Delivery.cs" company="" author="何翔华">
+// <copyright file="EntryQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Delivery
+//   入库查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF.Storage.Dto
 {
     using System;
 
+    using Abp.Application.Services.Dto;
+
     /// <summary>
-    /// 出库
+    /// 入库查询对象
     /// </summary>
-    public class Delivery : TAFEntity
+    public class EntryQueryDto : PagedAndSortedResultRequestDto
     {
+
         /// <summary>
-        /// 产品Id
+        /// 商品
         /// </summary>
-        public Guid ProductId
-        {
-            get; set;
-        }
-
-
-        public virtual Product Product
+        public string Product
         {
             get; set;
         }
 
         /// <summary>
-        /// 入库量
+        /// StorageId
         /// </summary>
-        public decimal Amount
+        public Guid? StorageId
         {
             get; set;
         }
 
         /// <summary>
-        /// 出库单据Id
+        /// Code
         /// </summary>
-        public Guid DeliveryBillId
-        {
-            get; set;
-        }
-
-
-        public virtual DeliveryBill DeliveryBill
+        public string Code
         {
             get; set;
         }
 
         /// <summary>
-        /// 备注
+        /// IsSpecial
         /// </summary>
-        public string Note
+        public bool IsSpecial
         {
             get; set;
         }
+
+        /// <summary>
+        /// 入库时间起
+        /// </summary>
+        public DateTime? DateFrom
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 入库时间止
+        /// </summary>
+        public DateTime? DateTo
+        {
+            get; set;
+        }
+
     }
 }
+
+
+

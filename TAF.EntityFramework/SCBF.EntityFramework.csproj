@@ -118,6 +118,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\DeliveryBillMap.cs" />
+    <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
+    <Compile Include="EntityFramework\Maps\StockMap.cs" />
+    <Compile Include="EntityFramework\Maps\EntryBillMap.cs" />
+    <Compile Include="EntityFramework\Maps\EntryMap.cs" />
     <Compile Include="EntityFramework\TAFDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\TAFRepositoryBase.cs" />
     <Compile Include="Migrations\201506210746108_AbpZero_Initial.cs" />
@@ -212,14 +217,16 @@
     <Compile Include="Migrations\201703141627064_modifytable_product5.Designer.cs">
       <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703231243471_addtable_stock.cs" />
-    <Compile Include="Migrations\201703231243471_addtable_stock.Designer.cs">
-      <DependentUpon>201703231243471_addtable_stock.cs</DependentUpon>
+    <Compile Include="Migrations\201703231439277_addtable_stock.cs" />
+    <Compile Include="Migrations\201703231439277_addtable_stock.Designer.cs">
+      <DependentUpon>201703231439277_addtable_stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
+    <Compile Include="Repositories\EntryBillRepository.cs" />
+    <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
@@ -315,8 +322,8 @@
     <EmbeddedResource Include="Migrations\201703141627064_modifytable_product5.resx">
       <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703231243471_addtable_stock.resx">
-      <DependentUpon>201703231243471_addtable_stock.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703231439277_addtable_stock.resx">
+      <DependentUpon>201703231439277_addtable_stock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

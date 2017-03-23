@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TAF.cs" company="" author="何翔华">
+// <copyright file="IEntryRepository.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   IDefaultEntityApplicationService
+//   入库仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,13 +11,18 @@ namespace SCBF
 {
     using System;
 
+    using Abp.Domain.Repositories;
+    
+    using SCBF.Storage;
+    
     /// <summary>
-    /// 默认实体主键使用Guid
+    /// 入库仓储接口
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="K"></typeparam>
-    /// <typeparam name="P"></typeparam>
-    public interface IDefaultEntityApplicationService<T, K, P> : IBaseEntityApplicationService<T, K, P, Guid>
+    public interface IEntryRepository : ITAFRepositoryBase<Entry>
     {
+
     }
 }
+
+
+
