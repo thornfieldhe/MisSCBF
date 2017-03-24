@@ -19,6 +19,8 @@ namespace SCBF.Storage
     public interface IEntryBillAppService : IBaseEntityApplicationService
     {
         Task SaveAsync(StockBillEditDto input);
+
+        StockBillEditDto New();
     }
 }
 

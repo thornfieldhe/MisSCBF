@@ -22,7 +22,7 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Id
         /// </summary>
-        public Guid Id
+        public Guid ProductId
         {
             get; set;
         }
@@ -52,6 +52,22 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// StorageId
+        /// </summary>
+        public Guid StorageId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Note
+        /// </summary>
+        public string Note
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// StorageName
         /// </summary>
         public string StorageName
@@ -71,6 +87,11 @@ namespace SCBF.Storage.Dto
         /// 库存量
         /// </summary>
         public decimal StockBalance
+        {
+            get; set;
+        }
+
+        public bool Status
         {
             get; set;
         }

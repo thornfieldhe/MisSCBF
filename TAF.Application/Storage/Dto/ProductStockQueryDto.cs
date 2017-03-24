@@ -36,6 +36,14 @@ namespace SCBF.Storage.Dto
             get; set;
         }
 
+        /// <summary>
+        /// IsSpecial
+        /// </summary>
+        public bool IsSpecial
+        {
+            get; set;
+        }
+
         public void AddValidationErrors(CustomValidationContext context)
         {
             if (this.StorageId == Guid.Empty)

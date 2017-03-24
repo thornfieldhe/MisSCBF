@@ -50,13 +50,13 @@ namespace SCBF.Storage
                     r => r.Product.Code == request.Code && r.StorageId == request.StorageId);
             if (stock == null)
             {
-                var product = this.productRepository.Get(r => r.Code == request.Code);
+                var product = this.productRepository.FirstOrDefault(r => r.Code == request.Code);
                 if (product == null)
                 {
                     throw new UserFriendlyException("当前商品不存在");
                 }
                 output = product.MapTo<ProductStockListDto>();
-                output.Amount = 1;
+
                 output.StockBalance = 0;
                 output.StorageName = this.sysDictionaryRepository.Get(request.StorageId).Value;
             }
@@ -64,6 +64,8 @@ namespace SCBF.Storage
             {
                 output = stock.MapTo<ProductStockListDto>();
             }
+            output.StorageId = request.StorageId;
+            output.Amount = 1;
             return output;
         }
 

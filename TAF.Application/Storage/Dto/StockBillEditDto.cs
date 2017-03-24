@@ -17,18 +17,15 @@ namespace SCBF.Storage.Dto
     /// </summary>
     public class StockBillEditDto
     {
+        public StockBillEditDto()
+        {
+            this.Items = new List<ProductStockListDto>();
+        }
+
         /// <summary>
         /// Id
         /// </summary>
         public Guid Id
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// StorageId
-        /// </summary>
-        public Guid StorageId
         {
             get; set;
         }
@@ -58,7 +55,7 @@ namespace SCBF.Storage.Dto
         }
 
 
-        public virtual List<ProductStockEditDto> Entries
+        public virtual List<ProductStockListDto> Items
         {
             get; set;
         }

@@ -33,12 +33,12 @@ namespace SCBF.BaseInfo
             get; set;
         }
 
-        public virtual List<EntryBill> EntryBills
+        public virtual List<Entry> Entries
         {
             get; set;
         }
 
-        public virtual List<DeliveryBill> DeliveryBills
+        public virtual List<Delivery> Deliveries
         {
             get; set;
         }

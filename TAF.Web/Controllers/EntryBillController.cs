@@ -9,32 +9,30 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
 
     using Abp.Web.Mvc.Authorization;
-    
-    using SCBF.Storage;
-    using TAF.Utility;
-    
+
+    using SCBF.BaseInfo;
+
     /// <summary>
     /// 入库单控制器
     /// </summary>
     [AbpMvcAuthorize]
     public class EntryBillController : TAFControllerBase
     {
-        private readonly IEntryBillAppService entryBillAppService;
+        private readonly ISysDictionaryAppService sysDictionaryAppService;
 
-        public EntryBillController(IEntryBillAppService entryBillAppService)
+        public EntryBillController(ISysDictionaryAppService sysDictionaryAppService)
         {
-            this.entryBillAppService = entryBillAppService;
+            this.sysDictionaryAppService = sysDictionaryAppService;
         }
-        
+
         public ActionResult EntryBillList()
         {
-            var list = new List<KeyValue<string, Guid>>();
-            return PartialView("_EntryBillIndex" ,list);
+            var list = sysDictionaryAppService.GetSimpleList().Where(r => r.Category == DictionaryCategory.Storage).ToList();
+            return PartialView("_EntryBillIndex", list);
         }
     }
 }

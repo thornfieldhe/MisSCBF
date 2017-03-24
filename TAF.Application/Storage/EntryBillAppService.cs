@@ -19,8 +19,6 @@ namespace SCBF.Storage
 
     using SCBF.Storage.Dto;
 
-    using TAF.Utility;
-
     /// <summary>
     /// 入库单服务
     /// </summary>
@@ -38,35 +36,36 @@ namespace SCBF.Storage
 
         public StockBillEditDto New()
         {
-            return new StockBillEditDto { Code = this.GetMaxCode() };
+            return new StockBillEditDto { Code = this.GetMaxCode(), Id = Guid.NewGuid() };
         }
 
         public async Task SaveAsync(StockBillEditDto input)
         {
             var item = input.MapTo<EntryBill>();
-            if (input.Id == Guid.Empty)
+            item.Entries.ForEach(r => r.EntryBillId = item.Id);
+            if (!this.entryBillRepository.Any(r => r.Id == input.Id))
             {
                 item.Code = this.GetMaxCode();
-                await this.entryBillRepository.InsertAsync(item);
+                item = await this.entryBillRepository.InsertAsync(item);
             }
             else
             {
                 var old = this.entryBillRepository.Get(input.Id);
                 Mapper.Map(input, old);
-                await this.entryBillRepository.UpdateAsync(old);
+                item = await this.entryBillRepository.UpdateAsync(old);
             }
 
             // 更新库存信息
-            foreach (var entry in input.Entries)
+            foreach (var entry in input.Items)
             {
-                var productInStock = this.stockRepository.FirstOrDefault(r => r.ProductId == entry.ProductId && r.StorageId == input.StorageId);
+                var productInStock = this.stockRepository.FirstOrDefault(r => r.ProductId == entry.ProductId && r.StorageId == entry.StorageId);
                 if (productInStock == null)
                 {
                     var stock = new Stock()
                     {
                         Amount = entry.Amount,
                         ProductId = entry.ProductId,
-                        StorageId = input.StorageId
+                        StorageId = entry.StorageId
                     };
                     await this.stockRepository.InsertAsync(stock);
                 }
@@ -83,7 +82,7 @@ namespace SCBF.Storage
         {
             var preCode = DateTime.Today.ToString("yyyyMMdd");
             var maxCode =
-                this.entryBillRepository.Get(r => r.Code.StartsWith($"RK{preCode}"))
+                this.entryBillRepository.Get(r => r.Code.StartsWith("RK" + preCode))
                     .OrderByDescending(r => r.Code)
                     .FirstOrDefault()?.Code;
             if (string.IsNullOrWhiteSpace(maxCode))
@@ -92,7 +91,7 @@ namespace SCBF.Storage
             }
             else
             {
-                return $"RK{maxCode.ToInt() + 1}";
+                return $"RK{long.Parse(maxCode.Substring(2)) + 1}";
             }
         }
     }

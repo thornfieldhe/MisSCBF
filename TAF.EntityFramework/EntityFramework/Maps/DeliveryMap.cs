@@ -22,6 +22,7 @@ namespace SCBF.EntityFramework
         {
             this.HasRequired(r => r.DeliveryBill).WithMany(r => r.Deliveries).HasForeignKey(r => r.DeliveryBillId);
             this.HasRequired(r => r.Product).WithMany(r => r.Deliveries).HasForeignKey(r => r.ProductId);
+            this.HasRequired(r => r.Storage).WithMany(r => r.Deliveries).HasForeignKey(r => r.StorageId);
         }
     }
 }

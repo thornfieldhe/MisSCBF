@@ -11,6 +11,8 @@ namespace SCBF.Storage
 {
     using System;
 
+    using SCBF.BaseInfo;
+
     /// <summary>
     /// 出库
     /// </summary>
@@ -64,6 +66,19 @@ namespace SCBF.Storage
         /// 备注
         /// </summary>
         public string Note
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 仓库Id
+        /// </summary>
+        public Guid StorageId
+        {
+            get; set;
+        }
+
+        public virtual SysDictionary Storage
         {
             get; set;
         }

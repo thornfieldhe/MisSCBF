@@ -1,42 +1,89 @@
 ﻿var main = new Vue({
-    mixins: [indexMixin],
+    el: "#main",
     ready: function () {
         $("#searchStorageId").select2().on("change", function (e) { main.queryEntity.storageId = $("#searchStorageId").val(); });
-        $("#searchIsSpecial").select2().on("change", function (e) { main.queryEntity.isSpecial = $("#searchIsSpecial").val(); });
+        this.load();
     },
     data: {
         queryEntity: {
             storageId:"", 
             code:"", 
-            note:"", 
             isSpecial:false        
-        }
+        },
+        item: {
+            items:[]
+        },
+        temp:-1
     },
     events: {
-        'onResetSearch': function () {
-            this.queryEntity.storageId="";
-            this.queryEntity.code="";
-            this.queryEntity.note="";
-            this.queryEntity.isSpecial=false;      
-            $("#searchStorageId").select2().val("").trigger("change");
-            $("#searchIsSpecial").select2().val("").trigger("change");
-        }
+
     },
     methods: {
-        excuteQuery: function ($this) {
-            abp.services.app.entryBill.getAll(main.queryEntity)
-                .done(function (r) {
-                    $this.bindItems($this, r);
+        load: function () {
+            var $this = this;
+            abp.services.app.entryBill.new()
+                .done(function(m) {
+                    $this.item = m;
+                })
+                .fail(function(r) {
+                    if (r.validationErrors !== null) {
+                        taf.notify.danger(r.validationErrors[0].message);
+                    } else if (r.details !== null) {
+                        taf.notify.danger(r.details);
+                    } else {
+                        taf.notify.danger(r.message);
+                    }
+                });
+
+        },
+        add: function () {
+            var $this = this;
+            abp.services.app.entry.entry($this.queryEntity)
+                .done(function(m) {
+                    $this.item.items.push(m);
+                    $this.queryEntity.code = "";
+                    $("#code").focus();
+                    console.log(m);
+                })
+                .fail(function (r) {
+                    if (r.validationErrors !== null) {
+                        taf.notify.danger(r.validationErrors[0].message);
+                    } else if (r.details !== null) {
+                        taf.notify.danger(r.details);
+                    } else {
+                        taf.notify.danger(r.message);
+                    }
                 });
         },
-        delete: function (id) {
+        edit:function(item) {
+            item.status = true;
+            this.temp=item.amount;
+        },
+        delete:function(item) {
+            this.item.items.$remove(item);
+        },
+        cancel:function(item) {
+            item.status = false;
+            item.amount = this.temp;
+        },
+        update:function(item) {
+            item.status = false;
+        },
+        save: function () {
             var $this = this;
-            abp.services.app.entryBill.delete(id)
+            abp.services.app.entryBill.saveAsync($this.item)
                 .done(function (m) {
-                    $this.done();
+                    $this.load();
+                    $("#code").focus();
                 })
-                .fail(function (m) {
-                    $this.fail(m);
+                .fail(function (r) {
+                    if (r.validationErrors !== null) {
+                        taf.notify.danger(r.validationErrors[0].message);
+                    } else if (r.details !== null) {
+                        taf.notify.danger(r.details);
+                    } else {
+                        taf.notify.danger(r.message);
+                    }
                 });
         }
     }

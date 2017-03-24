@@ -121,7 +121,7 @@ namespace SCBF.Storage
             get; set;
         }
 
-        public virtual List<Stock> StockBalance
+        public virtual List<Stock> Stocks
         {
             get; set;
         }
