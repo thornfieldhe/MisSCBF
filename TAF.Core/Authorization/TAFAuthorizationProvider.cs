@@ -18,7 +18,7 @@ namespace SCBF.Authorization
                 pages = context.CreatePermission(PermissionNames.Pages, L("普通用户"));
             }
 
-            var users = pages.CreateChildPermission(PermissionNames.PagesProjectManager, L("项目经理"));
+            var storages = pages.CreateChildPermission(PermissionNames.WzUser, L("物资管理"));
 
             //Host permissions
             var admins = pages.CreateChildPermission(PermissionNames.PagesAdmins, L("系统管理员"), multiTenancySides: MultiTenancySides.Host);

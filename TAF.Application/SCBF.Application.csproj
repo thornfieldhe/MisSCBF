@@ -122,9 +122,9 @@
     <Compile Include="BaseInfo\LayerAppService.cs" />
     <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
-    <Compile Include="Storage\Dto\EntryBillEditDto.cs" />
-    <Compile Include="Storage\Dto\EntryEditDto.cs" />
-    <Compile Include="Storage\Dto\ProductInStockListDto.cs" />
+    <Compile Include="Storage\Dto\StockBillEditDto.cs" />
+    <Compile Include="Storage\Dto\ProductStockEditDto.cs" />
+    <Compile Include="Storage\Dto\ProductStockListDto.cs" />
     <Compile Include="Storage\Dto\ProductStockQueryDto.cs" />
     <Compile Include="Storage\Dto\EntryQueryDto.cs" />
     <Compile Include="Storage\Dto\ProductEditDto.cs" />

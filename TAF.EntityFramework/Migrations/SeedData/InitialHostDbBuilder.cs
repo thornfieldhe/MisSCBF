@@ -20,7 +20,8 @@ namespace SCBF.Migrations.SeedData
                                      new DefaultLanguagesCreator(_context),
                                      new HostRoleAndUserCreator(_context),
                                      new DefaultSettingsCreator(_context),
-                                     new DefaultRolesCreator(_context)
+                                     new DefaultRolesCreator(_context),
+                                     new DefaultRolePermissionCreator(_context),
                                  };
         }
 

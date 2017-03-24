@@ -9,12 +9,17 @@
 
 namespace SCBF.Storage
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Abp.Application.Services.Dto;
+
     using SCBF.Storage.Dto;
 
     /// <summary>
     /// 库存应用接口
     /// </summary>
-    public interface IStockAppService : IDefaultEntityApplicationService
+    public interface IStockAppService : IBaseEntityApplicationService
     {
         ListResultDto<StockListDto> GetAll(StockQueryDto request);
 

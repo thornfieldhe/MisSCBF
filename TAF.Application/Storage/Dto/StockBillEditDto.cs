@@ -1,23 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EntryEditDto.cs" company=""  author="何翔华">
+// <copyright file="EntryBillEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   入库编辑对象
+//   入库单编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Storage.Dto
 {
     using System;
-
-    using Abp.AutoMapper;
+    using System.Collections.Generic;
 
     /// <summary>
-    /// 入库编辑对象
+    /// 出入库单编辑对象
     /// </summary>
-    [AutoMap(typeof(Entry))]
-    public class EntryEditDto
+    public class StockBillEditDto
     {
         /// <summary>
         /// Id
@@ -28,25 +26,17 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// ProductId
+        /// StorageId
         /// </summary>
-        public Guid ProductId
+        public Guid StorageId
         {
             get; set;
         }
 
         /// <summary>
-        /// ProductId
+        /// Code
         /// </summary>
-        public string ProductName
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Amount
-        /// </summary>
-        public decimal Amount
+        public string Code
         {
             get; set;
         }
@@ -59,6 +49,19 @@ namespace SCBF.Storage.Dto
             get; set;
         }
 
+        /// <summary>
+        /// IsSpecial
+        /// </summary>
+        public bool IsSpecial
+        {
+            get; set;
+        }
+
+
+        public virtual List<ProductStockEditDto> Entries
+        {
+            get; set;
+        }
     }
 }
 

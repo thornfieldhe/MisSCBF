@@ -224,6 +224,7 @@
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
+    <Compile Include="Migrations\SeedData\DefaultRolePermissionCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />

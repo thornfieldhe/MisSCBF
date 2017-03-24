@@ -17,7 +17,7 @@ namespace SCBF.Storage.Dto
     /// 库存列表对象
     /// </summary>
     [AutoMap(typeof(Product))]
-    public class ProductInStockListDto
+    public class ProductStockListDto
     {
         /// <summary>
         /// Id

@@ -42,9 +42,9 @@ namespace SCBF.Storage
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public ProductInStockListDto Entry(ProductStockQueryDto request)
+        public ProductStockListDto Entry(ProductStockQueryDto request)
         {
-            ProductInStockListDto output;
+            ProductStockListDto output;
             var stock =
                 this.stockRepository.FirstOrDefault(
                     r => r.Product.Code == request.Code && r.StorageId == request.StorageId);
@@ -55,14 +55,14 @@ namespace SCBF.Storage
                 {
                     throw new UserFriendlyException("当前商品不存在");
                 }
-                output = product.MapTo<ProductInStockListDto>();
+                output = product.MapTo<ProductStockListDto>();
                 output.Amount = 1;
                 output.StockBalance = 0;
                 output.StorageName = this.sysDictionaryRepository.Get(request.StorageId).Value;
             }
             else
             {
-                output = stock.MapTo<ProductInStockListDto>();
+                output = stock.MapTo<ProductStockListDto>();
             }
             return output;
         }

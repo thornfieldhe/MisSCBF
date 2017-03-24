@@ -45,18 +45,23 @@
                                 "menuBaseInfos",
                                 L("基础信息"),
                                 url: "#storageInfos",
-                                requiredPermissionName: PermissionNames.PagesAdmins))
+                                requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuProductCategories",
                                 L("商品分类"),
                                 url: "#productCategories",
-                                requiredPermissionName: PermissionNames.PagesAdmins))
+                                requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
                             "menuProducts",
                             L("商品管理"),
                             url: "#products",
-                            requiredPermissionName: PermissionNames.Pages))
+                            requiredPermissionName: PermissionNames.WzUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuEntryBills",
+                            L("入库管理"),
+                            url: "#entryBills",
+                            requiredPermissionName: PermissionNames.WzUser))
                        );
         }
 

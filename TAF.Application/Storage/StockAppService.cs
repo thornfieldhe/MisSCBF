@@ -40,14 +40,14 @@ namespace SCBF.Storage
         public ListResultDto<StockListDto> GetAll(StockQueryDto request)
         {
             var query = this.stockRepository.GetAll()
-            
-                .WhereIf(request.ProductId.HasValue, r => r.ProductId == request.ProductId.Value)             
-                .WhereIf(request.Amount.HasValue, r => r.Amount == request.Amount.Value)             
-                .WhereIf(request.StorageId.HasValue, r => r.StorageId == request.StorageId.Value) ; 
+
+                .WhereIf(request.ProductId.HasValue, r => r.ProductId == request.ProductId.Value)
+                .WhereIf(request.Amount.HasValue, r => r.Amount == request.Amount.Value)
+                .WhereIf(request.StorageId.HasValue, r => r.StorageId == request.StorageId.Value);
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
-                        : query.OrderBy(r => r.Name);
+                        : query.OrderBy(r => r.Product.Name);
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<StockListDto>>();

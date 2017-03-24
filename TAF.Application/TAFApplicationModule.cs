@@ -39,16 +39,16 @@ namespace SCBF
                 mapper.CreateMap<Product, ProductEditDto>();
                 mapper.CreateMap<ProductEditDto, Product>();
 
-                mapper.CreateMap<EntryBillEditDto, EntryBill>();
-                mapper.CreateMap<ProductInStockListDto, Entry>()
+                mapper.CreateMap<StockBillEditDto, EntryBill>();
+                mapper.CreateMap<ProductStockListDto, Entry>()
                 .ForMember(m => m.ProductId, n => n.MapFrom(r => r.Id));
-                mapper.CreateMap<Product, ProductInStockListDto>();
-                mapper.CreateMap<Entry, ProductInStockListDto>()
+                mapper.CreateMap<Product, ProductStockListDto>();
+                mapper.CreateMap<Entry, ProductStockListDto>()
                                 .ForMember(m => m.Name, n => n.MapFrom(r => r.Product.Name))
                                 .ForMember(m => m.StorageName, n => n.MapFrom(r => r.EntryBill.Storage.Value))
                                 .ForMember(m => m.Code, n => n.MapFrom(r => r.EntryBill.Code))
                                 .ForMember(m => m.StockBalance, n => n.MapFrom(r => 0));
-                mapper.CreateMap<Stock, ProductInStockListDto>()
+                mapper.CreateMap<Stock, ProductStockListDto>()
                     .ForMember(m => m.Code, n => n.MapFrom(r => r.Product.Code))
                     .ForMember(m => m.StockBalance, n => n.MapFrom(r => r.Amount))
                     .ForMember(m => m.Name, n => n.MapFrom(r => r.Product.Name))

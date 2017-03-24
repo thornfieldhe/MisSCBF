@@ -16,7 +16,7 @@ namespace SCBF.Storage
     /// </summary>
     public interface IEntryAppService : IBaseEntityApplicationService
     {
-        ProductInStockListDto Entry(ProductStockQueryDto request);
+        ProductStockListDto Entry(ProductStockQueryDto request);
     }
 }
 

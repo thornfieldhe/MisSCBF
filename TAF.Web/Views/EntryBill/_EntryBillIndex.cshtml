@@ -15,57 +15,38 @@
                             <thead>
                                 <tr role="row">
                                     <th style="width: 200px;">
-                                        StorageId
+                                        商品名称
                                     </th>        
                                     <th style="width: 200px;">
-                                        Code
+                                        商品编码
+                                    </th>        
+                                    <th style="width: 100px;">
+                                        入库量
                                     </th>        
                                     <th style="width: 200px;">
-                                        Note
-                                    </th>        
+                                        单位
+                                    </th> 
                                     <th style="width: 200px;">
-                                        IsSpecial
+                                        仓库
+                                    </th>  
+                                    <th style="width: 100px;">
+                                        库存量
                                     </th>        
                                     <th style="width: 200px;">
                                         操作
                                     </th>
                                 </tr>
-                                <tr role="row">
-                                    <th>
-                                    <select id="searchStorageName" style="width: 100%" v-model="queryEntity.storageId">
-                                        <option value="">请选择...</option>
-                                        @{
-                                            foreach (var item in Model)
-                                            {
-                                                <option value="@item.Value">@item.Key</option>
-                                            }
-                                        }
-                                    </select>
-                                    </th>        
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="Code" v-model="queryEntity.code" />
-                                    </th>        
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="Note" v-model="queryEntity.note" />
-                                    </th>        
-                                    <th>
-                                        <select id="searchIsCompleted" style="width: 100%" v-model="queryEntity.isSpecial">
-                                                <option value="">请选择...</option>
-                                                <option value="true">Yes</option>
-                                                <option value="false">No</option>
-                                        </select>
-                                    </th>        
-                                    <th><search-command></search-command></th>
-                                </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="item in list">
-                                    <td>{{item.storageName}}</td>
+                                    <td>{{item.name}}</td>
                                     <td>{{item.code}}</td>
-                                    <td>{{item.note}}</td>
-                                    <td>{{item.isSpecial}}</td>
+                                    <td>{{item.amount}}</td>
+                                    <td>{{item.unit}}</td>
+                                    <td>{{item.storageName}}</td>
+                                    <td>{{item.stockBalance}}</td>
                                     <td>
-                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                      
                                     </td>
                                 </tr>
                             </tbody>
@@ -78,76 +59,6 @@
     </div>
 </div>
 <dialog-delete></dialog-delete>
-<form-edit></form-edit>
-<template id="entryBillFormBody">
-    <div id="form">
-        <validator name="v">
-            <form class="form-horizontal " name="form" novalidate>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">StorageId<span class="red" >*</span></label>
-                            <div class="col-sm-10">
-                                <select id="searchEditStorageId" style="width: 100%" v-model="item.storageId" name="storageid" v-validate:storageid="{required:true}">
-                                    <option value="">请选择...</option>
-                                    @{
-                                        foreach (var item in Model)
-                                        {
-                                            <option value="@item.Value">@item.Key</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">Code<span class="red" >*</span></label>
-                            <div class="col-sm-10">
-                                <span class="input-icon icon-right">
-                                    <input type="text" class="form-control " placeholder="必填" name="code" v-model="item.code"  v-validate:code="{required:true}"/>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">Note<span class="red" >*</span></label>
-                            <div class="col-sm-10">
-                                <span class="input-icon icon-right">
-                                    <input type="text" class="form-control " placeholder="必填" name="note" v-model="item.note"  v-validate:note="{required:true}"/>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">IsSpecial<span class="red" >*</span></label>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                        <div class="col-lg-4 col-sm-4 col-xs-4">
-                                            <div class="checkbox">
-                                                <label for="isSpecial">
-                                                    <input type="checkbox" id="isSpecial" value="true" v-model="item.isSpecial" class="colored-success">
-                                                    <span class=" text">是</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </validator>
-    </div>
-</template>
 <script src="~/Scripts/entryBill.js"></script>
 
 
