@@ -27,7 +27,15 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 入库量
+        /// 产品
+        /// </summary>
+        public virtual Product Product
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 库存量
         /// </summary>
         public decimal Amount
         {

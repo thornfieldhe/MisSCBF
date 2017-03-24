@@ -10,15 +10,10 @@
 namespace SCBF.Storage
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Linq.Dynamic;
     using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
 
     using AutoMapper;
 
@@ -39,14 +34,17 @@ namespace SCBF.Storage
             this.entryBillRepository = entryBillRepository;
         }
 
-
+        public EntryBillEditDto New()
+        {
+            return new EntryBillEditDto { Code = this.GetMaxCode() };
+        }
 
         public async Task SaveAsync(EntryBillEditDto input)
         {
             var item = input.MapTo<EntryBill>();
             if (input.Id == Guid.Empty)
             {
-                item.Code = GetMaxCode();
+                item.Code = this.GetMaxCode();
                 await this.entryBillRepository.InsertAsync(item);
             }
             else
@@ -64,13 +62,13 @@ namespace SCBF.Storage
                 this.entryBillRepository.Get(r => r.Code.StartsWith($"RK{preCode}"))
                     .OrderByDescending(r => r.Code)
                     .FirstOrDefault()?.Code;
-            if(string.IsNullOrWhiteSpace(maxCode))
+            if (string.IsNullOrWhiteSpace(maxCode))
             {
                 return $"RK{preCode}001";
             }
             else
             {
-                return $"RK{maxCode.ToInt()+1}";
+                return $"RK{maxCode.ToInt() + 1}";
             }
         }
     }

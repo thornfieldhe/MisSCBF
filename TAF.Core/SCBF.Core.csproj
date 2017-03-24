@@ -106,6 +106,7 @@
     <Compile Include="Storage\IEntryBillRepository.cs" />
     <Compile Include="Storage\IEntryRepository.cs" />
     <Compile Include="Storage\IProductRepository.cs" />
+    <Compile Include="Storage\IStockRepository.cs" />
     <Compile Include="Storage\ITAFRepositoryBase.cs" />
     <Compile Include="Storage\Product.cs" />
     <Compile Include="Storage\Stock.cs" />

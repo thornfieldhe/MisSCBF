@@ -1,45 +1,42 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Delivery.cs" company="" author="何翔华">
+// <copyright file="EntryListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Delivery
+//   入库列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF.Storage.Dto
 {
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 出库
+    /// 库存列表对象
     /// </summary>
-    public class Delivery : TAFEntity
+    [AutoMap(typeof(Product))]
+    public class ProductInStockListDto
     {
         /// <summary>
-        /// 产品Id
+        /// Id
         /// </summary>
-        public Guid ProductId
-        {
-            get; set;
-        }
-
-
-        public virtual Product Product
+        public Guid Id
         {
             get; set;
         }
 
         /// <summary>
-        /// 
+        /// Name
         /// </summary>
-        public string Unit
+        public string Name
         {
             get; set;
         }
 
         /// <summary>
-        /// 入库量
+        /// Amount
         /// </summary>
         public decimal Amount
         {
@@ -47,25 +44,38 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 出库单据Id
+        /// Unit
         /// </summary>
-        public Guid DeliveryBillId
-        {
-            get; set;
-        }
-
-
-        public virtual DeliveryBill DeliveryBill
+        public string Unit
         {
             get; set;
         }
 
         /// <summary>
-        /// 备注
+        /// StorageName
         /// </summary>
-        public string Note
+        public string StorageName
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Code
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 库存量
+        /// </summary>
+        public decimal StockBalance
         {
             get; set;
         }
     }
 }
+
+
+

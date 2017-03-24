@@ -21,6 +21,7 @@ namespace SCBF.EntityFramework
         public StockMap()
         {
             this.HasRequired(r => r.Storage).WithMany(r => r.Stocks).HasForeignKey(r => r.StorageId);
+            this.HasRequired(r => r.Product).WithMany(r => r.StockBalance).HasForeignKey(r => r.ProductId);
         }
     }
 }

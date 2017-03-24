@@ -1,60 +1,44 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EntryBillListDto.cs" company=""  author="何翔华">
+// <copyright file="StockQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   入库单列表对象
+//   库存查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Storage.Dto
 {
     using System;
-
-    using Abp.AutoMapper;
+    
+    using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 入库单列表对象
+    /// 库存查询对象
     /// </summary>
-    [AutoMap(typeof(EntryBill))]
-    public class EntryBillListDto
-    {
+    public class StockQueryDto : PagedAndSortedResultRequestDto
+    {  
+        
         /// <summary>
-        /// Id
+        /// ProductId
         /// </summary>
-        public Guid Id
+        public Guid? ProductId
         {
             get; set;
         }        
         
         /// <summary>
-        /// StorageName
+        /// Amount
         /// </summary>
-        public string StorageName
-        {
-            get; set;
-        }    
-        
-        /// <summary>
-        /// Code
-        /// </summary>
-        public string Code
+        public decimal? Amount
         {
             get; set;
         }        
         
         /// <summary>
-        /// Note
+        /// StorageId
         /// </summary>
-        public string Note
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// IsSpecial
-        /// </summary>
-        public bool IsSpecial
+        public Guid? StorageId
         {
             get; set;
         }        

@@ -1,22 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IEntryAppService.cs" company="" author="何翔华">
+// <copyright file="IStockRepository.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   入库应用接口
+//   库存仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Storage
+namespace SCBF
 {
-    using SCBF.Storage.Dto;
+    using System;
 
+    using Abp.Domain.Repositories;
+    
+    using SCBF.Storage;
+    
     /// <summary>
-    /// 入库应用接口
+    /// 库存仓储接口
     /// </summary>
-    public interface IEntryAppService : IBaseEntityApplicationService
+    public interface IStockRepository : ITAFRepositoryBase<Stock>
     {
-        ProductInStockListDto Entry(ProductStockQueryDto request);
+
     }
 }
 

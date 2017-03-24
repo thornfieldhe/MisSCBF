@@ -1,23 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EntryListDto.cs" company=""  author="何翔华">
+// <copyright file="StockEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   入库列表对象
+//   库存编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Storage.Dto
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 入库列表对象
+    /// 库存编辑对象
     /// </summary>
-    [AutoMap(typeof(Entry))]
-    public class EntryListDto
+    [AutoMap(typeof(Stock))]
+    public class StockEditDto
     {
         /// <summary>
         /// Id
@@ -25,56 +26,32 @@ namespace SCBF.Storage.Dto
         public Guid Id
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// ProductName
+        /// ProductId
         /// </summary>
-        public string ProductName
+        public Guid ProductId
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// Unit
+        /// StorageId
         /// </summary>
-        public string Unit
+        public Guid StorageId
         {
             get; set;
-        }
-
-        /// <summary>
-        /// StorageName
-        /// </summary>
-        public string StorageName
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Code
-        /// </summary>
-        public string Code
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Note
-        /// </summary>
-        public string Note
-        {
-            get; set;
-        }
-    }
+        }        
+    } 
 }
 
 

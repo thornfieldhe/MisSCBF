@@ -13,6 +13,7 @@ namespace SCBF.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         ProductId = c.Guid(nullable: false),
+                        Unit = c.String(),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         DeliveryBillId = c.Guid(nullable: false),
                         Note = c.String(),
@@ -70,6 +71,7 @@ namespace SCBF.Migrations
                         Id = c.Guid(nullable: false),
                         ProductId = c.Guid(nullable: false),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Unit = c.String(),
                         EntryBillId = c.Guid(nullable: false),
                         Note = c.String(),
                         CreationTime = c.DateTime(nullable: false),
@@ -97,7 +99,9 @@ namespace SCBF.Migrations
                         LastModifierUserId = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
                 .ForeignKey("dbo.SysDictionaries", t => t.StorageId, cascadeDelete: true)
+                .Index(t => t.ProductId)
                 .Index(t => t.StorageId);
             
         }
@@ -106,12 +110,14 @@ namespace SCBF.Migrations
         {
             DropForeignKey("dbo.Deliveries", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Deliveries", "DeliveryBillId", "dbo.DeliveryBills");
-            DropForeignKey("dbo.Stocks", "StorageId", "dbo.SysDictionaries");
             DropForeignKey("dbo.EntryBills", "StorageId", "dbo.SysDictionaries");
             DropForeignKey("dbo.Entries", "ProductId", "dbo.Products");
+            DropForeignKey("dbo.Stocks", "StorageId", "dbo.SysDictionaries");
+            DropForeignKey("dbo.Stocks", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Entries", "EntryBillId", "dbo.EntryBills");
             DropForeignKey("dbo.DeliveryBills", "StorageId", "dbo.SysDictionaries");
             DropIndex("dbo.Stocks", new[] { "StorageId" });
+            DropIndex("dbo.Stocks", new[] { "ProductId" });
             DropIndex("dbo.Entries", new[] { "EntryBillId" });
             DropIndex("dbo.Entries", new[] { "ProductId" });
             DropIndex("dbo.EntryBills", new[] { "StorageId" });

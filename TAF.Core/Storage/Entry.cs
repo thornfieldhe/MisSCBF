@@ -38,6 +38,14 @@ namespace SCBF.Storage
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string Unit
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 入库单据Id
         /// </summary>
         public Guid EntryBillId
