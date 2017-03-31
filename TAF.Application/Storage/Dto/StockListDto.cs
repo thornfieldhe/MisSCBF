@@ -25,32 +25,40 @@ namespace SCBF.Storage.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// ProductName
         /// </summary>
         public string ProductName
         {
             get; set;
-        }    
-        
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// 金额
+        /// </summary>
+        public decimal Price
+        {
+            get; set;
+        }
+
         /// <summary>
         /// StorageName
         /// </summary>
         public string StorageName
         {
             get; set;
-        }    
-    } 
+        }
+    }
 }
 
 

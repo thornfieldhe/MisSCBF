@@ -11,7 +11,7 @@ namespace SCBF.BaseInfo
 {
     public static class DictionaryCategory
     {
-        #region 商品
+        #region 物资
 
         /// <summary>
         /// 商品分类
@@ -32,6 +32,20 @@ namespace SCBF.BaseInfo
         /// 仓库
         /// </summary>
         public const string Storage = "Storage";
+        #endregion
+
+        #region 预算
+
+        /// <summary>
+        /// 预算年
+        /// </summary>
+        public const string BudgetYear = "BudgetYear";
+
+        /// <summary>
+        /// 会计科目
+        /// </summary>
+        public const string Account = "Account";
+
         #endregion
 
     }

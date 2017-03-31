@@ -48,6 +48,14 @@ namespace SCBF.Storage
         }
 
         /// <summary>
+        /// 金额
+        /// </summary>
+        public decimal Price
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 入库单据Id
         /// </summary>
         public Guid EntryBillId

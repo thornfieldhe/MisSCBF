@@ -33,19 +33,39 @@
                             L("修改密码"),
                             url: "#changePwd",
                             requiredPermissionName: PermissionNames.Pages)))
-                .AddItem(
+                            .AddItem(
                     new MenuItemDefinition(
                         "Storage",
-                        L("仓库管理"),
+                        L("预算管理"),
                         url: "#",
-                        icon: "menu-icon fa  fa-calendar",
+                        icon: "menu-icon fa  fa-rmb",
                         requiredPermissionName: PermissionNames.Pages)
                         .AddItem(
                             new MenuItemDefinition(
-                                "menuBaseInfos",
+                                "menuFinanceInfos",
+                                L("基础信息"),
+                                url: "#financeInfos",
+                                requiredPermissionName: PermissionNames.PagesAdmins))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuAccount",
+                                L("会计科目"),
+                                url: "#account",
+                                requiredPermissionName: PermissionNames.CwUser))
+                       )
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Storage",
+                        L("物资器材管理"),
+                        url: "#",
+                        icon: "menu-icon fa  fa-truck",
+                        requiredPermissionName: PermissionNames.Pages)
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuStorageInfos",
                                 L("基础信息"),
                                 url: "#storageInfos",
-                                requiredPermissionName: PermissionNames.WzUser))
+                                requiredPermissionName: PermissionNames.PagesAdmins))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuProductCategories",
@@ -61,6 +81,11 @@
                             "menuEntryBills",
                             L("入库管理"),
                             url: "#entryBills",
+                            requiredPermissionName: PermissionNames.WzUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuDeliveryBills",
+                            L("出库管理"),
+                            url: "#deliveryBills",
                             requiredPermissionName: PermissionNames.WzUser))
                        );
         }

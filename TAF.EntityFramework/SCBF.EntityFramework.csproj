@@ -223,11 +223,20 @@
     <Compile Include="Migrations\201703241620443_modifytable_stock2.Designer.cs">
       <DependentUpon>201703241620443_modifytable_stock2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703250338235_modifyTable_stock3.cs" />
+    <Compile Include="Migrations\201703250338235_modifyTable_stock3.Designer.cs">
+      <DependentUpon>201703250338235_modifyTable_stock3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311316495_modifyTableSysDictionaries.cs" />
+    <Compile Include="Migrations\201703311316495_modifyTableSysDictionaries.Designer.cs">
+      <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolePermissionCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
+    <Compile Include="Repositories\DeliveryBillRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
@@ -331,6 +340,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703241620443_modifytable_stock2.resx">
       <DependentUpon>201703241620443_modifytable_stock2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250338235_modifyTable_stock3.resx">
+      <DependentUpon>201703250338235_modifyTable_stock3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311316495_modifyTableSysDictionaries.resx">
+      <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

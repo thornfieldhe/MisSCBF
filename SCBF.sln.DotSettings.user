@@ -5,4 +5,6 @@
   &lt;Assembly Path="d:\WorkStation\Caf.Erp\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll" /&gt;&#xD;
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Utility.dll" /&gt;&#xD;
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Core.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	
+	</wpf:ResourceDictionary>

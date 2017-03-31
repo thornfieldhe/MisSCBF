@@ -9,7 +9,11 @@
 
 namespace SCBF.BaseInfo
 {
+    using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Abp.Application.Services.Dto;
 
     using SCBF.BaseInfo.Dto;
 
@@ -19,6 +23,14 @@ namespace SCBF.BaseInfo
     public interface ILayerAppService : IBaseEntityApplicationService
     {
         List<TreeItemDto> GetAllByCategory(string category);
+
+        Task SaveAsync(LayerEditDto input);
+
+        void Delete(Guid id);
+
+        LayerEditDto Get(Guid id);
+
+        ListResultDto<LayerListDto> GetAll(LayerQueryDto request);
     }
 }
 

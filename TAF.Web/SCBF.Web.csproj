@@ -798,6 +798,7 @@
     <Content Include="Scripts\Common\layoutBase.js" />
     <Content Include="Scripts\Common\mixin.js" />
     <Content Include="Scripts\Common\template.js" />
+    <Content Include="Scripts\deliveryBill.js" />
     <Content Include="Scripts\entry.js" />
     <Content Include="Scripts\entryBill.js" />
     <Content Include="Scripts\errors.json" />
@@ -875,8 +876,10 @@
     <Compile Include="assets\js\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
+    <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
@@ -915,6 +918,7 @@
     <Content Include="Views\Product\_ProductIndex.cshtml" />
     <Content Include="Views\Entry\_EntryIndex.cshtml" />
     <Content Include="Views\EntryBill\_EntryBillIndex.cshtml" />
+    <Content Include="Views\DeliveryBill\_DeliveryBillIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -925,6 +929,7 @@
   <ItemGroup>
     <Folder Include="Abp\Framework\scripts\libs\requirejs\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Finance\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TAF.Application\SCBF.Application.csproj">

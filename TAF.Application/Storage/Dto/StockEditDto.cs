@@ -10,7 +10,6 @@
 namespace SCBF.Storage.Dto
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     using Abp.AutoMapper;
 
@@ -26,32 +25,40 @@ namespace SCBF.Storage.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// ProductId
         /// </summary>
         public Guid ProductId
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// 金额
+        /// </summary>
+        public decimal Price
+        {
+            get; set;
+        }
+
         /// <summary>
         /// StorageId
         /// </summary>
         public Guid StorageId
         {
             get; set;
-        }        
-    } 
+        }
+    }
 }
 
 
