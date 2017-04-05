@@ -60,6 +60,14 @@ namespace SCBF.BaseInfo.Dto
         }
 
         /// <summary>
+        /// Code
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Category
         /// </summary>
         public string Category

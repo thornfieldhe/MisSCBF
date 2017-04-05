@@ -31,10 +31,9 @@ var itemMixin = {
         done: function (closeModal) {
             this.$dispatch('onChange', 0);
             this.$resetValidation();
+            this.clearItem();
             if (closeModal) {
                 $("#addItemModal").modal("hide");
-            } else {
-                this.clearItem();
             }
         }
     },

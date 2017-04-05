@@ -16,7 +16,7 @@
             item: {
                 category: "Account",
                 name: "",
-                pId: "",
+                pId: "00000000-0000-0000-0000-000000000000",
                 pName: "",
                 id: "",
                 code: "",
@@ -29,8 +29,8 @@
             var $this = this;
             $this.item.order = $('#order').val();
             if ($this.item.pName==="") {
-                $this.item.pId = "";
-                }
+                $this.item.pId = "00000000-0000-0000-0000-000000000000";
+            }
             abp.services.app.layer.saveAccountAsync($this.item)
             .done(function (m) {
                 $this.done(closeModal);
@@ -60,9 +60,12 @@
             this.item.onAdd = true;
             this.item.order = 0;
             this.item.name = "";
-            this.item.pId = "";
+            this.item.code = "";
+            this.item.id = "00000000-0000-0000-0000-000000000000";
+            this.item.pId = "00000000-0000-0000-0000-000000000000";
             this.item.pName = "";
             $('#spinboxOrder').spinbox('value', 0);
+            $("[name='parentName']").val("");
             this.onAdd = false;
             this.$resetValidation();
         },

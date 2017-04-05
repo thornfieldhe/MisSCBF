@@ -32,7 +32,10 @@ namespace SCBF
                 .ForMember(m => m.EmailAddress, n => n.MapFrom(r => $"{r.UserName}@taf.com"))
                 .ForMember(m => m.Password, n => n.MapFrom(r => new PasswordHasher().HashPassword("11111111")));
                 mapper.CreateMap<Layer, LayerListDto>();
-                mapper.CreateMap<Layer, LayerEditDto>();
+                mapper.CreateMap<Layer, LayerEditDto>()
+                .ForMember(m => m.Code, n => n.MapFrom(r => r.LevelCode));
+                mapper.CreateMap<LayerEditDto, Layer>()
+                .ForMember(m=>m.LevelCode,n=>n.MapFrom(r=>r.Code));
                 mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
                 mapper.CreateMap<Product, ProductListDto>();
