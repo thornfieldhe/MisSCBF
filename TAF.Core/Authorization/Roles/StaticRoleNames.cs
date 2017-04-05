@@ -5,6 +5,16 @@ namespace SCBF.Authorization.Roles
         public static class Host
         {
             /// <summary>
+            /// 基础
+            /// </summary>
+            public const string Default = "Default";
+
+            /// <summary>
+            /// 基础
+            /// </summary>
+            public const string DefaultName = "普通用户";
+
+            /// <summary>
             /// 系统管理员
             /// </summary>
             public const string Admin = "Admin";
@@ -36,16 +46,6 @@ namespace SCBF.Authorization.Roles
             public const string ClUserName = "车辆";
 
             /// <summary>
-            /// 普通油料角色
-            /// </summary>
-            public const string YlUser = "YlUser";
-
-            /// <summary>
-            /// 油料管理员
-            /// </summary>
-            public const string YlUserName = "油料";
-
-            /// <summary>
             /// 普通餐厅角色
             /// </summary>
             public const string CtUser = "CtUser";
@@ -68,12 +68,12 @@ namespace SCBF.Authorization.Roles
             /// <summary>
             /// 普通营房角色
             /// </summary>
-            public const string YfUser = "YfUser";
+            public const string GcUser = "YfUser";
 
             /// <summary>
             /// 营房管理员
             /// </summary>
-            public const string YfUserName = "营房";
+            public const string GcUserName = "工程";
 
             /// <summary>
             /// 普通采购角色
@@ -84,11 +84,6 @@ namespace SCBF.Authorization.Roles
             /// 采购管理员
             /// </summary>
             public const string CgUserName = "采购";
-        }
-
-        public static class Tenants
-        {
-            public const string Admin = "Admin";
         }
     }
 }

@@ -1,0 +1,103 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">会计科目</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button class="btn " v-on:click="newItem()"><i class="fa  fa-plus"></i> 新增</button>
+                    <button type="button" class="btn " v-show="selected" id="editCatalog" v-on:click="editItem()">
+                        <i class="fa   fa-pencil"></i> 编辑
+                    </button>
+                    <button type="button" class="btn  btn-danger" v-show="selected" id="deleteAccount" v-on:click="deleteItem()">
+                        <i class="fa  fa-trash-o"></i> 删除
+                    </button>
+                </div>
+                <div id="treeCatalog" class="ztree">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form-edit></form-edit>
+<dialog-delete></dialog-delete>
+<template id="accountFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">父级分类</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="parentName" v-model="item.pName">
+                                    <div class="input-group-btn open">
+                                        <a class="btn btn-blue " href="javascript:void(0);" aria-expanded="true" v-on:click="loadTree()"><i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-container">
+                                    <div class="dropdown-preview" style="width: 100%">
+                                        <div id="menuContent" class="dropdown-menu" style="display: none; width: 100%;">
+                                            <ul id="treeCatalog2" class="ztree"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">科目名称<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control" placeholder="必填" name="name" v-model="item.name" v-validate:name="{required:true}" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">科目编码<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control" placeholder="必填" name="code" v-model="item.code" v-validate:code="{required:true}" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">排序<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxOrder">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="order" id="order" name="order" v-model="item.order" v-validate:order="{required:true,int:true}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/assets/js/ztree/jquery.ztree.core-3.5.js"></script>
+<script src="~/Scripts/accountList.js"></script>
+
+
+

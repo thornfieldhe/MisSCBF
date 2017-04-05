@@ -26,6 +26,8 @@ namespace SCBF.BaseInfo
 
         Task SaveAsync(LayerEditDto input);
 
+        Task SaveAccountAsync(LayerEditDto input);
+
         void Delete(Guid id);
 
         LayerEditDto Get(Guid id);

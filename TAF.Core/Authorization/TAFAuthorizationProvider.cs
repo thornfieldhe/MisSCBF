@@ -12,16 +12,18 @@ namespace SCBF.Authorization
 
 
 
-            var pages = context.GetPermissionOrNull(PermissionNames.Pages);
-            if (pages == null)
+            var admins = context.GetPermissionOrNull(PermissionNames.PagesAdmins);
+            if (admins == null)
             {
-                pages = context.CreatePermission(PermissionNames.Pages, L("普通用户"));
+                admins = context.CreatePermission(PermissionNames.PagesAdmins, L("系统管理员"));
+                var wz = context.CreatePermission(PermissionNames.WzUser, L("物资管理"));
+                var cw = context.CreatePermission(PermissionNames.CwUser, L("预算管理"));
+                var user = context.CreatePermission(PermissionNames.Default, L("普通用户"));
             }
 
-            var storages = pages.CreateChildPermission(PermissionNames.WzUser, L("物资管理"));
 
-            //Host permissions
-            var admins = pages.CreateChildPermission(PermissionNames.PagesAdmins, L("系统管理员"), multiTenancySides: MultiTenancySides.Host);
+
+
         }
 
         private static ILocalizableString L(string name)

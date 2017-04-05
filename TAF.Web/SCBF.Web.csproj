@@ -843,6 +843,7 @@
     <Content Include="assets\js\jquery-2.2.0.min.map" />
     <Content Include="assets\js\json2.min.js" />
     <Content Include="Scripts\product.js" />
+    <Content Include="Scripts\accountList.js" />
     <Content Include="Scripts\productCategory.js" />
     <Content Include="Scripts\others\html5shiv.js" />
     <Content Include="Scripts\others\respond.min.js" />
@@ -919,6 +920,8 @@
     <Content Include="Views\Entry\_EntryIndex.cshtml" />
     <Content Include="Views\EntryBill\_EntryBillIndex.cshtml" />
     <Content Include="Views\DeliveryBill\_DeliveryBillIndex.cshtml" />
+    <Content Include="Views\Finance\_FinanceInfoIndex.cshtml" />
+    <Content Include="Views\Finance\_AccountList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -929,7 +932,6 @@
   <ItemGroup>
     <Folder Include="Abp\Framework\scripts\libs\requirejs\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Finance\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TAF.Application\SCBF.Application.csproj">

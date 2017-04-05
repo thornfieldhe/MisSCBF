@@ -21,7 +21,7 @@
                     L("系统管理"),
                     url: "#",
                     icon: "menu-icon fa fa-user",
-                    requiredPermissionName: PermissionNames.Pages).AddItem(
+                    requiredPermissionName: PermissionNames.Default).AddItem(
                         new MenuItemDefinition(
                             "menuUsers",
                             L("用户管理"),
@@ -32,14 +32,14 @@
                             "menuChangePass",
                             L("修改密码"),
                             url: "#changePwd",
-                            requiredPermissionName: PermissionNames.Pages)))
+                            requiredPermissionName: PermissionNames.Default)))
                             .AddItem(
                     new MenuItemDefinition(
                         "Storage",
                         L("预算管理"),
                         url: "#",
                         icon: "menu-icon fa  fa-rmb",
-                        requiredPermissionName: PermissionNames.Pages)
+                        requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuFinanceInfos",
@@ -59,7 +59,7 @@
                         L("物资器材管理"),
                         url: "#",
                         icon: "menu-icon fa  fa-truck",
-                        requiredPermissionName: PermissionNames.Pages)
+                        requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuStorageInfos",

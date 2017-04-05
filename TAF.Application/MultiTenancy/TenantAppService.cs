@@ -16,7 +16,7 @@ namespace SCBF.MultiTenancy
     using SCBF.MultiTenancy.Dto;
     using SCBF.Users;
 
-    [AbpAuthorize(PermissionNames.Pages)]
+    [AbpAuthorize(PermissionNames.Default)]
     public class TenantAppService : TAFAppServiceBase, ITenantAppService
     {
         private readonly TenantManager _tenantManager;
@@ -75,7 +75,7 @@ namespace SCBF.MultiTenancy
                 await CurrentUnitOfWork.SaveChangesAsync(); //To get static role ids
 
                 //grant all permissions to admin role
-                var adminRole = _roleManager.Roles.Single(r => r.Name == StaticRoleNames.Tenants.Admin);
+                var adminRole = _roleManager.Roles.Single(r => r.Name == StaticRoleNames.Host.Admin);
                 await _roleManager.GrantAllPermissionsAsync(adminRole);
 
                 //Create admin user for the tenant

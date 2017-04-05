@@ -24,30 +24,37 @@ namespace SCBF.Migrations.SeedData
 
         public DefaultRolePermissionCreator(TAFDbContext context) : base(context)
         {
-
         }
 
         public override void Create()
         {
-            var hasExcuted = this.Context.Permissions.Any(r => r.Name == PermissionNames.CgUser + "_Admin");
-            if (!hasExcuted)
+            var hasExcuted = this.Context.Permissions.Any(r => r.Name == PermissionNames.CgUser && r.TenantId==null);
+            if(!hasExcuted)
             {
+                //基础
+                var defaultUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.Default);
+                this.Context.Permissions.Add(
+                    new RolePermissionSetting
+                    {
+                        Name = PermissionNames.Default,
+                        IsGranted = true,
+                        RoleId = defaultUser.Id
+                    });
 
                 //财务
                 var roleCwUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.CwUser);
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
                         Name = PermissionNames.CwUser,
                         IsGranted = true,
                         RoleId = roleCwUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CwUser}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
                         RoleId = roleCwUser.Id
                     });
@@ -57,37 +64,17 @@ namespace SCBF.Migrations.SeedData
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
                         Name = PermissionNames.ClUser,
                         IsGranted = true,
                         RoleId = roleClUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.Pages}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleCwUser.Id
-                    });
-
-                //油料
-                var roleYlUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.YlUser);
-                this.Context.Permissions.Add(
-                    new RolePermissionSetting
-                    {
-
-                        Name = PermissionNames.YlUser,
-                        IsGranted = true,
-                        RoleId = roleYlUser.Id
-                    });
-                this.Context.Permissions.Add(
-                    new RolePermissionSetting
-                    {
-
-                        Name = $"{PermissionNames.YlUser}_Pages",
-                        IsGranted = true,
-                        RoleId = roleCwUser.Id
+                        RoleId = roleClUser.Id
                     });
 
                 //餐厅
@@ -95,37 +82,35 @@ namespace SCBF.Migrations.SeedData
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
                         Name = PermissionNames.CtUser,
                         IsGranted = true,
                         RoleId = roleCtUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CtUser}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleCwUser.Id
+                        RoleId = roleCtUser.Id
                     });
 
-                //营房
-                var roleYfUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.YfUser);
+                //工程
+                var roleGcUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.GcUser);
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = PermissionNames.YfUser,
+                        Name = PermissionNames.GcUser,
                         IsGranted = true,
-                        RoleId = roleYfUser.Id
+                        RoleId = roleGcUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.YfUser}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleCwUser.Id
+                        RoleId = roleGcUser.Id
                     });
 
                 //物资
@@ -133,18 +118,17 @@ namespace SCBF.Migrations.SeedData
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
                         Name = PermissionNames.WzUser,
                         IsGranted = true,
                         RoleId = roleWzUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.WzUser}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleCwUser.Id
+                        RoleId = roleWzUser.Id
                     });
 
                 //采购
@@ -152,88 +136,88 @@ namespace SCBF.Migrations.SeedData
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
                         Name = PermissionNames.CgUser,
                         IsGranted = true,
                         RoleId = roleCgUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CgUser}_Pages",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleCwUser.Id
+                        RoleId = roleCgUser.Id
                     });
 
                 //系统管理员
-                var roleAdmin = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.Admin);
+
+                var adminUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.Admin);
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.Pages}_Admin",
+                        Name = PermissionNames.Default,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CwUser}_Admin",
+                        Name = PermissionNames.PagesAdmins,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.ClUser}_Admin",
+                        Name = PermissionNames.CwUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.YlUser}_Admin",
+                        Name = PermissionNames.ClUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CtUser}_Admin",
+                        Name = PermissionNames.CtUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.YfUser}_Admin",
+                        Name = PermissionNames.GcUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.WzUser}_Admin",
+                        Name = PermissionNames.WzUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
+
                 this.Context.Permissions.Add(
                     new RolePermissionSetting
                     {
-
-                        Name = $"{PermissionNames.CgUser}_Admin",
+                        Name = PermissionNames.CgUser,
                         IsGranted = true,
-                        RoleId = roleAdmin.Id
+                        RoleId = adminUser.Id
                     });
 
-                Context.SaveChanges();
+                this.Context.SaveChanges();
             }
         }
     }

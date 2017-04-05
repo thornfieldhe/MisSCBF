@@ -43,7 +43,6 @@ namespace SCBF.Migrations.SeedData
                         });
 
                 Context.SaveChanges();
-
                 // Grant all tenant permissions
                 var permissions =
                     PermissionFinder.GetAllPermissions(new TAFAuthorizationProvider())

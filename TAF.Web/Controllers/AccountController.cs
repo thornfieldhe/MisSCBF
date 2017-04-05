@@ -93,7 +93,7 @@ namespace SCBF.Web.Controllers
         /// 修改密码
         /// </summary>
         /// <returns></returns>
-        [AbpAuthorize(PermissionNames.Pages)]
+        [AbpAuthorize(PermissionNames.Default)]
         public ActionResult ChangePwd()
         {
             return PartialView("_ChangePwd");
@@ -128,7 +128,7 @@ namespace SCBF.Web.Controllers
         /// 登出
         /// </summary>
         /// <returns></returns>
-        [AbpAuthorize(PermissionNames.Pages)]
+        [AbpAuthorize(PermissionNames.Default)]
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();

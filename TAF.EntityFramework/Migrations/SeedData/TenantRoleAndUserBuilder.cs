@@ -29,10 +29,11 @@ namespace SCBF.Migrations.SeedData
         {
             //Admin role
 
-            var adminRole = Context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
+            var adminRole = Context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Host.Admin);
             if (adminRole == null)
             {
-                adminRole = Context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin) { IsStatic = true });
+                //系统管理员
+                adminRole = Context.Roles.Add(new Role(_tenantId, StaticRoleNames.Host.Admin, StaticRoleNames.Host.Admin) { IsStatic = true });
                 Context.SaveChanges();
 
                 //Grant all permissions to admin role
@@ -46,7 +47,7 @@ namespace SCBF.Migrations.SeedData
                     Context.Permissions.Add(
                         new RolePermissionSetting
                         {
-                            TenantId = _tenantId,
+                            TenantId = null,
                             Name = permission.Name,
                             IsGranted = true,
                             RoleId = adminRole.Id
@@ -58,13 +59,13 @@ namespace SCBF.Migrations.SeedData
 
             //admin user
 
-            var adminUser = Context.Users.FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == User.AdminUserName);
+            var adminUser = Context.Users.FirstOrDefault(u => u.TenantId == null && u.UserName == User.AdminUserName);
             if (adminUser == null)
             {
                 adminUser = User.CreateTenantAdminUser(_tenantId, "admin@defaulttenant.com", "123qwe");
                 adminUser.IsEmailConfirmed = true;
                 adminUser.IsActive = true;
-
+                adminUser.Name = StaticRoleNames.Host.AdminName;
                 Context.Users.Add(adminUser);
                 Context.SaveChanges();
 

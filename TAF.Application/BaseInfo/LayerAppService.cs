@@ -105,6 +105,32 @@ namespace SCBF.BaseInfo
             }
         }
 
+        public async Task SaveAccountAsync(LayerEditDto input)
+        {
+            var item = input.MapTo<Layer>();
+            if (input.Id == Guid.Empty)
+            {
+                item.Level = item.LevelCode.Length;
+                await this.layerRepository.InsertAsync(item);
+            }
+            else
+            {
+                var old = this.layerRepository.Get(input.Id);
+                var changed =
+                    this.layerRepository.GetAllList(r => r.LevelCode.StartsWith(old.LevelCode) && r.Level != old.Level);
+                changed.ForEach(
+                    r =>
+                    {
+                        r.Level = r.LevelCode.Length;
+                    });
+
+                old.Level = old.LevelCode.Length;
+
+                Mapper.Map(input, old);
+                await this.layerRepository.UpdateAsync(old);
+            }
+        }
+
         public void Delete(Guid id)
         {
             this.layerRepository.Delete(id);

@@ -22,7 +22,7 @@ namespace SCBF.Users
     using QueryableExtensions = Abp.Linq.Extensions.QueryableExtensions;
 
     /* THIS IS JUST A SAMPLE. */
-    [AbpAuthorize(PermissionNames.Pages)]
+    [AbpAuthorize(PermissionNames.Default)]
     public class UserAppService : TAFAppServiceBase, IUserAppService
     {
         private readonly IPermissionManager _permissionManager;

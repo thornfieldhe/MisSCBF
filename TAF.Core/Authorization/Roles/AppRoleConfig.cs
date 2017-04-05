@@ -19,7 +19,7 @@ namespace SCBF.Authorization.Roles
 
             roleManagementConfig.StaticRoles.Add(
                 new StaticRoleDefinition(
-                    StaticRoleNames.Tenants.Admin,
+                    StaticRoleNames.Host.Admin,
                     MultiTenancySides.Tenant)
                 );
         }

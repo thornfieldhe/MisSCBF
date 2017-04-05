@@ -15,9 +15,10 @@ namespace SCBF.Migrations.SeedData
     /// </summary>
     public class DefaultRolesCreator : DefaultCreator
     {
-        public DefaultRolesCreator(TAFDbContext context)
-            : base(context)
+
+        public DefaultRolesCreator(TAFDbContext context) : base(context)
         {
+
         }
 
         public override void Create()
@@ -27,10 +28,19 @@ namespace SCBF.Migrations.SeedData
 
         private void CreateDefaultRoles()
         {
-            var cwUser = Context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.CwUser);
-            if (cwUser == null)
+            var defaultUser = Context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Default);
+            if (defaultUser == null)
             {
-                cwUser =
+               defaultUser =
+                Context.Roles.Add(
+                    new Role
+                    {
+                        Name = StaticRoleNames.Host.Default,
+                        DisplayName = StaticRoleNames.Host.DefaultName,
+                        IsStatic = true
+                    });
+
+                var cwUser =
                     Context.Roles.Add(
                         new Role
                         {
@@ -45,15 +55,6 @@ namespace SCBF.Migrations.SeedData
                         {
                             Name = StaticRoleNames.Host.ClUser,
                             DisplayName = StaticRoleNames.Host.ClUserName,
-                            IsStatic = true
-                        });
-
-                var ylUser =
-                    Context.Roles.Add(
-                        new Role
-                        {
-                            Name = StaticRoleNames.Host.YlUser,
-                            DisplayName = StaticRoleNames.Host.YlUserName,
                             IsStatic = true
                         });
 
@@ -75,12 +76,12 @@ namespace SCBF.Migrations.SeedData
                             IsStatic = true
                         });
 
-                var yfUser =
+                var gcUser =
                     Context.Roles.Add(
                         new Role
                         {
-                            Name = StaticRoleNames.Host.YfUser,
-                            DisplayName = StaticRoleNames.Host.YfUserName,
+                            Name = StaticRoleNames.Host.GcUser,
+                            DisplayName = StaticRoleNames.Host.GcUserName,
                             IsStatic = true
                         });
 
@@ -90,6 +91,15 @@ namespace SCBF.Migrations.SeedData
                         {
                             Name = StaticRoleNames.Host.CgUser,
                             DisplayName = StaticRoleNames.Host.CgUserName,
+                            IsStatic = true
+                        });
+
+                var adminUser =
+                    Context.Roles.Add(
+                        new Role
+                        {
+                            Name = StaticRoleNames.Host.Admin,
+                            DisplayName = StaticRoleNames.Host.AdminName,
                             IsStatic = true
                         });
 
