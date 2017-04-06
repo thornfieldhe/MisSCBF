@@ -121,6 +121,11 @@
     <Compile Include="BaseInfo\ISysDictionaryAppService.cs" />
     <Compile Include="BaseInfo\LayerAppService.cs" />
     <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
+    <Compile Include="Finance\BudgetReceiptAppService.cs" />
+    <Compile Include="Finance\Dto\BudgetReceiptEditDto.cs" />
+    <Compile Include="Finance\Dto\BudgetReceiptListDto.cs" />
+    <Compile Include="Finance\Dto\BudgetReceiptQueryDto.cs" />
+    <Compile Include="Finance\IBudgetReceiptAppService.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="Storage\DeliveryAppService.cs" />
     <Compile Include="Storage\DeliveryBillAppService.cs" />

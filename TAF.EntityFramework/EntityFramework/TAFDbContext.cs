@@ -7,6 +7,7 @@ namespace SCBF.EntityFramework
 
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
+    using SCBF.Finance;
     using SCBF.MultiTenancy;
     using SCBF.Storage;
     using SCBF.Users;
@@ -76,6 +77,12 @@ namespace SCBF.EntityFramework
         {
             get; set;
         }
+
+        #region 预算
+
+        public DbSet<BudgetReceipt> BudgetReceipts { get; set; }
+
+        #endregion
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DeliveryMap());

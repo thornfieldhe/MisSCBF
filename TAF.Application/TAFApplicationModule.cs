@@ -9,6 +9,8 @@ namespace SCBF
 
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
+    using SCBF.Finance;
+    using SCBF.Finance.Dto;
     using SCBF.Storage;
     using SCBF.Storage.Dto;
     using SCBF.Users;
@@ -68,6 +70,16 @@ namespace SCBF
                                 .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value))
                                 .ForMember(m => m.Code, n => n.MapFrom(r => r.DeliveryBill.Code))
                                 .ForMember(m => m.StockBalance, n => n.MapFrom(r => 0));
+
+                mapper.CreateMap<BudgetReceipt, BudgetReceiptListDto>()
+                .ForMember(m=>m.Total1,n=>n.MapFrom(r=>r.Column1+r.Column21+r.Column22))
+                .ForMember(m=>m.Total3,n=>n.MapFrom(r=>r.Column31+r.Column32+r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37))
+                .ForMember(m=>m.Total4,n=>n.MapFrom(r=>r.Column41+r.Column42+r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47))
+                .ForMember(m=>m.Total,n=>n.MapFrom(r=> r.Column1 + r.Column21 + r.Column22
+                + r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37
+                + r.Column41+r.Column42+r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
+                +r.Column5));
+                mapper.CreateMap<BudgetReceiptEditDto, BudgetReceipt>();
             });
         }
 

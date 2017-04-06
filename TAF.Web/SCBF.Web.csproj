@@ -794,6 +794,7 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
+    <Content Include="Scripts\budgetReceipt.js" />
     <Content Include="Scripts\Common\defaultBase.js" />
     <Content Include="Scripts\Common\layoutBase.js" />
     <Content Include="Scripts\Common\mixin.js" />
@@ -856,6 +857,7 @@
     <Content Include="assets\js\sweetalert\sweet-alert.js" />
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
     <Content Include="Scripts\Account\login.js" />
+    <Content Include="Scripts\financeInfoIndex.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -877,6 +879,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
@@ -922,6 +925,7 @@
     <Content Include="Views\DeliveryBill\_DeliveryBillIndex.cshtml" />
     <Content Include="Views\Finance\_FinanceInfoIndex.cshtml" />
     <Content Include="Views\Finance\_AccountList.cshtml" />
+    <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

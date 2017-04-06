@@ -231,11 +231,28 @@
     <Compile Include="Migrations\201703311316495_modifyTableSysDictionaries.Designer.cs">
       <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704061322036_modifyTable_sysDictionary.cs" />
+    <Compile Include="Migrations\201704061322036_modifyTable_sysDictionary.Designer.cs">
+      <DependentUpon>201704061322036_modifyTable_sysDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704061358127_addTable_BudgetReceipt.cs" />
+    <Compile Include="Migrations\201704061358127_addTable_BudgetReceipt.Designer.cs">
+      <DependentUpon>201704061358127_addTable_BudgetReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704061419175_modifytable_budgetreceipt.cs" />
+    <Compile Include="Migrations\201704061419175_modifytable_budgetreceipt.Designer.cs">
+      <DependentUpon>201704061419175_modifytable_budgetreceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704061424170_modifytable_budgetreceipt2.cs" />
+    <Compile Include="Migrations\201704061424170_modifytable_budgetreceipt2.Designer.cs">
+      <DependentUpon>201704061424170_modifytable_budgetreceipt2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolePermissionCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
+    <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
@@ -346,6 +363,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703311316495_modifyTableSysDictionaries.resx">
       <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704061322036_modifyTable_sysDictionary.resx">
+      <DependentUpon>201704061322036_modifyTable_sysDictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704061358127_addTable_BudgetReceipt.resx">
+      <DependentUpon>201704061358127_addTable_BudgetReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704061419175_modifytable_budgetreceipt.resx">
+      <DependentUpon>201704061419175_modifytable_budgetreceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704061424170_modifytable_budgetreceipt2.resx">
+      <DependentUpon>201704061424170_modifytable_budgetreceipt2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

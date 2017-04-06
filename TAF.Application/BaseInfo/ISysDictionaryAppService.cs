@@ -28,9 +28,11 @@ namespace SCBF.BaseInfo
 
         Task SaveAsync(SysDictionaryEditDto input);
 
+        Task SaveYearAsync(SysDictionaryEditDto input);
+
         void Delete(Guid id);
 
-        List<SysDictionaryListDto> GetSimpleList();
+        List<SysDictionaryListDto> GetSimpleList(string category);
     }
 }
 

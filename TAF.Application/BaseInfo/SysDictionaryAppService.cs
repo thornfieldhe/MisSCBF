@@ -19,6 +19,7 @@ namespace SCBF.BaseInfo
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
+    using Abp.UI;
 
     using AutoMapper;
 
@@ -46,7 +47,7 @@ namespace SCBF.BaseInfo
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
-                        : query.OrderBy(r => r.Category);
+                        : query.OrderByDescending(r => r.Value);
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<SysDictionaryListDto>>();
@@ -75,14 +76,43 @@ namespace SCBF.BaseInfo
             }
         }
 
+        /// <summary>
+        /// 保存预算年度
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task SaveYearAsync(SysDictionaryEditDto input)
+        {
+            var item = input.MapTo<SysDictionary>();
+            var dbItem =
+                this.sysDictionaryRepository.FirstOrDefault(
+                    r => r.Category == input.Category && r.Value == input.Value);//存在预算年度
+            if (dbItem==null)
+            {
+                var defaultYear =
+                    this.sysDictionaryRepository.FirstOrDefault(
+                        r => r.Category == input.Category && r.Value4 == true.ToString());//item4:是否是当前年度
+                if(defaultYear!=null)
+                {
+                    defaultYear.Value4 = false.ToString();
+                }
+                item.Value4 = true.ToString();
+                await this.sysDictionaryRepository.InsertAsync(item);
+            }
+            else
+            {
+                throw new UserFriendlyException("该预算年度已存在");
+            }
+        }
+
         public void Delete(Guid id)
         {
             this.sysDictionaryRepository.Delete(id);
         }
 
-        public List<SysDictionaryListDto> GetSimpleList()
+        public List<SysDictionaryListDto> GetSimpleList(string category)
         {
-            return this.sysDictionaryRepository.GetAll().MapTo<List<SysDictionaryListDto>>();
+            return this.sysDictionaryRepository.GetAllListAsync(r=>r.Category==category).MapTo<List<SysDictionaryListDto>>();
         }
     }
 }

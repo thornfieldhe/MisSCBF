@@ -99,6 +99,9 @@
     <Compile Include="BaseInfo\Layer.cs" />
     <Compile Include="BaseInfo\SysDictionary.cs" />
     <Compile Include="BaseInfo\DictionaryCategory.cs" />
+    <Compile Include="Finance\BudgetReceipt.cs" />
+    <Compile Include="Finance\BundgetType.cs" />
+    <Compile Include="Finance\IBudgetReceiptRepository.cs" />
     <Compile Include="Storage\Delivery.cs" />
     <Compile Include="Storage\Entry.cs" />
     <Compile Include="Storage\DeliveryBill.cs" />

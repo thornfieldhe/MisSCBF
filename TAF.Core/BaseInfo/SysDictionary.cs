@@ -48,6 +48,14 @@ namespace SCBF.BaseInfo
             get; set;
         }
 
+        /// <summary>
+        /// Value5
+        /// </summary>
+        public string Value5
+        {
+            get; set;
+        }
+
         public virtual List<Entry> Entries
         {
             get; set;

@@ -1,0 +1,624 @@
+﻿@model List<TAF.Utility.KeyValue<string, Guid>>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">年度预算收入</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <add-button title="新增"></add-button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="4">
+                                        科目代码
+                                    </th>
+                                    <th style="width: 100px;" rowspan="4">
+                                        科目名称
+                                    </th>
+                                    <th style="width: 2100px;" colspan="22">
+                                        收入
+                                    </th>
+                                    <th style="width: 100px;" rowspan="4">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="3">
+                                        合计
+                                    </th>
+                                    <th style="width: 700px;" colspan="4">
+                                        向上请领
+                                    </th>
+                                    <th style="width: 800px;" colspan="8">
+                                        留用经费
+                                    </th>
+                                    <th style="width: 800px;" colspan="8">
+                                        上年结转
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        当年预算外收入
+                                    </th>
+                                    
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        标准经费
+                                    </th>
+                                    <th style="width: 100px;" colspan="2">
+                                        项目经费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        留用党团费弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        留用租房维修基金弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        历年预算外结余弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        历年预算经费结余弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        当年地方保障经费弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        当年预算外收入弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        其他收入弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        地方专项经费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        部局专项经费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        历年预算外结余
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        历年预算经费结余
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        留用租房维修基金
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        留用党团费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        其他经费
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;">
+                                        地方下达项目经费
+                                    </th>
+                                    <th style="width: 100px;">
+                                        部局下达项目经费
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.year}}</td>
+                                    <td>{{item.column1}}</td>
+                                 <td>{{item.column21}}</td>
+                                 <td>{{item.column22}}</td>
+                                 <td>{{item.column31}}</td>
+                                 <td>{{item.column32}}</td>
+                                 <td>{{item.column33}}</td>
+                                 <td>{{item.column34}}</td>
+                                 <td>{{item.column35}}</td>
+                                 <td>{{item.column36}}</td>
+                                 <td>{{item.column37}}</td>
+                                 <td>{{item.column41}}</td>
+                                 <td>{{item.column42}}</td>
+                                 <td>{{item.column43}}</td>
+                                 <td>{{item.column44}}</td>
+                                 <td>{{item.column45}}</td>
+                                 <td>{{item.column46}}</td>
+                                 <td>{{item.column47}}</td>
+                                 <td>{{item.column5}}</td>
+                                    <td>
+                                        <row-command :id="item.id" title="明细" :name="item.name"></row-command>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="38"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="budgetReceiptFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Code<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="code" v-model="item.code"  v-validate:code="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Year<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxYear">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="必填" id="year" name="year" v-model="item.year" v-validate:year="{int:true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Type<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxType">
+                                    <div class="spinbox-buttons	btn-group">
+                                        <button type="button" class="btn spinbox-down blueberry">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn spinbox-up purple">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control spinbox-input " placeholder="必填" id="type" name="type" v-model="item.type" v-validate:type="{int:true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column1<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column1" v-model="item.column1"  v-validate:column1="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note1<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+1"  v-validate:note1="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column21<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column21" v-model="item.column21"  v-validate:column21="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note21<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+21"  v-validate:note21="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column22<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column22" v-model="item.column22"  v-validate:column22="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note22<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+22"  v-validate:note22="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column31<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column31" v-model="item.column31"  v-validate:column31="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note31<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+31"  v-validate:note31="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column32<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column32" v-model="item.column32"  v-validate:column32="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note32<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+32"  v-validate:note32="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column33<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column33" v-model="item.column33"  v-validate:column33="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note33<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+33"  v-validate:note33="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column34<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column34" v-model="item.column34"  v-validate:column34="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note34<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+34"  v-validate:note34="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column35<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column35" v-model="item.column35"  v-validate:column35="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note35<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+35"  v-validate:note35="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column36<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column36" v-model="item.column36"  v-validate:column36="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note36<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+36"  v-validate:note36="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column41<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column41" v-model="item.column41"  v-validate:column41="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note41<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+41"  v-validate:note41="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column42<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column42" v-model="item.column42"  v-validate:column42="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note42<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+42"  v-validate:note42="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column43<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column43" v-model="item.column43"  v-validate:column43="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note43<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+43"  v-validate:note43="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column44<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column44" v-model="item.column44"  v-validate:column44="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note44<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+44"  v-validate:note44="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column45<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column45" v-model="item.column45"  v-validate:column45="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note45<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+45"  v-validate:note45="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column46<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column46" v-model="item.column46"  v-validate:column46="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note46<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+46"  v-validate:note46="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column47<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column47" v-model="item.column47"  v-validate:column47="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note47<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+47"  v-validate:note47="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Column5<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="column5" v-model="item.column5"  v-validate:column5="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">Note5<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+5"  v-validate:note5="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/Scripts/budgetReceipt.js"></script>
+
+
+

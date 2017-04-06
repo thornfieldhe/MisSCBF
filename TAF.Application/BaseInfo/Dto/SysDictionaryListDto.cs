@@ -44,6 +44,38 @@ namespace SCBF.BaseInfo.Dto
         }
 
         /// <summary>
+        /// Value
+        /// </summary>
+        public string Value2
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Value
+        /// </summary>
+        public string Value3
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Value
+        /// </summary>
+        public string Value4
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Value
+        /// </summary>
+        public string Value5
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Note
         /// </summary>
         public string Note
