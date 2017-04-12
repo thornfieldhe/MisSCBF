@@ -31,7 +31,7 @@ namespace SCBF.Web.Controllers
 
         public ActionResult EntryBillList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Storage).ToList();
+            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Mmaterial_Storage).ToList();
             return PartialView("_EntryBillIndex", list);
         }
     }

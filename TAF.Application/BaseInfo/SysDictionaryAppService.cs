@@ -43,7 +43,12 @@ namespace SCBF.BaseInfo
             var query =
                 this.sysDictionaryRepository.GetAll()
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Category), r => r.Category.Contains(request.Category))
-                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value), r => r.Value.Contains(request.Value));
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value), r => r.Value.Contains(request.Value))
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value2), r => r.Value2.Contains(request.Value2))
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value3), r => r.Value3.Contains(request.Value3))
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value4), r => r.Value4.Contains(request.Value4))
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Value5), r => r.Value5.Contains(request.Value5))
+                    .WhereIf(!string.IsNullOrWhiteSpace(request.Note), r => r.Note.Contains(request.Note));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
@@ -110,10 +115,12 @@ namespace SCBF.BaseInfo
             this.sysDictionaryRepository.Delete(id);
         }
 
-        public List<SysDictionaryListDto> GetSimpleList(string category)
+        public List<SysDictionaryListDto> GetSimpleList(string category=null)
         {
-            return this.sysDictionaryRepository.GetAllListAsync(r=>r.Category==category).MapTo<List<SysDictionaryListDto>>();
+            return this.sysDictionaryRepository.GetAllList(r=> category==null || r.Category==category).MapTo<List<SysDictionaryListDto>>();
         }
+
+        public string GetModulePath(string category) { return $"{category}/{DateTime.Today.Year}/{DateTime.Today.Month}/{DateTime.Today.Day}"; }
     }
 }
 

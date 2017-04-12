@@ -32,7 +32,9 @@ namespace SCBF.BaseInfo
 
         void Delete(Guid id);
 
-        List<SysDictionaryListDto> GetSimpleList(string category);
+        List<SysDictionaryListDto> GetSimpleList(string category = null);
+
+        string GetModulePath(string category);
     }
 }
 

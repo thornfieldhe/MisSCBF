@@ -25,12 +25,12 @@ var menu = new Vue({
 
 Path.map("#userList").to(function () { loadPage("/Account/UserList", "系统管理", "用户管理", "#menuUsers", false); });
 Path.map("#changePwd").to(function () { loadPage("/Account/ChangePwd", "系统管理", "修改密码", "#menuChangePass", false); });
+Path.map("#baseInfos").to(function () { loadPage("/SysDictionary/SysDictionaryList", "仓库管理", "基础信息", "#menuBaseInfos", false); });
 
 Path.map("#financeInfos").to(function () { loadPage("/Finance/InfoList", "预算管理", "基础信息", "#menuFinanceInfos", false); });
 Path.map("#account").to(function () { loadPage("/Finance/AccountList", "预算管理", "会计科目", "#menuAccount", false); });
 Path.map("#budgetReceipts").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList", "预算管理", "年度预算收入", "#menuBudgetReceipts", false); });
 
-Path.map("#storageInfos").to(function () { loadPage("/SysDictionary/SysDictionaryList", "仓库管理", "基础信息", "#menuBaseInfos", false); });
 Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "仓库管理", "商品分类", "#menuProductCategories", false); });
 Path.map("#products").to(function () { loadPage("/Product/ProductList", "商品", "products", "#menuProducts", false); });
 Path.map("#entryBills").to(function () { loadPage("/EntryBill/EntryBillList", "入库单", "entryBills", "#menuEntryBills", false); });

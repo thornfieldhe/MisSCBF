@@ -59,7 +59,7 @@
                                                 <select id="searchColor" style="width: 100%" v-model="queryEntity.color">
                                                     <option value="">请选择...</option>
                                                     @{
-                                                        foreach (var item in Model.Where(r => r.Category == DictionaryCategory.ProductColor))
+                                                        foreach (var item in Model.Where(r => r.Category == DictionaryCategory.Mmaterial_ProductColor))
                                                         {
                                                             <option value="@item.Value">@item.Value</option>
                                                         }
@@ -70,7 +70,7 @@
                                                 <select id="searchBrand" style="width: 100%" v-model="queryEntity.brand">
                                                     <option value="">请选择...</option>
                                                     @{
-                                                        foreach (var item in Model.Where(r => r.Category == DictionaryCategory.ProductBrand))
+                                                        foreach (var item in Model.Where(r => r.Category == DictionaryCategory.Mmaterial_ProductBrand))
                                                         {
                                                             <option value="@item.Value">@item.Value</option>
                                                         }
@@ -163,7 +163,7 @@
                                             <select id="searchColorItem" style="width: 100%" v-model="item.color">
                                                 <option value="">请选择...</option>
                                                 @{
-                                                    foreach (var item in Model.Where(r => r.Category == DictionaryCategory.ProductColor))
+                                                    foreach (var item in Model.Where(r => r.Category == DictionaryCategory.Mmaterial_ProductColor))
                                                     {
                                                         <option value="@item.Value">@item.Value</option>
                                                     }
@@ -184,7 +184,7 @@
                                             <select id="searchBrandItem" style="width: 100%" v-model="item.brand">
                                                 <option value="">请选择...</option>
                                                 @{
-                                                    foreach (var item in Model.Where(r => r.Category == DictionaryCategory.ProductBrand))
+                                                    foreach (var item in Model.Where(r => r.Category == DictionaryCategory.Mmaterial_ProductBrand))
                                                     {
                                                         <option value="@item.Value">@item.Value</option>
                                                     }

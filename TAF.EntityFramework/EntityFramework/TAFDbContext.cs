@@ -1,9 +1,9 @@
-﻿using System.Data.Common;
-using Abp.Zero.EntityFramework;
-
-namespace SCBF.EntityFramework
+﻿namespace SCBF.EntityFramework
 {
+    using System.Data.Common;
     using System.Data.Entity;
+
+    using Abp.Zero.EntityFramework;
 
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
@@ -22,67 +22,50 @@ namespace SCBF.EntityFramework
          *   pass connection string name to base classes. ABP works either way.
          */
 
-        public TAFDbContext()
-            : base("Default") { }
+        public TAFDbContext() : base("Default") { }
 
         /* NOTE:
          *   This constructor is used by ABP to pass connection string defined in TAFDataModule.PreInitialize.
          *   Notice that, actually you will not directly create an instance of TAFDbContext since ABP automatically handles it.
          */
 
-        public TAFDbContext(string nameOrConnectionString)
-            : base(nameOrConnectionString) { }
+        public TAFDbContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
 
         //This constructor is used in tests
-        public TAFDbContext(DbConnection connection)
-            : base(connection, true) { }
+        public TAFDbContext(DbConnection connection) : base(connection, true) { }
 
+        #region 基本信息
 
-        public DbSet<Layer> Layers
-        {
-            get; set;
-        }
+        public DbSet<Layer> Layers { get; set; }
 
-        public DbSet<SysDictionary> SysDictionaries
-        {
-            get; set;
-        }
+        public DbSet<Attachment> Attachments { get; set; }
 
-        public DbSet<Product> Products
-        {
-            get; set;
-        }
+        public DbSet<SysDictionary> SysDictionaries { get; set; }
 
-        public DbSet<Stock> Stocks
-        {
-            get; set;
-        }
+        #endregion
 
-        public DbSet<Delivery> Deliveries
-        {
-            get; set;
-        }
+        #region 物资
 
-        public DbSet<Entry> Entries
-        {
-            get; set;
-        }
+        public DbSet<Product> Products { get; set; }
 
-        public DbSet<DeliveryBill> DeliveryBills
-        {
-            get; set;
-        }
+        public DbSet<Stock> Stocks { get; set; }
 
-        public DbSet<EntryBill> EntrBills
-        {
-            get; set;
-        }
+        public DbSet<Delivery> Deliveries { get; set; }
+
+        public DbSet<Entry> Entries { get; set; }
+
+        public DbSet<DeliveryBill> DeliveryBills { get; set; }
+
+        public DbSet<EntryBill> EntrBills { get; set; }
+
+        #endregion
 
         #region 预算
 
         public DbSet<BudgetReceipt> BudgetReceipts { get; set; }
 
         #endregion
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DeliveryMap());
@@ -90,5 +73,4 @@ namespace SCBF.EntityFramework
             base.OnModelCreating(modelBuilder);
         }
     }
-
 }

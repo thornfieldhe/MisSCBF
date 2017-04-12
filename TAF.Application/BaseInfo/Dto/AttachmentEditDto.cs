@@ -1,79 +1,89 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SysDictionaryQueryDto.cs" company=""  author="何翔华">
+// <copyright file="AttachmentEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   系统配置查询对象
+//   附件编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.BaseInfo.Dto
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
 
-    using Abp.Application.Services.Dto;
+    using Abp.AutoMapper;
 
     /// <summary>
-    /// 系统配置查询对象
+    /// 附件编辑对象
     /// </summary>
-    public class SysDictionaryQueryDto : PagedAndSortedResultRequestDto
+    [AutoMap(typeof(Attachment))]
+    public class AttachmentEditDto
     {
-
         /// <summary>
-        /// Key
+        /// Id
+        /// </summary>
+        public Guid Id
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Name
+        /// </summary>
+        public string Name
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Size
+        /// </summary>
+        public decimal Size
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Path
+        /// </summary>
+        public string Path
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Ext
+        /// </summary>
+        public string Ext
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Category
         /// </summary>
         public string Category
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// Value
+        /// ModuleId
         /// </summary>
-        public string Value
+        public Guid ModuleId
         {
             get; set;
-        }
-
-        /// <summary>
-        /// Value2
-        /// </summary>
-        public string Value2
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Value3
-        /// </summary>
-        public string Value3
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Value4
-        /// </summary>
-        public string Value4
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Value5
-        /// </summary>
-        public string Value5
-        {
-            get; set;
-        }
-
+        }        
+        
         /// <summary>
         /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }
-    }
+        }        
+    } 
 }
 
 

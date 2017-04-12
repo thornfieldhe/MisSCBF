@@ -43,7 +43,7 @@ namespace SCBF.Finance
 
         public ListResultDto<BudgetReceiptListDto> Get(BundgetType type)
         {
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r=>r.Value4==true.ToString() && r.Category==DictionaryCategory.BudgetYear);
+            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r=>r.Value4==true.ToString() && r.Category==DictionaryCategory.Budget_Year);
             if(currentYear==null)
             {
                 throw new UserFriendlyException("预算年度不存在");

@@ -423,6 +423,7 @@
     <Content Include="assets\js\images\spritemap.png" />
     <Content Include="assets\js\knob\jquery.knob.js" />
     <Content Include="assets\js\LAB.min.js" />
+    <Content Include="assets\js\liteuploader.js" />
     <Content Include="assets\js\lodash.min.js" />
     <Content Include="assets\js\modal.js" />
     <Content Include="assets\js\nestable\jquery.nestable.min.js" />
@@ -858,6 +859,7 @@
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
     <Content Include="Scripts\Account\login.js" />
     <Content Include="Scripts\financeInfoIndex.js" />
+    <Content Include="Scripts\sysDictionary - 复制.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -926,6 +928,7 @@
     <Content Include="Views\Finance\_FinanceInfoIndex.cshtml" />
     <Content Include="Views\Finance\_AccountList.cshtml" />
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex.cshtml" />
+    <Content Include="Views\SysDictionary\_SysDictionaryIndex - 复制.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
