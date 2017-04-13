@@ -10,6 +10,7 @@
 namespace SCBF
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -20,6 +21,8 @@ namespace SCBF
         bool Any(Expression<Func<TEntity, bool>> func);
 
         bool All(Expression<Func<TEntity, bool>> func);
+
+        void InsertRange(IEnumerable<TEntity> list);
 
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> func);
     }

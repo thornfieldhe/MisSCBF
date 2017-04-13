@@ -7,149 +7,619 @@
             </div>
             <div class="widget-body">
                 <div class="table-toolbar">
-                    <input type="file" name="fileUpload" class="fileUpload" title="上传年度预算收入" />
-                    
+                    <div class="table-toolbar">
+                        <input type="file" name="fileUpload" id="fileUpload" class="fileUpload" title="上传年度预算收入" />
+                    </div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                                    <table class="table table-striped table-hover table-bordered " width="2400px">
-                                        <thead>
-                                            <tr role="row">
-                                                <th style="width: 100px;" rowspan="4">
-                                                    科目代码
-                                                </th>
-                                                <th style="width: 100px;" rowspan="4">
-                                                    科目名称
-                                                </th>
-                                                <th style="width: 2100px;" colspan="22">
-                                                    收入
-                                                </th>
-                                                <th style="width: 100px;" rowspan="4">
-                                                    操作
-                                                </th>
-                                            </tr>
-                                            <tr role="row">
-                                                <th style="width: 100px;" rowspan="3">
-                                                    合计
-                                                </th>
-                                                <th style="width: 700px;" colspan="4">
-                                                    向上请领
-                                                </th>
-                                                <th style="width: 800px;" colspan="8">
-                                                    留用经费
-                                                </th>
-                                                <th style="width: 800px;" colspan="8">
-                                                    上年结转
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    当年预算外收入
-                                                </th>
+                        <table class="table table-striped table-hover table-bordered " width="2400px">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 100px;" rowspan="4">
+                                    科目代码
+                                </th>
+                                <th style="width: 100px;" rowspan="4">
+                                    科目名称
+                                </th>
+                                <th style="width: 2100px;" colspan="22">
+                                    收入
+                                </th>
+                                <th style="width: 100px;" rowspan="4">
+                                    操作
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th style="width: 100px;" rowspan="3">
+                                    合计
+                                </th>
+                                <th style="width: 700px;" colspan="4">
+                                    向上请领
+                                </th>
+                                <th style="width: 800px;" colspan="8">
+                                    留用经费
+                                </th>
+                                <th style="width: 800px;" colspan="8">
+                                    上年结转
+                                </th>
+                                <th style="width: 100px;" rowspan="3">
+                                    当年预算外收入
+                                </th>
 
-                                            </tr>
-                                            <tr role="row">
-                                                <th style="width: 100px;" rowspan="2">
-                                                    小计
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    标准经费
-                                                </th>
-                                                <th style="width: 100px;" colspan="2">
-                                                    项目经费
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    小计
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    留用党团费弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    留用租房维修基金弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    历年预算外结余弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    历年预算经费结余弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    当年地方保障经费弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    当年预算外收入弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    其他收入弥补
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    小计
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    地方专项经费
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    部局专项经费
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    历年预算外结余
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    历年预算经费结余
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    留用租房维修基金
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    留用党团费
-                                                </th>
-                                                <th style="width: 100px;" rowspan="2">
-                                                    其他经费
-                                                </th>
-                                            </tr>
-                                            <tr role="row">
-                                                <th style="width: 100px;">
-                                                    地方下达项目经费
-                                                </th>
-                                                <th style="width: 100px;">
-                                                    部局下达项目经费
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="item in list">
-                                                <td>{{item.code}}</td>
-                                                <td>{{item.year}}</td>
-                                                <td>{{item.column1}}</td>
-                                                <td>{{item.column21}}</td>
-                                                <td>{{item.column22}}</td>
-                                                <td>{{item.column31}}</td>
-                                                <td>{{item.column32}}</td>
-                                                <td>{{item.column33}}</td>
-                                                <td>{{item.column34}}</td>
-                                                <td>{{item.column35}}</td>
-                                                <td>{{item.column36}}</td>
-                                                <td>{{item.column37}}</td>
-                                                <td>{{item.column41}}</td>
-                                                <td>{{item.column42}}</td>
-                                                <td>{{item.column43}}</td>
-                                                <td>{{item.column44}}</td>
-                                                <td>{{item.column45}}</td>
-                                                <td>{{item.column46}}</td>
-                                                <td>{{item.column47}}</td>
-                                                <td>{{item.column5}}</td>
-                                                <td>
-                                                    <row-command :id="item.id" title="明细" :name="item.name"></row-command>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot is="table-foot" colspan="38"></tfoot>
-                                    </table>
+                            </tr>
+                            <tr role="row">
+                                <th style="width: 100px;" rowspan="2">
+                                    小计
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    标准经费
+                                </th>
+                                <th style="width: 100px;" colspan="2">
+                                    项目经费
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    小计
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    留用党团费弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    留用租房维修基金弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    历年预算外结余弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    历年预算经费结余弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    当年地方保障经费弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    当年预算外收入弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    其他收入弥补
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    小计
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    地方专项经费
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    部局专项经费
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    历年预算外结余
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    历年预算经费结余
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    留用租房维修基金
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    留用党团费
+                                </th>
+                                <th style="width: 100px;" rowspan="2">
+                                    其他经费
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th style="width: 100px;">
+                                    地方下达项目经费
+                                </th>
+                                <th style="width: 100px;">
+                                    部局下达项目经费
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in list">
+                                <td>{{item.code}}</td>
+                                <td></td>
+                                <td>{{item.total}}</td>
+                                <td>{{item.total1}}</td>
+                                <td>{{item.column1}}</td>
+                                <td>{{item.column21}}</td>
+                                <td>{{item.column22}}</td>
+                                <td>{{item.total3}}</td>
+                                <td>{{item.column31}}</td>
+                                <td>{{item.column32}}</td>
+                                <td>{{item.column33}}</td>
+                                <td>{{item.column34}}</td>
+                                <td>{{item.column35}}</td>
+                                <td>{{item.column36}}</td>
+                                <td>{{item.column37}}</td>
+                                <td>{{item.total4}}</td>
+                                <td>{{item.column41}}</td>
+                                <td>{{item.column42}}</td>
+                                <td>{{item.column43}}</td>
+                                <td>{{item.column44}}</td>
+                                <td>{{item.column45}}</td>
+                                <td>{{item.column46}}</td>
+                                <td>{{item.column47}}</td>
+                                <td>{{item.column5}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="showDetails(item)"> <i class="fa    fa-file-text-o"></i> 明细</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<form-body></form-body>
+<template id="budgetReceiptFormBody">
+    <div class="bootbox modal fade modal-primary in" id="addItemModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">明细</h4>
+                    <div v-model="title"></div>
+                </div>
+            <div class="modal-body">
+            <form class="form-horizontal " name="form" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">科目代码</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.code" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">标准经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column1" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">标准经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note1" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">地方下达项目经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column21" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">地方下达项目经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note21" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">部局下达项目经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column22" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">部局下达项目经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note22" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用党团费弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column31" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用党团费弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note31" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用住房维修基金弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column32" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用住房维修基金弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note32" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算外结余弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column33" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算外结余弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note33" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算经费结余弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column34" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算经费结余弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note34" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年地方保障经费弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column35" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年地方保障经费弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note35" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年预算外收入弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column36" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年预算外收入弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note36" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">其他收入弥补</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column37" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">其他收入弥补备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note37" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">地方专项经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column41" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">地方专项经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note41" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">部局专项经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column42" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">部局专项经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note42" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算外结余</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column43" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算外结余备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note43" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算经费结余</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column44" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">历年预算经费结余备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note44" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用住房维修基金</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column45" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用住房维修基金备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note45" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用党团费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column46" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">留用党团费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note46" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">其他经费</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column47" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">其他经费备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note47" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年预算外收入</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.column5" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right">当年预算外收入备注</label>
+                        <div class="col-sm-8">
+                            <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " readonly="readonly" v-model="item.note5" />
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+    </div>
+</template>
 <script src="~/assets/js/liteuploader.js"></script>
 <script src="~/Scripts/budgetReceipt.js"></script>
 

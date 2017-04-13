@@ -14,22 +14,36 @@ namespace SCBF.Finance
     /// <summary>
     /// 
     /// </summary>
-    public class BudgetReceipt: TAFEntity
+    public class BudgetReceipt : TAFEntity
     {
         /// <summary>
         /// 科目代码
         /// </summary>
-        public string Code { get; set; }
+        public string Code
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 会计年
         /// </summary>
-        public int Year { get; set; }
+        public int Year
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 预算类型
         /// </summary>
-        public BundgetType Type
+        public BungetType Type
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 同一批次导入的预算文件的文件Id保持一致
+        /// </summary>
+        public string FileId
         {
             get; set;
         }
@@ -39,7 +53,10 @@ namespace SCBF.Finance
         /// <summary>
         /// 栏目1(标准经费)
         /// </summary>
-        public decimal Column1{ get; set; }
+        public decimal Column1
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 栏目1备注(标准经费)

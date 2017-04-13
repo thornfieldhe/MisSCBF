@@ -5,6 +5,7 @@ using Abp.EntityFramework.Repositories;
 namespace SCBF.EntityFramework.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -28,6 +29,13 @@ namespace SCBF.EntityFramework.Repositories
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> func)
         {
             return this.Context.Set<TEntity>().Where(func);
+        }
+
+
+        public void InsertRange(IEnumerable<TEntity> list)
+        {
+            this.Context.Set<TEntity>().AddRange(list);
+            this.Context.SaveChanges();
         }
 
         //add common methods for all repositories

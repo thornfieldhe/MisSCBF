@@ -12,7 +12,7 @@ namespace SCBF.Finance
     /// <summary>
     /// 预算类型
     /// </summary>
-    public enum BundgetType
+    public enum BungetType
     {
         /// <summary>
         /// 年度

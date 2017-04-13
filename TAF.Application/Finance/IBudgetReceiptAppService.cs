@@ -10,6 +10,7 @@
 namespace SCBF.Finance
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Abp.Application.Services.Dto;
@@ -21,9 +22,9 @@ namespace SCBF.Finance
     /// </summary>
     public interface IBudgetReceiptAppService : IBaseEntityApplicationService
     {
-        ListResultDto<BudgetReceiptListDto> Get(BundgetType type);
+        List<BudgetReceiptListDto> Get(int type);
 
-        BudgetReceiptEditDto Get(Guid id);
+        Guid LoadBudgetReceiptFile(string path);
 
         void ImportFromXls();
     }
