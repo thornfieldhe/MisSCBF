@@ -14,7 +14,7 @@
     data: function () {
         return {
             item: {
-                category: "ProductCategory",
+                category: "Mmaterial_ProductCategory",
                 name: "",
                 pId: "",
                 pName: "",
@@ -106,7 +106,7 @@ var main = new Vue({
     },
     data: {
         queryEntity: {
-            category: "ProductCategory"
+            category: "Mmaterial_ProductCategory"
         },
         selected: false
     },

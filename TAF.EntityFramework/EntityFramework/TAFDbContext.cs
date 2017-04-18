@@ -36,33 +36,68 @@
 
         #region 基本信息
 
-        public DbSet<Layer> Layers { get; set; }
+        public DbSet<Layer> Layers
+        {
+            get; set;
+        }
 
-        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Attachment> Attachments
+        {
+            get; set;
+        }
 
-        public DbSet<SysDictionary> SysDictionaries { get; set; }
+        public DbSet<SysDictionary> SysDictionaries
+        {
+            get; set;
+        }
 
         #endregion
 
         #region 物资
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products
+        {
+            get; set;
+        }
 
-        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Stock> Stocks
+        {
+            get; set;
+        }
 
-        public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Delivery> Deliveries
+        {
+            get; set;
+        }
 
-        public DbSet<Entry> Entries { get; set; }
+        public DbSet<Entry> Entries
+        {
+            get; set;
+        }
 
-        public DbSet<DeliveryBill> DeliveryBills { get; set; }
+        public DbSet<DeliveryBill> DeliveryBills
+        {
+            get; set;
+        }
 
-        public DbSet<EntryBill> EntrBills { get; set; }
+        public DbSet<EntryBill> EntrBills
+        {
+            get; set;
+        }
 
         #endregion
 
         #region 预算
 
-        public DbSet<BudgetReceipt> BudgetReceipts { get; set; }
+        public DbSet<BudgetReceipt> BudgetReceipts
+        {
+            get; set;
+        }
+        public DbSet<BudgetOutlay> BudgetOutlays
+        {
+            get; set;
+        }
+
 
         #endregion
 

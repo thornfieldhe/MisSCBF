@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IBudgetReceiptAppService.cs" company="" author="何翔华">
+// <copyright file="IBudgetOutlayAppService.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   年度预算收入应用接口
+//   支出预算应用接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,18 +13,24 @@ namespace SCBF.Finance
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Abp.Application.Services.Dto;
-
     using SCBF.Finance.Dto;
 
+    using Abp.Application.Services.Dto;
+
+    using TAF.Utility;
+
     /// <summary>
-    /// 年度预算收入应用接口
+    /// 支出预算应用接口
     /// </summary>
-    public interface IBudgetReceiptAppService : IBaseEntityApplicationService
+    public interface IBudgetOutlayAppService : IBaseEntityApplicationService
     {
-        List<BudgetReceiptListDto> Get(int type);
+        List<BudgetOutlayListDto> Get(string type);
 
         Guid LoadBudgetReceiptFile(string path);
+
+        List<KeyValue<string, string>> GetSheetNames();
+
+        void Update(BudgetOutlayEditDto input);
     }
 }
 

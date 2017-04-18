@@ -795,6 +795,7 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
+    <Content Include="Scripts\budgetOutlay.js" />
     <Content Include="Scripts\budgetReceipt.js" />
     <Content Include="Scripts\Common\defaultBase.js" />
     <Content Include="Scripts\Common\layoutBase.js" />
@@ -881,6 +882,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
@@ -929,6 +931,7 @@
     <Content Include="Views\Finance\_AccountList.cshtml" />
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex.cshtml" />
     <Content Include="Views\SysDictionary\_SysDictionaryIndex - 复制.cshtml" />
+    <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

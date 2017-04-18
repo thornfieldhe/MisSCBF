@@ -40,13 +40,17 @@ namespace SCBF.Finance
     public class BudgetReceiptAppService : TAFAppServiceBase, IBudgetReceiptAppService
     {
         private readonly IBudgetReceiptRepository budgetReceiptRepository;
+        private readonly ILayerRepository layerRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
         private IWorkbook workbook = null;
 
-        public BudgetReceiptAppService(IBudgetReceiptRepository budgetReceiptRepository, ISysDictionaryRepository sysDictionaryRepository)
+        public BudgetReceiptAppService(IBudgetReceiptRepository budgetReceiptRepository
+            , ISysDictionaryRepository sysDictionaryRepository
+            , ILayerRepository layerRepository)
         {
             this.budgetReceiptRepository = budgetReceiptRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
+            this.layerRepository = layerRepository;
         }
 
         public List<BudgetReceiptListDto> Get(int type)
@@ -59,6 +63,11 @@ namespace SCBF.Finance
             var year = int.Parse(currentYearItem.Value);
             var result =
                 this.budgetReceiptRepository.GetAllList(r => r.Year == year && (int)r.Type == type).MapTo<List<BudgetReceiptListDto>>();
+            var accounts =
+                this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account)
+                    .Select(r => new KeyValue<string, string> { Key = r.LevelCode, Value = r.Name })
+                    .ToList();
+            result.ForEach(item => item.Name = accounts.First(r => r.Key == item.Code).Value);
             return result;
         }
 
@@ -142,11 +151,6 @@ namespace SCBF.Finance
             this.budgetReceiptRepository.Delete(r => r.Year.ToString() == currentYear.Value);
             this.budgetReceiptRepository.InsertRange(list);
             return modelId;
-        }
-
-        public void ImportFromXls()
-        {
-            throw new NotImplementedException();
         }
     }
 }

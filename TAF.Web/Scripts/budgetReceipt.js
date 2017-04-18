@@ -33,7 +33,7 @@ var main = new Vue({
 
 main.query();
 $(".fileUpload").liteUploader({
-    script: "http://localhost:5011/BudgetReceipt/Upload"
+    script: defaultUrl+"BudgetReceipt/Upload"
 })
     .on("lu:success", function (e, response) {
         main.query();

@@ -25,24 +25,32 @@ namespace SCBF.Finance.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Code
         /// </summary>
         public string Code
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        public string Name
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Year
         /// </summary>
         public int Year
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Type
         /// </summary>
@@ -65,8 +73,8 @@ namespace SCBF.Finance.Dto
         public decimal Column1
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note1
         /// </summary>
@@ -89,24 +97,24 @@ namespace SCBF.Finance.Dto
         public decimal Column21
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note21
         /// </summary>
         public string Note21
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column22
         /// </summary>
         public decimal Column22
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note22
         /// </summary>
@@ -129,88 +137,88 @@ namespace SCBF.Finance.Dto
         public decimal Column31
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note31
         /// </summary>
         public string Note31
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column32
         /// </summary>
         public decimal Column32
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note32
         /// </summary>
         public string Note32
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column33
         /// </summary>
         public decimal Column33
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note33
         /// </summary>
         public string Note33
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column34
         /// </summary>
         public decimal Column34
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note34
         /// </summary>
         public string Note34
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column35
         /// </summary>
         public decimal Column35
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note35
         /// </summary>
         public string Note35
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column36
         /// </summary>
         public decimal Column36
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note36
         /// </summary>
@@ -240,104 +248,104 @@ namespace SCBF.Finance.Dto
         public decimal Column41
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note41
         /// </summary>
         public string Note41
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column42
         /// </summary>
         public decimal Column42
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note42
         /// </summary>
         public string Note42
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column43
         /// </summary>
         public decimal Column43
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note43
         /// </summary>
         public string Note43
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column44
         /// </summary>
         public decimal Column44
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note44
         /// </summary>
         public string Note44
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column45
         /// </summary>
         public decimal Column45
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note45
         /// </summary>
         public string Note45
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column46
         /// </summary>
         public decimal Column46
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note46
         /// </summary>
         public string Note46
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Column47
         /// </summary>
         public decimal Column47
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note47
         /// </summary>
@@ -360,16 +368,16 @@ namespace SCBF.Finance.Dto
         public decimal Column5
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note5
         /// </summary>
         public string Note5
         {
             get; set;
-        }        
-    } 
+        }
+    }
 }
 
 

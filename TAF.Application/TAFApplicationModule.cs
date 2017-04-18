@@ -37,7 +37,7 @@ namespace SCBF
                 mapper.CreateMap<Layer, LayerEditDto>()
                 .ForMember(m => m.Code, n => n.MapFrom(r => r.LevelCode));
                 mapper.CreateMap<LayerEditDto, Layer>()
-                .ForMember(m=>m.LevelCode,n=>n.MapFrom(r=>r.Code));
+                .ForMember(m => m.LevelCode, n => n.MapFrom(r => r.Code));
                 mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
                 mapper.CreateMap<Product, ProductListDto>();
@@ -72,14 +72,19 @@ namespace SCBF
                                 .ForMember(m => m.StockBalance, n => n.MapFrom(r => 0));
 
                 mapper.CreateMap<BudgetReceipt, BudgetReceiptListDto>()
-                .ForMember(m=>m.Total1,n=>n.MapFrom(r=>r.Column1+r.Column21+r.Column22))
-                .ForMember(m=>m.Total3,n=>n.MapFrom(r=>r.Column31+r.Column32+r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37))
-                .ForMember(m=>m.Total4,n=>n.MapFrom(r=>r.Column41+r.Column42+r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47))
-                .ForMember(m=>m.Total,n=>n.MapFrom(r=> r.Column1 + r.Column21 + r.Column22
-                + r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37
-                + r.Column41+r.Column42+r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
-                +r.Column5));
-                mapper.CreateMap<BudgetReceiptEditDto, BudgetReceipt>();
+                .ForMember(m => m.Total1, n => n.MapFrom(r => r.Column1 + r.Column21 + r.Column22))
+                .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37))
+                .ForMember(m => m.Total4, n => n.MapFrom(r => r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47))
+                .ForMember(m => m.Total, n => n.MapFrom(r => r.Column1 + r.Column21 + r.Column22
+                     + r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37
+                     + r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
+                     + r.Column5));
+
+
+                mapper.CreateMap<BudgetOutlay, BudgetOutlayListDto>()
+                .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
+                .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column1 + r.Column2))
+                .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3));
             });
         }
 

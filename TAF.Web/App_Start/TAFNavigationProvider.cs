@@ -60,10 +60,15 @@
                                 requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(
                             new MenuItemDefinition(
-                                "menuBudgetReceipts", 
-                                L("年度预算收入"), 
-                                url: "#budgetReceipts", 
+                                "menuBudgetReceipts",
+                                L("年度预算收入"),
+                                url: "#budgetReceipts",
                                 requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBudgetOutlays",
+                            L("年度预算支出"),
+                            url: "#budgetOutlays",
+                            requiredPermissionName: PermissionNames.CwUser))
                        )
                 .AddItem(
                     new MenuItemDefinition(

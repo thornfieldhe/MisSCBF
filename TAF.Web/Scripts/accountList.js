@@ -14,7 +14,7 @@
     data: function () {
         return {
             item: {
-                category: "Account",
+                category: "Budget_Account",
                 name: "",
                 pId: "00000000-0000-0000-0000-000000000000",
                 pName: "",
@@ -45,7 +45,6 @@
             var $this = this;
             abp.services.app.layer.get(id)
                 .done(function (m) {
-                    console.log(m);
                     $this.item = m;
                     $this.item.pName =  $this.item.pId==="00000000-0000-0000-0000-000000000000"?"": _.find(main.list, function(o) {return o.id===$this.item.pId}).name;
                     $this.onAdd = false;
@@ -110,14 +109,13 @@ var main = new Vue({
     },
     data: {
         queryEntity: {
-            category: "Account"
+            category: "Budget_Account"
         },
         selected: false
     },
     events: {
         'onDeleteItem':function() {
             var $this = this;
-            console.log(555);
             abp.services.app.layer.delete($this.selectNode.id)
                 .done(function (m) {
                     $("#deleteItemDialog").modal("hide");
@@ -153,6 +151,9 @@ var main = new Vue({
             var $this = this;
             abp.services.app.layer.getAllByCategory($this.queryEntity.category)
                 .done(function (m) {
+                    _.forEach(m, function(value) {
+                        value.name = value.name + "[" + value.levelCode + "]";
+                    });
                     $this.list = m;
                     $this.treeNodes = m;
                     $this.tree = $.fn.zTree.init($("#treeCatalog"), {
