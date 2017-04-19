@@ -796,6 +796,8 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\budgetOutlay.js" />
+    <Content Include="Scripts\budgetReceipt2.js" />
+    <Content Include="Scripts\budgetReceipt3.js" />
     <Content Include="Scripts\budgetReceipt.js" />
     <Content Include="Scripts\Common\defaultBase.js" />
     <Content Include="Scripts\Common\layoutBase.js" />
@@ -932,6 +934,8 @@
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex.cshtml" />
     <Content Include="Views\SysDictionary\_SysDictionaryIndex - 复制.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex.cshtml" />
+    <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex3.cshtml" />
+    <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

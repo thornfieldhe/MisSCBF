@@ -7,3 +7,4 @@ bin
 obj
 /TAF.Web/App_Data/Logs
 /CodeSmithTemplates
+/TAF.Web/App_Data

@@ -30,6 +30,8 @@ Path.map("#baseInfos").to(function () { loadPage("/SysDictionary/SysDictionaryLi
 Path.map("#financeInfos").to(function () { loadPage("/Finance/InfoList", "预算管理", "基础信息", "#menuFinanceInfos", false); });
 Path.map("#account").to(function () { loadPage("/Finance/AccountList", "预算管理", "会计科目", "#menuAccount", false); });
 Path.map("#budgetReceipts").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList", "预算管理", "年度预算收入", "#menuBudgetReceipts", false); });
+Path.map("#budgetReceipts2").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList2", "预算管理", "预算调整收入", "#menuBudgetReceipts2", false); });
+Path.map("#budgetReceipts3").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList3", "预算管理", "调整后增加收入", "#menuBudgetReceipts3", false); });
 Path.map("#budgetOutlays").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList", "支出预算", "年度预算支出", "#menuBudgetOutlays", false); });
 
 Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "仓库管理", "商品分类", "#menuProductCategories", false); });

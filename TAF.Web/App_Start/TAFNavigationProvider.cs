@@ -64,6 +64,18 @@
                                 L("年度预算收入"),
                                 url: "#budgetReceipts",
                                 requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuBudgetReceipts2",
+                                L("预算调整收入"),
+                                url: "#budgetReceipts2",
+                                requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuBudgetReceipts3",
+                                L("调整后增加收入"),
+                                url: "#budgetReceipts3",
+                                requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(new MenuItemDefinition(
                             "menuBudgetOutlays",
                             L("年度预算支出"),

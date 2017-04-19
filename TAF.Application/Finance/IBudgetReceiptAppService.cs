@@ -24,7 +24,9 @@ namespace SCBF.Finance
     {
         List<BudgetReceiptListDto> Get(int type);
 
-        Guid LoadBudgetReceiptFile(string path);
+        Guid LoadBudgetReceiptFile1(string path);
+        Guid LoadBudgetReceiptFile2(string path);
+        Guid LoadBudgetReceiptFile3(string path);
     }
 }
 

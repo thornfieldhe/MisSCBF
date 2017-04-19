@@ -20,7 +20,7 @@ var main = new Vue({
     methods: {
         query: function () {
             var $this = this;
-            abp.services.app.budgetReceipt.get(0)
+            abp.services.app.budgetReceipt.get(2)
                 .done(function (r) {
                     $this.list = r;
                 });
@@ -33,11 +33,11 @@ var main = new Vue({
 
 main.query();
 $(".fileUpload").liteUploader({
-    script: defaultUrl+"BudgetReceipt/Upload1"
+    script: defaultUrl+"BudgetReceipt/Upload3"
 })
     .on("lu:success", function (e, response) {
         main.query();
-        taf.notify.success("年度预算收入导入成功");
+        taf.notify.success("调整后增加收入导入成功");
     });
 
 $(".fileUpload").change(function () {

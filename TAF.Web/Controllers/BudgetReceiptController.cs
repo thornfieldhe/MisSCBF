@@ -44,15 +44,39 @@ namespace SCBF.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Upload()
+        public JsonResult Upload1()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile1);
+            return new JsonResult() { Data = "OK" };
+        }
+
+        [HttpPost]
+        public JsonResult Upload2()
+        {
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile2);
+            return new JsonResult() { Data = "OK" };
+        }
+
+        [HttpPost]
+        public JsonResult Upload3()
+        {
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile3);
             return new JsonResult() { Data = "OK" };
         }
 
         public ActionResult BudgetReceiptList()
         {
             return PartialView("_BudgetReceiptIndex");
+        }
+
+        public ActionResult BudgetReceiptList2()
+        {
+            return PartialView("_BudgetReceiptIndex2");
+        }
+
+        public ActionResult BudgetReceiptList3()
+        {
+            return PartialView("_BudgetReceiptIndex3");
         }
     }
 }

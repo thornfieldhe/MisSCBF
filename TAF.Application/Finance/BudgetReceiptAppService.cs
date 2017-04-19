@@ -13,16 +13,10 @@ namespace SCBF.Finance
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
 
-    using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
     using Abp.UI;
-
-    using AutoMapper;
 
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
@@ -42,7 +36,7 @@ namespace SCBF.Finance
         private readonly IBudgetReceiptRepository budgetReceiptRepository;
         private readonly ILayerRepository layerRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private IWorkbook workbook = null;
+        private IWorkbook workbook;
 
         public BudgetReceiptAppService(IBudgetReceiptRepository budgetReceiptRepository
             , ISysDictionaryRepository sysDictionaryRepository
@@ -71,7 +65,22 @@ namespace SCBF.Finance
             return result;
         }
 
-        public Guid LoadBudgetReceiptFile(string path)
+        public Guid LoadBudgetReceiptFile1(string path)
+        {
+            return this.LoadBudgetReceiptFile(path, BungetType.Year);
+        }
+
+        public Guid LoadBudgetReceiptFile2(string path)
+        {
+            return this.LoadBudgetReceiptFile(path, BungetType.Adjust);
+        }
+
+        public Guid LoadBudgetReceiptFile3(string path)
+        {
+            return this.LoadBudgetReceiptFile(path, BungetType.Increase);
+        }
+
+        private Guid LoadBudgetReceiptFile(string path, BungetType type)
         {
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             var modelId = Guid.NewGuid();
@@ -99,56 +108,56 @@ namespace SCBF.Finance
             for (var i = 2; i < rowCount; i++)
             {
                 var row = sheet.GetRow(i);
-                if (row.GetCell(0) != null && !string.IsNullOrEmpty(row.GetCell(0).ToString()))
+                if (row.GetCell(0) != null && !string.IsNullOrEmpty(row.GetCell(0).ToStr()))
                 {
                     var item = new BudgetReceipt()
                     {
-                        Code = row.GetCell(0).ToString(),
-                        Column1 = decimal.Parse(row.GetCell(4).ToString()),
-                        Note1 = row.GetCell(5).ToString(),
-                        Column21 = decimal.Parse(row.GetCell(6).ToString()),
-                        Note21 = row.GetCell(7).ToString(),
-                        Column22 = decimal.Parse(row.GetCell(8).ToString()),
-                        Note22 = row.GetCell(9).ToString(),
-                        Column31 = decimal.Parse(row.GetCell(11).ToString()),
-                        Note31 = row.GetCell(12).ToString(),
-                        Column32 = decimal.Parse(row.GetCell(13).ToString()),
-                        Note32 = row.GetCell(14).ToString(),
-                        Column33 = decimal.Parse(row.GetCell(15).ToString()),
-                        Note33 = row.GetCell(16).ToString(),
-                        Column34 = decimal.Parse(row.GetCell(17).ToString()),
-                        Note34 = row.GetCell(18).ToString(),
-                        Column35 = decimal.Parse(row.GetCell(19).ToString()),
-                        Note35 = row.GetCell(20).ToString(),
-                        Column36 = decimal.Parse(row.GetCell(21).ToString()),
-                        Note36 = row.GetCell(22).ToString(),
-                        Column37 = decimal.Parse(row.GetCell(23).ToString()),
-                        Note37 = row.GetCell(24).ToString(),
-                        Column41 = decimal.Parse(row.GetCell(26).ToString()),
-                        Note41 = row.GetCell(27).ToString(),
-                        Column42 = decimal.Parse(row.GetCell(28).ToString()),
-                        Note42 = row.GetCell(29).ToString(),
-                        Column43 = decimal.Parse(row.GetCell(30).ToString()),
-                        Note43 = row.GetCell(31).ToString(),
-                        Column44 = decimal.Parse(row.GetCell(32).ToString()),
-                        Note44 = row.GetCell(33).ToString(),
-                        Column45 = decimal.Parse(row.GetCell(34).ToString()),
-                        Note45 = row.GetCell(35).ToString(),
-                        Column46 = decimal.Parse(row.GetCell(36).ToString()),
-                        Note46 = row.GetCell(37).ToString(),
-                        Column47 = decimal.Parse(row.GetCell(38).ToString()),
-                        Note47 = row.GetCell(39).ToString(),
-                        Column5 = decimal.Parse(row.GetCell(40).ToString()),
-                        Note5 = row.GetCell(41).ToString(),
+                        Type = type,
+                        Code = row.GetCell(0).ToStr(),
+                        Column1 = row.GetCell(4).ToStr().ToDecimal(),
+                        Note1 = row.GetCell(5).ToStr(),
+                        Column21 = row.GetCell(6).ToStr().ToDecimal(),
+                        Note21 = row.GetCell(7).ToStr(),
+                        Column22 = row.GetCell(8).ToStr().ToDecimal(),
+                        Note22 = row.GetCell(9).ToStr(),
+                        Column31 = row.GetCell(11).ToStr().ToDecimal(),
+                        Note31 = row.GetCell(12).ToStr(),
+                        Column32 = row.GetCell(13).ToStr().ToDecimal(),
+                        Note32 = row.GetCell(14).ToStr(),
+                        Column33 = row.GetCell(15).ToStr().ToDecimal(),
+                        Note33 = row.GetCell(16).ToStr(),
+                        Column34 = row.GetCell(17).ToStr().ToDecimal(),
+                        Note34 = row.GetCell(18).ToStr(),
+                        Column35 = row.GetCell(19).ToStr().ToDecimal(),
+                        Note35 = row.GetCell(20).ToStr(),
+                        Column36 = row.GetCell(21).ToStr().ToDecimal(),
+                        Note36 = row.GetCell(22).ToStr(),
+                        Column37 = row.GetCell(23).ToStr().ToDecimal(),
+                        Note37 = row.GetCell(24).ToStr(),
+                        Column41 = row.GetCell(26).ToStr().ToDecimal(),
+                        Note41 = row.GetCell(27).ToStr(),
+                        Column42 = row.GetCell(28).ToStr().ToDecimal(),
+                        Note42 = row.GetCell(29).ToStr(),
+                        Column43 = row.GetCell(30).ToStr().ToDecimal(),
+                        Note43 = row.GetCell(31).ToStr(),
+                        Column44 = row.GetCell(32).ToStr().ToDecimal(),
+                        Note44 = row.GetCell(33).ToStr(),
+                        Column45 = row.GetCell(34).ToStr().ToDecimal(),
+                        Note45 = row.GetCell(35).ToStr(),
+                        Column46 = row.GetCell(36).ToStr().ToDecimal(),
+                        Note46 = row.GetCell(37).ToStr(),
+                        Column47 = row.GetCell(38).ToStr().ToDecimal(),
+                        Note47 = row.GetCell(39).ToStr(),
+                        Column5 = row.GetCell(40).ToStr().ToDecimal(),
+                        Note5 = row.GetCell(41).ToStr(),
                         FileId = modelId.ToString(),
-                        Type = BungetType.Year,
                         Year = currentYear.Value.ToInt()
                     };
                     list.Add(item);
                 }
             }
 
-            this.budgetReceiptRepository.Delete(r => r.Year.ToString() == currentYear.Value);
+            this.budgetReceiptRepository.Delete(r => r.Year.ToString() == currentYear.Value && r.Type == type);
             this.budgetReceiptRepository.InsertRange(list);
             return modelId;
         }
