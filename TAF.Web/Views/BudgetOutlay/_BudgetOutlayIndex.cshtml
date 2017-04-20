@@ -36,7 +36,7 @@
                                         科目名称
                                     </th>
                                     <th style="width: 200px;" rowspan="3">
-                                        合计
+                                        合计(万元)
                                     </th>
                                 </tr>
                             </thead>
@@ -44,15 +44,15 @@
                                 <tr v-for="item2 in list2">
                                     <td>
                                         <div class="checkbox">
-                                            <label for="selectItem_{{item2.id}}">
-                                                <input type="radio" v-model="selectItem" value="{{item2.id}}" name="selectItem" id="selectItem_{{item2.id}}">
+                                            <label for="selectItem_{{item2.key}}">
+                                                <input type="radio" v-model="selectItem" value="{{item2.key}}" name="selectItem" id="selectItem_{{item2.key}}">
                                                 <span class=" text"></span>
                                             </label>
                                         </div>
                                     </td>
-                                    <td>{{item2.code}}</td>
-                                    <td>{{item2.name}}</td>
-                                    <td>{{item2.total}}</td>
+                                    <td>{{item2.value}}</td>
+                                    <td>{{item2.item3}}</td>
+                                    <td>{{item2.item4}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,7 +97,7 @@
                                     单价或经费标准或支出限额
                                 </th>
                                 <th style="width: 200px;" rowspan="3">
-                                    合计
+                                    合计(万元)
                                 </th>
                                 <th style="width: 1000px;" colspan="5">
                                     经费数量

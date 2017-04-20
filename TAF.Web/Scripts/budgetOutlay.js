@@ -35,11 +35,12 @@
             abp.services.app.budgetOutlay.getSheetNames()
                 .done(function (r) {
                     taf.successiveBindSelect($("#searchSheet"), r);
+                    $this.list = [];
                 });
         },
         loadReceipt: function () {
             var $this = this;
-            abp.services.app.budgetReceipt.get(0)
+            abp.services.app.budgetReceipt.getSimple(0)
                 .done(function (r) {
                     $this.list2 = r;
                 });
@@ -49,13 +50,11 @@
             if ($this.selectItem === "" || $this.selectItems.length == 0) {
                 taf.notify.danger("收入项或支出项不能为空");
             } else {
-                abp.services.app.budgetOutlay.update({ id: $this.selectItem, outlayIds: $this.selectItems, code: _.find($this.list2, function (m) { return m.id === $this.selectItem }).code })
+                abp.services.app.budgetOutlay.update({ id: $this.selectItem, outlayIds: $this.selectItems, code: _.find($this.list2, function (m) { return m.key === $this.selectItem }).value })
                     .done(function (r) {
-                        abp.services.app.budgetOutlay.getSheetNames()
-                            .done(function (s) {
-                                taf.successiveBindSelect($("#searchSheet"), s);
-                                $this.list = [];
-                                $("#searchSheet").select2().val("").trigger("change");
+                        abp.services.app.budgetOutlay.get($("#searchSheet").val())
+                            .done(function (r) {
+                                $this.list = r;
                                 taf.notify.success("年度预算支出更新成功");
                             });
                     }); 

@@ -11,11 +11,8 @@ namespace SCBF.Finance
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     using SCBF.Finance.Dto;
-
-    using Abp.Application.Services.Dto;
 
     using TAF.Utility;
 
@@ -31,6 +28,8 @@ namespace SCBF.Finance
         List<KeyValue<string, string>> GetSheetNames();
 
         void Update(BudgetOutlayEditDto input);
+
+        List<YearBudgetSummaryDto> GetSummary();
     }
 }
 

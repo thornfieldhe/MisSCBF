@@ -1,0 +1,103 @@
+﻿
+@model List<TAF.Utility.KeyValue<string, Guid>>
+<div class="row">
+    <div class=" col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">年度预算简表</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered " width="2400px">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="3">
+                                        科目名称
+                                    </th>
+                                    <th style="width: 600px;" colspan="6">
+                                        收入(万元)
+                                    </th>
+                                    <th style="width: 500px;" colspan="5">
+                                        支出(万元)
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        结转下年(万元)
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="2">
+                                        合计
+                                    </th>
+                                    <th style="width: 300px;" colspan="3">
+                                        向上请领
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        留用经费弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        上年结转
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        合计
+                                    </th>
+                                    <th style="width: 300px;" colspan="3">
+                                        对下供应
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        直接支出
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;">
+                                        标准经费
+                                    </th>
+                                    <th style="width: 100px;">
+                                        项目经费
+                                    </th>
+                                    <th style="width: 100px;">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;">
+                                        标准经费
+                                    </th>
+                                    <th style="width: 100px;">
+                                        项目经费
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.total1}}</td>
+                                    <td>{{item.total2}}</td>
+                                    <td>{{item.column1}}</td>
+                                    <td>{{item.column2}}</td>
+                                    <td>{{item.column3}}</td>
+                                    <td>{{item.column4}}</td>
+                                    <td>
+                                        {{item.total3}}</td>
+                                    <td>{{item.total4}}
+                                    </td>
+                                    <td>{{item.column5}}</td>
+                                    <td>{{item.column6}}</td>
+                                    <td>{{item.column7}}</td>
+                                    <td>{{item.total5}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/budgetSummary.js"></script>
+
+
+

@@ -14,15 +14,9 @@ namespace SCBF.Finance
     using System.IO;
     using System.Linq;
     using System.Linq.Dynamic;
-    using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
     using Abp.UI;
-
-    using AutoMapper;
 
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
@@ -41,12 +35,19 @@ namespace SCBF.Finance
     {
         private readonly IBudgetOutlayRepository budgetOutlayRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly IBudgetReceiptRepository budgetReceiptRepository;
+        private readonly ILayerRepository layerRepository;
         private IWorkbook workbook = null;
 
-        public BudgetOutlayAppService(IBudgetOutlayRepository budgetOutlayRepository, ISysDictionaryRepository sysDictionaryRepository)
+        public BudgetOutlayAppService(IBudgetOutlayRepository budgetOutlayRepository
+            , ISysDictionaryRepository sysDictionaryRepository
+            , IBudgetReceiptRepository budgetReceiptRepository
+            , ILayerRepository layerRepository)
         {
             this.budgetOutlayRepository = budgetOutlayRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
+            this.budgetReceiptRepository = budgetReceiptRepository;
+            this.layerRepository = layerRepository;
         }
 
         public List<BudgetOutlayListDto> Get(string type)
@@ -132,7 +133,7 @@ namespace SCBF.Finance
             {
                 throw new UserFriendlyException("未设置预算年度");
             }
-            return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value && !r.HasRelated).Select(r => new KeyValue<string, string> { Key = r.SheetName, Value = r.SheetName }).Distinct().ToList();
+            return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value).Select(r => new KeyValue<string, string> { Key = r.SheetName, Value = r.SheetName }).Distinct().ToList();
         }
 
         public void Update(BudgetOutlayEditDto input)
@@ -149,6 +150,56 @@ namespace SCBF.Finance
                 item.HasRelated = true;
                 this.budgetOutlayRepository.Update(item);
             }
+        }
+
+        /// <summary>
+        /// 获取年度预算简表
+        /// </summary>
+        /// <returns></returns>
+        public List<YearBudgetSummaryDto> GetSummary()
+        {
+            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
+            if (currentYear == null)
+            {
+                throw new UserFriendlyException("未设置预算年度");
+            }
+            var year = currentYear.Value.ToInt();
+            var query = this.budgetReceiptRepository.GetAllList(r => r.Year == year && r.Type == BungetType.Year).ToList();
+
+            var list = new List<YearBudgetSummaryDto>();
+            foreach (var receipt in query)
+            {
+                var name =
+                    this.layerRepository.FirstOrDefault(
+                        r => r.Category == DictionaryCategory.Budget_Account && r.LevelCode == receipt.Code);
+                if (name == null)
+                {
+                    throw new UserFriendlyException("未设置预算年度");
+                }
+                var dto = new YearBudgetSummaryDto
+                {
+                    Name = name.Name,
+                    Column1 = receipt.Column1,
+                    Column2 = receipt.Column21 + receipt.Column22,
+                    Column3 = receipt.Column31 + receipt.Column32 + receipt.Column33 + receipt.Column34 + receipt.Column35 + receipt.Column36 + receipt.Column37,
+                    Column4 = receipt.Column41 + receipt.Column42 + receipt.Column43 + receipt.Column44 + receipt.Column45 + receipt.Column46 + receipt.Column47,
+                    Column5 = receipt.BudgetOutlaies.Sum(r => r.Column1),
+                    Column6 = receipt.BudgetOutlaies.Sum(r => r.Column2),
+                    Column7 = receipt.BudgetOutlaies.Sum(r => r.Column3),
+                    Total2 = receipt.Column1 + receipt.Column21 + receipt.Column22,
+                    Total1 = receipt.Column1 + receipt.Column21 + receipt.Column22
+                    + receipt.Column31 + receipt.Column32 + receipt.Column33 + receipt.Column34 + receipt.Column35 + receipt.Column36 + receipt.Column37
+                    + receipt.Column41 + receipt.Column42 + receipt.Column43 + receipt.Column44 + receipt.Column45 + receipt.Column46 + receipt.Column47,
+                    Total4 = receipt.BudgetOutlaies.Sum(r => r.Column2 + r.Column1),
+                    Total3 = receipt.BudgetOutlaies.Sum(r => r.Column2 + r.Column1 + r.Column3),
+                    Total5 = (receipt.Column1 + receipt.Column21 + receipt.Column22
+                    + receipt.Column31 + receipt.Column32 + receipt.Column33 + receipt.Column34 + receipt.Column35 + receipt.Column36 + receipt.Column37
+                    + receipt.Column41 + receipt.Column42 + receipt.Column43 + receipt.Column44 + receipt.Column45 + receipt.Column46 + receipt.Column47)
+                    - receipt.BudgetOutlaies.Sum(r => r.Column2 + r.Column1 + r.Column3)
+                };
+                list.Add(dto);
+            }
+            return list;
         }
     }
 }

@@ -5,6 +5,9 @@ using Castle.Facilities.Logging;
 
 namespace SCBF.Web
 {
+    using SCBF.EntityFramework;
+    using SCBF.Migrations.SeedData;
+
     public class MvcApplication : AbpWebApplication<TAFWebModule>
     {
         protected override void Application_Start(object sender, EventArgs e)
@@ -17,9 +20,12 @@ namespace SCBF.Web
 
             //            using (var context = new TAFDbContext())
             //            {
-            //                new InitialHostDbBuilder(context).Create();
-            //                new DefaultTenantCreator(context).Create();
-            //                new TenantRoleAndUserBuilder(context, 1).Create();
+            //                new DefaultEditionsCreator(context);
+            //                new DefaultLanguagesCreator(context);
+            //                new DefaultRolesCreator(context);
+            //                new DefaultRolePermissionCreator(context);
+            //                new HostRoleAndUserCreator(context);
+            //                new DefaultSettingsCreator(context);
             //            }
         }
     }

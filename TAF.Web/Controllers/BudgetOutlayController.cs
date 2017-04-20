@@ -44,6 +44,11 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_BudgetOutlayIndex");
         }
+
+        public ActionResult BudgetSummary()
+        {
+            return PartialView("_BudgetSummary");
+        }
     }
 }
 

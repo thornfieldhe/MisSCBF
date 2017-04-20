@@ -118,6 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
     <Compile Include="EntityFramework\Maps\EntryMap.cs" />
@@ -263,6 +264,10 @@
     <Compile Include="Migrations\201704171431401_addTable_BudgetOutlays2.Designer.cs">
       <DependentUpon>201704171431401_addTable_BudgetOutlays2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201249530_addrelationshipwith_budget.cs" />
+    <Compile Include="Migrations\201704201249530_addrelationshipwith_budget.Designer.cs">
+      <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -405,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704171431401_addTable_BudgetOutlays2.resx">
       <DependentUpon>201704171431401_addTable_BudgetOutlays2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201249530_addrelationshipwith_budget.resx">
+      <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

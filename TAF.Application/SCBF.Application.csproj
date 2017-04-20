@@ -147,8 +147,10 @@
     <Compile Include="Finance\Dto\BudgetOutlayEditDto.cs" />
     <Compile Include="Finance\Dto\BudgetOutlayListDto.cs" />
     <Compile Include="Finance\Dto\BudgetReceiptListDto.cs" />
+    <Compile Include="Finance\Dto\BudgetReceiptSimpleListDto.cs" />
     <Compile Include="Finance\IBudgetOutlayAppService.cs" />
     <Compile Include="Finance\IBudgetReceiptAppService.cs" />
+    <Compile Include="Finance\Dto\YearBudgetSummaryDto.cs" />
     <Compile Include="IBaseEntityApplicationService.cs" />
     <Compile Include="Storage\DeliveryAppService.cs" />
     <Compile Include="Storage\DeliveryBillAppService.cs" />

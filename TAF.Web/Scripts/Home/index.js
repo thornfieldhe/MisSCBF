@@ -33,6 +33,7 @@ Path.map("#budgetReceipts").to(function () { loadPage("/BudgetReceipt/BudgetRece
 Path.map("#budgetReceipts2").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList2", "预算管理", "预算调整收入", "#menuBudgetReceipts2", false); });
 Path.map("#budgetReceipts3").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList3", "预算管理", "调整后增加收入", "#menuBudgetReceipts3", false); });
 Path.map("#budgetOutlays").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList", "支出预算", "年度预算支出", "#menuBudgetOutlays", false); });
+Path.map("#budgetSummary").to(function () { loadPage("/BudgetOutlay/BudgetSummary", "支出预算", "年度预算简表", "#menuBudgetSummary", false); });
 
 Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "仓库管理", "商品分类", "#menuProductCategories", false); });
 Path.map("#products").to(function () { loadPage("/Product/ProductList", "商品", "products", "#menuProducts", false); });

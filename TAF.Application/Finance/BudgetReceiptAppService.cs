@@ -61,9 +61,25 @@ namespace SCBF.Finance
                 this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account)
                     .Select(r => new KeyValue<string, string> { Key = r.LevelCode, Value = r.Name })
                     .ToList();
-            result.ForEach(item => item.Name = accounts.First(r => r.Key == item.Code).Value);
+            result.ForEach(item =>
+                               {
+                                   var account = accounts.FirstOrDefault(r => r.Key == item.Code);
+                                   if (account == null)
+                                   {
+                                       throw new UserFriendlyException($"未知科目编码[{item.Code}]");
+                                   }
+                                   item.Name = account.Value;
+                               });
             return result;
         }
+
+
+        public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
+        {
+            return this.Get(type).Select(r => new KeyValue<Guid, string, string, decimal>() { Key = r.Id, Value = r.Code, Item3 = r.Name, Item4 = r.Total }).ToList();
+        }
+
+        #region 上传预算表
 
         public Guid LoadBudgetReceiptFile1(string path)
         {
@@ -161,6 +177,8 @@ namespace SCBF.Finance
             this.budgetReceiptRepository.InsertRange(list);
             return modelId;
         }
+
+        #endregion
     }
 }
 

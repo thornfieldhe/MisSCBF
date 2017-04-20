@@ -99,6 +99,14 @@ namespace SCBF.Finance
         }
 
 
+        /// <summary>
+        /// 预算收入列表
+        /// </summary>
+        public virtual BudgetReceipt BudgetReceipt
+        {
+            get; set;
+        }
+
 
         #region 栏目
 

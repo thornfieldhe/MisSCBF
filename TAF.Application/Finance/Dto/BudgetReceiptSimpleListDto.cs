@@ -1,23 +1,34 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BudgetReceipt.cs" company="" author="何翔华">
+// <copyright file="BudgetReceiptListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   BudgetReceipt
+//   年度预算收入列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Finance
+namespace SCBF.Finance.Dto
 {
-    using System.Collections.Generic;
+    using System;
+
+    using Abp.AutoMapper;
 
     /// <summary>
-    /// 
+    /// 年度预算收入列表对象
     /// </summary>
-    public class BudgetReceipt : TAFEntity
+    [AutoMap(typeof(BudgetReceipt))]
+    public class BudgetReceiptSimpleListDto
     {
         /// <summary>
-        /// 科目代码
+        /// Id
+        /// </summary>
+        public Guid Id
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Code
         /// </summary>
         public string Code
         {
@@ -25,7 +36,15 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 会计年
+        /// Name
+        /// </summary>
+        public string Name
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Year
         /// </summary>
         public int Year
         {
@@ -33,33 +52,15 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 预算类型
+        /// Total100
         /// </summary>
-        public BungetType Type
+        public decimal Total100
         {
             get; set;
         }
 
         /// <summary>
-        /// 同一批次导入的预算文件的文件Id保持一致
-        /// </summary>
-        public string FileId
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 预算支出列表
-        /// </summary>
-        public virtual List<BudgetOutlay> BudgetOutlaies
-        {
-            get; set;
-        }
-
-        #region 栏目
-
-        /// <summary>
-        /// 栏目1(标准经费)
+        /// Column1
         /// </summary>
         public decimal Column1
         {
@@ -67,15 +68,15 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目1备注(标准经费)
+        /// Total1
         /// </summary>
-        public string Note1
+        public decimal Total1
         {
             get; set;
         }
 
         /// <summary>
-        /// 栏目21(项目经费-地方下达项目经费)
+        /// Column21
         /// </summary>
         public decimal Column21
         {
@@ -83,7 +84,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目21备注(项目经费-地方下达项目经费)
+        /// Note21
         /// </summary>
         public string Note21
         {
@@ -91,7 +92,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目22(项目经费-部局下达项目经费)
+        /// Column22
         /// </summary>
         public decimal Column22
         {
@@ -99,17 +100,23 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目22备注(项目经费-部局下达项目经费)
+        /// Note22
         /// </summary>
         public string Note22
         {
             get; set;
         }
 
-        #region 栏目3
+        /// <summary>
+        /// Total3
+        /// </summary>
+        public decimal Total3
+        {
+            get; set;
+        }
 
         /// <summary>
-        /// 栏目31(留用经费-留用党团费弥补)
+        /// Column31
         /// </summary>
         public decimal Column31
         {
@@ -117,7 +124,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目31备注(留用经费-留用党团费弥补)
+        /// Note31
         /// </summary>
         public string Note31
         {
@@ -125,7 +132,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目32(留用经费-留用租房维修基金弥补)
+        /// Column32
         /// </summary>
         public decimal Column32
         {
@@ -133,7 +140,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目32备注(留用经费-留用租房维修基金弥补)
+        /// Note32
         /// </summary>
         public string Note32
         {
@@ -141,7 +148,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目33(留用经费-历年预算外结余弥补)
+        /// Column33
         /// </summary>
         public decimal Column33
         {
@@ -149,7 +156,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目33备注(留用经费-历年预算外结余弥补)
+        /// Note33
         /// </summary>
         public string Note33
         {
@@ -157,7 +164,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目34(留用经费-历年预算经费结余弥补)
+        /// Column34
         /// </summary>
         public decimal Column34
         {
@@ -165,7 +172,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目34备注(留用经费-历年预算经费结余弥补)
+        /// Note34
         /// </summary>
         public string Note34
         {
@@ -173,7 +180,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目35(留用经费-当年地方保障经费弥补)
+        /// Column35
         /// </summary>
         public decimal Column35
         {
@@ -181,7 +188,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目35备注(留用经费-当年地方保障经费弥补)
+        /// Note35
         /// </summary>
         public string Note35
         {
@@ -189,7 +196,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目36(留用经费-当年预算外收入弥补)
+        /// Column36
         /// </summary>
         public decimal Column36
         {
@@ -197,7 +204,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目36备注(留用经费-当年预算外收入弥补)
+        /// Note36
         /// </summary>
         public string Note36
         {
@@ -205,7 +212,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目37(留用经费-其他收入弥补)
+        /// Column37
         /// </summary>
         public decimal Column37
         {
@@ -213,19 +220,14 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目36备注(留用经费-其他收入弥补)
+        /// Note37
         /// </summary>
         public string Note37
         {
             get; set;
         }
-
-        #endregion
-
-        #region 栏目4
-
         /// <summary>
-        /// 栏目41(上年结转-地方专项经费)
+        /// Column41
         /// </summary>
         public decimal Column41
         {
@@ -233,7 +235,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目41备注(上年结转-地方专项经费)
+        /// Note41
         /// </summary>
         public string Note41
         {
@@ -241,7 +243,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目42(上年结转-部局专项经费)
+        /// Column42
         /// </summary>
         public decimal Column42
         {
@@ -249,7 +251,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目42备注(上年结转-部局专项经费)
+        /// Note42
         /// </summary>
         public string Note42
         {
@@ -257,7 +259,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目43(上年结转-历年预算外结余)
+        /// Column43
         /// </summary>
         public decimal Column43
         {
@@ -265,7 +267,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目43备注(上年结转-历年预算外结余)
+        /// Note43
         /// </summary>
         public string Note43
         {
@@ -273,7 +275,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目44(上年结转-历年预算经费结余)
+        /// Column44
         /// </summary>
         public decimal Column44
         {
@@ -281,7 +283,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目44备注(上年结转-历年预算经费结余)
+        /// Note44
         /// </summary>
         public string Note44
         {
@@ -289,7 +291,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目45(上年结转-留用住房维修基金)
+        /// Column45
         /// </summary>
         public decimal Column45
         {
@@ -297,7 +299,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目45备注(上年结转-留用住房维修基金)
+        /// Note45
         /// </summary>
         public string Note45
         {
@@ -305,7 +307,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目46(上年结转-留用党团费)
+        /// Column46
         /// </summary>
         public decimal Column46
         {
@@ -313,7 +315,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目46备注(上年结转-留用党团费)
+        /// Note46
         /// </summary>
         public string Note46
         {
@@ -321,7 +323,7 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目47(上年结转-其他经费)
+        /// Column47
         /// </summary>
         public decimal Column47
         {
@@ -329,17 +331,23 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目47备注(上年结转-其他经费)
+        /// Note47
         /// </summary>
         public string Note47
         {
             get; set;
         }
 
-        #endregion
+        /// <summary>
+        /// Total4
+        /// </summary>
+        public decimal Total4
+        {
+            get; set;
+        }
 
         /// <summary>
-        /// 栏目5(上年结转-当年预算外收入)
+        /// Column5
         /// </summary>
         public decimal Column5
         {
@@ -347,14 +355,14 @@ namespace SCBF.Finance
         }
 
         /// <summary>
-        /// 栏目5备注(上年结转-当年预算外收入)
+        /// Note5
         /// </summary>
         public string Note5
         {
             get; set;
         }
-
-        #endregion
-
     }
 }
+
+
+

@@ -81,6 +81,11 @@
                             L("年度预算支出"),
                             url: "#budgetOutlays",
                             requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBudgetSummary",
+                            L("年度预算简表"),
+                            url: "#budgetSummary",
+                            requiredPermissionName: PermissionNames.CwUser))
                        )
                 .AddItem(
                     new MenuItemDefinition(
