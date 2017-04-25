@@ -55,6 +55,19 @@ namespace SCBF.Finance
             return result;
         }
 
+        public List<ActualOutlayListDto> GetByOutlayId(Guid outlayId)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var year = int.Parse(currentYearItem.Value);
+            var result =
+                this.actualOutlayRepository.GetAllList(r => r.Year == year && r.OutlayId== outlayId).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
+            return result;
+        }
+
         public Guid LoadActualOutlayFile(string path)
         {
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);

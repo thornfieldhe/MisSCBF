@@ -91,6 +91,11 @@
                             L("实际支出"),
                             url: "#actualOutlays",
                             requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuOutlays",
+                            L("支出对比明细"),
+                            url: "#outlays",
+                            requiredPermissionName: PermissionNames.CwUser))
                        )
                 .AddItem(
                     new MenuItemDefinition(

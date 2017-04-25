@@ -60,6 +60,18 @@ namespace SCBF.Finance
             return result;
         }
 
+        public List<OutlayListDto> GetAll()
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var year = int.Parse(currentYearItem.Value);
+            var result =
+                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.HasRelated).OrderBy(r => r.Code).ToList().MapTo<List<OutlayListDto>>();
+            return result;
+        }
 
         public List<BudgetOutlaySimpleListDto> GetSimple()
         {

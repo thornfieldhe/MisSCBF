@@ -21,6 +21,8 @@ namespace SCBF.Finance
     {
         List<BudgetOutlayListDto> Get(string type);
 
+        List<OutlayListDto> GetAll();
+
         List<BudgetOutlaySimpleListDto> GetSimple();
 
         Guid LoadBudgetReceiptFile(string path);

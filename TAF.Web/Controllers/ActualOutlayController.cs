@@ -38,8 +38,12 @@ namespace SCBF.Web.Controllers
 
         public ActionResult ActualOutlayList()
         {
-            var list = new List<KeyValue<string, Guid>>();
-            return PartialView("_ActualOutlayIndex", list);
+            return PartialView("_ActualOutlayIndex");
+        }
+
+        public ActionResult OutlayList()
+        {
+            return PartialView("_OutlayIndex");
         }
 
         [HttpPost]

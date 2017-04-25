@@ -27,6 +27,8 @@ namespace SCBF.Finance
 
         List<ActualOutlayListDto> Get();
 
+        List<ActualOutlayListDto> GetByOutlayId(Guid outlayId);
+
         void Update(OutlayEditDto input);
 
     }

@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Abp.AutoMapper;
+﻿using Abp.AutoMapper;
 using Abp.Modules;
+using System.Reflection;
 
 namespace SCBF
 {
@@ -15,6 +15,8 @@ namespace SCBF
     using SCBF.Storage.Dto;
     using SCBF.Users;
     using SCBF.Users.Dto;
+    using System;
+    using System.Linq;
 
     [DependsOn(typeof(TAFCoreModule), typeof(AbpAutoMapperModule))]
     public class TAFApplicationModule : AbpModule
@@ -80,7 +82,6 @@ namespace SCBF
                      + r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
                      + r.Column5));
 
-
                 mapper.CreateMap<BudgetOutlay, BudgetOutlaySimpleListDto>()
                     .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price));
 
@@ -89,6 +90,12 @@ namespace SCBF
                 .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column1 + r.Column2))
                 .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3));
 
+                mapper.CreateMap<BudgetOutlay, OutlayListDto>()
+                .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
+                .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column1 + r.Column2))
+                .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3))
+                .ForMember(m => m.Total4, n => n.MapFrom(r => decimal.Round(r.ActualOutlays.Sum(o => o.Amount) / 10000, 2, MidpointRounding.AwayFromZero)))
+                .ForMember(m => m.Surplus, n => n.MapFrom(r => r.Amount * r.Price - decimal.Round(r.ActualOutlays.Sum(o => o.Amount) / 10000, 2, MidpointRounding.AwayFromZero)));
 
                 mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
                 .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:mm")));
