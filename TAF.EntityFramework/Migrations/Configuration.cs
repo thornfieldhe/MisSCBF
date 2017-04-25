@@ -17,7 +17,7 @@ namespace SCBF.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "SCBF";
         }
 
@@ -31,8 +31,8 @@ namespace SCBF.Migrations
                 new InitialHostDbBuilder(context).Create();
 
                 //Default tenant seed (in host database).
-//                new DefaultTenantCreator(context).Create();
-//                new TenantRoleAndUserBuilder(context, 1).Create();
+                //                new DefaultTenantCreator(context).Create();
+                //                new TenantRoleAndUserBuilder(context, 1).Create();
             }
             else
             {

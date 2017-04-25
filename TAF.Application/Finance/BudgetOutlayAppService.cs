@@ -9,22 +9,19 @@
 
 namespace SCBF.Finance
 {
+    using Abp.Authorization;
+    using Abp.AutoMapper;
+    using Abp.UI;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+    using NPOI.XSSF.UserModel;
+    using SCBF.BaseInfo;
+    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Linq.Dynamic;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.UI;
-
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
-    using NPOI.XSSF.UserModel;
-
-    using SCBF.BaseInfo;
-    using SCBF.Finance.Dto;
-
     using TAF.Utility;
 
     /// <summary>
@@ -59,7 +56,21 @@ namespace SCBF.Finance
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.SheetName == type && !r.HasRelated).MapTo<List<BudgetOutlayListDto>>();
+                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.SheetName == type && !r.HasRelated).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlayListDto>>();
+            return result;
+        }
+
+
+        public List<BudgetOutlaySimpleListDto> GetSimple()
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var year = int.Parse(currentYearItem.Value);
+            var result =
+                this.budgetOutlayRepository.GetAllList(r => r.Year == year).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlaySimpleListDto>>();
             return result;
         }
 
@@ -91,25 +102,25 @@ namespace SCBF.Finance
             {
                 var sheet = this.workbook.GetSheetAt(j);
                 //最后一列的标号
-                var rowCount = sheet.LastRowNum;
+                var rowCount = sheet.LastRowNum + 1;
 
 
                 for (var i = 3; i < rowCount; i++)
                 {
                     var row = sheet.GetRow(i);
-                    if (row.GetCell(1) != null && !string.IsNullOrEmpty(row.GetCell(1).ToString()))
+                    if (!string.IsNullOrEmpty(row.GetCell(1).ToStr()))
                     {
                         var item = new BudgetOutlay()
                         {
                             SheetName = sheet.SheetName,
-                            Name = row.GetCell(0).ToString(),
-                            Unit = row.GetCell(1).ToString(),
-                            Amount = decimal.Parse(row.GetCell(2).ToString()),
-                            Price = decimal.Parse(row.GetCell(3).ToString()),
-                            Column1 = row.GetCell(6).ToString().IsDecemal() ? decimal.Parse(row.GetCell(6).ToString()) : 0,
-                            Column2 = row.GetCell(7).ToString().IsDecemal() ? decimal.Parse(row.GetCell(7).ToString()) : 0,
-                            Column3 = row.GetCell(8).ToString().IsDecemal() ? decimal.Parse(row.GetCell(8).ToString()) : 0,
-                            FileId = modelId.ToString(),
+                            Name = row.GetCell(0).ToStr(),
+                            Unit = row.GetCell(1).ToStr(),
+                            Amount = decimal.Parse(row.GetCell(2).ToStr()),
+                            Price = decimal.Parse(row.GetCell(3).ToStr()),
+                            Column1 = row.GetCell(6).ToStr().ToDecimal(),
+                            Column2 = row.GetCell(7).ToStr().ToDecimal(),
+                            Column3 = row.GetCell(8).ToStr().ToDecimal(),
+                            FileId = modelId,
                             Year = currentYear.Value.ToInt()
                         };
                         list.Add(item);
@@ -136,7 +147,7 @@ namespace SCBF.Finance
             return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value).Select(r => new KeyValue<string, string> { Key = r.SheetName, Value = r.SheetName }).Distinct().ToList();
         }
 
-        public void Update(BudgetOutlayEditDto input)
+        public void Update(OutlayEditDto input)
         {
             foreach (var value in input.OutlayIds)
             {
@@ -164,7 +175,7 @@ namespace SCBF.Finance
                 throw new UserFriendlyException("未设置预算年度");
             }
             var year = currentYear.Value.ToInt();
-            var query = this.budgetReceiptRepository.GetAllList(r => r.Year == year && r.Type == BungetType.Year).ToList();
+            var query = this.budgetReceiptRepository.GetAllList(r => r.Year == year && r.Type == BungetType.Year).OrderBy(r => r.Code).ToList();
 
             var list = new List<YearBudgetSummaryDto>();
             foreach (var receipt in query)

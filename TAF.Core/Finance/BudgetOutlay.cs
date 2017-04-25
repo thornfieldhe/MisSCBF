@@ -36,7 +36,7 @@ namespace SCBF.Finance
         /// <summary>
         /// 同一批次导入的预算文件的文件Id保持一致
         /// </summary>
-        public string FileId
+        public Guid FileId
         {
             get; set;
         }
@@ -103,6 +103,15 @@ namespace SCBF.Finance
         /// 预算收入列表
         /// </summary>
         public virtual BudgetReceipt BudgetReceipt
+        {
+            get; set;
+        }
+
+
+        /// <summary>
+        /// 实际预算支出列表
+        /// </summary>
+        public virtual List<ActualOutlay> ActualOutlays
         {
             get; set;
         }

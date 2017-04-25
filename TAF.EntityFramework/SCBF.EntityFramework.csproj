@@ -118,6 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
@@ -268,11 +269,28 @@
     <Compile Include="Migrations\201704201249530_addrelationshipwith_budget.Designer.cs">
       <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201417237_addtable_ActualOutlay.cs" />
+    <Compile Include="Migrations\201704201417237_addtable_ActualOutlay.Designer.cs">
+      <DependentUpon>201704201417237_addtable_ActualOutlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241153576_updateTable_actualoutlay2.cs" />
+    <Compile Include="Migrations\201704241153576_updateTable_actualoutlay2.Designer.cs">
+      <DependentUpon>201704241153576_updateTable_actualoutlay2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241212180_updateTable_actualoutlay3.cs" />
+    <Compile Include="Migrations\201704241212180_updateTable_actualoutlay3.Designer.cs">
+      <DependentUpon>201704241212180_updateTable_actualoutlay3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241233388_updateTable_actualoutlay4.cs" />
+    <Compile Include="Migrations\201704241233388_updateTable_actualoutlay4.Designer.cs">
+      <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolePermissionCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
+    <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
@@ -413,6 +431,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704201249530_addrelationshipwith_budget.resx">
       <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201417237_addtable_ActualOutlay.resx">
+      <DependentUpon>201704201417237_addtable_ActualOutlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241153576_updateTable_actualoutlay2.resx">
+      <DependentUpon>201704241153576_updateTable_actualoutlay2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241212180_updateTable_actualoutlay3.resx">
+      <DependentUpon>201704241212180_updateTable_actualoutlay3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241233388_updateTable_actualoutlay4.resx">
+      <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

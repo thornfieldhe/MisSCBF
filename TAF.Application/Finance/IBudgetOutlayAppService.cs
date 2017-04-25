@@ -9,11 +9,9 @@
 
 namespace SCBF.Finance
 {
+    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
-
-    using SCBF.Finance.Dto;
-
     using TAF.Utility;
 
     /// <summary>
@@ -23,11 +21,13 @@ namespace SCBF.Finance
     {
         List<BudgetOutlayListDto> Get(string type);
 
+        List<BudgetOutlaySimpleListDto> GetSimple();
+
         Guid LoadBudgetReceiptFile(string path);
 
         List<KeyValue<string, string>> GetSheetNames();
 
-        void Update(BudgetOutlayEditDto input);
+        void Update(OutlayEditDto input);
 
         List<YearBudgetSummaryDto> GetSummary();
     }

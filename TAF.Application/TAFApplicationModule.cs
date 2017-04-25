@@ -81,10 +81,17 @@ namespace SCBF
                      + r.Column5));
 
 
+                mapper.CreateMap<BudgetOutlay, BudgetOutlaySimpleListDto>()
+                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price));
+
                 mapper.CreateMap<BudgetOutlay, BudgetOutlayListDto>()
                 .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
                 .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column1 + r.Column2))
                 .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3));
+
+
+                mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
+                .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:mm")));
             });
         }
 

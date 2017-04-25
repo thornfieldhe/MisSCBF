@@ -142,12 +142,16 @@
     <Compile Include="BaseInfo\ISysDictionaryAppService.cs" />
     <Compile Include="BaseInfo\LayerAppService.cs" />
     <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
+    <Compile Include="Finance\ActualOutlayAppService.cs" />
     <Compile Include="Finance\BudgetOutlayAppService.cs" />
     <Compile Include="Finance\BudgetReceiptAppService.cs" />
-    <Compile Include="Finance\Dto\BudgetOutlayEditDto.cs" />
+    <Compile Include="Finance\Dto\ActualOutlayListDto.cs" />
+    <Compile Include="Finance\Dto\BudgetOutlaySimpleListDto.cs" />
+    <Compile Include="Finance\Dto\OutlayEditDto.cs" />
     <Compile Include="Finance\Dto\BudgetOutlayListDto.cs" />
     <Compile Include="Finance\Dto\BudgetReceiptListDto.cs" />
     <Compile Include="Finance\Dto\BudgetReceiptSimpleListDto.cs" />
+    <Compile Include="Finance\IActualOutlayAppService.cs" />
     <Compile Include="Finance\IBudgetOutlayAppService.cs" />
     <Compile Include="Finance\IBudgetReceiptAppService.cs" />
     <Compile Include="Finance\Dto\YearBudgetSummaryDto.cs" />

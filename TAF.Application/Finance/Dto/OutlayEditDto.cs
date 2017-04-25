@@ -15,9 +15,9 @@ namespace SCBF.Finance.Dto
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 支出预算编辑对象
+    /// 支出编辑对象
     /// </summary>
-    public class BudgetOutlayEditDto
+    public class OutlayEditDto
     {
         /// <summary>
         /// Id

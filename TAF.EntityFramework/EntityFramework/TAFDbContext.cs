@@ -93,7 +93,13 @@
         {
             get; set;
         }
+
         public DbSet<BudgetOutlay> BudgetOutlays
+        {
+            get; set;
+        }
+
+        public DbSet<ActualOutlay> ActualOutlays
         {
             get; set;
         }

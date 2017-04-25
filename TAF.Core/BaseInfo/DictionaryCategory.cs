@@ -73,6 +73,11 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Attachment_BudgetOutlays = "Attachment_BudgetOutlays";
 
+        /// <summary>
+        /// 实际支出附件
+        /// </summary>
+        public const string Attachment_ActualOutlays = "Attachment_ActualOutlays";
+
         #endregion
 
     }

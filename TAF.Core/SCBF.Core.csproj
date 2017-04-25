@@ -101,9 +101,11 @@
     <Compile Include="BaseInfo\Layer.cs" />
     <Compile Include="BaseInfo\SysDictionary.cs" />
     <Compile Include="BaseInfo\DictionaryCategory.cs" />
+    <Compile Include="Finance\ActualOutlay.cs" />
     <Compile Include="Finance\BudgetOutlay.cs" />
     <Compile Include="Finance\BudgetReceipt.cs" />
     <Compile Include="Finance\BungetType.cs" />
+    <Compile Include="Finance\IActualOutlayRepository.cs" />
     <Compile Include="Finance\IBudgetOutlayRepository.cs" />
     <Compile Include="Finance\IBudgetReceiptRepository.cs" />
     <Compile Include="Storage\Delivery.cs" />

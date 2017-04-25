@@ -11,7 +11,10 @@ using SCBF.Web;
 
 namespace SCBF.Web
 {
+    using System.Data.Entity;
+
     using SCBF.Api.Controllers;
+    using SCBF.EntityFramework;
 
     public class Startup
     {
@@ -31,6 +34,8 @@ namespace SCBF.Web
 
 
             app.MapSignalR();
+
+            Database.SetInitializer<TAFDbContext>(null);
         }
 
         private static bool IsTrue(string appSettingName)

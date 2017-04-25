@@ -9,22 +9,18 @@
 
 namespace SCBF.Finance
 {
+    using Abp.Authorization;
+    using Abp.AutoMapper;
+    using Abp.UI;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+    using NPOI.XSSF.UserModel;
+    using SCBF.BaseInfo;
+    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.UI;
-
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
-    using NPOI.XSSF.UserModel;
-
-    using SCBF.BaseInfo;
-    using SCBF.Finance.Dto;
-
     using TAF.Utility;
 
     /// <summary>
@@ -56,7 +52,7 @@ namespace SCBF.Finance
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetReceiptRepository.GetAllList(r => r.Year == year && (int)r.Type == type).MapTo<List<BudgetReceiptListDto>>();
+                this.budgetReceiptRepository.GetAllList(r => r.Year == year && (int)r.Type == type).OrderBy(r => r.Code).MapTo<List<BudgetReceiptListDto>>();
             var accounts =
                 this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account)
                     .Select(r => new KeyValue<string, string> { Key = r.LevelCode, Value = r.Name })
@@ -76,7 +72,7 @@ namespace SCBF.Finance
 
         public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
         {
-            return this.Get(type).Select(r => new KeyValue<Guid, string, string, decimal>() { Key = r.Id, Value = r.Code, Item3 = r.Name, Item4 = r.Total }).ToList();
+            return this.Get(type).OrderBy(r => r.Code).ToList().Select(r => new KeyValue<Guid, string, string, decimal>() { Key = r.Id, Value = r.Code, Item3 = r.Name, Item4 = r.Total }).ToList();
         }
 
         #region 上传预算表
@@ -114,7 +110,7 @@ namespace SCBF.Finance
             }
             var sheet = this.workbook.GetSheetAt(0);
             //最后一列的标号
-            int rowCount = sheet.LastRowNum;
+            int rowCount = sheet.LastRowNum + 1;
             var list = new List<BudgetReceipt>();
             var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
@@ -124,7 +120,7 @@ namespace SCBF.Finance
             for (var i = 2; i < rowCount; i++)
             {
                 var row = sheet.GetRow(i);
-                if (row.GetCell(0) != null && !string.IsNullOrEmpty(row.GetCell(0).ToStr()))
+                if (!string.IsNullOrEmpty(row.GetCell(0).ToStr()))
                 {
                     var item = new BudgetReceipt()
                     {
@@ -166,7 +162,7 @@ namespace SCBF.Finance
                         Note47 = row.GetCell(39).ToStr(),
                         Column5 = row.GetCell(40).ToStr().ToDecimal(),
                         Note5 = row.GetCell(41).ToStr(),
-                        FileId = modelId.ToString(),
+                        FileId = modelId,
                         Year = currentYear.Value.ToInt()
                     };
                     list.Add(item);

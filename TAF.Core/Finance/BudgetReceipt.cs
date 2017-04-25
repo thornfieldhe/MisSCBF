@@ -9,6 +9,7 @@
 
 namespace SCBF.Finance
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -43,7 +44,7 @@ namespace SCBF.Finance
         /// <summary>
         /// 同一批次导入的预算文件的文件Id保持一致
         /// </summary>
-        public string FileId
+        public Guid FileId
         {
             get; set;
         }
