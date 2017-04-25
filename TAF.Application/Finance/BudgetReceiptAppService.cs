@@ -32,15 +32,18 @@ namespace SCBF.Finance
         private readonly IBudgetReceiptRepository budgetReceiptRepository;
         private readonly ILayerRepository layerRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly IReceiptRepository receiptRepository;
         private IWorkbook workbook;
 
         public BudgetReceiptAppService(IBudgetReceiptRepository budgetReceiptRepository
             , ISysDictionaryRepository sysDictionaryRepository
-            , ILayerRepository layerRepository)
+            , ILayerRepository layerRepository
+            , IReceiptRepository receiptRepository)
         {
             this.budgetReceiptRepository = budgetReceiptRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
             this.layerRepository = layerRepository;
+            this.receiptRepository = receiptRepository;
         }
 
         public List<BudgetReceiptListDto> Get(int type)
@@ -73,6 +76,50 @@ namespace SCBF.Finance
         public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
         {
             return this.Get(type).OrderBy(r => r.Code).ToList().Select(r => new KeyValue<Guid, string, string, decimal>() { Key = r.Id, Value = r.Code, Item3 = r.Name, Item4 = r.Total }).ToList();
+        }
+
+        public List<ReceiptListDto> GetReceipts()
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var result = this.budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value).OrderBy(r => r.Code);
+            var result1 = result.Where(r => r.Type == BungetType.Year).ToList();
+            var result2 = result.Where(r => r.Type == BungetType.Adjust).ToList();
+            var result3 = result.Where(r => r.Type == BungetType.Increase).ToList();
+
+            var result4 = this.receiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value);
+            var list = new List<ReceiptListDto>();
+            foreach (var item in result1)
+            {
+                var item1 = result2.FirstOrDefault(r => r.Code == item.Code);
+                var item2 = result3.FirstOrDefault(r => r.Code == item.Code);
+                var item3 = result4.FirstOrDefault(r => r.Code == item.Code);
+                var receipt = new ReceiptListDto
+                {
+                    Id = item.Id,
+                    Code = item.Code,
+                    Total5 = item.Column1,
+                    Total6 = item.Column21 + item.Column22,
+                    Total7 = item.Column31 + item.Column32 + item.Column33 + item.Column34 + item.Column35 + item.Column36 + item.Column37,
+                    Total8 = item.Column41 + item.Column42 + item.Column43 + item.Column44 + item.Column45 + item.Column46 + item.Column47,
+                    Total9 = item.Column5,
+                    Total12 = item1 == null ? 0 : item1.Column1,
+                    Total13 = item1 == null ? 0 : item1.Column21 + item1.Column22,
+                    Total14 = item1 == null ? 0 : item1.Column31 + item1.Column32 + item1.Column33 + item1.Column34 + item1.Column35 + item1.Column36 + item1.Column37,
+                    Total15 = item1 == null ? 0 : item1.Column41 + item1.Column42 + item1.Column43 + item1.Column44 + item1.Column45 + item1.Column46 + item1.Column47,
+                    Total16 = item1 == null ? 0 : item1.Column5,
+                    Total18 = item2 == null ? 0 : item2.Column1,
+                    Total19 = item2 == null ? 0 : item2.Column21 + item2.Column22,
+                    Total26 = item3 == null ? 0 : item3.Amount
+                };
+                list.Add(receipt);
+            }
+            
+            return list;
         }
 
         #region 上传预算表

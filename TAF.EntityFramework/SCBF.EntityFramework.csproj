@@ -285,6 +285,14 @@
     <Compile Include="Migrations\201704241233388_updateTable_actualoutlay4.Designer.cs">
       <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704251342336_addtable_receipt.cs" />
+    <Compile Include="Migrations\201704251342336_addtable_receipt.Designer.cs">
+      <DependentUpon>201704251342336_addtable_receipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704251404577_updatetable_receipt_1.cs" />
+    <Compile Include="Migrations\201704251404577_updatetable_receipt_1.Designer.cs">
+      <DependentUpon>201704251404577_updatetable_receipt_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -298,6 +306,7 @@
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="TAF.EntityFramework\Repositories\AttachmentRepository.cs" />
@@ -443,6 +452,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704241233388_updateTable_actualoutlay4.resx">
       <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704251342336_addtable_receipt.resx">
+      <DependentUpon>201704251342336_addtable_receipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704251404577_updatetable_receipt_1.resx">
+      <DependentUpon>201704251404577_updatetable_receipt_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

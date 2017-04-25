@@ -21,7 +21,7 @@ var menu = new Vue({
     }
 });
 
-var defaultUrl = "http://localhost:5011/";
+var defaultUrl = "/";
 
 Path.map("#userList").to(function () { loadPage("/Account/UserList", "系统管理", "用户管理", "#menuUsers", false); });
 Path.map("#changePwd").to(function () { loadPage("/Account/ChangePwd", "系统管理", "修改密码", "#menuChangePass", false); });

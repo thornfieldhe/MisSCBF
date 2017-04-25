@@ -108,6 +108,8 @@
     <Compile Include="Finance\IActualOutlayRepository.cs" />
     <Compile Include="Finance\IBudgetOutlayRepository.cs" />
     <Compile Include="Finance\IBudgetReceiptRepository.cs" />
+    <Compile Include="Finance\IReceiptRepository.cs" />
+    <Compile Include="Finance\Receipt.cs" />
     <Compile Include="Storage\Delivery.cs" />
     <Compile Include="Storage\Entry.cs" />
     <Compile Include="Storage\DeliveryBill.cs" />

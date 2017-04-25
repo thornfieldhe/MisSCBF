@@ -105,6 +105,12 @@
         }
 
 
+        public DbSet<Receipt> Receipts
+        {
+            get; set;
+        }
+
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
