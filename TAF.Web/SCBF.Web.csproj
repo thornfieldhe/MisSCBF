@@ -865,6 +865,7 @@
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
     <Content Include="Scripts\Account\login.js" />
     <Content Include="Scripts\financeInfoIndex.js" />
+    <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\sysDictionary - 复制.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Web.config">
@@ -943,6 +944,7 @@
     <Content Include="Views\BudgetOutlay\_BudgetSummary.cshtml" />
     <Content Include="Views\ActualOutlay\_ActualOutlayIndex.cshtml" />
     <Content Include="Views\ActualOutlay\_OutlayIndex.cshtml" />
+    <Content Include="Views\BudgetReceipt\_ReceiptIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

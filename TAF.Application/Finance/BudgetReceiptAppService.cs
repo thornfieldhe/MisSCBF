@@ -85,6 +85,8 @@ namespace SCBF.Finance
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
+            var accounts = this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account);
+
 
             var result = this.budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value).OrderBy(r => r.Code);
             var result1 = result.Where(r => r.Type == BungetType.Year).ToList();
@@ -102,6 +104,7 @@ namespace SCBF.Finance
                 {
                     Id = item.Id,
                     Code = item.Code,
+                    Name = accounts.FirstOrDefault(r => r.LevelCode == item.Code)?.Name,
                     Total5 = item.Column1,
                     Total6 = item.Column21 + item.Column22,
                     Total7 = item.Column31 + item.Column32 + item.Column33 + item.Column34 + item.Column35 + item.Column36 + item.Column37,
@@ -118,8 +121,63 @@ namespace SCBF.Finance
                 };
                 list.Add(receipt);
             }
-            
+
             return list;
+        }
+
+        public ReceiptEditDto GetReceipt(string code)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var account =
+                this.layerRepository.FirstOrDefault(
+                    r => r.Category == DictionaryCategory.Budget_Account && r.LevelCode == code);
+            if (account == null)
+            {
+                throw new UserFriendlyException($"未知科目编码[{code}]");
+            }
+
+            var receipt = this.receiptRepository.FirstOrDefault(r => r.Code == code && r.Year.ToString() == currentYearItem.Value);
+            if (receipt == null)
+            {
+                return new ReceiptEditDto
+                {
+                    Code = code,
+                    Name = account.Name,
+                    Amount = 0
+                };
+            }
+            var result = receipt.MapTo<ReceiptEditDto>();
+            result.Name = account.Name;
+            return result;
+        }
+
+        public void SaveReceuotAmount(KeyValue<string, decimal> item)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var receipt = this.receiptRepository.FirstOrDefault(r => r.Code == item.Key && r.Year.ToString() == currentYearItem.Value);
+            if (receipt == null)
+            {
+                receipt = new Receipt
+                {
+                    Code = item.Key,
+                    Year = currentYearItem.Value.ToInt(),
+                    Amount = item.Value
+                };
+                this.receiptRepository.Insert(receipt);
+            }
+            else
+            {
+                receipt.Amount = item.Value;
+                this.receiptRepository.Update(receipt);
+            }
         }
 
         #region 上传预算表

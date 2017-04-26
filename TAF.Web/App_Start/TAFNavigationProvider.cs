@@ -96,6 +96,11 @@
                             L("支出对比明细"),
                             url: "#outlays",
                             requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuReceipts",
+                            L("预算收入与实际收入统计"),
+                            url: "#receipts",
+                            requiredPermissionName: PermissionNames.CwUser))
                        )
                 .AddItem(
                     new MenuItemDefinition(

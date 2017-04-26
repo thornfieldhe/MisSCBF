@@ -36,6 +36,7 @@ Path.map("#budgetOutlays").to(function () { loadPage("/BudgetOutlay/BudgetOutlay
 Path.map("#budgetSummary").to(function () { loadPage("/BudgetOutlay/BudgetSummary", "预算管理", "年度预算简表", "#menuBudgetSummary", false); });
 Path.map("#actualOutlays").to(function () { loadPage("/ActualOutlay/ActualOutlayList", "预算管理", "实际支出", "#menuActualOutlays", false); });
 Path.map("#outlays").to(function () { loadPage("/ActualOutlay/OutlayList", "预算管理", "支出对比明细", "#menuOutlays", false); });
+Path.map("#receipts").to(function () { loadPage("/BudgetReceipt/ReceiptList", "预算管理", "预算收入与实际收入统计", "#menuReceipts", false); });
 
 Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "仓库管理", "商品分类", "#menuProductCategories", false); });
 Path.map("#products").to(function () { loadPage("/Product/ProductList", "商品", "products", "#menuProducts", false); });

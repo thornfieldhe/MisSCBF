@@ -99,6 +99,7 @@ namespace SCBF
 
                 mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
                 .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:mm")));
+
             });
         }
 

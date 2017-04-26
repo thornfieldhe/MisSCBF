@@ -25,6 +25,11 @@ namespace SCBF.Finance
     public interface IBudgetReceiptAppService : IBaseEntityApplicationService
     {
         List<BudgetReceiptListDto> Get(int type);
+
+        List<ReceiptListDto> GetReceipts();
+        void SaveReceuotAmount(KeyValue<string, decimal> item);
+        ReceiptEditDto GetReceipt(string code);
+
         List<KeyValue<Guid, string, string, decimal>> GetSimple(int type);
 
         Guid LoadBudgetReceiptFile1(string path);

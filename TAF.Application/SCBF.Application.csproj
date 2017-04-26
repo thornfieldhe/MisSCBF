@@ -152,6 +152,7 @@
     <Compile Include="Finance\Dto\BudgetOutlayListDto.cs" />
     <Compile Include="Finance\Dto\BudgetReceiptListDto.cs" />
     <Compile Include="Finance\Dto\BudgetReceiptSimpleListDto.cs" />
+    <Compile Include="Finance\Dto\ReceiptEditDto.cs" />
     <Compile Include="Finance\Dto\ReceiptListDto.cs" />
     <Compile Include="Finance\IActualOutlayAppService.cs" />
     <Compile Include="Finance\IBudgetOutlayAppService.cs" />

@@ -10,7 +10,6 @@
 namespace SCBF.Finance.Dto
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// 
@@ -20,6 +19,8 @@ namespace SCBF.Finance.Dto
         public Guid Id { get; set; }
 
         public string Code { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// 预算收入合计
@@ -210,7 +211,7 @@ namespace SCBF.Finance.Dto
         {
             get
             {
-                return this.Total20 / this.Total3;
+                return this.Total3 == 0 ? 0 : decimal.Round(this.Total20 / this.Total3, 2, MidpointRounding.AwayFromZero);
             }
         }
 

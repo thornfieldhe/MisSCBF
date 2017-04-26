@@ -78,6 +78,11 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_BudgetReceiptIndex3");
         }
+
+        public ActionResult ReceiptList()
+        {
+            return PartialView("_ReceiptIndex");
+        }
     }
 }
 
