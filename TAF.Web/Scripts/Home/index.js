@@ -38,10 +38,11 @@ Path.map("#actualOutlays").to(function () { loadPage("/ActualOutlay/ActualOutlay
 Path.map("#outlays").to(function () { loadPage("/ActualOutlay/OutlayList", "预算管理", "支出对比明细", "#menuOutlays", false); });
 Path.map("#receipts").to(function () { loadPage("/BudgetReceipt/ReceiptList", "预算管理", "预算收入与实际收入统计", "#menuReceipts", false); });
 
-Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "仓库管理", "商品分类", "#menuProductCategories", false); });
-Path.map("#products").to(function () { loadPage("/Product/ProductList", "商品", "products", "#menuProducts", false); });
-Path.map("#entryBills").to(function () { loadPage("/EntryBill/EntryBillList", "入库单", "entryBills", "#menuEntryBills", false); });
-Path.map("#deliveryBills").to(function () { loadPage("/DeliveryBill/DeliveryBillList", "出库单", "entryBills", "#menuEeliveryBills", false); });
+Path.map("#productInfos").to(function () { loadPage("/Product/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
+Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "物资器材管理", "商品分类", "#menuProductCategories", false); });
+Path.map("#products").to(function () { loadPage("/Product/ProductList", "物资器材管理", "商品", "#menuProducts", false); });
+Path.map("#entryBills").to(function () { loadPage("/EntryBill/EntryBillList", "物资器材管理", "入库单", "#menuEntryBills", false); });
+Path.map("#deliveryBills").to(function () { loadPage("/DeliveryBill/DeliveryBillList", "物资器材管理", "出库单", "#menuEeliveryBills", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

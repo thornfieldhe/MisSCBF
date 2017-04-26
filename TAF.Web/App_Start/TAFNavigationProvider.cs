@@ -51,7 +51,7 @@
                                 "menuFinanceInfos",
                                 L("基础信息"),
                                 url: "#financeInfos",
-                                requiredPermissionName: PermissionNames.PagesAdmins))
+                                requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuAccount",
@@ -109,6 +109,12 @@
                         url: "#",
                         icon: "menu-icon fa  fa-truck",
                         requiredPermissionName: PermissionNames.Default)
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuProductInfos",
+                                L("基础信息"),
+                                url: "#productInfos",
+                                requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuProductCategories",

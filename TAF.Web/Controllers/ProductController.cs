@@ -9,12 +9,10 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System.Web.Mvc;
-
     using Abp.Web.Mvc.Authorization;
-
     using SCBF.BaseInfo;
     using SCBF.Storage;
+    using System.Web.Mvc;
 
     /// <summary>
     /// 商品控制器
@@ -38,6 +36,8 @@ namespace SCBF.Web.Controllers
             var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Mmaterial_ProductCategory);
             return PartialView("_ProductIndex", list);
         }
+
+        public ActionResult InfoList() { return PartialView("_ProductInfoIndex"); }
     }
 }
 

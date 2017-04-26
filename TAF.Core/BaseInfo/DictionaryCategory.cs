@@ -19,14 +19,9 @@ namespace SCBF.BaseInfo
         public const string Mmaterial_ProductCategory = "Mmaterial_ProductCategory";
 
         /// <summary>
-        /// 商品颜色
+        /// 商品单位
         /// </summary>
-        public const string Mmaterial_ProductColor = "Mmaterial_ProductColor";
-
-        /// <summary>
-        /// 商品品牌
-        /// </summary>
-        public const string Mmaterial_ProductBrand = "Mmaterial_ProductBrand";
+        public const string Mmaterial_ProductUnit = "Mmaterial_ProductUnit";
 
         /// <summary>
         /// 仓库

@@ -15,7 +15,7 @@ namespace SCBF.Web.Controllers
     using System.Web.Mvc;
 
     using Abp.Web.Mvc.Authorization;
-    
+
     using SCBF.BaseInfo;
 
     using TAF.Utility;
@@ -32,14 +32,13 @@ namespace SCBF.Web.Controllers
         {
             this.sysDictionaryAppService = sysDictionaryAppService;
         }
-        
+
         public ActionResult SysDictionaryList()
         {
             var list = new List<string>()
             {
                 DictionaryCategory.Mmaterial_ProductCategory,
-                DictionaryCategory.Mmaterial_ProductColor,
-                DictionaryCategory.Mmaterial_ProductBrand,
+                DictionaryCategory.Mmaterial_ProductUnit,
                 DictionaryCategory.Mmaterial_Storage,
                 DictionaryCategory.Budget_Year,
                 DictionaryCategory.Budget_Account,
@@ -48,7 +47,7 @@ namespace SCBF.Web.Controllers
                 DictionaryCategory.Attachment_BudgetOutlays,
                 DictionaryCategory.Attachment_Ext
             };
-            return PartialView("_SysDictionaryIndex",list);
+            return PartialView("_SysDictionaryIndex", list);
         }
     }
 }

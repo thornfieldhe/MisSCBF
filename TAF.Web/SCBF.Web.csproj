@@ -796,6 +796,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\productInfoIndex.js" />
     <Content Include="Scripts\outlay.js" />
     <Content Include="Scripts\budgetOutlay.js" />
     <Content Include="Scripts\budgetReceipt2.js" />
@@ -945,6 +946,7 @@
     <Content Include="Views\ActualOutlay\_ActualOutlayIndex.cshtml" />
     <Content Include="Views\ActualOutlay\_OutlayIndex.cshtml" />
     <Content Include="Views\BudgetReceipt\_ReceiptIndex.cshtml" />
+    <Content Include="Views\Product\_ProductInfoIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

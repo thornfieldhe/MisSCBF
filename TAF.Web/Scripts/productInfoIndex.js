@@ -1,21 +1,13 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#sysDictionaryFormBody",
-    ready: function () {
-        var $this = this;
-        $("#category").select2().on("change", function (e) { $this.item.category = $("#category").val(); });
-    },
+    template: "#budgetUnitFormBody",
     data: function () {
         return {
             item: {
                 id: "",            
-                value: "",
-                note: "",
                 category: "",
-                value2: "",
-                value3: "",
-                value4: "",
-                value5: ""
+                value: "",
+                title:""
             }
         };
     },
@@ -33,11 +25,10 @@
         'onGetItem': function (id) {
             this.editModel = true;
             var $this = this;
-            this.clearItem();
             abp.services.app.sysDictionary.get(id)
                 .done(function (m) {
                     $this.item = m;
-                    $("#category").select2().val(m.category).trigger("change");
+                    $this.item.title= main.title;
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -46,14 +37,8 @@
     },
     methods: {
         clearItem: function () {
-            this.item.id = "";
-            this.item.value= "";
-            this.item.note= "";
-            this.item.category= "";
-            this.item.value2= "";
-            this.item.value3= "";
-            this.item.value4= "";
-            this.item.value5= "";
+            this.item = {category:main.category,title:main.title};
+            this.$resetValidation();
         }
     }
 });
@@ -62,37 +47,49 @@
 var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
-        $("#searchCategory").select2().on("change", function (e) { main.queryEntity.category = $("#searchCategory").val(); });
+        var $this = this;
+        $this.title = "单位";
+        $this.category = "Mmaterial_ProductUnit";
+        $this.queryEntity.category = $this.category;
+        $("#myTab").on("shown.bs.tab", function(e) {
+            var id = $(e.target).attr("id");
+            if (id === "punit") {
+                $this.title = "单位";
+                $this.category = "Mmaterial_ProductUnit";
+            }else if (id === "pstorage") {
+                $this.title = "仓库";
+                $this.category = "Mmaterial_Storage";
+            }
+            $this.queryEntity.category = $this.category;
+            $this.query(0);
+        });
     },
     data: {
         queryEntity: {
-            value:"", 
-            note:"", 
             category:"", 
-            value2:"", 
-            value3:"", 
-            value4:"", 
-            value5:"" 
-        }
+            value:""
+        },
+        category: '',
+        title:''
     },
     events: {
-        'onResetSearch': function () {
-            this.queryEntity.value="";
-            this.queryEntity.note="";
-            this.queryEntity.category="";
-            this.queryEntity.value2="";
-            this.queryEntity.value3="";
-            this.queryEntity.value4="";
-            this.queryEntity.value5 = "";
-            $("#searchCategory").select2().val("").trigger("change");
-        }
+        
     },
     methods: {
+        search:function(category) {
+            this.queryEntity.category = category;
+            this.query();
+        },
         excuteQuery: function ($this) {
             abp.services.app.sysDictionary.getAll(main.queryEntity)
                 .done(function (r) {
                     $this.bindItems($this, r);
                 });
+        },
+        resetSearch: function () {
+            this.queryEntity.value="";
+            this.queryEntity.value2="";
+            this.queryEntity.note="";
         },
         delete: function (id) {
             var $this = this;
@@ -103,9 +100,16 @@ var main = new Vue({
                 .fail(function (m) {
                     $this.fail(m);
                 });
+        },
+        newItem: function (title, category) {
+            this.title = title;
+            this.category = category;
+            $("#addItemModal").modal("show");
+            this.$broadcast('onAddItem', title);
         }
     }
 });
+
 
 main.query(0);
 
