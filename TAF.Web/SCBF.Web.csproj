@@ -867,7 +867,6 @@
     <Content Include="Scripts\Account\login.js" />
     <Content Include="Scripts\financeInfoIndex.js" />
     <Content Include="Scripts\receipt.js" />
-    <Content Include="Scripts\sysDictionary - 复制.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -938,7 +937,6 @@
     <Content Include="Views\Finance\_FinanceInfoIndex.cshtml" />
     <Content Include="Views\Finance\_AccountList.cshtml" />
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex.cshtml" />
-    <Content Include="Views\SysDictionary\_SysDictionaryIndex - 复制.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex.cshtml" />
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex3.cshtml" />
     <Content Include="Views\BudgetReceipt\_BudgetReceiptIndex2.cshtml" />

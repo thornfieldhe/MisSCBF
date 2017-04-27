@@ -19,6 +19,7 @@ namespace SCBF.BaseInfo
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
+    using Abp.UI;
 
     using AutoMapper;
 
@@ -33,10 +34,13 @@ namespace SCBF.BaseInfo
     internal class LayerAppService : TAFAppServiceBase, ILayerAppService
     {
         private readonly ILayerRepository layerRepository;
+        private readonly IProductRepository productRepository;
 
-        public LayerAppService(ILayerRepository layerRepository)
+        public LayerAppService(ILayerRepository layerRepository
+            , IProductRepository productRepository)
         {
             this.layerRepository = layerRepository;
+            this.productRepository = productRepository;
         }
 
         public ListResultDto<LayerListDto> GetAll(LayerQueryDto request)
@@ -133,7 +137,38 @@ namespace SCBF.BaseInfo
 
         public void Delete(Guid id)
         {
+            var item = this.layerRepository.Get(id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("对象不存在");
+            }
+
+            if (this.layerRepository.Count(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id) > 0)
+            {
+                throw new UserFriendlyException("包含子节点,删除失败");
+            }
             this.layerRepository.Delete(id);
+        }
+
+
+        public void DeleteProductCategory(Guid id)
+        {
+            var item = this.layerRepository.Get(id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("商品分类不存在");
+            }
+
+            if (this.layerRepository.Any(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id))
+            {
+                throw new UserFriendlyException("分类下包含子分类,删除失败");
+            }
+
+            if (this.productRepository.Any(r => r.CategoryId == item.Id))
+            {
+                throw new UserFriendlyException("分类下包含子商品,删除失败");
+            }
+            this.Delete(id);
         }
 
         /// <summary>

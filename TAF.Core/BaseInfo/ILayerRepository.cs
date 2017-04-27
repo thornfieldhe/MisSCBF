@@ -18,7 +18,7 @@ namespace SCBF
     /// <summary>
     /// 商品类别仓储接口
     /// </summary>
-    public interface ILayerRepository : IRepository<Layer, Guid>
+    public interface ILayerRepository : ITAFRepositoryBase<Layer>
     {
 
     }

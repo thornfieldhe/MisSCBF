@@ -44,9 +44,8 @@ namespace SCBF.Storage
             var query = this.productRepository.GetAll()
 
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name) || r.PYCode.Contains(request.Name.ToUpper()))
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Brand), r => r.Brand == request.Brand)
-                .WhereIf(request.CategoryId != Guid.Empty, r => r.CategoryId == request.CategoryId)
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Color), r => r.Color == request.Color);
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Unit), r => r.Unit == request.Unit)
+                .WhereIf(request.CategoryId != Guid.Empty, r => r.CategoryId == request.CategoryId);
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)

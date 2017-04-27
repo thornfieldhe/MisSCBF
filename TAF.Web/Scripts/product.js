@@ -5,8 +5,7 @@
         var $this = this;
         var spinboxOrder = $('#spinboxOrder').spinbox('value', 0);
         spinboxOrder.options.min = 0;
-        $("#searchBrandItem").select2().on("change", function (e) { $this.item.brand = $("#searchBrandItem").val(); });
-        $("#searchColorItem").select2().on("change", function (e) { $this.item.color = $("#searchColorItem").val(); });
+        $("#searchUnitItem").select2().on("change", function (e) { $this.item.unit = $("#searchUnitItem").val(); });
     },
     data: function () {
         return {
@@ -15,9 +14,6 @@
                 name: "",
                 specifications: "",
                 unit: "",
-                unit2: "",
-                unitConversion: 0,
-                color: "",
                 note1: "",
                 code: "",
                 note2: "",
@@ -47,8 +43,7 @@
                     $this.item = m;
                     $this.item.categoryId = main.queryEntity.categoryId;
                     $('#spinboxOrder').spinbox('value', $this.item.order);
-                    $("#searchColorItem").select2().val($this.item.color).trigger("change");
-                    $("#searchBrandItem").select2().val($this.item.brand).trigger("change");
+                    $("#searchUnitItem").select2().val($this.item.unit).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -63,16 +58,12 @@
             this.item.specifications= "";
             this.item.pYCode= "";
             this.item.unit= "";
-            this.item.unit2= "";
-            this.item.unitConversion= 0;
             $('#spinboxOrder').spinbox('value', 0);
-            this.item.color= "";
             this.item.note1= "";
             this.item.note2= "";
             this.item.order = 0;
             this.item.categoryId = main.queryEntity.categoryId;
-            $("#searchColorItem").select2().val("").trigger("change");
-            $("#searchBrandItem").select2().val("").trigger("change");
+            $("#searchUnitItem").select2().val("").trigger("change");
         }
     }
 });
@@ -81,16 +72,14 @@
 var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
-        $("#searchColor").select2().on("change", function (e) { main.queryEntity.color = $("#searchColor").val(); });
-        $("#searchBrand").select2().on("change", function (e) { main.queryEntity.brand = $("#searchBrand").val(); });
+        $("#searchUnit").select2().on("change", function (e) { main.queryEntity.unit = $("#searchUnit").val(); });
         this.loadTree();
     },
     data: {
         queryEntity: {
             name:"", 
             specifications:"", 
-            color:"", 
-            brand: "",
+            unit: "",
             code: "",
             categoryId:""
         },
@@ -101,8 +90,7 @@ var main = new Vue({
             this.queryEntity.name="";
             this.queryEntity.specifications = "";
             this.queryEntity.code = "";
-            $("#searchColor").select2().val("").trigger("change");
-            $("#searchBrand").select2().val("").trigger("change");
+            $("#searchUnit").select2().val("").trigger("change");
         }
     },
     methods: {

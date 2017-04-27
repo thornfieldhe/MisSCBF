@@ -58,46 +58,6 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 单位
-        /// </summary>
-        public string Unit
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 辅助单位
-        /// </summary>
-        public string Unit2
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 单位换算
-        /// </summary>
-        public double UnitConversion
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 颜色
-        /// </summary>
-        public string Color
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 品牌
-        /// </summary>
-        public string Brand
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// 备注1
         /// </summary>
         public string Note1
@@ -109,6 +69,14 @@ namespace SCBF.Storage
         /// 备注2
         /// </summary>
         public string Note2
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 单位
+        /// </summary>
+        public string Unit
         {
             get; set;
         }

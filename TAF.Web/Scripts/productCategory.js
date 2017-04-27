@@ -114,7 +114,7 @@ var main = new Vue({
         'onDeleteItem':function() {
             var $this = this;
             console.log(555);
-            abp.services.app.layer.delete($this.selectNode.id)
+            abp.services.app.layer.deleteProductCategory($this.selectNode.id)
                 .done(function (m) {
                     $("#deleteItemDialog").modal("hide");
                     $this.loadTree();

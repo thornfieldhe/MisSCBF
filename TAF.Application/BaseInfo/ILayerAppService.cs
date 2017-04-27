@@ -9,13 +9,11 @@
 
 namespace SCBF.BaseInfo
 {
+    using Abp.Application.Services.Dto;
+    using SCBF.BaseInfo.Dto;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-
-    using SCBF.BaseInfo.Dto;
 
     /// <summary>
     /// 商品类别应用接口
@@ -27,6 +25,8 @@ namespace SCBF.BaseInfo
         Task SaveAsync(LayerEditDto input);
 
         Task SaveAccountAsync(LayerEditDto input);
+
+        void DeleteProductCategory(Guid id);
 
         void Delete(Guid id);
 

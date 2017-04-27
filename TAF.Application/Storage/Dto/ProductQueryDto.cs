@@ -36,14 +36,6 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// 颜色
-        /// </summary>
-        public string Color
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// 条码
         /// </summary>
         public string Code
@@ -52,9 +44,9 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// 品牌
+        /// 单位
         /// </summary>
-        public string Brand
+        public string Unit
         {
             get; set;
         }

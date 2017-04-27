@@ -67,37 +67,6 @@ namespace SCBF.Storage.Dto
             get; set;
         }
 
-        /// <summary>
-        /// Unit2
-        /// </summary>
-        public string Unit2
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// UnitConversion
-        /// </summary>
-        public double UnitConversion
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Color
-        /// </summary>
-        public string Color
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 品牌
-        /// </summary>
-        public string Brand
-        {
-            get; set;
-        }
 
         /// <summary>
         /// Note1

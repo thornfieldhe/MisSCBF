@@ -54,15 +54,7 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Color
         /// </summary>
-        public string Color
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 品牌
-        /// </summary>
-        public string Brand
+        public string Unit
         {
             get; set;
         }
