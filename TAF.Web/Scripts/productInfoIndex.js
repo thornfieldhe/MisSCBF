@@ -59,6 +59,9 @@ var main = new Vue({
             }else if (id === "pstorage") {
                 $this.title = "仓库";
                 $this.category = "Mmaterial_Storage";
+            } else if (id === "pyear") {
+                $this.title = "会计年度";
+                $this.category = "Mmaterial_Year";
             }
             $this.queryEntity.category = $this.category;
             $this.query(0);

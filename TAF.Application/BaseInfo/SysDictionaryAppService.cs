@@ -9,21 +9,19 @@
 
 namespace SCBF.BaseInfo
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
-
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
     using Abp.UI;
-
     using AutoMapper;
-
     using SCBF.BaseInfo.Dto;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
+    using TAF.Utility;
 
     /// <summary>
     /// 系统配置服务
@@ -68,16 +66,25 @@ namespace SCBF.BaseInfo
 
         public async Task SaveAsync(SysDictionaryEditDto input)
         {
-            var item = input.MapTo<SysDictionary>();
-            if (input.Id == Guid.Empty)
+            if (input.Category.Contains("Year"))
             {
-                await this.sysDictionaryRepository.InsertAsync(item);
+                input.Value2 = new DateTime(input.Value.ToInt(), 1, 1).ToString();
+                input.Value3 = new DateTime(input.Value.ToInt(), 12, 31).ToString();
+                await this.SaveYearAsync(input);
             }
             else
             {
-                var old = this.sysDictionaryRepository.Get(input.Id);
-                Mapper.Map(input, old);
-                await this.sysDictionaryRepository.UpdateAsync(old);
+                var item = input.MapTo<SysDictionary>();
+                if (input.Id == Guid.Empty)
+                {
+                    await this.sysDictionaryRepository.InsertAsync(item);
+                }
+                else
+                {
+                    var old = this.sysDictionaryRepository.Get(input.Id);
+                    Mapper.Map(input, old);
+                    await this.sysDictionaryRepository.UpdateAsync(old);
+                }
             }
         }
 
@@ -92,12 +99,12 @@ namespace SCBF.BaseInfo
             var dbItem =
                 this.sysDictionaryRepository.FirstOrDefault(
                     r => r.Category == input.Category && r.Value == input.Value);//存在预算年度
-            if (dbItem==null)
+            if (dbItem == null)
             {
                 var defaultYear =
                     this.sysDictionaryRepository.FirstOrDefault(
                         r => r.Category == input.Category && r.Value4 == true.ToString());//item4:是否是当前年度
-                if(defaultYear!=null)
+                if (defaultYear != null)
                 {
                     defaultYear.Value4 = false.ToString();
                 }
@@ -115,9 +122,9 @@ namespace SCBF.BaseInfo
             this.sysDictionaryRepository.Delete(id);
         }
 
-        public List<SysDictionaryListDto> GetSimpleList(string category=null)
+        public List<SysDictionaryListDto> GetSimpleList(string category = null)
         {
-            return this.sysDictionaryRepository.GetAllList(r=> category==null || r.Category==category).MapTo<List<SysDictionaryListDto>>();
+            return this.sysDictionaryRepository.GetAllList(r => category == null || r.Category == category).MapTo<List<SysDictionaryListDto>>();
         }
 
         public string GetModulePath(string category) { return $"{category}/{DateTime.Today.Year}/{DateTime.Today.Month}/{DateTime.Today.Day}"; }

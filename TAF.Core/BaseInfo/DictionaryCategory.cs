@@ -27,6 +27,10 @@ namespace SCBF.BaseInfo
         /// 仓库
         /// </summary>
         public const string Mmaterial_Storage = "Mmaterial_Storage";
+        /// <summary>
+        /// 会计年度
+        /// </summary>
+        public const string Material_Year = "Material_Year";
         #endregion
 
         #region 预算
