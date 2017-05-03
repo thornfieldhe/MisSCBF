@@ -9,15 +9,14 @@
 
 namespace SCBF.Storage
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Abp.Authorization;
     using Abp.AutoMapper;
-
-    using AutoMapper;
-
+    using Abp.UI;
     using SCBF.Storage.Dto;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 出库单服务
@@ -27,11 +26,15 @@ namespace SCBF.Storage
     {
         private readonly IDeliveryBillRepository deliveryBillRepository;
         private readonly IStockRepository stockRepository;
+        private readonly IDeliveryRepository deliveryRepository;
 
-        public DeliveryBillAppService(IDeliveryBillRepository deliveryBillRepository, IStockRepository stockRepository)
+        public DeliveryBillAppService(IDeliveryBillRepository deliveryBillRepository
+            , IDeliveryRepository deliveryRepository
+            , IStockRepository stockRepository)
         {
             this.deliveryBillRepository = deliveryBillRepository;
             this.stockRepository = stockRepository;
+            this.deliveryRepository = deliveryRepository;
         }
 
         public StockBillEditDto New()
@@ -39,43 +42,84 @@ namespace SCBF.Storage
             return new StockBillEditDto { Code = this.GetMaxCode(), Id = Guid.NewGuid() };
         }
 
-        public async Task SaveAsync(StockBillEditDto input)
+        public async Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input)
         {
             var item = input.MapTo<DeliveryBill>();
-            item.Deliveries.ForEach(r => r.DeliveryBillId = item.Id);
-            if (!this.deliveryBillRepository.Any(r => r.Id == input.Id))
-            {
-                item.Code = this.GetMaxCode();
-                item = await this.deliveryBillRepository.InsertAsync(item);
-            }
-            else
-            {
-                var old = this.deliveryBillRepository.Get(input.Id);
-                Mapper.Map(input, old);
-                item = await this.deliveryBillRepository.UpdateAsync(old);
-            }
+            item.Deliveries = new List<Delivery>();
+
+
 
             // 更新库存信息
             foreach (var entry in input.Items)
             {
-                var productInStock = this.stockRepository.FirstOrDefault(r => r.ProductId == entry.ProductId && r.StorageId == entry.StorageId);
-                if (productInStock == null)
+                var stocks =
+                    this.stockRepository.Get(
+                            r => r.ProductId == entry.ProductId && r.StorageId == entry.StorageId)
+                        .OrderBy(r => r.CreationTime)
+                        .ToList();//获取所有行库存量
+                var totalAmount = entry.Amount;
+                foreach (var stock in stocks)
                 {
-                    var stock = new Stock()
+                    if (stock.Amount > totalAmount)// 如果当前行库存量>出库量,则当前库存量=当前原库存量-出库量
                     {
-                        Amount = entry.Amount,
-                        ProductId = entry.ProductId,
-                        StorageId = entry.StorageId
-                    };
-                    await this.stockRepository.InsertAsync(stock);
+                        stock.Amount -= totalAmount;
+                        this.stockRepository.Update(stock);
+                        item.Deliveries.Add(
+                            new Delivery()
+                            {
+                                Amount = totalAmount,
+                                ProductId = entry.ProductId,
+                                DeliveryBillId = item.Id,
+                                Note = entry.Note,
+                                Price = stock.Price,
+                                StorageId = stock.StorageId
+                            });
+                        totalAmount = 0;
+                        break;
+                    }
+                    else if (stock.Amount == totalAmount) // 如果当前行库存量==出库量,则清除当前行库存
+                    {
+                        totalAmount = 0;
+                        this.stockRepository.Delete(stock);
+                        item.Deliveries.Add(
+                            new Delivery()
+                            {
+                                Amount = totalAmount,
+                                ProductId = entry.ProductId,
+                                DeliveryBillId = item.Id,
+                                Note = entry.Note,
+                                Price = stock.Price,
+                                StorageId = stock.StorageId
+                            });
+
+                        break;
+                    }
+                    else
+                    {
+                        totalAmount -= stock.Amount;
+                        item.Deliveries.Add(
+                            new Delivery()
+                            {
+                                Amount = stock.Amount,
+                                ProductId = entry.ProductId,
+                                DeliveryBillId = item.Id,
+                                Note = entry.Note,
+                                Price = stock.Price,
+                                StorageId = stock.StorageId
+                            });
+                        this.stockRepository.Delete(stock);
+                    }
                 }
-                else
+                if (totalAmount > 0)
                 {
-                    productInStock.Amount += entry.Amount;
-                    await this.stockRepository.UpdateAsync(productInStock);
+                    throw new UserFriendlyException($"商品[{entry.Name}]出库数量大于库存量,出库失败");
                 }
             }
 
+            item.Code = this.GetMaxCode();
+            await this.deliveryBillRepository.InsertAsync(item);
+            this.CurrentUnitOfWork.SaveChanges();
+            return this.deliveryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.DeliveryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
         }
 
         private string GetMaxCode()

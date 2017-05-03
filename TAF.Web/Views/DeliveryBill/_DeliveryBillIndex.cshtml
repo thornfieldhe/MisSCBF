@@ -16,26 +16,33 @@
                             <thead>
                                 <tr role="row">
                                     <th style="width: 200px;">
+                                        商品编码
+                                    </th>
+                                    <th style="width: 200px;">
                                         商品名称
                                     </th>
                                     <th style="width: 200px;">
-                                        商品编码
-                                    </th>
-                                    <th style="width: 80px;">
-                                        出库量
+                                        规格型号
                                     </th>
                                     <th style="width: 80px;">
                                         单位
                                     </th>
-                                    <th style="width: 200px;">
-                                        备注
+                                    <th style="width: 80px;">
+                                        单价
+                                    </th>
+                                    <th style="width: 80px;">
+                                        数量
+                                    </th>
+                                    <th style="width: 80px;">
+                                        小计
                                     </th>
                                     <th style="width: 100px;">
                                         仓库
                                     </th>
-                                    <th style="width: 80px;">
-                                        库存量
+                                    <th style="width: 200px;">
+                                        备注
                                     </th>
+
                                     <th style="width: 200px;">
                                         操作
                                     </th>
@@ -44,7 +51,7 @@
                                     <th>
                                     </th>
                                     <th>
-                                        <input type="text" class="form-control" placeholder="条码" v-model="queryEntity.code" id="code" v-on:keyup.13="add" />
+                                        <div v-show="!isReadOnly"> <input type="text" class="form-control" placeholder="条码" v-model="queryEntity.code" id="code" v-on:keyup.13="add" /></div>
                                     </th>
                                     <th>
                                     </th>
@@ -53,7 +60,11 @@
                                     <th>
                                     </th>
                                     <th>
-                                        <select id="searchStorageId" style="width: 100%" v-model="queryEntity.storageId">
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <div v-show="!isReadOnly"><select id="searchStorageId" style="width: 100%" v-model="queryEntity.storageId">
                                             @{
                                                 for (int i = 0; i < Model.Count; i++)
                                                 {
@@ -68,50 +79,60 @@
                                                 }
                                             }
                                         </select>
-
-                                    </th>
-                                    <th>
-                                    </th>
-                                    <th>
-                                        <button class="btn add" v-on:click="add()"><i class="fa fa-plus"></i> 新增</button>
-                                        <button class="btn btn-primary " v-on:click="save()"><i class="fa fa-floppy-o"></i> 提交</button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="i in item.items">
-                                    <td>{{i.name}}</td>
-                                    <td>{{i.code}}</td>
-                                    <td><div v-if="!i.status">{{i.amount}}</div><div v-else><input type="number" v-model="i.amount" /></div></td>
-                                    <td>{{i.unit}}</td>
-                                    <td><div v-if="!i.status">{{i.note}}</div><div v-else><input type="text" v-model="i.note" /></div></td>
-                                    <td>{{i.storageName}}</td>
-                                    <td>{{i.stockBalance}}</td>
-                                    <td>
-                                        <div v-if="!i.status">
-                                            <button type="button" class="btn   edit" v-on:click="edit(i)"><i class="fa fa-edit"></i> 编辑</button>
-                                            <button type="button" class="btn btn-danger  " v-on:click="delete(i) "><i class="fa fa-trash-o"></i> 删除</button>
-                                        </div>
-                                        <div v-else>
-                                            <button type="button" class="btn btn-default " v-on:click="cancel(i) "><i class="fa fa-mail-reply"></i> 取消</button>
-                                            <button type="button" class="btn btn-primary" v-on:click="update(i)"><i class="fa fa-floppy-o"></i> 更新</button>
                                         </div>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="8" class="DTTTFooter ">
-                                        <div class="col-sm-4">
-                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{item.items.length}} </div>
-                                        </div>
+                    </th>
+                    <th></th>
+                    <th>
 
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                        <div v-show="!isReadOnly">
+                            <button class="btn add" v-on:click="add()"><i class="fa fa-plus"></i> 新增</button>
+                            <button class="btn btn-primary " v-on:click="save()"><i class="fa fa-floppy-o"></i> 提交</button>
+                        </div>
+                        <div v-show="isReadOnly">
+                            <button class="btn btn-primary" v-on:click="clear()"><i class="fa fa-random"></i> 清理</button>
+                        </div>
+                    </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="i in item.items">
+                            <td>{{i.code}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.specifications}}</td>
+                            <td>{{i.unit}}</td>
+                            <td>{{i.price}}</td>
+                            <td><div v-if="!i.status">{{i.amount}}</div><div v-else><input type="number" v-model="i.amount" /></div></td>
+                            <td>{{i.price*i.amount}}</td>
+                            <td>{{i.storageName}}</td>
+                            <td><div v-if="!i.status">{{i.note}}</div><div v-else><input type="text" v-model="i.note" /></div></td>
+                            <td>
+                                <div v-show="!isReadOnly">
+                                    <div v-if="!i.status">
+                                        <button type="button" class="btn   edit" v-on:click="edit(i)"><i class="fa fa-edit"></i> 编辑</button>
+                                        <button type="button" class="btn btn-danger  " v-on:click="delete(i) "><i class="fa fa-trash-o"></i> 删除</button>
+                                    </div>
+                                    <div v-else>
+                                        <button type="button" class="btn btn-primary" v-on:click="update(i)"><i class="fa fa-floppy-o"></i> 更新</button>
+                                        <button type="button" class="btn btn-default " v-on:click="cancel(i) "><i class="fa fa-mail-reply"></i> 取消</button>
+                                    </div>
+                                </div>
+
+</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="11" class="DTTTFooter ">
+                                <div class="col-sm-4">
+                                    <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{item.items.length}} </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tfoot>
+                    </table>
+                </div>
                 </div>
             </div>
         </div>

@@ -9,16 +9,17 @@
 
 namespace SCBF.Storage
 {
-    using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using SCBF.Storage.Dto;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 出库单应用接口
     /// </summary>
     public interface IDeliveryBillAppService : IBaseEntityApplicationService
     {
-        Task SaveAsync(StockBillEditDto input);
+        Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input);
 
         StockBillEditDto New();
     }

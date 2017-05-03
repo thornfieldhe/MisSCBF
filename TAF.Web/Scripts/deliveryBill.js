@@ -13,7 +13,8 @@
         item: {
             items: []
         },
-        temp: -1
+        temp: -1,
+        isReadOnly:false
     },
     events: {
 
@@ -38,7 +39,7 @@
         },
         add: function () {
             var $this = this;
-            abp.services.app.deliveryBill.delivery($this.queryEntity)
+            abp.services.app.delivery.entry($this.queryEntity)
                 .done(function (m) {
                     $this.item.items.push(m);
                     $this.queryEntity.code = "";
@@ -73,8 +74,8 @@
             var $this = this;
             abp.services.app.deliveryBill.saveAsync($this.item)
                 .done(function (m) {
-                    $this.load();
-                    $("#code").focus();
+                    $this.item.items = m;
+                    $this.isReadOnly = true;
                 })
                 .fail(function (r) {
                     if (r.validationErrors !== null) {
@@ -85,6 +86,13 @@
                         taf.notify.danger(r.message);
                     }
                 });
+        },
+        clear:function() {
+            this.item.items = [];
+            this.isReadOnly = false;
+            this.load();
+            this.queryEntity.code = "";
+            $("#code").focus();
         }
     }
 });

@@ -9,9 +9,8 @@
 
 namespace SCBF.Storage.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 库存列表对象
@@ -36,9 +35,25 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// 规格
+        /// </summary>
+        public string Specifications
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 金额
+        /// </summary>
+        public decimal Price
         {
             get; set;
         }
@@ -79,14 +94,6 @@ namespace SCBF.Storage.Dto
         /// Code
         /// </summary>
         public string Code
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 库存量
-        /// </summary>
-        public decimal StockBalance
         {
             get; set;
         }

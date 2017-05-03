@@ -9,9 +9,8 @@
 
 namespace SCBF.Storage
 {
-    using System;
-
     using SCBF.BaseInfo;
+    using System;
 
     /// <summary>
     /// 入库
@@ -39,13 +38,6 @@ namespace SCBF.Storage
             get; set;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Unit
-        {
-            get; set;
-        }
 
         /// <summary>
         /// 金额

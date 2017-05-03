@@ -116,6 +116,7 @@
     <Compile Include="Storage\EntryBill.cs" />
     <Compile Include="Storage\IDeliveryBillRepository.cs" />
     <Compile Include="Storage\IEntryBillRepository.cs" />
+    <Compile Include="Storage\IDeliveryRepository.cs" />
     <Compile Include="Storage\IEntryRepository.cs" />
     <Compile Include="Storage\IProductRepository.cs" />
     <Compile Include="Storage\IStockRepository.cs" />

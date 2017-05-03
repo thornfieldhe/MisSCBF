@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201704271308345_modifyTable_product6.Designer.cs">
       <DependentUpon>201704271308345_modifyTable_product6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705021353483_updateTable_stock4.cs" />
+    <Compile Include="Migrations\201705021353483_updateTable_stock4.Designer.cs">
+      <DependentUpon>201705021353483_updateTable_stock4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -305,6 +309,7 @@
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
+    <Compile Include="Repositories\DeliveryRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
@@ -465,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704271308345_modifyTable_product6.resx">
       <DependentUpon>201704271308345_modifyTable_product6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021353483_updateTable_stock4.resx">
+      <DependentUpon>201705021353483_updateTable_stock4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

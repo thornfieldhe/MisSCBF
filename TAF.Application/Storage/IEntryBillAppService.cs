@@ -9,6 +9,7 @@
 
 namespace SCBF.Storage
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SCBF.Storage.Dto;
@@ -18,7 +19,7 @@ namespace SCBF.Storage
     /// </summary>
     public interface IEntryBillAppService : IBaseEntityApplicationService
     {
-        Task SaveAsync(StockBillEditDto input);
+        Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input);
 
         StockBillEditDto New();
     }

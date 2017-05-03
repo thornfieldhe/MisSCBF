@@ -9,9 +9,8 @@
 
 namespace SCBF.Storage
 {
-    using System;
-
     using SCBF.BaseInfo;
+    using System;
 
     /// <summary>
     /// 出库
@@ -33,15 +32,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public string Unit
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 入库量
+        /// 出库量
         /// </summary>
         public decimal Amount
         {
