@@ -67,6 +67,7 @@ namespace SCBF.BaseInfo
 
         public List<TreeItemDto> GetAllByCategory(string category)
         {
+            
             var list = this.layerRepository.GetAll()
                 .Where(r => r.Category == category)
                  .OrderBy(r => r.LevelCode).ToList();

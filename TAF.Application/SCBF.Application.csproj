@@ -41,6 +41,9 @@
       <HintPath>..\packages\Abp.AutoMapper.1.0.0.0\lib\net452\Abp.AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Abp.Quartz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Quartz.1.0.0.0\lib\net452\Abp.Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="Abp.Zero, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Zero.1.0.0.0\lib\net452\Abp.Zero.dll</HintPath>
       <Private>True</Private>
@@ -60,6 +63,12 @@
     <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -96,6 +105,9 @@
     <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
+    <Reference Include="Quartz, Version=2.4.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.4.1\lib\net40\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="SharpConfig, Version=1.5.6.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
       <HintPath>..\packages\sharpconfig.1.5.6\lib\net20\SharpConfig.dll</HintPath>
       <Private>True</Private>
@@ -127,20 +139,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInfo\AttachmentAppService.cs" />
+    <Compile Include="BaseInfo\ChangeYearTask.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentEditDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentListDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentQueryDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerEditDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerListDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerQueryDto.cs" />
+    <Compile Include="BaseInfo\Dto\ScheduledTaskListDto.cs" />
     <Compile Include="BaseInfo\Dto\SysDictionaryEditDto.cs" />
     <Compile Include="BaseInfo\Dto\SysDictionaryListDto.cs" />
     <Compile Include="BaseInfo\Dto\SysDictionaryQueryDto.cs" />
     <Compile Include="BaseInfo\Dto\TreeItemDto.cs" />
     <Compile Include="BaseInfo\IAttachmentAppService.cs" />
     <Compile Include="BaseInfo\ILayerAppService.cs" />
+    <Compile Include="BaseInfo\IScheduledTaskAppService.cs" />
     <Compile Include="BaseInfo\ISysDictionaryAppService.cs" />
     <Compile Include="BaseInfo\LayerAppService.cs" />
+    <Compile Include="BaseInfo\ScheduledTaskAppService.cs" />
     <Compile Include="BaseInfo\SysDictionaryAppService.cs" />
     <Compile Include="Finance\ActualOutlayAppService.cs" />
     <Compile Include="Finance\BudgetOutlayAppService.cs" />
@@ -171,6 +187,7 @@
     <Compile Include="Storage\Dto\StockEditDto.cs" />
     <Compile Include="Storage\Dto\StockListDto.cs" />
     <Compile Include="Storage\Dto\StockQueryDto.cs" />
+    <Compile Include="Storage\Dto\StockReportListDto.cs" />
     <Compile Include="Storage\EntryAppService.cs" />
     <Compile Include="Storage\EntryBillAppService.cs" />
     <Compile Include="Storage\IDeliveryAppService.cs" />
@@ -179,8 +196,10 @@
     <Compile Include="Storage\IEntryBillAppService.cs" />
     <Compile Include="Storage\IProductAppService.cs" />
     <Compile Include="Storage\IStockAppService.cs" />
+    <Compile Include="Storage\IStockReportAppService.cs" />
     <Compile Include="Storage\ProductAppService.cs" />
     <Compile Include="Storage\StockAppService.cs" />
+    <Compile Include="Storage\StockReportAppService.cs" />
     <Compile Include="TAFApplicationModule.cs" />
     <Compile Include="TAFAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
@@ -207,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

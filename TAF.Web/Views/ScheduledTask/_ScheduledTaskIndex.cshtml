@@ -1,0 +1,68 @@
+﻿@model List<TAF.Utility.KeyValue<string, Guid>>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">计划任务</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <add-button title="新增"></add-button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        Name
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Started
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        Schedule
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Name" v-model="queryEntity.name" />
+                                    </th>        
+                                    <th>
+                                        <select id="searchIsCompleted" style="width: 100%" v-model="queryEntity.started">
+                                                <option value="">请选择...</option>
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                        </select>
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Schedule" v-model="queryEntity.schedule" />
+                                    </th>        
+                                    <th><search-command></search-command></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.started}}</td>
+                                    <td>{{item.schedule}}</td>
+                                    <td>
+                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="4"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/scheduledTask.js"></script>
+
+
+

@@ -51,6 +51,11 @@
             get; set;
         }
 
+        public DbSet<ScheduledTask> ScheduledTasks
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 物资

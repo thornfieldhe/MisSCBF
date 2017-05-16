@@ -97,8 +97,10 @@
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
     <Compile Include="BaseInfo\ILayerRepository.cs" />
+    <Compile Include="BaseInfo\IScheduledTaskRepository.cs" />
     <Compile Include="BaseInfo\ISysDictionaryRepository.cs" />
     <Compile Include="BaseInfo\Layer.cs" />
+    <Compile Include="BaseInfo\ScheduledTask.cs" />
     <Compile Include="BaseInfo\SysDictionary.cs" />
     <Compile Include="BaseInfo\DictionaryCategory.cs" />
     <Compile Include="Finance\ActualOutlay.cs" />

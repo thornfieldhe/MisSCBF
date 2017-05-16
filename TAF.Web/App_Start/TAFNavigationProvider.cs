@@ -38,7 +38,13 @@
                                 "menuBaseInfos",
                                 L("基础信息"),
                                 url: "#baseInfos",
-                                requiredPermissionName: PermissionNames.PagesAdmins)))
+                                requiredPermissionName: PermissionNames.PagesAdmins))
+                    .AddItem(
+                            new MenuItemDefinition(
+                                "menuScheduledTasks",
+                                L("计划任务"),
+                                url: "#scheduledTasks",
+                                requiredPermissionName: PermissionNames.PagesAdmins))
                     .AddItem(
                     new MenuItemDefinition(
                         "Storage",
@@ -136,7 +142,7 @@
                             L("出库管理"),
                             url: "#deliveryBills",
                             requiredPermissionName: PermissionNames.WzUser))
-                       );
+                       ));
         }
 
         private static ILocalizableString L(string name)

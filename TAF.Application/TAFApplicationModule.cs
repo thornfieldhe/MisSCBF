@@ -18,7 +18,9 @@ namespace SCBF
     using System;
     using System.Linq;
 
-    [DependsOn(typeof(TAFCoreModule), typeof(AbpAutoMapperModule))]
+    using Abp.Quartz.Quartz;
+
+    [DependsOn(typeof(TAFCoreModule), typeof(AbpAutoMapperModule), typeof(AbpQuartzModule))]
     public class TAFApplicationModule : AbpModule
     {
         public override void PreInitialize()
@@ -51,6 +53,10 @@ namespace SCBF
                     .ForMember(m => m.LevelCode, n => n.MapFrom(r => r.Code));
                 mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
+
+                mapper.CreateMap<ScheduledTask, ScheduledTaskListDto>()
+        .ForMember(m => m.Started, n => n.MapFrom(r => r.Started ? "Y" : "N"));
+
 
                 #endregion
 

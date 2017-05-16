@@ -21,7 +21,8 @@ namespace SCBF.Migrations.SeedData
                                      new DefaultRolesCreator(_context),
                                      new DefaultRolePermissionCreator(_context),
                                      new HostRoleAndUserCreator(_context),
-                                     new DefaultSettingsCreator(_context)
+                                     new DefaultSettingsCreator(_context),
+                                     new ScheduledTaskCreator(_context)
                                  };
         }
 

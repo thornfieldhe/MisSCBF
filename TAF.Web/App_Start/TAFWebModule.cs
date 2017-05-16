@@ -1,13 +1,15 @@
-﻿using System.Reflection;
-using System.Web.Mvc;
-using System.Web.Routing;
-using Abp.Modules;
+﻿using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Abp.Zero.Configuration;
+using System.Reflection;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace SCBF.Web
 {
+    using Abp.Quartz.Quartz;
+
     using SCBF.Api;
 
     [DependsOn(
@@ -16,7 +18,8 @@ namespace SCBF.Web
         typeof(TAFWebApiModule),
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
-        typeof(AbpWebMvcModule))]
+        typeof(AbpWebMvcModule),
+        typeof(AbpQuartzModule))]
     public class TAFWebModule : AbpModule
     {
         public override void PreInitialize()
