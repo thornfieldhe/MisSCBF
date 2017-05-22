@@ -18,15 +18,10 @@ namespace SCBF.Web
 
             base.Application_Start(sender, e);
 
-            //            using (var context = new TAFDbContext())
-            //            {
-            //                new DefaultEditionsCreator(context);
-            //                new DefaultLanguagesCreator(context);
-            //                new DefaultRolesCreator(context);
-            //                new DefaultRolePermissionCreator(context);
-            //                new HostRoleAndUserCreator(context);
-            //                new DefaultSettingsCreator(context);
-            //            }
+            using (var context = new TAFDbContext())
+            {
+                new InitialHostDbBuilder(context).Create();
+            }
         }
     }
 }

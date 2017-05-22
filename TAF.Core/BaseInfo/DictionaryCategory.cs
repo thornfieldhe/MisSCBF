@@ -16,19 +16,19 @@ namespace SCBF.BaseInfo
         /// <summary>
         /// 商品分类
         /// </summary>
-        public const string Mmaterial_ProductCategory = "Mmaterial_ProductCategory";
+        public const string Material_ProductCategory = "Material_ProductCategory";
 
         /// <summary>
         /// 商品单位
         /// </summary>
-        public const string Mmaterial_ProductUnit = "Mmaterial_ProductUnit";
+        public const string Material_ProductUnit = "Material_ProductUnit";
 
         /// <summary>
         /// 仓库
         /// </summary>
-        public const string Mmaterial_Storage = "Mmaterial_Storage";
+        public const string Material_Storage = "Material_Storage";
         /// <summary>
-        /// 会计年度
+        /// 物资模块年度
         /// </summary>
         public const string Material_Year = "Material_Year";
         #endregion

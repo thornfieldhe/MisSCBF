@@ -15,6 +15,11 @@ using EntityFramework.DynamicFilters;
 
 namespace SCBF.Tests
 {
+    using Abp.Logging;
+
+    using Castle.Core.Logging;
+
+    using SCBF.Authorization;
     using SCBF.EntityFramework;
     using SCBF.Migrations.SeedData;
     using SCBF.MultiTenancy;
@@ -32,15 +37,15 @@ namespace SCBF.Tests
             UsingDbContext(context =>
             {
                 new InitialHostDbBuilder(context).Create();
-                new DefaultTenantCreator(context).Create();
+//                new DefaultTenantCreator(context).Create();
             });
 
             //Seed initial data for default tenant
-            AbpSession.TenantId = 1;
-            UsingDbContext(context =>
-            {
-                new TenantRoleAndUserBuilder(context, 1).Create();
-            });
+            AbpSession.TenantId = null;
+//            UsingDbContext(context =>
+//            {
+//                new TenantRoleAndUserBuilder(context, 1).Create();
+//            });
 
             LoginAsDefaultTenantAdmin();
         }
@@ -64,7 +69,10 @@ namespace SCBF.Tests
                 Component.For<DbConnection>()
                     .UsingFactoryMethod(() => _hostDb)
                     .LifestyleSingleton()
+//                Component.For<ILogger>()
+//                .ImplementedBy<Log4>()
                 );
+
         }
 
         /* Uses single database for host and Default tenant,
@@ -203,7 +211,7 @@ namespace SCBF.Tests
 
         protected void LoginAsDefaultTenantAdmin()
         {
-            LoginAsTenant(Tenant.DefaultTenantName, User.AdminUserName);
+            LoginAsTenant(null, User.AdminUserName);
         }
 
         protected void LoginAsHost(string userName)
@@ -224,23 +232,15 @@ namespace SCBF.Tests
             AbpSession.UserId = user.Id;
         }
 
-        protected void LoginAsTenant(string tenancyName, string userName)
+        protected void LoginAsTenant(int? tenancyId, string userName)
         {
-            var tenant = UsingDbContext(context => context.Tenants.FirstOrDefault(t => t.TenancyName == tenancyName));
-            if (tenant == null)
-            {
-                throw new Exception("There is no tenant: " + tenancyName);
-            }
-
-            AbpSession.TenantId = tenant.Id;
-
             var user =
                 UsingDbContext(
                     context =>
-                        context.Users.FirstOrDefault(u => u.TenantId == AbpSession.TenantId && u.UserName == userName));
+                        context.Users.FirstOrDefault(u => u.TenantId == tenancyId && u.UserName == userName));
             if (user == null)
             {
-                throw new Exception("There is no user: " + userName + " for tenant: " + tenancyName);
+                throw new Exception("There is no user: " + userName + " for tenant: " + tenancyId);
             }
 
             AbpSession.UserId = user.Id;

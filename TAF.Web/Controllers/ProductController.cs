@@ -33,7 +33,7 @@ namespace SCBF.Web.Controllers
 
         public ActionResult ProductList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Mmaterial_ProductUnit);
+            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_ProductUnit);
             return PartialView("_ProductIndex", list);
         }
 

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Abp.Authorization.Users;
+﻿using Abp.Authorization.Users;
 using Abp.UI;
 using Abp.Web.Models;
 using Abp.WebApi.Controllers;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace SCBF.Api.Controllers
 {
+    using Abp.Authorization;
+
     using SCBF.Api.Models;
     using SCBF.Authorization;
     using SCBF.MultiTenancy;

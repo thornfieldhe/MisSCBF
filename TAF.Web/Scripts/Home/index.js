@@ -26,7 +26,6 @@ var defaultUrl = "/";
 Path.map("#userList").to(function () { loadPage("/Account/UserList", "系统管理", "用户管理", "#menuUsers", false); });
 Path.map("#changePwd").to(function () { loadPage("/Account/ChangePwd", "系统管理", "修改密码", "#menuChangePass", false); });
 Path.map("#baseInfos").to(function () { loadPage("/SysDictionary/SysDictionaryList", "系统管理", "基础信息", "#menuBaseInfos", false); });
-Path.map("#scheduledTasks").to(function () { loadPage("/ScheduledTask/ScheduledTaskList", "系统管理", "计划任务", "#menuScheduledTasks", false); });
 
 Path.map("#financeInfos").to(function () { loadPage("/Finance/InfoList", "预算管理", "基础信息", "#menuFinanceInfos", false); });
 Path.map("#account").to(function () { loadPage("/Finance/AccountList", "预算管理", "会计科目", "#menuAccount", false); });

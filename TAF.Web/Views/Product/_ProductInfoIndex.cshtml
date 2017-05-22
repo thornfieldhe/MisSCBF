@@ -29,7 +29,7 @@
                             <div class="tab-content">
                                 <div id="unit" class="tab-pane active">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('单位','Mmaterial_ProductUnit')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('单位','Material_ProductUnit')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -48,7 +48,7 @@
                                                             <input type="text" class="form-control" placeholder="单位" v-model="queryEntity.value" />
                                                         </th>
                                                         <th>
-                                                            <button type="button" class="btn edit" v-on:click="search('Mmaterial_ProductUnit')"><i class="fa fa-search"></i> 搜索</button>
+                                                            <button type="button" class="btn edit" v-on:click="search('Material_ProductUnit')"><i class="fa fa-search"></i> 搜索</button>
                                                             <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
                                                         </th>
                                                     </tr>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div id="storage" class="tab-pane ">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('仓库','Mmaterial_Storage')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('仓库','Material_Storage')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -102,7 +102,7 @@
                                 </div>
                                 <div id="year" class="tab-pane ">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('会计年度','Mmaterial_Year')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('会计年度','Material_Year')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-show="item.category=='Mmaterial_Storage'">
+                <div class="row" v-show="item.category=='Material_Storage'">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">库管员<span class="red">*</span></label>

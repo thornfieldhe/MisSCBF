@@ -9,30 +9,40 @@
 
 namespace SCBF.BaseInfo
 {
-    using System;
-    using System.Collections.Generic;
-
     using Abp.Dependency;
-
+    using Abp.Quartz.Quartz;
     using Castle.Core.Logging;
-
     using Quartz;
+    using SCBF.BaseInfo.Dto;
+    using System;
 
     /// <summary>
-    /// 
+    /// 物资管理模块年底更新期末数据
     /// </summary>
-    public class ChangeYearTask : IJob, ITransientDependency
+    public class ChangeYearTask : JobBase, ITransientDependency
     {
-        private readonly ILogger logger;
-        public ChangeYearTask(ILogger logger) {
-            this.logger = logger;
+        private readonly ISysDictionaryAppService sysDictionaryAppService;
+        public ChangeYearTask(ISysDictionaryAppService sysDictionaryAppService)
+        {
+            this.sysDictionaryAppService = sysDictionaryAppService;
         }
 
-        
-        public void Execute(IJobExecutionContext context)
+
+        public override void Execute(IJobExecutionContext context)
         {
-            logger.Info($"当前时间:{DateTime.Now}");
-            
+            var t = DateTime.Today.Year.ToString();
+            var year =
+                sysDictionaryAppService.SaveYearAsync(
+                    new SysDictionaryEditDto()
+                    {
+                        Category = DictionaryCategory.Material_Year,
+                        Value = t
+                    });
+
+
         }
+
+        public static readonly string Schedule = "0 0 1 1 1 ?";//每年1月1日1:00执行
     }
+
 }

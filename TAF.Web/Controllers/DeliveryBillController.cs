@@ -31,7 +31,7 @@ namespace SCBF.Web.Controllers
 
         public ActionResult DeliveryBillList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Mmaterial_Storage).ToList();
+            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_Storage).ToList();
             return PartialView("_DeliveryBillIndex", list);
         }
     }

@@ -51,11 +51,6 @@
             get; set;
         }
 
-        public DbSet<ScheduledTask> ScheduledTasks
-        {
-            get; set;
-        }
-
         #endregion
 
         #region 物资
@@ -69,6 +64,12 @@
         {
             get; set;
         }
+
+        public DbSet<HisStock> HisStocks
+        {
+            get; set;
+        }
+
 
         public DbSet<Delivery> Deliveries
         {

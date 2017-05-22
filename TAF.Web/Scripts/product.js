@@ -112,7 +112,7 @@ var main = new Vue({
         },
         loadTree: function () {
             var $this = this;
-            abp.services.app.layer.getAllByCategory("Mmaterial_ProductCategory")
+            abp.services.app.layer.getAllByCategory("Material_ProductCategory")
                 .done(function (m) {
                     $this.tree = $.fn.zTree.init($("#treeCatalog"), {
                         data: {

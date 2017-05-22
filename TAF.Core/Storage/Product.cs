@@ -94,6 +94,10 @@ namespace SCBF.Storage
             get; set;
         }
 
+        public virtual List<HisStock> HisStocks
+        {
+            get; set;
+        }
 
         public virtual List<Delivery> Deliveries
         {

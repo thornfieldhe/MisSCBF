@@ -5,8 +5,9 @@ using System.Reflection;
 namespace SCBF
 {
 
+    using Abp.Quartz.Quartz;
     using Microsoft.AspNet.Identity;
-
+    using Quartz;
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
     using SCBF.Finance;
@@ -17,8 +18,6 @@ namespace SCBF
     using SCBF.Users.Dto;
     using System;
     using System.Linq;
-
-    using Abp.Quartz.Quartz;
 
     [DependsOn(typeof(TAFCoreModule), typeof(AbpAutoMapperModule), typeof(AbpQuartzModule))]
     public class TAFApplicationModule : AbpModule
@@ -53,9 +52,6 @@ namespace SCBF
                     .ForMember(m => m.LevelCode, n => n.MapFrom(r => r.Code));
                 mapper.CreateMap<SysDictionary, SysDictionaryListDto>();
                 mapper.CreateMap<SysDictionary, SysDictionaryEditDto>();
-
-                mapper.CreateMap<ScheduledTask, ScheduledTaskListDto>()
-        .ForMember(m => m.Started, n => n.MapFrom(r => r.Started ? "Y" : "N"));
 
 
                 #endregion
@@ -97,6 +93,31 @@ namespace SCBF
                     .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
                     .ForMember(m => m.Code, n => n.MapFrom(r => r.Product.Code));
 
+                mapper.CreateMap<Stock, HisStock>()
+                .ForMember(m => m.CreationTime, n => n.MapFrom(r => DateTime.Today))
+                .ForMember(m => m.LastModificationTime, n => n.Ignore())
+                .ForMember(m => m.Date, n => n.MapFrom(r => DateTime.Today.AddDays(-1)));
+
+                mapper.CreateMap<HisStock, HisStockReportListDto>()
+                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Inital))
+                    .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
+                    .ForMember(m => m.Amount1, n => n.MapFrom(r => r.Amount))
+                    .ForMember(m => m.Price1, n => n.MapFrom(r => r.Price))
+                    .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
+                    .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
+                    .ForMember(m => m.ProductId, n => n.MapFrom(r => r.ProductId))
+                    .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit));
+
+
+                mapper.CreateMap<Stock, HisStockReportListDto>()
+                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Inital))
+                    .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
+                    .ForMember(m => m.Amount2, n => n.MapFrom(r => r.Amount))
+                    .ForMember(m => m.Price2, n => n.MapFrom(r => r.Price))
+                    .ForMember(m => m.Total2, n => n.MapFrom(r => r.Amount * r.Price))
+                    .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
+                    .ForMember(m => m.ProductId, n => n.MapFrom(r => r.ProductId))
+                    .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit));
                 #endregion
 
                 #region 预算模块
@@ -138,5 +159,34 @@ namespace SCBF
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
 
+        /// <summary>
+        /// 初始化模块时启动任务
+        /// </summary>
+        public override void PostInitialize()
+        {
+            base.PostInitialize();
+            var jobManager = this.IocManager.IocContainer.Resolve<IQuartzScheduleJobManager>();
+            jobManager.ScheduleAsync<ChangeYearTask>(
+                job =>
+                {
+                    job.WithIdentity(nameof(ChangeYearTask), "MyGroup");
+                },
+                trigger =>
+                {
+                    trigger.WithIdentity(nameof(ChangeYearTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(ChangeYearTask.Schedule)).Build();
+
+                });
+
+            jobManager.ScheduleAsync<DailyStoreTask>(
+                job =>
+                {
+                    job.WithIdentity(nameof(DailyStoreTask), "MyGroup");
+                },
+                trigger =>
+                {
+                    trigger.WithIdentity(nameof(DailyStoreTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(DailyStoreTask.Schedule)).Build();
+
+                });
+        }
     }
 }

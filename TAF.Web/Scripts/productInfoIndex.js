@@ -49,19 +49,19 @@ var main = new Vue({
     ready: function () {
         var $this = this;
         $this.title = "单位";
-        $this.category = "Mmaterial_ProductUnit";
+        $this.category = "Material_ProductUnit";
         $this.queryEntity.category = $this.category;
         $("#myTab").on("shown.bs.tab", function(e) {
             var id = $(e.target).attr("id");
             if (id === "punit") {
                 $this.title = "单位";
-                $this.category = "Mmaterial_ProductUnit";
+                $this.category = "Material_ProductUnit";
             }else if (id === "pstorage") {
                 $this.title = "仓库";
-                $this.category = "Mmaterial_Storage";
+                $this.category = "Material_Storage";
             } else if (id === "pyear") {
                 $this.title = "会计年度";
-                $this.category = "Mmaterial_Year";
+                $this.category = "Material_Year";
             }
             $this.queryEntity.category = $this.category;
             $this.query(0);

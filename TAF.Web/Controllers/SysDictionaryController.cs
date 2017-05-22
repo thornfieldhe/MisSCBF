@@ -9,16 +9,10 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Mvc;
-
     using Abp.Web.Mvc.Authorization;
-
     using SCBF.BaseInfo;
-
-    using TAF.Utility;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
 
     /// <summary>
     /// 系统配置控制器
@@ -37,9 +31,9 @@ namespace SCBF.Web.Controllers
         {
             var list = new List<string>()
             {
-                DictionaryCategory.Mmaterial_ProductCategory,
-                DictionaryCategory.Mmaterial_ProductUnit,
-                DictionaryCategory.Mmaterial_Storage,
+                DictionaryCategory.Material_ProductCategory,
+                DictionaryCategory.Material_ProductUnit,
+                DictionaryCategory.Material_Storage,
                 DictionaryCategory.Budget_Year,
                 DictionaryCategory.Budget_Account,
                 DictionaryCategory.Attachment_BashPath,
