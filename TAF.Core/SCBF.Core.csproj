@@ -108,7 +108,7 @@
   <ItemGroup>
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
-    <Compile Include="BaseInfo\IHisStockRepository.cs" />
+    <Compile Include="Storage\IHisStockRepository.cs" />
     <Compile Include="BaseInfo\ILayerRepository.cs" />
     <Compile Include="BaseInfo\ISysDictionaryRepository.cs" />
     <Compile Include="BaseInfo\Layer.cs" />

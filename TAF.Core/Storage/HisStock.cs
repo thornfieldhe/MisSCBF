@@ -58,6 +58,12 @@ namespace SCBF.Storage
             get; set;
         }
 
+
+        public virtual SysDictionary Storage
+        {
+            get; set;
+        }
+
         /// <summary>
         /// 库存日期
         /// </summary>

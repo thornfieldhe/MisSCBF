@@ -19,6 +19,8 @@ namespace SCBF.Tests.BaseInfo
 
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
+    using SCBF.Storage;
+    using SCBF.Storage.Dto;
     using SCBF.Users.Dto;
 
     using Shouldly;

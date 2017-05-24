@@ -98,25 +98,29 @@ namespace SCBF
                 .ForMember(m => m.LastModificationTime, n => n.Ignore())
                 .ForMember(m => m.Date, n => n.MapFrom(r => DateTime.Today.AddDays(-1)));
 
-                mapper.CreateMap<HisStock, HisStockReportListDto>()
-                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Inital))
+                mapper.CreateMap<Entry, HisStockReportListDto>()
+                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Add))
                     .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
-                    .ForMember(m => m.Amount1, n => n.MapFrom(r => r.Amount))
-                    .ForMember(m => m.Price1, n => n.MapFrom(r => r.Price))
-                    .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
+                    .ForMember(m => m.Amount1, n => n.MapFrom(r => r.Amount.ToString()))
+                    .ForMember(m => m.Price1, n => n.MapFrom(r => r.Price.ToString()))
+                    .ForMember(m => m.Total1, n => n.MapFrom(r => (r.Amount * r.Price).ToString()))
                     .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
                     .ForMember(m => m.ProductId, n => n.MapFrom(r => r.ProductId))
+                    .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.CreationTime.ToString("yyyy-MM-dd")))
                     .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit));
 
 
-                mapper.CreateMap<Stock, HisStockReportListDto>()
-                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Inital))
+                mapper.CreateMap<Delivery, HisStockReportListDto>()
+                    .ForMember(m => m.Category, n => n.MapFrom(r => HisStoreReportCategory.Add))
                     .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
-                    .ForMember(m => m.Amount2, n => n.MapFrom(r => r.Amount))
-                    .ForMember(m => m.Price2, n => n.MapFrom(r => r.Price))
-                    .ForMember(m => m.Total2, n => n.MapFrom(r => r.Amount * r.Price))
+                    .ForMember(m => m.Amount2, n => n.MapFrom(r => r.Amount.ToString()))
+                    .ForMember(m => m.Price2, n => n.MapFrom(r => (r.Price * -1).ToString()))
+                    .ForMember(m => m.Total2, n => n.MapFrom(r => (r.Amount * r.Price * -1).ToString()))
                     .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
                     .ForMember(m => m.ProductId, n => n.MapFrom(r => r.ProductId))
+                    .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.CreationTime.ToString("yyyy-MM-dd")))
                     .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit));
                 #endregion
 

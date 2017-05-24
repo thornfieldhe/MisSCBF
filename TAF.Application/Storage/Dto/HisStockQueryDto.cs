@@ -1,74 +1,72 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HisStockListDto.cs" company=""  author="何翔华">
+// <copyright file="HisStockQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   计划任务列表对象
+//   计划任务查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo.Dto
+namespace SCBF.Storage.Dto
 {
     using System;
-
-    using Abp.AutoMapper;
-
-    using SCBF.Storage;
+    
+    using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 计划任务列表对象
+    /// 计划任务查询对象
     /// </summary>
-    [AutoMap(typeof(HisStock))]
-    public class HisStockListDto
-    {
+    public class HisStockQueryDto : PagedAndSortedResultRequestDto
+    {  
+        
         /// <summary>
-        /// Id
+        /// ProductId
         /// </summary>
-        public Guid Id
+        public Guid? ProductId
         {
             get; set;
-        }
-
-        /// <summary>
-        /// ProductName
-        /// </summary>
-        public string ProductName
-        {
-            get; set;
-        }
-
+        }        
+        
         /// <summary>
         /// Amount
         /// </summary>
-        public decimal Amount
+        public decimal? Amount
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
         /// Price
         /// </summary>
-        public decimal Price
+        public decimal? Price
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// StorageName
+        /// StorageId
         /// </summary>
-        public string StorageName
+        public Guid? StorageId
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// Date
+        /// DateFrom
         /// </summary>
-        public DateTime Date
+        public DateTime? DateFrom
         {
             get; set;
-        }
-    }
+        } 
+        
+        /// <summary>
+        /// DateTo
+        /// </summary>
+        public DateTime? DateTo
+        {
+            get; set;
+        }  
+    } 
 }
 
 

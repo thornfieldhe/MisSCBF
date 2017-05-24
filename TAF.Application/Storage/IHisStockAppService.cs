@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo
+namespace SCBF.Storage
 {
     using Abp.Application.Services.Dto;
 
     using SCBF.BaseInfo.Dto;
+    using SCBF.Storage.Dto;
 
     /// <summary>
     /// 计划任务应用接口

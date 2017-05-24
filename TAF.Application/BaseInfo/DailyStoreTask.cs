@@ -17,6 +17,8 @@ namespace SCBF.BaseInfo
 
     using Quartz;
 
+    using SCBF.Storage;
+
     /// <summary>
     /// 每日更新当日库存
     /// </summary>

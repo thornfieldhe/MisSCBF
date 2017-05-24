@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo
+namespace SCBF.Storage
 {
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
@@ -22,6 +22,9 @@ namespace SCBF.BaseInfo
 
     using Abp.UI;
 
+    using SCBF.BaseInfo;
+    using SCBF.Storage.Dto;
+
     using TAF.Utility;
 
     /// <summary>
@@ -32,14 +35,20 @@ namespace SCBF.BaseInfo
     {
         private readonly IHisStockRepository hisStockRepository;
         private readonly IStockRepository stockRepository;
+        private readonly IDeliveryBillRepository deliveryBillRepository;
+        private readonly IEntryBillRepository entryBillRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
 
         public HisStockAppService(IHisStockRepository hisStockRepository
             , IStockRepository stockRepository
+            , IDeliveryBillRepository deliveryBillRepository
+            , IEntryBillRepository entryBillRepository
             , ISysDictionaryRepository sysDictionaryRepository)
         {
             this.hisStockRepository = hisStockRepository;
             this.stockRepository = stockRepository;
+            this.entryBillRepository = entryBillRepository;
+            this.deliveryBillRepository = deliveryBillRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
         }
 
@@ -75,13 +84,9 @@ namespace SCBF.BaseInfo
                 throw new UserFriendlyException("会计年度不存在");
             }
             var year = defaultYear.Value.ToInt();
-            var dtFrom = new DateTime(year , 1, 1);
+            var dtFrom = new DateTime(year, 1, 1);
             var dtTo = new DateTime(year, 3, 31);
 
-            List<HisStockReportListDto> initialNumbers;
-            List<HisStockReportListDto> addNumbers;
-            List<HisStockReportListDto> reduceNumbers;
-            List<HisStockReportListDto> endNumbers;
             switch (quarter)
             {
                 case 1:
@@ -97,11 +102,27 @@ namespace SCBF.BaseInfo
 
             var initialDate = dtFrom.AddDays(-1);
             var endDate = dtTo.AddDays(1);
-            initialNumbers = this.hisStockRepository.Get(r => r.Date == initialDate).MapTo<List<HisStockReportListDto>>();
-            addNumbers = this.stockRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
-            reduceNumbers = this.stockRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
-            endNumbers = this.hisStockRepository.Get(r => r.Date == endDate).MapTo<List<HisStockReportListDto>>();
-            return null;
+            var initialNumbers = this.hisStockRepository.Get(r => r.Date == initialDate).MapTo<List<HisStockReportListDto>>();
+            var addNumbers = this.deliveryBillRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
+            var reduceNumbers = this.entryBillRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
+            var endNumbers = this.hisStockRepository.Get(r => r.Date == endDate).MapTo<List<HisStockReportListDto>>();
+            endNumbers.ForEach(
+                item =>
+                    {
+                        item.Price3 = item.Price1;
+                        item.Amount3 = item.Amount1;
+                        item.Total3 = item.Total1;
+                        item.Price1 = string.Empty;
+                        item.Amount1 = string.Empty;
+                        item.Total1 = string.Empty;
+
+                    });
+            var result = new List<HisStockReportListDto>();
+            result.AddRange(initialNumbers);
+            result.AddRange(addNumbers);
+            result.AddRange(reduceNumbers);
+            result.AddRange(endNumbers);
+            return result.OrderBy(r => r.Date).ToList();
         }
 
         public void BackupData()

@@ -70,5 +70,10 @@ namespace SCBF.BaseInfo
         {
             get; set;
         }
+
+        public virtual List<HisStock> HisStocks
+        {
+            get; set;
+        }
     }
 }

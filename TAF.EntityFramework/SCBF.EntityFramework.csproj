@@ -322,6 +322,10 @@
     <Compile Include="Migrations\201705191316470_deleteTable_SchaduleTasks.Designer.cs">
       <DependentUpon>201705191316470_deleteTable_SchaduleTasks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241332459_updateRelationship_hisstock.cs" />
+    <Compile Include="Migrations\201705241332459_updateRelationship_hisstock.Designer.cs">
+      <DependentUpon>201705241332459_updateRelationship_hisstock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -504,6 +508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705191316470_deleteTable_SchaduleTasks.resx">
       <DependentUpon>201705191316470_deleteTable_SchaduleTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241332459_updateRelationship_hisstock.resx">
+      <DependentUpon>201705241332459_updateRelationship_hisstock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

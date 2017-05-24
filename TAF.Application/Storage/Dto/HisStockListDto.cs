@@ -1,72 +1,74 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HisStockQueryDto.cs" company=""  author="何翔华">
+// <copyright file="HisStockListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   计划任务查询对象
+//   计划任务列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo.Dto
+namespace SCBF.Storage.Dto
 {
     using System;
-    
-    using Abp.Application.Services.Dto;
+
+    using Abp.AutoMapper;
+
+    using SCBF.Storage;
 
     /// <summary>
-    /// 计划任务查询对象
+    /// 计划任务列表对象
     /// </summary>
-    public class HisStockQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    [AutoMap(typeof(HisStock))]
+    public class HisStockListDto
+    {
         /// <summary>
-        /// ProductId
+        /// Id
         /// </summary>
-        public Guid? ProductId
+        public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// ProductName
+        /// </summary>
+        public string ProductName
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
-        public decimal? Amount
+        public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Price
         /// </summary>
-        public decimal? Price
+        public decimal Price
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// StorageId
+        /// StorageName
         /// </summary>
-        public Guid? StorageId
+        public string StorageName
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// DateFrom
+        /// Date
         /// </summary>
-        public DateTime? DateFrom
+        public DateTime Date
         {
             get; set;
-        } 
-        
-        /// <summary>
-        /// DateTo
-        /// </summary>
-        public DateTime? DateTo
-        {
-            get; set;
-        }  
-    } 
+        }
+    }
 }
 
 

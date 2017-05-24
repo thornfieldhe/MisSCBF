@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo.Dto
+namespace SCBF.Storage.Dto
 {
     using System;
     using System.Collections.Generic;
@@ -27,31 +27,41 @@ namespace SCBF.BaseInfo.Dto
             get; set;
         }
 
+        /// <summary>
+        /// 仓库
+        /// </summary>
+        public string StorageName
+        {
+            get; set;
+        }
+
         public string ProductName { get; set; }
 
         public string Unit { get; set; }
 
         public string Specifications { get; set; }
 
-        public decimal Price1 { get; set; }
+        public string Price1 { get; set; }
 
-        public decimal Total1 { get; set; }
+        public string Total1 { get; set; }
 
-        public decimal Amount1 { get; set; }
+        public string Amount1 { get; set; }
 
-        public decimal Price2 { get; set; }
+        public string Price2 { get; set; }
 
-        public decimal Total2 { get; set; }
+        public string Total2 { get; set; }
 
-        public decimal Amount2 { get; set; }
+        public string Amount2 { get; set; }
 
-        public decimal Price3 { get; set; }
+        public string Price3 { get; set; }
 
-        public decimal Total3 { get; set; }
+        public string Total3 { get; set; }
 
-        public decimal Amount3 { get; set; }
+        public string Amount3 { get; set; }
 
         public string Note { get; set; }
+
+        public DateTime Date { get; set; }
 
         public HisStoreReportCategory Category { get; set; }
     }
