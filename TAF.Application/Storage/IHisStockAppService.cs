@@ -9,6 +9,8 @@
 
 namespace SCBF.Storage
 {
+    using System.Collections.Generic;
+
     using Abp.Application.Services.Dto;
 
     using SCBF.BaseInfo.Dto;
@@ -20,6 +22,8 @@ namespace SCBF.Storage
     public interface IHisStockAppService : IBaseEntityApplicationService
     {
         void BackupData();
+
+        List<HisStockReportListDto> GetHistory(int quarter);
 
         ListResultDto<HisStockListDto> GetAll(HisStockQueryDto request);
     }

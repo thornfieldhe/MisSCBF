@@ -812,6 +812,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\hisStock.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\productInfoIndex.js" />
@@ -909,6 +910,7 @@
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\FinanceController.cs" />
+    <Compile Include="Controllers\HisStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
@@ -966,6 +968,7 @@
     <Content Include="Views\ActualOutlay\_OutlayIndex.cshtml" />
     <Content Include="Views\BudgetReceipt\_ReceiptIndex.cshtml" />
     <Content Include="Views\Product\_ProductInfoIndex.cshtml" />
+    <Content Include="Views\HisStock\_HisStockIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

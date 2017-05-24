@@ -10,7 +10,6 @@
 namespace SCBF.Storage.Dto
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// 历史报表列表
@@ -61,7 +60,7 @@ namespace SCBF.Storage.Dto
 
         public string Note { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         public HisStoreReportCategory Category { get; set; }
     }

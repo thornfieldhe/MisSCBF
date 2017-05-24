@@ -136,6 +136,11 @@
                             L("出库管理"),
                             url: "#deliveryBills",
                             requiredPermissionName: PermissionNames.WzUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuHisStocks",
+                            L("物资报表"),
+                            url: "#hisStocks",
+                            requiredPermissionName: PermissionNames.CwUser))
                        );
         }
 

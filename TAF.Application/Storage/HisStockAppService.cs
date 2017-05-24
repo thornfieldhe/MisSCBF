@@ -13,18 +13,13 @@ namespace SCBF.Storage
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
-    using SCBF.BaseInfo.Dto;
-    using SCBF.Storage;
+    using Abp.UI;
+    using SCBF.BaseInfo;
+    using SCBF.Storage.Dto;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic;
-
-    using Abp.UI;
-
-    using SCBF.BaseInfo;
-    using SCBF.Storage.Dto;
-
     using TAF.Utility;
 
     /// <summary>
@@ -35,20 +30,20 @@ namespace SCBF.Storage
     {
         private readonly IHisStockRepository hisStockRepository;
         private readonly IStockRepository stockRepository;
-        private readonly IDeliveryBillRepository deliveryBillRepository;
-        private readonly IEntryBillRepository entryBillRepository;
+        private readonly IDeliveryRepository deliveryRepository;
+        private readonly IEntryRepository entryRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
 
         public HisStockAppService(IHisStockRepository hisStockRepository
             , IStockRepository stockRepository
-            , IDeliveryBillRepository deliveryBillRepository
-            , IEntryBillRepository entryBillRepository
+            , IDeliveryRepository deliveryRepository
+            , IEntryRepository entryRepository
             , ISysDictionaryRepository sysDictionaryRepository)
         {
             this.hisStockRepository = hisStockRepository;
             this.stockRepository = stockRepository;
-            this.entryBillRepository = entryBillRepository;
-            this.deliveryBillRepository = deliveryBillRepository;
+            this.entryRepository = entryRepository;
+            this.deliveryRepository = deliveryRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
         }
 
@@ -103,9 +98,9 @@ namespace SCBF.Storage
             var initialDate = dtFrom.AddDays(-1);
             var endDate = dtTo.AddDays(1);
             var initialNumbers = this.hisStockRepository.Get(r => r.Date == initialDate).MapTo<List<HisStockReportListDto>>();
-            var addNumbers = this.deliveryBillRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
-            var reduceNumbers = this.entryBillRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
-            var endNumbers = this.hisStockRepository.Get(r => r.Date == endDate).MapTo<List<HisStockReportListDto>>();
+            var addNumbers = this.deliveryRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
+            var reduceNumbers = this.entryRepository.Get(r => r.CreationTime >= dtFrom && r.CreationTime < endDate).MapTo<List<HisStockReportListDto>>();
+            var endNumbers = this.hisStockRepository.Get(r => r.Date == dtTo).MapTo<List<HisStockReportListDto>>();
             endNumbers.ForEach(
                 item =>
                     {
