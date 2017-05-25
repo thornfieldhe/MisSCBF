@@ -73,14 +73,18 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// 期初数
         /// </summary>
-        Inital,
+        Inital = 0,
         /// <summary>
         /// 增加数
         /// </summary>
-        Add,
+        Add = 1,
+        /// <summary>
+        /// 减少数
+        /// </summary>
+        Reduce = 2,
         /// <summary>
         /// 期末数
         /// </summary>
-        End
+        End = 3
     }
 }

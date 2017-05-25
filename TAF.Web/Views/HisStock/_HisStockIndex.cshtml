@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
-                <span class="widget-caption">历史库存</span>
+                <span class="widget-caption">物资报表</span>
             </div>
             <div class="widget-body">
                 <div class="table-toolbar">
@@ -86,7 +86,7 @@
                                     <td>{{item.total1}}</td>
                                     <td>{{item.price1}}</td>
                                     <td>{{item.amount1}}</td>
-                                    <td>{{item.total2}}</td>
+                                    <td><div v-if="item.category==2"><span class="red">{{item.total2}}</span></div><div v-else>{{item.total2}}</div></td>
                                     <td>{{item.price2}}</td>
                                     <td>{{item.amount2}}</td>
                                     <td>{{item.total3}}</td>
@@ -111,7 +111,7 @@
         </div>
     </div>
 </div>
-<script src="~/Scripts/hisStock.js"></script>
+<script src="~/Scripts/queryStock.js"></script>
 
 
 

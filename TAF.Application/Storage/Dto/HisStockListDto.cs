@@ -9,16 +9,13 @@
 
 namespace SCBF.Storage.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
-
     using SCBF.Storage;
+    using System;
 
     /// <summary>
     /// 计划任务列表对象
     /// </summary>
-    [AutoMap(typeof(HisStock))]
     public class HisStockListDto
     {
         /// <summary>
@@ -38,9 +35,17 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// ProductName
+        /// </summary>
+        public string Specifications
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Amount
         /// </summary>
-        public decimal Amount
+        public string Amount
         {
             get; set;
         }
@@ -48,11 +53,33 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Price
         /// </summary>
-        public decimal Price
+        public string Price
         {
             get; set;
         }
 
+        /// <summary>
+        /// Code
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+        /// <summary>
+        /// ProductCode
+        /// </summary>
+        public string ProductCode
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Total
+        /// </summary>
+        public string Total
+        {
+            get; set;
+        }
         /// <summary>
         /// StorageName
         /// </summary>
@@ -64,10 +91,15 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Date
         /// </summary>
-        public DateTime Date
+        public string Date
         {
             get; set;
         }
+
+        public string User { get; set; }
+
+
+        public HisStoreReportCategory Category { get; set; }
     }
 }
 

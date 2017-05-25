@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* dialog样式 */
 .wrapper {
     zoom: 1;
@@ -744,7 +744,7 @@
     height: 21px;
     line-height: 21px;
     float: left;
-    dislay: block;
+    display: block;
 }
 
 #search .searchType {
@@ -757,7 +757,7 @@
     vertical-align: top;
     margin-left: 5px;
     float: left;
-    dislay: block;
+    display: block;
 }
 
 #search #searchBtn,

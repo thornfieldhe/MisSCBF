@@ -10,63 +10,55 @@
 namespace SCBF.Storage.Dto
 {
     using System;
-    
+
     using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 计划任务查询对象
+    /// 历史库存查询对象
     /// </summary>
     public class HisStockQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    {
+
         /// <summary>
-        /// ProductId
+        /// Name
         /// </summary>
-        public Guid? ProductId
+        public string Name
         {
             get; set;
-        }        
+        }
         
         /// <summary>
-        /// Amount
+        /// Code
         /// </summary>
-        public decimal? Amount
+        public string Code
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// Price
+        /// Code
         /// </summary>
-        public decimal? Price
+        public string ProductCode
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// StorageId
-        /// </summary>
-        public Guid? StorageId
-        {
-            get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// DateFrom
         /// </summary>
         public DateTime? DateFrom
         {
             get; set;
-        } 
-        
+        }
+
         /// <summary>
         /// DateTo
         /// </summary>
         public DateTime? DateTo
         {
             get; set;
-        }  
-    } 
+        }
+    }
 }
 
 

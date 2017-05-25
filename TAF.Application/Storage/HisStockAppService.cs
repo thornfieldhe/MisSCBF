@@ -49,20 +49,27 @@ namespace SCBF.Storage
 
         public ListResultDto<HisStockListDto> GetAll(HisStockQueryDto request)
         {
-            var query = this.hisStockRepository.GetAll()
+            var query1 = this.entryRepository.GetAll()
+                .WhereIf(request.Name != null, r => r.Product.Name.Contains(request.Name))
+                .WhereIf(request.Code != null, r => r.EntryBill.Code.Contains(request.Code))
+                .WhereIf(request.DateFrom.HasValue, r => r.CreationTime >= request.DateFrom.Value)
+                .WhereIf(request.DateTo.HasValue, r => r.CreationTime <= request.DateTo.Value);
 
-                .WhereIf(request.ProductId.HasValue, r => r.ProductId == request.ProductId.Value)
-                .WhereIf(request.Amount.HasValue, r => r.Amount == request.Amount.Value)
-                .WhereIf(request.Price.HasValue, r => r.Price == request.Price.Value)
-                .WhereIf(request.StorageId.HasValue, r => r.StorageId == request.StorageId.Value)
-                .WhereIf(request.DateFrom.HasValue, r => r.Date >= request.DateFrom.Value)
-                .WhereIf(request.DateTo.HasValue, r => r.Date <= request.DateTo.Value);
+            var list1 = !string.IsNullOrWhiteSpace(request.Sorting)
+                        ? query1.OrderBy(request.Sorting).MapTo<List<HisStockListDto>>()
+                        : query1.OrderBy(r => r.CreationTime).MapTo<List<HisStockListDto>>();
 
-            query = !string.IsNullOrWhiteSpace(request.Sorting)
-                        ? query.OrderBy(request.Sorting)
-                        : query.OrderBy(r => r.CreationTime);
-            var count = query.Count();
-            var list = query.AsQueryable().PageBy(request).ToList();
+            var query2 = this.deliveryRepository.GetAll()
+                .WhereIf(request.Name != null, r => r.Product.Name.Contains(request.Name))
+                .WhereIf(request.Code != null, r => r.DeliveryBill.Code.Contains(request.Code))
+                .WhereIf(request.DateFrom.HasValue, r => r.CreationTime >= request.DateFrom.Value)
+                .WhereIf(request.DateTo.HasValue, r => r.CreationTime <= request.DateTo.Value);
+
+            var list2 = !string.IsNullOrWhiteSpace(request.Sorting)
+                        ? query2.OrderBy(request.Sorting).MapTo<List<HisStockListDto>>()
+                        : query2.OrderBy(r => r.CreationTime).MapTo<List<HisStockListDto>>();
+            var count = query1.Count() + query2.Count();
+            var list = list1.Union(list2).ToList().AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<HisStockListDto>>();
 
             return new PagedResultDto<HisStockListDto>(count, dtos);

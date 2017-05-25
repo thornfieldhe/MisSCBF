@@ -44,6 +44,7 @@ Path.map("#products").to(function () { loadPage("/Product/ProductList", "物资�
 Path.map("#entryBills").to(function () { loadPage("/EntryBill/EntryBillList", "物资器材管理", "入库单", "#menuEntryBills", false); });
 Path.map("#deliveryBills").to(function () { loadPage("/DeliveryBill/DeliveryBillList", "物资器材管理", "出库单", "#menuEeliveryBills", false); });
 Path.map("#hisStocks").to(function () { loadPage("/HisStock/HisStockList", "物资器材管理", "物资报表", "#menuHisStocks", false); });
+Path.map("#queryStocks").to(function () { loadPage("/HisStock/QueryStockList", "物资器材管理", "物资出入库查询", "#menuHisStocks", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

@@ -35,6 +35,11 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_HisStockIndex");
         }
+
+        public ActionResult QueryStockList()
+        {
+            return PartialView("_QueryStockList");
+        }
     }
 }
 
