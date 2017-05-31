@@ -26,6 +26,8 @@ namespace SCBF.Storage
         List<HisStockReportListDto> GetHistory(int quarter);
 
         ListResultDto<HisStockListDto> GetAll(HisStockQueryDto request);
+
+        ListResultDto<StockChangeListDto> GetStockChange(DateRangeQueryDto request);
     }
 }
 

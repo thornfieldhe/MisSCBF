@@ -10,7 +10,7 @@
     data: function () {
         return {
             item: {
-                id: "",            
+                id: "00000000-0000-0000-0000-000000000000",            
                 name: "",
                 specifications: "",
                 unit: "",
@@ -26,7 +26,6 @@
         'onSaveItem': function (closeModal) {
             var $this = this;
             $this.item.unitConversion = $('#unitConversion').val();
-            $this.item.order = $('#spinboxOrder').val();
             abp.services.app.product.saveAsync($this.item)
             .done(function (m) {
                 $this.done(closeModal);
@@ -52,7 +51,7 @@
     },
     methods: {
         clearItem: function () {
-            this.item.id = "";
+            this.item.id = "00000000-0000-0000-0000-000000000000";
             this.item.name= "";
             this.item.code= "";
             this.item.specifications= "";

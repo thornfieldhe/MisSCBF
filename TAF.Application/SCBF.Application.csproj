@@ -154,6 +154,7 @@
     <Compile Include="BaseInfo\Dto\AttachmentListDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockListDto.cs" />
+    <Compile Include="Storage\Dto\DateRangeQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockReportListDto.cs" />
     <Compile Include="BaseInfo\Dto\LayerEditDto.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="BaseInfo\Dto\SysDictionaryListDto.cs" />
     <Compile Include="BaseInfo\Dto\SysDictionaryQueryDto.cs" />
     <Compile Include="BaseInfo\Dto\TreeItemDto.cs" />
+    <Compile Include="Storage\Dto\StockChangeListDto.cs" />
     <Compile Include="Storage\HisStockAppService.cs" />
     <Compile Include="BaseInfo\IAttachmentAppService.cs" />
     <Compile Include="Storage\IHisStockAppService.cs" />

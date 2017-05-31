@@ -75,6 +75,91 @@ namespace SCBF.Storage
             return new PagedResultDto<HisStockListDto>(count, dtos);
         }
 
+        public ListResultDto<StockChangeListDto> GetStockChange(DateRangeQueryDto request)
+        {
+            var query1 = this.hisStockRepository
+                .Get(r => r.Date == request.DateFrom.Date)
+                .OrderBy(r => r.Date).MapTo<List<StockChangeListDto>>();
+            var query2 = this.hisStockRepository
+                .Get(r =>  r.Date == request.DateTo.Date)
+                .OrderBy(r => r.Date).MapTo<List<StockChangeListDto>>();
+            var list0 = new List<StockChangeListDto>();
+            var list1 = new List<StockChangeListDto>();
+            var list2 = new List<StockChangeListDto>();
+            var ids = query1.Select(r => r.Id).Union(query2.Select(r => r.Id)).Distinct().ToList();
+            foreach (var id in ids)
+            {
+                var item1 = query1.Where(r => r.Id == id).ToList();
+                var item2 = query2.Where(r => r.Id == id).ToList();
+                if (item1.Count > 0)
+                {
+                    list0.Add(new StockChangeListDto()
+                    {
+                        Amount = item1.Sum(r => r.Amount),
+                        Code = item1[0].Code,
+                        Id = item1[0].Id,
+                        ProductName = item1[0].ProductName,
+                        Specifications = item1[0].Specifications,
+                        StorageName = item1[0].StorageName
+                    });
+                }
+                else
+                {
+                    list0.Add(new StockChangeListDto()
+                    {
+                        Amount = 0,
+                        Code = item2[0].Code,
+                        Id = item2[0].Id,
+                        ProductName = item2[0].ProductName,
+                        Specifications = item2[0].Specifications,
+                        StorageName = item2[0].StorageName
+                    });
+                }
+
+                if (item2.Count > 0)
+                {
+                    list1.Add(new StockChangeListDto()
+                    {
+                        Amount = item2.Sum(r => r.Amount),
+                        Code = item2[0].Code,
+                        Id = item2[0].Id,
+                        ProductName = item2[0].ProductName,
+                        Specifications = item2[0].Specifications,
+                        StorageName = item2[0].StorageName
+                    });
+                }
+                else
+                {
+                    list1.Add(new StockChangeListDto()
+                    {
+                        Amount = 0,
+                        Code = item1[0].Code,
+                        Id = item1[0].Id,
+                        ProductName = item1[0].ProductName,
+                        Specifications = item1[0].Specifications,
+                        StorageName = item1[0].StorageName
+                    });
+                }
+            }
+
+            foreach (var item in list1)
+            {
+                list2.Add(new StockChangeListDto()
+                {
+                    Amount = item.Amount - list0.Find(r => r.Id == item.Id).Amount,
+                    Code = item.Code,
+                    Id = item.Id,
+                    ProductName = item.ProductName,
+                    Specifications = item.Specifications,
+                    StorageName = item.StorageName
+                });
+            }
+
+            var count = list2.Count;
+            var list = list2.AsQueryable().PageBy(request).ToList();
+
+            return new PagedResultDto<StockChangeListDto>(count, list);
+        }
 
         public List<HisStockReportListDto> GetHistory(int quarter)
         {

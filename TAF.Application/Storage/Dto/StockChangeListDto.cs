@@ -1,22 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HisStockListDto.cs" company=""  author="何翔华">
+// <copyright file="StockListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   计划任务列表对象
+//   库存列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Storage.Dto
 {
-    using Abp.AutoMapper;
-    using SCBF.Storage;
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 计划任务列表对象
+    /// 库存列表对象
     /// </summary>
-    public class HisStockListDto
+    [AutoMap(typeof(Stock))]
+    public class StockChangeListDto
     {
         /// <summary>
         /// Id
@@ -35,25 +36,9 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
-        /// ProductName
-        /// </summary>
-        public string Specifications
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Price
-        /// </summary>
-        public string Price
         {
             get; set;
         }
@@ -65,18 +50,19 @@ namespace SCBF.Storage.Dto
         {
             get; set;
         }
+
         /// <summary>
-        /// ProductCode
+        /// Unit
         /// </summary>
-        public string ProductCode
+        public string Unit
         {
             get; set;
         }
 
         /// <summary>
-        /// Total
+        /// Specifications
         /// </summary>
-        public string Total
+        public string Specifications
         {
             get; set;
         }
@@ -87,19 +73,6 @@ namespace SCBF.Storage.Dto
         {
             get; set;
         }
-
-        /// <summary>
-        /// Date
-        /// </summary>
-        public string Date
-        {
-            get; set;
-        }
-
-        public string User { get; set; }
-
-
-        public HisStoreReportCategory Category { get; set; }
     }
 }
 

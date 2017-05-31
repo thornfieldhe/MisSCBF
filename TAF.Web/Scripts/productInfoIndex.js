@@ -81,7 +81,7 @@ var main = new Vue({
     methods: {
         search:function(category) {
             this.queryEntity.category = category;
-            this.query();
+            this.query(0);
         },
         excuteQuery: function ($this) {
             abp.services.app.sysDictionary.getAll(main.queryEntity)

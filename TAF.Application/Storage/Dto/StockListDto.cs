@@ -52,6 +52,21 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// Code
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Specifications
+        /// </summary>
+        public string Specifications
+        {
+            get; set;
+        }
+        /// <summary>
         /// StorageName
         /// </summary>
         public string StorageName

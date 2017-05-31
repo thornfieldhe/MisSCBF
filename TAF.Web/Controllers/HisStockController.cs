@@ -40,6 +40,10 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_QueryStockList");
         }
+        public ActionResult QuerytockChange()
+        {
+            return PartialView("_StockChange");
+        }
     }
 }
 

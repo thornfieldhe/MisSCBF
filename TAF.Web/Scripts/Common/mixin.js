@@ -84,6 +84,7 @@ var indexMixin = {
     },
     methods: {
         query: function (index) {
+            console.log(index,33);
             this.queryEntity.skipCount = this.queryEntity.maxResultCount * index;
             var $this = this;
             this.excuteQuery($this);

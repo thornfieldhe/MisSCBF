@@ -146,6 +146,11 @@
                             L("物资出入库查询"),
                             url: "#queryStocks",
                             requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuStockChange",
+                            L("物资变动情况查询"),
+                            url: "#queryStockChange",
+                            requiredPermissionName: PermissionNames.CwUser))
                        );
         }
 
