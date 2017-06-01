@@ -77,6 +77,8 @@ namespace SCBF
                     .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
                     .ForMember(m => m.ProductName, n => n.MapFrom(r => r.Product.Name))
                     .ForMember(m => m.Code, n => n.MapFrom(r => r.Product.Code))
+                    .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit))
+                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price))
                     .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value));
 
                 mapper.CreateMap<HisStock, StockChangeListDto>()

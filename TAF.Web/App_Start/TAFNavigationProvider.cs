@@ -140,17 +140,19 @@
                             "menuHisStocks",
                             L("物资报表"),
                             url: "#hisStocks",
-                            requiredPermissionName: PermissionNames.CwUser))
+                            requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
                             "menuHisStocks",
                             L("物资出入库查询"),
                             url: "#queryStocks",
-                            requiredPermissionName: PermissionNames.CwUser))
+                            requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
                             "menuStockChange",
                             L("物资变动情况查询"),
                             url: "#queryStockChange",
-                            requiredPermissionName: PermissionNames.CwUser))
+                            requiredPermissionName: PermissionNames.WzUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuStocks", L("库存清单"), url: "#stocks", requiredPermissionName: PermissionNames.WzUser))
                        );
         }
 

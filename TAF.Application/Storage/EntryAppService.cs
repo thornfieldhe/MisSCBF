@@ -24,8 +24,7 @@ namespace SCBF.Storage
         private readonly IProductRepository productRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
 
-        public EntryAppService(IProductRepository productRepository
-            , ISysDictionaryRepository sysDictionaryRepository)
+        public EntryAppService(IProductRepository productRepository, ISysDictionaryRepository sysDictionaryRepository)
         {
             this.productRepository = productRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;

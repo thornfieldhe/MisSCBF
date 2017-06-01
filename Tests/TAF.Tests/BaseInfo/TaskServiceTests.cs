@@ -9,34 +9,24 @@
 
 namespace SCBF.Tests.BaseInfo
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Castle.Core.Logging;
-
-    using NSubstitute.Core;
-
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
     using SCBF.Storage;
     using SCBF.Storage.Dto;
-    using SCBF.Users.Dto;
-
     using Shouldly;
-
+    using System;
+    using System.Threading.Tasks;
     using Xunit;
 
     /// <summary>
     /// 
     /// </summary>
-    public class TaskService_Test : TAFTestBase
+    public class TaskServiceTests : TAFTestBase
     {
         private readonly ISysDictionaryAppService sysDictionaryAppService;
         private readonly IHisStockAppService hisStockAppService;
-        private readonly ILogger logger;
 
-        public TaskService_Test()
+        public TaskServiceTests()
         {
             sysDictionaryAppService = Resolve<ISysDictionaryAppService>();
             hisStockAppService = Resolve<IHisStockAppService>();
@@ -59,16 +49,16 @@ namespace SCBF.Tests.BaseInfo
         public async Task SaveYearAsync_Test()
         {
             // Act
-          await  sysDictionaryAppService.SaveYearAsync(new SysDictionaryEditDto() { Value = "2018", Category = DictionaryCategory.Material_Year });
+            await sysDictionaryAppService.SaveYearAsync(new SysDictionaryEditDto() { Value = "2018", Category = DictionaryCategory.Material_Year });
 
             // Assert
 
-          var result=  this.sysDictionaryAppService.GetAll(
-                new SysDictionaryQueryDto()
-                {
-                    Category = DictionaryCategory.Material_Year,
-                    Value4 = true.ToString()
-                }).Items[0];
+            var result = this.sysDictionaryAppService.GetAll(
+                  new SysDictionaryQueryDto()
+                  {
+                      Category = DictionaryCategory.Material_Year,
+                      Value4 = true.ToString()
+                  }).Items[0];
             result.Value.ShouldBe("2018");
         }
     }

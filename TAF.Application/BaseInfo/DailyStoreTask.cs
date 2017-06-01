@@ -13,8 +13,6 @@ namespace SCBF.BaseInfo
     using Abp.Dependency;
     using Abp.Quartz.Quartz;
 
-    using Castle.Core.Logging;
-
     using Quartz;
 
     using SCBF.Storage;
@@ -24,7 +22,10 @@ namespace SCBF.BaseInfo
     /// </summary>
     public class DailyStoreTask : JobBase, ITransientDependency
     {
+        public static readonly string Schedule = "0 0 23 * * ? *";//每日23:00分执行
+
         private readonly IHisStockAppService hisStockAppService;
+
         public DailyStoreTask(IHisStockAppService hisStockAppService)
         {
             this.hisStockAppService = hisStockAppService;
@@ -35,8 +36,5 @@ namespace SCBF.BaseInfo
         {
             hisStockAppService.BackupData();
         }
-
-        public static readonly string Schedule = "0 0 23 * * ? *";//每日23:00分执行
     }
-
 }

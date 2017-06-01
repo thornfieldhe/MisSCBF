@@ -170,7 +170,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseInfo\TaskService_Test.cs" />
+    <Compile Include="BaseInfo\TaskServiceTests.cs" />
     <Compile Include="TAFTestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions\SessionAppService_Tests.cs" />

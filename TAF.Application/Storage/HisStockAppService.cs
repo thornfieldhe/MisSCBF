@@ -81,7 +81,7 @@ namespace SCBF.Storage
                 .Get(r => r.Date == request.DateFrom.Date)
                 .OrderBy(r => r.Date).MapTo<List<StockChangeListDto>>();
             var query2 = this.hisStockRepository
-                .Get(r =>  r.Date == request.DateTo.Date)
+                .Get(r => r.Date == request.DateTo.Date)
                 .OrderBy(r => r.Date).MapTo<List<StockChangeListDto>>();
             var list0 = new List<StockChangeListDto>();
             var list1 = new List<StockChangeListDto>();
@@ -202,7 +202,6 @@ namespace SCBF.Storage
                         item.Price1 = string.Empty;
                         item.Amount1 = string.Empty;
                         item.Total1 = string.Empty;
-
                     });
             var result = new List<HisStockReportListDto>();
             result.AddRange(initialNumbers);
@@ -214,10 +213,9 @@ namespace SCBF.Storage
 
         public void BackupData()
         {
-            var date = DateTime.Today.AddDays(-1);
             var stocks =
                 this.stockRepository.Get(
-                        r => r.CreationTime >= date && r.CreationTime < DateTime.Today)
+                        r => r.Amount != 0)
                     .ToList()
                     .MapTo<List<HisStock>>();
             this.hisStockRepository.InsertRange(stocks);

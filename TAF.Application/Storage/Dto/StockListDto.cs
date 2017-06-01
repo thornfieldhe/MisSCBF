@@ -52,9 +52,25 @@ namespace SCBF.Storage.Dto
         }
 
         /// <summary>
+        /// 总金额
+        /// </summary>
+        public decimal Total
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Code
         /// </summary>
         public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Unit
+        /// </summary>
+        public string Unit
         {
             get; set;
         }
@@ -66,6 +82,7 @@ namespace SCBF.Storage.Dto
         {
             get; set;
         }
+
         /// <summary>
         /// StorageName
         /// </summary>

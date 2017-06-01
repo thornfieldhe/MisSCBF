@@ -9,20 +9,17 @@
 
 namespace SCBF.Storage
 {
+    using Abp.Application.Services.Dto;
+    using Abp.Authorization;
+    using Abp.AutoMapper;
+    using Abp.Linq.Extensions;
+    using AutoMapper;
+    using SCBF.Storage.Dto;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
-
-    using AutoMapper;
-
-    using SCBF.Storage.Dto;
 
     /// <summary>
     /// 库存服务
@@ -40,10 +37,9 @@ namespace SCBF.Storage
         public ListResultDto<StockListDto> GetAll(StockQueryDto request)
         {
             var query = this.stockRepository.GetAll()
-
-                .WhereIf(request.ProductId.HasValue, r => r.ProductId == request.ProductId.Value)
-                .WhereIf(request.Amount.HasValue, r => r.Amount == request.Amount.Value)
-                .WhereIf(request.StorageId.HasValue, r => r.StorageId == request.StorageId.Value);
+                .Where(r => r.Amount != 0)
+                .WhereIf(!string.IsNullOrWhiteSpace(request.ProductName), r => r.Product.Name.Contains(request.ProductName))
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Code), r => r.Product.Name.Contains(request.Code));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)

@@ -11,7 +11,6 @@ namespace SCBF.BaseInfo
 {
     using Abp.Dependency;
     using Abp.Quartz.Quartz;
-    using Castle.Core.Logging;
     using Quartz;
     using SCBF.BaseInfo.Dto;
     using System;
@@ -21,7 +20,10 @@ namespace SCBF.BaseInfo
     /// </summary>
     public class ChangeYearTask : JobBase, ITransientDependency
     {
+        public static readonly string Schedule = "0 0 1 1 1 ?"; //每年1月1日1:00执行
+
         private readonly ISysDictionaryAppService sysDictionaryAppService;
+
         public ChangeYearTask(ISysDictionaryAppService sysDictionaryAppService)
         {
             this.sysDictionaryAppService = sysDictionaryAppService;
@@ -31,18 +33,13 @@ namespace SCBF.BaseInfo
         public override void Execute(IJobExecutionContext context)
         {
             var t = DateTime.Today.Year.ToString();
-            var year =
-                sysDictionaryAppService.SaveYearAsync(
-                    new SysDictionaryEditDto()
-                    {
-                        Category = DictionaryCategory.Material_Year,
-                        Value = t
-                    });
 
-
+            sysDictionaryAppService.SaveYearAsync(
+                new SysDictionaryEditDto()
+                {
+                    Category = DictionaryCategory.Material_Year,
+                    Value = t
+                });
         }
-
-        public static readonly string Schedule = "0 0 1 1 1 ?";//每年1月1日1:00执行
     }
-
 }

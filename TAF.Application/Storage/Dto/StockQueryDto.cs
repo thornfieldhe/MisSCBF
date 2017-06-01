@@ -17,28 +17,20 @@ namespace SCBF.Storage.Dto
     /// 库存查询对象
     /// </summary>
     public class StockQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    {
+
         /// <summary>
-        /// ProductId
+        /// ProductName
         /// </summary>
-        public Guid? ProductId
+        public string ProductName
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// Amount
+        /// Code
         /// </summary>
-        public decimal? Amount
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// StorageId
-        /// </summary>
-        public Guid? StorageId
+        public string Code
         {
             get; set;
         }        
