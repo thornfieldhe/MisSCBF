@@ -78,7 +78,7 @@
                                 requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(new MenuItemDefinition(
                             "menuBudgetOutlays",
-                            L("年度预算支出"),
+                            L("年初预算支出"),
                             url: "#budgetOutlays",
                             requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(new MenuItemDefinition(

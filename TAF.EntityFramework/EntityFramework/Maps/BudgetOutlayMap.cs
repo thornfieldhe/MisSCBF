@@ -21,7 +21,7 @@ namespace SCBF.EntityFramework
     {
         public BudgetOutlayMap()
         {
-            this.HasOptional(r => r.BudgetReceipt).WithMany(r => r.BudgetOutlaies).HasForeignKey(r => r.ReceiptId);
+            this.HasOptional(r => r.BudgetReceipt).WithMany(r => r.BudgetOutlaies).HasForeignKey(r => r.BudgetReceiptId);
         }
     }
 }

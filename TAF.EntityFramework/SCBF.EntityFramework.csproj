@@ -202,129 +202,13 @@
     <Compile Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.Designer.cs">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702231250225_addtable_layer.cs" />
-    <Compile Include="Migrations\201702231250225_addtable_layer.Designer.cs">
-      <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
+    <Compile Include="Migrations\201706091333415_init.cs" />
+    <Compile Include="Migrations\201706091333415_init.Designer.cs">
+      <DependentUpon>201706091333415_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703131528212_addtable_product.cs" />
-    <Compile Include="Migrations\201703131528212_addtable_product.Designer.cs">
-      <DependentUpon>201703131528212_addtable_product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703131546021_addtable_product2.cs" />
-    <Compile Include="Migrations\201703131546021_addtable_product2.Designer.cs">
-      <DependentUpon>201703131546021_addtable_product2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703131551225_addtable_product3.cs" />
-    <Compile Include="Migrations\201703131551225_addtable_product3.Designer.cs">
-      <DependentUpon>201703131551225_addtable_product3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703141513099_modifytable_product4.cs" />
-    <Compile Include="Migrations\201703141513099_modifytable_product4.Designer.cs">
-      <DependentUpon>201703141513099_modifytable_product4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703141627064_modifytable_product5.cs" />
-    <Compile Include="Migrations\201703141627064_modifytable_product5.Designer.cs">
-      <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703240212110_addtable_stock.cs" />
-    <Compile Include="Migrations\201703240212110_addtable_stock.Designer.cs">
-      <DependentUpon>201703240212110_addtable_stock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703241620443_modifytable_stock2.cs" />
-    <Compile Include="Migrations\201703241620443_modifytable_stock2.Designer.cs">
-      <DependentUpon>201703241620443_modifytable_stock2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703250338235_modifyTable_stock3.cs" />
-    <Compile Include="Migrations\201703250338235_modifyTable_stock3.Designer.cs">
-      <DependentUpon>201703250338235_modifyTable_stock3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703311316495_modifyTableSysDictionaries.cs" />
-    <Compile Include="Migrations\201703311316495_modifyTableSysDictionaries.Designer.cs">
-      <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061322036_modifyTable_sysDictionary.cs" />
-    <Compile Include="Migrations\201704061322036_modifyTable_sysDictionary.Designer.cs">
-      <DependentUpon>201704061322036_modifyTable_sysDictionary.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061358127_addTable_BudgetReceipt.cs" />
-    <Compile Include="Migrations\201704061358127_addTable_BudgetReceipt.Designer.cs">
-      <DependentUpon>201704061358127_addTable_BudgetReceipt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061419175_modifytable_budgetreceipt.cs" />
-    <Compile Include="Migrations\201704061419175_modifytable_budgetreceipt.Designer.cs">
-      <DependentUpon>201704061419175_modifytable_budgetreceipt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061424170_modifytable_budgetreceipt2.cs" />
-    <Compile Include="Migrations\201704061424170_modifytable_budgetreceipt2.Designer.cs">
-      <DependentUpon>201704061424170_modifytable_budgetreceipt2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101317542_addtable_attachment.cs" />
-    <Compile Include="Migrations\201704101317542_addtable_attachment.Designer.cs">
-      <DependentUpon>201704101317542_addtable_attachment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131308534_modifytable_budgetreceipt3.cs" />
-    <Compile Include="Migrations\201704131308534_modifytable_budgetreceipt3.Designer.cs">
-      <DependentUpon>201704131308534_modifytable_budgetreceipt3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704171343102_addTable_BudgetOutlays.cs" />
-    <Compile Include="Migrations\201704171343102_addTable_BudgetOutlays.Designer.cs">
-      <DependentUpon>201704171343102_addTable_BudgetOutlays.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704171431401_addTable_BudgetOutlays2.cs" />
-    <Compile Include="Migrations\201704171431401_addTable_BudgetOutlays2.Designer.cs">
-      <DependentUpon>201704171431401_addTable_BudgetOutlays2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704201249530_addrelationshipwith_budget.cs" />
-    <Compile Include="Migrations\201704201249530_addrelationshipwith_budget.Designer.cs">
-      <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704201417237_addtable_ActualOutlay.cs" />
-    <Compile Include="Migrations\201704201417237_addtable_ActualOutlay.Designer.cs">
-      <DependentUpon>201704201417237_addtable_ActualOutlay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704241153576_updateTable_actualoutlay2.cs" />
-    <Compile Include="Migrations\201704241153576_updateTable_actualoutlay2.Designer.cs">
-      <DependentUpon>201704241153576_updateTable_actualoutlay2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704241212180_updateTable_actualoutlay3.cs" />
-    <Compile Include="Migrations\201704241212180_updateTable_actualoutlay3.Designer.cs">
-      <DependentUpon>201704241212180_updateTable_actualoutlay3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704241233388_updateTable_actualoutlay4.cs" />
-    <Compile Include="Migrations\201704241233388_updateTable_actualoutlay4.Designer.cs">
-      <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704251342336_addtable_receipt.cs" />
-    <Compile Include="Migrations\201704251342336_addtable_receipt.Designer.cs">
-      <DependentUpon>201704251342336_addtable_receipt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704251404577_updatetable_receipt_1.cs" />
-    <Compile Include="Migrations\201704251404577_updatetable_receipt_1.Designer.cs">
-      <DependentUpon>201704251404577_updatetable_receipt_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704271308345_modifyTable_product6.cs" />
-    <Compile Include="Migrations\201704271308345_modifyTable_product6.Designer.cs">
-      <DependentUpon>201704271308345_modifyTable_product6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705021353483_updateTable_stock4.cs" />
-    <Compile Include="Migrations\201705021353483_updateTable_stock4.Designer.cs">
-      <DependentUpon>201705021353483_updateTable_stock4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705101330146_addTable_ScheduledTask.cs" />
-    <Compile Include="Migrations\201705101330146_addTable_ScheduledTask.Designer.cs">
-      <DependentUpon>201705101330146_addTable_ScheduledTask.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705161446164_modifyTable_AbpUsers_mail.cs" />
-    <Compile Include="Migrations\201705161446164_modifyTable_AbpUsers_mail.Designer.cs">
-      <DependentUpon>201705161446164_modifyTable_AbpUsers_mail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705191316470_deleteTable_SchaduleTasks.cs" />
-    <Compile Include="Migrations\201705191316470_deleteTable_SchaduleTasks.Designer.cs">
-      <DependentUpon>201705191316470_deleteTable_SchaduleTasks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705241332459_updateRelationship_hisstock.cs" />
-    <Compile Include="Migrations\201705241332459_updateRelationship_hisstock.Designer.cs">
-      <DependentUpon>201705241332459_updateRelationship_hisstock.cs</DependentUpon>
+    <Compile Include="Migrations\201706091337259_initData.cs" />
+    <Compile Include="Migrations\201706091337259_initData.Designer.cs">
+      <DependentUpon>201706091337259_initData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -419,98 +303,11 @@
     <EmbeddedResource Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.resx">
       <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702231250225_addtable_layer.resx">
-      <DependentUpon>201702231250225_addtable_layer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706091333415_init.resx">
+      <DependentUpon>201706091333415_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703131528212_addtable_product.resx">
-      <DependentUpon>201703131528212_addtable_product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703131546021_addtable_product2.resx">
-      <DependentUpon>201703131546021_addtable_product2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703131551225_addtable_product3.resx">
-      <DependentUpon>201703131551225_addtable_product3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703141513099_modifytable_product4.resx">
-      <DependentUpon>201703141513099_modifytable_product4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703141627064_modifytable_product5.resx">
-      <DependentUpon>201703141627064_modifytable_product5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703240212110_addtable_stock.resx">
-      <DependentUpon>201703240212110_addtable_stock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703241620443_modifytable_stock2.resx">
-      <DependentUpon>201703241620443_modifytable_stock2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703250338235_modifyTable_stock3.resx">
-      <DependentUpon>201703250338235_modifyTable_stock3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703311316495_modifyTableSysDictionaries.resx">
-      <DependentUpon>201703311316495_modifyTableSysDictionaries.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061322036_modifyTable_sysDictionary.resx">
-      <DependentUpon>201704061322036_modifyTable_sysDictionary.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061358127_addTable_BudgetReceipt.resx">
-      <DependentUpon>201704061358127_addTable_BudgetReceipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061419175_modifytable_budgetreceipt.resx">
-      <DependentUpon>201704061419175_modifytable_budgetreceipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061424170_modifytable_budgetreceipt2.resx">
-      <DependentUpon>201704061424170_modifytable_budgetreceipt2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101317542_addtable_attachment.resx">
-      <DependentUpon>201704101317542_addtable_attachment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131308534_modifytable_budgetreceipt3.resx">
-      <DependentUpon>201704131308534_modifytable_budgetreceipt3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704171343102_addTable_BudgetOutlays.resx">
-      <DependentUpon>201704171343102_addTable_BudgetOutlays.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704171431401_addTable_BudgetOutlays2.resx">
-      <DependentUpon>201704171431401_addTable_BudgetOutlays2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704201249530_addrelationshipwith_budget.resx">
-      <DependentUpon>201704201249530_addrelationshipwith_budget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704201417237_addtable_ActualOutlay.resx">
-      <DependentUpon>201704201417237_addtable_ActualOutlay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704241153576_updateTable_actualoutlay2.resx">
-      <DependentUpon>201704241153576_updateTable_actualoutlay2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704241212180_updateTable_actualoutlay3.resx">
-      <DependentUpon>201704241212180_updateTable_actualoutlay3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704241233388_updateTable_actualoutlay4.resx">
-      <DependentUpon>201704241233388_updateTable_actualoutlay4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704251342336_addtable_receipt.resx">
-      <DependentUpon>201704251342336_addtable_receipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704251404577_updatetable_receipt_1.resx">
-      <DependentUpon>201704251404577_updatetable_receipt_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704271308345_modifyTable_product6.resx">
-      <DependentUpon>201704271308345_modifyTable_product6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705021353483_updateTable_stock4.resx">
-      <DependentUpon>201705021353483_updateTable_stock4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705101330146_addTable_ScheduledTask.resx">
-      <DependentUpon>201705101330146_addTable_ScheduledTask.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705161446164_modifyTable_AbpUsers_mail.resx">
-      <DependentUpon>201705161446164_modifyTable_AbpUsers_mail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705191316470_deleteTable_SchaduleTasks.resx">
-      <DependentUpon>201705191316470_deleteTable_SchaduleTasks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705241332459_updateRelationship_hisstock.resx">
-      <DependentUpon>201705241332459_updateRelationship_hisstock.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706091337259_initData.resx">
+      <DependentUpon>201706091337259_initData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

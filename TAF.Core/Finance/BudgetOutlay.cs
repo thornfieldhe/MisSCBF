@@ -101,7 +101,7 @@ namespace SCBF.Finance
         /// <summary>
         /// 关联预算收入Id
         /// </summary>
-        public Guid? ReceiptId
+        public Guid? BudgetReceiptId
         {
             get; set;
         }

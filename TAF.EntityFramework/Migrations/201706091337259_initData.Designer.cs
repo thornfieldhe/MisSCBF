@@ -7,13 +7,13 @@ namespace SCBF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addTable_BudgetReceipt : IMigrationMetadata
+    public sealed partial class initData : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addTable_BudgetReceipt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initData));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704061358127_addTable_BudgetReceipt"; }
+            get { return "201706091337259_initData"; }
         }
         
         string IMigrationMetadata.Source

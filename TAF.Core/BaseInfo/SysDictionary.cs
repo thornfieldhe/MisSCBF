@@ -9,9 +9,8 @@
 
 namespace SCBF.BaseInfo
 {
-    using System.Collections.Generic;
-
     using SCBF.Storage;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 系统字典表
@@ -52,6 +51,26 @@ namespace SCBF.BaseInfo
         /// Value5
         /// </summary>
         public string Value5
+        {
+            get; set;
+        }
+
+        public string Value6
+        {
+            get; set;
+        }
+
+        public string Value7
+        {
+            get; set;
+        }
+
+        public string Value8
+        {
+            get; set;
+        }
+
+        public string Value9
         {
             get; set;
         }

@@ -64,6 +64,7 @@ namespace SCBF.Finance
 
         public List<OutlayListDto> GetAll()
         {
+
             var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -77,14 +78,16 @@ namespace SCBF.Finance
 
         public List<BudgetOutlaySimpleListDto> GetSimple()
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString()
+            && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r => r.Year == year).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlaySimpleListDto>>();
+                this.budgetOutlayRepository.GetAllList(r => r.Year == year
+                && r.HasRelated).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlaySimpleListDto>>();
             return result;
         }
 
@@ -132,7 +135,7 @@ namespace SCBF.Finance
                     throw new UserFriendlyException($"该预算支出项目不存在:{value}");
                 }
                 item.Code = input.Code;
-                item.ReceiptId = input.Id;
+                item.BudgetReceiptId = input.Id;
                 item.HasRelated = true;
                 this.budgetOutlayRepository.Update(item);
             }
