@@ -34,6 +34,14 @@ namespace SCBF.Finance
         }
 
         /// <summary>
+        /// 预算类型
+        /// </summary>
+        public BungetType Type
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 同一批次导入的预算文件的文件Id保持一致
         /// </summary>
         public Guid FileId

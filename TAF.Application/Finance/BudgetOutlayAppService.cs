@@ -36,10 +36,11 @@ namespace SCBF.Finance
         private readonly ILayerRepository layerRepository;
         private IWorkbook workbook = null;
 
-        public BudgetOutlayAppService(IBudgetOutlayRepository budgetOutlayRepository
-            , ISysDictionaryRepository sysDictionaryRepository
-            , IBudgetReceiptRepository budgetReceiptRepository
-            , ILayerRepository layerRepository)
+        public BudgetOutlayAppService(
+            IBudgetOutlayRepository budgetOutlayRepository,
+            ISysDictionaryRepository sysDictionaryRepository,
+            IBudgetReceiptRepository budgetReceiptRepository,
+            ILayerRepository layerRepository)
         {
             this.budgetOutlayRepository = budgetOutlayRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
@@ -47,7 +48,7 @@ namespace SCBF.Finance
             this.layerRepository = layerRepository;
         }
 
-        public List<BudgetOutlayListDto> Get(string type)
+        public List<BudgetOutlayListDto> Get(string sheetName, int type)
         {
             var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
@@ -56,7 +57,8 @@ namespace SCBF.Finance
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.SheetName == type && !r.HasRelated).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlayListDto>>();
+                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.SheetName == sheetName && !r.HasRelated && (int)r.Type == type)
+                .OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlayListDto>>();
             return result;
         }
 
@@ -86,77 +88,38 @@ namespace SCBF.Finance
             return result;
         }
 
-        public Guid LoadBudgetReceiptFile(string path)
+        public Guid LoadBudgetReceiptFile1(string path)
         {
-            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            var modelId = Guid.NewGuid();
-            if (path.IndexOf(".xlsx", StringComparison.OrdinalIgnoreCase) > 0)// 2007版本
-            {
-                this.workbook = new XSSFWorkbook(fs);
-            }
-            else if (path.IndexOf(".xls", StringComparison.OrdinalIgnoreCase) > 0)// 2003版本
-            {
-                this.workbook = new HSSFWorkbook(fs);
-            }
-            else
-            {
-                throw new UserFriendlyException("上传文件格式不正确");
-            }
+            return this.LoadBudgetReceiptFile(path, BungetType.Year);
+        }
 
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
-            if (currentYear == null)
-            {
-                throw new UserFriendlyException("未设置预算年度");
-            }
+        public Guid LoadBudgetReceiptFile2(string path)
+        {
+            return this.LoadBudgetReceiptFile(path, BungetType.Adjust);
+        }
 
-            var list = new List<BudgetOutlay>();
-            for (var j = 0; j < this.workbook.NumberOfSheets; j++)
-            {
-                var sheet = this.workbook.GetSheetAt(j);
-                //最后一列的标号
-                var rowCount = sheet.LastRowNum + 1;
-
-
-                for (var i = 3; i < rowCount; i++)
-                {
-                    var row = sheet.GetRow(i);
-                    if (!string.IsNullOrEmpty(row.GetCell(1).ToStr()))
-                    {
-                        var item = new BudgetOutlay()
-                        {
-                            SheetName = sheet.SheetName,
-                            Name = row.GetCell(0).ToStr(),
-                            Unit = row.GetCell(1).ToStr(),
-                            Amount = decimal.Parse(row.GetCell(2).ToStr()),
-                            Price = decimal.Parse(row.GetCell(3).ToStr()),
-                            Column1 = row.GetCell(6).ToStr().ToDecimal(),
-                            Column2 = row.GetCell(7).ToStr().ToDecimal(),
-                            Column3 = row.GetCell(8).ToStr().ToDecimal(),
-                            FileId = modelId,
-                            Year = currentYear.Value.ToInt()
-                        };
-                        list.Add(item);
-                    }
-                }
-            }
-
-            this.budgetOutlayRepository.Delete(r => r.Year.ToString() == currentYear.Value);
-            this.budgetOutlayRepository.InsertRange(list);
-            return modelId;
+        public Guid LoadBudgetReceiptFile3(string path)
+        {
+            return this.LoadBudgetReceiptFile(path, BungetType.Increase);
         }
 
         /// <summary>
         /// 获取导入sheet的名称
         /// </summary>
-        /// <returns></returns>
-        public List<KeyValue<string, string>> GetSheetNames()
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public List<KeyValue<string, string>> GetSheetNames(int type)
         {
             var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
             {
                 throw new UserFriendlyException("未设置预算年度");
             }
-            return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value).Select(r => new KeyValue<string, string> { Key = r.SheetName, Value = r.SheetName }).Distinct().ToList();
+            return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value && (int)r.Type == type)
+                .Select(r => new KeyValue<string, string> { Key = r.SheetName, Value = r.SheetName }).Distinct().ToList();
         }
 
         public void Update(OutlayEditDto input)
@@ -223,6 +186,66 @@ namespace SCBF.Finance
                 list.Add(dto);
             }
             return list;
+        }
+
+        private Guid LoadBudgetReceiptFile(string path, BungetType type)
+        {
+            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            var modelId = Guid.NewGuid();
+            if (path.IndexOf(".xlsx", StringComparison.OrdinalIgnoreCase) > 0)// 2007版本
+            {
+                this.workbook = new XSSFWorkbook(fs);
+            }
+            else if (path.IndexOf(".xls", StringComparison.OrdinalIgnoreCase) > 0)// 2003版本
+            {
+                this.workbook = new HSSFWorkbook(fs);
+            }
+            else
+            {
+                throw new UserFriendlyException("上传文件格式不正确");
+            }
+
+            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
+            if (currentYear == null)
+            {
+                throw new UserFriendlyException("未设置预算年度");
+            }
+
+            var list = new List<BudgetOutlay>();
+            for (var j = 0; j < this.workbook.NumberOfSheets; j++)
+            {
+                var sheet = this.workbook.GetSheetAt(j);
+                //最后一列的标号
+                var rowCount = sheet.LastRowNum + 1;
+
+
+                for (var i = 3; i < rowCount; i++)
+                {
+                    var row = sheet.GetRow(i);
+                    if (!string.IsNullOrEmpty(row.GetCell(1).ToStr()))
+                    {
+                        var item = new BudgetOutlay()
+                        {
+                            Type = type,
+                            SheetName = sheet.SheetName,
+                            Name = row.GetCell(0).ToStr(),
+                            Unit = row.GetCell(1).ToStr(),
+                            Amount = decimal.Parse(row.GetCell(2).ToStr()),
+                            Price = decimal.Parse(row.GetCell(3).ToStr()),
+                            Column1 = row.GetCell(6).ToStr().ToDecimal(),
+                            Column2 = row.GetCell(7).ToStr().ToDecimal(),
+                            Column3 = row.GetCell(8).ToStr().ToDecimal(),
+                            FileId = modelId,
+                            Year = currentYear.Value.ToInt()
+                        };
+                        list.Add(item);
+                    }
+                }
+            }
+
+            this.budgetOutlayRepository.Delete(r => r.Year.ToString() == currentYear.Value && r.Type == type);
+            this.budgetOutlayRepository.InsertRange(list);
+            return modelId;
         }
     }
 }

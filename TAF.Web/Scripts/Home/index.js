@@ -29,11 +29,13 @@ Path.map("#baseInfos").to(function () { loadPage("/SysDictionary/SysDictionaryLi
 
 Path.map("#financeInfos").to(function () { loadPage("/Finance/InfoList", "预算管理", "基础信息", "#menuFinanceInfos", false); });
 Path.map("#account").to(function () { loadPage("/Finance/AccountList", "预算管理", "会计科目", "#menuAccount", false); });
-Path.map("#budgetReceipts").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList", "预算管理", "年度预算收入", "#menuBudgetReceipts", false); });
+Path.map("#budgetReceipts").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList", "预算管理", "年初预算收入", "#menuBudgetReceipts", false); });
 Path.map("#budgetReceipts2").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList2", "预算管理", "预算调整收入", "#menuBudgetReceipts2", false); });
 Path.map("#budgetReceipts3").to(function () { loadPage("/BudgetReceipt/BudgetReceiptList3", "预算管理", "调整后增加收入", "#menuBudgetReceipts3", false); });
-Path.map("#budgetOutlays").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList", "预算管理", "年度预算支出", "#menuBudgetOutlays", false); });
-Path.map("#budgetSummary").to(function () { loadPage("/BudgetOutlay/BudgetSummary", "预算管理", "年度预算简表", "#menuBudgetSummary", false); });
+Path.map("#budgetOutlays").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList", "预算管理", "年初预算支出", "#menuBudgetOutlays", false); });
+Path.map("#budgetOutlays2").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList2", "预算管理", "年中调整支出", "#menuBudgetOutlays2", false); });
+Path.map("#budgetOutlays3").to(function () { loadPage("/BudgetOutlay/BudgetOutlayList3", "预算管理", "预算调整后支出", "#menuBudgetOutlays3", false); });
+Path.map("#budgetSummary").to(function () { loadPage("/BudgetOutlay/BudgetSummary", "预算管理", "年初预算简表", "#menuBudgetSummary", false); });
 Path.map("#actualOutlays").to(function () { loadPage("/ActualOutlay/ActualOutlayList", "预算管理", "实际支出", "#menuActualOutlays", false); });
 Path.map("#outlays").to(function () { loadPage("/ActualOutlay/OutlayList", "预算管理", "支出对比明细", "#menuOutlays", false); });
 Path.map("#receipts").to(function () { loadPage("/BudgetReceipt/ReceiptList", "预算管理", "预算收入与实际收入统计", "#menuReceipts", false); });
@@ -47,6 +49,8 @@ Path.map("#hisStocks").to(function () { loadPage("/HisStock/HisStockList", "物�
 Path.map("#queryStocks").to(function () { loadPage("/HisStock/QueryStockList", "物资器材管理", "物资出入库查询", "#menuHisStocks", false); });
 Path.map("#queryStockChange").to(function () { loadPage("/HisStock/QuerytockChange", "物资器材管理", "物资变动情况查询", "#menuStockChange", false); });
 Path.map("#stocks").to(function () { loadPage("/Stock/StockList", "物资器材管理", "物资清单", "#menuStocks", false); });
+
+Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

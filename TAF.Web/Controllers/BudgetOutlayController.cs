@@ -9,12 +9,10 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System.Web.Mvc;
-
     using Abp.Web.Mvc.Authorization;
-
     using SCBF.BaseInfo;
     using SCBF.Finance;
+    using System.Web.Mvc;
 
     /// <summary>
     /// 支出预算控制器
@@ -34,15 +32,39 @@ namespace SCBF.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Upload()
+        public JsonResult Upload1()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetOutlayAppService.LoadBudgetReceiptFile);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetOutlayAppService.LoadBudgetReceiptFile1);
+            return new JsonResult() { Data = "OK" };
+        }
+
+        [HttpPost]
+        public JsonResult Upload2()
+        {
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetOutlayAppService.LoadBudgetReceiptFile2);
+            return new JsonResult() { Data = "OK" };
+        }
+
+        [HttpPost]
+        public JsonResult Upload3()
+        {
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetOutlayAppService.LoadBudgetReceiptFile3);
             return new JsonResult() { Data = "OK" };
         }
 
         public ActionResult BudgetOutlayList()
         {
             return PartialView("_BudgetOutlayIndex");
+        }
+
+        public ActionResult BudgetOutlayList2()
+        {
+            return PartialView("_BudgetOutlayIndex2");
+        }
+
+        public ActionResult BudgetOutlayList3()
+        {
+            return PartialView("_BudgetOutlayIndex3");
         }
 
         public ActionResult BudgetSummary()

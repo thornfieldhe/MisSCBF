@@ -9,9 +9,8 @@
 
 namespace SCBF.Finance.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 支出预算列表对象
@@ -135,14 +134,6 @@ namespace SCBF.Finance.Dto
         /// Total2
         /// </summary>
         public decimal Total2
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Total3
-        /// </summary>
-        public decimal Total3
         {
             get; set;
         }

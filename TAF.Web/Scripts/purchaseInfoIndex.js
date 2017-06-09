@@ -1,6 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#purchaseUnitFormBody",
+    template: "#budgetUnitFormBody",
     data: function () {
         return {
             item: {
@@ -48,45 +48,21 @@ var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
         var $this = this;
-        $this.title = "责任单位";
-        $this.category = "Purchase_Unit";
+        $this.title = "单位";
+        $this.category = "Material_ProductUnit";
         $this.queryEntity.category = $this.category;
         $("#myTab").on("shown.bs.tab", function(e) {
             var id = $(e.target).attr("id");
             if (id === "punit") {
-                $this.title = "责任单位";
-                $this.category = "Purchase_Unit";
-            } else if (id === "pusers") {
-                $this.title = "采购办人员库";
-                $this.category = "Purchase_Users";
-            } else if (id === "pdesignUnit") {
-                $this.title = "设计单位";
-                $this.category = "Purchase_DesignUnit";
-            } else if (id === "ppartyA") {
-                $this.title = "甲方人员";
-                $this.category = "Purchase_PartyA";
-            } else if (id === "pcategory") {
-                $this.title = "采购类型";
-                $this.category = "Purchase_Category";
-            } else if (id === "pcostUnit") {
-                $this.title = "造价单位";
-                $this.category = "Purchase_CostUnit";
-            } else if (id === "pconstructionControlUnit") {
-                $this.title = "监理单位";
-                $this.category = "Purchase_ConstructionControlUnit";
-            } else if (id === "pbiddingAgency") {
-                $this.title = "招标代理单位";
-                $this.category = "Purchase_BiddingAgency";
-            } else if (id === "pexpert") {
-                $this.title = "评标专家";
-                $this.category = "Purchase_Expert";
-            } else if (id === "ppriceConsistency") {
-                $this.title = "清单综合单价一致率";
-                $this.category = "Purchase_PriceConsistency";
-            } else if (id === "ppriceConsistency") {
-                $this.title = "质量评价体系评分";
-                $this.category = "Purchase_SystemScore";
-            } 
+                $this.title = "单位";
+                $this.category = "Material_ProductUnit";
+            }else if (id === "pstorage") {
+                $this.title = "仓库";
+                $this.category = "Material_Storage";
+            } else if (id === "pyear") {
+                $this.title = "会计年度";
+                $this.category = "Material_Year";
+            }
             $this.queryEntity.category = $this.category;
             $this.query(0);
         });

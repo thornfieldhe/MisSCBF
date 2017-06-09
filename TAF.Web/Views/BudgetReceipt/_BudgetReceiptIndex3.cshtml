@@ -3,78 +3,79 @@
     <div class=" col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
-                <span class="widget-caption">年度预算收入</span>
+                <span class="widget-caption">调整后增加收入</span>
             </div>
             <div class="widget-body">
                 <div class="table-toolbar">
                     <div class="table-toolbar">
-                        <input type="file" name="fileUpload" id="fileUpload" class="fileUpload" title="上传年度预算收入" />
+                        <input type="file" name="fileUpload" id="fileUpload" class="fileUpload" title="上传调整后增加收入" />
                     </div>
 
 
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover table-bordered " width="2400px">
-                            <thead>
-                            <tr role="row">
-                                <th style="width: 100px;" rowspan="4">
-                                    科目代码
-                                </th>
-                                <th style="width: 100px;" rowspan="4">
-                                    科目名称
-                                </th>
-                                <th style="width: 2100px;" colspan="5">
-                                    收入(万元)
-                                </th>
-                                <th style="width: 100px;" rowspan="4">
-                                    操作
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th style="width: 100px;" rowspan="3">
-                                    合计
-                                </th>
-                                <th style="width: 700px;" colspan="4">
-                                    向上请领
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th style="width: 100px;" rowspan="2">
-                                    小计
-                                </th>
-                                <th style="width: 100px;" rowspan="2">
-                                    标准经费
-                                </th>
-                                <th style="width: 100px;" colspan="2">
-                                    项目经费
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th style="width: 100px;">
-                                    地方下达项目经费
-                                </th>
-                                <th style="width: 100px;">
-                                    部局下达项目经费
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="item in list">
-                                <td>{{item.code}}</td>
-                                <td>{{item.name}}</td>
-                                <td>{{item.total}}</td>
-                                <td>{{item.total1}}</td>
-                                <td>{{item.column1}}</td>
-                                <td>{{item.column21}}</td>
-                                <td>{{item.column22}}</td>
-                                <td>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="showDetails(item)"> <i class="fa    fa-file-text-o"></i> 明细</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="col-md-12"><div class="pre-scrollable">
+    <table class="table table-striped table-hover table-bordered "  style="width: 800px">
+        <thead>
+            <tr role="row">
+                <th style="width: 100px;" rowspan="4">
+                    科目代码
+                </th>
+                <th style="width: 100px;" rowspan="4">
+                    科目名称
+                </th>
+                <th style="width: 2100px;" colspan="5">
+                    收入(万元)
+                </th>
+                <th style="width: 100px;" rowspan="4">
+                    操作
+                </th>
+            </tr>
+            <tr role="row">
+                <th style="width: 100px;" rowspan="3">
+                    合计
+                </th>
+                <th style="width: 700px;" colspan="4">
+                    向上请领
+                </th>
+            </tr>
+            <tr role="row">
+                <th style="width: 100px;" rowspan="2">
+                    小计
+                </th>
+                <th style="width: 100px;" rowspan="2">
+                    标准经费
+                </th>
+                <th style="width: 100px;" colspan="2">
+                    项目经费
+                </th>
+            </tr>
+            <tr role="row">
+                <th style="width: 100px;">
+                    地方下达项目经费
+                </th>
+                <th style="width: 100px;">
+                    部局下达项目经费
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in list">
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.total}}</td>
+                <td>{{item.total1}}</td>
+                <td>{{item.column1}}</td>
+                <td>{{item.column21}}</td>
+                <td>{{item.column22}}</td>
+                <td>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="showDetails(item)"> <i class="fa    fa-file-text-o"></i> 明细</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
                 </div>
             </div>
         </div>

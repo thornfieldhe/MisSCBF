@@ -28,9 +28,9 @@ namespace SCBF.Storage
         private readonly IStockRepository stockRepository;
         private readonly IDeliveryRepository deliveryRepository;
 
-        public DeliveryBillAppService(IDeliveryBillRepository deliveryBillRepository
-            , IDeliveryRepository deliveryRepository
-            , IStockRepository stockRepository)
+        public DeliveryBillAppService(
+            IDeliveryBillRepository deliveryBillRepository,
+            IDeliveryRepository deliveryRepository, IStockRepository stockRepository)
         {
             this.deliveryBillRepository = deliveryBillRepository;
             this.stockRepository = stockRepository;
@@ -60,7 +60,7 @@ namespace SCBF.Storage
                 var totalAmount = entry.Amount;
                 foreach (var stock in stocks)
                 {
-                    if (stock.Amount > totalAmount)// 如果当前行库存量>出库量,则当前库存量=当前原库存量-出库量
+                    if(stock.Amount > totalAmount) // 如果当前行库存量>出库量,则当前库存量=当前原库存量-出库量
                     {
                         stock.Amount -= totalAmount;
                         this.stockRepository.Update(stock);

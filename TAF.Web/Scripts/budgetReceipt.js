@@ -37,7 +37,7 @@ $(".fileUpload").liteUploader({
 })
     .on("lu:success", function (e, response) {
         main.query();
-        taf.notify.success("年度预算收入导入成功");
+        taf.notify.success("年初预算收入导入成功");
     });
 
 $(".fileUpload").change(function () {

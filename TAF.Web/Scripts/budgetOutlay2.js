@@ -3,13 +3,13 @@
     ready: function () {
         var $this = this;
         $("#searchSheet").select2().on("change", function(e) {
-            abp.services.app.budgetOutlay.get($("#searchSheet").val(),0)
+            abp.services.app.budgetOutlay.get($("#searchSheet").val(),1)
                 .done(function (r) {
                     $this.list = r;
             });
         });
         $(".fileUpload").liteUploader({
-            script: defaultUrl + "BudgetOutlay/Upload1"
+            script: defaultUrl + "BudgetOutlay/Upload2"
         })
         .on("lu:success", function (e, response) {
                 $this.loadSheets();
@@ -32,7 +32,7 @@
     methods: {
         loadSheets: function () {
             var $this = this;
-            abp.services.app.budgetOutlay.getSheetNames(0)
+            abp.services.app.budgetOutlay.getSheetNames(1)
                 .done(function (r) {
                     taf.successiveBindSelect($("#searchSheet"), r);
                     $this.list = [];
@@ -52,7 +52,7 @@
             } else {
                 abp.services.app.budgetOutlay.update({ id: $this.selectItem, outlayIds: $this.selectItems, code: _.find($this.list2, function (m) { return m.key === $this.selectItem }).value })
                     .done(function (r) {
-                        abp.services.app.budgetOutlay.get($("#searchSheet").val(),0)
+                        abp.services.app.budgetOutlay.get($("#searchSheet").val(),1)
                             .done(function (r) {
                                 $this.list = r;
                                 taf.notify.success("年初预算支出更新成功");

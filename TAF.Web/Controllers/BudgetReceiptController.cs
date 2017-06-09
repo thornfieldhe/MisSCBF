@@ -9,21 +9,10 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Http;
-    using System.Text;
-    using System.Web;
-    using System.Web.Mvc;
-    using System.Web.UI.WebControls;
-
-    using Abp.UI;
     using Abp.Web.Mvc.Authorization;
-
     using SCBF.BaseInfo;
-    using SCBF.BaseInfo.Dto;
     using SCBF.Finance;
+    using System.Web.Mvc;
 
     /// <summary>
     /// 年度预算收入控制器

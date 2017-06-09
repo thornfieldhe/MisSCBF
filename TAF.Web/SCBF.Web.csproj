@@ -812,6 +812,9 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\budgetOutlay2.js" />
+    <Content Include="Scripts\budgetOutlay3.js" />
+    <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\stock.js" />
     <Content Include="Scripts\stockChange.js" />
     <Content Include="Scripts\queryStock.js" />
@@ -915,6 +918,7 @@
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HisStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
@@ -976,6 +980,9 @@
     <Content Include="Views\HisStock\_QueryStockList.cshtml" />
     <Content Include="Views\HisStock\_StockChange.cshtml" />
     <Content Include="Views\Stock\_StockIndex.cshtml" />
+    <Content Include="Views\Purchase\_PurchaseInfoIndex.cshtml" />
+    <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex3.cshtml" />
+    <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

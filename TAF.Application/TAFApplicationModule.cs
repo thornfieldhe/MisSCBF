@@ -190,8 +190,7 @@ namespace SCBF
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlayListDto>()
                     .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))
-                    .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column1 + r.Column2))
-                    .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3));
+                    .ForMember(m => m.Total2, n => n.MapFrom(r => r.Column1 + r.Column2));
 
                 mapper.CreateMap<BudgetOutlay, OutlayListDto>()
                     .ForMember(m => m.Total1, n => n.MapFrom(r => r.Amount * r.Price))

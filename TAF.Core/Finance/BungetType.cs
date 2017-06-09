@@ -17,16 +17,16 @@ namespace SCBF.Finance
         /// <summary>
         /// 年度
         /// </summary>
-        Year=0,
+        Year = 0,
 
         /// <summary>
         /// 调整后
         /// </summary>
-        Adjust=1,
+        Adjust = 1,
 
         /// <summary>
         /// 增加后
         /// </summary>
-        Increase=2
+        Increase = 2
     }
 }

@@ -3,7 +3,7 @@
 //   
 // </copyright>
 // <summary>
-//   年度预算收入仓储接口
+//   年初预算收入仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ namespace SCBF
     using SCBF.Finance;
     
     /// <summary>
-    /// 年度预算收入仓储接口
+    /// 年初预算收入仓储接口
     /// </summary>
     public interface IBudgetReceiptRepository : ITAFRepositoryBase<BudgetReceipt>
     {

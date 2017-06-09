@@ -82,6 +82,16 @@
                             url: "#budgetOutlays",
                             requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(new MenuItemDefinition(
+                            "menuBudgetOutlays2",
+                            L("年中调整支出"),
+                            url: "#budgetOutlays2",
+                            requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBudgetOutlays3",
+                            L("预算调整后支出"),
+                            url: "#budgetOutlays3",
+                            requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
                             "menuBudgetSummary",
                             L("年度预算简表"),
                             url: "#budgetSummary",
@@ -100,8 +110,7 @@
                             "menuReceipts",
                             L("预算收入与实际收入统计"),
                             url: "#receipts",
-                            requiredPermissionName: PermissionNames.CwUser))
-                       )
+                            requiredPermissionName: PermissionNames.CwUser)))
                 .AddItem(
                     new MenuItemDefinition(
                         "Storage",
@@ -152,8 +161,23 @@
                             url: "#queryStockChange",
                             requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
-                            "menuStocks", L("库存清单"), url: "#stocks", requiredPermissionName: PermissionNames.WzUser))
-                       );
+                                     "menuStocks",
+                                     L("库存清单"),
+                                     url: "#stocks",
+                                     requiredPermissionName: PermissionNames.WzUser)))
+                .AddItem(
+                        new MenuItemDefinition(
+                    "Purchase",
+                    L("采购管理"),
+                    url: "#",
+                    icon: "menu-icon fa  fa-rmb",
+                    requiredPermissionName: PermissionNames.WzUser)
+                    .AddItem(
+                            new MenuItemDefinition(
+                                "menuPurchaseInfos",
+                                L("基础信息"),
+                                url: "#purchaseInfos",
+                                requiredPermissionName: PermissionNames.WzUser)));
         }
 
         private static ILocalizableString L(string name)

@@ -27,6 +27,7 @@ namespace SCBF.BaseInfo
         /// 仓库
         /// </summary>
         public const string Material_Storage = "Material_Storage";
+
         /// <summary>
         /// 物资模块年度
         /// </summary>
@@ -76,6 +77,65 @@ namespace SCBF.BaseInfo
         /// 实际支出附件
         /// </summary>
         public const string Attachment_ActualOutlays = "Attachment_ActualOutlays";
+
+        #endregion
+
+        #region 采购
+
+        /// <summary>
+        /// 责任单位
+        /// </summary>
+        public const string Purchase_Unit = "Purchase_Unit";
+
+        /// <summary>
+        /// 采购办人员库
+        /// </summary>
+        public const string Purchase_Users = "Purchase_Users";
+
+        /// <summary>
+        /// 设计单位
+        /// </summary>
+        public const string Purchase_DesignUnit = "Purchase_DesignUnit";
+
+        /// <summary>
+        /// 甲方人员
+        /// </summary>
+        public const string Purchase_PartyA = "Purchase_PartyA";
+
+        /// <summary>
+        /// 采购类型
+        /// </summary>
+        public const string Purchase_Category = "Purchase_Category";
+
+        /// <summary>
+        /// 造价单位
+        /// </summary>
+        public const string Purchase_CostUnit = "Purchase_CostUnit";
+
+        /// <summary>
+        /// 监理单位
+        /// </summary>
+        public const string Purchase_ConstructionControlUnit = "Purchase_ConstructionControlUnit";
+
+        /// <summary>
+        /// 招标代理单位
+        /// </summary>
+        public const string Purchase_BiddingAgency = "Purchase_BiddingAgency";
+
+        /// <summary>
+        /// 评标专家
+        /// </summary>
+        public const string Purchase_Expert = "Purchase_Expert";
+
+        /// <summary>
+        /// 清单综合单价一致率
+        /// </summary>
+        public const string Purchase_PriceConsistency = "Purchase_PriceConsistency";
+
+        /// <summary>
+        /// 质量评价体系评分
+        /// </summary>
+        public const string Purchase_SystemScore = "Purchase_SystemScore";
 
         #endregion
 

@@ -19,15 +19,19 @@ namespace SCBF.Finance
     /// </summary>
     public interface IBudgetOutlayAppService : IBaseEntityApplicationService
     {
-        List<BudgetOutlayListDto> Get(string type);
+        List<BudgetOutlayListDto> Get(string sheetName, int type);
 
         List<OutlayListDto> GetAll();
 
         List<BudgetOutlaySimpleListDto> GetSimple();
 
-        Guid LoadBudgetReceiptFile(string path);
+        Guid LoadBudgetReceiptFile1(string path);
 
-        List<KeyValue<string, string>> GetSheetNames();
+        Guid LoadBudgetReceiptFile2(string path);
+
+        Guid LoadBudgetReceiptFile3(string path);
+
+        List<KeyValue<string, string>> GetSheetNames(int type);
 
         void Update(OutlayEditDto input);
 

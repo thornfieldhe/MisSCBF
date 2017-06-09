@@ -28,9 +28,9 @@ namespace SCBF.Storage
         private readonly ISysDictionaryRepository sysDictionaryRepository;
         private readonly IDeliveryRepository deliveryRepository;
 
-        public DeliveryAppService(IProductRepository productRepository
-            , IDeliveryRepository deliveryRepository
-            , ISysDictionaryRepository sysDictionaryRepository)
+        public DeliveryAppService(IProductRepository productRepository,
+                                  IDeliveryRepository deliveryRepository,
+                                  ISysDictionaryRepository sysDictionaryRepository)
         {
             this.productRepository = productRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
@@ -38,7 +38,7 @@ namespace SCBF.Storage
         }
 
         /// <summary>
-        /// 入库
+        /// 出库
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
