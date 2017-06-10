@@ -1,16 +1,14 @@
 ﻿namespace SCBF.EntityFramework
 {
-    using System.Data.Common;
-    using System.Data.Entity;
-
     using Abp.Zero.EntityFramework;
-
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
     using SCBF.Finance;
     using SCBF.MultiTenancy;
     using SCBF.Storage;
     using SCBF.Users;
+    using System.Data.Common;
+    using System.Data.Entity;
 
     public class TAFDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
@@ -112,6 +110,11 @@
 
 
         public DbSet<Receipt> Receipts
+        {
+            get; set;
+        }
+
+        public DbSet<Outlay> Outlaies
         {
             get; set;
         }

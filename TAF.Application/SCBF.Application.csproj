@@ -153,6 +153,9 @@
     <Compile Include="BaseInfo\Dto\AttachmentEditDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentListDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentQueryDto.cs" />
+    <Compile Include="Finance\Dto\BudgetPerformanceListDto.cs" />
+    <Compile Include="Finance\Dto\OutlayQueryDto.cs" />
+    <Compile Include="Finance\Dto\OutlaySummaryEditDto.cs" />
     <Compile Include="Storage\Dto\HisStockListDto.cs" />
     <Compile Include="Storage\Dto\DateRangeQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockQueryDto.cs" />

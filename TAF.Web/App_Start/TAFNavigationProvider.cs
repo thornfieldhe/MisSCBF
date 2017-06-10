@@ -110,6 +110,11 @@
                             "menuReceipts",
                             L("预算收入与实际收入统计"),
                             url: "#receipts",
+                            requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBudgetperformance",
+                            L("预算编制及预算执行情况"),
+                            url: "#budgetperformance",
                             requiredPermissionName: PermissionNames.CwUser)))
                 .AddItem(
                     new MenuItemDefinition(

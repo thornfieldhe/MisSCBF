@@ -132,6 +132,7 @@
     <Compile Include="EntityFramework\Maps\HisStockMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
     <Compile Include="EntityFramework\Maps\EntryMap.cs" />
+    <Compile Include="EntityFramework\Repositories\OutlayRepository.cs" />
     <Compile Include="EntityFramework\TAFDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\TAFRepositoryBase.cs" />
     <Compile Include="Migrations\201506210746108_AbpZero_Initial.cs" />
@@ -209,6 +210,10 @@
     <Compile Include="Migrations\201706091337259_initData.cs" />
     <Compile Include="Migrations\201706091337259_initData.Designer.cs">
       <DependentUpon>201706091337259_initData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706100612068_addTable-outlay.cs" />
+    <Compile Include="Migrations\201706100612068_addTable-outlay.Designer.cs">
+      <DependentUpon>201706100612068_addTable-outlay.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -308,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706091337259_initData.resx">
       <DependentUpon>201706091337259_initData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706100612068_addTable-outlay.resx">
+      <DependentUpon>201706100612068_addTable-outlay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -33,19 +33,25 @@ namespace SCBF.Finance
         private readonly IBudgetOutlayRepository budgetOutlayRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
         private readonly IBudgetReceiptRepository budgetReceiptRepository;
+        private readonly IActualOutlayRepository actualOutlayRepository;
         private readonly ILayerRepository layerRepository;
+        private readonly IOutlayRepository outlayRepository;
         private IWorkbook workbook = null;
 
         public BudgetOutlayAppService(
             IBudgetOutlayRepository budgetOutlayRepository,
             ISysDictionaryRepository sysDictionaryRepository,
             IBudgetReceiptRepository budgetReceiptRepository,
-            ILayerRepository layerRepository)
+            ILayerRepository layerRepository,
+            IActualOutlayRepository actualOutlayRepository,
+            IOutlayRepository outlayRepository)
         {
             this.budgetOutlayRepository = budgetOutlayRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
             this.budgetReceiptRepository = budgetReceiptRepository;
+            this.actualOutlayRepository = actualOutlayRepository;
             this.layerRepository = layerRepository;
+            this.outlayRepository = outlayRepository;
         }
 
         public List<BudgetOutlayListDto> Get(string sheetName, int type)
@@ -88,6 +94,131 @@ namespace SCBF.Finance
             var result =
                 this.budgetOutlayRepository.GetAllList(r => r.Year == year
                 && r.HasRelated).OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlaySimpleListDto>>();
+            return result;
+        }
+
+        public List<BudgetPerformanceListDto> GetBudgetPerformances()
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var accounts = this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account);
+
+
+            var result = this.budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value).OrderBy(r => r.Code);
+            var result0 = this.budgetOutlayRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value && r.HasRelated).OrderBy(r => r.Code);
+            var codeList = result.Select(r => r.Code).Distinct().ToList();
+            var result1 = this.actualOutlayRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value).OrderBy(r => r.VoucherNo);
+            var list = new List<BudgetPerformanceListDto>();
+            foreach (var code in codeList)
+            {
+                var receipt = result.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Year);
+                var outlay1 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Year);
+                var outlay2 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Adjust);
+                var outlay3 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Increase);
+                var outlay = this.outlayRepository.FirstOrDefault(r => r.Code == code && r.Year.ToString() == currentYearItem.Value);
+
+                if (receipt == null)
+                {
+                    throw new UserFriendlyException($"科目编码为[{code}]的年初预算收入不存在");
+                }
+
+                var performance = new BudgetPerformanceListDto
+                {
+                    Id = receipt.Id,
+                    Code = code,
+                    Name = accounts.FirstOrDefault(r => r.LevelCode == code)?.Name,
+                    Total2 = result.Where(r => r.Code == code).Sum(r => r.Column1),
+                    Total3 = result.Where(r => r.Code == code).Sum(r => r.Column21 + r.Column22),
+                    Total4 = result.Where(r => r.Code == code).Sum(r => r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37),
+                    Total5 = result.Where(r => r.Code == code).Sum(r => r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47),
+                    Total8 = outlay1 != null ? outlay1.Column1 : 0,
+                    Total9 = outlay1 != null ? outlay1.Column2 : 0,
+                    Total10 = outlay1 != null ? outlay1.Column3 : 0,
+                    Total12 = outlay2 != null ? outlay2.Column1 : 0,
+                    Total13 = outlay2 != null ? outlay2.Column2 : 0,
+                    Total14 = outlay2 != null ? outlay2.Column3 : 0,
+                    Total16 = outlay3 != null ? outlay3.Column1 : 0,
+                    Total17 = outlay3 != null ? outlay3.Column2 : 0,
+                    Total18 = outlay3 != null ? outlay3.Column3 : 0,
+                    Total19 = decimal.Round(
+                        ((outlay1 == null ? 0 : outlay1.ActualOutlays.Sum(r => r.Amount))
+                         + (outlay2 == null ? 0 : outlay2.ActualOutlays.Sum(r => r.Amount))
+                         + (outlay3 == null ? 0 : outlay3.ActualOutlays.Sum(r => r.Amount))) / 10000,
+                        2,
+                        MidpointRounding.AwayFromZero),
+                    Total22 = outlay == null ? 0 : outlay.Total1,
+                    Total24 = outlay == null ? 0 : outlay.Total2,
+                    Total25 = outlay == null ? 0 : outlay.Total3,
+                    Note = outlay?.Note,
+                };
+
+                list.Add(performance);
+            }
+
+            return list;
+        }
+
+        public void SaveOutlaySummary(OutlaySummaryEditDto item)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var outlay = this.outlayRepository.FirstOrDefault(r => r.Code == item.Code && r.Year.ToString() == currentYearItem.Value);
+            if (outlay == null)
+            {
+                outlay = new Outlay()
+                {
+                    Code = item.Code,
+                    Year = currentYearItem.Value.ToInt(),
+                    Total1 = item.Total1,
+                    Total2 = item.Total2,
+                    Total3 = item.Total3,
+                    Note = item.Note,
+                };
+                this.outlayRepository.Insert(outlay);
+            }
+            else
+            {
+                outlay.Total1 = item.Total1;
+                outlay.Total2 = item.Total2;
+                outlay.Total3 = item.Total3;
+                outlay.Note = item.Note;
+                this.outlayRepository.Update(outlay);
+            }
+        }
+
+        public OutlaySummaryEditDto GetOutlaySummary(string code)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var account =
+                this.layerRepository.FirstOrDefault(
+                    r => r.Category == DictionaryCategory.Budget_Account && r.LevelCode == code);
+            if (account == null)
+            {
+                throw new UserFriendlyException($"未知科目编码[{code}]");
+            }
+
+            var outlay = this.outlayRepository.FirstOrDefault(r => r.Code == code && r.Year.ToString() == currentYearItem.Value);
+            if (outlay == null)
+            {
+                return new OutlaySummaryEditDto
+                {
+                    Code = code,
+                    Year = currentYearItem.Value.ToInt(),
+                    Name = account.Name
+                };
+            }
+            var result = outlay.MapTo<OutlaySummaryEditDto>();
+            result.Name = account.Name;
             return result;
         }
 

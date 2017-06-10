@@ -72,6 +72,7 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_ReceiptIndex");
         }
+
     }
 }
 

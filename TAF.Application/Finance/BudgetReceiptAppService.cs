@@ -35,10 +35,11 @@ namespace SCBF.Finance
         private readonly IReceiptRepository receiptRepository;
         private IWorkbook workbook;
 
-        public BudgetReceiptAppService(IBudgetReceiptRepository budgetReceiptRepository
-            , ISysDictionaryRepository sysDictionaryRepository
-            , ILayerRepository layerRepository
-            , IReceiptRepository receiptRepository)
+        public BudgetReceiptAppService(
+            IBudgetReceiptRepository budgetReceiptRepository,
+            ISysDictionaryRepository sysDictionaryRepository,
+            ILayerRepository layerRepository,
+            IReceiptRepository receiptRepository)
         {
             this.budgetReceiptRepository = budgetReceiptRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;

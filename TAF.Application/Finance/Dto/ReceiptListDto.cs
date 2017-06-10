@@ -12,7 +12,7 @@ namespace SCBF.Finance.Dto
     using System;
 
     /// <summary>
-    /// 
+    /// 预算执行情况表
     /// </summary>
     public class ReceiptListDto
     {
@@ -153,51 +153,27 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 实际收入向上请领小计
         /// </summary>
-        public decimal Total21
-        {
-            get { return this.Total22 + this.Total23; }
-        }
+        public decimal Total21 => this.Total22 + this.Total23;
 
         /// <summary>
         /// 实际收入向上请领标准经费
         /// </summary>
-        public decimal Total22
-        {
-            get { return this.Total5 + this.Total12 + this.Total18; }
-        }
+        public decimal Total22 => this.Total5 + this.Total12 + this.Total18;
 
         /// <summary>
         /// 实际收入向上请领项目经费
         /// </summary>
-        public decimal Total23
-        {
-            get
-            {
-                return this.Total6 + this.Total13 + this.Total19;
-            }
-        }
+        public decimal Total23 => this.Total6 + this.Total13 + this.Total19;
 
         /// <summary>
         /// 实际收入留用经费弥补
         /// </summary>
-        public decimal Total24
-        {
-            get
-            {
-                return this.Total7 + this.Total14;
-            }
-        }
+        public decimal Total24 => this.Total7 + this.Total14;
 
         /// <summary>
         /// 实际收入上年结转
         /// </summary>
-        public decimal Total25
-        {
-            get
-            {
-                return this.Total8 + this.Total15;
-            }
-        }
+        public decimal Total25 => this.Total8 + this.Total15;
 
         /// <summary>
         /// 实际收入预算外收入
@@ -207,14 +183,6 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 收入完成率
         /// </summary>
-        public decimal Total27
-        {
-            get
-            {
-                return this.Total3 == 0 ? 0 : decimal.Round(this.Total20 / this.Total3, 2, MidpointRounding.AwayFromZero);
-            }
-        }
-
-
+        public decimal Total27 => this.Total3 == 0 ? 0 : decimal.Round(this.Total20 / this.Total3, 2, MidpointRounding.AwayFromZero);
     }
 }

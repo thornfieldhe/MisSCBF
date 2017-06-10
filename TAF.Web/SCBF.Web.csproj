@@ -814,6 +814,7 @@
     <Content Include="Scripts\actualOutlay.js" />
     <Content Include="Scripts\budgetOutlay2.js" />
     <Content Include="Scripts\budgetOutlay3.js" />
+    <Content Include="Scripts\budgetperformance.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\stock.js" />
     <Content Include="Scripts\stockChange.js" />
@@ -983,6 +984,7 @@
     <Content Include="Views\Purchase\_PurchaseInfoIndex.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex3.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex2.cshtml" />
+    <Content Include="Views\BudgetOutlay\_BudgetPerformance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

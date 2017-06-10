@@ -1,68 +1,88 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ActualOutlay.cs" company="" author="何翔华">
+// <copyright file="OutlayEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   ActualOutlay
+//   财务编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Finance
+namespace SCBF.Finance.Dto
 {
+    using Abp.AutoMapper;
     using System;
 
     /// <summary>
-    /// 实际支出表
+    /// 财务编辑对象
     /// </summary>
-    public class ActualOutlay : TAFEntity
+    [AutoMap(typeof(Outlay))]
+    public class OutlaySummaryEditDto
     {
         /// <summary>
-        /// 凭证号
+        /// Id
         /// </summary>
-        public string VoucherNo
+        public Guid Id
         {
             get; set;
         }
 
         /// <summary>
-        /// 凭证发生时间
+        /// Name
         /// </summary>
-        public DateTime Date
+        public string Name
         {
             get; set;
         }
 
         /// <summary>
-        /// 金额
+        /// Year
         /// </summary>
-        public decimal Amount
+        public int Year
         {
             get; set;
         }
 
         /// <summary>
-        /// 摘要
+        /// Total1
+        /// </summary>
+        public decimal Total1
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Total2
+        /// </summary>
+        public decimal Total2
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Total3
+        /// </summary>
+        public decimal Total3
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Note
         /// </summary>
         public string Note
         {
             get; set;
         }
 
-        public Guid? OutlayId { get; set; }
         /// <summary>
-        /// 预算支出
+        /// Code
         /// </summary>
-        public virtual BudgetOutlay Outlay { get; set; }
-
-        /// <summary>
-        /// 同一批次导入的预算文件的文件Id保持一致
-        /// </summary>
-        public Guid FileId
+        public string Code
         {
             get; set;
         }
-
-        public int Year { get; set; }
-
     }
 }
+
+
+

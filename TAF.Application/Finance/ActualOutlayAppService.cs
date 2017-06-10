@@ -34,8 +34,9 @@ namespace SCBF.Finance
         private readonly ISysDictionaryRepository sysDictionaryRepository;
         private IWorkbook workbook = null;
 
-        public ActualOutlayAppService(IActualOutlayRepository actualOutlayRepository
-            , ISysDictionaryRepository sysDictionaryRepository)
+        public ActualOutlayAppService(
+            IActualOutlayRepository actualOutlayRepository,
+            ISysDictionaryRepository sysDictionaryRepository)
         {
             this.actualOutlayRepository = actualOutlayRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
@@ -64,7 +65,7 @@ namespace SCBF.Finance
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.actualOutlayRepository.GetAllList(r => r.Year == year && r.OutlayId== outlayId).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
+                this.actualOutlayRepository.GetAllList(r => r.Year == year && r.OutlayId == outlayId).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
             return result;
         }
 
@@ -116,8 +117,7 @@ namespace SCBF.Finance
             }
             var lastItem =
                 this.actualOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value)
-                    .OrderByDescending(r => r.VoucherNo)
-                    .FirstOrDefault();//最后一笔凭证
+                    .OrderByDescending(r => r.VoucherNo).FirstOrDefault(); //最后一笔凭证
             if (lastItem != null)
             {
                 list.RemoveAll(r => string.CompareOrdinal(r.VoucherNo, lastItem.VoucherNo) <= 0);

@@ -1,68 +1,73 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ActualOutlay.cs" company="" author="何翔华">
+// <copyright file="OutlayQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   ActualOutlay
+//   财务查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Finance
+namespace SCBF.Finance.Dto
 {
     using System;
+    
+    using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 实际支出表
+    /// 财务查询对象
     /// </summary>
-    public class ActualOutlay : TAFEntity
-    {
+    public class OutlayQueryDto : PagedAndSortedResultRequestDto
+    {  
+        
         /// <summary>
-        /// 凭证号
+        /// Year
         /// </summary>
-        public string VoucherNo
+        public int? Year
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 凭证发生时间
+        /// Total1
         /// </summary>
-        public DateTime Date
+        public decimal? Total1
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 金额
+        /// Total2
         /// </summary>
-        public decimal Amount
+        public decimal? Total2
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 摘要
+        /// Total3
+        /// </summary>
+        public decimal? Total3
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }
-
-        public Guid? OutlayId { get; set; }
+        }        
+        
         /// <summary>
-        /// 预算支出
+        /// Code
         /// </summary>
-        public virtual BudgetOutlay Outlay { get; set; }
-
-        /// <summary>
-        /// 同一批次导入的预算文件的文件Id保持一致
-        /// </summary>
-        public Guid FileId
+        public string Code
         {
             get; set;
-        }
-
-        public int Year { get; set; }
-
-    }
+        }        
+    } 
 }
+
+
+

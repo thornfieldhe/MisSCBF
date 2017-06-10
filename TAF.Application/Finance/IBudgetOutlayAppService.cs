@@ -33,9 +33,15 @@ namespace SCBF.Finance
 
         List<KeyValue<string, string>> GetSheetNames(int type);
 
+        List<BudgetPerformanceListDto> GetBudgetPerformances();
+
         void Update(OutlayEditDto input);
 
         List<YearBudgetSummaryDto> GetSummary();
+
+        void SaveOutlaySummary(OutlaySummaryEditDto item);
+
+        OutlaySummaryEditDto GetOutlaySummary(string code);
     }
 }
 

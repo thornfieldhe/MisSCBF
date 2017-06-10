@@ -108,6 +108,8 @@
   <ItemGroup>
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
+    <Compile Include="Finance\IOutlayRepository.cs" />
+    <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Storage\IHisStockRepository.cs" />
     <Compile Include="BaseInfo\ILayerRepository.cs" />
     <Compile Include="BaseInfo\ISysDictionaryRepository.cs" />

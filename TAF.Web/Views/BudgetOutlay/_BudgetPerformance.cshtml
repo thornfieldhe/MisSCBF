@@ -1,0 +1,263 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">预算</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pre-scrollable">
+                            <table class="table table-striped table-hover table-bordered " style="width: 3100px">
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="4">
+                                        科目
+                                    </th>
+                                    <th style="width: 200px;" rowspan="4">
+                                        科目名称
+                                    </th>
+                                    <th style="width: 500px;" colspan="5">
+                                        年度实际收入
+                                    </th>
+                                    <th style="width: 1300px;" colspan="13">
+                                        应执行的预算数
+                                    </th>
+                                    <th style="width: 100px;" >
+                                        实际支出
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        预算执行情况
+                                    </th>
+                                    <th style="width: 100px;" rowspan="4">
+                                        实际科目结余
+                                    </th>
+                                    <th style="width: 300px;" colspan="3">
+                                        结余使用
+                                    </th>
+                                    <th style="width: 200px;"  rowspan="4">
+                                        备注
+                                    </th>
+                                    <th style="width: 100px;"  rowspan="4">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="3">
+                                        收入合计
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        向上请领
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        经费弥补
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        上年结转
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        预算合计
+                                    </th>
+                                    <th style="width: 600px;" colspan="4">
+                                        年初上报的预算安排支出
+                                    </th>
+                                    <th style="width: 600px;" colspan="4">
+                                        年中调整安排支出
+                                    </th>
+                                    <th style="width: 600px;" colspan="4">
+                                        预算调整后安排支出
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        合计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        结余或超支
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        完成率(%)
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        合计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        家底
+                                    </th>
+                                    <th style="width: 100px;" rowspan="3">
+                                        下年
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;" rowspan="2">
+                                        标准经费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        项目经费
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        对下供应
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        直接支出
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        调整预算支出
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        对下追加
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        小计
+                                    </th>
+                                    <th style="width: 100px;" rowspan="2">
+                                        调整预算支出
+                                    </th>
+                                    <th style="width: 100px;" colspan="2">
+                                        对下追加
+                                    </th>                                        
+                                </tr>
+                                <tr role="row">
+                                    <th style="width: 100px;">标准经费</th>
+                                    <th style="width: 100px;">项目经费</th>
+                                    <th style="width: 100px;">标准经费</th>
+                                    <th style="width: 100px;">项目经费</th>
+                                    <th style="width: 100px;">标准经费</th>
+                                    <th style="width: 100px;">项目经费</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.total1}}</td>
+                                    <td>{{item.total2}}</td>
+                                    <td>{{item.total3}}</td>
+                                    <td>{{item.total4}}</td>
+                                    <td>{{item.total5}}</td>
+                                    <td>{{item.total6}}</td>
+                                    <td>{{item.total7}}</td>
+                                    <td>{{item.total8}}</td>
+                                    <td>{{item.total9}}</td>
+                                    <td>{{item.total10}}</td>
+                                    <td>{{item.total11}}</td>
+                                    <td>{{item.total12}}</td>
+                                    <td>{{item.total13}}</td>
+                                    <td>{{item.total14}}</td>
+                                    <td>{{item.total15}}</td>
+                                    <td>{{item.total16}}</td>
+                                    <td>{{item.total17}}</td>
+                                    <td>{{item.total18}}</td>
+                                    <td>{{item.total19}}</td>
+                                    <td><div v-if="item.total20>0">{{item.total20}}%</div><div v-else><span class="red">{{item.total20}}</span></div></td>
+                                    <td><div v-if="item.total21>0">{{item.total21}}%</div><div v-else><span class="red">{{item.total21}}%</span></div></td>
+                                    <td>{{item.total22}}</td>
+                                    <td>{{item.total23}}</td>
+                                    <td>{{item.total24}}</td>
+                                    <td>{{item.total25}}</td>
+                                    <td>{{item.note}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="editItem(item.code,'当年实际预算外收入') "><i class="fa fa-edit"></i> 编辑</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="budgetperformanceFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">科目<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control "  name="code" v-model="item.code" readonly="readonly"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">科目名称</label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " name="name" v-model="item.name" readonly="readonly" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">实际科目结余<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="number" class="form-control  " placeholder="必填" id="total1" name="total1" v-model="item.total1" v-validate:total1="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">家底<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="number" class="form-control  " placeholder="必填" id="total2" name="total2" v-model="item.total2" v-validate:total2="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">下年<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="number" class="form-control  " placeholder="必填" id="total3" name="total3" v-model="item.total3" v-validate:total3="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">备注</label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <textarea rows="4" name="note" v-model="item.note" class="form-control  "></textarea>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/Scripts/budgetperformance.js"></script>
+
+
+
