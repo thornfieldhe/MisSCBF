@@ -17,101 +17,117 @@
                     <a href="javascript:void(0)" class="btn edit" v-on:click="query()"><i class="fa  fa-search"></i> 查询</a>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover table-bordered ">
-                            <thead>
-                            <tr role="row">
-                                <th style="width: 200px;" rowspan="2">
-                                    品名
-                                </th>        
-                                <th style="width: 200px;" rowspan="2">
-                                    规格型号
-                                </th>        
-                                <th style="width: 200px;" rowspan="2">
-                                    单位
-                                </th> 
-                                <th style="width: 300px;" rowspan="2">
-                                    时间
-                                </th> 
-                                <th style="width: 600px;" colspan="3">
-                                    期初数
-                                </th>        
-                                <th style="width: 600px;" colspan="3">
-                                    增加数
-                                </th>
-                                <th style="width: 600px;" colspan="3">
-                                    结余数
-                                </th>
-                                <th style="width: 600px;" rowspan="2">
-                                    备注
-                                </th>
-                            </tr>
-                            <tr>
-                                <th style="width: 200px;" >
-                                    价值
-                                </th>
-                                <th style="width: 200px;" >
-                                    单价
-                                </th>
-                                <th style="width: 200px;" >
-                                    数量
-                                </th>
-                                <th style="width: 200px;" >
-                                    价值
-                                </th>
-                                <th style="width: 200px;" >
-                                    单价
-                                </th>
-                                <th style="width: 200px;" >
-                                    数量
-                                </th>
-                                <th style="width: 200px;" >
-                                    价值
-                                </th>
-                                <th style="width: 200px;" >
-                                    单价
-                                </th>
-                                <th style="width: 200px;" >
-                                    数量
-                                </th>
-                                </tr>
-                                <tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in list">
-                                    <td>{{item.productName}}</td>
-                                    <td>{{item.specifications}}</td>
-                                    <td>{{item.unit}}</td>
-                                    <td>{{item.date}}</td>
-                                    <td>{{item.total1}}</td>
-                                    <td>{{item.price1}}</td>
-                                    <td>{{item.amount1}}</td>
-                                    <td><div v-if="item.category==2"><span class="red">{{item.total2}}</span></div><div v-else>{{item.total2}}</div></td>
-                                    <td>{{item.price2}}</td>
-                                    <td>{{item.amount2}}</td>
-                                    <td>{{item.total3}}</td>
-                                    <td>{{item.price3}}</td>
-                                    <td>{{item.amount3}}</td>
-                                    <td>{{item.note}}</td>
-                                </tr>
-                            </tbody>
-                            <tfoot  >
-                                <tr>
-                                    <td colspan="14" class="DTTTFooter ">
-                                        <div class="col-sm-4">
-                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite">  {{list.length}} </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                    <div class="col-md-12"><div class="pre-scrollable">
+    <table class="table table-striped table-hover table-bordered " style="width: 2200px">
+        <thead>
+            <tr role="row">
+                <th style="width: 200px;" rowspan="2">
+                    品名
+                </th>
+                <th style="width: 200px;" rowspan="2">
+                    规格型号
+                </th>
+                <th style="width: 100px;" rowspan="2">
+                    单位
+                </th>
+                <th style="width: 200px;" rowspan="2">
+                    时间
+                </th>
+                <th style="width: 300px;" colspan="3">
+                    期初数
+                </th>
+                <th style="width: 300px;" colspan="3">
+                    增加数
+                </th>
+                <th style="width: 300px;" colspan="3">
+                    减少数
+                </th>
+                <th style="width: 300px;" colspan="3">
+                    结余数
+                </th>
+                <th style="width: 300px;" rowspan="2">
+                    备注
+                </th>
+            </tr>
+            <tr>
+                <th style="width: 100px;">
+                    价值
+                </th>
+                <th style="width: 100px;">
+                    单价
+                </th>
+                <th style="width: 100px;">
+                    数量
+                </th>
+                <th style="width: 100px;">
+                    价值
+                </th>
+                <th style="width: 100px;">
+                    单价
+                </th>
+                <th style="width: 100px;">
+                    数量
+                </th>
+                <th style="width: 100px;">
+                    价值
+                </th>
+                <th style="width: 100px;">
+                    单价
+                </th>
+                <th style="width: 100px;">
+                    数量
+                </th>
+                <th style="width: 100px;">
+                    价值
+                </th>
+                <th style="width: 100px;">
+                    单价
+                </th>
+                <th style="width: 100px;">
+                    数量
+                </th>
+            </tr>
+            <tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in list">
+                <td>{{item.productName}}</td>
+                <td>{{item.specifications}}</td>
+                <td>{{item.unit}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.total1}}</td>
+                <td>{{item.price1}}</td>
+                <td>{{item.amount1}}</td>
+                <td>{{item.total2}}</td>
+                <td>{{item.price2}}</td>
+                <td>{{item.amount2}}</td>
+                <td>{{item.total4}}</td>
+                <td>{{item.price4}}</td>
+                <td>{{item.amount4}}</td>
+                <td>{{item.total3}}</td>
+                <td>{{item.price3}}</td>
+                <td>{{item.amount3}}</td>
+                <td>{{item.note}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="17" class="DTTTFooter ">
+                    <div class="col-sm-4">
+                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite">  {{list.length}} </div>
                     </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="~/Scripts/queryStock.js"></script>
+<script src="~/Scripts/hisStock.js"></script>
 
 
 

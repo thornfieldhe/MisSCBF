@@ -129,6 +129,7 @@
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
+    <Compile Include="EntityFramework\Maps\CheckMap.cs" />
     <Compile Include="EntityFramework\Maps\HisStockMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
     <Compile Include="EntityFramework\Maps\EntryMap.cs" />
@@ -215,6 +216,10 @@
     <Compile Include="Migrations\201706100612068_addTable-outlay.Designer.cs">
       <DependentUpon>201706100612068_addTable-outlay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706121503428_addTable_check.cs" />
+    <Compile Include="Migrations\201706121503428_addTable_check.Designer.cs">
+      <DependentUpon>201706121503428_addTable_check.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -223,6 +228,7 @@
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
+    <Compile Include="Repositories\CheckRepository.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706100612068_addTable-outlay.resx">
       <DependentUpon>201706100612068_addTable-outlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706121503428_addTable_check.resx">
+      <DependentUpon>201706121503428_addTable_check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

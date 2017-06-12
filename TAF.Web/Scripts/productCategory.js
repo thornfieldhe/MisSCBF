@@ -19,6 +19,8 @@
                 pId: "",
                 pName: "",
                 id: "",
+                code: "",
+                note:"",
                 order:0
             },tree:{}
         };
@@ -28,14 +30,17 @@
             var $this = this;
             $this.item.order = $('#order').val();
             if ($this.item.pName==="") {
-                $this.item.pId = "";
-                }
+                $this.item.pId = "00000000-0000-0000-0000-000000000000";
+            }
+            if ($this.item.id === "") {
+                $this.item.id = "00000000-0000-0000-0000-000000000000";
+            }
             abp.services.app.layer.saveAsync($this.item)
             .done(function (m) {
                 $this.done(closeModal);
                 main.loadTree();
                 })
-            .fail(function (m) {
+                .fail(function (m) {
                 $this.fail(m);
             });
         },

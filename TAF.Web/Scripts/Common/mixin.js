@@ -21,7 +21,7 @@ var itemMixin = {
     methods: {
         fail: function (r) {
             if (r.validationErrors !== null) {
-                taf.notify.danger(r.validationErrors[0].message);
+                taf.notify.danger(r.validationErrors[0].members[0]+"验证未通过");
             } else if (r.details !== null) {
                 taf.notify.danger(r.details);
             } else {
@@ -84,7 +84,6 @@ var indexMixin = {
     },
     methods: {
         query: function (index) {
-            console.log(index,33);
             this.queryEntity.skipCount = this.queryEntity.maxResultCount * index;
             var $this = this;
             this.excuteQuery($this);
@@ -95,8 +94,9 @@ var indexMixin = {
             $this.totalCount = r.totalCount;
         },
         fail: function (r) {
-            if (r.validationErrors !== null) {
-                taf.notify.danger(r.validationErrors[0].message);
+            console.log(3333);
+            if (r.validationErrors!== null) {
+                taf.notify.danger(r.validationErrors[0].members[0]+"验证未通过");
             } else if (r.details !== null) {
                 taf.notify.danger(r.details);
             } else {

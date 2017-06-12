@@ -104,6 +104,11 @@ namespace SCBF.Storage
             get; set;
         }
 
+        public virtual List<Check> Checks
+        {
+            get; set;
+        }
+
         public virtual List<Entry> Entries
         {
             get; set;

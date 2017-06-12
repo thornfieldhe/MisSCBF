@@ -156,6 +156,10 @@
     <Compile Include="Finance\Dto\BudgetPerformanceListDto.cs" />
     <Compile Include="Finance\Dto\OutlayQueryDto.cs" />
     <Compile Include="Finance\Dto\OutlaySummaryEditDto.cs" />
+    <Compile Include="Storage\CheckAppService.cs" />
+    <Compile Include="Storage\Dto\CheckEditDto.cs" />
+    <Compile Include="Storage\Dto\CheckListDto.cs" />
+    <Compile Include="Storage\Dto\CheckQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockListDto.cs" />
     <Compile Include="Storage\Dto\DateRangeQueryDto.cs" />
     <Compile Include="Storage\Dto\HisStockQueryDto.cs" />
@@ -170,6 +174,7 @@
     <Compile Include="Storage\Dto\StockChangeListDto.cs" />
     <Compile Include="Storage\HisStockAppService.cs" />
     <Compile Include="BaseInfo\IAttachmentAppService.cs" />
+    <Compile Include="Storage\ICheckAppService.cs" />
     <Compile Include="Storage\IHisStockAppService.cs" />
     <Compile Include="BaseInfo\ILayerAppService.cs" />
     <Compile Include="BaseInfo\ISysDictionaryAppService.cs" />

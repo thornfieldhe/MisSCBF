@@ -89,6 +89,11 @@
             get; set;
         }
 
+        public DbSet<Check> Checks
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 预算

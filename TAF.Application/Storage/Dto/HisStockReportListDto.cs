@@ -58,6 +58,12 @@ namespace SCBF.Storage.Dto
 
         public string Amount3 { get; set; }
 
+        public string Price4 { get; set; }
+
+        public string Total4 { get; set; }
+
+        public string Amount4 { get; set; }
+
         public string Note { get; set; }
 
         public string Date { get; set; }

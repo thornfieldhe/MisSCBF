@@ -39,7 +39,7 @@ namespace SCBF.Storage
             var query = this.stockRepository.GetAll()
                 .Where(r => r.Amount != 0)
                 .WhereIf(!string.IsNullOrWhiteSpace(request.ProductName), r => r.Product.Name.Contains(request.ProductName))
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Code), r => r.Product.Name.Contains(request.Code));
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Code), r => r.Product.Code.Contains(request.Code));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)

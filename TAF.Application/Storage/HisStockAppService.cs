@@ -34,11 +34,12 @@ namespace SCBF.Storage
         private readonly IEntryRepository entryRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
 
-        public HisStockAppService(IHisStockRepository hisStockRepository
-            , IStockRepository stockRepository
-            , IDeliveryRepository deliveryRepository
-            , IEntryRepository entryRepository
-            , ISysDictionaryRepository sysDictionaryRepository)
+        public HisStockAppService(
+            IHisStockRepository hisStockRepository,
+            IStockRepository stockRepository,
+            IDeliveryRepository deliveryRepository,
+            IEntryRepository entryRepository,
+            ISysDictionaryRepository sysDictionaryRepository)
         {
             this.hisStockRepository = hisStockRepository;
             this.stockRepository = stockRepository;
@@ -52,6 +53,7 @@ namespace SCBF.Storage
             var query1 = this.entryRepository.GetAll()
                 .WhereIf(request.Name != null, r => r.Product.Name.Contains(request.Name))
                 .WhereIf(request.Code != null, r => r.EntryBill.Code.Contains(request.Code))
+                .WhereIf(request.ProductCode != null, r => r.Product.Code.Contains(request.ProductCode))
                 .WhereIf(request.DateFrom.HasValue, r => r.CreationTime >= request.DateFrom.Value)
                 .WhereIf(request.DateTo.HasValue, r => r.CreationTime <= request.DateTo.Value);
 
