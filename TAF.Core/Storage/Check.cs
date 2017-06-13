@@ -12,7 +12,7 @@ namespace SCBF.Storage
     using System;
 
     /// <summary>
-    /// 盘点表
+    /// 盘点明细表
     /// </summary>
     public class Check : TAFEntity
     {
@@ -37,11 +37,6 @@ namespace SCBF.Storage
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// 盘盈亏
-        /// </summary>
-        public decimal ChangedAmount { get; set; }
-
-        /// <summary>
         /// 盈亏原因
         /// </summary>
         public string Reason { get; set; }
@@ -52,11 +47,16 @@ namespace SCBF.Storage
         public decimal Price { get; set; }
 
         /// <summary>
-        /// 仓库Id
+        /// 盘点表Id
         /// </summary>
-        public Guid StorageId
+        public Guid CheckBillId
         {
             get; set;
         }
+
+        /// <summary>
+        /// 盘点表
+        /// </summary>
+        public virtual CheckBill CheckBill { get; set; }
     }
 }

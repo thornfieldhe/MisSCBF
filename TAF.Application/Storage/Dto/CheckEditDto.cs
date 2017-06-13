@@ -9,10 +9,8 @@
 
 namespace SCBF.Storage.Dto
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 盘点编辑对象
@@ -26,64 +24,88 @@ namespace SCBF.Storage.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// ProductId
+        /// ProductName
         /// </summary>
-        public Guid ProductId
+        public string ProductName
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// ProductCode
+        /// </summary>
+        public string ProductCode
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Code
+        /// </summary>
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 规格
+        /// </summary>
+        public string Specifications
+        {
+            get; set;
+        }
+
         /// <summary>
         /// StockAmount
         /// </summary>
         public decimal StockAmount
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// 单位
+        /// </summary>
+        public string Unit
+        {
+            get; set;
+        }
+
         /// <summary>
         /// ChangedAmount
         /// </summary>
         public decimal ChangedAmount
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Reason
         /// </summary>
         public string Reason
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Price
         /// </summary>
         public decimal Price
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// StorageId
-        /// </summary>
-        public Guid StorageId
-        {
-            get; set;
-        }        
-    } 
+        }
+    }
 }
 
 

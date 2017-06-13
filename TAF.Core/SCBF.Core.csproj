@@ -111,6 +111,8 @@
     <Compile Include="Finance\IOutlayRepository.cs" />
     <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Storage\Check.cs" />
+    <Compile Include="Storage\CheckBill.cs" />
+    <Compile Include="Storage\ICheckBillRepository.cs" />
     <Compile Include="Storage\ICheckRepository.cs" />
     <Compile Include="Storage\IHisStockRepository.cs" />
     <Compile Include="BaseInfo\ILayerRepository.cs" />

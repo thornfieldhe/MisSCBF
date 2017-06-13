@@ -5,19 +5,18 @@ using Microsoft.AspNet.Identity;
 
 namespace SCBF.Web.Controllers
 {
-    using System;
-    using System.IO;
-
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
+    using System;
+    using System.IO;
 
     /// <summary>
     /// Derive all Controllers from this class.
     /// </summary>
     public abstract class TAFControllerBase : AbpController
     {
-        protected  IAttachmentAppService attachmentAppService;
-        protected  ISysDictionaryAppService sysDictionaryAppService;
+        protected IAttachmentAppService attachmentAppService;
+        protected ISysDictionaryAppService sysDictionaryAppService;
 
         protected TAFControllerBase()
         {
@@ -41,8 +40,9 @@ namespace SCBF.Web.Controllers
         /// 通用上传模块
         /// </summary>
         /// <param name="category"></param>
+        /// <param name="param"></param>
         /// <param name="act"></param>
-        protected void UploadFile(string category, Func< string,Guid> act)
+        protected Guid UploadFile(string category, object param, Func<string, object, Guid> act)
         {
             var fileData = this.Request.Files[0];
             if (fileData != null)
@@ -65,6 +65,7 @@ namespace SCBF.Web.Controllers
                     {
                         throw new UserFriendlyException("未配置允许上传附件格式");
                     }
+
                     if (string.IsNullOrEmpty(fileExtension)
                        || Array.IndexOf(fileTypes[0].Value.Split(','), fileExtension.ToLower()) == -1)
                     {
@@ -77,7 +78,7 @@ namespace SCBF.Web.Controllers
                         var fileInfo = new FileInfo(fileSaveLocation + saveName);
 
 
-                       var modelId= act(fileSaveLocation + saveName);
+                        var modelId = act(fileSaveLocation + saveName, param);
                         this.attachmentAppService.Save(
                              new AttachmentEditDto()
                              {
@@ -88,14 +89,15 @@ namespace SCBF.Web.Controllers
                                  Path = $"{this.sysDictionaryAppService.GetModulePath(category)}/{saveName}",
                                  Size = (decimal)fileInfo.Length / 1024
                              });
+                        return modelId;
                     }
-
                 }
                 else
                 {
                     throw new UserFriendlyException("未配置默认上传路径");
                 }
             }
+            throw new UserFriendlyException("未上传文件");
         }
     }
 }

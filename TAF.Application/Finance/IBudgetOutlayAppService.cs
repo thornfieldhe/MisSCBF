@@ -25,11 +25,11 @@ namespace SCBF.Finance
 
         List<BudgetOutlaySimpleListDto> GetSimple();
 
-        Guid LoadBudgetReceiptFile1(string path);
+        Guid LoadBudgetReceiptFile1(string path, object param);
 
-        Guid LoadBudgetReceiptFile2(string path);
+        Guid LoadBudgetReceiptFile2(string path, object param);
 
-        Guid LoadBudgetReceiptFile3(string path);
+        Guid LoadBudgetReceiptFile3(string path, object param);
 
         List<KeyValue<string, string>> GetSheetNames(int type);
 

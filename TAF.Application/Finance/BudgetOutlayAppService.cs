@@ -222,17 +222,17 @@ namespace SCBF.Finance
             return result;
         }
 
-        public Guid LoadBudgetReceiptFile1(string path)
+        public Guid LoadBudgetReceiptFile1(string path, object param)
         {
             return this.LoadBudgetReceiptFile(path, BungetType.Year);
         }
 
-        public Guid LoadBudgetReceiptFile2(string path)
+        public Guid LoadBudgetReceiptFile2(string path, object param)
         {
             return this.LoadBudgetReceiptFile(path, BungetType.Adjust);
         }
 
-        public Guid LoadBudgetReceiptFile3(string path)
+        public Guid LoadBudgetReceiptFile3(string path, object param)
         {
             return this.LoadBudgetReceiptFile(path, BungetType.Increase);
         }

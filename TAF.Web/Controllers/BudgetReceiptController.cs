@@ -35,21 +35,21 @@ namespace SCBF.Web.Controllers
         [HttpPost]
         public JsonResult Upload1()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile1);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, null, this.budgetReceiptAppService.LoadBudgetReceiptFile1);
             return new JsonResult() { Data = "OK" };
         }
 
         [HttpPost]
         public JsonResult Upload2()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile2);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, null, this.budgetReceiptAppService.LoadBudgetReceiptFile2);
             return new JsonResult() { Data = "OK" };
         }
 
         [HttpPost]
         public JsonResult Upload3()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, this.budgetReceiptAppService.LoadBudgetReceiptFile3);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, null, this.budgetReceiptAppService.LoadBudgetReceiptFile3);
             return new JsonResult() { Data = "OK" };
         }
 

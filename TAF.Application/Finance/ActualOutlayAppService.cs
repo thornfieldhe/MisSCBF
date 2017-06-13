@@ -69,7 +69,7 @@ namespace SCBF.Finance
             return result;
         }
 
-        public Guid LoadActualOutlayFile(string path)
+        public Guid LoadActualOutlayFile(string path, object param)
         {
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             var modelId = Guid.NewGuid();

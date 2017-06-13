@@ -23,7 +23,7 @@ namespace SCBF.Finance
     public interface IActualOutlayAppService : IBaseEntityApplicationService
     {
 
-        Guid LoadActualOutlayFile(string path);
+        Guid LoadActualOutlayFile(string path,object param);
 
         List<ActualOutlayListDto> Get();
 

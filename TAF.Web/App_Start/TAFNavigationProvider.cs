@@ -169,6 +169,11 @@
                                      "menuStocks",
                                      L("库存清单"),
                                      url: "#stocks",
+                                     requiredPermissionName: PermissionNames.WzUser))
+                        .AddItem(new MenuItemDefinition(
+                                     "menuCheckBills",
+                                     L("物资盘点对比表"),
+                                     url: "#checkBills",
                                      requiredPermissionName: PermissionNames.WzUser)))
                 .AddItem(
                         new MenuItemDefinition(

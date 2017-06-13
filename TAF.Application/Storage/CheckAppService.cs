@@ -9,20 +9,17 @@
 
 namespace SCBF.Storage
 {
+    using Abp.Application.Services.Dto;
+    using Abp.Authorization;
+    using Abp.AutoMapper;
+    using Abp.Linq.Extensions;
+    using AutoMapper;
+    using SCBF.Storage.Dto;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
-
-    using AutoMapper;
-
-    using SCBF.Storage.Dto;
 
     /// <summary>
     /// 盘点服务
@@ -40,15 +37,10 @@ namespace SCBF.Storage
         public ListResultDto<CheckListDto> GetAll(CheckQueryDto request)
         {
             var query = this.checkRepository.GetAll()
-            
-                .WhereIf(request.ProductId.HasValue, r => r.ProductId == request.ProductId.Value)             
-                .WhereIf(request.StockAmount.HasValue, r => r.StockAmount == request.StockAmount.Value)             
-                .WhereIf(request.Amount.HasValue, r => r.Amount == request.Amount.Value)             
-                .WhereIf(request.ChangedAmount.HasValue, r => r.ChangedAmount == request.ChangedAmount.Value)             
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Reason), r => r.Reason.Contains(request.Reason))            
-                .WhereIf(request.Price.HasValue, r => r.Price == request.Price.Value)             
-                .WhereIf(request.StorageId.HasValue, r => r.StorageId == request.StorageId.Value) ; 
-
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Code), r => r.CheckBill.Code.Contains(request.Code))
+                .WhereIf(!string.IsNullOrWhiteSpace(request.ProductCode), r => r.Product.Code.Contains(request.ProductCode))
+                .WhereIf(!string.IsNullOrWhiteSpace(request.ProductName), r => r.Product.Name.Contains(request.ProductName))
+            .WhereIf(request.BillId.HasValue, r => r.CheckBillId == request.BillId.Value);
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
                         : query.OrderBy(r => r.Product.Name);

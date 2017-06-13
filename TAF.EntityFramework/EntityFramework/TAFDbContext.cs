@@ -94,6 +94,11 @@
             get; set;
         }
 
+        public DbSet<CheckBill> CheckBills
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 预算

@@ -9,72 +9,47 @@
 
 namespace SCBF.Storage.Dto
 {
-    using System;
-    
     using Abp.Application.Services.Dto;
+    using System;
 
     /// <summary>
     /// 盘点查询对象
     /// </summary>
     public class CheckQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    {
         /// <summary>
-        /// ProductId
+        /// Code
         /// </summary>
-        public Guid? ProductId
+        public string Code
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// StockAmount
+        /// ProductCode
         /// </summary>
-        public decimal? StockAmount
+        public string ProductCode
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// Amount
+        /// ProductName
         /// </summary>
-        public decimal? Amount
+        public string ProductName
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// ChangedAmount
+        /// BillId
         /// </summary>
-        public decimal? ChangedAmount
+        public Guid? BillId
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// Reason
-        /// </summary>
-        public string Reason
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// Price
-        /// </summary>
-        public decimal? Price
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// StorageId
-        /// </summary>
-        public Guid? StorageId
-        {
-            get; set;
-        }        
-    } 
+        }
+
+    }
 }
 
 

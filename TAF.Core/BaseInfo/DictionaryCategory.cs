@@ -78,6 +78,10 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Attachment_ActualOutlays = "Attachment_ActualOutlays";
 
+        /// <summary>
+        /// 盘点附件
+        /// </summary>
+        public const string Attachment_Check = "Attachment_Check";
         #endregion
 
         #region 采购

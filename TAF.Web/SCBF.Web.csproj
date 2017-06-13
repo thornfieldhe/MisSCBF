@@ -815,7 +815,7 @@
     <Content Include="Scripts\budgetOutlay2.js" />
     <Content Include="Scripts\budgetOutlay3.js" />
     <Content Include="Scripts\budgetperformance.js" />
-    <Content Include="Scripts\check.js" />
+    <Content Include="Scripts\checkBill.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\stock.js" />
     <Content Include="Scripts\stockChange.js" />
@@ -914,7 +914,7 @@
     <Compile Include="Controllers\ActualOutlayController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
-    <Compile Include="Controllers\CheckController.cs" />
+    <Compile Include="Controllers\CheckBillController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
@@ -987,7 +987,7 @@
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex3.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex2.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetPerformance.cshtml" />
-    <Content Include="Views\Check\_CheckIndex.cshtml" />
+    <Content Include="Views\CheckBill\_CheckBillIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

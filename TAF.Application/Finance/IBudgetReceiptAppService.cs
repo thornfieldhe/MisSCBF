@@ -9,14 +9,9 @@
 
 namespace SCBF.Finance
 {
+    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-
-    using SCBF.Finance.Dto;
-
     using TAF.Utility;
 
     /// <summary>
@@ -27,14 +22,18 @@ namespace SCBF.Finance
         List<BudgetReceiptListDto> Get(int type);
 
         List<ReceiptListDto> GetReceipts();
+
         void SaveReceuotAmount(KeyValue<string, decimal> item);
+
         ReceiptEditDto GetReceipt(string code);
 
         List<KeyValue<Guid, string, string, decimal>> GetSimple(int type);
 
-        Guid LoadBudgetReceiptFile1(string path);
-        Guid LoadBudgetReceiptFile2(string path);
-        Guid LoadBudgetReceiptFile3(string path);
+        Guid LoadBudgetReceiptFile1(string path, object param);
+
+        Guid LoadBudgetReceiptFile2(string path, object param);
+
+        Guid LoadBudgetReceiptFile3(string path, object param);
     }
 }
 

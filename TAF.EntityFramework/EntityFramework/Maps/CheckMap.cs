@@ -20,6 +20,7 @@ namespace SCBF.EntityFramework
         public CheckMap()
         {
             this.HasRequired(r => r.Product).WithMany(r => r.Checks).HasForeignKey(r => r.ProductId);
+            this.HasRequired(r => r.CheckBill).WithMany(r => r.Checks).HasForeignKey(r => r.CheckBillId);
         }
     }
 }

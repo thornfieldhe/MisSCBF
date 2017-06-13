@@ -9,15 +9,10 @@
 
 namespace SCBF.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Web.Mvc;
-
     using Abp.Web.Mvc.Authorization;
-
     using SCBF.BaseInfo;
     using SCBF.Finance;
-    using TAF.Utility;
+    using System.Web.Mvc;
 
     /// <summary>
     /// 实际支出控制器
@@ -49,7 +44,7 @@ namespace SCBF.Web.Controllers
         [HttpPost]
         public JsonResult Upload()
         {
-            this.UploadFile(DictionaryCategory.Attachment_ActualOutlays, this.actualOutlayAppService.LoadActualOutlayFile);
+            this.UploadFile(DictionaryCategory.Attachment_ActualOutlays, null, this.actualOutlayAppService.LoadActualOutlayFile);
             return new JsonResult() { Data = "OK" };
         }
     }

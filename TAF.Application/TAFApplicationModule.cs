@@ -172,6 +172,19 @@ namespace SCBF
                     .ForMember(m => m.Total, n => n.MapFrom(r => (r.Amount * r.Price * -1).ToString("0.00")))
                     .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value));
 
+                mapper.CreateMap<Check, CheckListDto>()
+                .ForMember(m => m.Code, n => n.MapFrom(r => r.CheckBill.Code))
+                .ForMember(m => m.ProductCode, n => n.MapFrom(r => r.Product.Code))
+                .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit))
+                .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
+                .ForMember(m => m.ChangedAmount, n => n.MapFrom(r => r.Amount - r.StockAmount));
+                mapper.CreateMap<Check, CheckEditDto>()
+                .ForMember(m => m.Code, n => n.MapFrom(r => r.CheckBill.Code))
+                .ForMember(m => m.ProductCode, n => n.MapFrom(r => r.Product.Code))
+                .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit))
+                .ForMember(m => m.Specifications, n => n.MapFrom(r => r.Product.Specifications))
+                .ForMember(m => m.ChangedAmount, n => n.MapFrom(r => r.Amount - r.StockAmount));
+
                 #endregion
 
                 #region 预算模块
@@ -179,10 +192,15 @@ namespace SCBF
                 mapper.CreateMap<BudgetReceipt, BudgetReceiptListDto>()
                     .ForMember(m => m.Total1, n => n.MapFrom(r => r.Column1 + r.Column21 + r.Column22))
                     .ForMember(m => m.Total3, n => n.MapFrom(r => r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37))
-                    .ForMember(m => m.Total4, n => n.MapFrom(r => r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47))
-                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Column1 + r.Column21 + r.Column22
-                                                                 + r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37
-                                                                 + r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
+                    .ForMember(
+                        m => m.Total4,
+                        n => n.MapFrom(
+                            r => r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46
+                                 + r.Column47)).ForMember(
+                        m => m.Total,
+                        n => n.MapFrom(
+                            r => r.Column1 + r.Column21 + r.Column22 + r.Column31 + r.Column32 + r.Column33 + r.Column34
+                                 + r.Column35 + r.Column36 + r.Column37 + r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47
                                                                  + r.Column5));
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlaySimpleListDto>()

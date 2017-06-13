@@ -1,0 +1,220 @@
+﻿@using SCBF.BaseInfo
+@model List<SCBF.BaseInfo.Dto.SysDictionaryListDto>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">物资盘点对比表</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-3"><select id="searchStorageId" style="width: 100%" v-model="queryEntity.storageId">
+                            @{
+                                for (int i = 0; i < Model.Count; i++)
+                                {
+                                    if(i == 0)
+                                    {
+                                        <option value="@Model[i].Id" selected="selected">@Model[i].Value</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@Model[i].Id">@Model[i].Value</option>
+                                    }
+                                }
+                            }
+                        </select></div>
+                        <div class="col-md-5"><input type="file" name="fileUpload" id="fileUpload" class="fileUpload" title="上传盘点表" /></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><div  class="pre-scrollable">
+                        <table class="table table-striped table-hover table-bordered "  style="width: 1300px">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 100px;">
+                                    盘点单据号
+                                </th> 
+                                <th style="width: 100px;">
+                                    编码
+                                </th>
+                                <th style="width: 100px;">
+                                    品名
+                                </th>
+                                <th style="width: 100px;">
+                                    规格型号
+                                </th>
+                                <th style="width: 100px;">
+                                    单位
+                                </th>
+                                <th style="width: 100px;">
+                                    数量
+                                </th>
+                                <th style="width: 100px;">
+                                    盘盈亏
+                                </th>
+                                <th style="width: 100px;">
+                                    盘盈亏价值
+                                </th>
+                                <th style="width: 300px;">
+                                    盈亏原因
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th>
+                                    <input type="text" class="form-control" placeholder="盘点单据号" v-model="queryEntity.code" />
+                                </th>        
+                                <th><input type="text" class="form-control" placeholder="编码" v-model="queryEntity.productCode" />
+                                </th>        
+                                <th><input type="text" class="form-control" placeholder="品名" v-model="queryEntity.productName" />
+                                </th>        
+                                <th>
+                                </th>        
+                                <th>
+                                </th>         
+                                <th>
+                                </th>         
+                                <th>
+                                </th>         
+                                <th>
+                                </th>        
+                                <th>
+                                </th>        
+                                <th><search-command></search-command></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in list">
+                                <td>{{item.code}}</td>
+                                <td>{{item.productCode}}</td>
+                                <td>{{item.productName}}</td>
+                                <td>{{item.specifications}}</td>
+                                <td>{{item.unit}}</td>
+                                <td>{{item.amount}}</td>
+                                <td>{{item.changedAmount}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.reason}}</td>
+                                <td>
+                                    <row-command :id="item.id" title="编辑" :name="item.productName"></row-command>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="10"></tfoot>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="checkFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">品名</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">  {{item.productName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">编码</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">  {{item.productCode}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">规格型号</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left"> {{item.specifications}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">单位</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">{{item.unit}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">库存量</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">  {{item.stockAmount}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">盘点数量</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">  {{item.amount}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">盘盈亏</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left">  {{item.changedAmount}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">盈亏价值</label>
+                            <div class="col-sm-10">
+                                <label class="control-label no-padding-left"> {{item.price}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">盈亏原因</label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <textarea rows="4" class="form-control "  v-model="item.reason"></textarea>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/assets/js/liteuploader.js"></script>
+<script src="~/Scripts/checkBill.js"></script>
+
+
+
