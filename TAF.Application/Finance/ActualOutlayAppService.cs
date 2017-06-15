@@ -105,9 +105,9 @@ namespace SCBF.Finance
                 {
                     var item = new ActualOutlay()
                     {
-                        Amount = row.GetCell(2).ToStr().ToDecimal(),
+                        Amount = row.GetCell(3).ToStr().ToDecimal(),
                         Date = row.GetCell(1).ToStr().ToDate(),
-                        Note = row.GetCell(3).ToStr(),
+                        Note = row.GetCell(2).ToStr(),
                         VoucherNo = row.GetCell(0).ToStr(),
                         FileId = modelId,
                         Year = currentYear.Value.ToInt()

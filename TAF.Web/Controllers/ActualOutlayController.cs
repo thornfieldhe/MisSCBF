@@ -44,7 +44,7 @@ namespace SCBF.Web.Controllers
         [HttpPost]
         public JsonResult Upload()
         {
-            this.UploadFile(DictionaryCategory.Attachment_ActualOutlays, null, this.actualOutlayAppService.LoadActualOutlayFile);
+            this.UploadFile(DictionaryCategory.Attachment_ActualOutlays, new string[] { }, this.actualOutlayAppService.LoadActualOutlayFile);
             return new JsonResult() { Data = "OK" };
         }
     }

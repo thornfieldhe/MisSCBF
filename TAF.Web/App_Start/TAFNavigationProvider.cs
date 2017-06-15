@@ -61,7 +61,7 @@
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuBudgetReceipts",
-                                L("年度预算收入"),
+                                L("年初预算收入"),
                                 url: "#budgetReceipts",
                                 requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(

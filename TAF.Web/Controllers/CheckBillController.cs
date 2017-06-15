@@ -43,7 +43,7 @@ namespace SCBF.Web.Controllers
         [HttpPost]
         public ContentResult Upload(Guid? stockId)
         {
-            var billId = this.UploadFile(DictionaryCategory.Attachment_Check, stockId, this.checkBillAppService.LoadCheckFile);
+            var billId = this.UploadFile(DictionaryCategory.Attachment_Check, new string[] { stockId.ToString() }, this.checkBillAppService.LoadCheckFile);
             return new ContentResult() { Content = billId.ToString() };
         }
     }

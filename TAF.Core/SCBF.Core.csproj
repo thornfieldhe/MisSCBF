@@ -175,6 +175,7 @@
     <EmbeddedResource Include="Localization\Source\SCBF.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Car\" />
     <Folder Include="Purchase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -143,5 +143,19 @@ namespace SCBF.BaseInfo
 
         #endregion
 
+        #region 车辆
+
+        /// <summary>
+        /// 车辆状态
+        /// </summary>
+        public const string Car_Status = "Car_Status";
+
+        /// <summary>
+        /// 驾驶等级
+        /// </summary>
+        public const string Car_DriveLevel = "Car_DriveLevel";
+
+        #endregion
+
     }
 }

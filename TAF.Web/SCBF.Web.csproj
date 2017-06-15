@@ -934,6 +934,7 @@
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ActualOutlay\Category.cs" />
     <Compile Include="Views\TAFWebViewPageBase.cs" />
   </ItemGroup>
   <ItemGroup>

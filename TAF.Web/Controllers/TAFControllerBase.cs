@@ -42,7 +42,7 @@ namespace SCBF.Web.Controllers
         /// <param name="category"></param>
         /// <param name="param"></param>
         /// <param name="act"></param>
-        protected Guid UploadFile(string category, object param, Func<string, object, Guid> act)
+        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act)
         {
             var fileData = this.Request.Files[0];
             if (fileData != null)
