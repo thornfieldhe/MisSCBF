@@ -40,6 +40,13 @@ namespace SCBF.BaseInfo
                     Category = DictionaryCategory.Material_Year,
                     Value = t
                 });
+
+            sysDictionaryAppService.SaveYearAsync(
+                new SysDictionaryEditDto()
+                {
+                    Category = DictionaryCategory.Car_Year,
+                    Value = t
+                });
         }
     }
 }

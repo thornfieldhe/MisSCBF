@@ -155,6 +155,51 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Car_DriveLevel = "Car_DriveLevel";
 
+        /// <summary>
+        /// 车辆模块年度
+        /// </summary>
+        public const string Car_Year = "Car_Year";
+
+        /// <summary>
+        /// 维修材料
+        /// </summary>
+        public const string Car_Materials = "Car_Materials";
+
+        /// <summary>
+        /// 维修厂
+        /// </summary>
+        public const string Car_ServiceDepot = "Car_ServiceDepot";
+
+        /// <summary>
+        /// 驾驶员
+        /// </summary>
+        public const string Car_Driver = "Car_Driver";
+
+        /// <summary>
+        /// 部长
+        /// </summary>
+        public const string Car_Minister = "Car_Minister";
+
+        /// <summary>
+        /// 助理员
+        /// </summary>
+        public const string Car_Attendant = "Car_Attendant";
+
+        /// <summary>
+        /// 油料代管单位
+        /// </summary>
+        public const string Car_OilHostingUnit = "Car_OilHostingUnit";
+
+        /// <summary>
+        /// 百公里油耗限额夏季
+        /// </summary>
+        public const string Car_OilWearSummary = "Car_OilWearSummary";
+
+        /// <summary>
+        /// 百公里油耗限额冬季
+        /// </summary>
+        public const string Car_OilWearWinter = "Car_OilWearWinter";
+
         #endregion
 
     }

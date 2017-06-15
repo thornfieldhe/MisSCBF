@@ -1,0 +1,153 @@
+﻿@model List<SCBF.BaseInfo.Dto.SysDictionaryListDto>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">驾驶员</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <add-button title="新增"></add-button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                         驾驶员姓名
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        士兵证号
+                                    </th>        
+                                    <th style="width: 400px;">
+                                        驾驶证有效期
+                                    </th>
+                                    <th style="width: 200px;">
+                                        行驶证号
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        驾驶等级
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        电话号码
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.soldierId}}</td>
+                                    <td>{{item.validDrivingLicense}}</td>
+                                    <td>{{item.drivingLicense}}</td>
+                                    <td>{{item.level}}</td>
+                                    <td>{{item.phoneNumber}}</td>
+                                    <td>
+                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="7"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<dialog-delete></dialog-delete>
+<form-edit></form-edit>
+<template id="driverFormBody">
+    <div id="form">
+        <validator name="v">
+            <form class="form-horizontal " name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">驾驶员姓名<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="name" v-model="item.name"  v-validate:name="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">士兵证号<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="soldierId" v-model="item.soldierId"  v-validate:soldierid="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">驾驶证有效期<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input class="form-control  " placeholder="必填"  type="text" id="datePickerValidDrivingLicense" readonly="readonly" v-model="item.validDrivingLicense" name="validdrivinglicense"  v-validate:validdrivinglicense="{required:true,dateTime:true}">
+                                        <i class="fa fa-calendar"></i>
+                                </span>                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">行驶证号<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="drivingLicense" v-model="item.drivingLicense"  v-validate:drivinglicense="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">驾驶等级<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <select id="searchEditLevel" style="width: 100%" v-model="item.level" name="level" v-validate:level="{required:true}">
+                                    <option value="">请选择...</option>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <option value="@item.Id">@item.Value</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">电话号码<span class="red" >*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="phoneNumber" v-model="item.phoneNumber"  v-validate:phonenumber="{required:true}"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </validator>
+    </div>
+</template>
+<script src="~/Scripts/driver.js"></script>
+
+
+

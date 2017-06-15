@@ -93,6 +93,7 @@ namespace SCBF.BaseInfo
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAllowAnonymous]
         public async Task SaveYearAsync(SysDictionaryEditDto input)
         {
             var item = input.MapTo<SysDictionary>();

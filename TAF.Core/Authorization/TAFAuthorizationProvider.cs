@@ -18,6 +18,7 @@ namespace SCBF.Authorization
                 var wz = context.CreatePermission(PermissionNames.WzUser, L("物资管理"));
                 var cw = context.CreatePermission(PermissionNames.CwUser, L("预算管理"));
                 var cg = context.CreatePermission(PermissionNames.CgUser, L("采购管理"));
+                var cl = context.CreatePermission(PermissionNames.ClUser, L("车辆管理"));
                 var user = context.CreatePermission(PermissionNames.Default, L("普通用户"));
             }
 

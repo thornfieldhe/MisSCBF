@@ -21,7 +21,6 @@ namespace SCBF.Web.Controllers
     public class ProductController : TAFControllerBase
     {
         private readonly IProductAppService productAppService;
-        private readonly ISysDictionaryAppService sysDictionaryAppService;
         private readonly ILayerAppService layerAppService;
 
         public ProductController(IProductAppService productAppService, ISysDictionaryAppService sysDictionaryAppService, ILayerAppService layerAppService)

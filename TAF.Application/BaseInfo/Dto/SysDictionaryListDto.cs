@@ -9,9 +9,8 @@
 
 namespace SCBF.BaseInfo.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 系统配置列表对象
@@ -75,6 +74,78 @@ namespace SCBF.BaseInfo.Dto
             get; set;
         }
 
+        public string Value6
+        {
+            get; set;
+        }
+
+        public string Value7
+        {
+            get; set;
+        }
+
+        public string Value8
+        {
+            get; set;
+        }
+
+        public string Value9
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Value10
+        /// </summary>
+        public string Value10
+        {
+            get; set;
+        }
+
+        public string Value11
+        {
+            get; set;
+        }
+
+        public string Value12
+        {
+            get; set;
+        }
+
+        public string Value13
+        {
+            get; set;
+        }
+
+        public string Value14
+        {
+            get; set;
+        }
+
+        public string Value15
+        {
+            get; set;
+        }
+
+        public string Value16
+        {
+            get; set;
+        }
+
+        public string Value17
+        {
+            get; set;
+        }
+
+        public string Value18
+        {
+            get; set;
+        }
+
+        public string Value19
+        {
+            get; set;
+        }
         /// <summary>
         /// Note
         /// </summary>

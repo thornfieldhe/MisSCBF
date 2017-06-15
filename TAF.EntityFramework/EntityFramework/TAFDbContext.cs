@@ -3,6 +3,7 @@
     using Abp.Zero.EntityFramework;
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
+    using SCBF.Car;
     using SCBF.Finance;
     using SCBF.MultiTenancy;
     using SCBF.Storage;
@@ -131,6 +132,15 @@
 
 
         #endregion
+
+        #region 车辆
+
+        public DbSet<Driver> Drivers
+        {
+            get; set;
+        }
+        #endregion
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

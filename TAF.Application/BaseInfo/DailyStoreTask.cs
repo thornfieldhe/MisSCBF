@@ -22,7 +22,7 @@ namespace SCBF.BaseInfo
     /// </summary>
     public class DailyStoreTask : JobBase, ITransientDependency
     {
-        public static readonly string Schedule = "0 0 23 * * ? *";//每日23:00分执行
+        public static readonly string Schedule = "0 0 23 30 * ? *";//每日23:00分执行
 
         private readonly IHisStockAppService hisStockAppService;
 

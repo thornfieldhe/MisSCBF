@@ -130,6 +130,7 @@
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\CheckMap.cs" />
+    <Compile Include="EntityFramework\Maps\DriverMap.cs" />
     <Compile Include="EntityFramework\Maps\HisStockMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
     <Compile Include="EntityFramework\Maps\EntryMap.cs" />
@@ -220,6 +221,14 @@
     <Compile Include="Migrations\201706131431116_addTable_check.Designer.cs">
       <DependentUpon>201706131431116_addTable_check.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706151332063_modifyTable_sysdictionary.cs" />
+    <Compile Include="Migrations\201706151332063_modifyTable_sysdictionary.Designer.cs">
+      <DependentUpon>201706151332063_modifyTable_sysdictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706151424388_addtable_driver.cs" />
+    <Compile Include="Migrations\201706151424388_addtable_driver.Designer.cs">
+      <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -232,6 +241,7 @@
     <Compile Include="Repositories\CheckRepository.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
+    <Compile Include="Repositories\DriverRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
@@ -326,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706131431116_addTable_check.resx">
       <DependentUpon>201706131431116_addTable_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151332063_modifyTable_sysdictionary.resx">
+      <DependentUpon>201706151332063_modifyTable_sysdictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151424388_addtable_driver.resx">
+      <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

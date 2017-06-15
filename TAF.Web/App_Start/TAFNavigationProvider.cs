@@ -121,7 +121,7 @@
                         "Storage",
                         L("物资器材管理"),
                         url: "#",
-                        icon: "menu-icon fa  fa-truck",
+                        icon: "menu-icon fa  fa-tasks",
                         requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
@@ -180,14 +180,33 @@
                     "Purchase",
                     L("采购管理"),
                     url: "#",
-                    icon: "menu-icon fa  fa-rmb",
+                    icon: "menu-icon fa  fa-shopping-cart",
                     requiredPermissionName: PermissionNames.WzUser)
                     .AddItem(
                             new MenuItemDefinition(
                                 "menuPurchaseInfos",
                                 L("基础信息"),
                                 url: "#purchaseInfos",
-                                requiredPermissionName: PermissionNames.WzUser)));
+                                requiredPermissionName: PermissionNames.WzUser)))
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Car",
+                        L("车辆管理"),
+                        url: "#",
+                        icon: "menu-icon fa  fa-truck",
+                        requiredPermissionName: PermissionNames.Default)
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuCarInfos",
+                                L("基础信息"),
+                                url: "#carInfos",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuDrivers",
+                                L("驾驶员"),
+                                url: "#drivers",
+                                requiredPermissionName: PermissionNames.ClUser)));
         }
 
         private static ILocalizableString L(string name)

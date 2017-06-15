@@ -816,6 +816,8 @@
     <Content Include="Scripts\budgetOutlay3.js" />
     <Content Include="Scripts\budgetperformance.js" />
     <Content Include="Scripts\checkBill.js" />
+    <Content Include="Scripts\carInfoIndex.js" />
+    <Content Include="Scripts\driver.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\stock.js" />
     <Content Include="Scripts\stockChange.js" />
@@ -914,8 +916,10 @@
     <Compile Include="Controllers\ActualOutlayController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CheckBillController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\FinanceController.cs" />
@@ -934,7 +938,6 @@
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\ActualOutlay\Category.cs" />
     <Compile Include="Views\TAFWebViewPageBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -989,6 +992,8 @@
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex2.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetPerformance.cshtml" />
     <Content Include="Views\CheckBill\_CheckBillIndex.cshtml" />
+    <Content Include="Views\Car\_CarInfoIndex.cshtml" />
+    <Content Include="Views\Driver\_DriverIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

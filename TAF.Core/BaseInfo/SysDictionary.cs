@@ -12,6 +12,8 @@ namespace SCBF.BaseInfo
     using SCBF.Storage;
     using System.Collections.Generic;
 
+    using SCBF.Car;
+
     /// <summary>
     /// 系统字典表
     /// </summary>
@@ -75,6 +77,59 @@ namespace SCBF.BaseInfo
             get; set;
         }
 
+        /// <summary>
+        /// Value10
+        /// </summary>
+        public string Value10
+        {
+            get; set;
+        }
+
+        public string Value11
+        {
+            get; set;
+        }
+
+        public string Value12
+        {
+            get; set;
+        }
+
+        public string Value13
+        {
+            get; set;
+        }
+
+        public string Value14
+        {
+            get; set;
+        }
+
+        public string Value15
+        {
+            get; set;
+        }
+
+        public string Value16
+        {
+            get; set;
+        }
+
+        public string Value17
+        {
+            get; set;
+        }
+
+        public string Value18
+        {
+            get; set;
+        }
+
+        public string Value19
+        {
+            get; set;
+        }
+
         public virtual List<Entry> Entries
         {
             get; set;
@@ -91,6 +146,11 @@ namespace SCBF.BaseInfo
         }
 
         public virtual List<HisStock> HisStocks
+        {
+            get; set;
+        }
+
+        public virtual List<Driver> Drivers
         {
             get; set;
         }

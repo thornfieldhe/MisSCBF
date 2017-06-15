@@ -1,23 +1,28 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Category.cs" company="" author="何翔华">
+// <copyright file="IDriverRepository.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   Category
+//   驾驶员仓储接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ASP
+namespace SCBF
 {
-    using System.Collections.Generic;
+    using System;
 
+    using Abp.Domain.Repositories;
+    
+    using SCBF.Car;
+    
     /// <summary>
-    /// 
+    /// 驾驶员仓储接口
     /// </summary>
-    public enum CarStatus
+    public interface IDriverRepository : ITAFRepositoryBase<Driver>
     {
-        InUse=0,
-        Scrapped=1,
 
     }
 }
+
+
+

@@ -213,6 +213,7 @@ namespace SCBF.Storage
             return result.OrderBy(r => r.Date).ToList();
         }
 
+        [AbpAllowAnonymous]
         public void BackupData()
         {
             var stocks =

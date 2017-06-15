@@ -10,6 +10,8 @@ namespace SCBF
     using Quartz;
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
+    using SCBF.Car;
+    using SCBF.Car.Dto;
     using SCBF.Finance;
     using SCBF.Finance.Dto;
     using SCBF.Storage;
@@ -222,6 +224,19 @@ namespace SCBF
 
                 #endregion
 
+                #region 车辆模块
+
+                mapper.CreateMap<Driver, DriverListDto>()
+                    .ForMember(m => m.ValidDrivingLicense, n => n.MapFrom(r => r.ValidDrivingLicense.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Level, n => n.MapFrom(r => r.Level.Value));
+                mapper.CreateMap<Driver, DriverEditDto>()
+                    .ForMember(m => m.ValidDrivingLicense, n => n.MapFrom(r => r.ValidDrivingLicense.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Level, n => n.MapFrom(r => r.LevelId));
+                mapper.CreateMap<DriverEditDto, Driver>()
+                .ForMember(m => m.Level, n => n.Ignore())
+                .ForMember(m => m.LevelId, n => n.MapFrom(r => r.Level));
+
+                #endregion
             });
         }
 
