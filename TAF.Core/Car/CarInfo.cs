@@ -9,10 +9,8 @@
 
 namespace SCBF.Car
 {
-    using System;
-    using System.Collections.Generic;
-
     using SCBF.BaseInfo;
+    using System;
 
     /// <summary>
     /// 车辆信息
@@ -78,6 +76,16 @@ namespace SCBF.Car
         /// 车辆状况
         /// </summary>
         public virtual SysDictionary Clzk { get; set; }
+
+        /// <summary>
+        /// 驾驶员Id
+        /// </summary>
+        public Guid? DriverId { get; set; }
+
+        /// <summary>
+        /// 驾驶员
+        /// </summary>
+        public virtual Driver Driver { get; set; }
 
     }
 }

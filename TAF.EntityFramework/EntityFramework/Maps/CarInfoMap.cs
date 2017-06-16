@@ -20,6 +20,7 @@ namespace SCBF.EntityFramework
         public CarInfoMap()
         {
             this.HasRequired(r => r.Clzk).WithMany(r => r.Cars).HasForeignKey(r => r.ClzkId);
+            this.HasOptional(r => r.Driver).WithMany(r => r.Cars).HasForeignKey(r => r.DriverId);
         }
     }
 }

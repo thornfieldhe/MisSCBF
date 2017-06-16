@@ -11,6 +11,7 @@ namespace SCBF.Car
 {
     using SCBF.BaseInfo;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 驾驶员
@@ -51,5 +52,8 @@ namespace SCBF.Car
         /// 电话号码
         /// </summary>
         public string PhoneNumber { get; set; }
+
+        public virtual List<CarInfo> Cars { get; set; }
+
     }
 }

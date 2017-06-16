@@ -81,6 +81,14 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// Driver
+        /// </summary>
+        public Guid? Driver
+        {
+            get; set;
+        }
     }
 }
 

@@ -42,6 +42,7 @@ namespace SCBF.Car
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Cjh), r => r.Cjh.Contains(request.Cjh))
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Fdjh), r => r.Fdjh.Contains(request.Fdjh))
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Cph), r => r.Cph.Contains(request.Cph))
+                .WhereIf(request.Driver.HasValue, r => r.DriverId == request.Driver)
                 .WhereIf(request.ZbsjFrom.HasValue, r => r.Zbsj >= request.ZbsjFrom.Value)
                 .WhereIf(request.ZbsjTo.HasValue, r => r.Zbsj <= request.ZbsjTo.Value)
                 .WhereIf(request.Clzk.HasValue, r => r.ClzkId == request.Clzk.Value)

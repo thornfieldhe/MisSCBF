@@ -105,6 +105,14 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// Driver
+        /// </summary>
+        public string Driver
+        {
+            get; set;
+        }
     }
 }
 

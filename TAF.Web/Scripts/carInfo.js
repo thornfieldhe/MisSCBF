@@ -14,6 +14,7 @@
             .data('datepicker');
 
         $("#clzk").select2().on("change", function (e) { $this.item.clzk = $("#clzk").val(); });
+        $("#driver").select2().on("change", function (e) { $this.item.driver = $("#driver").val(); });
     },
     data: function () {
         return {
@@ -29,7 +30,8 @@
                 clzk: "",
                 xszh: "",
                 yxxe: 0,
-                zbzl:""
+                zbzl: "",
+                driver:""
             }
         };
     },
@@ -51,6 +53,7 @@
                 .done(function (m) {
                     $this.item = m;
                     $("#clzk").select2().val(m.clzk).trigger("change");
+                    $("#driver").select2().val(m.driver).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -70,6 +73,7 @@
             this.item.clzk= "";
             this.item.xszh= "";
             this.item.zbzl= "";
+            this.item.driver= "";
             this.item.yxxe= 0;
         }
     }
@@ -88,6 +92,7 @@ var main = new Vue({
             main.queryEntity.zbsjTo = $("#zbsjTo").val();
         }).data('datepicker');
         $("#searchClzk").select2().on("change", function (e) { main.queryEntity.clzk = $("#searchClzk").val(); });
+        $("#searchDriver").select2().on("change", function (e) { main.queryEntity.driver = $("#searchDriver").val(); });
     },
     data: {
         queryEntity: {
@@ -98,12 +103,14 @@ var main = new Vue({
             zbsjFrom:"", 
             zbsjTo:"", 
             clzk:"", 
-            xszh:"" 
+            xszh: "",
+            driver:""
         }
     },
     events: {
         'onResetSearch': function () {
             this.queryEntity.clxh="";
+            this.queryEntity.driver="";
             this.queryEntity.cjh="";
             this.queryEntity.fdjh="";
             this.queryEntity.cph="";
@@ -112,6 +119,7 @@ var main = new Vue({
             this.queryEntity.clzk="";
             this.queryEntity.xszh = "";
             $("#searchClzk").select2().val("").trigger("change");
+            $("#searchDriver").select2().val("").trigger("change");
         }
     },
     methods: {

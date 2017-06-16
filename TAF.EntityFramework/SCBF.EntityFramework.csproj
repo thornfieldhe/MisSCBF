@@ -226,13 +226,9 @@
     <Compile Include="Migrations\201706151332063_modifyTable_sysdictionary.Designer.cs">
       <DependentUpon>201706151332063_modifyTable_sysdictionary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706151424388_addtable_driver.cs" />
-    <Compile Include="Migrations\201706151424388_addtable_driver.Designer.cs">
-      <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706161316381_addTable_carinfo.cs" />
-    <Compile Include="Migrations\201706161316381_addTable_carinfo.Designer.cs">
-      <DependentUpon>201706161316381_addTable_carinfo.cs</DependentUpon>
+    <Compile Include="Migrations\201706161523599_addTable_carinfo.cs" />
+    <Compile Include="Migrations\201706161523599_addTable_carinfo.Designer.cs">
+      <DependentUpon>201706161523599_addTable_carinfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -346,11 +342,8 @@
     <EmbeddedResource Include="Migrations\201706151332063_modifyTable_sysdictionary.resx">
       <DependentUpon>201706151332063_modifyTable_sysdictionary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706151424388_addtable_driver.resx">
-      <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706161316381_addTable_carinfo.resx">
-      <DependentUpon>201706161316381_addTable_carinfo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706161523599_addTable_carinfo.resx">
+      <DependentUpon>201706161523599_addTable_carinfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -11,9 +11,13 @@ namespace SCBF.Web.Controllers
 {
     using Abp.Web.Mvc.Authorization;
     using SCBF.BaseInfo;
+    using SCBF.BaseInfo.Dto;
     using SCBF.Car;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using TAF.Utility;
 
     /// <summary>
     /// 车辆信息控制器
@@ -21,18 +25,19 @@ namespace SCBF.Web.Controllers
     [AbpMvcAuthorize]
     public class CarInfoController : TAFControllerBase
     {
-        private readonly ICarInfoAppService carInfoAppService;
+        private readonly IDriverAppService driverAppService;
 
-        public CarInfoController(ICarInfoAppService carInfoAppService, ISysDictionaryAppService sysDictionaryAppService)
+        public CarInfoController(IDriverAppService driverAppService, ISysDictionaryAppService sysDictionaryAppService)
         {
-            this.carInfoAppService = carInfoAppService;
+            this.driverAppService = driverAppService;
             this.sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult CarInfoList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Status).ToList();
-            return PartialView("_CarInfoIndex", list);
+            var list1 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Status).ToList();
+            var list2 = driverAppService.GetSimpleList();
+            return PartialView("_CarInfoIndex", new KeyValue<List<SysDictionaryListDto>, List<KeyValue<Guid, string>>>(list1, list2));
         }
     }
 }

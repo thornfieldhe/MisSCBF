@@ -238,13 +238,17 @@ namespace SCBF
 
                 mapper.CreateMap<CarInfo, CarInfoListDto>()
                     .ForMember(m => m.Zbsj, n => n.MapFrom(r => r.Zbsj.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.Clzk.Value));
+                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.Clzk.Value))
+                    .ForMember(m => m.Driver, n => n.MapFrom(r => r.Driver.Name));
                 mapper.CreateMap<CarInfo, CarInfoEditDto>()
                     .ForMember(m => m.Zbsj, n => n.MapFrom(r => r.Zbsj.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.ClzkId));
+                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.ClzkId))
+                    .ForMember(m => m.Driver, n => n.MapFrom(r => r.DriverId));
                 mapper.CreateMap<CarInfoEditDto, CarInfo>()
                     .ForMember(m => m.ClzkId, n => n.MapFrom(r => r.Clzk))
-                    .ForMember(m => m.Clzk, n => n.Ignore());
+                    .ForMember(m => m.Clzk, n => n.Ignore())
+                    .ForMember(m => m.DriverId, n => n.MapFrom(r => r.Driver))
+                    .ForMember(m => m.Driver, n => n.Ignore());
                 #endregion
             });
         }

@@ -21,6 +21,8 @@ namespace SCBF.Car
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
 
+    using TAF.Utility;
+
     /// <summary>
     /// 驾驶员服务
     /// </summary>
@@ -45,6 +47,11 @@ namespace SCBF.Car
             var dtos = list.MapTo<List<DriverListDto>>();
 
             return new PagedResultDto<DriverListDto>(count, dtos);
+        }
+
+        public List<KeyValue<Guid, string>> GetSimpleList()
+        {
+            return this.driverRepository.GetAll().Select(r => new KeyValue<Guid, string>() { Key = r.Id, Value = r.Name }).ToList();
         }
 
         public DriverEditDto Get(Guid id)

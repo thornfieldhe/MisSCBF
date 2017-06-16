@@ -53,7 +53,7 @@ Path.map("#stocks").to(function () { loadPage("/Stock/StockList", "物资器材�
 Path.map("#checkBills").to(function () { loadPage("/CheckBill/CheckBillList", "盘点", "盘点", "#menuCheckBills", false); });
 Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
 
-Path.map("#carInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
+Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#drivers").to(function () { loadPage("/Driver/DriverList", "车辆管理", "驾驶员信息", "#menuDrivers", false); });
 Path.map("#carInfos").to(function () { loadPage("/CarInfo/CarInfoList", "车辆管理", "车辆信息", "#menuCarInfos", false); });
 

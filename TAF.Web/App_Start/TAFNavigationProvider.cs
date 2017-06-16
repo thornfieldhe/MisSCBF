@@ -197,9 +197,9 @@
                         requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
-                                "menuCarInfos",
+                                "menuCarBaseInfos",
                                 L("基础信息"),
-                                url: "#carInfos",
+                                url: "#carBaseInfos",
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
