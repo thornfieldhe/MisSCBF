@@ -108,7 +108,9 @@
   <ItemGroup>
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
+    <Compile Include="Car\CarInfo.cs" />
     <Compile Include="Car\Driver.cs" />
+    <Compile Include="Car\ICarInfoRepository.cs" />
     <Compile Include="Car\IDriverRepository.cs" />
     <Compile Include="Finance\IOutlayRepository.cs" />
     <Compile Include="Finance\Outlay.cs" />

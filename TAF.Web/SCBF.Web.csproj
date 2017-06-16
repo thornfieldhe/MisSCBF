@@ -815,6 +815,7 @@
     <Content Include="Scripts\budgetOutlay2.js" />
     <Content Include="Scripts\budgetOutlay3.js" />
     <Content Include="Scripts\budgetperformance.js" />
+    <Content Include="Scripts\carInfo.js" />
     <Content Include="Scripts\checkBill.js" />
     <Content Include="Scripts\carInfoIndex.js" />
     <Content Include="Scripts\driver.js" />
@@ -917,6 +918,7 @@
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CarInfoController.cs" />
     <Compile Include="Controllers\CheckBillController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -992,8 +994,9 @@
     <Content Include="Views\BudgetOutlay\_BudgetOutlayIndex2.cshtml" />
     <Content Include="Views\BudgetOutlay\_BudgetPerformance.cshtml" />
     <Content Include="Views\CheckBill\_CheckBillIndex.cshtml" />
-    <Content Include="Views\Car\_CarInfoIndex.cshtml" />
     <Content Include="Views\Driver\_DriverIndex.cshtml" />
+    <Content Include="Views\CarInfo\_CarInfoIndex.cshtml" />
+    <Content Include="Views\Car\_CarInfoIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

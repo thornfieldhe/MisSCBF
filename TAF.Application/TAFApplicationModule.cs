@@ -220,7 +220,7 @@ namespace SCBF
                     .ForMember(m => m.Surplus, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3 - decimal.Round(r.ActualOutlays.Sum(o => o.Amount) / 10000, 2, MidpointRounding.AwayFromZero)));
 
                 mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:mm")));
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:MM")));
 
                 #endregion
 
@@ -236,6 +236,15 @@ namespace SCBF
                 .ForMember(m => m.Level, n => n.Ignore())
                 .ForMember(m => m.LevelId, n => n.MapFrom(r => r.Level));
 
+                mapper.CreateMap<CarInfo, CarInfoListDto>()
+                    .ForMember(m => m.Zbsj, n => n.MapFrom(r => r.Zbsj.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.Clzk.Value));
+                mapper.CreateMap<CarInfo, CarInfoEditDto>()
+                    .ForMember(m => m.Zbsj, n => n.MapFrom(r => r.Zbsj.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Clzk, n => n.MapFrom(r => r.ClzkId));
+                mapper.CreateMap<CarInfoEditDto, CarInfo>()
+                    .ForMember(m => m.ClzkId, n => n.MapFrom(r => r.Clzk))
+                    .ForMember(m => m.Clzk, n => n.Ignore());
                 #endregion
             });
         }
@@ -245,9 +254,9 @@ namespace SCBF
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
 
-        /// <summary>
+        /// <suMMary>
         /// 初始化模块时启动任务
-        /// </summary>
+        /// </suMMary>
         public override void PostInitialize()
         {
             base.PostInitialize();

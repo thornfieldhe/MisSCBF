@@ -130,6 +130,7 @@
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\CheckMap.cs" />
+    <Compile Include="EntityFramework\Maps\CarInfoMap.cs" />
     <Compile Include="EntityFramework\Maps\DriverMap.cs" />
     <Compile Include="EntityFramework\Maps\HisStockMap.cs" />
     <Compile Include="EntityFramework\Maps\StockMap.cs" />
@@ -229,6 +230,10 @@
     <Compile Include="Migrations\201706151424388_addtable_driver.Designer.cs">
       <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706161316381_addTable_carinfo.cs" />
+    <Compile Include="Migrations\201706161316381_addTable_carinfo.Designer.cs">
+      <DependentUpon>201706161316381_addTable_carinfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -237,6 +242,7 @@
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
+    <Compile Include="Repositories\CarInfoRepository.cs" />
     <Compile Include="Repositories\CheckBillRepository.cs" />
     <Compile Include="Repositories\CheckRepository.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706151424388_addtable_driver.resx">
       <DependentUpon>201706151424388_addtable_driver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161316381_addTable_carinfo.resx">
+      <DependentUpon>201706161316381_addTable_carinfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

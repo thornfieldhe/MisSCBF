@@ -206,6 +206,12 @@
                                 "menuDrivers",
                                 L("驾驶员"),
                                 url: "#drivers",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuCarInfos",
+                                L("车辆信息"),
+                                url: "#carInfos",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

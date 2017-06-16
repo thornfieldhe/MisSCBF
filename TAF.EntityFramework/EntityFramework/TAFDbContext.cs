@@ -139,6 +139,11 @@
         {
             get; set;
         }
+
+        public DbSet<CarInfo> CarInfos
+        {
+            get; set;
+        }
         #endregion
 
 

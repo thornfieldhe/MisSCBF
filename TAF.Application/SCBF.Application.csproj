@@ -153,9 +153,14 @@
     <Compile Include="BaseInfo\Dto\AttachmentEditDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentListDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentQueryDto.cs" />
+    <Compile Include="Car\CarInfoAppService.cs" />
     <Compile Include="Car\DriverAppService.cs" />
+    <Compile Include="Car\Dto\CarInfoEditDto.cs" />
+    <Compile Include="Car\Dto\CarInfoListDto.cs" />
+    <Compile Include="Car\Dto\CarInfoQueryDto.cs" />
     <Compile Include="Car\Dto\DriverEditDto.cs" />
     <Compile Include="Car\Dto\DriverListDto.cs" />
+    <Compile Include="Car\ICarInfoAppService.cs" />
     <Compile Include="Car\IDriverAppService.cs" />
     <Compile Include="Finance\Dto\BudgetPerformanceListDto.cs" />
     <Compile Include="Finance\Dto\OutlayQueryDto.cs" />

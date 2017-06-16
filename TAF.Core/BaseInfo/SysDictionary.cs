@@ -154,5 +154,10 @@ namespace SCBF.BaseInfo
         {
             get; set;
         }
+
+        public virtual List<CarInfo> Cars
+        {
+            get; set;
+        }
     }
 }
