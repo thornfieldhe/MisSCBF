@@ -249,6 +249,17 @@ namespace SCBF
                     .ForMember(m => m.Clzk, n => n.Ignore())
                     .ForMember(m => m.DriverId, n => n.MapFrom(r => r.Driver))
                     .ForMember(m => m.Driver, n => n.Ignore());
+
+                mapper.CreateMap<OilCard, OilCardListDto>()
+                    .ForMember(m => m.CarInfoName, n => n.MapFrom(r => r.CarInfo.Cph));
+
+                mapper.CreateMap<RechargeRecord, RechargeRecordListDto>()
+                    .ForMember(m => m.OilCardName, n => n.MapFrom(r => r.OilCard.Code))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+                mapper.CreateMap<RechargeRecord, RechargeRecordEditDto>()
+                    .ForMember(m => m.HisAmount, n => n.MapFrom(r => r.OilCard.Amount));
+                mapper.CreateMap<RechargeRecordEditDto, RechargeRecord>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => DateTime.Today));
                 #endregion
             });
         }
@@ -258,6 +269,9 @@ namespace SCBF
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
 
+        /// <summary>
+        /// The post initialize.
+        /// </summary>
         /// <suMMary>
         /// 初始化模块时启动任务
         /// </suMMary>

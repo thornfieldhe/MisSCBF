@@ -819,7 +819,9 @@
     <Content Include="Scripts\checkBill.js" />
     <Content Include="Scripts\carInfoIndex.js" />
     <Content Include="Scripts\driver.js" />
+    <Content Include="Scripts\oilCard.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
+    <Content Include="Scripts\rechargeRecord.js" />
     <Content Include="Scripts\stock.js" />
     <Content Include="Scripts\stockChange.js" />
     <Content Include="Scripts\queryStock.js" />
@@ -927,8 +929,10 @@
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HisStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OilCardController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RechargeRecordController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Controllers\SysDictionaryController.cs" />
@@ -997,6 +1001,8 @@
     <Content Include="Views\Driver\_DriverIndex.cshtml" />
     <Content Include="Views\CarInfo\_CarInfoIndex.cshtml" />
     <Content Include="Views\Car\_CarInfoIndex.cshtml" />
+    <Content Include="Views\OilCard\_OilCardIndex.cshtml" />
+    <Content Include="Views\RechargeRecord\_RechargeRecordIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

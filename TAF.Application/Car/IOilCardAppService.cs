@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICarInfoAppService.cs" company="" author="何翔华">
+// <copyright file="IOilCardAppService.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   车辆信息应用接口
+//   油料卡应用接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,20 +14,23 @@ namespace SCBF.Car
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using TAF.Utility;
 
     /// <summary>
-    /// 车辆信息应用接口
+    /// 油料卡应用接口
     /// </summary>
-    public interface ICarInfoAppService : IBaseEntityApplicationService
+    public interface IOilCardAppService : IBaseEntityApplicationService
     {
-        ListResultDto<CarInfoListDto> GetAll(CarInfoQueryDto request);
+        ListResultDto<OilCardListDto> GetAll(OilCardQueryDto request);
 
         List<KeyValue<string, Guid>> GetSimple();
 
-        CarInfoEditDto Get(Guid id);
+        decimal GetAmount(Guid id);
 
-        Task SaveAsync(CarInfoEditDto input);
+        OilCardEditDto Get(Guid id);
+
+        Task SaveAsync(OilCardEditDto input);
 
         void Delete(Guid id);
     }

@@ -50,12 +50,14 @@ Path.map("#hisStocks").to(function () { loadPage("/HisStock/HisStockList", "物�
 Path.map("#queryStocks").to(function () { loadPage("/HisStock/QueryStockList", "物资器材管理", "物资出入库查询", "#menuHisStocks", false); });
 Path.map("#queryStockChange").to(function () { loadPage("/HisStock/QuerytockChange", "物资器材管理", "物资变动情况查询", "#menuStockChange", false); });
 Path.map("#stocks").to(function () { loadPage("/Stock/StockList", "物资器材管理", "物资清单", "#menuStocks", false); });
-Path.map("#checkBills").to(function () { loadPage("/CheckBill/CheckBillList", "盘点", "盘点", "#menuCheckBills", false); });
+Path.map("#checkBills").to(function () { loadPage("/CheckBill/CheckBillList", "物资器材管理", "盘点", "#menuCheckBills", false); });
 Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#drivers").to(function () { loadPage("/Driver/DriverList", "车辆管理", "驾驶员信息", "#menuDrivers", false); });
 Path.map("#carInfos").to(function () { loadPage("/CarInfo/CarInfoList", "车辆管理", "车辆信息", "#menuCarInfos", false); });
+Path.map("#oilCards").to(function () { loadPage("/OilCard/OilCardList", "车辆管理", "油料卡资料", "#menuOilCards", false); });
+Path.map("#rechargeRecords").to(function () { loadPage("/RechargeRecord/RechargeRecordList", "车辆管理", "油料分配记录", "#menuRechargeRecords", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

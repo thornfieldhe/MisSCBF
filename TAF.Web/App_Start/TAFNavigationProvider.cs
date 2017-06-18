@@ -212,6 +212,18 @@
                                 "menuCarInfos",
                                 L("车辆信息"),
                                 url: "#carInfos",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuOilCards",
+                                L("油料卡资料"),
+                                url: "#oilCards",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuRechargeRecords",
+                                L("油料分配记录"),
+                                url: "#rechargeRecords",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

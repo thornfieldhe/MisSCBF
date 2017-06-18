@@ -11,6 +11,7 @@ namespace SCBF.Car
 {
     using SCBF.BaseInfo;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 车辆信息
@@ -86,6 +87,11 @@ namespace SCBF.Car
         /// 驾驶员
         /// </summary>
         public virtual Driver Driver { get; set; }
+
+        /// <summary>
+        /// 油料卡
+        /// </summary>
+        public virtual List<OilCard> OilCards { get; set; }
 
     }
 }

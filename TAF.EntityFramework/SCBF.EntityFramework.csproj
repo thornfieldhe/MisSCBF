@@ -128,6 +128,8 @@
   <ItemGroup>
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
+    <Compile Include="EntityFramework\Maps\OilCardMap.cs" />
+    <Compile Include="EntityFramework\Maps\RechargeRecordMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\CheckMap.cs" />
     <Compile Include="EntityFramework\Maps\CarInfoMap.cs" />
@@ -230,6 +232,14 @@
     <Compile Include="Migrations\201706161523599_addTable_carinfo.Designer.cs">
       <DependentUpon>201706161523599_addTable_carinfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706170202303_addtable_oilcard.cs" />
+    <Compile Include="Migrations\201706170202303_addtable_oilcard.Designer.cs">
+      <DependentUpon>201706170202303_addtable_oilcard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706170253489_updateTable_RechargeRecord.cs" />
+    <Compile Include="Migrations\201706170253489_updateTable_RechargeRecord.Designer.cs">
+      <DependentUpon>201706170253489_updateTable_RechargeRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -248,8 +258,10 @@
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
+    <Compile Include="Repositories\OilCardRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
+    <Compile Include="Repositories\RechargeRecordRepository.cs" />
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="Repositories\AttachmentRepository.cs" />
@@ -344,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706161523599_addTable_carinfo.resx">
       <DependentUpon>201706161523599_addTable_carinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706170202303_addtable_oilcard.resx">
+      <DependentUpon>201706170202303_addtable_oilcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706170253489_updateTable_RechargeRecord.resx">
+      <DependentUpon>201706170253489_updateTable_RechargeRecord.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

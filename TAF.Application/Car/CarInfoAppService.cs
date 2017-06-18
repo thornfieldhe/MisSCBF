@@ -21,6 +21,8 @@ namespace SCBF.Car
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
 
+    using TAF.Utility;
+
     /// <summary>
     /// 车辆信息服务
     /// </summary>
@@ -56,6 +58,12 @@ namespace SCBF.Car
             var dtos = list.MapTo<List<CarInfoListDto>>();
 
             return new PagedResultDto<CarInfoListDto>(count, dtos);
+        }
+
+
+        public List<KeyValue<string, Guid>> GetSimple()
+        {
+            return this.carInfoRepository.GetAllList().Select(r => new KeyValue<string, Guid>() { Key = r.Cph, Value = r.Id }).ToList();
         }
 
         public CarInfoEditDto Get(Guid id)
