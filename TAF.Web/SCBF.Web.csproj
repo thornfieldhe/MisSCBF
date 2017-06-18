@@ -812,6 +812,8 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\applicationForAuditA.js" />
+    <Content Include="Scripts\applicationForBunkerA.js" />
     <Content Include="Scripts\budgetOutlay2.js" />
     <Content Include="Scripts\budgetOutlay3.js" />
     <Content Include="Scripts\budgetperformance.js" />
@@ -917,6 +919,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActualOutlayController.cs" />
+    <Compile Include="Controllers\ApplicationForBunkerAController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\CarController.cs" />
@@ -1003,6 +1006,8 @@
     <Content Include="Views\Car\_CarInfoIndex.cshtml" />
     <Content Include="Views\OilCard\_OilCardIndex.cshtml" />
     <Content Include="Views\RechargeRecord\_RechargeRecordIndex.cshtml" />
+    <Content Include="Views\ApplicationForBunkerA\_ApplicationForBunkerAIndex.cshtml" />
+    <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

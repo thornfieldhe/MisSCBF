@@ -61,7 +61,7 @@ namespace SCBF.Car
         public decimal GetAmount(Guid id)
         {
             var output = this.oilCardRepository.Get(id);
-            return output.Amount;
+            return output == null ? 0 : output.Amount;
         }
 
         public List<KeyValue<string, Guid>> GetSimple()

@@ -224,6 +224,18 @@
                                 "menuRechargeRecords",
                                 L("油料分配记录"),
                                 url: "#rechargeRecords",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForBunkerAs",
+                                L("加油卡加油申请单"),
+                                url: "#applicationForBunkerAs",
+                                requiredPermissionName: PermissionNames.Default))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForAuditA",
+                                L("加油卡加油审批单"),
+                                url: "#applicationForAuditA",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

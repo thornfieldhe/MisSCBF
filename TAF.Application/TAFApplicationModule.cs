@@ -260,6 +260,17 @@ namespace SCBF
                     .ForMember(m => m.HisAmount, n => n.MapFrom(r => r.OilCard.Amount));
                 mapper.CreateMap<RechargeRecordEditDto, RechargeRecord>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => DateTime.Today));
+
+                mapper.CreateMap<ApplicationForBunkerA, ApplicationForBunkerAListDto>()
+                    .ForMember(m => m.OilCardName, n => n.MapFrom(r => r.OilCard.Code))
+                    .ForMember(m => m.DriverName, n => n.MapFrom(r => r.Driver.Name))
+                    .ForMember(m => m.AuditorName, n => n.MapFrom(r => r.AuditorId.HasValue ? r.Auditor.Value : string.Empty))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+                mapper.CreateMap<ApplicationForBunkerA, ApplicationForBunkerAEditDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.DriverName, n => n.MapFrom(r => r.DriverId.HasValue ? r.Driver.Name : string.Empty))
+                    .ForMember(m => m.OilCardCode, n => n.MapFrom(r => r.OilCard.Code));
+                mapper.CreateMap<ApplicationForBunkerAEditDto, ApplicationForBunkerA>();
                 #endregion
             });
         }

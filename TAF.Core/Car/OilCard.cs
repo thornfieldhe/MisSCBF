@@ -26,5 +26,7 @@ namespace SCBF.Car
         public virtual CarInfo CarInfo { get; set; }
 
         public virtual List<RechargeRecord> RechargeRecords { get; set; }
+
+        public virtual List<ApplicationForBunkerA> ApplicationForBunkerAs { get; set; }
     }
 }

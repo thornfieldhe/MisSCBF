@@ -153,8 +153,12 @@
     <Compile Include="BaseInfo\Dto\AttachmentEditDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentListDto.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentQueryDto.cs" />
+    <Compile Include="Car\ApplicationForBunkerAAppService.cs" />
     <Compile Include="Car\CarInfoAppService.cs" />
     <Compile Include="Car\DriverAppService.cs" />
+    <Compile Include="Car\Dto\ApplicationForBunkerAEditDto.cs" />
+    <Compile Include="Car\Dto\ApplicationForBunkerAListDto.cs" />
+    <Compile Include="Car\Dto\ApplicationForBunkerAQueryDto.cs" />
     <Compile Include="Car\Dto\CarInfoEditDto.cs" />
     <Compile Include="Car\Dto\CarInfoListDto.cs" />
     <Compile Include="Car\Dto\CarInfoQueryDto.cs" />
@@ -166,6 +170,7 @@
     <Compile Include="Car\Dto\RechargeRecordEditDto.cs" />
     <Compile Include="Car\Dto\RechargeRecordListDto.cs" />
     <Compile Include="Car\Dto\RechargeRecordQueryDto.cs" />
+    <Compile Include="Car\IApplicationForBunkerAAppService.cs" />
     <Compile Include="Car\ICarInfoAppService.cs" />
     <Compile Include="Car\IDriverAppService.cs" />
     <Compile Include="Car\IOilCardAppService.cs" />

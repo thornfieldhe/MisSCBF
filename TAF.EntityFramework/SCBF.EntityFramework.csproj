@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
+    <Compile Include="EntityFramework\Maps\ApplicationForBunkerAMap.cs" />
     <Compile Include="EntityFramework\Maps\OilCardMap.cs" />
     <Compile Include="EntityFramework\Maps\RechargeRecordMap.cs" />
     <Compile Include="EntityFramework\Maps\DeliveryMap.cs" />
@@ -240,12 +241,21 @@
     <Compile Include="Migrations\201706170253489_updateTable_RechargeRecord.Designer.cs">
       <DependentUpon>201706170253489_updateTable_RechargeRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706181400074_addTable_ApplicationForBunkerA.cs" />
+    <Compile Include="Migrations\201706181400074_addTable_ApplicationForBunkerA.Designer.cs">
+      <DependentUpon>201706181400074_addTable_ApplicationForBunkerA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181622127_updateTable_ApplicationForBunkerA.cs" />
+    <Compile Include="Migrations\201706181622127_updateTable_ApplicationForBunkerA.Designer.cs">
+      <DependentUpon>201706181622127_updateTable_ApplicationForBunkerA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolePermissionCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
+    <Compile Include="Repositories\ApplicationForBunkerARepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
@@ -362,6 +372,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706170253489_updateTable_RechargeRecord.resx">
       <DependentUpon>201706170253489_updateTable_RechargeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181400074_addTable_ApplicationForBunkerA.resx">
+      <DependentUpon>201706181400074_addTable_ApplicationForBunkerA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181622127_updateTable_ApplicationForBunkerA.resx">
+      <DependentUpon>201706181622127_updateTable_ApplicationForBunkerA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

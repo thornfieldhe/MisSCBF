@@ -9,10 +9,9 @@
 
 namespace SCBF.BaseInfo
 {
+    using SCBF.Car;
     using SCBF.Storage;
     using System.Collections.Generic;
-
-    using SCBF.Car;
 
     /// <summary>
     /// 系统字典表
@@ -159,5 +158,7 @@ namespace SCBF.BaseInfo
         {
             get; set;
         }
+
+        public virtual List<ApplicationForBunkerA> ApplicationForBunkerAs { get; set; }
     }
 }

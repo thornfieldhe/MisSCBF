@@ -144,6 +144,12 @@
         {
             get; set;
         }
+
+        public DbSet<ApplicationForBunkerA> ApplicationForBunkerAs
+        {
+            get; set;
+        }
+
         #endregion
 
 

@@ -29,7 +29,8 @@ namespace SCBF.Car
         private readonly IRechargeRecordRepository rechargeRecordRepository;
         private readonly IOilCardRepository oilCardRepository;
 
-        public RechargeRecordAppService(IRechargeRecordRepository rechargeRecordRepository,
+        public RechargeRecordAppService(
+            IRechargeRecordRepository rechargeRecordRepository,
                                         IOilCardRepository oilCardRepository)
         {
             this.rechargeRecordRepository = rechargeRecordRepository;
@@ -46,7 +47,7 @@ namespace SCBF.Car
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
-                        : query.OrderBy(r => r.Date);
+                        : query.OrderByDescending(r => r.CreationTime);
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<RechargeRecordListDto>>();
