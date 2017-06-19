@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pre-scrollable">
-                            <table class="table table-striped table-hover table-bordered " style="width: 1600px">
+                            <table class="table table-striped table-hover table-bordered " style="width: 1800px">
                                 <thead>
                                 <tr role="row">
                                     <th style="width: 100px;">
@@ -47,6 +47,12 @@
                                     </th>
                                     <th style="width: 100px;">
                                         油箱限额
+                                    </th>
+                                    <th style="width: 100px;">
+                                        油耗限额(夏)
+                                    </th>
+                                    <th style="width: 100px;">
+                                        油耗限额(冬)
                                     </th>
                                     <th style="width: 200px;">
                                         操作
@@ -123,6 +129,10 @@
                                     <th>
                                     </th>
                                     <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
                                         <search-command></search-command>
                                     </th>
                                 </tr>
@@ -140,12 +150,14 @@
                                     <td>{{item.driver}}</td>
                                     <td>{{item.xszh}}</td>
                                     <td>{{item.yxxe}}</td>
+                                    <td>{{item.oilWearSummer}}</td>
+                                    <td>{{item.oilWearWinter}}</td>
                                     <td>
                                         <row-command :id="item.id" title="编辑" :name="item.cph"></row-command>
                                     </td>
                                 </tr>
                                 </tbody>
-                                <tfoot is="table-foot" colspan="12"></tfoot>
+                                <tfoot is="table-foot" colspan="14"></tfoot>
                             </table>
                         </div>
                     </div>
@@ -318,6 +330,26 @@
                             <label class="col-sm-2 control-label no-padding-right">油箱限额<span class="red">*</span></label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control " placeholder="必填" name="yxxe" v-model="item.yxxe" v-validate:yxxe="{required:true}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">百公里油耗(夏季)<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control " placeholder="必填" name="oilWearSummer" v-model="item.oilWearSummer" v-validate:oilWearSummer="{required:true}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">百公里油耗(冬季)<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control " placeholder="必填" name="oilWearWinter" v-model="item.oilWearWinter" v-validate:oilWearWinter="{required:true}" />
                             </div>
                         </div>
                     </div>

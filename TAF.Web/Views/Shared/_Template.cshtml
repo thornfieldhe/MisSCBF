@@ -24,6 +24,9 @@
     <button type="button" class="btn   edit" v-on:click="editItem(id,title) "><i class="fa fa-edit"></i> 编辑</button>
     <button type="button" class="btn btn-danger  " v-on:click="deleteItem(id,name) "><i class="fa fa-trash-o"></i> 删除</button>
 </template>
+<template id="rowAudit">
+    <button type="button" class="btn   btn-primary" v-on:click="editItem(id,title) " v-show="!overed"><i class="fa fa-edit"></i> 审核</button>
+</template>
 <template id="addButton">
     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem(title)"><i class="fa  fa-plus"></i> 新增</a>
 </template>
@@ -76,6 +79,37 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
                     <button type="submit" class="btn btn-primary" v-on:click="saveNewItem()" v-show="!editModel" disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>保存新增 </button>
                     <button type="submit" class="btn btn-primary" v-on:click="saveItem()"  disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</template>
+
+<template id="formAudit">
+    <div class="bootbox modal fade modal-primary in" id="auditItemModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">{{ title }}</h4>
+                    <div v-model="title"></div>
+                </div>
+                <div class="modal-body">
+                    <form-body></form-body>
+                    <div class="row" id="unknownError" style="display: none;">
+                        <div class="col-md-12">
+                            <div class="form-group  has-feedback has-error">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <small class="help-block"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                    <button type="submit" class="btn " v-on:click="refuse()"  disabled="{{!allowSubmit}}" ><i class='fa    fa-floppy-o'></i>拒绝</button>
+                    <button type="submit" class="btn btn-primary" v-on:click="approve()" disabled="{{!allowSubmit}}"><i class='fa    fa-floppy-o'></i>通过 </button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

@@ -47,7 +47,7 @@
         'onSaveItem': function (closeModal) {
             var $this = this;
             if ($this.item.totalAmount < $this.item.amount) {
-                taf.notify.danger("余额不够");
+                taf.notify.danger("余额不足");
             }else {
                 abp.services.app.applicationForBunkerA.saveAsync($this.item)
                     .done(function (m) {

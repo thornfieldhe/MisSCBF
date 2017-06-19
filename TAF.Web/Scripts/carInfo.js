@@ -31,7 +31,9 @@
                 xszh: "",
                 yxxe: 0,
                 zbzl: "",
-                driver:""
+                driver: "",
+                oilWearSummer: 0,
+                oilWearWinter:0
             }
         };
     },
@@ -75,6 +77,8 @@
             this.item.zbzl= "";
             this.item.driver= "";
             this.item.yxxe= 0;
+            this.item.oilWearSummer= 0;
+            this.item.oilWearWinter= 0;
         }
     }
 });

@@ -14,6 +14,7 @@ namespace SCBF.Car
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
     using AutoMapper;
+    using SCBF.BaseInfo;
     using SCBF.Car.Dto;
     using System;
     using System.Collections.Generic;
@@ -83,6 +84,7 @@ namespace SCBF.Car
             {
                 item.Date = DateTime.Now;
                 item.Code = GetMaxCode();
+                item.Status = AuditingStatus.Pending;
                 await this.applicationForBunkerARepository.InsertAsync(item);
             }
             else
@@ -111,7 +113,7 @@ namespace SCBF.Car
             }
             else
             {
-                return $"JYK{long.Parse(maxCode.Substring(2)) + 1}";
+                return $"JYK{long.Parse(maxCode.Substring(3)) + 1}";
             }
         }
     }

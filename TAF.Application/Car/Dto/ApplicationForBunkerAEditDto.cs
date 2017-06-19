@@ -113,6 +113,14 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// Note
+        /// </summary>
+        public string Note
+        {
+            get; set;
+        }
     }
 }
 

@@ -44,15 +44,35 @@
         };
     },
     events: {
-        'onSaveItem': function (closeModal) {
+        'onApproved': function (closeModal) {
             var $this = this;
-            abp.services.app.applicationForBunkerA.saveAsync($this.item)
-            .done(function (m) {
-                $this.done(closeModal);
-            })
-            .fail(function (m) {
-                $this.fail(m);
-            });
+            $this.item.status = 1;
+            if ($this.item.auditingAmount > $this.item. totalAmount) {
+                taf.notify.danger("余额不足");
+            } else {
+                abp.services.app.applicationForBunkerA.saveAsync($this.item)
+                    .done(function (m) {
+                        $this.done(closeModal);
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    });
+            }
+        },
+        'onRefused': function (closeModal) {
+            var $this = this;
+            $this.item.status = 2;
+            if ($this.item.auditingAmount > $this.item. totalAmount) {
+                taf.notify.danger("余额不足");
+            } else {
+                abp.services.app.applicationForBunkerA.saveAsync($this.item)
+                    .done(function (m) {
+                        $this.done(closeModal);
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    });
+            }
         },
         'onGetItem': function (id) {
             this.editModel = true;

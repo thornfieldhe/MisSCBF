@@ -84,6 +84,16 @@ namespace SCBF.Car
         public Guid? DriverId { get; set; }
 
         /// <summary>
+        /// 夏季油耗
+        /// </summary>
+        public decimal? OilWearSummer { get; set; }
+
+        /// <summary>
+        /// 冬季油耗
+        /// </summary>
+        public decimal? OilWearWinter { get; set; }
+
+        /// <summary>
         /// 驾驶员
         /// </summary>
         public virtual Driver Driver { get; set; }

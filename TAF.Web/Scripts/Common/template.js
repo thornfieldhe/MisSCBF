@@ -37,6 +37,17 @@ Vue.component('row-command', {
     }
 });
 
+//审核行命令按钮
+Vue.component('row-audit', {
+    props: ['id', 'title', 'name','overed'],
+    template: '#rowAudit',
+    methods: {
+        editItem: function (id, title) {
+            this.$dispatch('onUpdateItem', title, id);
+        }
+    }
+});
+
 //编辑页
 Vue.component('form-edit', {
     template: '#formEdit',
@@ -76,6 +87,45 @@ Vue.component('form-edit', {
         },
         saveNewItem: function () {
             this.$broadcast('onSaveItem',false);
+        }
+    }
+});
+
+//审核页
+Vue.component('form-audit', {
+    template: '#formAudit',
+    props: ['id', 'title'],
+    ready: function () {
+        var $this = this;
+        $('#auditItemModal').on('hide.bs.modal', function () {
+            $("#unknownError").show().find(".help-block").html("");
+            $(this).removeData();
+        });
+    },
+    data: function () {
+        return {
+            allowSubmit: false,
+            editModel: false
+        };
+    },
+    events: {
+        'onUpdateItem': function (title, id) {
+            this.title = title;
+            this.id = id;
+            this.editModel = true;
+            this.$broadcast("onGetItem", id);
+        },
+        'onValidate': function (allowValidate) {
+
+            this.allowSubmit = allowValidate;
+        }
+    },
+    methods: {
+        approve: function () {
+            this.$broadcast('onApproved', true);
+        },
+        refuse: function () {
+            this.$broadcast('onRefused', true);
         }
     }
 });
