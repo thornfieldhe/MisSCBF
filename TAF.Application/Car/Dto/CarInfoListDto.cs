@@ -53,7 +53,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Ylbh
         /// </summary>
-        public int Ylbh
+        public string Ylbh
         {
             get; set;
         }
@@ -123,6 +123,11 @@ namespace SCBF.Car.Dto
         /// 冬季油耗
         /// </summary>
         public decimal OilWearWinter { get; set; }
+
+        /// <summary>
+        /// 油料标号
+        /// </summary>
+        public Guid? OctaneRatingId { get; set; }
     }
 }
 

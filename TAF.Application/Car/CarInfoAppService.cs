@@ -14,13 +14,13 @@ namespace SCBF.Car
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
     using AutoMapper;
+    using SCBF.BaseInfo;
     using SCBF.Car.Dto;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
-
     using TAF.Utility;
 
     /// <summary>
@@ -30,10 +30,12 @@ namespace SCBF.Car
     public class CarInfoAppService : TAFAppServiceBase, ICarInfoAppService
     {
         private readonly ICarInfoRepository carInfoRepository;
+        private readonly ISysDictionaryRepository sysDictionaryRepository;
 
-        public CarInfoAppService(ICarInfoRepository carInfoRepository)
+        public CarInfoAppService(ICarInfoRepository carInfoRepository, ISysDictionaryRepository sysDictionaryRepository)
         {
             this.carInfoRepository = carInfoRepository;
+            this.sysDictionaryRepository = sysDictionaryRepository;
         }
 
         public ListResultDto<CarInfoListDto> GetAll(CarInfoQueryDto request)
@@ -56,6 +58,12 @@ namespace SCBF.Car
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<CarInfoListDto>>();
+            var octaneRatings = this.sysDictionaryRepository.GetAllList(r => r.Category == DictionaryCategory.Car_OctaneRating)
+                .ToDictionary(r => r.Id, t => t.Value);
+            foreach (var dto in dtos)
+            {
+                dto.Ylbh = octaneRatings[dto.OctaneRatingId.Value];
+            }
 
             return new PagedResultDto<CarInfoListDto>(count, dtos);
         }

@@ -53,7 +53,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Ylbh
         /// </summary>
-        public int Ylbh
+        public Guid OctaneRatingId
         {
             get; set;
         }

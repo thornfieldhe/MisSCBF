@@ -36,7 +36,7 @@ namespace SCBF.Car
         /// <summary>
         /// 油料标号
         /// </summary>
-        public string Ylbh { get; set; }
+        public Guid? OctaneRatingId { get; set; }
 
         /// <summary>
         /// 车牌号

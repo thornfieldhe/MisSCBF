@@ -253,6 +253,10 @@
     <Compile Include="Migrations\201706191438301_modifyTable_carinfo2.Designer.cs">
       <DependentUpon>201706191438301_modifyTable_carinfo2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706201412131_updateTable_carinfo3.cs" />
+    <Compile Include="Migrations\201706201412131_updateTable_carinfo3.Designer.cs">
+      <DependentUpon>201706201412131_updateTable_carinfo3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -385,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706191438301_modifyTable_carinfo2.resx">
       <DependentUpon>201706191438301_modifyTable_carinfo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706201412131_updateTable_carinfo3.resx">
+      <DependentUpon>201706201412131_updateTable_carinfo3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

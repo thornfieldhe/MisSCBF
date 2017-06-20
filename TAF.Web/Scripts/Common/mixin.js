@@ -44,7 +44,6 @@ var itemMixin = {
                 if (!this.onAdd) {
                     this.$validate();
                 }
-                console.log(this.$v,111);
                 this.$dispatch("onValidate", this.$v.valid);
             },
             deep: true

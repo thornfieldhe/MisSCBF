@@ -37,7 +37,8 @@ namespace SCBF.Web.Controllers
         {
             var list1 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Status).ToList();
             var list2 = driverAppService.GetSimpleList();
-            return PartialView("_CarInfoIndex", new KeyValue<List<SysDictionaryListDto>, List<KeyValue<Guid, string>>>(list1, list2));
+            var list3 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating).ToList();
+            return PartialView("_CarInfoIndex", new KeyValue<List<SysDictionaryListDto>, List<KeyValue<Guid, string>>, List<SysDictionaryListDto>>(list1, list2, list3));
         }
     }
 }

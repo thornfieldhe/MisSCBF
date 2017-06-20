@@ -15,6 +15,7 @@
 
         $("#clzk").select2().on("change", function (e) { $this.item.clzk = $("#clzk").val(); });
         $("#driver").select2().on("change", function (e) { $this.item.driver = $("#driver").val(); });
+        $("#octaneRatingId").select2().on("change", function (e) { $this.item.octaneRatingId = $("#octaneRatingId").val(); });
     },
     data: function () {
         return {
@@ -23,7 +24,7 @@
                 clxh: "",
                 cjh: "",
                 fdjh: "",
-                ylbh: "",
+                octaneRatingId: "",
                 cph: "",
                 jcgls: 0,
                 zbsj: "",
@@ -56,6 +57,7 @@
                     $this.item = m;
                     $("#clzk").select2().val(m.clzk).trigger("change");
                     $("#driver").select2().val(m.driver).trigger("change");
+                    $("#octaneRatingId").select2().val(m.octaneRatingId).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -68,7 +70,7 @@
             this.item.clxh= "";
             this.item.cjh= "";
             this.item.fdjh= "";
-            this.item.ylbh= "";
+            this.item.octaneRatingId= "";
             this.item.cph= "";
             this.item.jcgls= 0;
             this.item.zbsj= "";
@@ -78,7 +80,10 @@
             this.item.driver= "";
             this.item.yxxe= 0;
             this.item.oilWearSummer= 0;
-            this.item.oilWearWinter= 0;
+            this.item.oilWearWinter = 0;
+            $("#clzk").select2().val("").trigger("change");
+            $("#driver").select2().val("").trigger("change");
+            $("#octaneRatingId").select2().val("").trigger("change");
         }
     }
 });
