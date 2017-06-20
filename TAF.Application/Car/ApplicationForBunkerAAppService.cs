@@ -13,6 +13,7 @@ namespace SCBF.Car
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
+    using Abp.UI;
     using AutoMapper;
     using SCBF.BaseInfo;
     using SCBF.Car.Dto;
@@ -29,10 +30,13 @@ namespace SCBF.Car
     public class ApplicationForBunkerAAppService : TAFAppServiceBase, IApplicationForBunkerAAppService
     {
         private readonly IApplicationForBunkerARepository applicationForBunkerARepository;
+        private readonly IOilCardRepository oilCardRepository;
 
-        public ApplicationForBunkerAAppService(IApplicationForBunkerARepository applicationForBunkerARepository)
+        public ApplicationForBunkerAAppService(IApplicationForBunkerARepository applicationForBunkerARepository,
+                                               IOilCardRepository oilCardRepository)
         {
             this.applicationForBunkerARepository = applicationForBunkerARepository;
+            this.oilCardRepository = oilCardRepository;
         }
 
         public ListResultDto<ApplicationForBunkerAListDto> GetAll(ApplicationForBunkerAQueryDto request)
@@ -92,6 +96,13 @@ namespace SCBF.Car
                 var old = this.applicationForBunkerARepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
                 await this.applicationForBunkerARepository.UpdateAsync(old);
+                var card = this.oilCardRepository.FirstOrDefault(r => r.Code == input.OilCardCode);
+                if (card == null)
+                {
+                    throw new UserFriendlyException("加油卡不存在");
+                }
+                card.Amount -= input.AuditingAmount;
+                this.oilCardRepository.Update(card);
             }
         }
 

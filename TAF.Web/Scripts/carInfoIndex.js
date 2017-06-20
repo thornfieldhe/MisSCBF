@@ -77,6 +77,9 @@ var main = new Vue({
             } else if (id === "poilWearWinter") {
                 $this.title = "百公里油耗限额冬季";
                 $this.category = "Car_OilWearWinter";
+            } else if (id === "poctaneRating") {
+                $this.title = "油料标号";
+                $this.category = "Car_OctaneRating";
             }
             $this.queryEntity.category = $this.category;
             $this.query(0);

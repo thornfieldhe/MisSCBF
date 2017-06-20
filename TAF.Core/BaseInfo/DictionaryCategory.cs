@@ -200,6 +200,11 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Car_OilWearWinter = "Car_OilWearWinter";
 
+        /// <summary>
+        /// 油料标号
+        /// </summary>
+        public const string Car_OctaneRating = "Car_OctaneRating";
+
         #endregion
 
     }
