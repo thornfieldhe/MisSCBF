@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201706201412131_updateTable_carinfo3.Designer.cs">
       <DependentUpon>201706201412131_updateTable_carinfo3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706201448565_addtable_OctaneStore.cs" />
+    <Compile Include="Migrations\201706201448565_addtable_OctaneStore.Designer.cs">
+      <DependentUpon>201706201448565_addtable_OctaneStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -276,6 +280,7 @@
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
+    <Compile Include="Repositories\OctaneStoreRepository.cs" />
     <Compile Include="Repositories\OilCardRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
@@ -392,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706201412131_updateTable_carinfo3.resx">
       <DependentUpon>201706201412131_updateTable_carinfo3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706201448565_addtable_OctaneStore.resx">
+      <DependentUpon>201706201448565_addtable_OctaneStore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -236,6 +236,12 @@
                                 "menuApplicationForAuditA",
                                 L("油料卡加油审批单"),
                                 url: "#applicationForAuditA",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuOctaneStores",
+                                L("实物油料库"),
+                                url: "#octaneStores",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

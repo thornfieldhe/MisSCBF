@@ -821,6 +821,7 @@
     <Content Include="Scripts\checkBill.js" />
     <Content Include="Scripts\carInfoIndex.js" />
     <Content Include="Scripts\driver.js" />
+    <Content Include="Scripts\octaneStore.js" />
     <Content Include="Scripts\oilCard.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\rechargeRecord.js" />
@@ -932,6 +933,7 @@
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HisStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OctaneStoreController.cs" />
     <Compile Include="Controllers\OilCardController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1008,6 +1010,7 @@
     <Content Include="Views\RechargeRecord\_RechargeRecordIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForBunkerAIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
+    <Content Include="Views\OctaneStore\_OctaneStoreIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

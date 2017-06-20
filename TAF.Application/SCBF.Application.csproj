@@ -164,6 +164,9 @@
     <Compile Include="Car\Dto\CarInfoQueryDto.cs" />
     <Compile Include="Car\Dto\DriverEditDto.cs" />
     <Compile Include="Car\Dto\DriverListDto.cs" />
+    <Compile Include="Car\Dto\OctaneStoreEditDto.cs" />
+    <Compile Include="Car\Dto\OctaneStoreListDto.cs" />
+    <Compile Include="Car\Dto\OctaneStoreQueryDto.cs" />
     <Compile Include="Car\Dto\OilCardEditDto.cs" />
     <Compile Include="Car\Dto\OilCardListDto.cs" />
     <Compile Include="Car\Dto\OilCardQueryDto.cs" />
@@ -173,8 +176,10 @@
     <Compile Include="Car\IApplicationForBunkerAAppService.cs" />
     <Compile Include="Car\ICarInfoAppService.cs" />
     <Compile Include="Car\IDriverAppService.cs" />
+    <Compile Include="Car\IOctaneStoreAppService.cs" />
     <Compile Include="Car\IOilCardAppService.cs" />
     <Compile Include="Car\IRechargeRecordAppService.cs" />
+    <Compile Include="Car\OctaneStoreAppService.cs" />
     <Compile Include="Car\OilCardAppService.cs" />
     <Compile Include="Car\RechargeRecordAppService.cs" />
     <Compile Include="Finance\Dto\BudgetPerformanceListDto.cs" />
