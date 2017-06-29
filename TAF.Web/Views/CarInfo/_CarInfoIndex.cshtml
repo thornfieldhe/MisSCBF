@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pre-scrollable">
-                            <table class="table table-striped table-hover table-bordered " style="width: 1800px">
+                            <table class="table table-striped table-hover table-bordered " style="width: 1700px">
                                 <thead>
                                 <tr role="row">
                                     <th style="width: 100px;">
@@ -38,9 +38,6 @@
                                     </th>
                                     <th style="width: 100px;">
                                         车辆状况
-                                    </th>
-                                    <th style="width: 100px;">
-                                        驾驶员
                                     </th>
                                     <th style="width: 100px;">
                                         行驶证号
@@ -105,18 +102,6 @@
                                         </select>
                                     </th>
                                     <th>
-                                        <select id="searchDriver" style="width: 100%" v-model="queryEntity.driver">
-                                            <option value="" selected="">请选择...</option>
-                                            @{
-                                                for (var i = 0; i < Model.Value.Count; i++)
-                                                {
-                                                        <option value="@Model.Value[i].Key" >@Model.Value[i].Value</option>
-                                                }
-
-                                            }
-                                        </select>
-                                    </th>
-                                    <th>
                                         <input type="text" class="form-control" placeholder="行驶证号" v-model="queryEntity.xszh"/>
                                     </th>
                                     <th>
@@ -140,7 +125,6 @@
                                     <td>{{item.jcgls}}</td>
                                     <td>{{item.zbsj}}</td>
                                     <td>{{item.clzk}}</td>
-                                    <td>{{item.driver}}</td>
                                     <td>{{item.xszh}}</td>
                                     <td>{{item.yxxe}}</td>
                                     <td>{{item.oilWearSummer}}</td>
@@ -150,7 +134,7 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                                <tfoot is="table-foot" colspan="14"></tfoot>
+                                <tfoot is="table-foot" colspan="13"></tfoot>
                             </table>
                         </div>
                     </div>
@@ -282,27 +266,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">驾驶员</label>
-                            <div class="col-sm-10">
-                                <span class="input-icon icon-right">
-                                    <select id="driver" style="width: 100%" v-model="item.driver">
-                                        <option value="" >请选择...</option>
-                                        @{
-                                            for (var i = 0; i < Model.Value.Count; i++)
-                                            {
-                                                    <option value="@Model.Value[i].Key" >@Model.Value[i].Value</option>
-                                            }
-
-                                        }
-                                    </select>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
                             <label class="col-sm-2 control-label no-padding-right">行驶证号<span class="red">*</span></label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
@@ -345,7 +308,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">整备资料</label>
+                            <label class="col-sm-2 control-label no-padding-right">整备质量</label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
                                     <textarea rows="4" class="form-control " name="zbzl" v-model="item.zbzl"></textarea>
