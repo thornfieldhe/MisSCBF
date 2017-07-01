@@ -26,4 +26,18 @@ namespace SCBF.BaseInfo
         /// </summary>
         Refused = 2
     }
+
+    /// <summary>
+    /// 加油卡审批状态
+    /// </summary>
+    public static class ApplicationForBunkerAStatus
+    {
+        public static int Pending => 0;
+
+        public static int Approved => 1;
+
+        public static int Refused => 2;
+
+        public static int Confirm => 3; //金额确认
+    }
 }

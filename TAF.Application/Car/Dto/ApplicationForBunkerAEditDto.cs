@@ -75,6 +75,14 @@ namespace SCBF.Car.Dto
         }
 
         /// <summary>
+        /// ConfirmAmount
+        /// </summary>
+        public decimal ConfirmAmount
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// DriverId
         /// </summary>
         public Guid DriverId
@@ -94,6 +102,14 @@ namespace SCBF.Car.Dto
         /// AuditorId
         /// </summary>
         public Guid? AuditorId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// AuditorName
+        /// </summary>
+        public string AuditorName
         {
             get; set;
         }

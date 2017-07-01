@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201706201448565_addtable_OctaneStore.Designer.cs">
       <DependentUpon>201706201448565_addtable_OctaneStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706291422022_updateTable_ApplicationForBunkerA1.cs" />
+    <Compile Include="Migrations\201706291422022_updateTable_ApplicationForBunkerA1.Designer.cs">
+      <DependentUpon>201706291422022_updateTable_ApplicationForBunkerA1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -400,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706201448565_addtable_OctaneStore.resx">
       <DependentUpon>201706201448565_addtable_OctaneStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706291422022_updateTable_ApplicationForBunkerA1.resx">
+      <DependentUpon>201706291422022_updateTable_ApplicationForBunkerA1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

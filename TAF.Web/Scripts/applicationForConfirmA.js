@@ -1,13 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#applicationForAuditAAFormBody",
-    ready: function () {
-        var $this = this;
-        $("#auditorId").select2().on("change", function (e) {
-            $this.item.auditorId = $("#auditorId").val();
-        });         
-
-    },
+    template: "#applicationForConfirmAFormBody",
     data: function () {
         return {
             item: {
@@ -17,6 +10,7 @@
                 amount: 0,
                 totalAmount: 0,
                 auditingAmount: 0,
+                confirmAmount: 0,
                 driverId: "",
                 auditorId: "",
                 date: "",
@@ -26,26 +20,11 @@
         };
     },
     events: {
-        'onApproved': function (closeModal) {
+        'onSaveItem': function (closeModal) {
             var $this = this;
-            $this.item.status = 1;
-            if ($this.item.auditingAmount > $this.item. totalAmount) {
-                taf.notify.danger("余额不足");
-            } else {
-                abp.services.app.applicationForBunkerA.saveAsync($this.item)
-                    .done(function (m) {
-                        $this.done(closeModal);
-                    })
-                    .fail(function (m) {
-                        $this.fail(m);
-                    });
-            }
-        },
-        'onRefused': function (closeModal) {
-            var $this = this;
-            $this.item.status = 2;
-            if ($this.item.auditingAmount > $this.item. totalAmount) {
-                taf.notify.danger("余额不足");
+            $this.item.status = 3;
+            if ($this.item.confirmAmount > $this.item.auditingAmount) {
+                taf.notify.danger("加油金额不能超过审核金额");
             } else {
                 abp.services.app.applicationForBunkerA.saveAsync($this.item)
                     .done(function (m) {
@@ -62,7 +41,8 @@
             abp.services.app.applicationForBunkerA.get(id)
                 .done(function (m) {
                     $this.item = m;
-                    $("#auditorId").select2().val($this.item.auditorId).trigger("change");
+                    $("#searchEditOilCardId").select2().val($this.item.oilCardId).trigger("change");
+                    $("#searchEditDriverId").select2().val($this.item.driverId).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -74,11 +54,13 @@
             this.item.id = "";
             this.item.code= "";
             this.item.oilCardId= "";
-            $("#auditorId").select2().val("").trigger("change");
+            $("#searchEditoilCardId").select2().val("").trigger("change");
             this.item.amount= 0;
             this.item.totalAmount= 0;
             this.item.auditingAmount= 0;
+            this.item.confirmAmount= 0;
             this.item.driverId= "";
+            $("#searchEditdriverId").select2().val("").trigger("change");
             this.item.auditorId= "";
             this.item.date = "";
             this.item.note = "";

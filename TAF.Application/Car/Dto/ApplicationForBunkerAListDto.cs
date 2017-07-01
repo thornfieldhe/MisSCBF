@@ -67,6 +67,11 @@ namespace SCBF.Car.Dto
         }
 
         /// <summary>
+        /// 确认金额
+        /// </summary>
+        public decimal ConfirmAmount { get; set; }
+
+        /// <summary>
         /// DriverName
         /// </summary>
         public string DriverName

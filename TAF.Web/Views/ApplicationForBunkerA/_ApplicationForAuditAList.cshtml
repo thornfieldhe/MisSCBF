@@ -1,4 +1,6 @@
-﻿@model TAF.Utility.KeyValue<List<TAF.Utility.KeyValue<string, Guid>>,  List<TAF.Utility.KeyValue<Guid, string>>>
+﻿
+@using TAF.Utility
+@using SCBF.BaseInfo.Dto
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
@@ -8,121 +10,121 @@
             <div class="widget-body">
                 <div class="row">
                     <div class="col-md-12"><div class="pre-scrollable">
-    <table class="table table-striped table-hover table-bordered " style="width: 1900px">
-        <thead>
-            <tr role="row">
-                <th style="width: 200px;">
-                    编号
-                </th>
-                <th style="width: 200px;">
-                    油卡卡号
-                </th>
-                <th style="width: 100px;">
-                    申请加油金额
-                </th>
-                <th style="width: 100px;">
-                    当前卡内余额
-                </th>
-                <th style="width: 100px;">
-                    审批加油金额
-                </th>
-                <th style="width: 400px;">
-                    事由
-                </th>
-                <th style="width: 100px;">
-                    驾驶员
-                </th>
-                <th style="width: 100px;">
-                    审批人
-                </th>
-                <th style="width: 300px;">
-                    申请时间
-                </th>
-                <th style="width: 100px;">
-                    审批状态
-                </th>
-                <th style="width: 200px;">
-                    操作
-                </th>
-            </tr>
-            <tr role="row">
-                <th>
-                    <input type="text" class="form-control" placeholder="编号" v-model="queryEntity.code" />
-                </th>
-                <th>
-                    <select id="searchOilCardId" style="width: 100%" v-model="queryEntity.oilCardId">
-                        <option value="">请选择...</option>
-                        @{
-                            foreach (var item in Model.Key)
-                            {
-                                <option value="@item.Value">@item.Key</option>
-                            }
-                        }
-                    </select>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                    <select id="searchDriverId" style="width: 100%" v-model="queryEntity.driverId">
-                        <option value="">请选择...</option>
-                        @{
-                            foreach (var item in Model.Value)
-                            {
-                                <option value="@item.Key">@item.Value</option>
-                            }
-                        }
-                    </select>
-                </th>
-                <th>
-                </th>
-                <th>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="起" v-model="queryEntity.dateFrom" id="dateFrom" readonly="readonly" />
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="止" v-model="queryEntity.dateTo" id="dateTo" readonly="readonly" />
+                            <table class="table table-striped table-hover table-bordered " style="width: 1900px">
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        编号
+                                    </th>
+                                    <th style="width: 200px;">
+                                        油卡卡号
+                                    </th>
+                                    <th style="width: 100px;">
+                                        申请加油金额
+                                    </th>
+                                    <th style="width: 100px;">
+                                        当前卡内余额
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批加油金额
+                                    </th>
+                                    <th style="width: 400px;">
+                                        事由
+                                    </th>
+                                    <th style="width: 100px;">
+                                        驾驶员
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批人
+                                    </th>
+                                    <th style="width: 300px;">
+                                        申请时间
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批状态
+                                    </th>
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="编号" v-model="queryEntity.code" />
+                                    </th>
+                                    <th>
+                                        <select id="searchOilCardId" style="width: 100%" v-model="queryEntity.oilCardId">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<KeyValue<string, Guid>>)ViewData["list1"])
+                                                {
+                                                    <option value="@item.Value">@item.Key</option>
+                                                }
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <select id="searchDriverId" style="width: 100%" v-model="queryEntity.driverId">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<KeyValue<Guid, string>>)ViewData["list2"])
+                                                {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" placeholder="起" v-model="queryEntity.dateFrom" id="dateFrom" readonly="readonly" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" placeholder="止" v-model="queryEntity.dateTo" id="dateTo" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <select id="searchStatus" style="width: 100%" v-model="queryEntity.status">
+                                            <option value="">请选择...</option>
+                                            <option value="0" selected="">等待审核</option>
+                                            <option value="1">审核通过</option>
+                                            <option value="2">审核拒绝</option>
+                                        </select>
+                                    </th>
+                                    <th><search-command></search-command></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.oilCardName}}</td>
+                                    <td>{{item.amount}}</td>
+                                    <td>{{item.totalAmount}}</td>
+                                    <td>{{item.auditingAmount}}</td>
+                                    <td>{{item.note}}</td>
+                                    <td>{{item.driverName}}</td>
+                                    <td>{{item.auditorName}}</td>
+                                    <td>{{item.date}}</td>
+                                    <td>{{item.status}}</td>
+                                    <td>
+                                        <row-audit :id="item.id" title="审核" :name="item.code" :overed="item.status!=='等待审核'"></row-audit>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot is="table-foot" colspan="11"></tfoot>
+                            </table>
                         </div>
                     </div>
-                </th>
-                <th>
-                    <select id="searchStatus" style="width: 100%" v-model="queryEntity.status">
-                        <option value="">请选择...</option>
-                        <option value="0" selected="">等待审核</option>
-                        <option value="1">审核通过</option>
-                        <option value="2">审核拒绝</option>
-                    </select>
-                </th>
-                <th><search-command></search-command></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="item in list">
-                <td>{{item.code}}</td>
-                <td>{{item.oilCardName}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.totalAmount}}</td>
-                <td>{{item.auditingAmount}}</td>
-                <td>{{item.note}}</td>
-                <td>{{item.driverName}}</td>
-                <td>{{item.auditorName}}</td>
-                <td>{{item.date}}</td>
-                <td>{{item.status}}</td>
-                <td>
-                    <row-audit :id="item.id" title="审核" :name="item.code" :overed="item.status!=='等待审核'"></row-audit>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot is="table-foot" colspan="11"></tfoot>
-    </table>
-</div>
-</div>
 
                 </div>
             </div>
@@ -155,7 +157,7 @@
                         </div>
                     </div>
                 </div>
-               <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">申请金额</label>
@@ -192,6 +194,24 @@
                             <label class="col-sm-2 control-label no-padding-right">驾驶员</label>
                             <div class="col-sm-10">
                                 <label class="control-label no-padding-left">{{item.driverName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">审批人</label>
+                            <div class="col-sm-10">
+                                <select id="auditorId" style="width: 100%" v-model="queryEntity.auditorId">
+                                    <option value="">请选择...</option>
+                                    @{
+                                        foreach (var item in (List<SysDictionaryListDto>)ViewData["list3"])
+                                        {
+                                            <option value="@item.Id">@item.Value</option>
+                                        }
+                                    }
+                                </select>
                             </div>
                         </div>
                     </div>

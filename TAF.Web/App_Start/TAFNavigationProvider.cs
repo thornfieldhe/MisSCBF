@@ -239,6 +239,12 @@
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuApplicationForConfirmA",
+                                L("油料卡加油确认单"),
+                                url: "#applicationForConfirmA",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuOctaneStores",
                                 L("实物油料库"),
                                 url: "#octaneStores",

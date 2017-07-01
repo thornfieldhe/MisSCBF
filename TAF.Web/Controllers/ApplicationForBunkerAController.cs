@@ -45,9 +45,17 @@ namespace SCBF.Web.Controllers
 
         public ActionResult ApplicationForAuditAList()
         {
+            ViewData["list1"] = oilCardAppService.GetSimple();
+            ViewData["list2"] = driverAppService.GetSimpleList();
+            ViewData["list3"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
+            return PartialView("_ApplicationForAuditAList");
+        }
+
+        public ActionResult ApplicationForConfirmAList()
+        {
             var list1 = oilCardAppService.GetSimple();
             var list2 = driverAppService.GetSimpleList();
-            return PartialView("_ApplicationForAuditAList", new KeyValue<List<KeyValue<string, Guid>>, List<KeyValue<Guid, string>>>(list1, list2));
+            return PartialView("_ApplicationForConfirmAList", new KeyValue<List<KeyValue<string, Guid>>, List<KeyValue<Guid, string>>>(list1, list2));
         }
     }
 }

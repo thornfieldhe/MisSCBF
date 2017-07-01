@@ -31,12 +31,15 @@ namespace SCBF.Car
     {
         private readonly IApplicationForBunkerARepository applicationForBunkerARepository;
         private readonly IOilCardRepository oilCardRepository;
+        private readonly ISysDictionaryRepository sysDictionaryRepository;
 
         public ApplicationForBunkerAAppService(IApplicationForBunkerARepository applicationForBunkerARepository,
-                                               IOilCardRepository oilCardRepository)
+                                               IOilCardRepository oilCardRepository,
+                                               ISysDictionaryRepository sysDictionaryRepository)
         {
             this.applicationForBunkerARepository = applicationForBunkerARepository;
             this.oilCardRepository = oilCardRepository;
+            this.sysDictionaryRepository = sysDictionaryRepository;
         }
 
         public ListResultDto<ApplicationForBunkerAListDto> GetAll(ApplicationForBunkerAQueryDto request)
@@ -60,16 +63,20 @@ namespace SCBF.Car
             {
                 switch (item.Status)
                 {
-                    case "Pending":
+                    case "0":
                         item.Status = "等待审核";
                         break;
-                    case "Approved":
+                    case "1":
                         item.Status = "审核通过";
                         break;
-                    case "Refused":
+                    case "2":
                         item.Status = "审核拒绝";
                         break;
+                    case "3":
+                        item.Status = "金额确认";
+                        break;
                 }
+
             }
 
             return new PagedResultDto<ApplicationForBunkerAListDto>(count, dtos);
@@ -88,7 +95,7 @@ namespace SCBF.Car
             {
                 item.Date = DateTime.Now;
                 item.Code = GetMaxCode();
-                item.Status = AuditingStatus.Pending;
+                item.Status = ApplicationForBunkerAStatus.Pending;
                 await this.applicationForBunkerARepository.InsertAsync(item);
             }
             else
@@ -96,13 +103,17 @@ namespace SCBF.Car
                 var old = this.applicationForBunkerARepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
                 await this.applicationForBunkerARepository.UpdateAsync(old);
-                var card = this.oilCardRepository.FirstOrDefault(r => r.Code == input.OilCardCode);
-                if (card == null)
+                if (item.Status == ApplicationForBunkerAStatus.Confirm)
                 {
-                    throw new UserFriendlyException("加油卡不存在");
+                    var card = this.oilCardRepository.FirstOrDefault(r => r.Code == input.OilCardCode);
+                    if (card == null)
+                    {
+                        throw new UserFriendlyException("加油卡不存在");
+                    }
+
+                    card.Amount -= input.ConfirmAmount;
+                    this.oilCardRepository.Update(card);
                 }
-                card.Amount -= input.AuditingAmount;
-                this.oilCardRepository.Update(card);
             }
         }
 

@@ -812,6 +812,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\applicationForConfirmA.js" />
     <Content Include="Scripts\applicationForAuditA.js" />
     <Content Include="Scripts\applicationForBunkerA.js" />
     <Content Include="Scripts\budgetOutlay2.js" />
@@ -1009,8 +1010,9 @@
     <Content Include="Views\OilCard\_OilCardIndex.cshtml" />
     <Content Include="Views\RechargeRecord\_RechargeRecordIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForBunkerAIndex.cshtml" />
-    <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
     <Content Include="Views\OctaneStore\_OctaneStoreIndex.cshtml" />
+    <Content Include="Views\ApplicationForBunkerA\_ApplicationForConfirmAList.cshtml" />
+    <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

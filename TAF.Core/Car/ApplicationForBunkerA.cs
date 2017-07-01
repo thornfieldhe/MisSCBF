@@ -48,6 +48,11 @@ namespace SCBF.Car
         public decimal AuditingAmount { get; set; }
 
         /// <summary>
+        /// 确认金额
+        /// </summary>
+        public decimal ConfirmAmount { get; set; }
+
+        /// <summary>
         /// 驾驶员Id
         /// </summary>
         public Guid? DriverId { get; set; }
@@ -76,7 +81,7 @@ namespace SCBF.Car
         /// <summary>
         /// 审核状态
         /// </summary>
-        public AuditingStatus Status { get; set; }
+        public int Status { get; set; }
 
         /// <summary>
         /// 备注
