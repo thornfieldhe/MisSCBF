@@ -62,6 +62,7 @@ Path.map("#applicationForBunkerAs").to(function () { loadPage("/ApplicationForBu
 Path.map("#applicationForAuditA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForAuditAList", "车辆管理", "油料卡加油审批单", "#menuApplicationForAuditA", false); });
 Path.map("#applicationForConfirmA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForConfirmAList", "车辆管理", "油料卡加油确认单", "#menuApplicationForAuditA", false); });
 Path.map("#octaneStores").to(function () { loadPage("/OctaneStore/OctaneStoreList", "车辆管理", "实物油料库", "#menuOctaneStores", false); });
+Path.map("#oilRecharge").to(function () { loadPage("/OilRechargeRecord/OilRechargeRecordList", "车辆管理", "实物油料入库单", "#menuOilRecharge", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

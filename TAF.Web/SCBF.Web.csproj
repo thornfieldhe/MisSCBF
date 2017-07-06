@@ -824,6 +824,8 @@
     <Content Include="Scripts\driver.js" />
     <Content Include="Scripts\octaneStore.js" />
     <Content Include="Scripts\oilCard.js" />
+    <Content Include="Scripts\oilCardProof.js" />
+    <Content Include="Scripts\oilRechargeRecord.js" />
     <Content Include="Scripts\purchaseInfoIndex.js" />
     <Content Include="Scripts\rechargeRecord.js" />
     <Content Include="Scripts\stock.js" />
@@ -936,6 +938,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OctaneStoreController.cs" />
     <Compile Include="Controllers\OilCardController.cs" />
+    <Compile Include="Controllers\OilCardProofController.cs" />
+    <Compile Include="Controllers\OilRechargeRecordController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RechargeRecordController.cs" />
@@ -1013,6 +1017,8 @@
     <Content Include="Views\OctaneStore\_OctaneStoreIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForConfirmAList.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
+    <Content Include="Views\OilCardProof\_OilCardProofIndex.cshtml" />
+    <Content Include="Views\OilRechargeRecord\_OilRechargeRecordIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

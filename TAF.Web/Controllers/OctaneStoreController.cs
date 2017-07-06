@@ -33,9 +33,9 @@ namespace SCBF.Web.Controllers
 
         public ActionResult OctaneStoreList()
         {
-            var list1 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
-            var list2 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
-            return PartialView("_OctaneStoreIndex", new KeyValue<List<SysDictionaryListDto>, List<SysDictionaryListDto>>(list1, list2));
+             ViewData["list1"] = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
+            ViewData["list2"]  = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
+            return PartialView("_OctaneStoreIndex");
         }
     }
 }

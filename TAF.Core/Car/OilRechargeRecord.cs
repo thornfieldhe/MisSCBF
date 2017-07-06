@@ -1,40 +1,49 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OctaneStore.cs" company="" author="何翔华">
+// <copyright file="OilRechargeRecord.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   OctaneStore
+//   OilRechargeRecord
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Car
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
-    /// 实物油料库
+    /// 油料入库单
     /// </summary>
-    public class OctaneStore : TAFEntity
+    public class OilRechargeRecord : TAFEntity
     {
         /// <summary>
-        /// 代管单位
+        /// Code
         /// </summary>
-        public Guid StoreId { get; set; }
+        public string Code { get; set; }
 
         /// <summary>
-        /// 油料标号
+        /// 油库Id
         /// </summary>
-        public Guid OctaneRatingId { get; set; }
+        public Guid OctanceId { get; set; }
 
         /// <summary>
-        /// 库存量(L)
+        /// 油库
+        /// </summary>
+        public virtual OctaneStore Octance { get; set; }
+
+        /// <summary>
+        /// 入库量
         /// </summary>
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// 
+        /// 备注
         /// </summary>
-        public virtual List<OilRechargeRecord> OilRechargeRecords { get; set; }
+        public string Note { get; set; }
+
+        /// <summary>
+        /// 附件Id
+        /// </summary>
+        public string AttachmentId { get; set; }
     }
 }

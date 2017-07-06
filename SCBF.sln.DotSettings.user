@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=897F6FD8_002D6F90_002D48E4_002D95A5_002DB4429B896205_002Fd_003AViews_002Fd_003AOctaneStore_002Ff_003A_005FOctaneStoreIndex_002Ecshtml/@EntryIndexedValue">ForceIncluded</s:String>
 	
 	
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=EDF5D964_002D4C0F_002D4F19_002DB674_002D58A38A5E5401_002Fd_003AFinance_002Ff_003ABudgetReceiptAppService_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
@@ -11,6 +12,7 @@
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Utility.dll" /&gt;&#xD;
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Core.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/SolBuilderDuo/UseMsbuildSolutionBuilder/@EntryValue">No</s:String>
 	
 	
 	

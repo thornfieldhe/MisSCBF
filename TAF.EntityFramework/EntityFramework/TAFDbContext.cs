@@ -155,6 +155,21 @@
             get; set;
         }
 
+        public DbSet<OilCardProof> OilCardProofs
+        {
+            get; set;
+        }
+
+        public DbSet<UploadOilCardRoof> UploadOilCardRoofs
+        {
+            get; set;
+        }
+
+        public DbSet<OilRechargeRecord> OilRechargeRecords
+        {
+            get; set;
+        }
+
         #endregion
 
 

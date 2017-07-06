@@ -248,6 +248,12 @@
                                 "menuOctaneStores",
                                 L("实物油料库"),
                                 url: "#octaneStores",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuOilRecharge",
+                                L("实物油料入库审批单"),
+                                url: "#oilRecharge",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

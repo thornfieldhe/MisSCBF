@@ -39,5 +39,19 @@ namespace SCBF.BaseInfo
         public static int Refused => 2;
 
         public static int Confirm => 3; //金额确认
+
+        public static int Cancel => 4; //作废
+    }
+
+    /// <summary>
+    /// 加油卡审批状态
+    /// </summary>
+    public static class ProofStatus
+    {
+        public static int Success => 0;
+
+        public static int NoProof => 1; // 无消耗凭证
+
+        public static int NoBunker => 2; // 无审批单
     }
 }
