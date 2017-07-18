@@ -233,6 +233,12 @@
                                 requiredPermissionName: PermissionNames.Default))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuApplicationForBunkerAs2",
+                                L("油料卡加油补签单"),
+                                url: "#applicationForBunkerAs2",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuApplicationForAuditA",
                                 L("油料卡加油审批单"),
                                 url: "#applicationForAuditA",

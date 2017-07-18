@@ -812,6 +812,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\applicationForBunkerA2.js" />
     <Content Include="Scripts\applicationForConfirmA.js" />
     <Content Include="Scripts\applicationForAuditA.js" />
     <Content Include="Scripts\applicationForBunkerA.js" />
@@ -1022,6 +1023,7 @@
     <Content Include="Views\OilCardProof\_OilCardProofIndex.cshtml" />
     <Content Include="Views\OilRechargeRecord\_OilRechargeRecordIndex.cshtml" />
     <Content Include="Views\UploadOilCarRoofRelationship\_UploadOilCarRoofRelationshipIndex.cshtml" />
+    <Content Include="Views\ApplicationForBunkerA\_ApplicationForBunkerAIndex2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -93,7 +93,7 @@ namespace SCBF.Car
             var item = input.MapTo<ApplicationForBunkerA>();
             if (!input.Id.HasValue)
             {
-                item.Date = DateTime.Now;
+                item.Date = string.IsNullOrWhiteSpace(input.Date) ? DateTime.Now : DateTime.Parse(input.Date);
                 item.Code = GetMaxCode();
                 item.Status = ApplicationForBunkerAStatus.Pending;
                 await this.applicationForBunkerARepository.InsertAsync(item);

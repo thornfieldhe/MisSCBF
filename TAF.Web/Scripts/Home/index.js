@@ -59,6 +59,7 @@ Path.map("#carInfos").to(function () { loadPage("/CarInfo/CarInfoList", "车辆�
 Path.map("#oilCards").to(function () { loadPage("/OilCard/OilCardList", "车辆管理", "油料卡资料", "#menuOilCards", false); });
 Path.map("#rechargeRecords").to(function () { loadPage("/RechargeRecord/RechargeRecordList", "车辆管理", "油料卡分配记录", "#menuRechargeRecords", false); });
 Path.map("#applicationForBunkerAs").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForBunkerAList", "车辆管理", "油料卡加油申请单", "#menuApplicationForBunkerAs", false); });
+Path.map("#applicationForBunkerAs2").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForBunkerAList2", "车辆管理", "油料卡加油申请单", "#menuApplicationForBunkerAs2", false); });
 Path.map("#applicationForAuditA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForAuditAList", "车辆管理", "油料卡加油审批单", "#menuApplicationForAuditA", false); });
 Path.map("#applicationForConfirmA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForConfirmAList", "车辆管理", "油料卡加油确认单", "#menuApplicationForAuditA", false); });
 Path.map("#uploadOilCarRoofRelationships").to(function () { loadPage("/UploadOilCarRoofRelationship/UploadOilCarRoofRelationshipList", "车辆管理", "加油卡消耗凭证单", "#menuUploadOilCarRoofRelationships", false); });

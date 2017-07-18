@@ -43,6 +43,13 @@ namespace SCBF.Web.Controllers
             return PartialView("_ApplicationForBunkerAIndex", new KeyValue<List<KeyValue<string, Guid>>, List<KeyValue<Guid, string>>>(list1, list2));
         }
 
+        public ActionResult ApplicationForBunkerAList2()
+        {
+            var list1 = oilCardAppService.GetSimple();
+            var list2 = driverAppService.GetSimpleList();
+            return PartialView("_ApplicationForBunkerAIndex2", new KeyValue<List<KeyValue<string, Guid>>, List<KeyValue<Guid, string>>>(list1, list2));
+        }
+
         public ActionResult ApplicationForAuditAList()
         {
             ViewData["list1"] = oilCardAppService.GetSimple();

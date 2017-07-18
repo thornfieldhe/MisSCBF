@@ -1,6 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#applicationForBunkerAFormBody",
+    template: "#applicationForBunkerAFormBody2",
     ready: function () {
         var $this = this;
         $("#searchEditOilCardId").select2()
@@ -15,7 +15,16 @@
                     }); });            
         $("#searchEditDriverId").select2()
             .on("change", function (e) {
-                $this.item.driverId = $("#searchEditDriverId").val(); });  
+                $this.item.driverId = $("#searchEditDriverId").val(); });            
+        var datePickerDate = $('#datePickerDate').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
+            datePickerDate.hide();
+            $this.item.date = $("#datePickerDate").val();
+        })
+        .on('hide', function (event) {
+		        event.preventDefault();
+		        event.stopPropagation();
+	    })
+        .data('datepicker');
     },
     data: function () {
         return {
