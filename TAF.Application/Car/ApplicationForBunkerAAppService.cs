@@ -119,6 +119,19 @@ namespace SCBF.Car
 
         public void Delete(Guid id)
         {
+            var item = this.applicationForBunkerARepository.Get(id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("加油申请不存在");
+            }
+
+            var card = this.oilCardRepository.FirstOrDefault(r => r.Id == item.OilCardId);
+            if (card == null)
+            {
+                throw new UserFriendlyException("加油卡不存在");
+            }
+            card.Amount += item.ConfirmAmount;
+            this.oilCardRepository.Update(card);
             this.applicationForBunkerARepository.Delete(id);
         }
 

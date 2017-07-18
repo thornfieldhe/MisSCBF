@@ -1,25 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UploadOilCardRoof.cs" company="" author="何翔华">
+// <copyright file="UploadOilCarRoofListDto.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   UploadOilCardRoof
+//   UploadOilCarRoofListDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.Car
+namespace SCBF.Car.Dto
 {
+    using Abp.AutoMapper;
     using System;
 
     /// <summary>
-    /// 加油卡凭证上传对象
+    /// 
     /// </summary>
-    public class UploadOilCardRoof : TAFEntity
+    [AutoMap(typeof(UploadOilCardRoof))]
+    public class UploadOilCarRoofListDto
     {
-        /// <summary>
-        /// 加油月份
-        /// </summary>
-        public string Month { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// 加油卡号
@@ -34,17 +33,11 @@ namespace SCBF.Car
         /// <summary>
         /// 加油时间
         /// </summary>
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// 加油量
         /// </summary>
         public decimal Amount { get; set; }
-
-        /// <summary>
-        /// 导入文件Id
-        /// </summary>
-        public Guid FileId { get; set; }
-        
     }
 }

@@ -119,9 +119,12 @@
     <Compile Include="Car\IOilCardProofRepository.cs" />
     <Compile Include="Car\IOilCardRepository.cs" />
     <Compile Include="Car\IRechargeRecordRepository.cs" />
+    <Compile Include="Car\IUploadOilCardRoofRepository.cs" />
+    <Compile Include="Car\IUploadOilCarRoofRelationshipRepository.cs" />
     <Compile Include="Car\OctaneStore.cs" />
     <Compile Include="Car\OilCard.cs" />
     <Compile Include="Car\OilCardProof.cs" />
+    <Compile Include="Car\UploadOilCarRoofRelationship.cs" />
     <Compile Include="Car\OilRechargeRecord.cs" />
     <Compile Include="Car\RechargeRecord.cs" />
     <Compile Include="Car\UploadOilCardRoof.cs" />

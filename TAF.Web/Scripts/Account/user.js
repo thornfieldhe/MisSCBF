@@ -27,7 +27,8 @@
             var $this = this;
             abp.services.app.user.get(id)
                 .done(function (m) {
-                    $this.item = m;
+                    $this.item.note = m;
+                    $this.item.id = id;
                 })
             .fail(function (m) {
                 $this.fail(m);

@@ -61,6 +61,7 @@ Path.map("#rechargeRecords").to(function () { loadPage("/RechargeRecord/Recharge
 Path.map("#applicationForBunkerAs").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForBunkerAList", "车辆管理", "油料卡加油申请单", "#menuApplicationForBunkerAs", false); });
 Path.map("#applicationForAuditA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForAuditAList", "车辆管理", "油料卡加油审批单", "#menuApplicationForAuditA", false); });
 Path.map("#applicationForConfirmA").to(function () { loadPage("/ApplicationForBunkerA/ApplicationForConfirmAList", "车辆管理", "油料卡加油确认单", "#menuApplicationForAuditA", false); });
+Path.map("#uploadOilCarRoofRelationships").to(function () { loadPage("/UploadOilCarRoofRelationship/UploadOilCarRoofRelationshipList", "车辆管理", "加油卡消耗凭证单", "#menuUploadOilCarRoofRelationships", false); });
 Path.map("#octaneStores").to(function () { loadPage("/OctaneStore/OctaneStoreList", "车辆管理", "实物油料库", "#menuOctaneStores", false); });
 Path.map("#oilRecharge").to(function () { loadPage("/OilRechargeRecord/OilRechargeRecordList", "车辆管理", "实物油料入库单", "#menuOilRecharge", false); });
 

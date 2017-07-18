@@ -902,6 +902,7 @@
     <Content Include="Scripts\financeInfoIndex.js" />
     <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\sysDictionary.js" />
+    <Content Include="Scripts\uploadOilCarRoofRelationship.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -948,6 +949,7 @@
     <Compile Include="Controllers\SysDictionaryController.cs" />
     <Compile Include="Controllers\TAFControllerBase.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
+    <Compile Include="Controllers\UploadOilCarRoofRelationshipController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1019,6 +1021,7 @@
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForAuditAList.cshtml" />
     <Content Include="Views\OilCardProof\_OilCardProofIndex.cshtml" />
     <Content Include="Views\OilRechargeRecord\_OilRechargeRecordIndex.cshtml" />
+    <Content Include="Views\UploadOilCarRoofRelationship\_UploadOilCarRoofRelationshipIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

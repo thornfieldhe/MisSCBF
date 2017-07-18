@@ -170,6 +170,11 @@
             get; set;
         }
 
+        public DbSet<UploadOilCarRoofRelationship> UploadOilCarRoofRelationships
+        {
+            get; set;
+        }
+
         #endregion
 
 

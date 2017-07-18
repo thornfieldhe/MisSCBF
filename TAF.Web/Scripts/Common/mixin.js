@@ -42,8 +42,10 @@ var itemMixin = {
         'item': {
             handler: function (val, oldVal) {
                 if (!this.onAdd) {
-                    this.$validate();
+this.$validate();
+                    console.log(this.$v.valid,11);
                 }
+                console.log(this.$v.valid, 222);
                 this.$dispatch("onValidate", this.$v.valid);
             },
             deep: true

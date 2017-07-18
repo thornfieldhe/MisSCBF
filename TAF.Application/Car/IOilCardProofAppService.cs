@@ -14,6 +14,8 @@ namespace SCBF.Car
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using TAF.Utility;
+
     /// <summary>
     /// 加油卡消耗凭证单应用接口
     /// </summary>
@@ -25,7 +27,13 @@ namespace SCBF.Car
 
         Task SaveNote(KeyValuePair<Guid, string> input);
 
-        void LoadProofFile(string path, string month);
+        Guid LoadProofFile(string path, object month);
+
+        List<ApplicationForBunkerAListDto> GetApplicationForBunkerAList(string month);
+
+        List<UploadOilCarRoofListDto> GetUploadOilCarRoof(string month);
+
+        void Link(KeyValue<Guid, Guid, string> item);
     }
 }
 

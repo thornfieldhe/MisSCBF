@@ -245,6 +245,12 @@
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuUploadOilCarRoofRelationships",
+                                L("加油卡消耗凭证单"),
+                                url: "#uploadOilCarRoofRelationships",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuOctaneStores",
                                 L("实物油料库"),
                                 url: "#octaneStores",

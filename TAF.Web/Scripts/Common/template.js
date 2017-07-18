@@ -25,7 +25,7 @@ Vue.component('search-command', {
 
 //行命令按钮
 Vue.component('row-command', {
-    props: ['id', 'title', 'name'],
+    props: ['id', 'title', 'name','showDel'],
     template: '#rowCommand',
     methods: {
         editItem: function (id, title) {

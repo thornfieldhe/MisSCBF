@@ -205,6 +205,11 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Car_OctaneRating = "Car_OctaneRating";
 
+
+        /// <summary>
+        /// 加油卡消耗凭证附件
+        /// </summary>
+        public const string Attachment_OilCardProof = "Attachment_OilCardProof";
         #endregion
 
     }

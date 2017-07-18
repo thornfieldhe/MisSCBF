@@ -253,6 +253,9 @@ namespace SCBF
                 mapper.CreateMap<OilCard, OilCardListDto>()
                     .ForMember(m => m.CarInfoName, n => n.MapFrom(r => r.CarInfo.Cph));
 
+                mapper.CreateMap<UploadOilCardRoof, UploadOilCarRoofListDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+
                 mapper.CreateMap<RechargeRecord, RechargeRecordListDto>()
                     .ForMember(m => m.OilCardName, n => n.MapFrom(r => r.OilCard.Code))
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));

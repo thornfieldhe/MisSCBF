@@ -31,16 +31,22 @@ namespace SCBF.Car
     [AbpAuthorize]
     public class OilCardProofAppService : TAFAppServiceBase, IOilCardProofAppService
     {
-        private readonly IOilCardProofRepository oilCardProofRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
         private readonly IApplicationForBunkerARepository applicationForBunkerARepository;
+        private readonly IUploadOilCardRoofRepository uploadOilCardRoofRepository;
+        private readonly IUploadOilCarRoofRelationshipRepository uploadOilCarRoofRelationshipRepository;
         private IWorkbook workbook = null;
 
-        public OilCardProofAppService(IOilCardProofRepository oilCardProofRepository, ISysDictionaryRepository sysDictionaryRepository, IApplicationForBunkerARepository applicationForBunkerARepository)
+        public OilCardProofAppService(
+            ISysDictionaryRepository sysDictionaryRepository,
+            IApplicationForBunkerARepository applicationForBunkerARepository,
+            IUploadOilCarRoofRelationshipRepository uploadOilCarRoofRelationshipRepository,
+            IUploadOilCardRoofRepository uploadOilCardRoofRepository)
         {
-            this.oilCardProofRepository = oilCardProofRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
             this.applicationForBunkerARepository = applicationForBunkerARepository;
+            this.uploadOilCardRoofRepository = uploadOilCardRoofRepository;
+            this.uploadOilCarRoofRelationshipRepository = uploadOilCarRoofRelationshipRepository;
         }
 
         public List<OilCardProofListDto> GetAll(string month)
@@ -51,15 +57,97 @@ namespace SCBF.Car
                 throw new UserFriendlyException("预算年度不存在");
             }
 
-            var result =
-                this.oilCardProofRepository.GetAllList(r => r.Month == currentYearItem.Value + month)
-                    .OrderBy(r => r.Date).ToList().MapTo<List<OilCardProofListDto>>();
-            return result;
+            var monthInt = int.Parse(month);
+            var yearmonth = $"{currentYearItem.Value}{month}";
+            var result = from r in this.uploadOilCarRoofRelationshipRepository.GetAllList(r => r.Month == yearmonth)
+                         join a in this.applicationForBunkerARepository.GetAllList(r => r.Date.Year.ToString() == currentYearItem.Value && r.Date.Month == monthInt) on r.OId equals a.Id
+                         join o in this.uploadOilCardRoofRepository.GetAllList(r => r.Month == yearmonth) on r.RId equals o.Id
+                         join d in this.sysDictionaryRepository.GetAll() on a.OilCard.CarInfo.OctaneRatingId equals d.Id
+                         select new OilCardProofListDto()
+                         {
+                             Date = o.Date.ToString("yyyy-MM-dd"),
+                             Month = r.Month,
+                             Id = r.Id,
+                             CarCode = a.OilCard.Code,
+                             Note = r.Note,
+                             BunkerACode = a.Code,
+                             Jsy = a.Driver.Name,
+                             Clxh = a.OilCard.CarInfo.Clxh,
+                             Jyje = a.ConfirmAmount,
+                             Jysh = o.Amount,
+                             Msjg = decimal.Round(a.ConfirmAmount / o.Amount, 2, MidpointRounding.AwayFromZero),
+                             Syje = a.TotalAmount - a.ConfirmAmount,
+                             Ylbh = d.Value,
+                             Yyje = a.TotalAmount,
+                             Sy = a.Note
+                         };
+            return result.ToList();
+        }
+
+        public List<ApplicationForBunkerAListDto> GetApplicationForBunkerAList(string month)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var yearmonth = $"{currentYearItem.Value}{month}";
+            var intMonth = int.Parse(month);
+            var roofList = this.uploadOilCarRoofRelationshipRepository.GetAllList(r => r.Month == yearmonth).Select(r => r.OId).ToList();
+            var result = this.applicationForBunkerARepository.GetAllList(r => r.Date.Year.ToString() == currentYearItem.Value && r.Date.Month == intMonth && !roofList.Contains(r.Id));
+            return result.MapTo<List<ApplicationForBunkerAListDto>>();
+        }
+
+        public List<UploadOilCarRoofListDto> GetUploadOilCarRoof(string month)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var yearmonth = $"{currentYearItem.Value}{month}";
+            var intMonth = int.Parse(month);
+            var roofList = this.uploadOilCarRoofRelationshipRepository.GetAllList(r => r.Month == yearmonth).Select(r => r.RId).ToList();
+            var result = this.uploadOilCardRoofRepository.GetAllList(r => r.Date.Year.ToString() == currentYearItem.Value && r.Date.Month == intMonth && !roofList.Contains(r.Id));
+            return result.MapTo<List<UploadOilCarRoofListDto>>();
+        }
+
+        public void Link(KeyValue<Guid, Guid, string> item)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var yearmonth = $"{currentYearItem.Value}{item.Item3}";
+            var o = this.applicationForBunkerARepository.FirstOrDefault(r => r.Id == item.Key);
+            if (o == null)
+            {
+                throw new UserFriendlyException("加油卡申请单不存在");
+            }
+
+            var u = this.uploadOilCardRoofRepository.FirstOrDefault(r => r.Id == item.Value);
+            if (u == null)
+            {
+                throw new UserFriendlyException("加油凭证不存在");
+            }
+
+            var i = new UploadOilCarRoofRelationship
+            {
+                Month = yearmonth,
+                RId = item.Value,
+                OId = item.Key
+            };
+
+            this.uploadOilCarRoofRelationshipRepository.Insert(i);
         }
 
         public string GetNote(Guid id)
         {
-            var output = this.oilCardProofRepository.Get(id);
+            var output = this.uploadOilCarRoofRelationshipRepository.Get(id);
             if (output == null)
             {
                 throw new UserFriendlyException("加油卡消耗凭证不存在");
@@ -70,19 +158,20 @@ namespace SCBF.Car
 
         public async Task SaveNote(KeyValuePair<Guid, string> input)
         {
-            var item = this.oilCardProofRepository.Get(input.Key);
+            var item = this.uploadOilCarRoofRelationshipRepository.Get(input.Key);
             if (item == null)
             {
                 throw new UserFriendlyException($"加油卡消耗凭证不存在[{input.Key}],内部错误详见:98434FAA-54DF-4C1B-82D5-3CA390ED0CB8");
             }
             item.Note = input.Value;
-            await this.oilCardProofRepository.UpdateAsync(item);
+            await this.uploadOilCarRoofRelationshipRepository.UpdateAsync(item);
         }
 
-        public void LoadProofFile(string path, string month)
+        public Guid LoadProofFile(string path, object monthPar)
         {
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            var modelId = Guid.NewGuid();
+            var month = (monthPar as string[])[0];
+            var modeId = Guid.NewGuid();
             if (path.IndexOf(".xlsx", StringComparison.OrdinalIgnoreCase) > 0)// 2007版本
             {
                 this.workbook = new XSSFWorkbook(fs);
@@ -101,6 +190,14 @@ namespace SCBF.Car
             {
                 throw new UserFriendlyException("未设置预算年度");
             }
+
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var yearmonth = $"{currentYear.Value}{month}";
 
             var list = new List<UploadOilCardRoof>();
             for (var j = 0; j < this.workbook.NumberOfSheets; j++)
@@ -121,62 +218,37 @@ namespace SCBF.Car
                             Amount = row.GetCell(13).ToStr().ToDecimal(),
                             Date = row.GetCell(9).ToStr().ToDate(),
                             CarCode = row.GetCell(1).ToStr(),
-                            AmountOfMoney = row.GetCell(5).ToStr().ToDecimal()
+                            AmountOfMoney = row.GetCell(5).ToStr().ToDecimal(),
+                            Month = yearmonth,
+                            FileId = modeId
                         };
                         list.Add(item);
                     }
                 }
             }
-            var list1 = list.Select(r => r.CarCode + r.Date.ToString("yyyyMM")).ToList(); // 消耗凭证单
 
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
-            if (currentYearItem == null)
-            {
-                throw new UserFriendlyException("预算年度不存在");
-            }
+            this.uploadOilCardRoofRepository.Delete(r => r.Month == yearmonth); // 删除当月凭证单
+            this.uploadOilCardRoofRepository.InsertRange(list); // 重新插入凭证数据
 
-            var yearmonth = $"{currentYear.Value}{month}";
-            this.oilCardProofRepository.Delete(r => r.Month == yearmonth);
+            var list1 = list.Select(r => new KeyValue<string, Guid, decimal>() { Key = r.CarCode + r.Date.ToString("yyyyMM"), Value = r.Id, Item3 = r.AmountOfMoney }).ToList(); // 消耗凭证表
 
-            var bunker = this.applicationForBunkerARepository.Get(r => r.Date.Year.ToString() == currentYear.Value && r.Date.Month.ToString() == month).ToList();
-            var list2 = bunker.Select(r => r.OilCard.Code + r.Date.ToString("yyyyMM")).ToList(); //加油审批表
+            var monthInt = int.Parse(month);
+            var bunker = this.applicationForBunkerARepository.Get(r => r.Date.Year.ToString() == currentYear.Value && r.Date.Month == monthInt).ToList();
+            var list2 = bunker.Select(r => new KeyValue<string, Guid, decimal>() { Key = r.OilCard.Code + r.Date.ToString("yyyyMM"), Value = r.Id, Item3 = r.ConfirmAmount }).ToList(); //加油审批表
 
-            var list3 = list1.Intersect(list2);
-            var list4 = list1.Except(list2);
-            var list5 = list2.Except(list1);
 
-            var dataList = new List<OilCardProof>();
+            var list10 = (from l1 in list1
+                          join l2 in list2 on l1.Key equals l2.Key
+                          where l1.Item3 == l2.Item3
+                          select new UploadOilCarRoofRelationship
+                          {
+                              Month = yearmonth,
+                              RId = l1.Value,
+                              OId = l2.Value
+                          }).ToList();
 
-            foreach (var item in bunker)
-            {
-                var dt = item.OilCard.Code + item.Date.ToString("yyyyMM");
-                var fileRow = list.SingleOrDefault(r => r.CarCode == item.OilCard.Code && r.AmountOfMoney == item.ConfirmAmount && r.Date.Month == item.Date.Month && r.Date.Day == item.Date.Day);
-                var row = new OilCardProof()
-                {
-                    Date = fileRow?.Date.ToString() ?? string.Empty,
-                    Cph = item.OilCard.CarInfo.Cph,
-                    Month = item.Date.ToString("yyyyMM"),
-                    BunkerACode = item.Code,
-                    CardNo = item.OilCard.Code,
-                    Clxh = item.OilCard.CarInfo.Clxh,
-                    Jsy = item.Driver.Name,
-                    Jyje = item.ConfirmAmount,
-                    Msjg = fileRow != null ? decimal.Round(item.ConfirmAmount / fileRow.Amount, 2, MidpointRounding.AwayFromZero) : 0,
-                    Ss = fileRow?.Amount ?? 0,
-                    Sy = item.Note,
-                    Syje = item.TotalAmount - item.ConfirmAmount,
-                    Ylbh = sysDictionaryRepository.FirstOrDefault(r => r.Id == item.OilCard.CarInfo.OctaneRatingId)
-                        .Value,
-                    Yyje = item.ConfirmAmount
-                };
-                dataList.Add(row);
-            }
-
-            foreach (var item in list5)
-            {
-
-            }
-
+            this.uploadOilCarRoofRelationshipRepository.InsertRange(list10);
+            return modeId;
         }
     }
 }
