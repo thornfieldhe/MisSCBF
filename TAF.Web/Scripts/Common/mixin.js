@@ -35,17 +35,15 @@ var itemMixin = {
             if (closeModal) {
                 $("#addItemModal").modal("hide");
                 $("#auditItemModal").modal("hide");
-            }
+            }  
         }
     },
     watch: {
         'item': {
             handler: function (val, oldVal) {
                 if (!this.onAdd) {
-this.$validate();
-                    console.log(this.$v.valid,11);
+                    this.$validate();
                 }
-                console.log(this.$v.valid, 222);
                 this.$dispatch("onValidate", this.$v.valid);
             },
             deep: true
@@ -98,7 +96,6 @@ var indexMixin = {
             $this.totalCount = r.totalCount;
         },
         fail: function (r) {
-            console.log(3333);
             if (r.validationErrors!== null) {
                 taf.notify.danger(r.validationErrors[0].members[0]+"验证未通过");
             } else if (r.details !== null) {
@@ -120,5 +117,57 @@ var indexMixin = {
     }
 }
 
+//列表\编辑混合对象
+var allMixin = {
+    el: "#main",
+    data: {
+        queryEntity: {
+            maxResultCount: taf.defatulPageSize,//每页条数
+            skipCount: 0,//过滤条数
+            sorting: ''
+        },
+        list: {         //列表选项
+            total: 0,
+            from: 0,
+            to: 0,
+            index:0,
+            pageSize: taf.defatulPageSize,
+            items: {},
 
+        },
+        deleteEntity: {     //删除对象
+            id: "00000000-0000-0000-0000-000000000000",
+            name: ""
+        },
+        modifyEntity: {
+            modifyTitle: "",
+            id: "",
+            editModel: false
+        },
+        item: {}
+    },
+    methods: {
+        fail: function (r) {
+            fail(function (r) {
+                if (r.validationErrors !== null) {
+                    taf.notify.danger(r.validationErrors[0].members[0] + "验证未通过");
+                } else if (r.details !== null) {
+                    taf.notify.danger(r.details);
+                } else {
+                    taf.notify.danger(r.message);
+                }
+            })
+        }
+    },
+    watch: {
+        'item': {
+            handler: function (val, oldVal) {
+                if (!this.onAdd) {
+                    this.$validate();
+                }
+            },
+            deep: true
+        }
+    }
+}
 
