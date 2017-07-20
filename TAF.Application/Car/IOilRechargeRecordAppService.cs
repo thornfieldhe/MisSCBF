@@ -9,9 +9,9 @@
 
 namespace SCBF.Car
 {
+    using Abp.Application.Services.Dto;
     using SCBF.Car.Dto;
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,13 +19,11 @@ namespace SCBF.Car
     /// </summary>
     public interface IOilRechargeRecordAppService : IBaseEntityApplicationService
     {
-        List<OilRechargeRecordListDto> GetAll();
+        PagedResultDto<OilRechargeRecordListDto> GetAll(PagedAndSortedResultRequestDto request);
 
         OilRechargeRecordEditDto Get(Guid id);
 
         Task SaveAsync(OilRechargeRecordEditDto input);
-
-        void Delete(Guid id);
     }
 }
 

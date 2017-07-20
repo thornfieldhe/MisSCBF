@@ -58,7 +58,8 @@ namespace SCBF.Car
                                       this.sysDictionaryRepository
                                           .FirstOrDefault(store.OctaneRatingId).Value,
                     StoreName = this.sysDictionaryRepository
-                                      .FirstOrDefault(store.StoreId).Value
+                                      .FirstOrDefault(store.StoreId).Value,
+                    Amount = store.Amount
                 };
                 dtos.Add(dto);
             }

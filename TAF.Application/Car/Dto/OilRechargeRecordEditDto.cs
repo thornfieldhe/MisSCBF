@@ -9,10 +9,8 @@
 
 namespace SCBF.Car.Dto
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 实物油料入库单编辑对象
@@ -26,40 +24,48 @@ namespace SCBF.Car.Dto
         public Guid? Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// OctanceId
         /// </summary>
         public Guid OctanceId
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
-        public Guid Amount
+        public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// AttachmentId
         /// </summary>
         public string AttachmentId
         {
             get; set;
-        }        
-    } 
+        }
+
+        /// <summary>
+        /// StoreId
+        /// </summary>
+        public Guid StoreId
+        {
+            get; set;
+        }
+    }
 }
 
 

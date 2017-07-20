@@ -28,9 +28,6 @@
                                     <th style="width: 200px;">
                                         时间
                                     </th>        
-                                    <th style="width: 200px;">
-                                        操作
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,11 +35,8 @@
                                     <td>{{item.code}}</td>
                                     <td>{{item.rating}}</td>
                                     <td>{{item.amount}}</td>
-                                    <td>{{item.octanceStore}}</td>
+                                    <td>{{item.storeName}}</td>
                                     <td>{{item.date}}</td>
-                                    <td>
-                                        <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
-                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot is="table-foot" colspan="6"></tfoot>
@@ -64,7 +58,7 @@
                         <div class="form-group" >
                             <label class="col-sm-2 control-label no-padding-right">待供单位<span class="red" >*</span></label>
                             <div class="col-sm-10">
-                                <select id="searchEditOctanceId" style="width: 100%" v-model="item.octanceId" name="octanceid" v-validate:octanceid="{required:true}">
+                                <select id="searchEditStoreId" style="width: 100%" v-model="item.storeId" name="octanceid" v-validate:storeId="{required:true}">
                                     <option value="">请选择...</option>
                                     @{
                                         foreach (var item in (List<SCBF.BaseInfo.Dto.SysDictionaryListDto>)ViewData["list1"])
@@ -80,9 +74,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">数量L<span class="red" >*</span></label>
+                            <label class="col-sm-2 control-label no-padding-right">油料标号<span class="red" >*</span></label>
                             <div class="col-sm-10">
-                                <select id="searchEditRating" style="width: 100%" v-model="item.rating" name="rating" >
+                                <select id="searchEditOctanceId" style="width: 100%" v-model="item.rating" name="rating" >
                                     <option value="">请选择...</option>
                                     @{
                                         foreach (var item in (List<SCBF.BaseInfo.Dto.SysDictionaryListDto>)ViewData["list2"])
@@ -98,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">数量L<span class="red" >*</span></label>
+                            <label class="col-sm-2 control-label no-padding-right">数量(L)<span class="red" >*</span></label>
                             <div class="col-sm-10">
                              <input type="number" v-model="item.amount" id="amount"/>
                             </div>
@@ -111,7 +105,7 @@
                             <label class="col-sm-2 control-label no-padding-right">备注<span class="red" >*</span></label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control "  name="note" v-model="item.note"  />
+                                    <textarea rows="4" class="form-control "  name="note" v-model="item.note" ></textarea>
                                 </span>
                             </div>
                         </div>

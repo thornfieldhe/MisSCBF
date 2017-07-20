@@ -6,17 +6,18 @@
         $("#searchEditOctanceId").select2()
             .on("change", function (e) {
                 $this.item.octanceId = $("#searchEditOctanceId").val(); });            
-        $("#searchEditAmount").select2()
+        $("#searchEditStoreId").select2()
             .on("change", function (e) {
-                $this.item.amount = $("#searchEditAmount").val(); });            
+                $this.item.storeId = $("#searchEditStoreId").val(); });            
     },
     data: function () {
         return {
             item: {
                 id: "",            
                 octanceId: "",
-                amount: "",
+                amount: 0,
                 note: "",
+                storeId:"",
                 attachmentId: ""
             }
         };
@@ -39,7 +40,7 @@
                 .done(function (m) {
                     $this.item = m;
                     $("#searchEditOctanceId").select2().val($this.item.octanceId).trigger("change");
-                    $("#searchEditAmount").select2().val($this.item.amount).trigger("change");
+                    $("#searchEditStoreId").select2().val($this.item.storeId).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -51,8 +52,9 @@
             this.item.id = "";
             this.item.octanceId= "";
             $("#searchEditoctanceId").select2().val("").trigger("change");
-            this.item.amount= "";
-            $("#searchEditamount").select2().val("").trigger("change");
+            this.item.amount= 0;
+            this.item.storeId= "";
+            $("#searchEditStoreId").select2().val("").trigger("change");
             this.item.note= "";
             this.item.attachmentId= "";
         }
@@ -64,24 +66,25 @@ var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
         $("#searchOctanceId").select2().on("change", function (e) { main.queryEntity.octanceId = $("#searchOctanceId").val(); });
-        $("#searchAmount").select2().on("change", function (e) { main.queryEntity.amount = $("#searchAmount").val(); });
+        $("#searchStoreId").select2().on("change", function (e) { main.queryEntity.storeId = $("#searchStoreId").val(); });
     },
     data: {
         queryEntity: {
             octanceId:"", 
-            amount:"", 
+            storeId:"", 
             note:"", 
             attachmentId:"" 
-        }
+        },
+        list:{}
     },
     events: {
         'onResetSearch': function () {
             this.queryEntity.octanceId="";
-            this.queryEntity.amount="";
+            this.queryEntity.storeId="";
             this.queryEntity.note="";
             this.queryEntity.attachmentId="";
             $("#searchOctanceId").select2().val("").trigger("change");
-            $("#searchAmount").select2().val("").trigger("change");
+            $("#searchStoreId").select2().val("").trigger("change");
         }
     },
     methods: {

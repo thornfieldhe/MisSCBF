@@ -35,9 +35,9 @@ namespace SCBF.Car.Dto
         }
 
         /// <summary>
-        /// OctanceName
+        /// StoreName
         /// </summary>
-        public string OctanceStore
+        public string StoreName
         {
             get; set;
         }
@@ -61,7 +61,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Date
         /// </summary>
-        public DateTime Date
+        public string Date
         {
             get; set;
         }
