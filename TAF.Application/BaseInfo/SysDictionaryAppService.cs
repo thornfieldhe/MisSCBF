@@ -128,6 +128,25 @@ namespace SCBF.BaseInfo
             return this.sysDictionaryRepository.GetAllList(r => category == null || r.Category == category).MapTo<List<SysDictionaryListDto>>();
         }
 
+        /// <summary>
+        /// 判断当前月份是否处于夏至时间
+        /// </summary>
+        public bool IsInSummary(int month)
+        {
+            var summaryMonth = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Car_OilWearSummary);
+            if (summaryMonth == null)
+            {
+                throw new UserFriendlyException("未设置汽车的夏季时间区间");
+            }
+            var from = int.Parse(summaryMonth.Value);
+            var to = int.Parse(summaryMonth.Value2);
+            if (month >= from && month <= to)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public string GetModulePath(string category) { return $"{category}/{DateTime.Today.Year}/{DateTime.Today.Month}/{DateTime.Today.Day}"; }
     }
 }

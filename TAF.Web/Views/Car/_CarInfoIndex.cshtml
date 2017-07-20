@@ -45,13 +45,13 @@
                                 </li>
                                 <li class=" ">
                                     <a data-toggle="tab" href="#oilWearSummary" aria-expanded="true" id="poilWearSummary">
-                                        百公里油耗限额(夏季)
+                                        夏季起止时间
 
                                     </a>
                                 </li>
                                 <li class=" ">
                                     <a data-toggle="tab" href="#oilWearWinter" aria-expanded="true" id="poilWearWinter">
-                                        百公里油耗限额(冬季)
+                                        冬季起止时间
 
                                     </a>
                                 </li>
@@ -244,7 +244,7 @@
                                 </div>
                                 <div id="oilWearSummary" class="tab-pane ">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('百公里油耗限额(夏季)','Car_OilWearSummary')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('夏季起止时间','Car_OilWearSummary')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -252,7 +252,10 @@
                                                 <thead>
                                                 <tr role="row">
                                                     <th style="width: 200px;">
-                                                        姓名
+                                                        起始月份
+                                                    </th> 
+                                                    <th style="width: 200px;">
+                                                        截止月份
                                                     </th>
                                                     <th style="width: 200px;">
                                                         操作
@@ -262,19 +265,20 @@
                                                 <tbody>
                                                 <tr v-for="item in list">
                                                     <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
                                                     <td>
                                                         <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
                                                     </td>
                                                 </tr>
                                                 </tbody>
-                                                <tfoot is="table-foot" colspan="2"></tfoot>
+                                                <tfoot is="table-foot" colspan="3"></tfoot>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="oilWearWinter" class="tab-pane ">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('百公里油耗限额冬季','Car_OilWearWinter')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('冬季起止时间','Car_OilWearWinter')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -282,7 +286,10 @@
                                                 <thead>
                                                 <tr role="row">
                                                     <th style="width: 200px;">
-                                                        姓名
+                                                        起始月份
+                                                    </th> 
+                                                    <th style="width: 200px;">
+                                                        截止月份
                                                     </th>
                                                     <th style="width: 200px;">
                                                         操作
@@ -292,12 +299,13 @@
                                                 <tbody>
                                                 <tr v-for="item in list">
                                                     <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
                                                     <td>
                                                         <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
                                                     </td>
                                                 </tr>
                                                 </tbody>
-                                                <tfoot is="table-foot" colspan="2"></tfoot>
+                                                <tfoot is="table-foot" colspan="3"></tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -352,19 +360,42 @@
     <div id="form">
         <validator name="v">
             <form class="form-horizontal " name="form" novalidate>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">{{item.title}}<span class="red">*</span></label>
-                            <div class="col-sm-10">
-                                <span class="input-icon icon-right">
-                                    <div v-if="item.category!='Car_OilWearSummary'&& item.category!='Car_OilWearWinter'">
-                                    <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value" v-validate:value="{required:true}"/>
-                                    </div>
-                                    <div v-else>
-                                    <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value" v-validate:value="{required:true}"/>
-                                    </div>
-                                </span>
+                <div v-if="item.category!='Car_OilWearSummary'&& item.category!='Car_OilWearWinter'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">{{item.title}}<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value" v-validate:value="{required:true}"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">起始时间<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value" v-validate:value="{required:true}"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">截止时间<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value2" v-validate:value2="{required:true}"/>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

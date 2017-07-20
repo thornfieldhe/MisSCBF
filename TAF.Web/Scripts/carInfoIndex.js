@@ -1,6 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#carInfoFormBody",
+    template: "#carFormBody",
     data: function () {
         return {
             item: {
@@ -72,10 +72,10 @@ var main = new Vue({
                 $this.title = "油料代管单位";
                 $this.category = "Car_OilHostingUnit";
             } else if (id === "poilWearSummary") {
-                $this.title = "百公里油耗限额夏季";
+                $this.title = "夏季起止时间";
                 $this.category = "Car_OilWearSummary";
             } else if (id === "poilWearWinter") {
-                $this.title = "百公里油耗限额冬季";
+                $this.title = "冬季起止时间";
                 $this.category = "Car_OilWearWinter";
             } else if (id === "poctaneRating") {
                 $this.title = "油料标号";

@@ -191,12 +191,12 @@ namespace SCBF.BaseInfo
         public const string Car_OilHostingUnit = "Car_OilHostingUnit";
 
         /// <summary>
-        /// 百公里油耗限额夏季
+        /// 夏季时间区间
         /// </summary>
         public const string Car_OilWearSummary = "Car_OilWearSummary";
 
         /// <summary>
-        /// 百公里油耗限额冬季
+        /// 冬季时间区间
         /// </summary>
         public const string Car_OilWearWinter = "Car_OilWearWinter";
 

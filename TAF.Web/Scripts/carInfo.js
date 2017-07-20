@@ -1,6 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#carFormBody",
+    template: "#carInfoFormBody",
     ready: function () {
         var $this = this;
         var datePickerZbsj = $('#datePickerZbsj').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
