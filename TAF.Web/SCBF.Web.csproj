@@ -812,6 +812,9 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\applicationForAuditB.js" />
+    <Content Include="Scripts\applicationForBunkerB.js" />
+    <Content Include="Scripts\applicationForBunkerB2.js" />
     <Content Include="Scripts\applicationForBunkerA2.js" />
     <Content Include="Scripts\applicationForConfirmA.js" />
     <Content Include="Scripts\applicationForAuditA.js" />
@@ -925,6 +928,7 @@
     <Compile Include="assets\js\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActualOutlayController.cs" />
+    <Compile Include="Controllers\ApplicationForBunkerBController.cs" />
     <Compile Include="Controllers\ApplicationForBunkerAController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
@@ -1024,6 +1028,9 @@
     <Content Include="Views\OilRechargeRecord\_OilRechargeRecordIndex.cshtml" />
     <Content Include="Views\UploadOilCarRoofRelationship\_UploadOilCarRoofRelationshipIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerA\_ApplicationForBunkerAIndex2.cshtml" />
+    <Content Include="Views\ApplicationForBunkerB\_ApplicationForAuditBList.cshtml" />
+    <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBIndex.cshtml" />
+    <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBIndex2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

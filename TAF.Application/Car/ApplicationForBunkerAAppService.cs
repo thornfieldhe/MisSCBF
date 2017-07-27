@@ -31,15 +31,13 @@ namespace SCBF.Car
     {
         private readonly IApplicationForBunkerARepository applicationForBunkerARepository;
         private readonly IOilCardRepository oilCardRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
 
-        public ApplicationForBunkerAAppService(IApplicationForBunkerARepository applicationForBunkerARepository,
-                                               IOilCardRepository oilCardRepository,
-                                               ISysDictionaryRepository sysDictionaryRepository)
+        public ApplicationForBunkerAAppService(
+            IApplicationForBunkerARepository applicationForBunkerARepository,
+                                               IOilCardRepository oilCardRepository)
         {
             this.applicationForBunkerARepository = applicationForBunkerARepository;
             this.oilCardRepository = oilCardRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
         }
 
         public ListResultDto<ApplicationForBunkerAListDto> GetAll(ApplicationForBunkerAQueryDto request)

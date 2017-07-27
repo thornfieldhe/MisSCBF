@@ -1,23 +1,36 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#applicationForAuditAAFormBody",
+    template: "#applicationForBunkerBFormBody",
     ready: function () {
         var $this = this;
-        $("#auditorId").select2().on("change", function (e) {
-            $this.item.auditorId = $("#auditorId").val();
-        });         
-
+        $("#editOctaneStoreId").select2()
+            .on("change", function (e) {
+                abp.services.app.octaneStore.getAmount($("#editOctaneStoreId").val())
+                    .done(function (m) {
+                        $this.item.totalAmount = m;
+                        $this.item.octaneStoreId = $("#editOctaneStoreId").val();
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    }); });            
+        $("#edithDriverId").select2()
+            .on("change", function (e) {
+                $this.item.driverId = $("#edithDriverId").val(); });             
+        $("#editCarId").select2()
+            .on("change", function (e) {
+                $this.item.carInfoId = $("#editCarId").val(); });  
     },
     data: function () {
         return {
             item: {
                 id: "",            
                 code: "",
-                oilCardCode: "",
+                octaneStoreId: "",
+                carInfoId: "",
                 amount: 0,
                 totalAmount: 0,
                 auditingAmount: 0,
-                driverName: "",
+                driverId: "",
                 auditorId: "",
                 date: "",
                 status: 0,
@@ -26,28 +39,12 @@
         };
     },
     events: {
-        'onApproved': function (closeModal) {
+        'onSaveItem': function (closeModal) {
             var $this = this;
-            $this.item.status = 1;
-            if ($this.item.auditingAmount > $this.item. totalAmount) {
-                taf.notify.danger("余额不足");
-            } else {
-                abp.services.app.applicationForBunkerA.saveAsync($this.item)
-                    .done(function (m) {
-                        $this.done(closeModal);
-                    })
-                    .fail(function (m) {
-                        $this.fail(m);
-                    });
-            }
-        },
-        'onRefused': function (closeModal) {
-            var $this = this;
-            $this.item.status = 2;
-            if ($this.item.auditingAmount > $this.item. totalAmount) {
-                taf.notify.danger("余额不足");
-            } else {
-                abp.services.app.applicationForBunkerA.saveAsync($this.item)
+            if ($this.item.totalAmount < $this.item.amount) {
+                taf.notify.danger("结余量不足");
+            }else {
+                abp.services.app.applicationForBunkerB.saveAsync($this.item)
                     .done(function (m) {
                         $this.done(closeModal);
                     })
@@ -59,10 +56,12 @@
         'onGetItem': function (id) {
             this.editModel = true;
             var $this = this;
-            abp.services.app.applicationForBunkerA.get(id)
+            abp.services.app.applicationForBunkerB.get(id)
                 .done(function (m) {
                     $this.item = m;
-                    $("#auditorId").select2().val($this.item.auditorId).trigger("change");
+                    $("#editOctaneStoreId").select2().val($this.item.octaneStoreId).trigger("change");
+                    $("#editCarId").select2().val($this.item.carInfoId).trigger("change");
+                    $("#edithDriverId").select2().val($this.item.driverId).trigger("change");
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -74,15 +73,16 @@
             this.item.id = "";
             this.item.code= "";
             this.item.oilCardId= "";
-            $("#auditorId").select2().val("").trigger("change");
+            $("#searchOctaneStoreId").select2().val("").trigger("change");
             this.item.amount= 0;
             this.item.totalAmount= 0;
             this.item.auditingAmount= 0;
             this.item.driverId= "";
+            $("#searchDriverId").select2().val("").trigger("change");
             this.item.auditorId= "";
-            this.item.date = "";
-            this.item.note = "";
-            this.item.status= 0;
+            this.item.date= "";
+            this.item.status = 0;
+            this.item.note=""
         }
     }
 });
@@ -91,7 +91,7 @@
 var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
-        $("#searchOilCardId").select2().on("change", function (e) { main.queryEntity.oilCardId = $("#searchOilCardId").val(); });
+        $("#searchOctaneStoreId").select2().on("change", function (e) { main.queryEntity.octaneStoreId = $("#searchOctaneStoreId").val(); });
         $("#searchDriverId").select2().on("change", function (e) { main.queryEntity.driverId = $("#searchDriverId").val(); });
         $("#searchStatus").select2().on("change", function (e) { main.queryEntity.status = $("#searchStatus").val(); });
 
@@ -107,7 +107,7 @@ var main = new Vue({
     data: {
         queryEntity: {
             code:"", 
-            oilCardId:"", 
+            octaneStoreId:"", 
             driverId:"", 
             dateFrom:"", 
             dateTo: "",
@@ -117,25 +117,25 @@ var main = new Vue({
     events: {
         'onResetSearch': function () {
             this.queryEntity.code="";
-            this.queryEntity.oilCardId="";
+            this.queryEntity.octaneStoreId="";
             this.queryEntity.driverId="";
             this.queryEntity.dateFrom=""; 
             this.queryEntity.dateTo="";
-            $("#searchOilCardId").select2().val("").trigger("change");
+            $("#searchOctaneStoreId").select2().val("").trigger("change");
             $("#searchDriverId").select2().val("").trigger("change");
             $("#searchStatus").select2().val("").trigger("change");
         }
     },
     methods: {
         excuteQuery: function ($this) {
-            abp.services.app.applicationForBunkerA.getAll(main.queryEntity)
+            abp.services.app.applicationForBunkerB.getAll(main.queryEntity)
                 .done(function (r) {
                     $this.bindItems($this, r);
                 });
         },
         delete: function (id) {
             var $this = this;
-            abp.services.app.applicationForBunkerA.delete(id)
+            abp.services.app.applicationForBunkerB.delete(id)
                 .done(function (m) {
                     $this.done();
                 })

@@ -22,7 +22,7 @@
 </template>
 <template id="rowCommand">
     <button type="button" class="btn   edit" v-on:click="editItem(id,title) "><i class="fa fa-edit"></i> 编辑</button>
-    <button type="button" class="btn btn-danger  " v-on:click="deleteItem(id,name) "  v-show="showDel"><i class="fa fa-trash-o"></i> 删除</button>
+    <button type="button" class="btn btn-danger  " v-on:click="deleteItem(id,name) "  ><i class="fa fa-trash-o"></i> 删除</button>
 </template>
 <template id="rowAudit">
     <button type="button" class="btn   btn-primary" v-on:click="editItem(id,title) " v-show="!overed"><i class="fa fa-edit"></i> 审核</button>

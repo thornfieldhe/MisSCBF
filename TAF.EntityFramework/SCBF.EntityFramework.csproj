@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
+    <Compile Include="EntityFramework\Maps\ApplicationForBunkerBMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\ApplicationForBunkerAMap.cs" />
     <Compile Include="EntityFramework\Maps\OilRechargeRecordMap.cs" />
@@ -286,6 +287,10 @@
     <Compile Include="Migrations\201707201500413_addinitData_summaryRange.Designer.cs">
       <DependentUpon>201707201500413_addinitData_summaryRange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707271531208_addTable_ApplicationForBunkerB.cs" />
+    <Compile Include="Migrations\201707271531208_addTable_ApplicationForBunkerB.Designer.cs">
+      <DependentUpon>201707271531208_addTable_ApplicationForBunkerB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -293,6 +298,7 @@
     <Compile Include="Migrations\SeedData\DefaultRolesCreator.cs" />
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\ApplicationForBunkerARepository.cs" />
+    <Compile Include="Repositories\ApplicationForBunkerBRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
@@ -447,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707201500413_addinitData_summaryRange.resx">
       <DependentUpon>201707201500413_addinitData_summaryRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707271531208_addTable_ApplicationForBunkerB.resx">
+      <DependentUpon>201707271531208_addTable_ApplicationForBunkerB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

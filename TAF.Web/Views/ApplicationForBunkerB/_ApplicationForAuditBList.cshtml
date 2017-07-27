@@ -5,7 +5,7 @@
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
-                <span class="widget-caption">加油卡加油审批单</span>
+                <span class="widget-caption">实物油料加油审批单</span>
             </div>
             <div class="widget-body">
                 <div class="row">
@@ -17,16 +17,22 @@
                                         编号
                                     </th>
                                     <th style="width: 200px;">
-                                        油卡卡号
+                                        车辆号牌
                                     </th>
                                     <th style="width: 100px;">
-                                        申请加油金额
+                                        车辆型号
                                     </th>
                                     <th style="width: 100px;">
-                                        当前卡内余额
+                                        油料号
                                     </th>
                                     <th style="width: 100px;">
-                                        审批加油金额
+                                        当前结余油料数量(升)
+                                    </th>
+                                    <th style="width: 100px;">
+                                        申请加油数量(升)
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批加油数量(升)
                                     </th>
                                     <th style="width: 400px;">
                                         事由
@@ -52,15 +58,20 @@
                                         <input type="text" class="form-control" placeholder="编号" v-model="queryEntity.code" />
                                     </th>
                                     <th>
-                                        <select id="searchOilCardId" style="width: 100%" v-model="queryEntity.oilCardId">
-                                            <option value="">请选择...</option>
-                                            @{
-                                                foreach (var item in (List<KeyValue<string, Guid>>)ViewData["list1"])
-                                                {
-                                                    <option value="@item.Value">@item.Key</option>
-                                                }
-                                            }
-                                        </select>
+                    <input type="text" class="form-control" placeholder="车辆号牌" v-model="queryEntity.cardCode" />
+                </th>
+                <th>
+                </th>
+                <th>
+                    <select id="searchOctaneStoreId" style="width: 100%" v-model="queryEntity.octaneStoreId">
+                        <option value="">请选择...</option>
+                        @{
+                            foreach (var item in ((List<KeyValue<string, Guid>>)ViewData["list1"]))
+                            {
+                                <option value="@item.Value">@item.Key</option>
+                            }
+                        }
+                    </select>
                                     </th>
                                     <th>
                                     </th>
@@ -74,7 +85,7 @@
                                         <select id="searchDriverId" style="width: 100%" v-model="queryEntity.driverId">
                                             <option value="">请选择...</option>
                                             @{
-                                                foreach (var item in (List<KeyValue<Guid, string>>)ViewData["list2"])
+                                                foreach (var item in (List<KeyValue<Guid, string>>)ViewData["list3"])
                                                 {
                                                     <option value="@item.Key">@item.Value</option>
                                                 }
@@ -106,22 +117,24 @@
                                 </thead>
                                 <tbody>
                                 <tr v-for="item in list">
-                                    <td>{{item.code}}</td>
-                                    <td>{{item.oilCardName}}</td>
-                                    <td>{{item.amount}}</td>
-                                    <td>{{item.totalAmount}}</td>
-                                    <td>{{item.auditingAmount}}</td>
-                                    <td>{{item.note}}</td>
-                                    <td>{{item.driverName}}</td>
-                                    <td>{{item.auditorName}}</td>
-                                    <td>{{item.date}}</td>
-                                    <td>{{item.status}}</td>
-                                    <td>
-                                        <row-audit :id="item.id" title="审核" :name="item.code" :overed="item.status!=='等待审核'"></row-audit>
-                                    </td>
+			                <td>{{item.code}}</td>
+			                <td>{{item.carCode}}</td>
+			                <td>{{item.carSpecifications}}</td>
+			                <td>{{item.octaneStoreName}}</td>
+			                <td>{{item.totalAmount}}</td>
+			                <td>{{item.amount}}</td>
+			                <td>{{item.auditingAmount}}</td>
+			                <td>{{item.note}}</td>
+			                <td>{{item.driverName}}</td>
+			                <td>{{item.auditorName}}</td>
+			                <td>{{item.date}}</td>
+			                <td>{{item.status}}</td>
+			                <td>
+                			<row-audit :id="item.id" title="审核" :name="item.code" :overed="item.status!=='等待审核'"></row-audit>
+			                </td>
                                 </tr>
                                 </tbody>
-                                <tfoot is="table-foot" colspan="11"></tfoot>
+                                <tfoot is="table-foot" colspan="13"></tfoot>
                             </table>
                         </div>
                     </div>
@@ -133,7 +146,7 @@
 </div>
 <dialog-delete></dialog-delete>
 <form-audit></form-audit>
-<template id="applicationForAuditAAFormBody">
+<template id="applicationForAuditBFormBody">
     <div id="form">
         <validator name="v">
             <form class="form-horizontal " name="form" novalidate>
@@ -150,9 +163,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" >
-                            <label class="col-sm-2 control-label no-padding-right">加油卡</label>
+                            <label class="col-sm-2 control-label no-padding-right">油料号</label>
                             <div class="col-sm-10 ">
-                                <label class="control-label  no-padding-left">{{item.oilCardCode}}</label>
+                                <label class="control-label  no-padding-left">{{item.octaneStoreName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		<div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label no-padding-right">车牌号</label>
+                            <div class="col-sm-10 ">
+                                <label class="control-label  no-padding-left">{{item.carSpecifications}}</label>
                             </div>
                         </div>
                     </div>
@@ -206,7 +229,7 @@
                                 <select id="auditorId" style="width: 100%" v-model="item.auditorId">
                                     <option value="">请选择...</option>
                                     @{
-                                        foreach (var item in (List<SysDictionaryListDto>)ViewData["list3"])
+                                        foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
                                         {
                                             <option value="@item.Id">@item.Value</option>
                                         }
@@ -230,7 +253,7 @@
         </validator>
     </div>
 </template>
-<script src="~/Scripts/applicationForAuditA.js"></script>
+<script src="~/Scripts/applicationForAuditB.js"></script>
 
 
 

@@ -274,6 +274,21 @@ namespace SCBF
                     .ForMember(m => m.DriverName, n => n.MapFrom(r => r.DriverId.HasValue ? r.Driver.Name : string.Empty))
                     .ForMember(m => m.OilCardCode, n => n.MapFrom(r => r.OilCard.Code));
                 mapper.CreateMap<ApplicationForBunkerAEditDto, ApplicationForBunkerA>();
+
+
+                mapper.CreateMap<ApplicationForBunkerB, ApplicationForBunkerBListDto>()
+                    .ForMember(m => m.DriverName, n => n.MapFrom(r => r.Driver.Name))
+                    .ForMember(m => m.CarCode, n => n.MapFrom(r => r.CarInfo.Cph))
+                    .ForMember(m => m.CarSpecifications, n => n.MapFrom(r => r.CarInfo.Clxh))
+                    .ForMember(m => m.AuditorName, n => n.MapFrom(r => r.AuditorId.HasValue ? r.Auditor.Value : string.Empty))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+                mapper.CreateMap<ApplicationForBunkerB, ApplicationForBunkerBEditDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.CarCode, n => n.MapFrom(r => r.CarInfo.Cph))
+                    .ForMember(m => m.CarSpecifications, n => n.MapFrom(r => r.CarInfo.Clxh))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.DriverName, n => n.MapFrom(r => r.DriverId.HasValue ? r.Driver.Name : string.Empty));
+                mapper.CreateMap<ApplicationForBunkerBEditDto, ApplicationForBunkerB>();
                 #endregion
             });
         }

@@ -9,14 +9,12 @@
 
 namespace SCBF.Car
 {
-    using System;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
-    
+    using Abp.Application.Services.Dto;
     using SCBF.Car.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// 实物油料库应用接口
     /// </summary>
@@ -29,6 +27,10 @@ namespace SCBF.Car
         Task SaveAsync(OctaneStoreEditDto input);
 
         void Delete(Guid id);
+
+        List<TAF.Utility.KeyValue<string, Guid>> GetSimple();
+
+        decimal GetAmount(Guid id);
     }
 }
 

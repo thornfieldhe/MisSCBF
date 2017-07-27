@@ -13,6 +13,7 @@ namespace SCBF.Car
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
+    using Abp.UI;
     using AutoMapper;
     using SCBF.Car.Dto;
     using System;
@@ -91,6 +92,24 @@ namespace SCBF.Car
         public void Delete(Guid id)
         {
             this.octaneStoreRepository.Delete(id);
+        }
+
+        public decimal GetAmount(Guid id)
+        {
+            var item = this.octaneStoreRepository.FirstOrDefault(id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("油料库油料不存在");
+            }
+            return item.Amount;
+        }
+
+        public List<TAF.Utility.KeyValue<string, Guid>> GetSimple()
+        {
+            return (from s in this.octaneStoreRepository.GetAll()
+                    join a in this.sysDictionaryRepository.GetAll() on s.StoreId equals a.Id
+                    join b in this.sysDictionaryRepository.GetAll() on s.OctaneRatingId equals b.Id
+                    select new TAF.Utility.KeyValue<string, Guid>() { Key = a.Value + "-" + b.Value, Value = s.Id }).ToList();
         }
     }
 }

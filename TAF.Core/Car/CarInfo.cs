@@ -103,5 +103,10 @@ namespace SCBF.Car
         /// </summary>
         public virtual List<OilCard> OilCards { get; set; }
 
+        /// <summary>
+        /// 实物油料加油记录
+        /// </summary>
+        public virtual List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
+
     }
 }

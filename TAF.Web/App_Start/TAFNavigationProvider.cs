@@ -236,7 +236,7 @@
                                 "menuApplicationForBunkerAs2",
                                 L("油料卡加油补签单"),
                                 url: "#applicationForBunkerAs2",
-                                requiredPermissionName: PermissionNames.ClUser))
+                                requiredPermissionName: PermissionNames.Default))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuApplicationForAuditA",
@@ -266,7 +266,26 @@
                                 "menuOilRecharge",
                                 L("实物油料入库审批单"),
                                 url: "#oilRecharge",
-                                requiredPermissionName: PermissionNames.ClUser)));
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForBunkerBs",
+                                L("实物油料加油申请单"),
+                                url: "#applicationForBunkerBs",
+                                requiredPermissionName: PermissionNames.Default))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForBunkerBs2",
+                                L("实物油料加油补签单"),
+                                url: "#applicationForBunkerBs2",
+                                requiredPermissionName: PermissionNames.Default))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForAuditB",
+                                L("实物油料加油审批单"),
+                                url: "#applicationForAuditB",
+                                requiredPermissionName: PermissionNames.ClUser))
+                                );
         }
 
         private static ILocalizableString L(string name)

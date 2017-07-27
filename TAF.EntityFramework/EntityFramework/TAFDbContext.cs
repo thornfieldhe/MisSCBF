@@ -150,6 +150,11 @@
             get; set;
         }
 
+        public DbSet<ApplicationForBunkerB> ApplicationForBunkerBs
+        {
+            get; set;
+        }
+
         public DbSet<OctaneStore> OctaneStores
         {
             get; set;

@@ -1,6 +1,6 @@
 ﻿Vue.component("form-body", {
     mixins: [itemMixin],
-    template: "#applicationForAuditAAFormBody",
+    template: "#applicationForAuditBFormBody",
     ready: function () {
         var $this = this;
         $("#auditorId").select2().on("change", function (e) {
@@ -13,7 +13,7 @@
             item: {
                 id: "",            
                 code: "",
-                oilCardCode: "",
+                octaneStoreName: "",
                 amount: 0,
                 totalAmount: 0,
                 auditingAmount: 0,
@@ -32,7 +32,7 @@
             if ($this.item.auditingAmount > $this.item. totalAmount) {
                 taf.notify.danger("余额不足");
             } else {
-                abp.services.app.applicationForBunkerA.saveAsync($this.item)
+                abp.services.app.applicationForBunkerB.saveAsync($this.item)
                     .done(function (m) {
                         $this.done(closeModal);
                     })
@@ -47,7 +47,7 @@
             if ($this.item.auditingAmount > $this.item. totalAmount) {
                 taf.notify.danger("余额不足");
             } else {
-                abp.services.app.applicationForBunkerA.saveAsync($this.item)
+                abp.services.app.applicationForBunkerB.saveAsync($this.item)
                     .done(function (m) {
                         $this.done(closeModal);
                     })
@@ -59,7 +59,7 @@
         'onGetItem': function (id) {
             this.editModel = true;
             var $this = this;
-            abp.services.app.applicationForBunkerA.get(id)
+            abp.services.app.applicationForBunkerB.get(id)
                 .done(function (m) {
                     $this.item = m;
                     $("#auditorId").select2().val($this.item.auditorId).trigger("change");
@@ -73,7 +73,7 @@
         clearItem: function () {
             this.item.id = "";
             this.item.code= "";
-            this.item.oilCardId= "";
+            this.item.octaneStoreName= "";
             $("#auditorId").select2().val("").trigger("change");
             this.item.amount= 0;
             this.item.totalAmount= 0;
@@ -91,7 +91,7 @@
 var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
-        $("#searchOilCardId").select2().on("change", function (e) { main.queryEntity.oilCardId = $("#searchOilCardId").val(); });
+        $("#searchOctaneStoreId").select2().on("change", function (e) { main.queryEntity.octaneStoreId = $("#searchOctaneStoreId").val(); });
         $("#searchDriverId").select2().on("change", function (e) { main.queryEntity.driverId = $("#searchDriverId").val(); });
         $("#searchStatus").select2().on("change", function (e) { main.queryEntity.status = $("#searchStatus").val(); });
 
@@ -107,7 +107,7 @@ var main = new Vue({
     data: {
         queryEntity: {
             code:"", 
-            oilCardId:"", 
+            octaneStoreId:"", 
             driverId:"", 
             dateFrom:"", 
             dateTo: "",
@@ -117,25 +117,25 @@ var main = new Vue({
     events: {
         'onResetSearch': function () {
             this.queryEntity.code="";
-            this.queryEntity.oilCardId="";
+            this.queryEntity.octaneStoreId="";
             this.queryEntity.driverId="";
             this.queryEntity.dateFrom=""; 
             this.queryEntity.dateTo="";
-            $("#searchOilCardId").select2().val("").trigger("change");
+            $("#searchOctaneStoreId").select2().val("").trigger("change");
             $("#searchDriverId").select2().val("").trigger("change");
             $("#searchStatus").select2().val("").trigger("change");
         }
     },
     methods: {
         excuteQuery: function ($this) {
-            abp.services.app.applicationForBunkerA.getAll(main.queryEntity)
+            abp.services.app.applicationForBunkerB.getAll(main.queryEntity)
                 .done(function (r) {
                     $this.bindItems($this, r);
                 });
         },
         delete: function (id) {
             var $this = this;
-            abp.services.app.applicationForBunkerA.delete(id)
+            abp.services.app.applicationForBunkerB.delete(id)
                 .done(function (m) {
                     $this.done();
                 })
