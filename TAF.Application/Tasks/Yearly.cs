@@ -1,30 +1,31 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ChangeYearTask.cs" company="" author="何翔华">
+// <copyright file="Yearly.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   ChangeYearTask
+//   Yearly
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo
+namespace SCBF.Tasks
 {
     using Abp.Dependency;
     using Abp.Quartz.Quartz;
     using Quartz;
+    using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
     using System;
 
     /// <summary>
-    /// 物资管理模块年底更新期末数据
+    /// 年度任务:物资管理模块年底更新期末数据
     /// </summary>
-    public class ChangeYearTask : JobBase, ITransientDependency
+    public class Yearly : JobBase, ITransientDependency
     {
         public static readonly string Schedule = "0 0 1 1 1 ?"; //每年1月1日1:00执行
 
         private readonly ISysDictionaryAppService sysDictionaryAppService;
 
-        public ChangeYearTask(ISysDictionaryAppService sysDictionaryAppService)
+        public Yearly(ISysDictionaryAppService sysDictionaryAppService)
         {
             this.sysDictionaryAppService = sysDictionaryAppService;
         }

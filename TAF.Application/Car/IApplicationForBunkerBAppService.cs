@@ -28,6 +28,8 @@ namespace SCBF.Car
 
         List<ApplicationForBunkerBListDto> CheckApplicationForBunkerBList(string queryMonth);
 
+        List<ApplicationForBunkerBListDto> GetApplicationForBunkerBSummaryList(string queryMonth);
+
         void Delete(List<Guid> ids);
 
         void Check(List<Guid> ids);

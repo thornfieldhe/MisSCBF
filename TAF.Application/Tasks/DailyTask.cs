@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo
+namespace SCBF.Tasks
 {
 
     using Abp.Dependency;
@@ -20,13 +20,13 @@ namespace SCBF.BaseInfo
     /// <summary>
     /// 每日更新当日库存
     /// </summary>
-    public class DailyStoreTask : JobBase, ITransientDependency
+    public class DailyTask : JobBase, ITransientDependency
     {
-        public static readonly string Schedule = "0 0 23 30 * ? *";//每日23:00分执行
+        public static readonly string Schedule = "59 40 23 * * ? ";//每日23:40:00
 
         private readonly IHisStockAppService hisStockAppService;
 
-        public DailyStoreTask(IHisStockAppService hisStockAppService)
+        public DailyTask(IHisStockAppService hisStockAppService)
         {
             this.hisStockAppService = hisStockAppService;
         }

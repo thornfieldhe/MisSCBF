@@ -16,6 +16,7 @@ namespace SCBF
     using SCBF.Finance.Dto;
     using SCBF.Storage;
     using SCBF.Storage.Dto;
+    using SCBF.Tasks;
     using SCBF.Users;
     using SCBF.Users.Dto;
     using System;
@@ -308,25 +309,36 @@ namespace SCBF
         {
             base.PostInitialize();
             var jobManager = this.IocManager.IocContainer.Resolve<IQuartzScheduleJobManager>();
-            jobManager.ScheduleAsync<ChangeYearTask>(
+            jobManager.ScheduleAsync<Yearly>(
                 job =>
                 {
-                    job.WithIdentity(nameof(ChangeYearTask), "MyGroup");
+                    job.WithIdentity(nameof(Yearly), "MyGroup");
                 },
                 trigger =>
                 {
-                    trigger.WithIdentity(nameof(ChangeYearTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(ChangeYearTask.Schedule)).Build();
+                    trigger.WithIdentity(nameof(Yearly), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(Yearly.Schedule)).Build();
 
                 });
 
-            jobManager.ScheduleAsync<DailyStoreTask>(
+            jobManager.ScheduleAsync<DailyTask>(
                 job =>
                 {
-                    job.WithIdentity(nameof(DailyStoreTask), "MyGroup");
+                    job.WithIdentity(nameof(DailyTask), "MyGroup");
                 },
                 trigger =>
                 {
-                    trigger.WithIdentity(nameof(DailyStoreTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(DailyStoreTask.Schedule)).Build();
+                    trigger.WithIdentity(nameof(DailyTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(DailyTask.Schedule)).Build();
+
+                });
+
+            jobManager.ScheduleAsync<MonthlyTask>(
+                job =>
+                {
+                    job.WithIdentity(nameof(MonthlyTask), "MyGroup");
+                },
+                trigger =>
+                {
+                    trigger.WithIdentity(nameof(MonthlyTask), "MyGroup").WithSchedule(CronScheduleBuilder.CronSchedule(MonthlyTask.Schedule)).Build();
 
                 });
         }

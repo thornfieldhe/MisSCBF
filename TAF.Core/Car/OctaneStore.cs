@@ -37,8 +37,6 @@ namespace SCBF.Car
         /// </summary>
         public virtual List<OilRechargeRecord> OilRechargeRecords { get; set; }
 
-
-
         public virtual List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
     }
 }

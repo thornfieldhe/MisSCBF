@@ -180,6 +180,11 @@
             get; set;
         }
 
+        public DbSet<HisCarStoreStock> HisCarStoreStocks
+        {
+            get; set;
+        }
+
         #endregion
 
 

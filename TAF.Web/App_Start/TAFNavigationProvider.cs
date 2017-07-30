@@ -291,6 +291,12 @@
                                 L("实物油料加油汇总核对表"),
                                 url: "#checkApplicationForBunker",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplicationForBunkerBSummaryList",
+                                L("实物油料消耗凭证汇总单"),
+                                url: "#applicationForBunkerBSummaryList",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 

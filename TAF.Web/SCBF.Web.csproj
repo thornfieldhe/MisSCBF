@@ -812,6 +812,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
     <Content Include="Scripts\checkApplicationForBunkerList.js" />
     <Content Include="Scripts\applicationForAuditB.js" />
     <Content Include="Scripts\applicationForBunkerB.js" />
@@ -1033,6 +1034,7 @@
     <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBIndex.cshtml" />
     <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBIndex2.cshtml" />
     <Content Include="Views\ApplicationForBunkerB\_CheckApplicationForBunkerList.cshtml" />
+    <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBSummaryList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

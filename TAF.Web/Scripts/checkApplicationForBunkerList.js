@@ -11,7 +11,7 @@
         query: function () {
             var $this = this;
             if ($this.queryMonth === "") {
-                taf.notify.danger("实物油料对账成功");
+                taf.notify.danger("请选择凭证月份");
             } else {
                 abp.services.app.applicationForBunkerB.checkApplicationForBunkerBList($this.queryMonth)
                     .done(function (r) {

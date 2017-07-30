@@ -64,6 +64,11 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_CheckApplicationForBunkerList");
         }
+
+        public ActionResult ApplicationForBunkerBSummaryList()
+        {
+            return PartialView("_ApplicationForBunkerBSummaryList");
+        }
     }
 }
 

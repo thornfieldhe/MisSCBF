@@ -213,6 +213,9 @@ namespace SCBF.Storage
             return result.OrderBy(r => r.Date).ToList();
         }
 
+        /// <summary>
+        /// 备份所有库存>0的库存量
+        /// </summary>
         [AbpAllowAnonymous]
         public void BackupData()
         {
@@ -221,6 +224,10 @@ namespace SCBF.Storage
                         r => r.Amount != 0)
                     .ToList()
                     .MapTo<List<HisStock>>();
+            foreach (var hisStock in stocks)
+            {
+                hisStock.Id = Guid.NewGuid();
+            }
             this.hisStockRepository.InsertRange(stocks);
         }
     }

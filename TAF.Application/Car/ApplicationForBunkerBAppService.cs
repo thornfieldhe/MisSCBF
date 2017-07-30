@@ -32,14 +32,17 @@ namespace SCBF.Car
         private readonly IApplicationForBunkerBRepository applicationForBunkerBRepository;
         private readonly IOctaneStoreRepository octaneStoreRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly IHisStoreStockAppService hisStoreStockAppService;
 
         public ApplicationForBunkerBAppService(IApplicationForBunkerBRepository applicationForBunkerBRepository,
                                                IOctaneStoreRepository octaneStoreRepository,
-                                               ISysDictionaryRepository sysDictionaryRepository)
+                                               ISysDictionaryRepository sysDictionaryRepository,
+                                               IHisStoreStockAppService hisStoreStockAppService)
         {
             this.applicationForBunkerBRepository = applicationForBunkerBRepository;
             this.octaneStoreRepository = octaneStoreRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
+            this.hisStoreStockAppService = hisStoreStockAppService;
         }
 
         public ListResultDto<ApplicationForBunkerBListDto> GetAll(ApplicationForBunkerBQueryDto request)
@@ -188,6 +191,38 @@ namespace SCBF.Car
             foreach (var item in dtos)
             {
                 item.OctaneStoreName = store.First(r => r.Value == item.OctaneStoreId).Key;
+            }
+
+            return new List<ApplicationForBunkerBListDto>(dtos);
+        }
+
+        public List<ApplicationForBunkerBListDto> GetApplicationForBunkerBSummaryList(string queryMonth)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var year = int.Parse(currentYearItem.Value);
+            var month = int.Parse(queryMonth);
+            var query = this.applicationForBunkerBRepository.GetAll().Where(r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Checked);
+
+
+            var store = from s in this.octaneStoreRepository.GetAll()
+                        join a in this.sysDictionaryRepository.GetAll() on s.StoreId equals a.Id
+                        join b in this.sysDictionaryRepository.GetAll() on s.OctaneRatingId equals b.Id
+                        select new TAF.Utility.KeyValue<string, Guid>() { Key = a.Value + "-" + b.Value, Value = s.Id };
+
+            var dtos = query.MapTo<List<ApplicationForBunkerBListDto>>();
+
+
+            foreach (var item in dtos)
+            {
+                item.OctaneStoreName = store.First(r => r.Value == item.OctaneStoreId).Key;
+                var amount = this.hisStoreStockAppService.Get(month, 1);
+                item.AmountFrom = amount.Key;
+                item.AmountTo = amount.Value;
             }
 
             return new List<ApplicationForBunkerBListDto>(dtos);
