@@ -41,6 +41,8 @@ namespace SCBF.BaseInfo
         public static int Confirm => 3; //金额确认
 
         public static int Cancel => 4; //作废
+
+        public static int Checked => 5; //已对账,针对于实物油料
     }
 
     /// <summary>

@@ -77,6 +77,9 @@ namespace SCBF.Car
                     case "2":
                         item.Status = "审核拒绝";
                         break;
+                    case "5":
+                        item.Status = "已对账";
+                        break;
                 }
                 item.OctaneStoreName = store.First(r => r.Value == item.OctaneStoreId).Key;
             }
@@ -126,22 +129,68 @@ namespace SCBF.Car
             }
         }
 
-        public void Delete(Guid id)
+        public void Check(List<Guid> ids)
         {
-            var item = this.applicationForBunkerBRepository.Get(id);
-            if (item == null)
+            foreach (var id in ids)
             {
-                throw new UserFriendlyException("加油申请不存在");
+                var item = this.applicationForBunkerBRepository.Get(id);
+                if (item == null)
+                {
+                    throw new UserFriendlyException("加油申请不存在");
+                }
+
+                item.Status = ApplicationForBunkerAStatus.Checked;
+                this.applicationForBunkerBRepository.Update(item);
+            }
+        }
+        public void Delete(List<Guid> ids)
+        {
+            foreach (var id in ids)
+            {
+                var item = this.applicationForBunkerBRepository.Get(id);
+                if (item == null)
+                {
+                    throw new UserFriendlyException("加油申请不存在");
+                }
+
+                var store = this.octaneStoreRepository.FirstOrDefault(r => r.Id == item.OctaneStoreId);
+                if (store == null)
+                {
+                    throw new UserFriendlyException("实物油料库存不存在");
+                }
+                store.Amount += item.AuditingAmount;
+                this.octaneStoreRepository.Update(store);
+                this.applicationForBunkerBRepository.Delete(id);
+            }
+        }
+
+        public List<ApplicationForBunkerBListDto> CheckApplicationForBunkerBList(string queryMonth)
+        {
+            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
             }
 
-            var card = this.octaneStoreRepository.FirstOrDefault(r => r.Id == item.OctaneStoreId);
-            if (card == null)
+            var year = int.Parse(currentYearItem.Value);
+            var month = int.Parse(queryMonth);
+            var query = this.applicationForBunkerBRepository.GetAll().Where(r => r.Date.Year == year && r.Date.Month == month && r.Status == 1);
+
+
+            var store = from s in this.octaneStoreRepository.GetAll()
+                        join a in this.sysDictionaryRepository.GetAll() on s.StoreId equals a.Id
+                        join b in this.sysDictionaryRepository.GetAll() on s.OctaneRatingId equals b.Id
+                        select new TAF.Utility.KeyValue<string, Guid>() { Key = a.Value + "-" + b.Value, Value = s.Id };
+
+            var dtos = query.MapTo<List<ApplicationForBunkerBListDto>>();
+
+
+            foreach (var item in dtos)
             {
-                throw new UserFriendlyException("加油卡不存在");
+                item.OctaneStoreName = store.First(r => r.Value == item.OctaneStoreId).Key;
             }
-            card.Amount += item.AuditingAmount;
-            this.octaneStoreRepository.Update(card);
-            this.applicationForBunkerBRepository.Delete(id);
+
+            return new List<ApplicationForBunkerBListDto>(dtos);
         }
 
         private string GetMaxCode()

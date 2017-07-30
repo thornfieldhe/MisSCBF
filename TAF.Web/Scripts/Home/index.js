@@ -68,6 +68,7 @@ Path.map("#oilRecharge").to(function () { loadPage("/OilRechargeRecord/OilRechar
 Path.map("#applicationForBunkerBs").to(function () { loadPage("/ApplicationForBunkerB/ApplicationForBunkerBList", "车辆管理", "实物油料加油申请单", "#menuApplicationForBunkerBs", false); });
 Path.map("#applicationForBunkerBs2").to(function () { loadPage("/ApplicationForBunkerB/ApplicationForBunkerBList2", "车辆管理", "实物油料加油申请单", "#menuApplicationForBunkerBs2", false); });
 Path.map("#applicationForAuditB").to(function () { loadPage("/ApplicationForBunkerB/ApplicationForAuditBList", "车辆管理", "实物油料加油审批单", "#menuApplicationForAuditB", false); });
+Path.map("#checkApplicationForBunker").to(function () { loadPage("/ApplicationForBunkerB/CheckApplicationForBunkerList", "车辆管理", "实物油料加油汇总核对表", "#menuCheckApplicationForBunker", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

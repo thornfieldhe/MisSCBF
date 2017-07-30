@@ -285,6 +285,12 @@
                                 L("实物油料加油审批单"),
                                 url: "#applicationForAuditB",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuCheckApplicationForBunker",
+                                L("实物油料加油汇总核对表"),
+                                url: "#checkApplicationForBunker",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 

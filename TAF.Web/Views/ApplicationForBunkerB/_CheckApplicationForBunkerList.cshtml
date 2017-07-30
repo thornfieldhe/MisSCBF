@@ -1,0 +1,132 @@
+﻿
+@using TAF.Utility
+@using SCBF.BaseInfo.Dto
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">实物油料加油审批单</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select id="month" style="width: 150px"  v-model="queryMonth">
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <button type="button" class="btn btn-default" v-on:click="query()"><i class="fa fa-search"></i> 查询</button>
+                            <button type="button" class="btn btn-blue" v-on:click="link()"><i class="glyphicon glyphicon-link"></i> 对账</button>
+                            <button type="button" class="btn btn-danger" v-on:click="showDelete()"><i class="fa fa-minus"></i> 作废</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pre-scrollable">
+                            <table class="table table-striped table-hover table-bordered " style="width: 1900px">
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 60px;" >
+                                        操作
+                                    </th>
+                                    <th style="width: 200px;">
+                                        编号
+                                    </th>
+                                    <th style="width: 200px;">
+                                        车辆号牌
+                                    </th>
+                                    <th style="width: 100px;">
+                                        车辆型号
+                                    </th>
+                                    <th style="width: 100px;">
+                                        油料号
+                                    </th>
+                                    <th style="width: 100px;">
+                                        当前结余油料数量(升)
+                                    </th>
+                                    <th style="width: 100px;">
+                                        申请加油数量(升)
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批加油数量(升)
+                                    </th>
+                                    <th style="width: 400px;">
+                                        事由
+                                    </th>
+                                    <th style="width: 100px;">
+                                        驾驶员
+                                    </th>
+                                    <th style="width: 100px;">
+                                        审批人
+                                    </th>
+                                    <th style="width: 300px;">
+                                        申请时间
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list">
+                                    <td>
+                                        <div class="checkbox">
+                                            <label for="selectItem_{{item.id}}">
+                                                <input type="checkbox" v-model="selectIds" value="{{item.id}}" id="selectItem_{{item.id}}" name="selectItems">
+                                                <span class=" text"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.carCode}}</td>
+                                    <td>{{item.carSpecifications}}</td>
+                                    <td>{{item.octaneStoreName}}</td>
+                                    <td>{{item.totalAmount}}</td>
+                                    <td>{{item.amount}}</td>
+                                    <td>{{item.auditingAmount}}</td>
+                                    <td>{{item.note}}</td>
+                                    <td>{{item.driverName}}</td>
+                                    <td>{{item.auditorName}}</td>
+                                    <td>{{item.date}}</td>
+                                </tr>
+                                </tbody>
+                                <tfoot is="table-foot" colspan="12"></tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bootbox modal fade modal-darkorange in" id="deleteCheckApplicationForBuckerBDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除选中实物油料加油审批单？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="delete()"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/checkApplicationForBunkerList.js"></script>
+
+
+

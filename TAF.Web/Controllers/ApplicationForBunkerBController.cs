@@ -59,6 +59,11 @@ namespace SCBF.Web.Controllers
             ViewData["list2"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
             return PartialView("_ApplicationForAuditBList");
         }
+
+        public ActionResult CheckApplicationForBunkerList()
+        {
+            return PartialView("_CheckApplicationForBunkerList");
+        }
     }
 }
 

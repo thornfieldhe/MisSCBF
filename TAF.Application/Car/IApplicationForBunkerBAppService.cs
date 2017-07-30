@@ -12,6 +12,7 @@ namespace SCBF.Car
     using Abp.Application.Services.Dto;
     using SCBF.Car.Dto;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -25,7 +26,11 @@ namespace SCBF.Car
 
         Task SaveAsync(ApplicationForBunkerBEditDto input);
 
-        void Delete(Guid id);
+        List<ApplicationForBunkerBListDto> CheckApplicationForBunkerBList(string queryMonth);
+
+        void Delete(List<Guid> ids);
+
+        void Check(List<Guid> ids);
     }
 }
 
