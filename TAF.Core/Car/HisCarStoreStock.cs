@@ -12,7 +12,7 @@ namespace SCBF.Car
     using System;
 
     /// <summary>
-    /// 实物油料库库存
+    /// 实物油料/加油卡库存
     /// </summary>
     public class HisCarStoreStock : TAFEntity
     {

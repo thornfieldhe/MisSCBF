@@ -146,6 +146,7 @@ namespace SCBF.Car
                 this.applicationForBunkerBRepository.Update(item);
             }
         }
+
         public void Delete(List<Guid> ids)
         {
             foreach (var id in ids)

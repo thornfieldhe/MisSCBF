@@ -1,0 +1,140 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">季度/年度油料消耗情况报表</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select id="quarter" style="width: 150px"  v-model="quarter">
+                                <option value="0">一季度</option>
+                                <option value="1">二季度</option>
+                                <option value="2">三季度</option>
+                                <option value="3">全年</option>
+                            </select>
+                            <button type="button" class="btn btn-default" v-on:click="query()"><i class="fa fa-search"></i> 查询</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">实物油料</span>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-12">
+                            <table class="table table-striped table-hover table-bordered " >
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;" >
+                                        油料标号
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        期初数额
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        消耗数额
+                                    </th>
+                                    <th style="width: 200px;" colspan="2">
+                                        结存数额
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th style="width: 100px;">
+                                        油料代管单位汇总记录
+                                    </th>
+                                    <th style="width: 100px;">
+                                        升数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        吨数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        升数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        吨数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        升数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        吨数
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list1">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.fromAmount}}</td>
+                                    <td>{{item.fromAmountAsT}}</td>
+                                    <td>{{item.useAmount}}</td>
+                                    <td>{{item.useAmountAsT}}</td>
+                                    <td>{{item.toAmount}}</td>
+                                    <td>{{item.toAmountAsT}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">加油卡</span>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-12">
+             
+                            <table class="table table-striped table-hover table-bordered " >
+                                <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;" >
+                                        卡号
+                                    </th>
+                                    <th style="width: 100px;" >
+                                        期初数额
+                                    </th>
+                                    <th style="width: 100px;">
+                                        消耗数额
+                                    </th>
+                                    <th style="width: 100px;" >
+                                        结存数额
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="item in list2">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.fromAmount}}</td>
+                                    <td>{{item.useAmount}}</td>
+                                    <td>{{item.toAmount}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/totalOilHisList.js"></script>
+
+
+

@@ -3,7 +3,7 @@
 //   
 // </copyright>
 // <summary>
-//   实物油料加油审批单服务
+//   历史油料/加油卡库存服务
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,12 +14,13 @@ namespace SCBF.Car
     using SCBF.BaseInfo;
     using SCBF.Car.Dto;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using TAF.Utility;
 
     /// <summary>
-    /// 实物油料加油审批单服务
+    /// 历史油料/加油卡库存服务
     /// </summary>
     [AbpAuthorize]
     public class HisStoreStockAppService : TAFAppServiceBase, IHisStoreStockAppService
@@ -72,27 +73,171 @@ namespace SCBF.Car
                 switch (category)
                 {
                     case 0:
-                        amount2 = this.applicationForBunkerARepository
+                        amount2 = amount1 - this.applicationForBunkerARepository
                             .GetAllList(
                                 r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Confirm)
                             .Sum(r => r.Amount);
                         break;
                     case 1:
-                        amount2 = this.applicationForBunkerBRepository
+                        amount2 = amount1 - this.applicationForBunkerBRepository
                             .GetAllList(
                                 r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Checked)
                             .Sum(r => r.Amount);
                         break;
                 }
+            }
+            else
+            {
+                amount2 = item2.Amount;
+            }
+
+            return new KeyValue<decimal, decimal>
+            {
+                Key = amount1,
+                Value = amount2
+            };
+        }
+
+        public List<HisOilStoreListDto> GetOilStoreHis(int quarter)
+        {
+            var list = this.octaneStoreRepository.GetAllList();
+            var result = new List<HisOilStoreListDto>();
+            foreach (var i in list)
+            {
+                var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+                if (currentYearItem == null)
+                {
+                    throw new UserFriendlyException("预算年度不存在");
+                }
+                var year = int.Parse(currentYearItem.Value);
+                var monthTo = 1;
+                switch (quarter)
+                {
+                    case 0:
+                        monthTo = 3;
+                        break;
+                    case 1:
+                        monthTo = 6;
+                        break;
+                    case 2:
+                        monthTo = 9;
+                        break;
+                    case 3:
+                        monthTo = 12;
+                        break;
+                }
+
+                var yearMonth = new DateTime(int.Parse(currentYearItem.Value), monthTo, 1);
+                var yearMonthTo = yearMonth.ToString("yyyyMM");
+                var yearMonthFrom = yearMonth.AddMonths(-2).ToString("yyyyMM");
+                var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                    r => r.YearMonth == yearMonthFrom && r.Category == 1 && r.OctaneStoreId == i.Id);
+
+                var item2 = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                    r => r.YearMonth == yearMonthTo && r.Category == 1 && r.OctaneStoreId == i.Id);
+
+                decimal amount1 = item == null ? 0 : item.Amount;
+                decimal amount2 = 0;
+                if (item2 == null)
+                {
+
+                    amount2 = amount1 - this.applicationForBunkerBRepository
+                                  .GetAllList(
+                                      r => r.Date.Year == year && r.Date.Month <= monthTo && r.Status == ApplicationForBunkerAStatus.Checked && r.OctaneStoreId == i.Id)
+                                  .Sum(r => r.Amount);
+                }
+                else
+                {
+                    amount2 = item2.Amount;
+                }
+
+
+                var octaneRating = this.sysDictionaryRepository.Get(i.OctaneRatingId);
+                if (octaneRating == null)
+                {
+                    throw new UserFriendlyException("油料标号不存在");
+                }
+
+                var store = this.sysDictionaryRepository.Get(i.StoreId);
+                if (store == null)
+                {
+                    throw new UserFriendlyException("代管单位不存在");
+                }
+
+                result.Add(new HisOilStoreListDto()
+                {
+                    Id = i.Id,
+                    FromAmount = amount1,
+                    ToAmount = amount2,
+                    Name = $"{store.Value}-{octaneRating.Value}",
+                    FromAmountAsT = string.IsNullOrWhiteSpace(octaneRating.Value2) ? amount1 : Math.Floor(amount1 / decimal.Parse(octaneRating.Value2)),
+                    ToAmountAsT = string.IsNullOrWhiteSpace(octaneRating.Value2) ? amount2 : Math.Floor(amount2 / decimal.Parse(octaneRating.Value2))
+                });
 
             }
 
-            var result = new KeyValue<decimal, decimal>
-            {
-                Key = amount1,
-                Value = item2 == null ? amount1 - amount2 : amount2
-            };
+            return result;
+        }
 
+        public List<HisOilCardListDto> GetOilCardHis(int quarter)
+        {
+            var list = this.oilCardRepository.GetAllList();
+            var result = new List<HisOilCardListDto>();
+            foreach (var i in list)
+            {
+                var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(
+                    r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+                if (currentYearItem == null)
+                {
+                    throw new UserFriendlyException("预算年度不存在");
+                }
+                var year = int.Parse(currentYearItem.Value);
+                var monthTo = 1;
+                switch (quarter)
+                {
+                    case 0:
+                        monthTo = 3;
+                        break;
+                    case 1:
+                        monthTo = 6;
+                        break;
+                    case 2:
+                        monthTo = 9;
+                        break;
+                    case 3:
+                        monthTo = 12;
+                        break;
+                }
+
+                var yearMonth = new DateTime(int.Parse(currentYearItem.Value), monthTo, 1);
+                var yearMonthTo = yearMonth.ToString("yyyyMM");
+                var yearMonthFrom = yearMonth.AddMonths(-3).ToString("yyyyMM");
+                var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                    r => r.YearMonth == yearMonthFrom && r.Category == 0 && r.OctaneStoreId == i.Id);
+
+                var item2 = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                    r => r.YearMonth == yearMonthTo && r.Category == 0);
+
+                decimal amount1 = item == null ? 0 : item.Amount;
+                decimal amount2 = 0;
+                if (item2 == null)
+                {
+
+                    amount2 = this.applicationForBunkerARepository
+                        .GetAllList(
+                            r => r.Date.Year == year
+                                 && r.Date.Month <= monthTo && r.Status == ApplicationForBunkerAStatus.Confirm
+                                 && r.OilCardId == i.Id).Sum(r => r.Amount);
+                }
+                else
+                {
+                    amount2 = item2.Amount;
+                }
+
+
+                result.Add(
+                    new HisOilCardListDto() { Id = i.Id, FromAmount = amount1, ToAmount = amount2, Code = i.Code });
+            }
 
             return result;
         }

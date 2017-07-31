@@ -297,6 +297,12 @@
                                 L("实物油料消耗凭证汇总单"),
                                 url: "#applicationForBunkerBSummaryList",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuTotalOilHisList",
+                                L("季度油料消耗情况报表"),
+                                url: "#totalOilHisList",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 
