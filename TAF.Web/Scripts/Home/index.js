@@ -71,6 +71,10 @@ Path.map("#applicationForAuditB").to(function () { loadPage("/ApplicationForBunk
 Path.map("#checkApplicationForBunker").to(function () { loadPage("/ApplicationForBunkerB/CheckApplicationForBunkerList", "车辆管理", "实物油料加油汇总核对表", "#menuCheckApplicationForBunker", false); });
 Path.map("#applicationForBunkerBSummaryList").to(function () { loadPage("/ApplicationForBunkerB/ApplicationForBunkerBSummaryList", "车辆管理", "实物油料消耗凭证汇总单", "#menuApplicationForBunkerBSummaryList", false); });
 Path.map("#totalOilHisList").to(function () { loadPage("/HisOilStock/TotalOilHisList", "车辆管理", "季度/年度油料消耗情况报表", "#menuTotalOilHisList", false); });
+Path.map("#applyForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/ApplyForVehicleMaintenanceList", "车辆送修申请单", "车辆送修申请单", "#menuApplyForVehicleMaintenances", false); });
+Path.map("#auditingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList", "车辆送修申请单", "车辆送修申请单", "#menuAuditingForVehicleMaintenances", false); });
+
+
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

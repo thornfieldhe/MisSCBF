@@ -290,6 +290,14 @@ namespace SCBF
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
                     .ForMember(m => m.DriverName, n => n.MapFrom(r => r.DriverId.HasValue ? r.Driver.Name : string.Empty));
                 mapper.CreateMap<ApplicationForBunkerBEditDto, ApplicationForBunkerB>();
+
+                mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceListDto>()
+                    .ForMember(m => m.Clxh, n => n.MapFrom(r => r.CarInfo.Clxh))
+                    .ForMember(m => m.Cph, n => n.MapFrom(r => r.CarInfo.Cph));
+                mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceEditDto>()
+                    .ForMember(m => m.Clxh, n => n.MapFrom(r => r.CarInfo.Clxh))
+                    .ForMember(m => m.Cph, n => n.MapFrom(r => r.CarInfo.Cph));
+                mapper.CreateMap<ApplyForVehicleMaintenanceEditDto, ApplyForVehicleMaintenance>();
                 #endregion
             });
         }

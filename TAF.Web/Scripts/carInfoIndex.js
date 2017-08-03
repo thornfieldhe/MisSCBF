@@ -80,6 +80,15 @@ var main = new Vue({
             } else if (id === "poctaneRating") {
                 $this.title = "油料标号";
                 $this.category = "Car_OctaneRating";
+            } else if (id === "poverhaulAmount") {
+                $this.title = "大修控制额";
+                $this.category = "Car_Overhaul";
+            } else if (id === "prepairAmount") {
+                $this.title = "中修控制额";
+                $this.category = "Car_Repair";
+            } else if (id === "pminorRepairAmount") {
+                $this.title = "小修控制额";
+                $this.category = "Car_MinorRepair";
             }
             $this.queryEntity.category = $this.category;
             $this.query(0);

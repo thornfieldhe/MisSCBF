@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\ApplyForVehicleMaintenanceMap.cs" />
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\ApplicationForBunkerBMap.cs" />
     <Compile Include="EntityFramework\Maps\BudgetOutlayMap.cs" />
@@ -295,6 +296,18 @@
     <Compile Include="Migrations\201707300903359_addTable_StoreStocks.Designer.cs">
       <DependentUpon>201707300903359_addTable_StoreStocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708011345045_addTable_ApplyForVehicleMaintenance.cs" />
+    <Compile Include="Migrations\201708011345045_addTable_ApplyForVehicleMaintenance.Designer.cs">
+      <DependentUpon>201708011345045_addTable_ApplyForVehicleMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708011408393_addRepairData.cs" />
+    <Compile Include="Migrations\201708011408393_addRepairData.Designer.cs">
+      <DependentUpon>201708011408393_addRepairData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708011534561_modifyTable_ApplyForVehicleMaintenance.cs" />
+    <Compile Include="Migrations\201708011534561_modifyTable_ApplyForVehicleMaintenance.Designer.cs">
+      <DependentUpon>201708011534561_modifyTable_ApplyForVehicleMaintenance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -303,6 +316,7 @@
     <Compile Include="Repositories\ActualOutlayRepository.cs" />
     <Compile Include="Repositories\ApplicationForBunkerARepository.cs" />
     <Compile Include="Repositories\ApplicationForBunkerBRepository.cs" />
+    <Compile Include="Repositories\ApplyForVehicleMaintenanceRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
@@ -464,6 +478,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707300903359_addTable_StoreStocks.resx">
       <DependentUpon>201707300903359_addTable_StoreStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011345045_addTable_ApplyForVehicleMaintenance.resx">
+      <DependentUpon>201708011345045_addTable_ApplyForVehicleMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011408393_addRepairData.resx">
+      <DependentUpon>201708011408393_addRepairData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011534561_modifyTable_ApplyForVehicleMaintenance.resx">
+      <DependentUpon>201708011534561_modifyTable_ApplyForVehicleMaintenance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

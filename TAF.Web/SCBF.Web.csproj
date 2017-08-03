@@ -813,6 +813,8 @@
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
     <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
+    <Content Include="Scripts\audingForVehicleMaintenance.js" />
+    <Content Include="Scripts\applyForVehicleMaintenance.js" />
     <Content Include="Scripts\totalOilHisList.js" />
     <Content Include="Scripts\checkApplicationForBunkerList.js" />
     <Content Include="Scripts\applicationForAuditB.js" />
@@ -933,6 +935,7 @@
     <Compile Include="Controllers\ActualOutlayController.cs" />
     <Compile Include="Controllers\ApplicationForBunkerBController.cs" />
     <Compile Include="Controllers\ApplicationForBunkerAController.cs" />
+    <Compile Include="Controllers\ApplyForVehicleMaintenanceController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\CarController.cs" />
@@ -1038,6 +1041,8 @@
     <Content Include="Views\ApplicationForBunkerB\_CheckApplicationForBunkerList.cshtml" />
     <Content Include="Views\ApplicationForBunkerB\_ApplicationForBunkerBSummaryList.cshtml" />
     <Content Include="Views\HisOilStock\_TotalOilHisList.cshtml" />
+    <Content Include="Views\ApplyForVehicleMaintenance\_ApplyForVehicleMaintenanceIndex.cshtml" />
+    <Content Include="Views\ApplyForVehicleMaintenance\_AudingForVehicleMaintenanceIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

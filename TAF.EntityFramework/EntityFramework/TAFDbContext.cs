@@ -185,6 +185,11 @@
             get; set;
         }
 
+        public DbSet<ApplyForVehicleMaintenance> ApplyForVehicleMaintenances
+        {
+            get; set;
+        }
+
         #endregion
 
 

@@ -303,6 +303,18 @@
                                 L("季度油料消耗情况报表"),
                                 url: "#totalOilHisList",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuApplyForVehicleMaintenances",
+                                L("车辆送修申请单"),
+                                url: "#applyForVehicleMaintenances",
+                                requiredPermissionName: PermissionNames.Default))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuAuditingForVehicleMaintenances",
+                                L("车辆送修审核单"),
+                                url: "#auditingForVehicleMaintenances",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 

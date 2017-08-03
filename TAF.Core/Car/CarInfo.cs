@@ -108,5 +108,10 @@ namespace SCBF.Car
         /// </summary>
         public virtual List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
 
+        /// <summary>
+        /// 车辆维修记录
+        /// </summary>
+        public virtual List<ApplyForVehicleMaintenance> ApplyForVehicleMaintenances { get; set; }
+
     }
 }

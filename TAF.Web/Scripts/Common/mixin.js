@@ -163,7 +163,7 @@ var allMixin = {
         'item': {
             handler: function (val, oldVal) {
                 if (!this.onAdd) {
-                    this.$validate();
+                    //this.$validate();
                 }
             },
             deep: true

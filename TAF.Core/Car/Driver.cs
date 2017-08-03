@@ -58,5 +58,6 @@ namespace SCBF.Car
         public virtual List<ApplicationForBunkerA> ApplicationForBunkerAs { get; set; }
         public virtual List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
 
+
     }
 }

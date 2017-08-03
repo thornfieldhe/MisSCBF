@@ -148,10 +148,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInfo\AttachmentAppService.cs" />
+    <Compile Include="Car\ApplyForVehicleMaintenanceAppService.cs" />
+    <Compile Include="Car\Dto\ApplyForVehicleMaintenanceEditDto.cs" />
+    <Compile Include="Car\Dto\ApplyForVehicleMaintenanceListDto.cs" />
+    <Compile Include="Car\Dto\ApplyForVehicleMaintenanceQueryDto.cs" />
     <Compile Include="Car\Dto\HisOilCardListDto.cs" />
     <Compile Include="Car\Dto\HisOilStoreListDto.cs" />
     <Compile Include="Car\Dto\HisStockDto.cs" />
     <Compile Include="Car\HisStoreStockAppService.cs" />
+    <Compile Include="Car\IApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\IHisStoreStockAppService.cs" />
     <Compile Include="Tasks\DailyTask.cs" />
     <Compile Include="Tasks\Yearly.cs" />
