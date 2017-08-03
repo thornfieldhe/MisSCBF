@@ -71,7 +71,22 @@
                                     </a>
                                 </li>
                                 <li class=" ">
-                                    <a data-toggle="tab" href="#year" aria-expanded="true" id="minorRepairAmount">
+                                    <a data-toggle="tab" href="#maintenanceParts" aria-expanded="true" id="pmaintenanceParts">
+                                        维修部位
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a data-toggle="tab" href="#manHours" aria-expanded="true" id="pmanHours">
+                                        工时
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a data-toggle="tab" href="#servicingMaterials" aria-expanded="true" id="pservicingMaterials">
+                                        维修材料
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a data-toggle="tab" href="#year" aria-expanded="true" id="pyear">
                                         会计年度
                                     </a>
                                 </li>
@@ -410,6 +425,116 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="maintenanceParts" class="tab-pane ">
+                                <div class="table-toolbar">
+                                    <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('维修部位','Car_MaintenanceParts')"><i class="fa  fa-plus"></i> 新增</a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table table-striped table-hover table-bordered ">
+                                            <thead>
+                                            <tr role="row">
+                                                <th style="width: 200px;">
+                                                    维修部位
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    部位编码
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    操作
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in list">
+                                                <td>{{item.value}}</td>
+                                                <td>{{item.value2}}</td>
+                                                <td>
+                                                    <row-command :id="item.id" title="编辑" :name="item.value" ></row-command>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="manHours" class="tab-pane ">
+                                <div class="table-toolbar">
+                                    <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('工时','Car_ManHours')"><i class="fa  fa-plus"></i> 新增</a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table table-striped table-hover table-bordered ">
+                                            <thead>
+                                            <tr role="row">
+                                                <th style="width: 200px;">
+                                                    工时类别
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    类别编码
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    工时收费标准
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    操作
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in list">
+                                                <td>{{item.value}}</td>
+                                                <td>{{item.value2}}</td>
+                                                <td>{{item.value3}}</td>
+                                                <td>
+                                                    <row-command :id="item.id" title="编辑" :name="item.value" ></row-command>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <tfoot is="table-foot" colspan="4"></tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="servicingMaterials" class="tab-pane ">
+                                <div class="table-toolbar">
+                                    <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('维修材料','Car_ServicingMaterials')"><i class="fa  fa-plus"></i> 新增</a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table table-striped table-hover table-bordered ">
+                                            <thead>
+                                            <tr role="row">
+                                                <th style="width: 200px;">
+                                                    维修材料
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    部位编码
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    市场公允单价
+                                                </th>
+                                                <th style="width: 200px;">
+                                                    操作
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in list">
+                                                <td>{{item.value}}</td>
+                                                <td>{{item.value2}}</td>
+                                                <td>{{item.value3}}</td>
+                                                <td>
+                                                    <row-command :id="item.id" title="编辑" :name="item.value" ></row-command>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <tfoot is="table-foot" colspan="4"></tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                                 <div id="year" class="tab-pane ">
                                     <div class="table-toolbar">
                                         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('会计年度','Car_Year')"><i class="fa  fa-plus"></i> 新增</a>
@@ -508,6 +633,68 @@
                                 <div class="col-sm-10">
                                     <span class="input-icon icon-right">
                                         <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value2" v-validate:value2="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_MaintenanceParts'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">部位编码<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value2" v-validate:value2="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_ManHours'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">类别编码<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value2" v-validate:value2="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">工时收费标准<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value3" v-validate:value3="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_ServicingMaterials'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">材料编码<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value" v-model="item.value2" v-validate:value2="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">市场公允单价<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <span class="input-icon icon-right">
+                                        <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value3" v-validate:value2="{required:true}" />
                                     </span>
                                 </div>
                             </div>

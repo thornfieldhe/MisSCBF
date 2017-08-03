@@ -225,6 +225,21 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Car_MinorRepair = "Car_MinorRepair";
 
+        /// <summary>
+        /// 维修部位
+        /// </summary>
+        public const string Car_MaintenanceParts = "Car_MaintenanceParts";
+
+        /// <summary>
+        /// 工时
+        /// </summary>
+        public const string Car_ManHours = "Car_ManHours";
+
+        /// <summary>
+        /// 维修材料
+        /// </summary>
+        public const string Car_ServicingMaterials = "Car_ServicingMaterials";
+
         #endregion
 
     }
