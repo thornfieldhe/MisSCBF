@@ -54,6 +54,7 @@ Path.map("#checkBills").to(function () { loadPage("/CheckBill/CheckBillList", "�
 Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
+Path.map("#maintenanceParts").to(function () { loadPage("/Car/MaintenancePartsList", "车辆管理", "维修部位", "#menuMaintenanceParts", false); });
 Path.map("#drivers").to(function () { loadPage("/Driver/DriverList", "车辆管理", "驾驶员信息", "#menuDrivers", false); });
 Path.map("#carInfos").to(function () { loadPage("/CarInfo/CarInfoList", "车辆管理", "车辆信息", "#menuCarInfos", false); });
 Path.map("#oilCards").to(function () { loadPage("/OilCard/OilCardList", "车辆管理", "油料卡资料", "#menuOilCards", false); });

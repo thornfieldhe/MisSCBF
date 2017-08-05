@@ -203,6 +203,12 @@
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuMaintenanceParts",
+                                L("维修部位"),
+                                url: "#maintenanceParts",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuDrivers",
                                 L("驾驶员"),
                                 url: "#drivers",

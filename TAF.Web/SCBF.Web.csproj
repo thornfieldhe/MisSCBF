@@ -815,6 +815,7 @@
     <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
     <Content Include="Scripts\audingForVehicleMaintenance.js" />
     <Content Include="Scripts\applyForVehicleMaintenance.js" />
+    <Content Include="Scripts\maintenanceParts.js" />
     <Content Include="Scripts\totalOilHisList.js" />
     <Content Include="Scripts\checkApplicationForBunkerList.js" />
     <Content Include="Scripts\applicationForAuditB.js" />
@@ -1043,6 +1044,7 @@
     <Content Include="Views\HisOilStock\_TotalOilHisList.cshtml" />
     <Content Include="Views\ApplyForVehicleMaintenance\_ApplyForVehicleMaintenanceIndex.cshtml" />
     <Content Include="Views\ApplyForVehicleMaintenance\_AudingForVehicleMaintenanceIndex.cshtml" />
+    <Content Include="Views\Car\_MaintenancePartsIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

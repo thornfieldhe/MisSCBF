@@ -24,6 +24,13 @@ namespace SCBF.Web.Controllers
             this.sysDictionaryAppService = sysDictionaryAppService;
         }
 
-        public ActionResult InfoList() { return PartialView("_CarInfoIndex"); }
+        public ActionResult InfoList() { return this.PartialView("_CarInfoIndex"); }
+
+
+
+        public ActionResult MaintenancePartsList()
+        {
+            return this.PartialView("_MaintenancePartsIndex");
+        }
     }
 }
