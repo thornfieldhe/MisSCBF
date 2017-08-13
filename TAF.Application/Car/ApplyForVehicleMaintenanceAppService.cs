@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using SCBF.BaseInfo;
+
 namespace SCBF.Car
 {
     using Abp.Application.Services.Dto;
@@ -30,23 +32,33 @@ namespace SCBF.Car
     [AbpAuthorize]
     public class ApplyForVehicleMaintenanceAppService : TAFAppServiceBase, IApplyForVehicleMaintenanceAppService
     {
-        private readonly IApplyForVehicleMaintenanceRepository applyForVehicleMaintenanceRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private readonly IDriverRepository driverRepository;
+        private readonly IApplyForVehicleMaintenanceRepository _applyForVehicleMaintenanceRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IDriverRepository _driverRepository;
+        private readonly IMaintenanceDeliveryRepository _maintenanceDeliveryRepository;
+        private readonly IServicingMaterialRepository _servicingMaterialRepository;
+        private readonly IManHourRepository _manHourRepository;
 
         public ApplyForVehicleMaintenanceAppService(
             IApplyForVehicleMaintenanceRepository applyForVehicleMaintenanceRepository,
                                                     ISysDictionaryRepository sysDictionaryRepository,
-                                                    IDriverRepository driverRepository)
+                                                    IDriverRepository driverRepository,
+            IMaintenanceDeliveryRepository maintenanceDeliveryRepository,
+            IServicingMaterialRepository servicingMaterialRepository,
+            IManHourRepository manHourRepository
+            )
         {
-            this.applyForVehicleMaintenanceRepository = applyForVehicleMaintenanceRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
-            this.driverRepository = driverRepository;
+            this._applyForVehicleMaintenanceRepository = applyForVehicleMaintenanceRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._driverRepository = driverRepository;
+            this._maintenanceDeliveryRepository = maintenanceDeliveryRepository;
+            this._servicingMaterialRepository = servicingMaterialRepository;
+            this._manHourRepository = manHourRepository;
         }
 
         public ListResultDto<ApplyForVehicleMaintenanceListDto> GetAll(ApplyForVehicleMaintenanceQueryDto request)
         {
-            var query = this.applyForVehicleMaintenanceRepository.GetAll()
+            var query = this._applyForVehicleMaintenanceRepository.GetAll()
 
                 .WhereIf(request.CarInfoId.HasValue, r => r.CarInfoId == request.CarInfoId.Value)
                 .WhereIf(request.DriverId.HasValue, r => r.DriverId == request.DriverId.Value)
@@ -60,7 +72,7 @@ namespace SCBF.Car
             var dtos = list.MapTo<List<ApplyForVehicleMaintenanceListDto>>();
             foreach (var dto in dtos)
             {
-                var driver = this.driverRepository.Get(dto.DriverId);
+                var driver = this._driverRepository.Get(dto.DriverId);
                 if (driver == null)
                 {
                     throw new UserFriendlyException("驾驶员不能为空");
@@ -83,11 +95,32 @@ namespace SCBF.Car
             return new PagedResultDto<ApplyForVehicleMaintenanceListDto>(count, dtos);
         }
 
+        public PagedResultDto<ApplyForVehicleMaintenanceListDto> GetAuditedItems(ApplyForVehicleMaintenanceQueryDto request)
+        {
+            var query = this._applyForVehicleMaintenanceRepository.GetAll()
+                .Where(r => r.Status == request.Status.Value).OrderByDescending(r => r.CreationTime);
+
+            var count = query.Count();
+            var list = query.AsQueryable().PageBy(request).ToList();
+            var dtos = list.MapTo<List<ApplyForVehicleMaintenanceListDto>>();
+            foreach (var dto in dtos)
+            {
+                var driver = this._driverRepository.Get(dto.DriverId);
+                if (driver == null)
+                {
+                    throw new UserFriendlyException("驾驶员不能为空");
+                }
+                dto.DriverName = driver.Name;
+            }
+
+            return new PagedResultDto<ApplyForVehicleMaintenanceListDto>(count, dtos);
+        }
+
         public ApplyForVehicleMaintenanceEditDto Get(Guid id)
         {
-            var output = this.applyForVehicleMaintenanceRepository.Get(id);
+            var output = this._applyForVehicleMaintenanceRepository.Get(id);
             var result = output.MapTo<ApplyForVehicleMaintenanceEditDto>();
-            var driver = this.driverRepository.Get(result.DriverId);
+            var driver = this._driverRepository.Get(result.DriverId);
             if (driver == null)
             {
                 throw new UserFriendlyException("驾驶员不能为空");
@@ -102,39 +135,66 @@ namespace SCBF.Car
             if (!input.Id.HasValue)
             {
                 item.Code = GetMaxCode();
-                await this.applyForVehicleMaintenanceRepository.InsertAsync(item);
+                await this._applyForVehicleMaintenanceRepository.InsertAsync(item);
             }
             else
             {
-                var old = this.applyForVehicleMaintenanceRepository.Get(input.Id.Value);
+                var old = this._applyForVehicleMaintenanceRepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
-                await this.applyForVehicleMaintenanceRepository.UpdateAsync(old);
+                await this._applyForVehicleMaintenanceRepository.UpdateAsync(old);
             }
         }
 
         public void Auding(KeyValue<Guid, int, string> input)
         {
-            var item = this.applyForVehicleMaintenanceRepository.Get(input.Key);
+            var item = this._applyForVehicleMaintenanceRepository.Get(input.Key);
             if (item == null)
             {
                 throw new UserFriendlyException("车辆送修申请单不能为空");
             }
             item.Status = input.Value;
             item.Note2 = input.Item3;
-            this.applyForVehicleMaintenanceRepository.Update(item);
+            this._applyForVehicleMaintenanceRepository.Update(item);
         }
 
         public void Delete(Guid id)
         {
-            this.applyForVehicleMaintenanceRepository.Delete(id);
+            this._applyForVehicleMaintenanceRepository.Delete(id);
         }
 
+        public void SaveNote3(KeyValue<Guid,string> input)
+        {
+            var item = this._applyForVehicleMaintenanceRepository.Get(input.Key);
+            if (item == null)
+            {
+                throw new UserFriendlyException("车辆送修申请单不能为空");
+            }
+            item.Note3 = input.Value;
+            this._applyForVehicleMaintenanceRepository.Update(item);
+        }
+
+        public void Update(ApplyForVehicleMaintenanceUpdateDto input)
+        {
+            var item = this._applyForVehicleMaintenanceRepository.Get(input.Id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("车辆送修申请单不能为空");
+            }
+            item.Status = input.Status;
+            var manHours = input.ManHours.MapTo<List<ManHour>>();
+            var servicingMaterials = input.ServicingMaterials.MapTo<List<ServicingMaterial>>();
+            var maintenanceDeliveries = input.MaintenanceDeliveries.MapTo<List<MaintenanceDelivery>>();
+            this._maintenanceDeliveryRepository.InsertRange(maintenanceDeliveries);
+            this._manHourRepository.InsertRange(manHours);
+            this._servicingMaterialRepository.InsertRange(servicingMaterials);
+            this._applyForVehicleMaintenanceRepository.Update(item);
+        }
 
         private string GetMaxCode()
         {
             var preCode = DateTime.Today.ToString("yyyyMMdd");
             var maxCode =
-                this.applyForVehicleMaintenanceRepository.Get(r => r.Code.StartsWith("SXD" + preCode))
+                this._applyForVehicleMaintenanceRepository.Get(r => r.Code.StartsWith("SXD" + preCode))
                     .OrderByDescending(r => r.Code)
                     .FirstOrDefault()?.Code;
             if (string.IsNullOrWhiteSpace(maxCode))

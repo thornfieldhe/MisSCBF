@@ -136,7 +136,6 @@ var foot = Vue.component('table-foot', {
     props: ['colspan'],
     methods: {
         query: function (index, jq) {
-            console.log(198);
             this.from = this.total === 0 ? 0 : this.pageSize * index + 1;
             this.to = this.pageSize * (index + 1) < this.total ? this.pageSize * (index + 1) : this.total;
             this.$dispatch('onChange', index);

@@ -152,9 +152,13 @@
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceEditDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceListDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceQueryDto.cs" />
+    <Compile Include="Car\Dto\ApplyForVehicleMaintenanceUpdateDto.cs" />
     <Compile Include="Car\Dto\HisOilCardListDto.cs" />
     <Compile Include="Car\Dto\HisOilStoreListDto.cs" />
     <Compile Include="Car\Dto\HisStockDto.cs" />
+    <Compile Include="Car\Dto\MaintenanceDeliveryListDto.cs" />
+    <Compile Include="Car\Dto\ManHourListDto.cs" />
+    <Compile Include="Car\Dto\ServicingMaterialListDto.cs" />
     <Compile Include="Car\HisStoreStockAppService.cs" />
     <Compile Include="Car\IApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\IHisStoreStockAppService.cs" />

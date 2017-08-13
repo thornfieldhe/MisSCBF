@@ -24,6 +24,8 @@ namespace SCBF.Car
 
         List<HisOilCardListDto> GetOilCardHis(int quarter);
 
+        decimal GetChangedAmount(int month, int category);
+
         void BackupData();
     }
 }

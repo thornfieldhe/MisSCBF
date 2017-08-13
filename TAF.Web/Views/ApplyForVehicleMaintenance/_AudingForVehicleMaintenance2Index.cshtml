@@ -1,0 +1,474 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="well with-header with-footer">
+            <div class="header bordered-palegreen">车辆送修申请单
+            </div>
+            <div class="body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary " v-on:click="query(0)"><i class="fa fa-search"></i>  搜索审批单</button>
+                </div>
+                <div class="row" v-show="showItem">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 200px;">
+                                    编号
+                                </th>
+                                <th style="width: 200px;">
+                                    车辆型号
+                                </th>
+                                <th style="width: 200px;">
+                                    车牌号
+                                </th>
+                                <th style="width: 200px;">
+                                    行驶公里数
+                                </th>
+                                <th style="width: 200px;">
+                                    驾驶员
+                                </th>
+                                <th style="width: 200px;">
+                                    故障描述
+                                </th>
+                                <th style="width: 200px;">
+                                    车场鉴定意见
+                                </th>
+                                <th style="width: 200px;">
+                                    维修厂意见
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr >
+                                <td>{{item.code}}</td>
+                                <td>{{item.clxh}}</td>
+                                <td>{{item.cph}}</td>
+                                <td>{{item.killomiters}}</td>
+                                <td>{{item.driverName}}</td>
+                                <td>{{item.note}}</td>
+                                <td>{{item.note2}}</td>
+                                <td>{{item.note3}}</td>
+                                <td>
+                                    <button type="button" class="btn   edit" v-on:click="showDialog()"><i class="fa fa-edit"></i> 填写维修厂意见</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-toolbar" v-show="showItem">
+                    <button type="button" class="btn btn-primary " v-on:click="showManHourDialog('新增工时费')"><i class="fa  fa-plus"></i>  新增工时费</button>
+                </div>
+                <div class="row" v-show="showItem">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 200px;">
+                                    维修部位
+                                </th>
+                                <th style="width: 200px;">
+                                    工时类别
+                                </th>
+                                <th style="width: 200px;">
+                                    工时收费标准
+                                </th>
+                                <th style="width: 200px;">
+                                    工时
+                                </th>
+                                <th style="width: 200px;">
+                                    预算价格
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  v-for="m in manHour.list">
+                                <td>{{m.partName}}</td>
+                                <td>{{m.manHourName}}</td>
+                                <td>{{m.manHourValue}}</td>
+                                <td>{{m.hours1}}</td>
+                                <td>{{m.hours1*m.manHourValue}}</td>
+                                <td>
+                                    <button type="button" class="btn   edit" v-on:click="showManHourDialog('编辑维修材料',m.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteManHourDialog(m.manHourName,$index) "><i class="fa fa-trash-o"></i> 删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-toolbar" v-show="showItem">
+                    <button type="button" class="btn btn-primary " v-on:click="showMaterialDialog('新增维修材料')"><i class="fa  fa-plus"></i>  新增维修材料</button>
+                </div>
+                <div class="row" v-show="showItem">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 200px;">
+                                    维修部位
+                                </th>
+                                <th style="width: 200px;">
+                                    维修材料名称
+                                </th>
+                                <th style="width: 200px;">
+                                    市场公允单价
+                                </th>
+                                <th style="width: 200px;">
+                                    数量
+                                </th>
+                                <th style="width: 200px;">
+                                    预算价格
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  v-for="m in materials.list">
+                                <td>{{m.partName}}</td>
+                                <td>{{m.materialName}}</td>
+                                <td>{{m.materialValue}}</td>
+                                <td>{{m.amount1}}</td>
+                                <td>{{m.materialValue*m.amount1}}</td>
+                                <td>
+                                    <button type="button" class="btn   edit" v-on:click="showMaterialDialog('编辑维修材料',$index)"><i class="fa fa-edit"></i> 编辑</button>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteMaterialDialog(m.materialName,$index) "><i class="fa fa-trash-o"></i> 删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-toolbar" v-show="showItem">
+                    <button type="button" class="btn btn-primary " v-on:click="query(0)"><i class="fa  fa-plus"></i>  关联材料出库单</button>
+                </div>
+                <div class="row" v-show="showItem">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 200px;">
+                                    材料名称
+                                </th>
+                                <th style="width: 200px;">
+                                    材料编码
+                                </th>
+                                <th style="width: 200px;">
+                                    数量
+                                </th>
+                                <th style="width: 200px;">
+                                    单价
+                                </th>
+                                <th style="width: 200px;">
+                                    预算价格
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  v-for="m in list2">
+                                <td>{{item.code}}</td>
+                                <td>{{item.clxh}}</td>
+                                <td>{{item.cph}}</td>
+                                <td>{{item.killomiters}}</td>
+                                <td>{{item.driverName}}</td>
+                                <td>{{item.note}}</td>
+                                <td>{{item.note2}}</td>
+                                <td>{{item.note3}}</td>
+                                <td>
+                                    <button type="button" class="btn   edit" v-on:click="showDialog()"><i class="fa fa-edit"></i> 编辑</button>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--选择维修申请单-->
+<div class="bootbox modal fade modal-primary in"  id="chooseAuditingItem">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">选择维修申请单</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered ">
+                    <thead>
+                    <tr role="row">
+                        <th style="width: 200px;">
+                            编号
+                        </th>   
+                        <th style="width: 200px;">
+                            车辆型号
+                        </th>   
+                        <th style="width: 200px;">
+                            车牌号
+                        </th> 
+                        <th style="width: 200px;">
+                            驾驶员
+                        </th> 
+                        <th>
+                            审核时间
+                        </th>
+                        <th style="width: 200px;">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="m in list.items">
+                        <td>{{m.code}}</td>
+                        <td>{{m.clxh}}</td>
+                        <td>{{m.cph}}</td>
+                        <td>{{m.driverName}}</td>
+                        <td>{{m.date}}</td>
+                        <td>
+                            <button type="button" class="btn   edit" v-on:click="select(m.id) "><i class="fa  fa-check"></i> 选择</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="9" class="DTTTFooter ">
+                            <div class="col-sm-4">
+                                <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                            </div>
+                            <div class="col-sm-8 ">
+                                <div class="dataTables_paginate paging_bootstrap">
+                                    <ul id="container" class="pagination"></ul>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyApplyForVehicleMaintenanceNote3Dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">填写维修厂意见</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">维修厂意见<span class="red" >*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <textarea rows="4" class="form-control " placeholder="必填" name="note3" v-model="item.note3"  v-validate:note3="{required:true}"></textarea>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="updateIndex()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--编辑工时费-->
+<div class="bootbox modal fade modal-primary in" id="modifyManHourDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{manHour.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">维修部位</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control"  name="partName"  v-model="manHour.item.partName"  v-validate:partName="{required:true}">
+                                                <div class="input-group-btn open">
+                                                    <a class="btn btn-blue " href="javascript:void(0);" aria-expanded="true" v-on:click="loadTree()"><i class="fa fa-angle-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-container">
+                                                <div class="dropdown-preview" style="width: 100%">
+                                                    <div id="menuContent" class="dropdown-menu" style="display: none; width: 100%;">
+                                                        <ul id="treePart" class="ztree"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-sm-2 control-label no-padding-right">工时类别<span class="red" >*</span></label>
+                                <div class="col-sm-10">
+                                    <select id="editManHours" style="width: 100%" v-model="manHour.item.manHourId" name="manHourId" v-validate:manHourId="{required:true}">
+                                        <option v-for="option of manHour.dicManHours" v-bind:value="option.id">{{option.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-sm-2 control-label no-padding-right">工时<span class="red" >*</span></label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="hours1" v-model="manHour.item.hours1" v-validate:hours1="{required:true}">
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="addManHour()" v-if="manHour.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>新增关闭</button>
+                <button type="submit" class="btn btn-primary" v-on:click="updateMaterial()"  v-if="!manHour.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>保存关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--删除工时费对话框-->
+<div class="bootbox modal fade modal-darkorange in" id="deleteManHourDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除[{{manHour.title}}]么？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="deleteManHour()"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--编辑维修材料-->
+<div class="bootbox modal fade modal-primary in" id="modifyMaterialDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{materials.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v1">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">维修部位</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="partName" v-model="materials.item.partName" v1-validate:partName="{required:true}">
+                                                <div class="input-group-btn open">
+                                                    <a class="btn btn-blue " href="javascript:void(0);" aria-expanded="true" v-on:click="loadTree2()"><i class="fa fa-angle-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-container">
+                                                <div class="dropdown-preview" style="width: 100%">
+                                                    <div id="menuContent2" class="dropdown-menu" style="display: none; width: 100%;">
+                                                        <ul id="treePart2" class="ztree"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">维修材料名称<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <select id="editMaterial" style="width: 100%" v-model="materials.item.materialId" name="materialId" v1-validate:materialId="{required:true}">
+                                        <option v-for="option of materials.dicMaterials" v-bind:value="option.id">{{option.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">数量<span class="red">*</span></label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="amount1" v-model="materials.item.amount1" v1-validate:amount1="{required:true}">
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="addMaterial()" v-show="materials.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>新增关闭</button>
+                <button type="submit" class="btn btn-primary" v-on:click="updateMaterial()" v-show="!materials.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>保存关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--删除维修材料对话框-->
+<div class="bootbox modal fade modal-darkorange in" id="deleteMaterialDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除[{{materials.title}}]么？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="deleteMaterial()"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/assets/js/ztree/jquery.ztree.core-3.5.js"></script>
+<script src="~/Scripts/audingForVehicleMaintenance2.js"></script>
+
+
+

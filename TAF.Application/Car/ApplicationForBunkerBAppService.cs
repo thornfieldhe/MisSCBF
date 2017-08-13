@@ -224,6 +224,7 @@ namespace SCBF.Car
                 var amount = this.hisStoreStockAppService.Get(month, 1);
                 item.AmountFrom = amount.Key;
                 item.AmountTo = amount.Value;
+                item.ChangedAmount = this.hisStoreStockAppService.GetChangedAmount(month, 1);
             }
 
             return new List<ApplicationForBunkerBListDto>(dtos);

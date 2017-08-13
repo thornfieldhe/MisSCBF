@@ -1,103 +1,93 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ApplyForVehicleMaintenanceEditDto.cs" company=""  author="何翔华">
-//   
+// <copyright file="MaintenanceDeliveryListDto.cs" company=""  author="何翔华">
+//
 // </copyright>
 // <summary>
-//   车辆送修申请单编辑对象
+//   自有材料领用列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Car.Dto
 {
-    using Abp.AutoMapper;
     using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Abp.AutoMapper;
 
     /// <summary>
-    /// 车辆送修申请单编辑对象
+    /// 自有材料领用列表对象
     /// </summary>
-    [AutoMap(typeof(ApplyForVehicleMaintenance))]
-    public class ApplyForVehicleMaintenanceEditDto
+    [AutoMap(typeof(MaintenanceDelivery))]
+    public class MaintenanceDeliveryListDto
     {
         /// <summary>
         /// Id
         /// </summary>
-        public Guid? Id
-        {
-            get; set;
-        }
-
-        public string Code { get; set; }
-
-        /// <summary>
-        /// CarInfoId
-        /// </summary>
-        public Guid CarInfoId
+        public Guid Id
         {
             get; set;
         }
 
         /// <summary>
-        /// 车牌号
+        /// ApplyForVehicleMaintenanceId
         /// </summary>
-        public string Cph { get; set; }
-
-        /// <summary>
-        /// 车辆型号
-        /// </summary>
-        public string Clxh { get; set; }
-
-        /// <summary>
-        /// Killomiters
-        /// </summary>
-        public decimal Killomiters
+        public Guid ApplyForVehicleMaintenanceId
         {
             get; set;
         }
 
         /// <summary>
-        /// DriverId
+        /// DeliveryId
         /// </summary>
-        public Guid DriverId
+        public Guid DeliveryId
         {
             get; set;
         }
 
         /// <summary>
-        /// DriverName
+        /// ProductName
         /// </summary>
-        public string DriverName
+        public string ProductName
         {
             get; set;
         }
 
         /// <summary>
-        /// Note
+        /// Amount
         /// </summary>
-        public string Note
+        public decimal Amount
         {
             get; set;
         }
 
         /// <summary>
-        /// Note2
+        /// 金额
         /// </summary>
-        public string Note2
+        public decimal Price
         {
             get; set;
         }
 
         /// <summary>
-        /// Note3
+        /// 总金额
         /// </summary>
-        public string Note3
+        public decimal Total
         {
             get; set;
         }
 
         /// <summary>
-        /// Status
+        /// Code
         /// </summary>
-        public int Status
+        public string Code
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Unit
+        /// </summary>
+        public string Unit
         {
             get; set;
         }

@@ -1,89 +1,83 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Delivery.cs" company="" author="何翔华">
-//   
+// <copyright file="ManHourListDto.cs" company=""  author="何翔华">
+//
 // </copyright>
 // <summary>
-//   Delivery
+//   工时费列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using SCBF.Car;
-
-namespace SCBF.Storage
+namespace SCBF.Car.Dto
 {
-    using SCBF.BaseInfo;
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 出库
+    /// 工时费列表对象
     /// </summary>
-    public class Delivery : TAFEntity
+    [AutoMap(typeof(ManHour))]
+    public class ManHourListDto
     {
         /// <summary>
-        /// 产品Id
+        /// Id
         /// </summary>
-        public Guid ProductId
-        {
-            get; set;
-        }
-
-
-        public virtual Product Product
+        public Guid Id
         {
             get; set;
         }
 
         /// <summary>
-        /// 出库量
+        /// ApplyForVehicleMaintenanceId
         /// </summary>
-        public decimal Amount
+        public Guid ApplyForVehicleMaintenanceId
         {
             get; set;
         }
 
         /// <summary>
-        /// 金额
+        /// PartName
         /// </summary>
-
-        public decimal Price
+        public string PartName
         {
             get; set;
         }
 
         /// <summary>
-        /// 出库单据Id
+        /// ManHourName
         /// </summary>
-        public Guid DeliveryBillId
-        {
-            get; set;
-        }
-
-
-        public virtual DeliveryBill DeliveryBill
+        public string ManHourName
         {
             get; set;
         }
 
         /// <summary>
-        /// 备注
+        /// 部件Id
         /// </summary>
-        public string Note
+        public Guid PartId { get; set; }
+
+        /// <summary>
+        /// 工时Id
+        /// </summary>
+        public Guid ManHourId { get; set; }
+
+        /// <summary>
+        /// Hours1
+        /// </summary>
+        public decimal Hours1
         {
             get; set;
         }
 
         /// <summary>
-        /// 仓库Id
+        /// Hours2
         /// </summary>
-        public Guid StorageId
-        {
-            get; set;
-        }
-
-        public virtual SysDictionary Storage
+        public decimal Hours2
         {
             get; set;
         }
     }
 }
+
+
+

@@ -293,6 +293,7 @@ namespace SCBF
 
                 mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceListDto>()
                     .ForMember(m => m.Clxh, n => n.MapFrom(r => r.CarInfo.Clxh))
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.CreationTime.ToString("yyyy-MM-dd")))
                     .ForMember(m => m.Cph, n => n.MapFrom(r => r.CarInfo.Cph));
                 mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceEditDto>()
                     .ForMember(m => m.Clxh, n => n.MapFrom(r => r.CarInfo.Clxh))

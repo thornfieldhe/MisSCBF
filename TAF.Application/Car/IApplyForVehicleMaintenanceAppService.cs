@@ -22,11 +22,17 @@ namespace SCBF.Car
     {
         ListResultDto<ApplyForVehicleMaintenanceListDto> GetAll(ApplyForVehicleMaintenanceQueryDto request);
 
+        PagedResultDto<ApplyForVehicleMaintenanceListDto> GetAuditedItems(ApplyForVehicleMaintenanceQueryDto request);
+
         ApplyForVehicleMaintenanceEditDto Get(Guid id);
 
         Task SaveAsync(ApplyForVehicleMaintenanceEditDto input);
 
         void Auding(KeyValue<Guid, int, string> input);
+
+        void SaveNote3(KeyValue<Guid, string> input);
+
+        void Update(ApplyForVehicleMaintenanceUpdateDto input);
 
         void Delete(Guid id);
     }

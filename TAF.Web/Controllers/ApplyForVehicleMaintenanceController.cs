@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+// ReSharper disable All
+
+
 namespace SCBF.Web.Controllers
 {
     using Abp.Web.Mvc.Authorization;
@@ -46,6 +49,11 @@ namespace SCBF.Web.Controllers
             ViewData["list1"] = driverAppService.GetSimpleList();
             ViewData["list2"] = carInfoAppService.GetSimple();
             return PartialView("_AudingForVehicleMaintenanceIndex");
+        }
+
+        public ActionResult AudingForVehicleMaintenanceList2()
+        {
+            return PartialView("_AudingForVehicleMaintenance2Index");
         }
     }
 }

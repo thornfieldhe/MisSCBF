@@ -134,6 +134,8 @@ namespace SCBF.Car.Dto
 
 
         public decimal? AmountTo { get; set; }
+
+        public decimal? ChangedAmount { get; set; }
     }
 }
 

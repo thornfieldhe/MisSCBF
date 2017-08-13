@@ -190,6 +190,21 @@
             get; set;
         }
 
+        public DbSet<ManHour> ManHourBudgets
+        {
+            get; set;
+        }
+
+        public DbSet<ServicingMaterial> ServicingMaterials
+        {
+            get; set;
+        }
+
+        public DbSet<MaintenanceDelivery> MaintenanceDeliveries
+        {
+            get; set;
+        }
+
         #endregion
 
 

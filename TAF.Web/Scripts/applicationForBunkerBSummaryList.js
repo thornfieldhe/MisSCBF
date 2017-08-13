@@ -18,7 +18,6 @@
                         _.each($this.list,
                             function(value) {
                                 value.amountTo2 = value.amountTo == -1 ?"-":value.amountTo.toString();
-                                value.changeAmount = value.amountTo == -1 ?"-":value.amountFrom-value.amountTo;
                             });
                     });
             }

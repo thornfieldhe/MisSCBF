@@ -35,7 +35,7 @@
                     main.list.index = index;
                     main.list.to = main.list.pageSize * (index + 1) < main.list.total ? main.list.pageSize * (index + 1) : main.list.total;
                     main.queryEntity.skipCount = taf.defatulPageSize * index;
-                    abp.services.app.driver.getAll(main.queryEntity)
+                    abp.services.app.applyForVehicleMaintenance.getAll(main.queryEntity)
                         .done(function (r) {
                             main.list.items = r.items;
                             main.list.total = r.totalCount;

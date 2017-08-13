@@ -66,6 +66,14 @@ namespace SCBF.Car.Dto
         }
 
         /// <summary>
+        /// Date
+        /// </summary>
+        public string Date
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Note
         /// </summary>
         public string Note

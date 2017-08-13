@@ -65,7 +65,7 @@ var main = new Vue({
             } else if (id === "pminister") {
                 $this.title = "部长";
                 $this.category = "Car_Minister";
-            }else if (id === "pattendant") {
+            } else if (id === "pattendant") {
                 $this.title = "助理员";
                 $this.category = "Car_Attendant";
             } else if (id === "poilHostingUnit") {
@@ -89,7 +89,10 @@ var main = new Vue({
             } else if (id === "pminorRepairAmount") {
                 $this.title = "小修控制额";
                 $this.category = "Car_MinorRepair";
-            }  else if (id === "pmanHours") {
+            } else if (id === "pmaintenanceParts") {
+                $this.title = "维修部位";
+                $this.category = "Car_MaintenanceParts";
+            } else if (id === "pmanHours") {
                 $this.title = "工时";
                 $this.category = "Car_ManHours";
             } else if (id === "pservicingMaterials") {

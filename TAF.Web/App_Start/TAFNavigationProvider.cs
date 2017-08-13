@@ -318,8 +318,14 @@
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuAuditingForVehicleMaintenances",
-                                L("车辆送修审核单"),
+                                L("车辆送修审批单"),
                                 url: "#auditingForVehicleMaintenances",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuAuditingForVehicleMaintenances2",
+                                L("车辆维修审批单"),
+                                url: "#auditingForVehicleMaintenances2",
                                 requiredPermissionName: PermissionNames.ClUser))
                                 );
         }

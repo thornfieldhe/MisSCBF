@@ -126,6 +126,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\ServicingMaterialMap.cs" />
+    <Compile Include="EntityFramework\Maps\MaintenanceDeliveryMap.cs" />
+    <Compile Include="EntityFramework\Maps\ManHourMap.cs" />
     <Compile Include="EntityFramework\Maps\ApplyForVehicleMaintenanceMap.cs" />
     <Compile Include="EntityFramework\Maps\ActualOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\ApplicationForBunkerBMap.cs" />
@@ -308,6 +311,10 @@
     <Compile Include="Migrations\201708011534561_modifyTable_ApplyForVehicleMaintenance.Designer.cs">
       <DependentUpon>201708011534561_modifyTable_ApplyForVehicleMaintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708050400385_modifyTable_ApplyForVehicleMaintenance2.cs" />
+    <Compile Include="Migrations\201708050400385_modifyTable_ApplyForVehicleMaintenance2.Designer.cs">
+      <DependentUpon>201708050400385_modifyTable_ApplyForVehicleMaintenance2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -330,6 +337,8 @@
     <Compile Include="Repositories\HisOctaneStoreStockRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
+    <Compile Include="Repositories\MaintenanceDeliveryRepository.cs" />
+    <Compile Include="Repositories\ManHourRepository.cs" />
     <Compile Include="Repositories\OctaneStoreRepository.cs" />
     <Compile Include="Repositories\OilCardProofRepository.cs" />
     <Compile Include="Repositories\OilCardRepository.cs" />
@@ -337,6 +346,7 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\RechargeRecordRepository.cs" />
+    <Compile Include="Repositories\ServicingMaterialRepository.cs" />
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="Repositories\AttachmentRepository.cs" />
@@ -487,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708011534561_modifyTable_ApplyForVehicleMaintenance.resx">
       <DependentUpon>201708011534561_modifyTable_ApplyForVehicleMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708050400385_modifyTable_ApplyForVehicleMaintenance2.resx">
+      <DependentUpon>201708050400385_modifyTable_ApplyForVehicleMaintenance2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

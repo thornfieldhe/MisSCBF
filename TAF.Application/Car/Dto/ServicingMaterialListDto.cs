@@ -1,89 +1,83 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Delivery.cs" company="" author="何翔华">
-//   
+// <copyright file="ServicingMaterialListDto.cs" company=""  author="何翔华">
+//
 // </copyright>
 // <summary>
-//   Delivery
+//   维修材料列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using SCBF.Car;
-
-namespace SCBF.Storage
+namespace SCBF.Car.Dto
 {
-    using SCBF.BaseInfo;
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 出库
+    /// 维修材料列表对象
     /// </summary>
-    public class Delivery : TAFEntity
+    [AutoMap(typeof(ServicingMaterial))]
+    public class ServicingMaterialListDto
     {
         /// <summary>
-        /// 产品Id
+        /// Id
         /// </summary>
-        public Guid ProductId
-        {
-            get; set;
-        }
-
-
-        public virtual Product Product
+        public Guid Id
         {
             get; set;
         }
 
         /// <summary>
-        /// 出库量
+        /// ApplyForVehicleMaintenanceName
         /// </summary>
-        public decimal Amount
+        public string ApplyForVehicleMaintenanceName
         {
             get; set;
         }
 
         /// <summary>
-        /// 金额
+        /// PartName
         /// </summary>
-
-        public decimal Price
+        public string PartName
         {
             get; set;
         }
 
         /// <summary>
-        /// 出库单据Id
+        /// MaterialName
         /// </summary>
-        public Guid DeliveryBillId
-        {
-            get; set;
-        }
-
-
-        public virtual DeliveryBill DeliveryBill
+        public string MaterialName
         {
             get; set;
         }
 
         /// <summary>
-        /// 备注
+        /// 部件Id
         /// </summary>
-        public string Note
+        public Guid PartId { get; set; }
+
+        /// <summary>
+        /// 材料Id
+        /// </summary>
+        public Guid MaterialId { get; set; }
+
+        /// <summary>
+        /// Amount1
+        /// </summary>
+        public decimal Amount1
         {
             get; set;
         }
 
         /// <summary>
-        /// 仓库Id
+        /// Amount2
         /// </summary>
-        public Guid StorageId
-        {
-            get; set;
-        }
-
-        public virtual SysDictionary Storage
+        public decimal Amount2
         {
             get; set;
         }
     }
 }
+
+
+

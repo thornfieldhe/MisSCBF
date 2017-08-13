@@ -56,4 +56,20 @@ namespace SCBF.BaseInfo
 
         public static int NoBunker => 2; // 无审批单
     }
+
+    /// <summary>
+    /// 车辆维修审批状态
+    /// </summary>
+    public static class VehicleMaintenanceStatus
+    {
+        public static int Pending => 0;
+
+        public static int Approved => 1;
+
+        public static int Refused => 2;
+
+        public static int Servicing => 3;// 维修中
+
+        public static int Serviced=> 4;// 维修结束
+    }
 }

@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace SCBF.Car
 {
     using System;
@@ -52,8 +54,20 @@ namespace SCBF.Car
         public string Note2 { get; set; }
 
         /// <summary>
+        /// 维修厂意见
+        /// </summary>
+        public string Note3 { get; set; }
+
+        /// <summary>
         /// 审核状态AuditingStatus
         /// </summary>
         public int Status { get; set; }
+
+        public virtual List<ManHour> ManHours { get; set; }
+
+        public virtual List<MaintenanceDelivery> MaintenanceDeliveries { get; set; }
+
+        public virtual List<ServicingMaterial> ServicingMaterials { get; set; }
+        
     }
 }

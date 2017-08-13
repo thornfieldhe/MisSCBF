@@ -12,7 +12,7 @@
         spinner_config: {
             lines: 11,
             length: 0,
-            width: 10,
+            width: 2,
             radius: 20,
             corners: 1.0,
             trail: 60,

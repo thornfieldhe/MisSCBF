@@ -25,12 +25,13 @@ namespace SCBF.Car
     [AbpAuthorize]
     public class HisStoreStockAppService : TAFAppServiceBase, IHisStoreStockAppService
     {
-        private readonly IHisOctaneStoreStockRepository hisOctaneStoreStockRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private readonly IOilCardRepository oilCardRepository;
-        private readonly IOctaneStoreRepository octaneStoreRepository;
-        private readonly IApplicationForBunkerBRepository applicationForBunkerBRepository;
-        private readonly IApplicationForBunkerARepository applicationForBunkerARepository;
+        private readonly IHisOctaneStoreStockRepository _hisOctaneStoreStockRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IOilCardRepository _oilCardRepository;
+        private readonly IOctaneStoreRepository _octaneStoreRepository;
+        private readonly IApplicationForBunkerBRepository _applicationForBunkerBRepository;
+        private readonly IApplicationForBunkerARepository _applicationForBunkerARepository;
+        private readonly IOilRechargeRecordRepository _oilRechargeRecordRepository;
 
         public HisStoreStockAppService(
             IHisOctaneStoreStockRepository hisOctaneStoreStockRepository,
@@ -38,20 +39,22 @@ namespace SCBF.Car
             IOilCardRepository oilCardRepository,
             IOctaneStoreRepository octaneStoreRepository,
             IApplicationForBunkerBRepository applicationForBunkerBRepository,
-            IApplicationForBunkerARepository applicationForBunkerARepository)
+            IApplicationForBunkerARepository applicationForBunkerARepository, 
+            IOilRechargeRecordRepository oilRechargeRecordRepository)
         {
-            this.hisOctaneStoreStockRepository = hisOctaneStoreStockRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
-            this.oilCardRepository = oilCardRepository;
-            this.octaneStoreRepository = octaneStoreRepository;
-            this.applicationForBunkerBRepository = applicationForBunkerBRepository;
-            this.applicationForBunkerARepository = applicationForBunkerARepository;
+            this._hisOctaneStoreStockRepository = hisOctaneStoreStockRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._oilCardRepository = oilCardRepository;
+            this._octaneStoreRepository = octaneStoreRepository;
+            this._applicationForBunkerBRepository = applicationForBunkerBRepository;
+            this._applicationForBunkerARepository = applicationForBunkerARepository;
+            this._oilRechargeRecordRepository = oilRechargeRecordRepository;
         }
 
 
         public KeyValue<decimal, decimal> Get(int month, int category)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
@@ -60,10 +63,10 @@ namespace SCBF.Car
             var yearMonth = new DateTime(int.Parse(currentYearItem.Value), month, 1);
             var yearMonthTo = yearMonth.ToString("yyyyMM");
             var yearMonthFrom = yearMonth.AddMonths(-1).ToString("yyyyMM");
-            var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+            var item = this._hisOctaneStoreStockRepository.FirstOrDefault(
                 r => r.YearMonth == yearMonthFrom && r.Category == category);
 
-            var item2 = this.hisOctaneStoreStockRepository.FirstOrDefault(
+            var item2 = this._hisOctaneStoreStockRepository.FirstOrDefault(
                 r => r.YearMonth == yearMonthTo && r.Category == category);
 
             decimal amount1 = item == null ? 0 : item.Amount;
@@ -73,16 +76,17 @@ namespace SCBF.Car
                 switch (category)
                 {
                     case 0:
-                        amount2 = amount1 - this.applicationForBunkerARepository
+                        amount2 = amount1 - this._applicationForBunkerARepository
                             .GetAllList(
-                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Confirm)
-                            .Sum(r => r.Amount);
+                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Confirm).Sum(r => r.Amount)+
+                                  this._oilCardRepository.GetAllList(r => r.CreationTime.Year == year && r.CreationTime.Month == month).Sum(r => r.Amount);
                         break;
                     case 1:
-                        amount2 = amount1 - this.applicationForBunkerBRepository
+                        amount2 = amount1 - this._applicationForBunkerBRepository
                             .GetAllList(
-                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Checked)
-                            .Sum(r => r.Amount);
+                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Checked).Sum(r => r.AuditingAmount) +
+                        this._oilRechargeRecordRepository.GetAllList(r => r.CreationTime.Year == year && r.CreationTime.Month == month).Sum(r=>r.Amount);
+
                         break;
                 }
             }
@@ -98,13 +102,58 @@ namespace SCBF.Car
             };
         }
 
+        /// <summary>
+        /// 累计加油量/加油卡金额
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public  decimal GetChangedAmount(int month, int category)
+        {
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var year = int.Parse(currentYearItem.Value);
+            var yearMonth = new DateTime(int.Parse(currentYearItem.Value), month, 1);
+            var yearMonthTo = yearMonth.ToString("yyyyMM");
+
+            var item = this._hisOctaneStoreStockRepository.FirstOrDefault(
+                r => r.YearMonth == yearMonthTo && r.Category == category);
+
+            decimal amount = 0;
+            if (item == null)
+            {
+                switch (category)
+                {
+                    case 0:
+                        amount = this._applicationForBunkerARepository
+                            .GetAllList(
+                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Confirm).Sum(r => r.ConfirmAmount);
+                        break;
+                    case 1:
+                        amount = this._applicationForBunkerBRepository
+                            .GetAllList(
+                                r => r.Date.Year == year && r.Date.Month == month && r.Status == ApplicationForBunkerAStatus.Checked).Sum(r => r.AuditingAmount) ;
+                        break;
+                }
+            }
+            else
+            {
+                amount = item.Amount;
+            }
+
+            return amount;
+        }
+
         public List<HisOilStoreListDto> GetOilStoreHis(int quarter)
         {
-            var list = this.octaneStoreRepository.GetAllList();
+            var list = this._octaneStoreRepository.GetAllList();
             var result = new List<HisOilStoreListDto>();
             foreach (var i in list)
             {
-                var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
+                var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
                 if (currentYearItem == null)
                 {
                     throw new UserFriendlyException("预算年度不存在");
@@ -130,10 +179,10 @@ namespace SCBF.Car
                 var yearMonth = new DateTime(int.Parse(currentYearItem.Value), monthTo, 1);
                 var yearMonthTo = yearMonth.ToString("yyyyMM");
                 var yearMonthFrom = yearMonth.AddMonths(-2).ToString("yyyyMM");
-                var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                var item = this._hisOctaneStoreStockRepository.FirstOrDefault(
                     r => r.YearMonth == yearMonthFrom && r.Category == 1 && r.OctaneStoreId == i.Id);
 
-                var item2 = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                var item2 = this._hisOctaneStoreStockRepository.FirstOrDefault(
                     r => r.YearMonth == yearMonthTo && r.Category == 1 && r.OctaneStoreId == i.Id);
 
                 decimal amount1 = item == null ? 0 : item.Amount;
@@ -141,7 +190,7 @@ namespace SCBF.Car
                 if (item2 == null)
                 {
 
-                    amount2 = amount1 - this.applicationForBunkerBRepository
+                    amount2 = amount1 - this._applicationForBunkerBRepository
                                   .GetAllList(
                                       r => r.Date.Year == year && r.Date.Month <= monthTo && r.Status == ApplicationForBunkerAStatus.Checked && r.OctaneStoreId == i.Id)
                                   .Sum(r => r.Amount);
@@ -152,13 +201,13 @@ namespace SCBF.Car
                 }
 
 
-                var octaneRating = this.sysDictionaryRepository.Get(i.OctaneRatingId);
+                var octaneRating = this._sysDictionaryRepository.Get(i.OctaneRatingId);
                 if (octaneRating == null)
                 {
                     throw new UserFriendlyException("油料标号不存在");
                 }
 
-                var store = this.sysDictionaryRepository.Get(i.StoreId);
+                var store = this._sysDictionaryRepository.Get(i.StoreId);
                 if (store == null)
                 {
                     throw new UserFriendlyException("代管单位不存在");
@@ -181,11 +230,11 @@ namespace SCBF.Car
 
         public List<HisOilCardListDto> GetOilCardHis(int quarter)
         {
-            var list = this.oilCardRepository.GetAllList();
+            var list = this._oilCardRepository.GetAllList();
             var result = new List<HisOilCardListDto>();
             foreach (var i in list)
             {
-                var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(
+                var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(
                     r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Car_Year);
                 if (currentYearItem == null)
                 {
@@ -212,10 +261,10 @@ namespace SCBF.Car
                 var yearMonth = new DateTime(int.Parse(currentYearItem.Value), monthTo, 1);
                 var yearMonthTo = yearMonth.ToString("yyyyMM");
                 var yearMonthFrom = yearMonth.AddMonths(-3).ToString("yyyyMM");
-                var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                var item = this._hisOctaneStoreStockRepository.FirstOrDefault(
                     r => r.YearMonth == yearMonthFrom && r.Category == 0 && r.OctaneStoreId == i.Id);
 
-                var item2 = this.hisOctaneStoreStockRepository.FirstOrDefault(
+                var item2 = this._hisOctaneStoreStockRepository.FirstOrDefault(
                     r => r.YearMonth == yearMonthTo && r.Category == 0);
 
                 decimal amount1 = item == null ? 0 : item.Amount;
@@ -223,7 +272,7 @@ namespace SCBF.Car
                 if (item2 == null)
                 {
 
-                    amount2 = this.applicationForBunkerARepository
+                    amount2 = this._applicationForBunkerARepository
                         .GetAllList(
                             r => r.Date.Year == year
                                  && r.Date.Month <= monthTo && r.Status == ApplicationForBunkerAStatus.Confirm
@@ -248,7 +297,7 @@ namespace SCBF.Car
         [AbpAllowAnonymous]
         public void BackupData()
         {
-            var stores = this.octaneStoreRepository.GetAll();
+            var stores = this._octaneStoreRepository.GetAll();
 
             foreach (var store in stores)
             {
@@ -262,7 +311,7 @@ namespace SCBF.Car
                 Add(input);
             }
 
-            var cards = this.oilCardRepository.GetAll();
+            var cards = this._oilCardRepository.GetAll();
 
             foreach (var card in cards)
             {
@@ -280,7 +329,7 @@ namespace SCBF.Car
 
         private void Add(HisStockDto input)
         {
-            var item = this.hisOctaneStoreStockRepository.FirstOrDefault(
+            var item = this._hisOctaneStoreStockRepository.FirstOrDefault(
                 r => r.YearMonth == input.YearMonth && r.Category == input.Category);
             if (item == null)
             {
@@ -291,12 +340,12 @@ namespace SCBF.Car
                     OctaneStoreId = input.Id,
                     Amount = input.Amount
                 };
-                this.hisOctaneStoreStockRepository.Insert(item);
+                this._hisOctaneStoreStockRepository.Insert(item);
             }
             else
             {
                 item.Amount = input.Amount;
-                this.hisOctaneStoreStockRepository.Update(item);
+                this._hisOctaneStoreStockRepository.Update(item);
             }
         }
     }
