@@ -1,71 +1,65 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MaintenanceDeliveryListDto.cs" company=""  author="何翔华">
-//
+// <copyright file="RepairCostEditDto.cs" company=""  author="何翔华">
+//   
 // </copyright>
 // <summary>
-//   自有材料领用列表对象
+//   车辆维修审批单编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Car.Dto
 {
-    using Abp.AutoMapper;
     using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Abp.AutoMapper;
 
     /// <summary>
-    /// 自有材料领用列表对象
+    /// 车辆维修审批单编辑对象
     /// </summary>
-    [AutoMap(typeof(MaintenanceDelivery))]
-    public class MaintenanceDeliveryListDto
+    [AutoMap(typeof(RepairCost))]
+    public class RepairCostEditDto
     {
+        /// <summary>
+        /// Id
+        /// </summary>
+        public Guid? Id
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Category
+        /// </summary>
+        public string Category
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Year
+        /// </summary>
+        public int Year
+        {
+            get; set;
+        }        
+        
+        /// <summary>
+        /// Cost
+        /// </summary>
+        public decimal Cost
+        {
+            get; set;
+        }        
+        
         /// <summary>
         /// ApplyForVehicleMaintenanceId
         /// </summary>
-        public Guid? ApplyForVehicleMaintenanceId
+        public Guid ApplyForVehicleMaintenanceId
         {
             get; set;
-        }
-
-        /// <summary>
-        /// DeliveryId
-        /// </summary>
-        public Guid Id
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// ProductName
-        /// </summary>
-        public string Name
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Amount
-        /// </summary>
-        public decimal Amount
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 金额
-        /// </summary>
-        public decimal Price
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Code
-        /// </summary>
-        public string Code
-        {
-            get; set;
-        }
-    }
+        }        
+    } 
 }
 
 

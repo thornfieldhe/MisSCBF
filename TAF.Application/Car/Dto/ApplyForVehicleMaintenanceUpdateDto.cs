@@ -22,10 +22,12 @@ namespace SCBF.Car.Dto
 
         public int Status { get; set; }
 
-        public List<ManHourListDto> ManHours { get; set; }
+        public decimal Total { get; set; }
 
-        public List<MaintenanceDeliveryListDto> MaintenanceDeliveries { get; set; }
+        public List<ManHourListDto> ManHour { get; set; }
 
-        public List<ServicingMaterialListDto> ServicingMaterials { get; set; }
+        public List<MaintenanceDeliveryListDto> Deliveries { get; set; }
+
+        public List<ServicingMaterialListDto> Materials { get; set; }
     }
 }

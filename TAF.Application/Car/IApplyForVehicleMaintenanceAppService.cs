@@ -30,7 +30,7 @@ namespace SCBF.Car
 
         void Auding(KeyValue<Guid, int, string> input);
 
-        void SaveNote3(KeyValue<Guid, string> input);
+        void SaveNote3(KeyValue<Guid, string, string> input);
 
         void Update(ApplyForVehicleMaintenanceUpdateDto input);
 

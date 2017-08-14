@@ -205,6 +205,11 @@
             get; set;
         }
 
+        public DbSet<RepairCost> RepairCosts
+        {
+            get; set;
+        }
+
         #endregion
 
 

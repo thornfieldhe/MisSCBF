@@ -1,71 +1,64 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MaintenanceDeliveryListDto.cs" company=""  author="何翔华">
-//
+// <copyright file="RepairCostListDto.cs" company=""  author="何翔华">
+//   
 // </copyright>
 // <summary>
-//   自有材料领用列表对象
+//   车辆维修审批单列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Car.Dto
 {
-    using Abp.AutoMapper;
     using System;
 
+    using Abp.AutoMapper;
+
     /// <summary>
-    /// 自有材料领用列表对象
+    /// 车辆维修审批单列表对象
     /// </summary>
-    [AutoMap(typeof(MaintenanceDelivery))]
-    public class MaintenanceDeliveryListDto
+    [AutoMap(typeof(RepairCost))]
+    public class RepairCostListDto
     {
         /// <summary>
-        /// ApplyForVehicleMaintenanceId
-        /// </summary>
-        public Guid? ApplyForVehicleMaintenanceId
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// DeliveryId
+        /// Id
         /// </summary>
         public Guid Id
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// ProductName
+        /// Category
         /// </summary>
-        public string Name
+        public string Category
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// Amount
+        /// Year
         /// </summary>
-        public decimal Amount
+        public int Year
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// 金额
+        /// Cost
         /// </summary>
-        public decimal Price
+        public decimal Cost
         {
             get; set;
-        }
-
+        }        
+        
         /// <summary>
-        /// Code
+        /// ApplyForVehicleMaintenanceName
         /// </summary>
-        public string Code
+        public string ApplyForVehicleMaintenanceName
         {
             get; set;
-        }
-    }
+        }    
+    } 
 }
 
 

@@ -9,14 +9,12 @@
 
 namespace SCBF.Storage
 {
-    using System;
-    using System.Collections.Generic;
-
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.UI;
-
     using SCBF.Storage.Dto;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 出库服务
@@ -24,17 +22,17 @@ namespace SCBF.Storage
     [AbpAuthorize]
     public class DeliveryAppService : TAFAppServiceBase, IDeliveryAppService
     {
-        private readonly IProductRepository productRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private readonly IDeliveryRepository deliveryRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IDeliveryRepository _deliveryRepository;
 
         public DeliveryAppService(IProductRepository productRepository,
                                   IDeliveryRepository deliveryRepository,
                                   ISysDictionaryRepository sysDictionaryRepository)
         {
-            this.productRepository = productRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
-            this.deliveryRepository = deliveryRepository;
+            this._productRepository = productRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._deliveryRepository = deliveryRepository;
         }
 
         /// <summary>
@@ -44,17 +42,23 @@ namespace SCBF.Storage
         /// <returns></returns>
         public ProductStockListDto Entry(ProductStockQueryDto request)
         {
-            var product = this.productRepository.FirstOrDefault(r => r.Code == request.Code);
+            var product = this._productRepository.FirstOrDefault(r => r.Code == request.Code);
             if (product == null)
             {
                 throw new UserFriendlyException("当前商品不存在");
             }
             var output = product.MapTo<ProductStockListDto>();
-            output.StorageName = this.sysDictionaryRepository.Get(request.StorageId).Value;
+            output.StorageName = this._sysDictionaryRepository.Get(request.StorageId).Value;
 
             output.StorageId = request.StorageId;
             output.Amount = 1;
             return output;
+        }
+
+        public List<ProductStockListDto> Get(Guid billId)
+        {
+            var list = this._deliveryRepository.GetAllList(r => r.DeliveryBillId == billId);
+            return list.MapTo<List<ProductStockListDto>>();
         }
     }
 }

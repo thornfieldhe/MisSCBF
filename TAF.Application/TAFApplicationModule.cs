@@ -299,6 +299,17 @@ namespace SCBF
                     .ForMember(m => m.Clxh, n => n.MapFrom(r => r.CarInfo.Clxh))
                     .ForMember(m => m.Cph, n => n.MapFrom(r => r.CarInfo.Cph));
                 mapper.CreateMap<ApplyForVehicleMaintenanceEditDto, ApplyForVehicleMaintenance>();
+
+                mapper.CreateMap<MaintenanceDeliveryListDto, MaintenanceDelivery>()
+                .ForMember(m => m.Id, n => n.MapFrom(r => Guid.NewGuid()))
+                .ForMember(m => m.DeliveryId, n => n.MapFrom(r => r.Id));
+
+                mapper.CreateMap<ManHourListDto, ManHour>()
+                .ForMember(m => m.Id, n => n.MapFrom(r => Guid.NewGuid()));
+
+                mapper.CreateMap<ServicingMaterialListDto, ServicingMaterial>()
+                .ForMember(m => m.Id, n => n.MapFrom(r => Guid.NewGuid()));
+
                 #endregion
             });
         }

@@ -9,9 +9,8 @@
 
 namespace SCBF.Car.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 维修材料列表对象
@@ -22,15 +21,15 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Id
         /// </summary>
-        public Guid Id
+        public Guid? RowId
         {
             get; set;
         }
 
         /// <summary>
-        /// ApplyForVehicleMaintenanceName
+        /// ApplyForVehicleMaintenanceId
         /// </summary>
-        public string ApplyForVehicleMaintenanceName
+        public Guid? ApplyForVehicleMaintenanceId
         {
             get; set;
         }
@@ -72,7 +71,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Amount2
         /// </summary>
-        public decimal Amount2
+        public decimal? Amount2
         {
             get; set;
         }

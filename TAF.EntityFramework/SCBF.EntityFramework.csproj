@@ -315,6 +315,14 @@
     <Compile Include="Migrations\201708050400385_modifyTable_ApplyForVehicleMaintenance2.Designer.cs">
       <DependentUpon>201708050400385_modifyTable_ApplyForVehicleMaintenance2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708130939372_modifytable_applyforVehicleMaintenance4.cs" />
+    <Compile Include="Migrations\201708130939372_modifytable_applyforVehicleMaintenance4.Designer.cs">
+      <DependentUpon>201708130939372_modifytable_applyforVehicleMaintenance4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708131026224_addTable_RepairCost.cs" />
+    <Compile Include="Migrations\201708131026224_addTable_RepairCost.Designer.cs">
+      <DependentUpon>201708131026224_addTable_RepairCost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -346,6 +354,7 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\RechargeRecordRepository.cs" />
+    <Compile Include="Repositories\RepairCostRepository.cs" />
     <Compile Include="Repositories\ServicingMaterialRepository.cs" />
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
@@ -500,6 +509,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708050400385_modifyTable_ApplyForVehicleMaintenance2.resx">
       <DependentUpon>201708050400385_modifyTable_ApplyForVehicleMaintenance2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708130939372_modifytable_applyforVehicleMaintenance4.resx">
+      <DependentUpon>201708130939372_modifytable_applyforVehicleMaintenance4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708131026224_addTable_RepairCost.resx">
+      <DependentUpon>201708131026224_addTable_RepairCost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

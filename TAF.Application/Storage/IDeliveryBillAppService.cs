@@ -7,11 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Application.Services.Dto;
+using System;
+
 namespace SCBF.Storage
 {
-    using System.Collections.Generic;
-
     using SCBF.Storage.Dto;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -22,6 +24,8 @@ namespace SCBF.Storage
         Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input);
 
         StockBillEditDto New();
+
+        PagedResultDto<TAF.Utility.KeyValue<Guid, string>> GetSimpleList(DeliveryBillQueryDto query);
     }
 }
 

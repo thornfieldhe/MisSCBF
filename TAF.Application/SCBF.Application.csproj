@@ -158,10 +158,16 @@
     <Compile Include="Car\Dto\HisStockDto.cs" />
     <Compile Include="Car\Dto\MaintenanceDeliveryListDto.cs" />
     <Compile Include="Car\Dto\ManHourListDto.cs" />
+    <Compile Include="Car\Dto\RepairCostEditDto.cs" />
+    <Compile Include="Car\Dto\RepairCostListDto.cs" />
+    <Compile Include="Car\Dto\RepairCostQueryDto.cs" />
     <Compile Include="Car\Dto\ServicingMaterialListDto.cs" />
     <Compile Include="Car\HisStoreStockAppService.cs" />
     <Compile Include="Car\IApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\IHisStoreStockAppService.cs" />
+    <Compile Include="Car\IRepairCostAppService.cs" />
+    <Compile Include="Car\RepairCostAppService.cs" />
+    <Compile Include="Storage\Dto\DeliveryBillQueryDto.cs" />
     <Compile Include="Tasks\DailyTask.cs" />
     <Compile Include="Tasks\Yearly.cs" />
     <Compile Include="BaseInfo\Dto\AttachmentEditDto.cs" />

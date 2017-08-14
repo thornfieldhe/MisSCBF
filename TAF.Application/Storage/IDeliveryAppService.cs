@@ -9,10 +9,9 @@
 
 namespace SCBF.Storage
 {
+    using SCBF.Storage.Dto;
     using System;
     using System.Collections.Generic;
-
-    using SCBF.Storage.Dto;
 
     /// <summary>
     /// 出库应用接口
@@ -20,6 +19,8 @@ namespace SCBF.Storage
     public interface IDeliveryAppService : IBaseEntityApplicationService
     {
         ProductStockListDto Entry(ProductStockQueryDto request);
+
+        List<ProductStockListDto> Get(Guid billId);
     }
 }
 

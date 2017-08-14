@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Application.Services.Dto;
+using Abp.Linq.Extensions;
+
 namespace SCBF.Storage
 {
     using Abp.Authorization;
@@ -17,6 +20,7 @@ namespace SCBF.Storage
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using TAF.Utility;
 
     /// <summary>
     /// 出库单服务
@@ -24,17 +28,27 @@ namespace SCBF.Storage
     [AbpAuthorize]
     public class DeliveryBillAppService : TAFAppServiceBase, IDeliveryBillAppService
     {
-        private readonly IDeliveryBillRepository deliveryBillRepository;
-        private readonly IStockRepository stockRepository;
-        private readonly IDeliveryRepository deliveryRepository;
+        private readonly IDeliveryBillRepository _deliveryBillRepository;
+        private readonly IStockRepository _stockRepository;
+        private readonly IDeliveryRepository _deliveryRepository;
 
         public DeliveryBillAppService(
             IDeliveryBillRepository deliveryBillRepository,
             IDeliveryRepository deliveryRepository, IStockRepository stockRepository)
         {
-            this.deliveryBillRepository = deliveryBillRepository;
-            this.stockRepository = stockRepository;
-            this.deliveryRepository = deliveryRepository;
+            this._deliveryBillRepository = deliveryBillRepository;
+            this._stockRepository = stockRepository;
+            this._deliveryRepository = deliveryRepository;
+        }
+
+        public PagedResultDto<KeyValue<Guid, string>> GetSimpleList(DeliveryBillQueryDto request)
+        {
+            var query = this._deliveryBillRepository.GetAllList(
+                r => request.Code == null || request.Code == "" || r.Code.Contains(request.Code));
+            var count = query.Count();
+            var list = query.AsQueryable().PageBy(request).Select(r => new TAF.Utility.KeyValue<Guid, string> { Key = r.Id, Value = r.Code }).ToList();
+
+            return new PagedResultDto<KeyValue<Guid, string>>(count, list);
         }
 
         public StockBillEditDto New()
@@ -53,17 +67,17 @@ namespace SCBF.Storage
             foreach (var entry in input.Items)
             {
                 var stocks =
-                    this.stockRepository.Get(
+                    this._stockRepository.Get(
                             r => r.ProductId == entry.ProductId && r.StorageId == entry.StorageId)
                         .OrderBy(r => r.CreationTime)
                         .ToList();//获取所有行库存量
                 var totalAmount = entry.Amount;
                 foreach (var stock in stocks)
                 {
-                    if(stock.Amount > totalAmount) // 如果当前行库存量>出库量,则当前库存量=当前原库存量-出库量
+                    if (stock.Amount > totalAmount) // 如果当前行库存量>出库量,则当前库存量=当前原库存量-出库量
                     {
                         stock.Amount -= totalAmount;
-                        this.stockRepository.Update(stock);
+                        this._stockRepository.Update(stock);
                         item.Deliveries.Add(
                             new Delivery()
                             {
@@ -80,7 +94,7 @@ namespace SCBF.Storage
                     else if (stock.Amount == totalAmount) // 如果当前行库存量==出库量,则清除当前行库存
                     {
                         totalAmount = 0;
-                        this.stockRepository.Delete(stock);
+                        this._stockRepository.Delete(stock);
                         item.Deliveries.Add(
                             new Delivery()
                             {
@@ -107,7 +121,7 @@ namespace SCBF.Storage
                                 Price = stock.Price,
                                 StorageId = stock.StorageId
                             });
-                        this.stockRepository.Delete(stock);
+                        this._stockRepository.Delete(stock);
                     }
                 }
                 if (totalAmount > 0)
@@ -117,16 +131,16 @@ namespace SCBF.Storage
             }
 
             item.Code = this.GetMaxCode();
-            await this.deliveryBillRepository.InsertAsync(item);
+            await this._deliveryBillRepository.InsertAsync(item);
             this.CurrentUnitOfWork.SaveChanges();
-            return this.deliveryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.DeliveryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
+            return this._deliveryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.DeliveryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
         }
 
         private string GetMaxCode()
         {
             var preCode = DateTime.Today.ToString("yyyyMMdd");
             var maxCode =
-                this.deliveryBillRepository.Get(r => r.Code.StartsWith("CK" + preCode))
+                this._deliveryBillRepository.Get(r => r.Code.StartsWith("CK" + preCode))
                     .OrderByDescending(r => r.Code)
                     .FirstOrDefault()?.Code;
             if (string.IsNullOrWhiteSpace(maxCode))

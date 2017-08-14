@@ -9,9 +9,8 @@
 
 namespace SCBF.Car.Dto
 {
-    using System;
-
     using Abp.AutoMapper;
+    using System;
 
     /// <summary>
     /// 工时费列表对象
@@ -22,7 +21,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Id
         /// </summary>
-        public Guid Id
+        public Guid? RowId
         {
             get; set;
         }
@@ -64,7 +63,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Hours1
         /// </summary>
-        public decimal Hours1
+        public decimal? Hours1
         {
             get; set;
         }
@@ -72,7 +71,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Hours2
         /// </summary>
-        public decimal Hours2
+        public decimal? Hours2
         {
             get; set;
         }

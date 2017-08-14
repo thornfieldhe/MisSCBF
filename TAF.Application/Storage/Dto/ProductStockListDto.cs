@@ -21,6 +21,14 @@ namespace SCBF.Storage.Dto
         /// <summary>
         /// Id
         /// </summary>
+        public Guid Id
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// ProductId
+        /// </summary>
         public Guid ProductId
         {
             get; set;

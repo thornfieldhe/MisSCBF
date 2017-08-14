@@ -23,11 +23,16 @@
                 function(e) {
                     $this.materials.item.materialId = $("#editMaterial").val();
                 });
+        $("#editRepaiType").select2()
+            .on("change",
+                function(e) {
+                    $this.item.repairType = $("#editRepaiType").val();
+                });
 
         this.loadList();
     },
     data: {
-        queryEntity: { status: 2 },
+        queryEntity: { status: 2, code: '' },
         list: {
             options: {
                 num_edge_entries: 1, //边缘页数
@@ -47,10 +52,40 @@
 
                         })
                         .fail(function(r) {
-                            $this.fail(r);
+                            main.fail(r);
                         });
                 }
             }
+        },
+        list2: {
+            options: {
+                num_edge_entries: 1, //边缘页数
+                num_display_entries: 4, //主体页数
+                items_per_page: 10, //每页显示1项  
+                callback: function (index, jq) {
+                    main.list2.from = main.list2.total === 0 ? 0 : main.list2.pageSize * index + 1;
+                    main.list2.index = index;
+                    main.list2.to = main.list2.pageSize * (index + 1) < main.list2.total
+                        ? main.list2.pageSize * (index + 1)
+                        : main.list2.total;
+                    main.queryEntity.skipCount = taf.defatulPageSize * index;
+                    abp.services.app.deliveryBill.getSimpleList(main.queryEntity)
+                        .done(function (r) {
+                            main.list2.items = r.items;
+                            main.list2.total = r.totalCount;
+
+                        })
+                        .fail(function (r) {
+                            main.fail(r);
+                        });
+                }
+            },
+            total: 0,
+            from: 0,
+            to: 0,
+            index: 0,
+            pageSize: taf.defatulPageSize,
+            items: {}
         },
         item: {
             killomiters: 0,
@@ -60,12 +95,10 @@
             driverId: "00000000-0000-0000-0000-000000000000",
             carInfoId: "00000000-0000-0000-0000-000000000000",
             code: "",
-            status: ""
+            status: "",
+            repairType:""
         },
         showItem: false,
-        list2: {},
-        list3: {},
-        list4: {},
         manHour: {
             item: {
                 manHourValue: 0,
@@ -99,7 +132,11 @@
             dicMaterials: []
             
         },
-        index: 0
+        deliveries: [],
+        deliverBillId:'',
+        index: 0,
+        balance:0,
+        total: 0
     },
     methods: {
         query: function(index) {
@@ -122,8 +159,18 @@
             abp.services.app.applyForVehicleMaintenance.get(id)
                 .done(function (m) {
                     $this.item = m;
+                    
                     $("#chooseAuditingItem").modal("hide");
                     $this.showItem = true;
+                    if ($this.item.repairType !== undefined && $this.item.repairType!==null) {
+                        abp.services.app.repairCost.getBalance($this.item.repairType)
+                            .done(function (m) {
+                                $this.balance = m;
+                            })
+                            .fail(function (m) {
+                                $this.fail(m);
+                            });
+                    }
                 })
                 .fail(function (m) {
                     $this.fail(m);
@@ -131,11 +178,18 @@
         },
         updateIndex: function () {
             var $this = this;
-            abp.services.app.applyForVehicleMaintenance.saveNote3({key:$this.item.id,value:$this.item.note3})
+            abp.services.app.applyForVehicleMaintenance.saveNote3({ key: $this.item.id, value: $this.item.note3, item3:$this.item.repairType})
                 .done(function (m) {
                     abp.services.app.applyForVehicleMaintenance.get($this.item.id)
                         .done(function (m) {
                             $this.item = m;
+                            abp.services.app.repairCost.getBalance($this.item.repairType)
+                                .done(function (m) {
+                                    $this.balance = m;
+                                })
+                                .fail(function (m) {
+                                    $this.fail(m);
+                                });
                             $("#modifyApplyForVehicleMaintenanceNote3Dialog").modal("hide");
                         })
                         .fail(function (m) {
@@ -248,6 +302,7 @@
                 id: 0,
                 addState: true};
             $("#modifyManHourDialog").modal("hide");
+            this.getTotal();
         },
         addMaterial: function () {
             this.materials.item.id = this.index;
@@ -261,6 +316,7 @@
             });
             this.manHour.item = {};
             $("#modifyMaterialDialog").modal("hide");
+            this.getTotal();
         },
         updateManHour: function () {
             var obj = this.manHour.list.filter(v => v.id === this.manHour.item.id )[0];
@@ -282,6 +338,7 @@
                 addState: true
             };
             $("#modifyManHourDialog").modal("hide");
+            this.getTotal();
         },
         updateMaterial: function () {
             var obj = this.materials.list.filter(v => v.id === this.materials.item.id)[0];
@@ -303,6 +360,7 @@
                     addState: true};
 
             $("#modifyMaterialDialog").modal("hide");
+            this.getTotal();
         },
         loadTree: function () {
             var $this = this;
@@ -370,7 +428,102 @@
         deleteMaterial:function(index) {
             this.materials.list.splice(index, 1);
             $("#deleteMaterialDialog").modal("hide");
+        },
+        showDeliveryDialog: function () {
+            $("#chooseDelivery").modal("show");
+            this.searchDelivery(0);
+        },
+        searchDelivery:function(index) {
+            var $this = this;
+            abp.services.app.deliveryBill.getSimpleList($this.queryEntity)
+                .done(function (m) {
+                    $this.list2.items = m.items;
+                    $this.list2.total = m.totalCount;
+                    $this.list2.from = $this.list2.total === 0 ? 0 : $this.list2.pageSize * index + 1;
+                    $this.list2.to = $this.list2.pageSize * (index + 1) < $this.list2.total ? $this.list2.pageSize * (index + 1) : $this.list2.total;
+                    $(".pagination").pagination(m.totalCount, $this.list2.options);
+
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        },
+        selectDelivery:function(id) {
+            var $this = this;
+            $this.deliverBillId = id;
+            $("#chooseDelivery").modal("hide");
+            abp.services.app.delivery.get(id)
+                .done(function (m) {
+                    $this.deliveries = m;
+                    $this.getTotal();
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                }); 
+        },
+        loadBalance:function() {
+            abp.services.app.deliveryBill.getSimpleList($this.queryEntity)
+                .done(function (m) {
+                    $this.item.balance = m;
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+            
+        },
+        getTotal: function () {
+            var $this = this;
+            $this.total = 0;
+            _.forEach(this.manHour.list, function (value) {
+                $this.total += value.hours1 * value.manHourValue;
+            });
+            
+            _.forEach(this.materials.list, function (value) {
+                $this.total += value.materialValue * value.amount1;
+            });
+            
+            _.forEach(this.deliveries, function (value) {
+                $this.total += value.amount * value.price;
+            });
+        },
+        audit: function () {
+            var $this = this;
+            if (this.total > this.danger) {
+                taf.notify.success("当前修别余额不足!");
+            } else {
+                abp.services.app.applyForVehicleMaintenance.update({
+                        id: this.item.id,
+                        status: this.status,
+                        total: this.total,
+                        manHour: this.manHour.list,
+                        deliveries: this.deliveries,
+                        materials: this.materials.list
+                    })
+                    .done(function(m) {
+                        taf.notify.success("送修申请单提交成功!");
+                        $this.item = {
+                            killomiters: 0,
+                            note:"",
+                            note2:"",
+                            note3:"",
+                            driverId:"00000000-0000-0000-0000-000000000000",
+                            carInfoId:"00000000-0000-0000-0000-000000000000",
+                            code:"",
+                            status:"",
+                            repairType: ""
+                        };
+                        $this.manHour.list = [];
+                        $this.materials.list = [];
+                        $this.deliveries = [];
+                        $this.total = 0;
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    });
+            }
+
         }
+
     }
 });
 

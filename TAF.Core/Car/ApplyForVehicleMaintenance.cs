@@ -63,11 +63,22 @@ namespace SCBF.Car
         /// </summary>
         public int Status { get; set; }
 
+        /// <summary>
+        /// 总价
+        /// </summary>
+        public decimal TotalPrice { get; set; }
+
+        /// <summary>
+        /// 修理类型
+        /// </summary>
+        public string RepairType { get; set; }
+
+
         public virtual List<ManHour> ManHours { get; set; }
 
         public virtual List<MaintenanceDelivery> MaintenanceDeliveries { get; set; }
 
         public virtual List<ServicingMaterial> ServicingMaterials { get; set; }
-        
+
     }
 }

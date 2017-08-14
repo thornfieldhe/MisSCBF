@@ -101,6 +101,20 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// 总价
+        /// </summary>
+        public decimal? TotalPrice { get; set; }
+
+        /// <summary>
+        /// 修理类型
+        /// </summary>
+        public string RepairType { get; set; }
+        /// <summary>
+        /// 修理类型
+        /// </summary>
+        public string RepairTypeName { get; set; }
     }
 }
 

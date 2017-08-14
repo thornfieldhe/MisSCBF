@@ -6,6 +6,13 @@
             <div class="body">
                 <div class="table-toolbar">
                     <button type="button" class="btn btn-primary " v-on:click="query(0)"><i class="fa fa-search"></i>  搜索审批单</button>
+                    <button type="button" class="btn btn-primary " v-on:click="audit()"><i class="fa fa-edit"></i>  审核</button>
+                    <label>剩余金额:</label>
+                    <label  class="label label-primary">{{balance}}</label>
+                    <label>维修金额:</label>
+                    <span class="label label-primary">
+                        {{total}}
+                    </span>
                 </div>
                 <div class="row" v-show="showItem">
                     <div class="col-md-12">
@@ -36,6 +43,9 @@
                                 <th style="width: 200px;">
                                     维修厂意见
                                 </th>
+                                <th style="width: 100px;">
+                                    修别
+                                </th>
                                 <th style="width: 200px;">
                                     操作
                                 </th>
@@ -51,6 +61,7 @@
                                 <td>{{item.note}}</td>
                                 <td>{{item.note2}}</td>
                                 <td>{{item.note3}}</td>
+                                <td>{{item.repairTypeName}}</td>
                                 <td>
                                     <button type="button" class="btn   edit" v-on:click="showDialog()"><i class="fa fa-edit"></i> 填写维修厂意见</button>
                                 </td>
@@ -148,7 +159,7 @@
                     </div>
                 </div>
                 <div class="table-toolbar" v-show="showItem">
-                    <button type="button" class="btn btn-primary " v-on:click="query(0)"><i class="fa  fa-plus"></i>  关联材料出库单</button>
+                    <button type="button" class="btn btn-primary " v-on:click="showDeliveryDialog()"><i class="fa  fa-plus"></i>  关联材料出库单</button>
                 </div>
                 <div class="row" v-show="showItem">
                     <div class="col-md-12">
@@ -170,25 +181,15 @@
                                 <th style="width: 200px;">
                                     预算价格
                                 </th>
-                                <th style="width: 200px;">
-                                    操作
-                                </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr  v-for="m in list2">
-                                <td>{{item.code}}</td>
-                                <td>{{item.clxh}}</td>
-                                <td>{{item.cph}}</td>
-                                <td>{{item.killomiters}}</td>
-                                <td>{{item.driverName}}</td>
-                                <td>{{item.note}}</td>
-                                <td>{{item.note2}}</td>
-                                <td>{{item.note3}}</td>
-                                <td>
-                                    <button type="button" class="btn   edit" v-on:click="showDialog()"><i class="fa fa-edit"></i> 编辑</button>
-                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
-                                </td>
+                            <tr  v-for="m in deliveries">
+                                <td>{{m.name}}</td>
+                                <td>{{m.code}}</td>
+                                <td>{{m.amount}}</td>
+                                <td>{{m.price}}</td>
+                                <td>{{m.amount *m.price}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -273,13 +274,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">填写维修厂意见</h4>
+                <h4 class="modal-title">填写维修厂意见&修别</h4>
                 <div v-model="title"></div>
             </div>
             <div class="modal-body">
                 <div id="form">
                     <validator name="v">
                         <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">维修类型<span class="red" >*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <select id="editRepaiType" style="width: 100%" v-model="item.repairType" name="repairType" >
+                                                    <option value="Car_MinorRepair">小修</option>
+                                                    <option value="Car_Repair">中修</option>
+                                                    <option value="Car_Overhaul">大修</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group" >
@@ -466,6 +483,65 @@
     </div>
 </div>
 
+<!--选择出库单-->
+<div class="bootbox modal fade modal-primary in" id="chooseDelivery">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">选择出库单</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered ">
+                    <thead>
+                    <tr role="row">
+                        <th style="width: 200px;">
+                            出库单号
+                        </th>
+                        <th style="width: 200px;">
+                            操作
+                        </th>
+                    </tr>
+                    <tr role="row">
+                        <th>
+                           <input type="text" class="form-control" placeholder="出库单号" v-model="queryEntity.code" id="code" /></div>
+            </th>
+            <th>
+                <button type="button" class="btn edit" v-on:click="searchDelivery(0)"><i class="fa fa-search"></i> 搜索</button>
+            </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="m in list2.items">
+                            <td>{{m.value}}</td>
+                            <td>
+                                <button type="button" class="btn   edit" v-on:click="selectDelivery(m.key) "><i class="fa  fa-check"></i> 选择</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="9" class="DTTTFooter ">
+                                <div class="col-sm-4">
+                                    <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list2.from}} - {{list2.to}} / {{list2.total}} </div>
+                                </div>
+                                <div class="col-sm-8 ">
+                                    <div class="dataTables_paginate paging_bootstrap">
+                                        <ul id="container" class="pagination"></ul>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="~/assets/js/ztree/jquery.ztree.core-3.5.js"></script>
 <script src="~/Scripts/audingForVehicleMaintenance2.js"></script>

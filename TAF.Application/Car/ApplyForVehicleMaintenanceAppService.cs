@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 using SCBF.BaseInfo;
 
 namespace SCBF.Car
@@ -33,7 +34,7 @@ namespace SCBF.Car
     public class ApplyForVehicleMaintenanceAppService : TAFAppServiceBase, IApplyForVehicleMaintenanceAppService
     {
         private readonly IApplyForVehicleMaintenanceRepository _applyForVehicleMaintenanceRepository;
-        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+
         private readonly IDriverRepository _driverRepository;
         private readonly IMaintenanceDeliveryRepository _maintenanceDeliveryRepository;
         private readonly IServicingMaterialRepository _servicingMaterialRepository;
@@ -41,7 +42,6 @@ namespace SCBF.Car
 
         public ApplyForVehicleMaintenanceAppService(
             IApplyForVehicleMaintenanceRepository applyForVehicleMaintenanceRepository,
-                                                    ISysDictionaryRepository sysDictionaryRepository,
                                                     IDriverRepository driverRepository,
             IMaintenanceDeliveryRepository maintenanceDeliveryRepository,
             IServicingMaterialRepository servicingMaterialRepository,
@@ -49,7 +49,7 @@ namespace SCBF.Car
             )
         {
             this._applyForVehicleMaintenanceRepository = applyForVehicleMaintenanceRepository;
-            this._sysDictionaryRepository = sysDictionaryRepository;
+
             this._driverRepository = driverRepository;
             this._maintenanceDeliveryRepository = maintenanceDeliveryRepository;
             this._servicingMaterialRepository = servicingMaterialRepository;
@@ -125,6 +125,21 @@ namespace SCBF.Car
             {
                 throw new UserFriendlyException("驾驶员不能为空");
             }
+            if (!string.IsNullOrWhiteSpace(result.RepairType))
+            {
+                switch (result.RepairType)
+                {
+                    case "Car_Overhaul":
+                        result.RepairTypeName = "大修";
+                        break;
+                    case "Car_Repair":
+                        result.RepairTypeName = "中修";
+                        break;
+                    case "Car_MinorRepair":
+                        result.RepairTypeName = "小修";
+                        break;
+                }
+            }
             result.DriverName = driver.Name;
             return result;
         }
@@ -162,7 +177,7 @@ namespace SCBF.Car
             this._applyForVehicleMaintenanceRepository.Delete(id);
         }
 
-        public void SaveNote3(KeyValue<Guid,string> input)
+        public void SaveNote3(KeyValue<Guid, string, string> input)
         {
             var item = this._applyForVehicleMaintenanceRepository.Get(input.Key);
             if (item == null)
@@ -170,6 +185,7 @@ namespace SCBF.Car
                 throw new UserFriendlyException("车辆送修申请单不能为空");
             }
             item.Note3 = input.Value;
+            item.RepairType = input.Item3;
             this._applyForVehicleMaintenanceRepository.Update(item);
         }
 
@@ -180,10 +196,19 @@ namespace SCBF.Car
             {
                 throw new UserFriendlyException("车辆送修申请单不能为空");
             }
-            item.Status = input.Status;
-            var manHours = input.ManHours.MapTo<List<ManHour>>();
-            var servicingMaterials = input.ServicingMaterials.MapTo<List<ServicingMaterial>>();
-            var maintenanceDeliveries = input.MaintenanceDeliveries.MapTo<List<MaintenanceDelivery>>();
+
+            this._maintenanceDeliveryRepository.Delete(r => r.ApplyForVehicleMaintenanceId == item.Id);
+            this._manHourRepository.Delete(r => r.ApplyForVehicleMaintenanceId == item.Id);
+            this._servicingMaterialRepository.Delete(r => r.ApplyForVehicleMaintenanceId == item.Id);
+
+
+            item.Status = VehicleMaintenanceStatus.Servicing;
+            var manHours = input.ManHour.MapTo<List<ManHour>>();
+            manHours.ForEach(r => r.ApplyForVehicleMaintenanceId = item.Id);
+            var servicingMaterials = input.Materials.MapTo<List<ServicingMaterial>>();
+            servicingMaterials.ForEach(r => r.ApplyForVehicleMaintenanceId = item.Id);
+            var maintenanceDeliveries = input.Deliveries.MapTo<List<MaintenanceDelivery>>();
+            maintenanceDeliveries.ForEach(r => r.ApplyForVehicleMaintenanceId = item.Id);
             this._maintenanceDeliveryRepository.InsertRange(maintenanceDeliveries);
             this._manHourRepository.InsertRange(manHours);
             this._servicingMaterialRepository.InsertRange(servicingMaterials);
