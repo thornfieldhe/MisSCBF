@@ -310,6 +310,23 @@ namespace SCBF
                 mapper.CreateMap<ServicingMaterialListDto, ServicingMaterial>()
                 .ForMember(m => m.Id, n => n.MapFrom(r => Guid.NewGuid()));
 
+                mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceUpdateDto>()
+                .ForMember(m => m.Id, n => n.MapFrom(r => Guid.NewGuid()));
+
+                mapper.CreateMap<MaintenanceDelivery, MaintenanceDeliveryListDto>()
+                    .ForMember(m => m.Id, n => n.MapFrom(r => r.DeliveryId));
+
+                mapper.CreateMap<ManHour, ManHourListDto>()
+                    .ForMember(m => m.RowId, n => n.MapFrom(r => r.Id));
+
+                mapper.CreateMap<ServicingMaterial, ServicingMaterialListDto>()
+                    .ForMember(m => m.RowId, n => n.MapFrom(r => r.Id));
+
+                mapper.CreateMap<ApplyForVehicleMaintenance, ApplyForVehicleMaintenanceUpdateDto>()
+                    .ForMember(m => m.ManHour, n => n.MapFrom(r => r.ManHours))
+                    .ForMember(m => m.Deliveries, n => n.MapFrom(r => r.MaintenanceDeliveries))
+                    .ForMember(m => m.Materials, n => n.MapFrom(r => r.ServicingMaterials));
+
                 #endregion
             });
         }

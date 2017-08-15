@@ -327,6 +327,12 @@
                                 L("车辆维修审批单"),
                                 url: "#auditingForVehicleMaintenances2",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuClearingForVehicleMaintenances",
+                                L("车辆维修结算单"),
+                                url: "#clearingForVehicleMaintenances",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 

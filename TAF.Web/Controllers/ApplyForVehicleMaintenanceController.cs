@@ -55,6 +55,11 @@ namespace SCBF.Web.Controllers
         {
             return PartialView("_AudingForVehicleMaintenance2Index");
         }
+
+        public ActionResult AudingForVehicleMaintenanceList3()
+        {
+            return PartialView("_AudingForVehicleMaintenance3Index");
+        }
     }
 }
 

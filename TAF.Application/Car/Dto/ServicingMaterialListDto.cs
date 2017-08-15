@@ -75,6 +75,8 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        public decimal MaterialValue { get; set; }
     }
 }
 

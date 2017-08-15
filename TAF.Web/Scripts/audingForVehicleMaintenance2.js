@@ -516,6 +516,7 @@
                         $this.materials.list = [];
                         $this.deliveries = [];
                         $this.total = 0;
+                        $this.showItem = false;
                     })
                     .fail(function (m) {
                         $this.fail(m);

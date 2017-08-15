@@ -51,6 +51,14 @@ namespace SCBF.Car.Dto
         }
 
         /// <summary>
+        /// ManHourValue
+        /// </summary>
+        public decimal ManHourValue
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 部件Id
         /// </summary>
         public Guid PartId { get; set; }

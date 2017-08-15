@@ -34,6 +34,10 @@ namespace SCBF.Car
 
         void Update(ApplyForVehicleMaintenanceUpdateDto input);
 
+        void Update2(ApplyForVehicleMaintenanceUpdateDto input);
+
+        ApplyForVehicleMaintenanceUpdateDto GetClosingItem(Guid id);
+
         void Delete(Guid id);
     }
 }

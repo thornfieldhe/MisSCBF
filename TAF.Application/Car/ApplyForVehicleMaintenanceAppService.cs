@@ -34,23 +34,33 @@ namespace SCBF.Car
     public class ApplyForVehicleMaintenanceAppService : TAFAppServiceBase, IApplyForVehicleMaintenanceAppService
     {
         private readonly IApplyForVehicleMaintenanceRepository _applyForVehicleMaintenanceRepository;
-
         private readonly IDriverRepository _driverRepository;
         private readonly IMaintenanceDeliveryRepository _maintenanceDeliveryRepository;
         private readonly IServicingMaterialRepository _servicingMaterialRepository;
         private readonly IManHourRepository _manHourRepository;
+        private readonly ILayerRepository _layerRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IDeliveryRepository _deliveryRepository;
+        private readonly IRepairCostRepository _repairCostRepository;
 
         public ApplyForVehicleMaintenanceAppService(
             IApplyForVehicleMaintenanceRepository applyForVehicleMaintenanceRepository,
                                                     IDriverRepository driverRepository,
             IMaintenanceDeliveryRepository maintenanceDeliveryRepository,
-            IServicingMaterialRepository servicingMaterialRepository,
+            ISysDictionaryRepository sysDictionaryRepository,
+            IRepairCostRepository repairCostRepository,
+        ILayerRepository layerRepository,
+            IDeliveryRepository deliveryRepository,
+        IServicingMaterialRepository servicingMaterialRepository,
             IManHourRepository manHourRepository
             )
         {
             this._applyForVehicleMaintenanceRepository = applyForVehicleMaintenanceRepository;
-
+            this._deliveryRepository = deliveryRepository;
             this._driverRepository = driverRepository;
+            this._layerRepository = layerRepository;
+            this._repairCostRepository = repairCostRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
             this._maintenanceDeliveryRepository = maintenanceDeliveryRepository;
             this._servicingMaterialRepository = servicingMaterialRepository;
             this._manHourRepository = manHourRepository;
@@ -189,6 +199,47 @@ namespace SCBF.Car
             this._applyForVehicleMaintenanceRepository.Update(item);
         }
 
+        public void Update2(ApplyForVehicleMaintenanceUpdateDto input)
+        {
+            var item = this._applyForVehicleMaintenanceRepository.Get(input.Id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("车辆送修申请单不能为空");
+            }
+
+            item.Status = VehicleMaintenanceStatus.Serviced;
+            item.TotalPrice = input.Total;
+
+            foreach (var r1 in input.ManHour)
+            {
+                var r = this._manHourRepository.FirstOrDefault(r1.RowId.Value);
+                if (r != null)
+                {
+                    r.Hours2 = r1.Hours2.Value;
+                    this._manHourRepository.Update(r);
+                }
+            }
+
+            foreach (var r2 in input.Materials)
+            {
+                var r = this._servicingMaterialRepository.FirstOrDefault(r2.RowId.Value);
+                if (r != null)
+                {
+                    r.Amount2 = r2.Amount2.Value;
+                    this._servicingMaterialRepository.Update(r);
+                }
+            }
+
+            this._applyForVehicleMaintenanceRepository.Update(item);
+            this._repairCostRepository.Insert(new RepairCost()
+            {
+                ApplyForVehicleMaintenanceId = item.Id,
+                Category = item.RepairType,
+                Cost = input.Total,
+                Year = item.CreationTime.Year
+            });
+        }
+
         public void Update(ApplyForVehicleMaintenanceUpdateDto input)
         {
             var item = this._applyForVehicleMaintenanceRepository.Get(input.Id);
@@ -214,6 +265,40 @@ namespace SCBF.Car
             this._servicingMaterialRepository.InsertRange(servicingMaterials);
             this._applyForVehicleMaintenanceRepository.Update(item);
         }
+
+        public ApplyForVehicleMaintenanceUpdateDto GetClosingItem(Guid id)
+        {
+            var item = this._applyForVehicleMaintenanceRepository.Get(id);
+            if (item == null)
+            {
+                throw new UserFriendlyException("车辆送修申请单不存在");
+            }
+            var result = item.MapTo<ApplyForVehicleMaintenanceUpdateDto>();
+            foreach (var dto in result.ManHour)
+            {
+                dto.PartName = this._layerRepository.Get(dto.PartId)?.Name;
+                dto.ManHourName = this._sysDictionaryRepository.Get(dto.ManHourId).Value;
+                dto.ManHourValue = decimal.Parse(this._sysDictionaryRepository.Get(dto.ManHourId).Value3);
+                dto.Hours2 = dto.Hours1;
+            }
+            foreach (var dto in result.Materials)
+            {
+                dto.Amount2 = dto.Amount1;
+                dto.PartName = this._layerRepository.Get(dto.PartId)?.Name;
+                dto.MaterialName = this._sysDictionaryRepository.Get(dto.MaterialId).Value;
+                dto.MaterialValue = decimal.Parse(this._sysDictionaryRepository.Get(dto.MaterialId).Value3);
+            }
+            foreach (var dto in result.Deliveries)
+            {
+                var d = this._deliveryRepository.Get(dto.Id);
+                dto.Code = d.Product.Code;
+                dto.Amount = d.Amount;
+                dto.Name = d.Product.Name;
+                dto.Price = d.Price;
+            }
+            return result;
+        }
+
 
         private string GetMaxCode()
         {

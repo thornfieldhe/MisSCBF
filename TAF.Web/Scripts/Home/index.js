@@ -75,6 +75,7 @@ Path.map("#totalOilHisList").to(function () { loadPage("/HisOilStock/TotalOilHis
 Path.map("#applyForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/ApplyForVehicleMaintenanceList", "车辆管理", "车辆送修申请单", "#menuApplyForVehicleMaintenances", false); });
 Path.map("#auditingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList", "车辆管理", "车辆送修审批单", "#menuAuditingForVehicleMaintenances", false); });
 Path.map("#auditingForVehicleMaintenances2").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList2", "车辆管理", "车辆维修审批单", "#menuAuditingForVehicleMaintenances", false); });
+Path.map("#clearingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList3", "车辆管理", "车辆维修结算单", "#menuClearingForVehicleMaintenances", false); });
 
 
 
