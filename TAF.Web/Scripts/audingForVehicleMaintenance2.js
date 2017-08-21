@@ -32,12 +32,12 @@
         this.loadList();
     },
     data: {
-        queryEntity: { status: 2, code: '' },
+        queryEntity: { status: 1, code: '' },
         list: {
             options: {
                 num_edge_entries: 1, //边缘页数
                 num_display_entries: 4, //主体页数
-                items_per_page: 1, //每页显示1项  
+                items_per_page: taf.defatulPageSize, //每页显示1项  
                 callback: function(index, jq) {
                     main.list.from = main.list.total === 0 ? 0 : main.list.pageSize * index + 1;
                     main.list.index = index;

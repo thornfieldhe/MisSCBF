@@ -26,6 +26,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -812,6 +813,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\vehicleMaintenanceReport.js" />
     <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
     <Content Include="Scripts\audingForVehicleMaintenance3.js" />
     <Content Include="Scripts\audingForVehicleMaintenance2.js" />
@@ -1049,6 +1051,7 @@
     <Content Include="Views\Car\_MaintenancePartsIndex.cshtml" />
     <Content Include="Views\ApplyForVehicleMaintenance\_AudingForVehicleMaintenance2Index.cshtml" />
     <Content Include="Views\ApplyForVehicleMaintenance\_AudingForVehicleMaintenance3Index.cshtml" />
+    <Content Include="Views\ApplyForVehicleMaintenance\_VehicleMaintenanceReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -299,6 +299,85 @@ namespace SCBF.Car
             return result;
         }
 
+        /// <summary>
+        /// 获取年度/季度维修情况报告
+        /// </summary>
+        /// <param name="quarter"></param>
+        public List<VehicleMaintenanceReportDto> GetReport(int quarter)
+        {
+            var result = new List<VehicleMaintenanceReportDto>();
+            var year = DateTime.Today.Year;
+            var dateFrom = new DateTime(year, 1, 1);
+            var dateTo = dateFrom;
+            switch (quarter)
+            {
+                case 0:
+                    dateTo = new DateTime(year, 3, 31);
+                    break;
+                case 1:
+                    dateTo = new DateTime(year, 6, 30);
+                    break;
+                case 2:
+                    dateTo = new DateTime(year, 9, 30);
+                    break;
+                case 3:
+                    dateTo = new DateTime(year + 1, 1, 1);
+                    break;
+            }
+            var query = this._applyForVehicleMaintenanceRepository.GetAllList(
+                    r => r.CreationTime >= dateFrom && r.CreationTime <= dateTo && r.Status== VehicleMaintenanceStatus.Serviced);
+            foreach (var item in query)
+            {
+                var resultItem = new VehicleMaintenanceReportDto()
+                {
+                    Code = item.Code,
+                    Id = item.Id,
+                    Cph = item.CarInfo.Cph,
+                    Note = item.Note,
+                    Zbsj = item.CarInfo.Zbsj.ToString("yyyy-MM-dd"),
+                    Ysclf = 0,
+                    Sjclf = 0,
+                    Ysgsf = 0,
+                    Sjgsf = 0,
+                    Zyclf = 0
+                };
+
+                foreach (var material in item.ServicingMaterials)
+                {
+                    var dic = this._sysDictionaryRepository.Get(material.MaterialId);
+                    if (dic == null)
+                    {
+                        throw new UserFriendlyException("维修材料不能为空");
+                    }
+                    resultItem.Ysclf += decimal.Parse(dic.Value3) * material.Amount1;
+                    resultItem.Sjclf += decimal.Parse(dic.Value3) * material.Amount2;
+                }
+
+                foreach (var material in item.ManHours)
+                {
+                    var dic = this._sysDictionaryRepository.Get(material.ManHourId);
+                    if (dic == null)
+                    {
+                        throw new UserFriendlyException("工时不能为空");
+                    }
+                    resultItem.Ysgsf += decimal.Parse(dic.Value3) * material.Hours1;
+                    resultItem.Sjgsf += decimal.Parse(dic.Value3) * material.Hours2;
+                }
+
+                foreach (var material in item.MaintenanceDeliveries)
+                {
+                    var dic = this._deliveryRepository.Get(material.DeliveryId);
+                    if (dic == null)
+                    {
+                        throw new UserFriendlyException("出库单不能为空");
+                    }
+                    resultItem.Zyclf += dic.Amount * dic.Price;
+                }
+
+                result.Add(resultItem);
+            }
+            return result;
+        }
 
         private string GetMaxCode()
         {

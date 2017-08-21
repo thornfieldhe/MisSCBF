@@ -1,0 +1,91 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">季度车辆维修报告</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select id="searchQuarter" style="width: 100px" v-model="queryEntity.quarter">
+                                <option value="0" selected="selected">1季度</option>
+                                <option value="1">2季度</option>
+                                <option value="2">3季度</option>
+                                <option value="3">全年</option>
+                            </select>
+                            
+                            <button type="button" class="btn btn-primary " v-on:click="query(queryEntity.quarter)"><i class="fa  fa-plus"></i> 查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pre-scrollable">
+                            <table class="table table-striped table-hover table-bordered " style="width: 1900px">
+                                <thead>
+                                    <tr role="row">
+                                        <th style="width: 200px;">
+                                            车牌号
+                                        </th>
+                                        <th style="width: 200px;">
+                                            装备时间
+                                        </th>
+                                        <th style="width: 200px;">
+                                            维修凭证号
+                                        </th>
+                                        <th style="width: 200px;">
+                                            预算工时费
+                                        </th>
+                                        <th style="width: 200px;">
+                                            实际工时费
+                                        </th>
+                                        <th style="width: 200px;">
+                                            预算维修材料费
+                                        </th>
+                                        <th style="width: 200px;">
+                                            实际维修材料费
+                                        </th>
+                                        <th style="width: 200px;">
+                                            自有材料费
+                                        </th>
+                                        <th style="width: 600px;">
+                                            故障描述
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="m in list">
+                                        <td>{{m.cph}}</td>
+                                        <td>{{m.zbsj}}</td>
+                                        <td>{{m.code}}</td>
+                                        <td>{{m.ysgsf}}</td>
+                                        <td>{{m.sjgsf}}</td>
+                                        <td>{{m.ysclf}}</td>
+                                        <td>{{m.sjclf}}</td>
+                                        <td>{{m.zyclf}}</td>
+                                        <td>{{m.note}}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="9" class="DTTTFooter ">
+                                            <div class="col-sm-4">
+                                                <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite">{{list.count}} </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/vehicleMaintenanceReport.js"></script>
+
+
+

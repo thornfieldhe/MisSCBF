@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace SCBF.Car
 {
     using Abp.Application.Services.Dto;
@@ -37,6 +39,12 @@ namespace SCBF.Car
         void Update2(ApplyForVehicleMaintenanceUpdateDto input);
 
         ApplyForVehicleMaintenanceUpdateDto GetClosingItem(Guid id);
+
+        /// <summary>
+        /// 获取年度/季度维修情况报告
+        /// </summary>
+        /// <param name="quarter"></param>
+        List<VehicleMaintenanceReportDto> GetReport(int quarter);
 
         void Delete(Guid id);
     }

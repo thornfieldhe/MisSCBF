@@ -76,6 +76,7 @@ Path.map("#applyForVehicleMaintenances").to(function () { loadPage("/ApplyForVeh
 Path.map("#auditingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList", "车辆管理", "车辆送修审批单", "#menuAuditingForVehicleMaintenances", false); });
 Path.map("#auditingForVehicleMaintenances2").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList2", "车辆管理", "车辆维修审批单", "#menuAuditingForVehicleMaintenances", false); });
 Path.map("#clearingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList3", "车辆管理", "车辆维修结算单", "#menuClearingForVehicleMaintenances", false); });
+Path.map("#vehicleMaintenanceReport").to(function () { loadPage("/ApplyForVehicleMaintenance/VehicleMaintenanceReport", "车辆管理", "车辆维修情况报告", "#menuVehicleMaintenanceReport", false); });
 
 
 

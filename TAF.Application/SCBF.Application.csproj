@@ -162,6 +162,7 @@
     <Compile Include="Car\Dto\RepairCostListDto.cs" />
     <Compile Include="Car\Dto\RepairCostQueryDto.cs" />
     <Compile Include="Car\Dto\ServicingMaterialListDto.cs" />
+    <Compile Include="Car\Dto\VehicleMaintenanceReportDto.cs" />
     <Compile Include="Car\HisStoreStockAppService.cs" />
     <Compile Include="Car\IApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\IHisStoreStockAppService.cs" />

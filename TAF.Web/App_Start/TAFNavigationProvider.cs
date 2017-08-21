@@ -333,6 +333,12 @@
                                 L("车辆维修结算单"),
                                 url: "#clearingForVehicleMaintenances",
                                 requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuVehicleMaintenanceReport",
+                                L("车辆维修情况报告"),
+                                url: "#vehicleMaintenanceReport",
+                                requiredPermissionName: PermissionNames.ClUser))
                                 );
         }
 
