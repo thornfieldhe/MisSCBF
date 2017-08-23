@@ -113,5 +113,10 @@ namespace SCBF.Car
         /// </summary>
         public virtual List<ApplyForVehicleMaintenance> ApplyForVehicleMaintenances { get; set; }
 
+        /// <summary>
+        /// 单车油料消耗
+        /// </summary>
+        public virtual List<CarOil> CarOils { get; set; }
+
     }
 }

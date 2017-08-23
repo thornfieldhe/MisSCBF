@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\CaroilMap.cs" />
     <Compile Include="EntityFramework\Maps\ServicingMaterialMap.cs" />
     <Compile Include="EntityFramework\Maps\MaintenanceDeliveryMap.cs" />
     <Compile Include="EntityFramework\Maps\ManHourMap.cs" />
@@ -323,6 +324,10 @@
     <Compile Include="Migrations\201708131026224_addTable_RepairCost.Designer.cs">
       <DependentUpon>201708131026224_addTable_RepairCost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708221304208_addTable_CarOil.cs" />
+    <Compile Include="Migrations\201708221304208_addTable_CarOil.Designer.cs">
+      <DependentUpon>201708221304208_addTable_CarOil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -335,6 +340,7 @@
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
+    <Compile Include="Repositories\CarOilRepository.cs" />
     <Compile Include="Repositories\CheckBillRepository.cs" />
     <Compile Include="Repositories\CheckRepository.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
@@ -515,6 +521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708131026224_addTable_RepairCost.resx">
       <DependentUpon>201708131026224_addTable_RepairCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708221304208_addTable_CarOil.resx">
+      <DependentUpon>201708221304208_addTable_CarOil.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

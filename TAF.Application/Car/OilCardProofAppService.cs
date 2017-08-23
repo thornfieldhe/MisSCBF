@@ -211,7 +211,7 @@ namespace SCBF.Car
                 for (var i = 1; i < rowCount; i++)
                 {
                     var row = sheet.GetRow(i);
-                    if (!string.IsNullOrEmpty(row.GetCell(0).ToStr()))
+                    if (row != null && !string.IsNullOrEmpty(row.GetCell(0).ToStr()))
                     {
                         var item = new UploadOilCardRoof()
                         {

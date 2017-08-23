@@ -327,6 +327,11 @@ namespace SCBF
                     .ForMember(m => m.Deliveries, n => n.MapFrom(r => r.MaintenanceDeliveries))
                     .ForMember(m => m.Materials, n => n.MapFrom(r => r.ServicingMaterials));
 
+                mapper.CreateMap<CarOil, CarOilListDto>()
+                    .ForMember(m => m.CarInfoName, n => n.MapFrom(r => r.CarInfo.Cph));
+                mapper.CreateMap<CarOil, CarOilEditDto>();
+                mapper.CreateMap<CarOilEditDto, CarOil>();
+
                 #endregion
             });
         }

@@ -210,6 +210,11 @@
             get; set;
         }
 
+        public DbSet<CarOil> CarOils
+        {
+            get; set;
+        }
+
         #endregion
 
 

@@ -305,6 +305,12 @@
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuCarOils",
+                                L("车辆油料核算填报"),
+                                url: "#carOils",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuTotalOilHisList",
                                 L("季度油料消耗情况报表"),
                                 url: "#totalOilHisList",
