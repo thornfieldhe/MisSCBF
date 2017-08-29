@@ -73,6 +73,7 @@ Path.map("#checkApplicationForBunker").to(function () { loadPage("/ApplicationFo
 Path.map("#applicationForBunkerBSummaryList").to(function () { loadPage("/ApplicationForBunkerB/ApplicationForBunkerBSummaryList", "车辆管理", "实物油料消耗凭证汇总单", "#menuApplicationForBunkerBSummaryList", false); });
 Path.map("#totalOilHisList").to(function () { loadPage("/HisOilStock/TotalOilHisList", "车辆管理", "季度/年度油料消耗情况报表", "#menuTotalOilHisList", false); });
 Path.map("#carOils").to(function () { loadPage("/CarOil/CarOilList", "车辆管理", "车辆油料核算填报", "#menuCarOils", false); });
+Path.map("#carOilHisList").to(function () { loadPage("/CarOil/TotalOilHisList", "车辆管理", "车辆油料核算报表", "#menuCarOilHisList", false); });
 Path.map("#applyForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/ApplyForVehicleMaintenanceList", "车辆管理", "车辆送修申请单", "#menuApplyForVehicleMaintenances", false); });
 Path.map("#auditingForVehicleMaintenances").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList", "车辆管理", "车辆送修审批单", "#menuAuditingForVehicleMaintenances", false); });
 Path.map("#auditingForVehicleMaintenances2").to(function () { loadPage("/ApplyForVehicleMaintenance/AudingForVehicleMaintenanceList2", "车辆管理", "车辆维修审批单", "#menuAuditingForVehicleMaintenances", false); });

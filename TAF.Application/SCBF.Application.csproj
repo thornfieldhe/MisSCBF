@@ -150,6 +150,7 @@
     <Compile Include="BaseInfo\AttachmentAppService.cs" />
     <Compile Include="Car\ApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\CarOilAppService.cs" />
+    <Compile Include="Car\Dto\CarOilReportDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceEditDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceListDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceQueryDto.cs" />

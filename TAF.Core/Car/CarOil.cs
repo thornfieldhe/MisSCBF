@@ -11,6 +11,7 @@ namespace SCBF.Car
 {
     using System;
 
+    /// <inheritdoc />
     /// <summary>
     /// 单车油料核算
     /// </summary>
@@ -21,6 +22,9 @@ namespace SCBF.Car
         /// </summary>
         public Guid CarInfoId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the car info.
+        /// </summary>
         public virtual CarInfo CarInfo { get; set; }
 
         /// <summary>

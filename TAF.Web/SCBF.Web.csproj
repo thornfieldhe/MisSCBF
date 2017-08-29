@@ -813,6 +813,7 @@
     <Content Include="Scripts\Account\changePwd.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
+    <Content Include="Scripts\carOilReport.js" />
     <Content Include="Scripts\carOil.js" />
     <Content Include="Scripts\vehicleMaintenanceReport.js" />
     <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
@@ -1055,6 +1056,7 @@
     <Content Include="Views\ApplyForVehicleMaintenance\_AudingForVehicleMaintenance3Index.cshtml" />
     <Content Include="Views\ApplyForVehicleMaintenance\_VehicleMaintenanceReport.cshtml" />
     <Content Include="Views\CarOil\_CarOilIndex.cshtml" />
+    <Content Include="Views\CarOil\_TotalOilHisList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

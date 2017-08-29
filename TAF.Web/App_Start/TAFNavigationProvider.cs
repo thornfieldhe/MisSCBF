@@ -305,15 +305,21 @@
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
+                                "menuTotalOilHisList",
+                                L("季度油料消耗情况报表"),
+                                url: "#totalOilHisList",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
                                 "menuCarOils",
                                 L("车辆油料核算填报"),
                                 url: "#carOils",
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
-                                "menuTotalOilHisList",
-                                L("季度油料消耗情况报表"),
-                                url: "#totalOilHisList",
+                                "menuCarOilHisList",
+                                L("车辆油料核算报表"),
+                                url: "#carOilHisList",
                                 requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
@@ -344,10 +350,18 @@
                                 "menuVehicleMaintenanceReport",
                                 L("车辆维修情况报告"),
                                 url: "#vehicleMaintenanceReport",
-                                requiredPermissionName: PermissionNames.ClUser))
-                                );
+                                requiredPermissionName: PermissionNames.ClUser)));
         }
 
+        /// <summary>
+        /// The l.
+        /// </summary>
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ILocalizableString"/>.
+        /// </returns>
         private static ILocalizableString L(string name)
         {
             return new LocalizableString(name, TAFConsts.LocalizationSourceName);

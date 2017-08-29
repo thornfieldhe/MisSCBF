@@ -9,29 +9,55 @@
 
 namespace SCBF.Web.Controllers
 {
+    using System.Web.Mvc;
     using Abp.Web.Mvc.Authorization;
     using SCBF.Car;
-    using System.Web.Mvc;
 
+    /// <inheritdoc />
     /// <summary>
     /// 车辆油料核算表控制器
     /// </summary>
     [AbpMvcAuthorize]
     public class CarOilController : TAFControllerBase
     {
-        private readonly ICarOilAppService carOilAppService;
+        /// <summary>
+        /// The car info app service.
+        /// </summary>
         private readonly ICarInfoAppService carInfoAppService;
 
-        public CarOilController(ICarOilAppService carOilAppService, ICarInfoAppService carInfoAppService)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CarOilController"/> class.
+        /// </summary>
+        /// <param name="carInfoAppService">
+        /// The car info app service.
+        /// </param>
+        public CarOilController(ICarInfoAppService carInfoAppService)
         {
-            this.carOilAppService = carOilAppService;
             this.carInfoAppService = carInfoAppService;
         }
 
+        /// <summary>
+        /// The car oil list.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult CarOilList()
         {
-            ViewData["list1"] = carInfoAppService.GetSimple();
-            return PartialView("_CarOilIndex");
+            this.ViewData["list1"] = this.carInfoAppService.GetSimple();
+            return this.PartialView("_CarOilIndex");
+        }
+
+        /// <summary>
+        /// The car oil list.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult TotalOilHisList()
+        {
+            this.ViewData["list1"] = this.carInfoAppService.GetSimple();
+            return this.PartialView("_TotalOilHisList");
         }
     }
 }
