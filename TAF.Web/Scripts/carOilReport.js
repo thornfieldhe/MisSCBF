@@ -19,10 +19,14 @@
         query: function () {
             var $this = this;
             console.log($this.queryEntity.year, $this.queryEntity.month);
-            abp.services.app.carOil.getReport({ key: $this.queryEntity.year, value: $this.queryEntity.month })
-                .done(function(r) {
-                    $this.items = r;
-                });
+            if ($this.queryEntity.year === "" || $this.queryEntity.month==="") {
+                taf.notify.danger("年月不能为空");
+            } else {
+                abp.services.app.carOil.getReport({ key: $this.queryEntity.year, value: $this.queryEntity.month })
+                    .done(function (r) {
+                        $this.items = r;
+                    });
+            }
         }
     }
 });
