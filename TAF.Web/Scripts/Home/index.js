@@ -40,6 +40,7 @@ Path.map("#actualOutlays").to(function () { loadPage("/ActualOutlay/ActualOutlay
 Path.map("#outlays").to(function () { loadPage("/ActualOutlay/OutlayList", "预算管理", "支出对比明细", "#menuOutlays", false); });
 Path.map("#receipts").to(function () { loadPage("/BudgetReceipt/ReceiptList", "预算管理", "预算收入与实际收入统计", "#menuReceipts", false); });
 Path.map("#budgetperformance").to(function () { loadPage("/BudgetOutlay/BudgetPerformance", "预算管理", "预算编制及预算执行情况", "#menuBudgetperformance", false); });
+Path.map("#voucherAudits").to(function () { loadPage("/VoucherAudit/VoucherAuditList", "预算管理", "凭证审核归纳表", "#menuVoucherAudits", false); });
 
 Path.map("#productInfos").to(function () { loadPage("/Product/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
 Path.map("#productCategories").to(function () { loadPage("/Storage/ProductCategoryList", "物资器材管理", "商品分类", "#menuProductCategories", false); });

@@ -115,6 +115,11 @@
                             "menuBudgetperformance",
                             L("预算编制及预算执行情况"),
                             url: "#budgetperformance",
+                            requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuVoucherAudits",
+                            L("凭证审核归纳表"),
+                            url: "#voucherAudits",
                             requiredPermissionName: PermissionNames.CwUser)))
                 .AddItem(
                     new MenuItemDefinition(

@@ -130,6 +130,11 @@
             get; set;
         }
 
+        public DbSet<VoucherAudit> VoucherAudits
+        {
+            get; set;
+        }
+
 
         #endregion
 

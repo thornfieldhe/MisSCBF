@@ -148,7 +148,6 @@ var allMixin = {
     },
     methods: {
         fail: function (r) {
-            fail(function (r) {
                 if (r.validationErrors !== null) {
                     taf.notify.danger(r.validationErrors[0].members[0] + "验证未通过");
                 } else if (r.details !== null) {
@@ -156,8 +155,7 @@ var allMixin = {
                 } else {
                     taf.notify.danger(r.message);
                 }
-            })
-        }
+            }
     },
     watch: {
         'item': {

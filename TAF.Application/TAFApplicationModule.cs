@@ -1,10 +1,12 @@
-﻿using Abp.AutoMapper;
+﻿using System.Reflection;
+using Abp.AutoMapper;
 using Abp.Modules;
-using System.Reflection;
 
 namespace SCBF
 {
 
+    using System;
+    using System.Linq;
     using Abp.Quartz.Quartz;
     using Microsoft.AspNet.Identity;
     using Quartz;
@@ -19,8 +21,6 @@ namespace SCBF
     using SCBF.Tasks;
     using SCBF.Users;
     using SCBF.Users.Dto;
-    using System;
-    using System.Linq;
 
     [DependsOn(typeof(TAFCoreModule), typeof(AbpAutoMapperModule), typeof(AbpQuartzModule))]
     public class TAFApplicationModule : AbpModule
@@ -222,6 +222,78 @@ namespace SCBF
 
                 mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:MM")));
+
+                mapper.CreateMap<VoucherAudit, VoucherAuditListDto>()
+                    .ForMember(m => m.Point1, n => n.MapFrom(r => r.Point1 == 0 ? "是" : (r.Point1 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point2, n => n.MapFrom(r => r.Point2 == 0 ? "是" : (r.Point2 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point3, n => n.MapFrom(r => r.Point3 == 0 ? "是" : (r.Point3 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point4, n => n.MapFrom(r => r.Point4 == 0 ? "是" : (r.Point4 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point5, n => n.MapFrom(r => r.Point5 == 0 ? "是" : (r.Point5 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point6, n => n.MapFrom(r => r.Point6 == 0 ? "是" : (r.Point6 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point7, n => n.MapFrom(r => r.Point7 == 0 ? "是" : (r.Point7 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point8, n => n.MapFrom(r => r.Point8 == 0 ? "是" : (r.Point8 == 1 ? "否" : "无此情况")))
+                    .ForMember(m => m.Point9, n => n.MapFrom(r => r.Point9 == 0 ? "是" : (r.Point9 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point10,
+                        n => n.MapFrom(r => r.Point10 == 0 ? "是" : (r.Point10 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point11,
+                        n => n.MapFrom(r => r.Point11 == 0 ? "是" : (r.Point11 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point12,
+                        n => n.MapFrom(r => r.Point12 == 0 ? "是" : (r.Point12 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point13,
+                        n => n.MapFrom(r => r.Point13 == 0 ? "是" : (r.Point13 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point14,
+                        n => n.MapFrom(r => r.Point14 == 0 ? "是" : (r.Point14 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point15,
+                        n => n.MapFrom(r => r.Point15 == 0 ? "是" : (r.Point15 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point16,
+                        n => n.MapFrom(r => r.Point16 == 0 ? "是" : (r.Point16 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point17,
+                        n => n.MapFrom(r => r.Point17 == 0 ? "是" : (r.Point17 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point18,
+                        n => n.MapFrom(r => r.Point18 == 0 ? "是" : (r.Point18 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point19,
+                        n => n.MapFrom(r => r.Point19 == 0 ? "是" : (r.Point19 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point20,
+                        n => n.MapFrom(r => r.Point20 == 0 ? "是" : (r.Point20 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point21,
+                        n => n.MapFrom(r => r.Point21 == 0 ? "是" : (r.Point21 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point22,
+                        n => n.MapFrom(r => r.Point22 == 0 ? "是" : (r.Point22 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point23,
+                        n => n.MapFrom(r => r.Point23 == 0 ? "是" : (r.Point23 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point24,
+                        n => n.MapFrom(r => r.Point24 == 0 ? "是" : (r.Point24 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point25,
+                        n => n.MapFrom(r => r.Point25 == 0 ? "是" : (r.Point25 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point26,
+                        n => n.MapFrom(r => r.Point26 == 0 ? "是" : (r.Point26 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point27,
+                        n => n.MapFrom(r => r.Point27 == 0 ? "是" : (r.Point27 == 1 ? "否" : "无此情况")))
+                    .ForMember(
+                        m => m.Point28,
+                        n => n.MapFrom(r => r.Point28 == 0 ? "是" : (r.Point28 == 1 ? "否" : "无此情况"))).ForMember(
+                        m => m.Point29,
+                        n => n.MapFrom(r => r.Point29 == 0 ? "是" : (r.Point29 == 1 ? "否" : "无此情况"))).ForMember(
+                        m => m.Point30,
+                        n => n.MapFrom(r => r.Point30 == 0 ? "是" : (r.Point30 == 1 ? "否" : "无此情况")));
 
                 #endregion
 

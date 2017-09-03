@@ -328,6 +328,14 @@
     <Compile Include="Migrations\201708221304208_addTable_CarOil.Designer.cs">
       <DependentUpon>201708221304208_addTable_CarOil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708291524037_addTable_VoucherAudit.cs" />
+    <Compile Include="Migrations\201708291524037_addTable_VoucherAudit.Designer.cs">
+      <DependentUpon>201708291524037_addTable_VoucherAudit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030611596_VoucherAudit.cs" />
+    <Compile Include="Migrations\201709030611596_VoucherAudit.Designer.cs">
+      <DependentUpon>201709030611596_VoucherAudit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -367,6 +375,7 @@
     <Compile Include="Repositories\AttachmentRepository.cs" />
     <Compile Include="Repositories\UploadOilCardRoofRepository.cs" />
     <Compile Include="Repositories\UploadOilCarRoofRelationshipRepository.cs" />
+    <Compile Include="Repositories\VoucherAuditRepository.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -524,6 +533,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708221304208_addTable_CarOil.resx">
       <DependentUpon>201708221304208_addTable_CarOil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291524037_addTable_VoucherAudit.resx">
+      <DependentUpon>201708291524037_addTable_VoucherAudit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030611596_VoucherAudit.resx">
+      <DependentUpon>201709030611596_VoucherAudit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

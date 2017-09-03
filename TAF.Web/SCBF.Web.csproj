@@ -919,6 +919,7 @@
     <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Scripts\uploadOilCarRoofRelationship.js" />
+    <Content Include="Scripts\voucherAudit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -970,6 +971,7 @@
     <Compile Include="Controllers\TAFControllerBase.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\UploadOilCarRoofRelationshipController.cs" />
+    <Compile Include="Controllers\VoucherAuditController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1057,6 +1059,7 @@
     <Content Include="Views\ApplyForVehicleMaintenance\_VehicleMaintenanceReport.cshtml" />
     <Content Include="Views\CarOil\_CarOilIndex.cshtml" />
     <Content Include="Views\CarOil\_TotalOilHisList.cshtml" />
+    <Content Include="Views\VoucherAudit\_VoucherAuditIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -145,7 +145,10 @@
     <Compile Include="Car\RechargeRecord.cs" />
     <Compile Include="Car\UploadOilCardRoof.cs" />
     <Compile Include="Finance\IOutlayRepository.cs" />
+    <Compile Include="Finance\IVoucherAuditRepository.cs" />
     <Compile Include="Finance\Outlay.cs" />
+    <Compile Include="Finance\VoucherAudit.cs" />
+    <Compile Include="Finance\VoucherAuditPoint.cs" />
     <Compile Include="Storage\Check.cs" />
     <Compile Include="Storage\CheckBill.cs" />
     <Compile Include="Storage\ICheckBillRepository.cs" />
