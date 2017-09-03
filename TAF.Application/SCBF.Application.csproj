@@ -174,9 +174,14 @@
     <Compile Include="Car\IHisStoreStockAppService.cs" />
     <Compile Include="Car\IRepairCostAppService.cs" />
     <Compile Include="Car\RepairCostAppService.cs" />
+    <Compile Include="Finance\Dto\InvoiceCheckEditDto.cs" />
+    <Compile Include="Finance\Dto\InvoiceCheckListDto.cs" />
+    <Compile Include="Finance\Dto\InvoiceCheckQueryDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditEditDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditListDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditQueryDto.cs" />
+    <Compile Include="Finance\IInvoiceCheckAppService.cs" />
+    <Compile Include="Finance\InvoiceCheckAppService.cs" />
     <Compile Include="Finance\IVoucherAuditAppService.cs" />
     <Compile Include="Finance\VoucherAuditAppService.cs" />
     <Compile Include="Storage\Dto\DeliveryBillQueryDto.cs" />

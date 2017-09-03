@@ -295,6 +295,9 @@ namespace SCBF
                         m => m.Point30,
                         n => n.MapFrom(r => r.Point30 == 0 ? "是" : (r.Point30 == 1 ? "否" : "无此情况")));
 
+
+                mapper.CreateMap<InvoiceCheck, InvoiceCheckListDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.CreationTime.ToString("yyyy-MM-dd")));
                 #endregion
 
                 #region 车辆模块

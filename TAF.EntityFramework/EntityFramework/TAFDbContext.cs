@@ -135,6 +135,16 @@
             get; set;
         }
 
+        public DbSet<Invoice> Invoices
+        {
+            get; set;
+        }
+
+        public DbSet<InvoiceCheck> InvoiceChecks
+        {
+            get; set;
+        }
+
 
         #endregion
 

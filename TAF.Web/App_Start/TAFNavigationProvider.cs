@@ -117,6 +117,11 @@
                             url: "#budgetperformance",
                             requiredPermissionName: PermissionNames.CwUser))
                         .AddItem(new MenuItemDefinition(
+                            "menuInvoices",
+                            L("发票管理"),
+                            url: "#invoices",
+                            requiredPermissionName: PermissionNames.CwUser))
+                        .AddItem(new MenuItemDefinition(
                             "menuVoucherAudits",
                             L("凭证审核归纳表"),
                             url: "#voucherAudits",

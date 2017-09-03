@@ -1,0 +1,133 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">发票录入</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary " v-on:click="showModifyDialog('新增发票录入',null)"><i class="fa  fa-plus"></i> 新增</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        发票起始号
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        发票结束号
+                                    </th>         
+                                    <th style="width: 200px;">
+                                        录入时间
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list.items">
+                                    <td>{{item.from}}</td>
+                                    <td>{{item.to}}</td>
+                                    <td>{{item.date}}</td>
+                                    <td>
+                                    <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑发票录入',item.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                    <button type="button" class="btn   edit" v-on:click="check(item.id)"><i class="fa fa-check"></i> 检查</button>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,'') " ><i class="fa fa-trash-o"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+                    
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除对话框 -->
+<div class="bootbox modal fade modal-darkorange in" id="deleteInvoiceCheckDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="delete(deleteEntity.id)"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyInvoiceCheckDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                           <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">发票起始号<span class="red" >*</span></label>
+                                        <div class="col-sm-10">
+                                                <input type="number" class="form-control" placeholder="必填" id="from" name="from" v-model="item.from" v-validate:from="{int:true}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">发票结束号<span class="red" >*</span></label>
+                                        <div class="col-sm-10">
+                                                <input type="number" class="form-control" placeholder="必填" id="to" name="to" v-model="item.to" v-validate:to="{int:true}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="saveNew()" v-show="!modifyEntity.editModel"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存新增 </button>
+                <button type="submit" class="btn btn-primary" v-on:click="save()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/invoiceCheck.js"></script>
+
+
+

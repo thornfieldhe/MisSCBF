@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\InvoiceMap.cs" />
     <Compile Include="EntityFramework\Maps\CaroilMap.cs" />
     <Compile Include="EntityFramework\Maps\ServicingMaterialMap.cs" />
     <Compile Include="EntityFramework\Maps\MaintenanceDeliveryMap.cs" />
@@ -336,6 +337,14 @@
     <Compile Include="Migrations\201709030611596_VoucherAudit.Designer.cs">
       <DependentUpon>201709030611596_VoucherAudit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709030805084_addtable_InvoiceCheck.cs" />
+    <Compile Include="Migrations\201709030805084_addtable_InvoiceCheck.Designer.cs">
+      <DependentUpon>201709030805084_addtable_InvoiceCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030834066_updateTable_invoice.cs" />
+    <Compile Include="Migrations\201709030834066_updateTable_invoice.Designer.cs">
+      <DependentUpon>201709030834066_updateTable_invoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -358,6 +367,8 @@
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\HisOctaneStoreStockRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
+    <Compile Include="Repositories\InvoiceCheckRepository.cs" />
+    <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="Repositories\LayerRepository.cs" />
     <Compile Include="Repositories\MaintenanceDeliveryRepository.cs" />
     <Compile Include="Repositories\ManHourRepository.cs" />
@@ -539,6 +550,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709030611596_VoucherAudit.resx">
       <DependentUpon>201709030611596_VoucherAudit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030805084_addtable_InvoiceCheck.resx">
+      <DependentUpon>201709030805084_addtable_InvoiceCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030834066_updateTable_invoice.resx">
+      <DependentUpon>201709030834066_updateTable_invoice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
