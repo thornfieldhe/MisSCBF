@@ -25,16 +25,6 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a data-toggle="tab" href="#partyA" aria-expanded="false" id="ppartyA">
-                                        甲方人员
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a data-toggle="tab" href="#category" aria-expanded="false" id="pcategory">
-                                        采购类型
-                                    </a>
-                                </li>
-                                <li class="">
                                     <a data-toggle="tab" href="#costUnit" aria-expanded="false" id="pcostUnit">
                                         造价单位
                                     </a>
@@ -47,6 +37,11 @@
                                 <li class="">
                                     <a data-toggle="tab" href="#biddingAgency" aria-expanded="false" id="pbiddingAgency">
                                         招标代理单位
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a data-toggle="tab" href="#partyA" aria-expanded="false" id="ppartyA">
+                                        甲方人员
                                     </a>
                                 </li>
                                 <li class="">
@@ -68,7 +63,7 @@
                             <div class="tab-content">
                                 <div id="unit" class="tab-pane active">
                                     <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('责任单位','Material_ProductUnit')"><i class="fa  fa-plus"></i> 新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('责任单位','Purchase_Unit')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -113,28 +108,32 @@
                                         <div class="col-md-6">
                                             <table class="table table-striped table-hover table-bordered ">
                                                 <thead>
-                                                <tr role="row">
-                                                    <th style="width: 200px;">
-                                                        姓名
-                                                    </th>
-                                                    <th style="width: 200px;">
-                                                        进入随机库
-                                                    </th>
-                                                    <th style="width: 200px;">
-                                                        操作
-                                                    </th>
-                                                </tr>
+                                                    <tr role="row">
+                                                        <th style="width: 200px;">
+                                                            姓名
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            联系电话
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            部门
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            操作
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="item in list">
-                                                    <td>{{item.value}}</td>
-                                                    <td>{{item.value2==true?'是':'否'}}</td>
-                                                    <td>
-                                                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                    </td>
-                                                </tr>
+                                                    <tr v-for="item in list">
+                                                        <td>{{item.value}}</td>
+                                                        <td>{{item.value2}}</td>
+                                                        <td>{{item.value3}}</td>
+                                                        <td>
+                                                            <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
-                                                <tfoot is="table-foot" colspan="3"></tfoot>
+                                                <tfoot is="table-foot" colspan="4"></tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -144,7 +143,7 @@
                                         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('设计单位','Purchase_DesignUnit')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                             <table class="table table-striped table-hover table-bordered ">
                                                 <thead>
                                                 <tr role="row">
@@ -152,7 +151,13 @@
                                                         单位
                                                     </th>
                                                     <th style="width: 200px;">
-                                                        进入随机库
+                                                        开户银行
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        账号
+                                                    </th>
+                                                    <th style="width: 500px;">
+                                                        通讯地址
                                                     </th>
                                                     <th style="width: 200px;">
                                                         操作
@@ -162,13 +167,15 @@
                                                 <tbody>
                                                 <tr v-for="item in list">
                                                     <td>{{item.value}}</td>
-                                                    <td>{{item.value4=="True"?"是":""}}</td>
+                                                    <td>{{item.value2}}</td>
+                                                    <td>{{item.value3}}</td>
+                                                    <td>{{item.value4}}</td>
                                                     <td>
                                                         <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
                                                     </td>
                                                 </tr>
                                                 </tbody>
-                                                <tfoot is="table-foot" colspan="3"></tfoot>
+                                                <tfoot is="table-foot" colspan="5"></tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -178,95 +185,81 @@
                                     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('甲方单位','Purchase_PartyA')"><i class="fa  fa-plus"></i> 新增</a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <table class="table table-striped table-hover table-bordered ">
                                             <thead>
-                                            <tr role="row">
-                                                <th style="width: 200px;">
-                                                    单位
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    进入随机库
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    操作
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr v-for="item in list">
-                                                <td>{{item.value}}</td>
-                                                <td>{{item.value4=="True"?"是":""}}</td>
-                                                <td>
-                                                    <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                                <div id="category" class="tab-pane ">
-                                    <div class="table-toolbar">
-                                        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('采购类型','Purchase_Category')"><i class="fa  fa-plus"></i> 新增</a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <table class="table table-striped table-hover table-bordered ">
-                                                <thead>
                                                 <tr role="row">
                                                     <th style="width: 200px;">
-                                                        单位
+                                                        姓名
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        联系电话
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        资质
+                                                    </th>
+                                                    <th style="width: 300px;">
+                                                        资质证书号码
                                                     </th>
                                                     <th style="width: 200px;">
                                                         操作
                                                     </th>
                                                 </tr>
-                                                </thead>
-                                                <tbody>
+                                            </thead>
+                                            <tbody>
                                                 <tr v-for="item in list">
                                                     <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
+                                                    <td>{{item.value3}}</td>
+                                                    <td>{{item.value4}}</td>
                                                     <td>
                                                         <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
                                                     </td>
                                                 </tr>
-                                                </tbody>
-                                                <tfoot is="table-foot" colspan="3"></tfoot>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                            <tfoot is="table-foot" colspan="5"></tfoot>
+                                        </table>
                                     </div>
                                 </div>
+                            </div>
                                 <div id="costUnit" class="tab-pane ">
                                     <div class="table-toolbar">
                                         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('造价单位','Purchase_CostUnit')"><i class="fa  fa-plus"></i> 新增</a>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                             <table class="table table-striped table-hover table-bordered ">
                                                 <thead>
-                                                <tr role="row">
-                                                    <th style="width: 200px;">
-                                                        单位
-                                                    </th>
-                                                    <th style="width: 200px;">
-                                                        是否进入随机库
-                                                    </th>
-                                                    <th style="width: 200px;">
-                                                        操作
-                                                    </th>
-                                                </tr>
+                                                    <tr role="row">
+                                                        <th style="width: 200px;">
+                                                            单位
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            开户银行
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            账号
+                                                        </th>
+                                                        <th style="width: 500px;">
+                                                            通讯地址
+                                                        </th>
+                                                        <th style="width: 200px;">
+                                                            操作
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="item in list">
-                                                    <td>{{item.value}}</td>
-                                                    <td>{{item.value4=="True"?"是":""}}</td>
-                                                    <td>
-                                                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                    </td>
-                                                </tr>
+                                                    <tr v-for="item in list">
+                                                        <td>{{item.value}}</td>
+                                                        <td>{{item.value2}}</td>
+                                                        <td>{{item.value3}}</td>
+                                                        <td>{{item.value4}}</td>
+                                                        <td>
+                                                            <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
-                                                <tfoot is="table-foot" colspan="3"></tfoot>
+                                                <tfoot is="table-foot" colspan="5"></tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -276,31 +269,39 @@
                                     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('监理单位','Purchase_ConstructionControlUnit')"><i class="fa  fa-plus"></i> 新增</a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <table class="table table-striped table-hover table-bordered ">
                                             <thead>
-                                            <tr role="row">
-                                                <th style="width: 200px;">
-                                                    单位
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    是否进入随机库
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    操作
-                                                </th>
-                                            </tr>
+                                                <tr role="row">
+                                                    <th style="width: 200px;">
+                                                        单位
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        开户银行
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        账号
+                                                    </th>
+                                                    <th style="width: 500px;">
+                                                        通讯地址
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        操作
+                                                    </th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr v-for="item in list">
-                                                <td>{{item.value}}</td>
-                                                <td>{{item.value4=="True"?"是":""}}</td>
-                                                <td>
-                                                    <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                </td>
-                                            </tr>
+                                                <tr v-for="item in list">
+                                                    <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
+                                                    <td>{{item.value3}}</td>
+                                                    <td>{{item.value4}}</td>
+                                                    <td>
+                                                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                                                    </td>
+                                                </tr>
                                             </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                            <tfoot is="table-foot" colspan="5"></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -310,31 +311,39 @@
                                     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('招标代理单位','Purchase_BiddingAgency')"><i class="fa  fa-plus"></i> 新增</a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <table class="table table-striped table-hover table-bordered ">
                                             <thead>
-                                            <tr role="row">
-                                                <th style="width: 200px;">
-                                                    单位
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    是否进入随机库
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    操作
-                                                </th>
-                                            </tr>
+                                                <tr role="row">
+                                                    <th style="width: 200px;">
+                                                        单位
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        开户银行
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        账号
+                                                    </th>
+                                                    <th style="width: 500px;">
+                                                        通讯地址
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        操作
+                                                    </th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr v-for="item in list">
-                                                <td>{{item.value}}</td>
-                                                <td>{{item.value4=="True"?"是":""}}</td>
-                                                <td>
-                                                    <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                </td>
-                                            </tr>
+                                                <tr v-for="item in list">
+                                                    <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
+                                                    <td>{{item.value3}}</td>
+                                                    <td>{{item.value4}}</td>
+                                                    <td>
+                                                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                                                    </td>
+                                                </tr>
                                             </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                            <tfoot is="table-foot" colspan="5"></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -344,31 +353,39 @@
                                     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('评标专家','Purchase_Expert')"><i class="fa  fa-plus"></i> 新增</a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <table class="table table-striped table-hover table-bordered ">
                                             <thead>
-                                            <tr role="row">
-                                                <th style="width: 200px;">
-                                                    单位
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    是否进入随机库
-                                                </th>
-                                                <th style="width: 200px;">
-                                                    操作
-                                                </th>
-                                            </tr>
+                                                <tr role="row">
+                                                    <th style="width: 200px;">
+                                                        姓名
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        联系电话
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        资质
+                                                    </th>
+                                                    <th style="width: 500px;">
+                                                        资质证书号码
+                                                    </th>
+                                                    <th style="width: 200px;">
+                                                        操作
+                                                    </th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr v-for="item in list">
-                                                <td>{{item.value}}</td>
-                                                <td>{{item.value4=="True"?"是":""}}</td>
-                                                <td>
-                                                    <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
-                                                </td>
-                                            </tr>
+                                                <tr v-for="item in list">
+                                                    <td>{{item.value}}</td>
+                                                    <td>{{item.value2}}</td>
+                                                    <td>{{item.value3}}</td>
+                                                    <td>{{item.value4}}</td>
+                                                    <td>
+                                                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                                                    </td>
+                                                </tr>
                                             </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                            <tfoot is="table-foot" colspan="5"></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -378,7 +395,7 @@
                                     <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('清单综合单价一致率','Purchase_PriceConsistency')"><i class="fa  fa-plus"></i> 新增</a>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <table class="table table-striped table-hover table-bordered ">
                                             <thead>
                                             <tr role="row">
@@ -398,7 +415,7 @@
                                                 </td>
                                             </tr>
                                             </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                            <tfoot is="table-foot" colspan="2"></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -421,6 +438,10 @@
                                                 <th style="width: 200px;">
                                                     区间上限
                                                 </th>
+                                                
+                                                <th style="width: 200px;">
+                                                    操作
+                                                </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -433,7 +454,7 @@
                                                 </td>
                                             </tr>
                                             </tbody>
-                                            <tfoot is="table-foot" colspan="3"></tfoot>
+                                            <tfoot is="table-foot" colspan="4"></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -466,13 +487,109 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-show="item.category=='Material_Storage'">
+                <div class="row" v-show="item.category=='Purchase_Users'">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">库管员<span class="red">*</span></label>
+                            <label class="col-sm-2 control-label no-padding-right">联系电话<span class="red">*</span></label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
                                     <input type="text" class="form-control " placeholder="必填" name="value2" v-model="item.value2"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">部门<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value3" v-model="item.value3"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" v-show="item.category=='Purchase_SystemScore'">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">区间上限<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="number" class="form-control " placeholder="必填" name="value2" v-model="item.value2"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">区间下限<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="number" class="form-control " placeholder="必填" name="value3" v-model="item.value3"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" v-show="item.category=='Purchase_PartyA'||item.category=='Purchase_Expert'">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">联系电话<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value2" v-model="item.value2"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">资质<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value3" v-model="item.value3"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">资质证书号码<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value4" v-model="item.value4"  />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" v-show="item.category=='Purchase_DesignUnit' ||item.category=='Purchase_CostUnit' ||item.category=='Purchase_ConstructionControlUnit' ||item.category=='Purchase_BiddingAgency'">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">开户银行<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value2" v-model="item.value2" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">账号<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value3" v-model="item.value3" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">通讯地址<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <span class="input-icon icon-right">
+                                    <input type="text" class="form-control " placeholder="必填" name="value4" v-model="item.value4" />
                                 </span>
                             </div>
                         </div>

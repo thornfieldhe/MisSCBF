@@ -83,7 +83,7 @@ var main = new Vue({
             } else if (id === "ppriceConsistency") {
                 $this.title = "清单综合单价一致率";
                 $this.category = "Purchase_PriceConsistency";
-            } else if (id === "ppriceConsistency") {
+            } else if (id === "psystemscore") {
                 $this.title = "质量评价体系评分";
                 $this.category = "Purchase_SystemScore";
             }

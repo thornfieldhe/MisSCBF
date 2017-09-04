@@ -53,7 +53,8 @@ Path.map("#queryStocks").to(function () { loadPage("/HisStock/QueryStockList", "
 Path.map("#queryStockChange").to(function () { loadPage("/HisStock/QuerytockChange", "物资器材管理", "物资变动情况查询", "#menuStockChange", false); });
 Path.map("#stocks").to(function () { loadPage("/Stock/StockList", "物资器材管理", "物资清单", "#menuStocks", false); });
 Path.map("#checkBills").to(function () { loadPage("/CheckBill/CheckBillList", "物资器材管理", "盘点", "#menuCheckBills", false); });
-Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "物资器材管理", "基础信息", "#menuProductInfos", false); });
+
+Path.map("#purchaseInfos").to(function () { loadPage("/Purchase/InfoList", "采购管理", "基础信息", "#menuProductInfos", false); });
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#maintenanceParts").to(function () { loadPage("/Car/MaintenancePartsList", "车辆管理", "维修部位", "#menuMaintenanceParts", false); });
