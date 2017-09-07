@@ -68,6 +68,9 @@ var main = new Vue({
             } else if (id === "pcategory") {
                 $this.title = "采购类型";
                 $this.category = "Purchase_Category";
+            } else if (id === "pyear") {
+                $this.title = "会计年度";
+                $this.category = "Purchase_Year";
             } else if (id === "pcostUnit") {
                 $this.title = "造价单位";
                 $this.category = "Purchase_CostUnit";

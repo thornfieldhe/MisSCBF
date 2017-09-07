@@ -86,6 +86,12 @@ namespace SCBF.BaseInfo
 
         #region 采购
 
+
+        /// <summary>
+        /// 采购模块年度
+        /// </summary>
+        public const string Purchase_Year = "Purchase_Year";
+
         /// <summary>
         /// 责任单位
         /// </summary>

@@ -9,12 +9,12 @@
 
 namespace SCBF.Tasks
 {
+    using System;
     using Abp.Dependency;
     using Abp.Quartz.Quartz;
     using Quartz;
     using SCBF.BaseInfo;
     using SCBF.BaseInfo.Dto;
-    using System;
 
     /// <summary>
     /// 年度任务:物资管理模块年底更新期末数据
@@ -46,6 +46,13 @@ namespace SCBF.Tasks
                 new SysDictionaryEditDto()
                 {
                     Category = DictionaryCategory.Car_Year,
+                    Value = t
+                });
+
+            sysDictionaryAppService.SaveYearAsync(
+                new SysDictionaryEditDto()
+                {
+                    Category = DictionaryCategory.Purchase_Year,
                     Value = t
                 });
         }
