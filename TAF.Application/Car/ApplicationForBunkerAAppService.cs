@@ -146,7 +146,7 @@ namespace SCBF.Car
             }
             else
             {
-                return $"JYK{long.Parse(maxCode.Substring(3)) + 1}";
+                return $"JYK{(long.Parse(maxCode.Substring(3)) + 1):000}";
             }
         }
     }

@@ -1,0 +1,344 @@
+﻿@using SCBF.BaseInfo.Dto
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">采购计划</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary " v-on:click="showModifyDialog('新增采购计划',null)"><i class="fa  fa-plus"></i> 新增</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+
+                                    <th style="width: 200px;">
+                                        编码
+                                    </th>  
+                                    <th style="width: 200px;">
+                                        采购类别
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        采购方式
+                                    </th>       
+                                    <th style="width: 200px;">
+                                        采购项目
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        年度
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        采购时间
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        责任部门
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        责任人
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                            <tr role="row">
+                                <th>
+                                    <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code" />
+                                </th>  
+                                <th>
+                                    <select id="searchCategory" style="width: 100%" v-model="queryEntity.category">
+                                        <option value="">请选择...</option>
+                                                <option value="Zccg">资产(物资)采购</option>
+                                                <option value="Fwcg">服务采购</option>
+                                                <option value="Xxhcg">资产(物资)采购</option>
+                                                <option value="Zccg">信息化采购</option>
+                                                <option value="Gccg">工程采购</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="searchMode" style="width: 100%" v-model="queryEntity.mode">
+                                        <option value="">请选择...</option>
+                                        <option value="Yqzb">邀请招标</option>
+                                        <option value="Jzxtp">竞争性谈判</option>
+                                        <option value="Xjcg">询价采购</option>
+                                        <option value="Bxcg">比选采购</option>
+                                        <option value="GkzbZdjf">公开招标(最低价法)</option>
+                                        <option value="GkzbZhpff">公开招标(综合评分法)</option>
+                                        <option value="Dylycg">单一来源采购</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="采购项目" v-model="queryEntity.name"/>
+                                </th>
+                                <th>
+                                    <input type="number" class="form-control" placeholder="年度" v-model="queryEntity.year"/>
+                                </th>
+                                <th>
+                                    <select id="searchMonth" style="width: 100%" v-model="queryEntity.month">
+                                        <option value="">请选择...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="searchDepartment" style="width: 100%" v-model="queryEntity.department">
+                                        <option value="">请选择...</option>
+                                        @{
+                                            foreach (var item in (List<SysDictionaryListDto>)ViewData["list1"])
+                                            {
+                                                <option value="@item.Id">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="searchUser" style="width: 100%" v-model="queryEntity.user">
+                                        <option value="">请选择...</option>
+                                        @{
+                                            foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
+                                            {
+                                                <option value="@item.Id">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </th>
+                                <th>
+                                    <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                    <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list.items">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.category}}</td>
+                                    <td>{{item.mode}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.year}}</td>
+                                    <td>{{item.month}}</td>
+                                    <td>{{item.department}}</td>
+                                    <td>{{item.user}}</td>
+                                    <td>
+                                    <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购计划',item.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) " ><i class="fa fa-trash-o"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="9" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+                    
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除对话框 -->
+<div class="bootbox modal fade modal-darkorange in" id="deleteProcurementPlanDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除{{deleteEntity.name}}？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="delete(deleteEntity.id)"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyProcurementPlanDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">编码<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control "  name="code" v-model="item.code" readonly="readonly"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购类别<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <select id="editCategory" style="width: 100%" v-model="item.category" v-validate:category="{required:true}">
+                                                    <option value="">请选择...</option>
+                                                    <option value="Zccg">资产(物资)采购</option>
+                                                    <option value="Fwcg">服务采购</option>
+                                                    <option value="Xxhcg">资产(物资)采购</option>
+                                                    <option value="Zccg">信息化采购</option>
+                                                    <option value="Gccg">工程采购</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购方式<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <select id="editMode" style="width: 100%" v-model="item.mode" v-validate:mode="{required:true}">
+                                                    <option value="">请选择...</option>
+                                                    <option value="Yqzb">邀请招标</option>
+                                                    <option value="Jzxtp">竞争性谈判</option>
+                                                    <option value="Xjcg">询价采购</option>
+                                                    <option value="Bxcg">比选采购</option>
+                                                    <option value="GkzbZdjf">公开招标(最低价法)</option>
+                                                    <option value="GkzbZhpff">公开招标(综合评分法)</option>
+                                                    <option value="Dylycg">单一来源采购</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购项目<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <span class="input-icon icon-right">
+                                                <input type="text" class="form-control " placeholder="必填" name="name" v-model="item.name" v-validate:name="{required:true}"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">年度<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" placeholder="必填" id="year" name="year" v-model="item.year" v-validate:year="{int:true}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购时间<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="editMonth" style="width: 100%" v-model="item.month" v-validate:month="{required:true}">
+                                                <option value="">请选择...</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">责任部门<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="editDepartment" style="width: 100%" v-model="item.department" name="department" v-validate:department="{required:true}">
+                                                <option value="">请选择...</option>
+                                                @{
+                                                    foreach (var item in (List<SysDictionaryListDto>)ViewData["list1"])
+                                                    {
+                                                        <option value="@item.Id">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">责任人<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="editUser" style="width: 100%" v-model="item.user" name="user" v-validate:user="{required:true}">
+                                                <option value="">请选择...</option>
+                                                @{
+                                                    foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
+                                                    {
+                                                        <option value="@item.Id">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="saveNew()" v-show="!modifyEntity.editModel"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存新增 </button>
+                <button type="submit" class="btn btn-primary" v-on:click="save()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/procurementPlan.js"></script>
+
+
+

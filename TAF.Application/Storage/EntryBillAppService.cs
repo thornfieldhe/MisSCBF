@@ -9,13 +9,13 @@
 
 namespace SCBF.Storage
 {
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using SCBF.Storage.Dto;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Abp.Authorization;
+    using Abp.AutoMapper;
+    using SCBF.Storage.Dto;
 
     /// <summary>
     /// 入库单服务
@@ -78,7 +78,7 @@ namespace SCBF.Storage
             }
             else
             {
-                return $"RK{long.Parse(maxCode.Substring(2)) + 1}";
+                return $"RK{(long.Parse(maxCode.Substring(2)) + 1):000}";
             }
         }
     }

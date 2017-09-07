@@ -30,13 +30,13 @@ namespace SCBF.Web.Controllers
             ISysDictionaryAppService sysDictionaryAppService)
         {
             this.checkBillAppService = checkBillAppService;
-            this.attachmentAppService = attachmentAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._attachmentAppService = attachmentAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult CheckBillList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_Storage).ToList();
+            var list = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_Storage).ToList();
             return PartialView("_CheckBillIndex", list);
         }
 

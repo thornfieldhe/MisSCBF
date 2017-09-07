@@ -165,7 +165,7 @@ namespace SCBF.Storage
             }
             else
             {
-                return $"PD{long.Parse(maxCode.Substring(2)) + 1}";
+                return $"PD{(long.Parse(maxCode.Substring(2)) + 1):000}";
             }
         }
     }

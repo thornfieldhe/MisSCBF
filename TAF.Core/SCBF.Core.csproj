@@ -153,6 +153,10 @@
     <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Finance\VoucherAudit.cs" />
     <Compile Include="Finance\VoucherAuditPoint.cs" />
+    <Compile Include="Purchase\PlanWithBudgetOutlay.cs" />
+    <Compile Include="Purchase\ProcurementPlan.cs" />
+    <Compile Include="Purchase\ProcurementPlanCategory.cs" />
+    <Compile Include="Purchase\ProcurementPlanMode.cs" />
     <Compile Include="Storage\Check.cs" />
     <Compile Include="Storage\CheckBill.cs" />
     <Compile Include="Storage\ICheckBillRepository.cs" />
@@ -187,6 +191,8 @@
     <Compile Include="Storage\HisStock.cs" />
     <Compile Include="Storage\Stock.cs" />
     <Compile Include="TAF.Core\Car\IOilRechargeRecordRepository.cs" />
+    <Compile Include="TAF.Core\Purchase\IPlanWithBudgetOutlayRepository.cs" />
+    <Compile Include="TAF.Core\Purchase\IProcurementPlanRepository.cs" />
     <Compile Include="TAFEntity.cs" />
     <Compile Include="TAFConsts.cs" />
     <Compile Include="TAFCoreModule.cs" />
@@ -218,9 +224,7 @@
     <EmbeddedResource Include="Localization\Source\SCBF-zh-CN.xml" />
     <EmbeddedResource Include="Localization\Source\SCBF.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Purchase\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

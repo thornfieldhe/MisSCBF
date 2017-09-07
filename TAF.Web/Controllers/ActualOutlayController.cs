@@ -27,8 +27,8 @@ namespace SCBF.Web.Controllers
             , IAttachmentAppService attachmentAppService)
         {
             this.actualOutlayAppService = actualOutlayAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
-            this.attachmentAppService = attachmentAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
+            this._attachmentAppService = attachmentAppService;
         }
 
         public ActionResult ActualOutlayList()

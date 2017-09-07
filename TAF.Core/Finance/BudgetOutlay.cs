@@ -12,6 +12,8 @@ namespace SCBF.Finance
     using System;
     using System.Collections.Generic;
 
+    using SCBF.Purchase;
+
     /// <summary>
     /// 
     /// </summary>
@@ -124,6 +126,8 @@ namespace SCBF.Finance
             get; set;
         }
 
+
+        public virtual List<PlanWithBudgetOutlay> PlanWithBudgetOutlays { get; set; }
 
         #region 栏目
 

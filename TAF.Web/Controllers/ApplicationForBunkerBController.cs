@@ -31,7 +31,7 @@ namespace SCBF.Web.Controllers
             ICarInfoAppService carInfoAppService)
         {
             this.octaneStoreAppService = octaneStoreAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
             this.driverAppService = driverAppService;
             this.carInfoAppService = carInfoAppService;
         }
@@ -56,7 +56,7 @@ namespace SCBF.Web.Controllers
         {
             ViewData["list1"] = octaneStoreAppService.GetSimple();
             ViewData["list3"] = driverAppService.GetSimpleList();
-            ViewData["list2"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
+            ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
             return PartialView("_ApplicationForAuditBList");
         }
 

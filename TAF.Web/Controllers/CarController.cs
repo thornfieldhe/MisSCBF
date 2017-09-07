@@ -21,7 +21,7 @@ namespace SCBF.Web.Controllers
     {
         public CarController(ISysDictionaryAppService sysDictionaryAppService)
         {
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult InfoList() { return this.PartialView("_CarInfoIndex"); }

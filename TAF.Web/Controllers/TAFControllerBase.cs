@@ -15,8 +15,8 @@ namespace SCBF.Web.Controllers
     /// </summary>
     public abstract class TAFControllerBase : AbpController
     {
-        protected IAttachmentAppService attachmentAppService;
-        protected ISysDictionaryAppService sysDictionaryAppService;
+        protected IAttachmentAppService _attachmentAppService;
+        protected ISysDictionaryAppService _sysDictionaryAppService;
 
         protected TAFControllerBase()
         {
@@ -47,10 +47,10 @@ namespace SCBF.Web.Controllers
             var fileData = this.Request.Files[0];
             if (fileData != null)
             {
-                var defaultPath = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_BashPath);
+                var defaultPath = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_BashPath);
                 if (defaultPath.Count > 0)
                 {
-                    var virPath = $"{defaultPath[0].Value}/{this.sysDictionaryAppService.GetModulePath(category)}/";
+                    var virPath = $"{defaultPath[0].Value}/{this._sysDictionaryAppService.GetModulePath(category)}/";
                     var fileSaveLocation = Server.MapPath(virPath);
                     if (!Directory.Exists(fileSaveLocation))
                     {
@@ -60,7 +60,7 @@ namespace SCBF.Web.Controllers
                     string fileName = Path.GetFileName(fileData.FileName); // 原始文件名称
                     string fileExtension = Path.GetExtension(fileName); // 文件扩展名
 
-                    var fileTypes = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_Ext);
+                    var fileTypes = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_Ext);
                     if (fileTypes.Count == 0)
                     {
                         throw new UserFriendlyException("未配置允许上传附件格式");
@@ -79,14 +79,14 @@ namespace SCBF.Web.Controllers
 
 
                         var modelId = act(fileSaveLocation + saveName, param);
-                        this.attachmentAppService.Save(
+                        this._attachmentAppService.Save(
                              new AttachmentEditDto()
                              {
                                  Name = saveName,
                                  Category = category,
                                  Ext = fileExtension,
                                  ModuleId = modelId,
-                                 Path = $"{this.sysDictionaryAppService.GetModulePath(category)}/{saveName}",
+                                 Path = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
                                  Size = (decimal)fileInfo.Length / 1024
                              });
                         return modelId;

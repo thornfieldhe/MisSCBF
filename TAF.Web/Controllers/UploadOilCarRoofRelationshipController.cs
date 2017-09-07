@@ -31,8 +31,8 @@ namespace SCBF.Web.Controllers
                                                       IAttachmentAppService attachmentAppService)
         {
             this.oilCardProofAppService = oilCardProofAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
-            this.attachmentAppService = attachmentAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
+            this._attachmentAppService = attachmentAppService;
         }
 
 

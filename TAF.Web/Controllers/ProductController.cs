@@ -26,13 +26,13 @@ namespace SCBF.Web.Controllers
         public ProductController(IProductAppService productAppService, ISysDictionaryAppService sysDictionaryAppService, ILayerAppService layerAppService)
         {
             this.productAppService = productAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
             this.layerAppService = layerAppService;
         }
 
         public ActionResult ProductList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_ProductUnit);
+            var list = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Material_ProductUnit);
             return PartialView("_ProductIndex", list);
         }
 

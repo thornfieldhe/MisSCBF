@@ -392,7 +392,7 @@ namespace SCBF.Car
             }
             else
             {
-                return $"SXD{long.Parse(maxCode.Substring(3)) + 1}";
+                return $"SXD{(long.Parse(maxCode.Substring(3)) + 1):000}";
             }
         }
     }

@@ -32,7 +32,7 @@ namespace SCBF.Web.Controllers
             IDriverAppService driverAppService)
         {
             this.oilCardAppService = oilCardAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
             this.driverAppService = driverAppService;
         }
 
@@ -54,7 +54,7 @@ namespace SCBF.Web.Controllers
         {
             ViewData["list1"] = oilCardAppService.GetSimple();
             ViewData["list2"] = driverAppService.GetSimpleList();
-            ViewData["list3"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
+            ViewData["list3"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Attendant);
             return PartialView("_ApplicationForAuditAList");
         }
 

@@ -28,13 +28,13 @@ namespace SCBF.Web.Controllers
         public OctaneStoreController(IOctaneStoreAppService octaneStoreAppService, ISysDictionaryAppService sysDictionaryAppService)
         {
             this.octaneStoreAppService = octaneStoreAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult OctaneStoreList()
         {
-             ViewData["list1"] = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
-            ViewData["list2"]  = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
+             ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
+            ViewData["list2"]  = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
             return PartialView("_OctaneStoreIndex");
         }
     }

@@ -27,12 +27,12 @@ namespace SCBF.Web.Controllers
             ISysDictionaryAppService sysDictionaryAppService)
         {
             this.driverAppService = driverAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult DriverList()
         {
-            var list = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_DriveLevel);
+            var list = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_DriveLevel);
             return PartialView("_DriverIndex", list);
         }
     }

@@ -26,13 +26,13 @@ namespace SCBF.Web.Controllers
         public OilRechargeRecordController(IOilRechargeRecordAppService oilRechargeRecordAppService, ISysDictionaryAppService sysDictionaryAppService)
         {
             this.oilRechargeRecordAppService = oilRechargeRecordAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult OilRechargeRecordList()
         {
-            ViewData["list1"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
-            ViewData["list2"] = this.sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
+            ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OilHostingUnit);
+            ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating);
             return PartialView("_OilRechargeRecordIndex");
         }
     }

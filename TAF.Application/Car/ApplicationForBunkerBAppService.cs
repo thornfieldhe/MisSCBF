@@ -243,7 +243,7 @@ namespace SCBF.Car
             }
             else
             {
-                return $"SWYL{long.Parse(maxCode.Substring(4)) + 1}";
+                return $"SWYL{(long.Parse(maxCode.Substring(4)) + 1):000}";
             }
         }
     }

@@ -1,15 +1,16 @@
 ﻿namespace SCBF.EntityFramework
 {
+    using System.Data.Common;
+    using System.Data.Entity;
     using Abp.Zero.EntityFramework;
     using SCBF.Authorization.Roles;
     using SCBF.BaseInfo;
     using SCBF.Car;
     using SCBF.Finance;
     using SCBF.MultiTenancy;
+    using SCBF.Purchase;
     using SCBF.Storage;
     using SCBF.Users;
-    using System.Data.Common;
-    using System.Data.Entity;
 
     public class TAFDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
@@ -232,6 +233,21 @@
 
         #endregion
 
+        #region 采购
+
+
+        public DbSet<PlanWithBudgetOutlay> PlanWithBudgetOutlays
+        {
+            get; set;
+        }
+
+
+        public DbSet<ProcurementPlan> ProcurementPlans
+        {
+            get; set;
+        }
+
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

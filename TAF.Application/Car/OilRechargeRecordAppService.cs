@@ -107,7 +107,7 @@ namespace SCBF.Car
             }
             else
             {
-                return $"SWRK{long.Parse(maxCode.Substring(3)) + 1}";
+                return $"SWRK{(long.Parse(maxCode.Substring(3)) + 1):000}";
             }
         }
     }

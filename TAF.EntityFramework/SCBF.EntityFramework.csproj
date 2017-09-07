@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\PlanWithBudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\InvoiceMap.cs" />
     <Compile Include="EntityFramework\Maps\CaroilMap.cs" />
     <Compile Include="EntityFramework\Maps\ServicingMaterialMap.cs" />
@@ -345,6 +346,10 @@
     <Compile Include="Migrations\201709030834066_updateTable_invoice.Designer.cs">
       <DependentUpon>201709030834066_updateTable_invoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709071435060_addTable_ProcurementPlan.cs" />
+    <Compile Include="Migrations\201709071435060_addTable_ProcurementPlan.Designer.cs">
+      <DependentUpon>201709071435060_addTable_ProcurementPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -387,6 +392,8 @@
     <Compile Include="Repositories\UploadOilCardRoofRepository.cs" />
     <Compile Include="Repositories\UploadOilCarRoofRelationshipRepository.cs" />
     <Compile Include="Repositories\VoucherAuditRepository.cs" />
+    <Compile Include="TAF.EntityFramework\Repositories\PlanWithBudgetOutlayRepository.cs" />
+    <Compile Include="TAF.EntityFramework\Repositories\ProcurementPlanRepository.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -556,6 +563,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709030834066_updateTable_invoice.resx">
       <DependentUpon>201709030834066_updateTable_invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709071435060_addTable_ProcurementPlan.resx">
+      <DependentUpon>201709071435060_addTable_ProcurementPlan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

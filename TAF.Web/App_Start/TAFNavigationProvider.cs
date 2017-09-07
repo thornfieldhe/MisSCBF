@@ -191,13 +191,17 @@
                     L("采购管理"),
                     url: "#",
                     icon: "menu-icon fa  fa-shopping-cart",
-                    requiredPermissionName: PermissionNames.WzUser)
-                    .AddItem(
-                            new MenuItemDefinition(
+                    requiredPermissionName: PermissionNames.CgUser)
+                    .AddItem(new MenuItemDefinition(
                                 "menuPurchaseInfos",
                                 L("基础信息"),
                                 url: "#purchaseInfos",
-                                requiredPermissionName: PermissionNames.WzUser)))
+                                requiredPermissionName: PermissionNames.CgUser))
+                    .AddItem(new MenuItemDefinition(
+                                "menuProcurementPlans",
+                                L("采购计划"),
+                                url: "#procurementPlans",
+                                requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(
                         "Car",

@@ -28,8 +28,8 @@ namespace SCBF.Web.Controllers
             , ISysDictionaryAppService sysDictionaryAppService)
         {
             this.budgetReceiptAppService = budgetReceiptAppService;
-            this.attachmentAppService = attachmentAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._attachmentAppService = attachmentAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         [HttpPost]

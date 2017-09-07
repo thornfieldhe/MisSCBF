@@ -30,14 +30,14 @@ namespace SCBF.Web.Controllers
         public CarInfoController(IDriverAppService driverAppService, ISysDictionaryAppService sysDictionaryAppService)
         {
             this.driverAppService = driverAppService;
-            this.sysDictionaryAppService = sysDictionaryAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult CarInfoList()
         {
-            var list1 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Status).ToList();
+            var list1 = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_Status).ToList();
             var list2 = driverAppService.GetSimpleList();
-            var list3 = sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating).ToList();
+            var list3 = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_OctaneRating).ToList();
             return PartialView("_CarInfoIndex", new KeyValue<List<SysDictionaryListDto>, List<KeyValue<Guid, string>>, List<SysDictionaryListDto>>(list1, list2, list3));
         }
     }
