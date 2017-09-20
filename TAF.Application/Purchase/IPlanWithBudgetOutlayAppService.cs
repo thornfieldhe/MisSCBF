@@ -11,20 +11,17 @@ namespace SCBF.Purchase
 {
     using System;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    
+    using Abp.Application.Services.Dto;
     using SCBF.Purchase.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
+
     /// <summary>
     /// 采购计划预算关联表应用接口
     /// </summary>
     public interface IPlanWithBudgetOutlayAppService : IBaseEntityApplicationService
     {
-        ListResultDto<PlanWithBudgetOutlayListDto> GetAll(PlanWithBudgetOutlayQueryDto request);
+        ListResultDto<PlanWithBudgetOutlayListDto> GetCorrelatedOutlays(PlanWithBudgetOutlayQueryDto request);
 
-        PlanWithBudgetOutlayEditDto Get(Guid id);
+        ListResultDto<PlanWithBudgetOutlayListDto> GetUnCorrelatedOutlays(PlanWithBudgetOutlayQueryDto request);
 
         Task SaveAsync(PlanWithBudgetOutlayEditDto input);
 

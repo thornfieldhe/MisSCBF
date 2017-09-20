@@ -10,7 +10,6 @@
 namespace SCBF.Purchase.Dto
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     using Abp.AutoMapper;
 
@@ -21,29 +20,21 @@ namespace SCBF.Purchase.Dto
     public class PlanWithBudgetOutlayEditDto
     {
         /// <summary>
-        /// Id
-        /// </summary>
-        public Guid? Id
-        {
-            get; set;
-        }        
-        
-        /// <summary>
         /// ProcurementPlanId
         /// </summary>
         public Guid ProcurementPlanId
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// BudgetOutlayId
         /// </summary>
         public Guid BudgetOutlayId
         {
             get; set;
-        }        
-    } 
+        }
+    }
 }
 
 

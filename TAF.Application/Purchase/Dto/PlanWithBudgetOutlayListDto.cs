@@ -25,24 +25,45 @@ namespace SCBF.Purchase.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// ProcurementPlanName
+        /// Name
         /// </summary>
-        public string ProcurementPlanName
+        public string Name
         {
             get; set;
-        }    
-        
+        }
+
         /// <summary>
-        /// BudgetOutlayName
+        /// Unit
         /// </summary>
-        public string BudgetOutlayName
+        public string Unit
         {
             get; set;
-        }    
-    } 
+        }
+
+        /// <summary>
+        /// Amount
+        /// </summary>
+        public decimal Amount
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Price
+        /// </summary>
+        public decimal Price
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Price
+        /// </summary>
+        public decimal Total => Amount * Price;
+    }
 }
 
 

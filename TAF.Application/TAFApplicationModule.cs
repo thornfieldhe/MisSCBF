@@ -16,6 +16,8 @@ namespace SCBF
     using SCBF.Car.Dto;
     using SCBF.Finance;
     using SCBF.Finance.Dto;
+    using SCBF.Purchase;
+    using SCBF.Purchase.Dto;
     using SCBF.Storage;
     using SCBF.Storage.Dto;
     using SCBF.Tasks;
@@ -298,6 +300,17 @@ namespace SCBF
 
                 mapper.CreateMap<InvoiceCheck, InvoiceCheckListDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.CreationTime.ToString("yyyy-MM-dd")));
+
+
+
+                mapper.CreateMap<PlanWithBudgetOutlay, PlanWithBudgetOutlayListDto>()
+                    .ForMember(m => m.Name, n => n.MapFrom(r => r.BudgetOutlay.Name))
+                    .ForMember(m => m.Unit, n => n.MapFrom(r => r.BudgetOutlay.Unit))
+                    .ForMember(m => m.Amount, n => n.MapFrom(r => r.BudgetOutlay.Amount))
+                    .ForMember(m => m.Price, n => n.MapFrom(r => r.BudgetOutlay.Price));
+
+                mapper.CreateMap<BudgetOutlay, PlanWithBudgetOutlayListDto>();
+
                 #endregion
 
                 #region 车辆模块

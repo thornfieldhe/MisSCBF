@@ -10,31 +10,40 @@
 namespace SCBF.Purchase.Dto
 {
     using System;
-    
+
     using Abp.Application.Services.Dto;
 
     /// <summary>
     /// 采购计划预算关联表查询对象
     /// </summary>
     public class PlanWithBudgetOutlayQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    {
+
         /// <summary>
-        /// ProcurementPlanId
+        /// Name
         /// </summary>
-        public Guid? ProcurementPlanId
+        public string Name
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// BudgetOutlayId
+        /// Pid
         /// </summary>
-        public Guid? BudgetOutlayId
+        public Guid? Pid
         {
             get; set;
-        }        
-    } 
+        }
+
+        /// <summary>
+        /// Year
+        /// </summary>
+        public int? Year
+        {
+            get; set;
+        }
+
+    }
 }
 
 

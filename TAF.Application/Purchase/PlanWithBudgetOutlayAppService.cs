@@ -19,8 +19,7 @@ namespace SCBF.Purchase
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
-
-    using AutoMapper;
+    using Abp.UI;
 
     using SCBF.Purchase.Dto;
 
@@ -30,19 +29,43 @@ namespace SCBF.Purchase
     [AbpAuthorize]
     public class PlanWithBudgetOutlayAppService : TAFAppServiceBase, IPlanWithBudgetOutlayAppService
     {
-        private readonly IPlanWithBudgetOutlayRepository _planWithBudgetOutlayRepository;
+        private readonly IPlanWithBudgetOutlayRepository planWithBudgetOutlayRepository;
+        private readonly IBudgetOutlayRepository budgetOutlayRepository;
 
-        public PlanWithBudgetOutlayAppService(IPlanWithBudgetOutlayRepository planWithBudgetOutlayRepository)
+        public PlanWithBudgetOutlayAppService(IPlanWithBudgetOutlayRepository planWithBudgetOutlayRepository, IBudgetOutlayRepository budgetOutlayRepository)
         {
-            this._planWithBudgetOutlayRepository = planWithBudgetOutlayRepository;
+            this.planWithBudgetOutlayRepository = planWithBudgetOutlayRepository;
+            this.budgetOutlayRepository = budgetOutlayRepository;
         }
 
-        public ListResultDto<PlanWithBudgetOutlayListDto> GetAll(PlanWithBudgetOutlayQueryDto request)
+        public ListResultDto<PlanWithBudgetOutlayListDto> GetCorrelatedOutlays(PlanWithBudgetOutlayQueryDto request)
         {
-            var query = this._planWithBudgetOutlayRepository.GetAll()
+            if (!request.Pid.HasValue)
+            {
+                throw new UserFriendlyException("采购计划不能为空");
+            }
 
-                .WhereIf(request.ProcurementPlanId.HasValue, r => r.ProcurementPlanId == request.ProcurementPlanId.Value)
-                .WhereIf(request.BudgetOutlayId.HasValue, r => r.BudgetOutlayId == request.BudgetOutlayId.Value);
+            var query = this.planWithBudgetOutlayRepository.GetAll()
+                .Where(r => r.ProcurementPlanId == request.Pid).OrderByDescending(r => r.CreationTime);
+            var count = query.Count();
+            var list = query.AsQueryable().PageBy(request).ToList();
+            var dtos = list.MapTo<List<PlanWithBudgetOutlayListDto>>();
+
+            return new PagedResultDto<PlanWithBudgetOutlayListDto>(count, dtos);
+        }
+
+        public ListResultDto<PlanWithBudgetOutlayListDto> GetUnCorrelatedOutlays(PlanWithBudgetOutlayQueryDto request)
+        {
+            if (!request.Year.HasValue)
+            {
+                request.Year = DateTime.Now.Year;
+            }
+
+            var correlatedIds = this.planWithBudgetOutlayRepository.GetAll()
+                .Where(r => r.ProcurementPlan.Year == request.Year.Value).Select(r => r.BudgetOutlayId);
+            var query = this.budgetOutlayRepository.GetAll()
+                .Where(r => correlatedIds.All(m => m != r.Id) && r.BudgetReceiptId.HasValue)
+                .WhereIf(!string.IsNullOrEmpty(request.Name), r => r.Name.Contains(request.Name));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)
@@ -54,30 +77,15 @@ namespace SCBF.Purchase
             return new PagedResultDto<PlanWithBudgetOutlayListDto>(count, dtos);
         }
 
-        public PlanWithBudgetOutlayEditDto Get(Guid id)
-        {
-            var output = this._planWithBudgetOutlayRepository.Get(id);
-            return output.MapTo<PlanWithBudgetOutlayEditDto>();
-        }
-
         public async Task SaveAsync(PlanWithBudgetOutlayEditDto input)
         {
             var item = input.MapTo<PlanWithBudgetOutlay>();
-            if (!input.Id.HasValue)
-            {
-                await this._planWithBudgetOutlayRepository.InsertAsync(item);
-            }
-            else
-            {
-                var old = this._planWithBudgetOutlayRepository.Get(input.Id.Value);
-                Mapper.Map(input, old);
-                await this._planWithBudgetOutlayRepository.UpdateAsync(old);
-            }
+            await this.planWithBudgetOutlayRepository.InsertAsync(item);
         }
 
         public void Delete(Guid id)
         {
-            this._planWithBudgetOutlayRepository.Delete(id);
+            this.planWithBudgetOutlayRepository.Delete(id);
         }
     }
 }
