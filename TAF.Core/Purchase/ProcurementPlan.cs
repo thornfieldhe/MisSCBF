@@ -58,5 +58,7 @@ namespace SCBF.Purchase
         public Guid User { get; set; }
 
         public virtual List<PlanWithBudgetOutlay> PlanWithBudgetOutlays { get; set; }
+
+        public virtual List<StageInfo> StageInfos { get; set; }
     }
 }

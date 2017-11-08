@@ -9,3 +9,7 @@ obj
 /CodeSmithTemplates
 /TAF.Web/App_Data
 /packages
+/.vs/SCBF/v15/Server/sqlite3
+/.vs/SCBF/v15/sqlite3/db.lock
+/.vs/SCBF/v15/sqlite3/storage.ide-shm
+/.vs/SCBF/v15/sqlite3/storage.ide-wal

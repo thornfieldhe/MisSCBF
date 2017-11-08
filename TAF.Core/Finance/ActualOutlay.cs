@@ -49,6 +49,7 @@ namespace SCBF.Finance
         }
 
         public Guid? OutlayId { get; set; }
+
         /// <summary>
         /// 预算支出
         /// </summary>
@@ -63,6 +64,5 @@ namespace SCBF.Finance
         }
 
         public int Year { get; set; }
-
     }
 }

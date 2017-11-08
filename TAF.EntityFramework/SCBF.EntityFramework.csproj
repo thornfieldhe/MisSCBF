@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Maps\StageInfoMap.cs" />
     <Compile Include="EntityFramework\Maps\PlanWithBudgetOutlayMap.cs" />
     <Compile Include="EntityFramework\Maps\InvoiceMap.cs" />
     <Compile Include="EntityFramework\Maps\CaroilMap.cs" />
@@ -350,6 +351,10 @@
     <Compile Include="Migrations\201709071435060_addTable_ProcurementPlan.Designer.cs">
       <DependentUpon>201709071435060_addTable_ProcurementPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711081445336_addTable_StageInfo.cs" />
+    <Compile Include="Migrations\201711081445336_addTable_StageInfo.Designer.cs">
+      <DependentUpon>201711081445336_addTable_StageInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -566,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709071435060_addTable_ProcurementPlan.resx">
       <DependentUpon>201709071435060_addTable_ProcurementPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081445336_addTable_StageInfo.resx">
+      <DependentUpon>201711081445336_addTable_StageInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

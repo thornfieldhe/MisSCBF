@@ -157,6 +157,11 @@
     <Compile Include="Purchase\ProcurementPlan.cs" />
     <Compile Include="Purchase\ProcurementPlanCategory.cs" />
     <Compile Include="Purchase\ProcurementPlanMode.cs" />
+    <Compile Include="Purchase\StageCategory.cs" />
+    <Compile Include="Purchase\StageInfo.cs" />
+    <Compile Include="Purchase\StageInfoActualOutlay.cs" />
+    <Compile Include="Purchase\StageInfoUser.cs" />
+    <Compile Include="Purchase\StageInfoBudgetOutlay.cs" />
     <Compile Include="Storage\Check.cs" />
     <Compile Include="Storage\CheckBill.cs" />
     <Compile Include="Storage\ICheckBillRepository.cs" />
@@ -190,9 +195,9 @@
     <Compile Include="Storage\Product.cs" />
     <Compile Include="Storage\HisStock.cs" />
     <Compile Include="Storage\Stock.cs" />
-    <Compile Include="TAF.Core\Car\IOilRechargeRecordRepository.cs" />
-    <Compile Include="TAF.Core\Purchase\IPlanWithBudgetOutlayRepository.cs" />
-    <Compile Include="TAF.Core\Purchase\IProcurementPlanRepository.cs" />
+    <Compile Include="Car\IOilRechargeRecordRepository.cs" />
+    <Compile Include="Purchase\IPlanWithBudgetOutlayRepository.cs" />
+    <Compile Include="Purchase\IProcurementPlanRepository.cs" />
     <Compile Include="TAFEntity.cs" />
     <Compile Include="TAFConsts.cs" />
     <Compile Include="TAFCoreModule.cs" />

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IPlanWithBudgetOutlayRepository.cs" company="" author="何翔华">
+// <copyright file="IPlanWithBudgetOutlayRepository.cs" author="何翔华">
 //   
 // </copyright>
 // <summary>

@@ -15,7 +15,7 @@ namespace SCBF.Finance
     using SCBF.Purchase;
 
     /// <summary>
-    /// 
+    /// 预算支出
     /// </summary>
     public class BudgetOutlay : TAFEntity
     {

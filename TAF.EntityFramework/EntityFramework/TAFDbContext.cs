@@ -247,6 +247,26 @@
             get; set;
         }
 
+        public DbSet<StageInfoBudgetOutlay> StageInfoBudgetOutlays
+        {
+            get; set;
+        }
+
+        public DbSet<StageInfoActualOutlay> StageInfoActualOutlays
+        {
+            get; set;
+        }
+
+        public DbSet<StageInfo> StageInfos
+        {
+            get; set;
+        }
+
+        public DbSet<StageInfoUser> StageInfoUsers
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
