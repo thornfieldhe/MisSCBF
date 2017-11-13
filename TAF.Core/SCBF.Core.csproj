@@ -108,6 +108,8 @@
   <ItemGroup>
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
+    <Compile Include="BaseInfo\IModuleIdAttachmentRepository.cs" />
+    <Compile Include="BaseInfo\ModuleIdAttachment.cs" />
     <Compile Include="Car\ApplicationForBunkerA.cs" />
     <Compile Include="BaseInfo\AuditingStatus.cs" />
     <Compile Include="Car\ApplicationForBunkerB.cs" />

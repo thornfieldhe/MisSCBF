@@ -13,14 +13,11 @@ namespace SCBF.BaseInfo
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic;
-    using System.Threading.Tasks;
 
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
-
-    using AutoMapper;
 
     using SCBF.BaseInfo.Dto;
 
@@ -32,20 +29,24 @@ namespace SCBF.BaseInfo
     {
         private readonly IAttachmentRepository attachmentRepository;
 
-        public AttachmentAppService(IAttachmentRepository attachmentRepository)
+        private readonly IModuleIdAttachmentRepository moduleIdAttachmentRepository;
+
+        public AttachmentAppService(IAttachmentRepository attachmentRepository, IModuleIdAttachmentRepository moduleIdAttachmentRepository)
         {
             this.attachmentRepository = attachmentRepository;
+            this.moduleIdAttachmentRepository = moduleIdAttachmentRepository;
         }
 
         public ListResultDto<AttachmentListDto> Get(AttachmentQueryDto request)
         {
-            var query =
-                this.attachmentRepository.GetAll()
-                    .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name))
-                    .WhereIf(!string.IsNullOrWhiteSpace(request.Category), r => r.Path.Contains(request.Category))
-                    .WhereIf(
-                        request.ModuleIds != null && request.ModuleIds.Count > 0,
-                        r => request.ModuleIds.Contains(r.ModuleId));
+            var relation = this.moduleIdAttachmentRepository.GetAll().WhereIf(
+                request.ModuleId.HasValue,
+                r => r.ModuleId == request.ModuleId.Value).Select(r => r.AttachmentId);
+            var query = this.attachmentRepository.GetAll()
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name)).WhereIf(
+                    !string.IsNullOrWhiteSpace(request.Category),
+                    r => r.Path.Contains(request.Category))
+                    .WhereIf(relation.Any(), r => relation.Contains(r.Id));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
                         ? query.OrderBy(request.Sorting)

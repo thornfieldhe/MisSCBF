@@ -31,7 +31,6 @@ namespace SCBF
         {
             Configuration.Modules.AbpAutoMapper().Configurators.Add(mapper =>
             {
-                //Add your custom AutoMapper mappings here...
 
                 #region 用户模块
 
@@ -420,6 +419,12 @@ namespace SCBF
                 mapper.CreateMap<CarOil, CarOilEditDto>();
                 mapper.CreateMap<CarOilEditDto, CarOil>();
 
+                #endregion
+
+                #region 采购模块
+                mapper.CreateMap<StageInfo, StageInfoListDto>()
+                    .ForMember(m => m.ProcurementPlanName, n => n.MapFrom(r => r.ProcurementPlan.Name))
+                    .ForMember(m => m.Status, n => n.MapFrom(r => r.Status == 0 ? "未提交" : "已提交"));
                 #endregion
             });
         }

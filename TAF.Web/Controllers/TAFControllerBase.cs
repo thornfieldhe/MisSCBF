@@ -5,10 +5,10 @@ using Microsoft.AspNet.Identity;
 
 namespace SCBF.Web.Controllers
 {
-    using SCBF.BaseInfo;
-    using SCBF.BaseInfo.Dto;
     using System;
     using System.IO;
+    using SCBF.BaseInfo;
+    using SCBF.BaseInfo.Dto;
 
     /// <summary>
     /// Derive all Controllers from this class.
@@ -42,7 +42,7 @@ namespace SCBF.Web.Controllers
         /// <param name="category"></param>
         /// <param name="param"></param>
         /// <param name="act"></param>
-        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act)
+        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act) //todo 上传文件方法已经实现
         {
             var fileData = this.Request.Files[0];
             if (fileData != null)
@@ -85,7 +85,6 @@ namespace SCBF.Web.Controllers
                                  Name = saveName,
                                  Category = category,
                                  Ext = fileExtension,
-                                 ModuleId = modelId,
                                  Path = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
                                  Size = (decimal)fileInfo.Length / 1024
                              });

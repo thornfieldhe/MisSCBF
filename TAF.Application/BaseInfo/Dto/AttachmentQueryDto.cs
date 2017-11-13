@@ -10,7 +10,6 @@
 namespace SCBF.BaseInfo.Dto
 {
     using System;
-    using System.Collections.Generic;
 
     using Abp.Application.Services.Dto;
 
@@ -18,32 +17,16 @@ namespace SCBF.BaseInfo.Dto
     /// 附件查询对象
     /// </summary>
     public class AttachmentQueryDto : PagedAndSortedResultRequestDto
-    {  
-        
+    {
+
         /// <summary>
         /// Name
         /// </summary>
         public string Name
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// Size
-        /// </summary>
-        public decimal? Size
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// Path
-        /// </summary>
-        public string Path
-        {
-            get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Category
         /// </summary>
@@ -53,21 +36,13 @@ namespace SCBF.BaseInfo.Dto
         }
 
         /// <summary>
-        /// ModuleIds
+        /// ModuleId
         /// </summary>
-        public List<Guid> ModuleIds
+        public Guid? ModuleId
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// Note
-        /// </summary>
-        public string Note
-        {
-            get; set;
-        }        
-    } 
+        }
+    }
 }
 
 

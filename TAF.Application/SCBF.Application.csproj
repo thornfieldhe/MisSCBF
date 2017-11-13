@@ -192,7 +192,7 @@
     <Compile Include="Purchase\Dto\ProcurementPlanQueryDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
-    <Compile Include="Purchase\Dto\StageInfoeQueryDto.cs" />
+    <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />
     <Compile Include="Purchase\IStageInfoeAppService.cs" />

@@ -51,6 +51,11 @@
             get; set;
         }
 
+        public DbSet<ModuleIdAttachment> ModuleIdAttachments
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 物资

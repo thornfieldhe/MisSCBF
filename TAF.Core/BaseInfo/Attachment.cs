@@ -43,11 +43,6 @@ namespace SCBF.BaseInfo
         public string Category { get; set; }
 
         /// <summary>
-        /// 模块Id
-        /// </summary>
-        public Guid ModuleId { get; set; }
-
-        /// <summary>
         /// 备注
         /// </summary>
         public string Note { get; set; }

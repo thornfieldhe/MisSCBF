@@ -355,6 +355,10 @@
     <Compile Include="Migrations\201711081445336_addTable_StageInfo.Designer.cs">
       <DependentUpon>201711081445336_addTable_StageInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711131401091_addTable_moduleAttachments.cs" />
+    <Compile Include="Migrations\201711131401091_addTable_moduleAttachments.Designer.cs">
+      <DependentUpon>201711131401091_addTable_moduleAttachments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -382,6 +386,7 @@
     <Compile Include="Repositories\LayerRepository.cs" />
     <Compile Include="Repositories\MaintenanceDeliveryRepository.cs" />
     <Compile Include="Repositories\ManHourRepository.cs" />
+    <Compile Include="Repositories\ModuleIdAttachmentRepository.cs" />
     <Compile Include="Repositories\OctaneStoreRepository.cs" />
     <Compile Include="Repositories\OilCardProofRepository.cs" />
     <Compile Include="Repositories\OilCardRepository.cs" />
@@ -401,8 +406,8 @@
     <Compile Include="Repositories\UploadOilCardRoofRepository.cs" />
     <Compile Include="Repositories\UploadOilCarRoofRelationshipRepository.cs" />
     <Compile Include="Repositories\VoucherAuditRepository.cs" />
-    <Compile Include="TAF.EntityFramework\Repositories\PlanWithBudgetOutlayRepository.cs" />
-    <Compile Include="TAF.EntityFramework\Repositories\ProcurementPlanRepository.cs" />
+    <Compile Include="Repositories\PlanWithBudgetOutlayRepository.cs" />
+    <Compile Include="Repositories\ProcurementPlanRepository.cs" />
     <Compile Include="TAFDataModule.cs" />
     <Compile Include="Migrations\SeedData\DefaultEditionsCreator.cs" />
     <Compile Include="Migrations\SeedData\DefaultLanguagesCreator.cs" />
@@ -578,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081445336_addTable_StageInfo.resx">
       <DependentUpon>201711081445336_addTable_StageInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131401091_addTable_moduleAttachments.resx">
+      <DependentUpon>201711131401091_addTable_moduleAttachments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

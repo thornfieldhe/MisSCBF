@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StageInfoeListDto.cs" company=""  author="何翔华">
+// <copyright file="StageInfoListDto.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
@@ -28,14 +28,6 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// Category
-        /// </summary>
-        public int Category
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// Company
         /// </summary>
         public string Company
@@ -54,7 +46,7 @@ namespace SCBF.Purchase.Dto
         /// <summary>
         /// Status
         /// </summary>
-        public int Status
+        public string Status
         {
             get; set;
         }

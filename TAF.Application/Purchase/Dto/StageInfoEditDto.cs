@@ -10,6 +10,7 @@
 namespace SCBF.Purchase.Dto
 {
     using System;
+    using System.Collections.Generic;
 
     using Abp.AutoMapper;
 
@@ -66,6 +67,14 @@ namespace SCBF.Purchase.Dto
         {
             get; set;
         }
+
+        public List<Guid> AttachmentIds { get; set; }
+
+        public List<string> Attachments { get; set; }
+
+        public List<Guid> Users { get; set; }
+
+
     }
 }
 

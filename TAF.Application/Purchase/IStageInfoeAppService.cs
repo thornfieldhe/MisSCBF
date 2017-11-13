@@ -19,7 +19,7 @@ namespace SCBF.Purchase
     /// </summary>
     public interface IStageInfoeAppService : IBaseEntityApplicationService
     {
-        ListResultDto<StageInfoListDto> GetAll(StageInfoeQueryDto request);
+        ListResultDto<StageInfoListDto> GetAll(StageInfoQueryDto request);
 
         StageInfoEditDto Get(Guid id);
 

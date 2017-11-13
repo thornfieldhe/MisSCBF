@@ -10,7 +10,6 @@
 namespace SCBF.BaseInfo.Dto
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     using Abp.AutoMapper;
 
@@ -26,64 +25,48 @@ namespace SCBF.BaseInfo.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Name
         /// </summary>
         public string Name
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Size
         /// </summary>
         public decimal Size
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Path
         /// </summary>
         public string Path
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Ext
         /// </summary>
         public string Ext
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Category
         /// </summary>
         public string Category
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// ModuleId
-        /// </summary>
-        public Guid ModuleId
-        {
-            get; set;
-        }        
-        
-        /// <summary>
-        /// Note
-        /// </summary>
-        public string Note
-        {
-            get; set;
-        }        
-    } 
+        }
+    }
 }
 
 
