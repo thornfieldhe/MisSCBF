@@ -391,6 +391,10 @@
     <Compile Include="Repositories\RechargeRecordRepository.cs" />
     <Compile Include="Repositories\RepairCostRepository.cs" />
     <Compile Include="Repositories\ServicingMaterialRepository.cs" />
+    <Compile Include="Repositories\StageInfoActualOutlayRepository.cs" />
+    <Compile Include="Repositories\StageInfoBudgetOutlayRepository.cs" />
+    <Compile Include="Repositories\StageInfoRepository.cs" />
+    <Compile Include="Repositories\StageInfoUserRepository.cs" />
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="Repositories\AttachmentRepository.cs" />

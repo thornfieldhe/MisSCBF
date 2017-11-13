@@ -817,6 +817,7 @@
     <Content Include="Scripts\carOil.js" />
     <Content Include="Scripts\invoiceCheck.js" />
     <Content Include="Scripts\procurementPlan.js" />
+    <Content Include="Scripts\stageInfoe.js" />
     <Content Include="Scripts\vehicleMaintenanceReport.js" />
     <Content Include="Scripts\applicationForBunkerBSummaryList.js" />
     <Content Include="Scripts\audingForVehicleMaintenance3.js" />
@@ -969,6 +970,7 @@
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RechargeRecordController.cs" />
+    <Compile Include="Controllers\StageInfoeController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Controllers\SysDictionaryController.cs" />
@@ -1066,6 +1068,7 @@
     <Content Include="Views\VoucherAudit\_VoucherAuditIndex.cshtml" />
     <Content Include="Views\InvoiceCheck\_InvoiceCheckIndex.cshtml" />
     <Content Include="Views\ProcurementPlan\_ProcurementPlanIndex.cshtml" />
+    <Content Include="Views\StageInfoe\_StageInfoeIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

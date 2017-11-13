@@ -153,6 +153,10 @@
     <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Finance\VoucherAudit.cs" />
     <Compile Include="Finance\VoucherAuditPoint.cs" />
+    <Compile Include="Purchase\IStageInfoActualOutlayRepository.cs" />
+    <Compile Include="Purchase\IStageInfoBudgetOutlayRepository.cs" />
+    <Compile Include="Purchase\IStageInfoRepository.cs" />
+    <Compile Include="Purchase\IStageInfoUserRepository.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlay.cs" />
     <Compile Include="Purchase\ProcurementPlan.cs" />
     <Compile Include="Purchase\ProcurementPlanCategory.cs" />

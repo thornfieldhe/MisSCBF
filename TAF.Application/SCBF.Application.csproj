@@ -190,10 +190,15 @@
     <Compile Include="Purchase\Dto\ProcurementPlanEditDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanListDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanQueryDto.cs" />
+    <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />
+    <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
+    <Compile Include="Purchase\Dto\StageInfoeQueryDto.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />
+    <Compile Include="Purchase\IStageInfoeAppService.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\ProcurementPlanAppService.cs" />
+    <Compile Include="Purchase\StageInfoeAppService.cs" />
     <Compile Include="Storage\Dto\DeliveryBillQueryDto.cs" />
     <Compile Include="Tasks\DailyTask.cs" />
     <Compile Include="Tasks\Yearly.cs" />
