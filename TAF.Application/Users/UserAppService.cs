@@ -1,3 +1,6 @@
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataProtection;
+
 namespace SCBF.Users
 {
     using System.Collections.Generic;
@@ -143,6 +146,15 @@ namespace SCBF.Users
         public void ChangePwd(PwdEditDto input)
         {
             CheckErrors(this.UserManager.ChangePassword(input.UserId, input.OldPwd, input.NewPwd));
+        }
+
+        public void ResetPwd(long id)
+        {
+            var provider = new DpapiDataProtectionProvider("Sample");
+            this.UserManager.UserTokenProvider = new DataProtectorTokenProvider<User,long>(
+                provider.Create("EmailConfirmation"));
+           var token= this.UserManager.GeneratePasswordResetToken(id);
+            this.UserManager.ResetPassword(id,token,"qwe123");
         }
     }
 }

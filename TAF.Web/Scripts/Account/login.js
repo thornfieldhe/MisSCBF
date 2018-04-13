@@ -1,5 +1,4 @@
-﻿
-var main = new Vue({
+﻿var main = new Vue({
     el: "#form",
     data: {
         entity: {
@@ -10,7 +9,7 @@ var main = new Vue({
     methods: {
         login:function() {
             var $this = this;
-                abp.ajax({
+            abp.ajax({
                     url: abp.appPath + 'Account/Login',
                     type: 'POST',
                     data: JSON.stringify($this.entity),
@@ -22,4 +21,3 @@ var main = new Vue({
         }
     }
 });
-

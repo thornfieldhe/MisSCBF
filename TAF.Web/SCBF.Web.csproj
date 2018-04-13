@@ -811,6 +811,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\Account\changePwd.js" />
+    <Content Include="Scripts\Account\login.js" />
     <Content Include="Scripts\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
     <Content Include="Scripts\carOilReport.js" />
@@ -917,7 +918,6 @@
     <Content Include="assets\js\sweetalert\sweet-alert.html" />
     <Content Include="assets\js\sweetalert\sweet-alert.js" />
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
-    <Content Include="Scripts\Account\login.js" />
     <Content Include="Scripts\financeInfoIndex.js" />
     <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\sysDictionary.js" />

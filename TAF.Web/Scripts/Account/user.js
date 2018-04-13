@@ -82,6 +82,12 @@ var main = new Vue({
                 .fail(function (m) {
                     $this.fail(m);
             });
+        },
+        resetPwd: function(id,name) {
+            abp.services.app.user.resetPwd(id)
+                .done(function (m) { 
+                    taf.notify.success("用户[" + name + "]密码已成功重置为qwe123!");
+                });
         }
     }
 });

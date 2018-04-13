@@ -11,7 +11,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8">
-                            <table class="table table-striped table-hover table-bordered ">
+                            <table class="table table-striped table-hover table-bordered " style="width: 800px;">
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 100px;">
@@ -20,10 +20,10 @@
                                         <th style="width: 200px;">
                                             用户
                                         </th>
-                                        <th>
+                                        <th style="width: 200px;">
                                             角色
                                         </th>
-                                        <th style="width: 200px;">
+                                        <th style="width: 300px;">
                                             操作
                                         </th>
                                     </tr>
@@ -54,7 +54,7 @@
                                         <td>{{item.name}}</td>
                                         <td>{{item.roles}}</td>
                                         <td>
-                                            <row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                            <button type="button" class="btn   edit" v-on:click="resetPwd(item.id,item.name) "><i class="fa fa-edit"></i> 重置密码</button><row-command :id="item.id" title="编辑" :name="item.name"></row-command>
                                         </td>
                                     </tr>
                                 </tbody>

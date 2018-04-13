@@ -28,5 +28,7 @@ namespace SCBF.Users
         Task<ListResultDto<UserListDto>> GetAllAsync(UserQueryDto request);
 
         void ChangePwd(PwdEditDto input);
+
+        void ResetPwd(long id);
     }
 }
