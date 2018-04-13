@@ -14,7 +14,7 @@
     events: {
         'onSaveItem': function (closeModal) {
             var $this = this;
-            abp.services.app.user.saveAsync(this.item)
+            abp.services.app.user.saveAsync($this.item)
             .done(function (m) {
                 $this.done(closeModal);
             })
@@ -27,8 +27,7 @@
             var $this = this;
             abp.services.app.user.get(id)
                 .done(function (m) {
-                    $this.item.note = m;
-                    $this.item.id = id;
+                    $this.item = m;
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -37,7 +36,7 @@
     },
     methods: {
         clearItem: function () {
-            this.item.id = "";
+            this.item.id = "0";
             this.item.name = "";
             this.item.userName = "";
             this.item.roles = [];
@@ -60,10 +59,11 @@ var main = new Vue({
     },
     events: {
         'onResetSearch': function () {
+            $("#searchRoleId").select2().val("").trigger("change");            
             this.queryEntity.userName = "";
             this.queryEntity.name = "";
             this.queryEntity.roleId =0;
-            $("#searchRoleId").select2().val("").trigger("change");
+
         }
     },
     methods: {

@@ -22,14 +22,14 @@ namespace SCBF.Web.Controllers
     using Abp.Domain.Uow;
     using Abp.UI;
     using Abp.Web.Models;
+    using Authorization;
+    using Authorization.Roles;
     using Microsoft.AspNet.Identity;
     using Microsoft.Owin.Security;
-    using SCBF.Authorization;
-    using SCBF.Authorization.Roles;
-    using SCBF.MultiTenancy;
-    using SCBF.Users;
-    using SCBF.Web.Models.Account;
+    using Models.Account;
+    using MultiTenancy;
     using TAF.Utility;
+    using Users;
 
     public class AccountController : TAFControllerBase
     {
@@ -43,7 +43,7 @@ namespace SCBF.Web.Controllers
         {
             get
             {
-                return HttpContext.GetOwinContext().Authentication;
+                return this.HttpContext.GetOwinContext().Authentication;
             }
         }
 
@@ -54,11 +54,11 @@ namespace SCBF.Web.Controllers
             IMultiTenancyConfig multiTenancyConfig,
             LogInManager logInManager)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _unitOfWorkManager = unitOfWorkManager;
-            _multiTenancyConfig = multiTenancyConfig;
-            _logInManager = logInManager;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
+            this._unitOfWorkManager = unitOfWorkManager;
+            this._multiTenancyConfig = multiTenancyConfig;
+            this._logInManager = logInManager;
         }
 
         #region Login / Logout
@@ -67,14 +67,14 @@ namespace SCBF.Web.Controllers
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
-                returnUrl = Request.ApplicationPath;
+                returnUrl = this.Request.ApplicationPath;
             }
 
-            return View(
+            return this.View(
                 new LoginFormViewModel
                 {
                     ReturnUrl = returnUrl,
-                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled
+                    IsMultiTenancyEnabled = this._multiTenancyConfig.IsEnabled
                 });
         }
 
@@ -86,7 +86,7 @@ namespace SCBF.Web.Controllers
         public ActionResult UserList()
         {
             var roles = this._roleManager.Roles.Select(r => new KeyValue<string, int, string> { Key = r.DisplayName, Value = r.Id, Item3 = r.Name }).ToList();
-            return PartialView("_UserIndex", roles);
+            return this.PartialView("_UserIndex", roles);
         }
 
         /// <summary>
@@ -96,23 +96,30 @@ namespace SCBF.Web.Controllers
         [AbpAuthorize(PermissionNames.Default)]
         public ActionResult ChangePwd()
         {
-            return PartialView("_ChangePwd");
+            return this.PartialView("_ChangePwd");
         }
 
         [HttpPost]
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
-            CheckModelState();
+            this.CheckModelState();
 
-            var loginResult = await GetLoginResultAsync(
+            var loginResult = await this.GetLoginResultAsync(
                 loginModel.Name,
                 loginModel.Password);
 
-            await SignInAsync(loginResult.User, loginResult.Identity, true);
+            if (loginResult.Result!=AbpLoginResultType.Success)
+            {
+                throw new UserFriendlyException("用户名或密码错误");
+
+//                return this.Json(new AjaxResponse { Error =new ErrorInfo(){Details = "用户名或密码错误",Code = 500,Message = "用户名或密码错误"}  });
+            }
+
+            await this.SignInAsync(loginResult.User, loginResult.Identity, true);
 
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
-                returnUrl = Request.ApplicationPath;
+                returnUrl = this.Request.ApplicationPath;
             }
 
             if (!string.IsNullOrWhiteSpace(returnUrlHash))
@@ -120,7 +127,7 @@ namespace SCBF.Web.Controllers
                 returnUrl = returnUrl + returnUrlHash;
             }
 
-            return Json(new AjaxResponse { TargetUrl = returnUrl });
+            return this.Json(new AjaxResponse { TargetUrl = returnUrl });
         }
 
 
@@ -131,32 +138,26 @@ namespace SCBF.Web.Controllers
         [AbpAuthorize(PermissionNames.Default)]
         public ActionResult Logout()
         {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            this.AuthenticationManager.SignOut();
+            return this.RedirectToAction("Login");
         }
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password)
         {
-            var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, null);
+            var loginResult = await this._logInManager.LoginAsync(usernameOrEmailAddress, password, null);
 
-            switch (loginResult.Result)
-            {
-                case AbpLoginResultType.Success:
                     return loginResult;
-                default:
-                    throw CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress);
-            }
         }
 
         private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false)
         {
             if (identity == null)
             {
-                identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                identity = await this._userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             }
 
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
+            this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            this.AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
         }
 
         private Exception CreateExceptionForFailedLoginAttempt(AbpLoginResultType result, string usernameOrEmailAddress)
@@ -167,14 +168,14 @@ namespace SCBF.Web.Controllers
                     return new ApplicationException("Don't call this method with a success result!");
                 case AbpLoginResultType.InvalidUserNameOrEmailAddress:
                 case AbpLoginResultType.InvalidPassword:
-                    return new UserFriendlyException(L("LoginFailed"), L("InvalidUserNameOrPassword"));
+                    return new UserFriendlyException(this.L("LoginFailed"), this.L("InvalidUserNameOrPassword"));
                 case AbpLoginResultType.UserIsNotActive:
-                    return new UserFriendlyException(L("LoginFailed"), L("UserIsNotActiveAndCanNotLogin", usernameOrEmailAddress));
+                    return new UserFriendlyException(this.L("LoginFailed"), this.L("UserIsNotActiveAndCanNotLogin", usernameOrEmailAddress));
                 case AbpLoginResultType.UserEmailIsNotConfirmed:
-                    return new UserFriendlyException(L("LoginFailed"), "Your email address is not confirmed. You can not login"); //TODO: localize message
+                    return new UserFriendlyException(this.L("LoginFailed"), "Your email address is not confirmed. You can not login"); //TODO: localize message
                 default: //Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
-                    Logger.Warn("Unhandled login fail reason: " + result);
-                    return new UserFriendlyException(L("LoginFailed"));
+                    this.Logger.Warn("Unhandled login fail reason: " + result);
+                    return new UserFriendlyException(this.L("LoginFailed"));
             }
         }
 
