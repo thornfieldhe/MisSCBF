@@ -1,7 +1,7 @@
 ﻿
 Vue.component("form-body",
 {
-    template: "#budgetReceiptFormBody",
+    template: "#budgetReceiptFormBody2",
     data: function() {
         return {
             item: {}
@@ -10,7 +10,7 @@ Vue.component("form-body",
     events: {
         'onShowDetails':function(item) {
             this.item = item;
-            $("#addItemModal").modal("show");
+            $("#showBudgetDetails2").modal("show");
         }
     }
 });
@@ -20,24 +20,24 @@ var main = new Vue({
     methods: {
         query: function () {
             var $this = this;
-            abp.services.app.budgetReceipt.get(2)
+            abp.services.app.budgetReceipt.get(1)
                 .done(function (r) {
                     $this.list = r;
                 });
         },
         showDetails: function (item) {
-            this.$broadcast('onShowDetails', item);
+            this.$broadcast("onShowDetails", item);
         }
     }
 });
 
 main.query();
 $(".fileUpload").liteUploader({
-    script: defaultUrl+"BudgetReceipt/Upload3"
+    script: defaultUrl+"BudgetReceipt/Upload2"
 })
     .on("lu:success", function (e, response) {
         main.query();
-        taf.notify.success("调整后增加收入导入成功");
+        taf.notify.success("预算调整收入导入成功");
     });
 
 $(".fileUpload").change(function () {

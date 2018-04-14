@@ -810,9 +810,9 @@
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <Content Include="Scripts\Account\changePwd.js" />
-    <Content Include="Scripts\Account\login.js" />
-    <Content Include="Scripts\Account\user.js" />
+    <Content Include="Views\Account\changePwd.js" />
+    <Content Include="Views\Account\login.js" />
+    <Content Include="Views\Account\user.js" />
     <Content Include="Scripts\actualOutlay.js" />
     <Content Include="Scripts\carOilReport.js" />
     <Content Include="Scripts\carOil.js" />
@@ -857,9 +857,9 @@
     <Content Include="Scripts\productInfoIndex.js" />
     <Content Include="Scripts\outlay.js" />
     <Content Include="Scripts\budgetOutlay.js" />
-    <Content Include="Scripts\budgetReceipt2.js" />
-    <Content Include="Scripts\budgetReceipt3.js" />
-    <Content Include="Scripts\budgetReceipt.js" />
+    <Content Include="Views\BudgetReceipt\budgetReceipt2.js" />
+    <Content Include="Views\BudgetReceipt\budgetReceipt3.js" />
+    <Content Include="Views\BudgetReceipt\budgetReceipt.js" />
     <Content Include="Scripts\budgetSummary.js" />
     <Content Include="Scripts\Common\defaultBase.js" />
     <Content Include="Scripts\Common\layoutBase.js" />
@@ -906,7 +906,7 @@
     <Content Include="assets\js\jquery-2.2.0.min.map" />
     <Content Include="assets\js\json2.min.js" />
     <Content Include="Scripts\product.js" />
-    <Content Include="Scripts\accountList.js" />
+    <Content Include="Views\Finance\accountList.js" />
     <Content Include="Scripts\productCategory.js" />
     <Content Include="Scripts\others\html5shiv.js" />
     <Content Include="Scripts\others\respond.min.js" />
@@ -918,8 +918,8 @@
     <Content Include="assets\js\sweetalert\sweet-alert.html" />
     <Content Include="assets\js\sweetalert\sweet-alert.js" />
     <Content Include="assets\js\sweetalert\sweet-alert.min.js" />
-    <Content Include="Scripts\financeInfoIndex.js" />
-    <Content Include="Scripts\receipt.js" />
+    <Content Include="Views\Finance\financeInfoIndex.js" />
+    <Content Include="Views\BudgetReceipt\receipt.js" />
     <Content Include="Scripts\sysDictionary.js" />
     <Content Include="Scripts\uploadOilCarRoofRelationship.js" />
     <Content Include="Scripts\voucherAudit.js" />

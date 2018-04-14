@@ -72,32 +72,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label no-padding-right">排序<span class="red">*</span></label>
-                            <div class="col-sm-10">
-                                <div class="spinbox spinbox-horizontal spinbox-right" id="spinboxOrder">
-                                    <div class="spinbox-buttons	btn-group">
-                                        <button type="button" class="btn spinbox-down blueberry">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn spinbox-up purple">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control spinbox-input " placeholder="order" id="order" name="order" v-model="item.order" v-validate:order="{required:true,int:true}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </form>
         </validator>
     </div>
 </template>
 <script src="~/assets/js/ztree/jquery.ztree.core-3.5.js"></script>
-<script src="~/Scripts/accountList.js"></script>
+<script src="~/Views/Finance/accountList.js"></script>
 
 
 

@@ -10,7 +10,7 @@ Vue.component("form-body",
     events: {
         'onShowDetails':function(item) {
             this.item = item;
-            $("#addItemModal").modal("show");
+            $("#showBudgetDetails1").modal("show");
         }
     }
 });

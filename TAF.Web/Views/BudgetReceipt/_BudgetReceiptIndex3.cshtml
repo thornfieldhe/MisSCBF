@@ -24,7 +24,7 @@
                 <th style="width: 100px;" rowspan="4">
                     科目名称
                 </th>
-                <th style="width: 2100px;" colspan="5">
+                <th style="width: 2100px;" colspan="4">
                     收入(万元)
                 </th>
                 <th style="width: 100px;" rowspan="4">
@@ -32,9 +32,6 @@
                 </th>
             </tr>
             <tr role="row">
-                <th style="width: 100px;" rowspan="3">
-                    合计
-                </th>
                 <th style="width: 700px;" colspan="4">
                     向上请领
                 </th>
@@ -64,7 +61,6 @@
                 <td>{{item.code}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.total}}</td>
-                <td>{{item.total1}}</td>
                 <td>{{item.column1}}</td>
                 <td>{{item.column21}}</td>
                 <td>{{item.column22}}</td>
@@ -82,8 +78,8 @@
     </div>
 </div>
 <form-body></form-body>
-<template id="budgetReceiptFormBody">
-    <div class="bootbox modal fade modal-primary in" id="addItemModal">
+<template id="budgetReceiptFormBody3">
+    <div class="bootbox modal fade modal-primary in" id="showBudgetDetails3">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -199,7 +195,7 @@
     </div>
 </template>
 <script src="~/assets/js/liteuploader.js"></script>
-<script src="~/Scripts/budgetReceipt3.js"></script>
+<script src="~/Views/BudgetReceipt/budgetReceipt3.js"></script>
 
 
 

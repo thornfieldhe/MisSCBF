@@ -2,9 +2,6 @@
     mixins: [itemMixin],
     template: "#accountFormBody",
     ready: function () {
-        var order = $("#spinboxOrder").spinbox("value", 0);
-        order.options.max = 100;
-        order.options.min = 0;
         $("body").bind("mousedown", function (event) {
             if (!(event.target.id === "menuBtn" || event.target.id === "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
                 $("#menuContent").hide();
@@ -19,15 +16,13 @@
                 pId: "00000000-0000-0000-0000-000000000000",
                 pName: "",
                 id: "",
-                code: "",
-                order:0
+                code: ""
             },tree:{}
         };
     },
     events: {
         'onSaveItem': function (closeModal) {
             var $this = this;
-            $this.item.order = $('#order').val();
             if ($this.item.pName==="") {
                 $this.item.pId = "00000000-0000-0000-0000-000000000000";
             }
@@ -46,8 +41,10 @@
             abp.services.app.layer.get(id)
                 .done(function (m) {
                     $this.item = m;
+                    console.log($this.item,123);
                     $this.item.pName =  $this.item.pId==="00000000-0000-0000-0000-000000000000"?"": _.find(main.list, function(o) {return o.id===$this.item.pId}).name;
                     $this.onAdd = false;
+                    $("[name='parentName']").val($this.item.pName);
                 })
             .fail(function (m) {
                 $this.fail(m);
@@ -57,7 +54,6 @@
     methods: {
         clearItem: function () {
             this.item.onAdd = true;
-            this.item.order = 0;
             this.item.name = "";
             this.item.code = "";
             this.item.id = "00000000-0000-0000-0000-000000000000";
