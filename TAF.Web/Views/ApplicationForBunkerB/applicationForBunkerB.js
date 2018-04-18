@@ -1,5 +1,4 @@
-﻿Vue.component("form-body", {
-    mixins: [itemMixin],
+﻿    mixins: [itemMixin],
     template: "#applicationForBunkerBFormBody",
     ready: function () {
         var $this = this;
