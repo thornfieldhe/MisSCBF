@@ -74,7 +74,7 @@ namespace SCBF.Web.Controllers
                     else
                     {
                         var saveName = Guid.NewGuid() + fileExtension; // 保存文件名称
-                        fileData.SaveAs(fileSaveLocation + saveName);
+                        fileData.SaveAs(fileSaveLocation + saveName);// 
                         var fileInfo = new FileInfo(fileSaveLocation + saveName);
 
 

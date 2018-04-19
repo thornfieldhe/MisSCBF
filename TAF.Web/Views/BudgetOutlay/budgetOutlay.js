@@ -55,6 +55,7 @@
                         abp.services.app.budgetOutlay.get($("#searchSheet").val(),0)
                             .done(function (r) {
                                 $this.list = r;
+                                $this.loadReceipt();
                                 taf.notify.success("年初预算支出更新成功");
                             });
                     }); 

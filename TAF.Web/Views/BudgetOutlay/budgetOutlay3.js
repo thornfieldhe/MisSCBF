@@ -40,7 +40,7 @@
         },
         loadReceipt: function () {
             var $this = this;
-            abp.services.app.budgetReceipt.getSimple(0)
+            abp.services.app.budgetReceipt.getSimple(2)
                 .done(function (r) {
                     $this.list2 = r;
                 });
@@ -55,6 +55,7 @@
                         abp.services.app.budgetOutlay.get($("#searchSheet").val(),2)
                             .done(function (r) {
                                 $this.list = r;
+                                $this.loadReceipt();
                                 taf.notify.success("年初预算支出更新成功");
                             });
                     }); 
