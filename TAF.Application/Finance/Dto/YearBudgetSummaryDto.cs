@@ -1,7 +1,5 @@
 namespace SCBF.Finance.Dto
 {
-    using System;
-
     /// <summary>
     /// 年度预算简表
     /// </summary>
@@ -11,6 +9,14 @@ namespace SCBF.Finance.Dto
         /// 科目名称
         /// </summary>
         public string Name
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 科目编码
+        /// </summary>
+        public string Code
         {
             get; set;
         }
@@ -75,6 +81,14 @@ namespace SCBF.Finance.Dto
         /// 对下供应小计
         /// </summary>
         public decimal Total4
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 预算外收入
+        /// </summary>
+        public decimal Column8
         {
             get; set;
         }

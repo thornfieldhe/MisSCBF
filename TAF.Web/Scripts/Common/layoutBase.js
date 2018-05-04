@@ -10,5 +10,6 @@
     .script("/Abp/Framework/scripts/libs/abp.blockUI.js")
     .script("/Abp/Framework/scripts/libs/abp.spin.js")
     .script("/Abp/Framework/scripts/libs/abp.sweet-alert.js").wait()
+.script("/Views/Account/login.js")
 
 

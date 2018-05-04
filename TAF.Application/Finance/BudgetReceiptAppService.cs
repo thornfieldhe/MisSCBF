@@ -50,7 +50,7 @@ namespace SCBF.Finance
             this._receiptRepository       = receiptRepository;
         }
 
-        public List<BudgetReceiptListDto> Get(int type)
+        public List<BudgetReceiptListDto> Get(int type,bool containsUse=false)
         {
             var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
@@ -70,10 +70,14 @@ namespace SCBF.Finance
             result.ForEach(item =>
             {
                 var account = accounts.FirstOrDefault(r => r.Key == item.Code);
-                var usedAmount = this._budgetOutlayRepository
-                    .GetAllList(r => r.BudgetReceiptId == item.Id)
-                    .Sum(r => r.Column1 + r.Column2 + r.Column3); // comment: 已使用额度
-                item.Total = item.Total - usedAmount;
+                if (containsUse)
+                {
+                    var usedAmount = this._budgetOutlayRepository
+                        .GetAllList(r => r.BudgetReceiptId == item.Id)
+                        .Sum(r => r.Column1 + r.Column2 + r.Column3); // comment: 已使用额度
+                    item.Total = item.Total - usedAmount;
+                }
+
                 if (account == null)
                 {
                     throw new UserFriendlyException($"未知科目编码[{item.Code}]");
@@ -89,7 +93,7 @@ namespace SCBF.Finance
 
         public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
         {
-            return this.Get(type).OrderBy(r => r.Code).ToList().Select(r =>
+            return this.Get(type,true).OrderBy(r => r.Code).ToList().Select(r =>
                 new KeyValue<Guid, string, string, decimal>()
                 {
                     Key   = r.Id,

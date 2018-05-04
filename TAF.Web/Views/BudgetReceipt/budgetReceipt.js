@@ -20,7 +20,7 @@ var main = new Vue({
     methods: {
         query: function () {
             var $this = this;
-            abp.services.app.budgetReceipt.get(0)
+            abp.services.app.budgetReceipt.get(0,false)
                 .done(function (r) {
                     $this.list = r;
                 });

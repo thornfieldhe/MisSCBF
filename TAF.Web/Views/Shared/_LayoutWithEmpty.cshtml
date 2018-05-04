@@ -21,10 +21,11 @@
     <link href="~/assets/css/beyond.min.css" rel="stylesheet" />
 </head>
 <body>
-@RenderBody()
+    <script src="~/assets/js/LAB.min.js"></script>
+    <script src="~/Scripts/Common/layoutBase.js"></script>
+    @RenderBody()
 </body>
-<script src="~/assets/js/LAB.min.js"></script>
-<script src="~/Scripts/Common/layoutBase.js"></script>
+
 @RenderSection("scripts", required: false)
 </html>
 

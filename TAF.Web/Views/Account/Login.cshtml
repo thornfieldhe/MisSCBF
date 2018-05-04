@@ -7,9 +7,9 @@
 }
 
 <div class="login-container animated fadeInDown " id="form">
-    <validator name="v" >
-        <form  name="form" class="loginbox bg-white widget radius-bordered" 
-               action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST" novalidate>
+    <validator name="v">
+        <form name="form" class="loginbox bg-white widget radius-bordered"
+              action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST" novalidate>
             <div class="loginbox-title form-group">四川边防信息管理系统</div>
             <div class="loginbox-or form-group">
                 <div class="or-line"></div>
@@ -34,7 +34,7 @@
             <div class="loginbox-textbox  has-error" v-if="$v.failData!=''">
                 <small class="help-block" v-text="entity.failData"></small>
             </div>
-            
+
             <div class="loginbox-submit ">
                 <button type="button" class="btn btn-primary btn-block" v-on:click="login " :disabled="!$v.valid">登陆</button>
             </div>
@@ -43,4 +43,5 @@
         </div>
     </validator>
 </div>
-<script src="login.js"></script>
+@section Scripts{
+}

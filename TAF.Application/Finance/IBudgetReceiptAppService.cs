@@ -9,9 +9,9 @@
 
 namespace SCBF.Finance
 {
-    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
+    using SCBF.Finance.Dto;
     using TAF.Utility;
 
     /// <summary>
@@ -19,7 +19,7 @@ namespace SCBF.Finance
     /// </summary>
     public interface IBudgetReceiptAppService : IBaseEntityApplicationService
     {
-        List<BudgetReceiptListDto> Get(int type);
+        List<BudgetReceiptListDto> Get(int type, bool containsUse);
 
         List<ReceiptListDto> GetReceipts();
 
