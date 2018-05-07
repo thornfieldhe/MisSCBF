@@ -22,9 +22,30 @@
         selectItems: [],
         selectItem: "",
         list: {},
-        list2: {}
+        list2: {},
+        list3: {},
+        queryEntity: {name:""}
+    },
+    events: {
+        'onResetSearch': function () {
+            this.queryEntity.name = "";
+            this.list2 = this.list3;
+
+        }
     },
     methods: {
+        excuteQuery: function($this) {
+            console.log($this.queryEntity.name);
+            if ($this.queryEntity.name != '') {
+                $this.list3 = $this.list2;
+                return $this.list2 = $this.list2.filter(function(item) {
+                    return item.name.indexOf($this.queryEntity.name) > 0;
+
+                });
+            } else {
+                $this.loadOutlay();
+            }
+        },
         loadOutlay: function () {
             var $this = this;
             abp.services.app.budgetOutlay.getSimple(0)

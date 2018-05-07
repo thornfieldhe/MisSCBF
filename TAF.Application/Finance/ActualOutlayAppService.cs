@@ -9,6 +9,11 @@
 
 namespace SCBF.Finance
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Linq.Dynamic;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.UI;
@@ -17,11 +22,6 @@ namespace SCBF.Finance
     using NPOI.XSSF.UserModel;
     using SCBF.BaseInfo;
     using SCBF.Finance.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Dynamic;
     using TAF.Utility;
 
     /// <summary>
@@ -105,9 +105,9 @@ namespace SCBF.Finance
                 {
                     var item = new ActualOutlay()
                     {
-                        Amount = row.GetCell(3).ToStr().ToDecimal(),
+                        Amount = row.GetCell(2).ToStr().ToDecimal(),
                         Date = row.GetCell(1).ToStr().ToDate(),
-                        Note = row.GetCell(2).ToStr(),
+                        Note = row.GetCell(3).ToStr(),
                         VoucherNo = row.GetCell(0).ToStr(),
                         FileId = modelId,
                         Year = currentYear.Value.ToInt()

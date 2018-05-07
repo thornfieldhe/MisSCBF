@@ -190,7 +190,6 @@ namespace SCBF
                 .ForMember(m => m.ChangedAmount, n => n.MapFrom(r => r.Amount - r.StockAmount));
 
                 #endregion
-
                 #region 预算模块
 
                 mapper.CreateMap<BudgetReceipt, BudgetReceiptListDto>()
@@ -208,7 +207,7 @@ namespace SCBF
                                                                  + r.Column5));
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlaySimpleListDto>()
-                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price));
+                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price/10000));
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlayListDto>()
                     .ForMember(m => m.Total1, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3))
