@@ -207,7 +207,8 @@ namespace SCBF
                                                                  + r.Column5));
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlaySimpleListDto>()
-                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price/10000));
+                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Amount * r.Price/10000))
+                    .ForMember(m => m.UnUsed, n => n.MapFrom(r =>r.Amount * r.Price /10000- r.ActualOutlays.Sum(m=>m.Amount)/10000));
 
                 mapper.CreateMap<BudgetOutlay, BudgetOutlayListDto>()
                     .ForMember(m => m.Total1, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3))

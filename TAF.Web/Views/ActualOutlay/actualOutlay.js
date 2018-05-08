@@ -35,20 +35,18 @@
     },
     methods: {
         excuteQuery: function($this) {
-            console.log($this.queryEntity.name);
+            $this.loadOutlay();
             if ($this.queryEntity.name != '') {
                 $this.list3 = $this.list2;
                 return $this.list2 = $this.list2.filter(function(item) {
-                    return item.name.indexOf($this.queryEntity.name) > 0;
+                    return item.name.indexOf($this.queryEntity.name) >= 0;
 
                 });
-            } else {
-                $this.loadOutlay();
             }
         },
         loadOutlay: function () {
             var $this = this;
-            abp.services.app.budgetOutlay.getSimple(0)
+            abp.services.app.budgetOutlay.getSimple()
                 .done(function (r) {
                     $this.list2 = r;
                 });
@@ -68,7 +66,8 @@
                 abp.services.app.actualOutlay.update({ id: $this.selectItem, outlayIds: $this.selectItems })
                     .done(function (r) {
                         $this.loadActualOutlay();
-                                taf.notify.success("实际支出更新成功");
+                        $this.loadOutlay();
+                        taf.notify.success("实际支出更新成功");
                     });
             }
         }

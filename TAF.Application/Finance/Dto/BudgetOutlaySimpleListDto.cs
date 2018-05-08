@@ -10,7 +10,6 @@
 namespace SCBF.Finance.Dto
 {
     using System;
-    using System.Collections.Generic;
 
     using Abp.AutoMapper;
 
@@ -64,6 +63,14 @@ namespace SCBF.Finance.Dto
         /// Unit
         /// </summary>
         public decimal Total
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 未关联金额
+        /// </summary>
+        public decimal UnUsed
         {
             get; set;
         }
