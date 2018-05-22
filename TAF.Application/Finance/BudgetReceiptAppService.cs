@@ -45,12 +45,12 @@ namespace SCBF.Finance
         {
             this._budgetReceiptRepository = budgetReceiptRepository;
             this._sysDictionaryRepository = sysDictionaryRepository;
-            this._budgetOutlayRepository = budgetOutlayRepository;
+            this._budgetOutlayRepository  = budgetOutlayRepository;
             this._layerRepository         = layerRepository;
             this._receiptRepository       = receiptRepository;
         }
 
-        public List<BudgetReceiptListDto> Get(int type,bool containsUse=false)
+        public List<BudgetReceiptListDto> Get(int type, bool containsUse = false)
         {
             var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
@@ -93,7 +93,7 @@ namespace SCBF.Finance
 
         public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
         {
-            return this.Get(type,true).OrderBy(r => r.Code).ToList().Select(r =>
+            return this.Get(type, true).OrderBy(r => r.Code).ToList().Select(r =>
                 new KeyValue<Guid, string, string, decimal>()
                 {
                     Key   = r.Id,
@@ -106,7 +106,7 @@ namespace SCBF.Finance
         public List<ReceiptListDto> GetReceipts()
         {
             var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
-                r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+                r.Value4 == true.ToString() &&  r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
@@ -116,30 +116,40 @@ namespace SCBF.Finance
 
 
             var result = this._budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value)
-                .OrderBy(r => r.Code);
+                .OrderBy(r=>(int)r.Type).ThenBy(r => r.Code);
             var result1 = result.Where(r => r.Type == BungetType.Year).ToList();
             var result2 = result.Where(r => r.Type == BungetType.Adjust).ToList();
             var result3 = result.Where(r => r.Type == BungetType.Increase).ToList();
 
             var result4 = this._receiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value);
             var list    = new List<ReceiptListDto>();
-            foreach (var item in result1)
+
+            var codes = result1.Select(r =>  r.Code)
+                .Union(result2.Select(r => r.Code))
+                .Union(result3.Select(r =>r.Code)).Distinct().ToList();
+            foreach (var code in codes)
             {
-                var item1 = result2.FirstOrDefault(r => r.Code == item.Code);
-                var item2 = result3.FirstOrDefault(r => r.Code == item.Code);
-                var item3 = result4.FirstOrDefault(r => r.Code == item.Code);
+                var item0 = result1.FirstOrDefault(r => r.Code == code);
+                var item1 = result2.FirstOrDefault(r => r.Code == code);
+                var item2 = result3.FirstOrDefault(r => r.Code == code);
+                var item3 = result4.FirstOrDefault(r => r.Code == code);
+                var item  = result.First(r => r.Code  == code);
                 var receipt = new ReceiptListDto
                 {
                     Id     = item.Id,
                     Code   = item.Code,
                     Name   = accounts.FirstOrDefault(r => r.LevelCode == item.Code)?.Name,
-                    Total5 = item.Column1,
-                    Total6 = item.Column21 + item.Column22,
-                    Total7 = item.Column31 + item.Column32 + item.Column33 + item.Column34 + item.Column35 +
-                             item.Column36 + item.Column37,
-                    Total8 = item.Column41 + item.Column42 + item.Column43 + item.Column44 + item.Column45 +
-                             item.Column46 + item.Column47,
-                    Total9  = item.Column5,
+                    Total5 = item0 == null ? 0 : item0.Column1,
+                    Total6 = item0 == null ? 0 : item0.Column21 + item0.Column22,
+                    Total7 = item0 == null
+                        ? 0
+                        : item0.Column31 + item0.Column32 + item0.Column33 + item0.Column34 + item0.Column35 +
+                          item0.Column36 + item0.Column37,
+                    Total8 = item0 == null
+                        ? 0
+                        : item0.Column41 + item0.Column42 + item.Column43 + item0.Column44 + item0.Column45 +
+                          item0.Column46 + item0.Column47,
+                    Total9  = item0 == null ? 0 : item0.Column5,
                     Total12 = item1 == null ? 0 : item1.Column1,
                     Total13 = item1 == null ? 0 : item1.Column21 + item1.Column22,
                     Total14 = item1 == null

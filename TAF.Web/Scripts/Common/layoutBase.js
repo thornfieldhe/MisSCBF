@@ -1,6 +1,7 @@
 ﻿$LAB
     .script("/assets/js/jquery-2.2.0.min.js").wait()
     .script("/assets/js/bootstrap.min.js")
+    .script("/assets/js/underscore.string.min.js")
     .script("/assets/js/vue.min.js").wait()
     .script("/assets/js/vue-validator.min.js")
     .script("/assets/js/jquery.blockUI.js")

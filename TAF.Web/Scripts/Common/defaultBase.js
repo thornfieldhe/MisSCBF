@@ -19,6 +19,7 @@
     .script("/assets/js/spinjs/jquery.spin.js")
     .script("/assets/js/path.min.js")
     .script("/assets/js/beyond.js")
+    .script("/assets/js/underscore.string.min.js")
     .script("/assets/js/jquery.pagination.js")
     .script("/Abp/Framework/scripts/abp.js")
     .script("/Abp/Framework/scripts/libs/abp.jquery.js")
@@ -36,4 +37,5 @@
     .script("/scripts/home/index.js")
     .wait(function() {
         $('.loading-container').hide();
+        _.mixin(s.exports());
     });

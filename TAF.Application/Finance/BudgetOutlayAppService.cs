@@ -101,7 +101,7 @@ namespace SCBF.Finance
             var result =
                 this.budgetOutlayRepository.GetAllList(r => r.Year == year
                                                             && r.HasRelated).OrderBy(r => r.Code).ToList()
-                    .MapTo<List<BudgetOutlaySimpleListDto>>();
+                    .MapTo<List<BudgetOutlaySimpleListDto>>().Where(r=>r.UnUsed>0).ToList();
             return result;
         }
 

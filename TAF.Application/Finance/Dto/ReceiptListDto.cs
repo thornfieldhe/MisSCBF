@@ -183,6 +183,6 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 收入完成率
         /// </summary>
-        public decimal Total27 => this.Total3 == 0 ? 0 : decimal.Round(this.Total20 / this.Total3, 2, MidpointRounding.AwayFromZero);
+        public decimal Total27 => this.Total3 == 0 ? 0 : decimal.Round(100*this.Total20 / this.Total3, 2, MidpointRounding.AwayFromZero);
     }
 }

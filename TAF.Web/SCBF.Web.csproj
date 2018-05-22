@@ -734,6 +734,7 @@
     <Content Include="assets\js\ueditor\ueditor.config.js" />
     <Content Include="assets\js\ueditor\ueditor.parse.js" />
     <Content Include="assets\js\ueditor\ueditor.parse.min.js" />
+    <Content Include="assets\js\underscore.string.min.js" />
     <Content Include="assets\js\vue-router.min.js" />
     <Content Include="assets\js\vue-validator.min.js" />
     <Content Include="assets\js\vue.min.js" />

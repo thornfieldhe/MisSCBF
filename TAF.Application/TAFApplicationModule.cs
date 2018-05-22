@@ -222,7 +222,7 @@ namespace SCBF
                     .ForMember(m => m.Surplus, n => n.MapFrom(r => r.Column1 + r.Column2 + r.Column3 - decimal.Round(r.ActualOutlays.Sum(o => o.Amount) / 10000, 2, MidpointRounding.AwayFromZero)));
 
                 mapper.CreateMap<ActualOutlay, ActualOutlayListDto>()
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd HH:MM")));
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
 
                 mapper.CreateMap<VoucherAudit, VoucherAuditListDto>()
                     .ForMember(m => m.Point1, n => n.MapFrom(r => r.Point1 == 0 ? "是" : (r.Point1 == 1 ? "否" : "无此情况")))

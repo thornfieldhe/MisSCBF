@@ -25,40 +25,40 @@ namespace SCBF.Finance.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// VoucherNo
         /// </summary>
         public string VoucherNo
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Date
         /// </summary>
-        public DateTime Date
+        public string Date
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Amount
         /// </summary>
         public decimal Amount
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Note
         /// </summary>
         public string Note
         {
             get; set;
-        }        
-    } 
+        }
+    }
 }
 
 

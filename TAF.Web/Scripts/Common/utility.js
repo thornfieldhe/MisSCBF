@@ -57,6 +57,10 @@ Vue.validator('int',
     function (val) {
         return /^\d+$/.test(val);
     });
+Vue.validator('float',
+    function (val) {
+        return /^\d+(\.\d+)?$/.test(val);
+    });
 Vue.validator('dateTime', function (val) {
     return /^\d{4}-\d{2}-\d{2}$/.test(val);
 });
