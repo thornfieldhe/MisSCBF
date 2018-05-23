@@ -50,12 +50,12 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 应执行预算数年初预算合计
         /// </summary>
-        public decimal Total6 => Total7 + Total11 + Total15;
+        public decimal Total6 => this.Total7 + this.Total11 + this.Total15;
 
         /// <summary>
         /// 应执行预算数年初上报小计
         /// </summary>
-        public decimal Total7 => Total8 + Total9 + Total10;
+        public decimal Total7 => this.Total8 + this.Total9 + this.Total10;
 
         /// <summary>
         /// 应执行预算数年初上报对下供应标准经费
@@ -75,7 +75,7 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 应执行预算数年中调整小计
         /// </summary>
-        public decimal Total11 => Total12 + Total13 + Total14;
+        public decimal Total11 => this.Total12 + this.Total13 + this.Total14;
 
         /// <summary>
         /// 应执行预算数年中调整调整支出
@@ -95,7 +95,7 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 应执行预算数调整后支出小计
         /// </summary>
-        public decimal Total15 => Total16 + Total17 + Total18;
+        public decimal Total15 => this.Total16 + this.Total17 + this.Total18;
 
         /// <summary>
         /// 应执行预算数调整后支出调整支出
@@ -124,12 +124,12 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 预算执行结余
         /// </summary>
-        public decimal Total20 => decimal.Round(Total6 - Total19, 2, MidpointRounding.AwayFromZero);
+        public decimal Total20 => decimal.Round(this.Total6 - this.Total19, 2, MidpointRounding.AwayFromZero);
 
         /// <summary>
         /// 预算执行完成率
         /// </summary>
-        public decimal Total21 => Total6 == 0 ? 0 : decimal.Round((Total6 - Total19) / Total6 * 100, 2, MidpointRounding.AwayFromZero);
+        public decimal Total21 => this.Total6 == 0 ? 0 : decimal.Round(this.Total19 / this.Total6 * 100, 2, MidpointRounding.AwayFromZero);
 
         /// <summary>
         /// 实际科目结余
@@ -139,7 +139,7 @@ namespace SCBF.Finance.Dto
         /// <summary>
         /// 结余使用合计
         /// </summary>
-        public decimal Total23 => Total24 + Total25;
+        public decimal Total23 => this.Total24 + this.Total25;
 
         /// <summary>
         /// 结余使用家底

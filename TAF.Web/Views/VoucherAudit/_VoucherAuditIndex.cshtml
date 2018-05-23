@@ -271,10 +271,10 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="32" class="DTTTFooter ">
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
                                                 <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
                                             </div>
-                                            <div class="col-sm-8 ">
+                                            <div class="col-sm-6 ">
                                                 <div class="dataTables_paginate paging_bootstrap">
                                                     <ul id="container" class="pagination"></ul>
                                                 </div>
@@ -328,8 +328,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">凭证号<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">凭证号<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <input type="text" class="form-control " placeholder="必填" name="code" v-model="item.code" v-validate:code="{required:true}" />
                                             </span>
@@ -340,9 +340,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        备注
-                                        <label class="col-sm-8 control-label no-padding-right">是否有预算<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">是否有预算<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point1" style="width: 100%" v-validate:v-model="item.point1" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -351,8 +350,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point1Note" class="form-control"></textarea>
                                             </span>
@@ -363,8 +362,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">是否超预算<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">是否超预算<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point2" style="width: 100%" v-validate:v-model="item.point2" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -373,8 +372,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point2Note" class="form-control"></textarea>
                                             </span>
@@ -385,8 +384,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">如存在预算项目结余，结余金额是否过大，有无情况说明<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">如存在预算项目结余，结余金额是否过大，有无情况说明<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point3" style="width: 100%" v-validate:v-model="item.point3" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -395,8 +394,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point3Note" class="form-control"></textarea>
                                             </span>
@@ -407,8 +406,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">是否附有经费开支审批单/会议记录/请示报告<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">是否附有经费开支审批单/会议记录/请示报告<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point4" style="width: 100%" v-validate:v-model="item.point4" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -417,8 +416,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point4Note" class="form-control"></textarea>
                                             </span>
@@ -429,8 +428,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">公务卡刷卡是否有刷卡小票<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">公务卡刷卡是否有刷卡小票<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point5" style="width: 100%" v-validate:v-model="item.point5" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -439,8 +438,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point5Note" class="form-control"></textarea>
                                             </span>
@@ -451,8 +450,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">公务卡刷卡小票是否签字<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">公务卡刷卡小票是否签字<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point6" style="width: 100%" v-validate:v-model="item.point6" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -461,8 +460,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point6Note" class="form-control"></textarea>
                                             </span>
@@ -473,8 +472,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">公务卡刷卡金额与报销金额是否一致<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">公务卡刷卡金额与报销金额是否一致<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point7" style="width: 100%" v-validate:v-model="item.point7" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -483,8 +482,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point7Note" class="form-control"></textarea>
                                             </span>
@@ -495,8 +494,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">发票与公务卡刷卡小票注明商家是否一致<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">发票与公务卡刷卡小票注明商家是否一致<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point8" style="width: 100%" v-validate:v-model="item.point8" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -505,8 +504,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point8Note" class="form-control"></textarea>
                                             </span>
@@ -517,8 +516,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">经费开支范围是否合理<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">经费开支范围是否合理<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point9" style="width: 100%" v-validate:v-model="item.point9" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -527,8 +526,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point9Note" class="form-control"></textarea>
                                             </span>
@@ -539,8 +538,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">经费开支明细是否合理<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">经费开支明细是否合理<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point10" style="width: 100%" v-validate:v-model="item.point10" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -549,8 +548,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point10Note" class="form-control"></textarea>
                                             </span>
@@ -561,8 +560,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">经费开支额度是否符合上级规定标准<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">经费开支额度是否符合上级规定标准<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point11" style="width: 100%" v-validate:v-model="item.point11" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -571,8 +570,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point11Note" class="form-control"></textarea>
                                             </span>
@@ -583,8 +582,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">审批、发票等关键时间节点是否合理<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">审批、发票等关键时间节点是否合理<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point12" style="width: 100%" v-validate:v-model="item.point12" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -593,8 +592,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point12Note" class="form-control"></textarea>
                                             </span>
@@ -605,8 +604,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">1年内是否具有无连号发票或相近号码发票<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">1年内是否具有无连号发票或相近号码发票<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point13" style="width: 100%" v-validate:v-model="item.point13" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -615,8 +614,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point13Note" class="form-control"></textarea>
                                             </span>
@@ -627,8 +626,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">是否附齐发票真伪查询，查询记录是否合理<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">是否附齐发票真伪查询，查询记录是否合理<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point14" style="width: 100%" v-validate:v-model="item.point14" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -637,8 +636,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point14Note" class="form-control"></textarea>
                                             </span>
@@ -649,8 +648,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">是否附有经费开支明细<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">是否附有经费开支明细<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point15" style="width: 100%" v-validate:v-model="item.point15" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -659,8 +658,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point15Note" class="form-control"></textarea>
                                             </span>
@@ -671,8 +670,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">发票金额与申报金额是否一致<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">发票金额与申报金额是否一致<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point16" style="width: 100%" v-validate:v-model="item.point16" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -681,8 +680,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point16Note" class="form-control"></textarea>
                                             </span>
@@ -693,8 +692,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">有无附带报销其他经费开支发票<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">有无附带报销其他经费开支发票<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point17" style="width: 100%" v-validate:v-model="item.point17" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -703,8 +702,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point17Note" class="form-control"></textarea>
                                             </span>
@@ -715,8 +714,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">凭证粘贴是否符合要求<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">凭证粘贴是否符合要求<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point18" style="width: 100%" v-validate:v-model="item.point18" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -725,8 +724,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point18Note" class="form-control"></textarea>
                                             </span>
@@ -737,8 +736,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">签字手续是否完整符合要求<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">签字手续是否完整符合要求<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point19" style="width: 100%" v-validate:v-model="item.point19" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -747,8 +746,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point19Note" class="form-control"></textarea>
                                             </span>
@@ -759,8 +758,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">发票和清单是否加盖财务章<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">发票和清单是否加盖财务章<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point20" style="width: 100%" v-validate:v-model="item.point20" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -769,8 +768,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point20Note" class="form-control"></textarea>
                                             </span>
@@ -781,8 +780,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">国有资产是否登记<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">国有资产是否登记<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point21" style="width: 100%" v-validate:v-model="item.point21" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -791,8 +790,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point21Note" class="form-control"></textarea>
                                             </span>
@@ -803,8 +802,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">时间、摘要等凭证要素是否齐全<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">时间、摘要等凭证要素是否齐全<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point22" style="width: 100%" v-validate:v-model="item.point22" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -813,8 +812,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point22Note" class="form-control"></textarea>
                                             </span>
@@ -825,8 +824,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">发票要素是否齐全<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">发票要素是否齐全<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point23" style="width: 100%" v-validate:v-model="item.point23" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -835,8 +834,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point23Note" class="form-control"></textarea>
                                             </span>
@@ -847,8 +846,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">其他应附记录/票据/资料是否齐全<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">其他应附记录/票据/资料是否齐全<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point24" style="width: 100%" v-validate:v-model="item.point24" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -857,8 +856,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point24Note" class="form-control"></textarea>
                                             </span>
@@ -869,8 +868,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">采购/工程项目是否附有验收单<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">采购/工程项目是否附有验收单<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point25" style="width: 100%" v-validate:v-model="item.point25" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -879,8 +878,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point25Note" class="form-control"></textarea>
                                             </span>
@@ -891,8 +890,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">采购/工程/服务项目是否附有合同<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">采购/工程/服务项目是否附有合同<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point26" style="width: 100%" v-validate:v-model="item.point26" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -901,8 +900,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point26Note" class="form-control"></textarea>
                                             </span>
@@ -913,8 +912,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">采购/工程/服务项目质保金、履约保证金扣留、退还等是否符合合同<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">采购/工程/服务项目质保金、履约保证金扣留、退还等是否符合合同<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point27" style="width: 100%" v-validate:v-model="item.point27" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -923,8 +922,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point27Note" class="form-control"></textarea>
                                             </span>
@@ -935,8 +934,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">采购/工程项目是否附有审计定案表<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">采购/工程项目是否附有审计定案表<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point28" style="width: 100%" v-validate:v-model="item.point28" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -945,8 +944,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point28Note" class="form-control"></textarea>
                                             </span>
@@ -957,8 +956,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">定点采购项目单价、进度是否符合合同<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">定点采购项目单价、进度是否符合合同<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point29" style="width: 100%" v-validate:v-model="item.point29" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option></select>
                                         </div>
                                     </div>
@@ -967,8 +966,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point29Note" class="form-control"></textarea>
                                             </span>
@@ -979,8 +978,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">支付方式是否公务卡/转账支付，现金/对私支付是否附有情况说明<span class="red">*</span></label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">支付方式是否公务卡/转账支付，现金/对私支付是否附有情况说明<span class="red">*</span></label>
+                                        <div class="col-sm-6">
                                             <select id="point30" style="width: 100%" v-validate:v-model="item.point30" ="{required:true}"><option value="">请选择</option><option value="0">是</option><option value="1">否</option><option value="2">无此情况</option"></select>
                                         </div>
                                     </div>
@@ -989,8 +988,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-8 control-label no-padding-right">备注</label>
-                                        <div class="col-sm-4">
+                                        <label class="col-sm-6 control-label no-padding-right">备注</label>
+                                        <div class="col-sm-6">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" v-model="item.point30Note" class="form-control"></textarea>
                                             </span>

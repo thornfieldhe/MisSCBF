@@ -118,19 +118,17 @@ namespace SCBF.Finance
 
 
             var result = this.budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value)
-                .OrderBy(r => r.Code);
+                .OrderBy(r => r.Code).ToList();
             var result0 = this.budgetOutlayRepository
-                .GetAllList(r => r.Year.ToString() == currentYearItem.Value && r.HasRelated).OrderBy(r => r.Code);
+                .GetAllList(r => r.Year.ToString() == currentYearItem.Value && r.HasRelated).OrderBy(r => r.Code).ToList();
             var codeList = result.Select(r => r.Code).Distinct().ToList();
-            var result1 = this.actualOutlayRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value)
-                .OrderBy(r => r.VoucherNo);
             var list = new List<BudgetPerformanceListDto>();
             foreach (var code in codeList)
             {
-                var receipt = result.FirstOrDefault(r => r.Code  == code && r.Type == BungetType.Year);
-                var outlay1 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Year);
-                var outlay2 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Adjust);
-                var outlay3 = result0.FirstOrDefault(r => r.Code == code && r.Type == BungetType.Increase);
+                var receipt = result.FirstOrDefault(r => r.Code  == code);
+                var outlay1 = result0.Where(r => r.Code == code && r.Type == BungetType.Year).ToList();
+                var outlay2 = result0.Where(r => r.Code == code && r.Type == BungetType.Adjust).ToList();
+                var outlay3 = result0.Where(r => r.Code == code && r.Type == BungetType.Increase).ToList();
                 var outlay =
                     this.outlayRepository.FirstOrDefault(r =>
                         r.Code == code && r.Year.ToString() == currentYearItem.Value);
@@ -151,19 +149,19 @@ namespace SCBF.Finance
                         r.Column31 + r.Column32 + r.Column33 + r.Column34 + r.Column35 + r.Column36 + r.Column37),
                     Total5 = result.Where(r => r.Code == code).Sum(r =>
                         r.Column41 + r.Column42 + r.Column43 + r.Column44 + r.Column45 + r.Column46 + r.Column47),
-                    Total8  = outlay1 != null ? outlay1.Column1 : 0,
-                    Total9  = outlay1 != null ? outlay1.Column2 : 0,
-                    Total10 = outlay1 != null ? outlay1.Column3 : 0,
-                    Total12 = outlay2 != null ? outlay2.Column1 : 0,
-                    Total13 = outlay2 != null ? outlay2.Column2 : 0,
-                    Total14 = outlay2 != null ? outlay2.Column3 : 0,
-                    Total16 = outlay3 != null ? outlay3.Column1 : 0,
-                    Total17 = outlay3 != null ? outlay3.Column2 : 0,
-                    Total18 = outlay3 != null ? outlay3.Column3 : 0,
+                    Total8  = outlay1.Any() ? outlay1.Sum(r=>r.Column1) : 0,
+                    Total9  = outlay1.Any() ? outlay1.Sum(r=>r.Column2) : 0,
+                    Total10 = outlay1.Any() ? outlay1.Sum(r=>r.Column3) : 0,
+                    Total12 = outlay2.Any() ? outlay2.Sum(r=>r.Column1) : 0,
+                    Total13 = outlay2.Any() ? outlay2.Sum(r=>r.Column2) : 0,
+                    Total14 = outlay2.Any() ? outlay2.Sum(r=>r.Column3) : 0,
+                    Total16 = outlay3.Any() ? outlay3.Sum(r=>r.Column1) : 0,
+                    Total17 = outlay3.Any() ? outlay3.Sum(r=>r.Column2) : 0,
+                    Total18 = outlay3.Any() ? outlay3.Sum(r=>r.Column3) : 0,
                     Total19 = decimal.Round(
-                        ((outlay1   == null ? 0 : outlay1.ActualOutlays.Sum(r => r.Amount))
-                         + (outlay2 == null ? 0 : outlay2.ActualOutlays.Sum(r => r.Amount))
-                         + (outlay3 == null ? 0 : outlay3.ActualOutlays.Sum(r => r.Amount))) / 10000,
+                        ((!outlay1.Any() ? 0 : outlay1.SelectMany(r=>r.ActualOutlays).Sum(s => s.Amount))
+                         + (!outlay2.Any() ? 0 : outlay2.SelectMany(r=>r.ActualOutlays).Sum(s => s.Amount))
+                         + (!outlay3.Any() ? 0 : outlay3.SelectMany(r=>r.ActualOutlays).Sum(s => s.Amount))) / 10000,
                         2,
                         MidpointRounding.AwayFromZero),
                     Total22 = outlay == null ? 0 : outlay.Total1,
@@ -357,27 +355,28 @@ namespace SCBF.Finance
                              - receipt.BudgetOutlaies.Sum(r => r.Column2 + r.Column1 + r.Column3)
                 };
                 list.Add(dto);
-                list = list.GroupBy(r => new {Code = r.Code, Name = r.Name}).Select(r =>
-                        new YearBudgetSummaryDto()
-                        {
-                            Name    = r.Key.Name,
-                            Code    = r.Key.Code,
-                            Column1 = r.Sum(m => m.Column1),
-                            Column2 = r.Sum(m => m.Column2),
-                            Column3 = r.Sum(m => m.Column3),
-                            Column4 = r.Sum(m => m.Column4),
-                            Column5 = r.Sum(m => m.Column5),
-                            Column6 = r.Sum(m => m.Column6),
-                            Column7 = r.Sum(m => m.Column7),
-                            Column8 = r.Sum(m => m.Column8),
-                            Total1  = r.Sum(m => m.Total1),
-                            Total2  = r.Sum(m => m.Total2),
-                            Total3  = r.Sum(m => m.Total3),
-                            Total4  = r.Sum(m => m.Total4),
-                            Total5  = r.Sum(m => m.Total5)
-                        })
-                    .ToList();
             }
+
+            list = list.GroupBy(r => new {Code = r.Code, Name = r.Name}).Select(r =>
+                    new YearBudgetSummaryDto()
+                    {
+                        Name    = r.Key.Name,
+                        Code    = r.Key.Code,
+                        Column1 = r.Sum(m => m.Column1),
+                        Column2 = r.Sum(m => m.Column2),
+                        Column3 = r.Sum(m => m.Column3),
+                        Column4 = r.Sum(m => m.Column4),
+                        Column5 = r.Sum(m => m.Column5),
+                        Column6 = r.Sum(m => m.Column6),
+                        Column7 = r.Sum(m => m.Column7),
+                        Column8 = r.Sum(m => m.Column8),
+                        Total1  = r.Sum(m => m.Total1),
+                        Total2  = r.Sum(m => m.Total2),
+                        Total3  = r.Sum(m => m.Total3),
+                        Total4  = r.Sum(m => m.Total4),
+                        Total5  = r.Sum(m => m.Total5)
+                    })
+                .ToList();
 
             return list;
         }
