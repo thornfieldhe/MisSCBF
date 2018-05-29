@@ -7,12 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace SCBF.Web.Controllers
 {
+    using System.Web.Mvc;
     using Abp.Web.Mvc.Authorization;
     using SCBF.BaseInfo;
     using SCBF.Finance;
-    using System.Web.Mvc;
 
     /// <summary>
     /// 支出预算控制器
@@ -20,13 +21,13 @@ namespace SCBF.Web.Controllers
     [AbpMvcAuthorize]
     public class BudgetOutlayController : TAFControllerBase
     {
-        private readonly IBudgetOutlayAppService budgetOutlayAppService;
+        private readonly IBudgetOutlayAppService _budgetOutlayAppService;
 
         public BudgetOutlayController(IBudgetOutlayAppService budgetOutlayAppService
             , IAttachmentAppService attachmentAppService
             , ISysDictionaryAppService sysDictionaryAppService)
         {
-            this.budgetOutlayAppService = budgetOutlayAppService;
+            this._budgetOutlayAppService = budgetOutlayAppService;
             this._attachmentAppService = attachmentAppService;
             this._sysDictionaryAppService = sysDictionaryAppService;
         }
@@ -34,21 +35,21 @@ namespace SCBF.Web.Controllers
         [HttpPost]
         public JsonResult Upload1()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this.budgetOutlayAppService.LoadBudgetReceiptFile1);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this._budgetOutlayAppService.LoadBudgetReceiptFile1);
             return new JsonResult() { Data = "OK" };
         }
 
         [HttpPost]
         public JsonResult Upload2()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this.budgetOutlayAppService.LoadBudgetReceiptFile2);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this._budgetOutlayAppService.LoadBudgetReceiptFile2);
             return new JsonResult() { Data = "OK" };
         }
 
         [HttpPost]
         public JsonResult Upload3()
         {
-            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this.budgetOutlayAppService.LoadBudgetReceiptFile3);
+            this.UploadFile(DictionaryCategory.Attachment_BudgetReceipt, new string[] { }, this._budgetOutlayAppService.LoadBudgetReceiptFile3);
             return new JsonResult() { Data = "OK" };
         }
 
@@ -75,6 +76,12 @@ namespace SCBF.Web.Controllers
         public ActionResult BudgetPerformance()
         {
             return PartialView("_BudgetPerformance");
+        }
+
+        public FileResult Download()
+        {
+            var file =  this._budgetOutlayAppService.Export();
+            return    this.DownloadFile(file);
         }
     }
 }

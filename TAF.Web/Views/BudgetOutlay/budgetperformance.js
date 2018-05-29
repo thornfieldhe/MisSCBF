@@ -63,6 +63,27 @@ var main = new Vue({
         },
         editItem: function (id, title) {
             this.$dispatch('onUpdateItem', title, id);
+        },
+        export: function() {
+            //定义一个form表单,通过form表单来发送请求
+            var form=$("<form>");
+
+            //设置表单状态为不显示
+            form.attr("style","display:none");
+
+            //method属性设置请求类型为get
+            form.attr("method","get");
+
+            //action属性设置请求路径,(如有需要,可直接在路径后面跟参数)
+            //例如:htpp://127.0.0.1/test?id=123
+            form.attr("action","/BudgetOutlay/Download");
+
+            //将表单放置在页面(body)中
+            $("body").append(form);
+
+            //表单提交
+            form.submit();
+        
         }
     }
 });

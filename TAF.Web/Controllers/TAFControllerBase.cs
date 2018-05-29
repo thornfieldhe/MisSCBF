@@ -1,4 +1,6 @@
-﻿using Abp.IdentityFramework;
+﻿using System.Web;
+using System.Web.Mvc;
+using Abp.IdentityFramework;
 using Abp.UI;
 using Abp.Web.Mvc.Controllers;
 using Microsoft.AspNet.Identity;
@@ -42,7 +44,7 @@ namespace SCBF.Web.Controllers
         /// <param name="category"></param>
         /// <param name="param"></param>
         /// <param name="act"></param>
-        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act) //todo 上传文件方法已经实现
+        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act) //Todo: 上传文件方法已经实现
         {
             var fileData = this.Request.Files[0];
             if (fileData != null)
@@ -97,6 +99,17 @@ namespace SCBF.Web.Controllers
                 }
             }
             throw new UserFriendlyException("未上传文件");
+        }
+
+        protected FileResult DownloadFile(string path)
+        {
+            FileInfo fi = new FileInfo(path);
+           
+
+
+            string s        = MimeMapping.GetMimeMapping(fi.Name);
+            
+            return File(path, s, Path.GetFileName(path));
         }
     }
 }

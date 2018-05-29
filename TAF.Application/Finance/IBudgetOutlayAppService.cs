@@ -9,9 +9,9 @@
 
 namespace SCBF.Finance
 {
-    using SCBF.Finance.Dto;
     using System;
     using System.Collections.Generic;
+    using SCBF.Finance.Dto;
     using TAF.Utility;
 
     /// <summary>
@@ -42,6 +42,8 @@ namespace SCBF.Finance
         void SaveOutlaySummary(OutlaySummaryEditDto item);
 
         OutlaySummaryEditDto GetOutlaySummary(string code);
+
+        string Export();
     }
 }
 

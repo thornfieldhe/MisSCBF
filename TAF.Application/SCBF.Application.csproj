@@ -50,6 +50,12 @@
     <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\TAF.Web\Dlls\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\TAF.Web\Dlls\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -144,6 +150,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
     </Reference>
@@ -154,6 +161,7 @@
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -192,6 +200,7 @@
     <Compile Include="Car\IHisStoreStockAppService.cs" />
     <Compile Include="Car\IRepairCostAppService.cs" />
     <Compile Include="Car\RepairCostAppService.cs" />
+    <Compile Include="Common\DownloadFileService.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckEditDto.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckListDto.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckQueryDto.cs" />
