@@ -9,6 +9,11 @@
 
 namespace SCBF.BaseInfo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
@@ -16,11 +21,6 @@ namespace SCBF.BaseInfo
     using Abp.UI;
     using AutoMapper;
     using SCBF.BaseInfo.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
     using TAF.Utility;
 
     /// <summary>
@@ -29,17 +29,19 @@ namespace SCBF.BaseInfo
     [AbpAuthorize]
     public class SysDictionaryAppService : TAFAppServiceBase, ISysDictionaryAppService
     {
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IUnitPoolAppService _unitPoolAppService;
 
-        public SysDictionaryAppService(ISysDictionaryRepository sysDictionaryRepository)
+        public SysDictionaryAppService(ISysDictionaryRepository sysDictionaryRepository,IUnitPoolAppService unitPoolAppService)
         {
-            this.sysDictionaryRepository = sysDictionaryRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._unitPoolAppService = unitPoolAppService;
         }
 
         public ListResultDto<SysDictionaryListDto> GetAll(SysDictionaryQueryDto request)
         {
             var query =
-                this.sysDictionaryRepository.GetAll()
+                this._sysDictionaryRepository.GetAll()
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Category), r => r.Category.Contains(request.Category))
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Value), r => r.Value.Contains(request.Value))
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Value2), r => r.Value2.Contains(request.Value2))
@@ -60,7 +62,7 @@ namespace SCBF.BaseInfo
 
         public SysDictionaryEditDto Get(Guid id)
         {
-            var output = this.sysDictionaryRepository.Get(id);
+            var output = this._sysDictionaryRepository.Get(id);
             return output.MapTo<SysDictionaryEditDto>();
         }
 
@@ -77,13 +79,13 @@ namespace SCBF.BaseInfo
                 var item = input.MapTo<SysDictionary>();
                 if (input.Id == Guid.Empty)
                 {
-                    await this.sysDictionaryRepository.InsertAsync(item);
+                    await this._sysDictionaryRepository.InsertAsync(item);
                 }
                 else
                 {
-                    var old = this.sysDictionaryRepository.Get(input.Id);
+                    var old = this._sysDictionaryRepository.Get(input.Id);
                     Mapper.Map(input, old);
-                    await this.sysDictionaryRepository.UpdateAsync(old);
+                    await this._sysDictionaryRepository.UpdateAsync(old);
                 }
             }
         }
@@ -98,19 +100,19 @@ namespace SCBF.BaseInfo
         {
             var item = input.MapTo<SysDictionary>();
             var dbItem =
-                this.sysDictionaryRepository.FirstOrDefault(
+                this._sysDictionaryRepository.FirstOrDefault(
                     r => r.Category == input.Category && r.Value == input.Value);//存在预算年度
             if (dbItem == null)
             {
                 var defaultYear =
-                    this.sysDictionaryRepository.FirstOrDefault(
+                    this._sysDictionaryRepository.FirstOrDefault(
                         r => r.Category == input.Category && r.Value4 == true.ToString());//item4:是否是当前年度
                 if (defaultYear != null)
                 {
                     defaultYear.Value4 = false.ToString();
                 }
                 item.Value4 = true.ToString();
-                await this.sysDictionaryRepository.InsertAsync(item);
+                await this._sysDictionaryRepository.InsertAsync(item);
             }
             else
             {
@@ -120,12 +122,12 @@ namespace SCBF.BaseInfo
 
         public void Delete(Guid id)
         {
-            this.sysDictionaryRepository.Delete(id);
+            this._sysDictionaryRepository.Delete(id);
         }
 
         public List<SysDictionaryListDto> GetSimpleList(string category = null)
         {
-            return this.sysDictionaryRepository.GetAllList(r => category == null || r.Category == category).MapTo<List<SysDictionaryListDto>>();
+            return this._sysDictionaryRepository.GetAllList(r => category == null || r.Category == category).MapTo<List<SysDictionaryListDto>>();
         }
 
         /// <summary>
@@ -133,7 +135,7 @@ namespace SCBF.BaseInfo
         /// </summary>
         public bool IsInSummary(int month)
         {
-            var summaryMonth = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Car_OilWearSummary);
+            var summaryMonth = this._sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Car_OilWearSummary);
             if (summaryMonth == null)
             {
                 throw new UserFriendlyException("未设置汽车的夏季时间区间");

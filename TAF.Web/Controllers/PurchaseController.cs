@@ -9,8 +9,8 @@
 
 namespace SCBF.Web.Controllers
 {
-    using Abp.Web.Mvc.Authorization;
     using System.Web.Mvc;
+    using Abp.Web.Mvc.Authorization;
 
     /// <summary>
     /// 采购控制器
@@ -22,8 +22,16 @@ namespace SCBF.Web.Controllers
         {
         }
 
-        public ActionResult InfoList() { return PartialView("_PurchaseInfoIndex"); }
+        public ActionResult InfoList() { return this.PartialView("_PurchaseInfoIndex"); }
+
+
+        public ActionResult PoolConfig()
+        {
+            return this.PartialView("_PoolConfig");
+        }
     }
+
+
 }
 
 

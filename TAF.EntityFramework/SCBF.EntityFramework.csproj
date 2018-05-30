@@ -359,6 +359,10 @@
     <Compile Include="Migrations\201711131401091_addTable_moduleAttachments.Designer.cs">
       <DependentUpon>201711131401091_addTable_moduleAttachments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805301319511_addTable_unitPool.cs" />
+    <Compile Include="Migrations\201805301319511_addTable_unitPool.Designer.cs">
+      <DependentUpon>201805301319511_addTable_unitPool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -403,6 +407,7 @@
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="Repositories\AttachmentRepository.cs" />
+    <Compile Include="Repositories\UnitPoolRepository.cs" />
     <Compile Include="Repositories\UploadOilCardRoofRepository.cs" />
     <Compile Include="Repositories\UploadOilCarRoofRelationshipRepository.cs" />
     <Compile Include="Repositories\VoucherAuditRepository.cs" />
@@ -586,6 +591,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711131401091_addTable_moduleAttachments.resx">
       <DependentUpon>201711131401091_addTable_moduleAttachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805301319511_addTable_unitPool.resx">
+      <DependentUpon>201805301319511_addTable_unitPool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

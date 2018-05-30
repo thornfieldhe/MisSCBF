@@ -56,6 +56,11 @@
             get; set;
         }
 
+        public DbSet<UnitPool> UnitPools
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 物资

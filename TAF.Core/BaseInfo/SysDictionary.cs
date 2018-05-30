@@ -16,7 +16,7 @@ namespace SCBF.BaseInfo
     /// <summary>
     /// 系统字典表
     /// </summary>
-    public class SysDictionary : TAFEntity
+    public sealed class SysDictionary : TAFEntity
     {
         public string Value
         {
@@ -129,37 +129,37 @@ namespace SCBF.BaseInfo
             get; set;
         }
 
-        public virtual List<Entry> Entries
+        public List<Entry> Entries
         {
             get; set;
         }
 
-        public virtual List<Delivery> Deliveries
+        public List<Delivery> Deliveries
         {
             get; set;
         }
 
-        public virtual List<Stock> Stocks
+        public List<Stock> Stocks
         {
             get; set;
         }
 
-        public virtual List<HisStock> HisStocks
+        public List<HisStock> HisStocks
         {
             get; set;
         }
 
-        public virtual List<Driver> Drivers
+        public List<Driver> Drivers
         {
             get; set;
         }
 
-        public virtual List<CarInfo> Cars
+        public List<CarInfo> Cars
         {
             get; set;
         }
 
-        public virtual List<ApplicationForBunkerA> ApplicationForBunkerAs { get; set; }
-        public virtual List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
+        public List<ApplicationForBunkerA> ApplicationForBunkerAs { get; set; }
+        public List<ApplicationForBunkerB> ApplicationForBunkerBs { get; set; }
     }
 }

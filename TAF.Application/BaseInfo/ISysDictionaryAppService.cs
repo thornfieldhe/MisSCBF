@@ -35,6 +35,7 @@ namespace SCBF.BaseInfo
         List<SysDictionaryListDto> GetSimpleList(string category = null);
 
         string GetModulePath(string category);
+
     }
 }
 

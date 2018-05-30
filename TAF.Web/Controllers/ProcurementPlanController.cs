@@ -36,6 +36,7 @@ namespace SCBF.Web.Controllers
             ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Users);
             return PartialView("_ProcurementPlanIndex");
         }
+
     }
 }
 

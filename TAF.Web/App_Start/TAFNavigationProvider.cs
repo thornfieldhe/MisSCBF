@@ -198,10 +198,15 @@
                                 url: "#purchaseInfos",
                                 requiredPermissionName: PermissionNames.CgUser))
                     .AddItem(new MenuItemDefinition(
+                                "menuPurchaseInfos",
+                                L("基础信息"),
+                                url: "#purchaseInfos",
+                                requiredPermissionName: PermissionNames.CgUser))
+                    .AddItem(new MenuItemDefinition(
                                 "menuProcurementPlans",
-                                L("采购计划"),
-                                url: "#procurementPlans",
-                                requiredPermissionName: PermissionNames.CgUser)))
+                                L("抽取范围管理"),
+                                url: "#poolConfig",
+                                requiredPermissionName: PermissionNames.PagesAdmins)))
                 .AddItem(
                     new MenuItemDefinition(
                         "Car",
