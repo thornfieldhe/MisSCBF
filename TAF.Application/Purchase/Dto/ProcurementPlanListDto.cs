@@ -25,72 +25,65 @@ namespace SCBF.Purchase.Dto
         public Guid Id
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Category
         /// </summary>
         public string Category
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Mode
         /// </summary>
         public string Mode
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Code
         /// </summary>
         public string Code
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
         /// Name
         /// </summary>
         public string Name
         {
             get; set;
-        }        
-        
+        }
+
         /// <summary>
-        /// Year
+        /// Date
         /// </summary>
-        public int Year
+        public string Date
         {
             get; set;
-        }        
-        
-        /// <summary>
-        /// Month
-        /// </summary>
-        public int Month
-        {
-            get; set;
-        }        
-        
+        }
+
+
         /// <summary>
         /// Department
         /// </summary>
         public string Department
         {
             get; set;
-        }    
-        
+        }
+
         /// <summary>
         /// User
         /// </summary>
         public string User
         {
             get; set;
-        }    
-    } 
+        }
+    }
 }
 
 

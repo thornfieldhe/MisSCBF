@@ -2,7 +2,6 @@
 {
     using Abp.Application.Navigation;
     using Abp.Localization;
-
     using SCBF.Authorization;
 
     /// <summary>
@@ -16,36 +15,36 @@
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu.AddItem(
-                new MenuItemDefinition(
-                    "UserManager",
-                    L("系统管理"),
-                    url: "#",
-                    icon: "menu-icon fa fa-user",
-                    requiredPermissionName: PermissionNames.Default).AddItem(
-                        new MenuItemDefinition(
-                            "menuUsers",
-                            L("用户管理"),
-                            url: "#userList",
-                            requiredPermissionName: PermissionNames.PagesAdmins))
-                    .AddItem(
-                        new MenuItemDefinition(
-                            "menuChangePass",
-                            L("修改密码"),
-                            url: "#changePwd",
-                            requiredPermissionName: PermissionNames.Default))
-                    .AddItem(
+                    new MenuItemDefinition(
+                            "UserManager",
+                            L("系统管理"),
+                            url: "#",
+                            icon: "menu-icon fa fa-user",
+                            requiredPermissionName: PermissionNames.Default).AddItem(
+                            new MenuItemDefinition(
+                                "menuUsers",
+                                L("用户管理"),
+                                url: "#userList",
+                                requiredPermissionName: PermissionNames.PagesAdmins))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuChangePass",
+                                L("修改密码"),
+                                url: "#changePwd",
+                                requiredPermissionName: PermissionNames.Default))
+                        .AddItem(
                             new MenuItemDefinition(
                                 "menuBaseInfos",
                                 L("基础信息"),
                                 url: "#baseInfos",
                                 requiredPermissionName: PermissionNames.PagesAdmins)))
-                    .AddItem(
+                .AddItem(
                     new MenuItemDefinition(
-                        "Storage",
-                        L("预算管理"),
-                        url: "#",
-                        icon: "menu-icon fa  fa-rmb",
-                        requiredPermissionName: PermissionNames.Default)
+                            "Storage",
+                            L("预算管理"),
+                            url: "#",
+                            icon: "menu-icon fa  fa-rmb",
+                            requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuFinanceInfos",
@@ -128,11 +127,11 @@
                             requiredPermissionName: PermissionNames.CwUser)))
                 .AddItem(
                     new MenuItemDefinition(
-                        "Storage",
-                        L("物资器材管理"),
-                        url: "#",
-                        icon: "menu-icon fa  fa-tasks",
-                        requiredPermissionName: PermissionNames.Default)
+                            "Storage",
+                            L("物资器材管理"),
+                            url: "#",
+                            icon: "menu-icon fa  fa-tasks",
+                            requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuProductInfos",
@@ -176,44 +175,54 @@
                             url: "#queryStockChange",
                             requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
-                                     "menuStocks",
-                                     L("库存清单"),
-                                     url: "#stocks",
-                                     requiredPermissionName: PermissionNames.WzUser))
+                            "menuStocks",
+                            L("库存清单"),
+                            url: "#stocks",
+                            requiredPermissionName: PermissionNames.WzUser))
                         .AddItem(new MenuItemDefinition(
-                                     "menuCheckBills",
-                                     L("物资盘点对比表"),
-                                     url: "#checkBills",
-                                     requiredPermissionName: PermissionNames.WzUser)))
-                .AddItem(
-                        new MenuItemDefinition(
-                    "Purchase",
-                    L("采购管理"),
-                    url: "#",
-                    icon: "menu-icon fa  fa-shopping-cart",
-                    requiredPermissionName: PermissionNames.CgUser)
-                    .AddItem(new MenuItemDefinition(
-                                "menuPurchaseInfos",
-                                L("基础信息"),
-                                url: "#purchaseInfos",
-                                requiredPermissionName: PermissionNames.CgUser))
-                    .AddItem(new MenuItemDefinition(
-                                "menuPurchaseInfos",
-                                L("基础信息"),
-                                url: "#purchaseInfos",
-                                requiredPermissionName: PermissionNames.CgUser))
-                    .AddItem(new MenuItemDefinition(
-                                "menuProcurementPlans",
-                                L("抽取范围管理"),
-                                url: "#poolConfig",
-                                requiredPermissionName: PermissionNames.PagesAdmins)))
+                            "menuCheckBills",
+                            L("物资盘点对比表"),
+                            url: "#checkBills",
+                            requiredPermissionName: PermissionNames.WzUser)))
                 .AddItem(
                     new MenuItemDefinition(
-                        "Car",
-                        L("车辆管理"),
-                        url: "#",
-                        icon: "menu-icon fa  fa-truck",
-                        requiredPermissionName: PermissionNames.Default)
+                            "Purchase",
+                            L("采购管理"),
+                            url: "#",
+                            icon: "menu-icon fa  fa-shopping-cart",
+                            requiredPermissionName: PermissionNames.CgUser)
+                        .AddItem(new MenuItemDefinition(
+                            "menuPurchaseInfos",
+                            L("基础信息"),
+                            url: "#purchaseInfos",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProcurementPlans",
+                            L("抽取范围管理"),
+                            url: "#poolConfig",
+                            requiredPermissionName: PermissionNames.PagesAdmins))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProcurementPlans",
+                            L("采购计划"),
+                            url: "#procurementPlans",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProcurementPlans1",
+                            L("采购计划调整"),
+                            url: "#procurementPlans1",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProcurementPlans2",
+                            L("最佳采购计划"),
+                            url: "#procurementPlans2",
+                            requiredPermissionName: PermissionNames.CgUser)))
+                .AddItem(
+                    new MenuItemDefinition(
+                            "Car",
+                            L("车辆管理"),
+                            url: "#",
+                            icon: "menu-icon fa  fa-truck",
+                            requiredPermissionName: PermissionNames.Default)
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuCarBaseInfos",

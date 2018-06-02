@@ -16,5 +16,10 @@
         public Guid BudgetOutlayId { get; set; }
 
         public virtual BudgetOutlay BudgetOutlay { get; set; }
+
+        /// <summary>
+        /// 关联的预算计划类型
+        /// </summary>
+        public BungetType Type { get; set; }
     }
 }

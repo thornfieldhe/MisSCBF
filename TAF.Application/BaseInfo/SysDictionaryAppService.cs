@@ -30,16 +30,58 @@ namespace SCBF.BaseInfo
     public class SysDictionaryAppService : TAFAppServiceBase, ISysDictionaryAppService
     {
         private readonly ISysDictionaryRepository _sysDictionaryRepository;
-        private readonly IUnitPoolAppService _unitPoolAppService;
+        private readonly IUnitPoolAppService      _unitPoolAppService;
 
-        public SysDictionaryAppService(ISysDictionaryRepository sysDictionaryRepository,IUnitPoolAppService unitPoolAppService)
+        public SysDictionaryAppService(ISysDictionaryRepository sysDictionaryRepository,
+            IUnitPoolAppService                                 unitPoolAppService)
         {
             this._sysDictionaryRepository = sysDictionaryRepository;
-            this._unitPoolAppService = unitPoolAppService;
+            this._unitPoolAppService      = unitPoolAppService;
         }
 
         public ListResultDto<SysDictionaryListDto> GetAll(SysDictionaryQueryDto request)
         {
+            if (request.Category == DictionaryCategory.Purchase_PriceConsistency) // 初始化综合单价一致率
+            {
+                var item = this._sysDictionaryRepository.FirstOrDefault(r =>
+                    r.Category == DictionaryCategory.Purchase_PriceConsistency);
+                if (item == null)
+                {
+                    item = new SysDictionary() {Value = "0.7", Category = DictionaryCategory.Purchase_PriceConsistency};
+                    this._sysDictionaryRepository.Insert(item);
+                }
+            }
+            else if (request.Category == DictionaryCategory.Purchase_SystemScore) //初始化质量体系评分
+            {
+                var item = this._sysDictionaryRepository.FirstOrDefault(r =>
+                    r.Category == DictionaryCategory.Purchase_PriceConsistency);
+                if (item == null)
+                {
+                    item = new SysDictionary()
+                    {
+                        Value    = "100",
+                        Value2   = "95",
+                        Value3   = "90",
+                        Category = DictionaryCategory.Purchase_PriceConsistency
+                    };
+                    this._sysDictionaryRepository.Insert(item);
+                }
+            }
+            else if (request.Category == DictionaryCategory.Purchase_BlackList) //黑名单年限
+            {
+                var item = this._sysDictionaryRepository.FirstOrDefault(r =>
+                    r.Category == DictionaryCategory.Purchase_BlackList);
+                if (item == null)
+                {
+                    item=new SysDictionary()
+                    {
+                        Value    = "1",
+                        Category = DictionaryCategory.Purchase_BlackList
+                    };
+                    this._sysDictionaryRepository.Insert(item);
+                }
+            }
+
             var query =
                 this._sysDictionaryRepository.GetAll()
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Category), r => r.Category.Contains(request.Category))
@@ -51,11 +93,11 @@ namespace SCBF.BaseInfo
                     .WhereIf(!string.IsNullOrWhiteSpace(request.Note), r => r.Note.Contains(request.Note));
 
             query = !string.IsNullOrWhiteSpace(request.Sorting)
-                        ? query.OrderBy(request.Sorting)
-                        : query.OrderByDescending(r => r.Value);
+                ? query.OrderBy(request.Sorting)
+                : query.OrderByDescending(r => r.Value);
             var count = query.Count();
-            var list = query.AsQueryable().PageBy(request).ToList();
-            var dtos = list.MapTo<List<SysDictionaryListDto>>();
+            var list  = query.AsQueryable().PageBy(request).ToList();
+            var dtos  = list.MapTo<List<SysDictionaryListDto>>();
 
             return new PagedResultDto<SysDictionaryListDto>(count, dtos);
         }
@@ -101,16 +143,17 @@ namespace SCBF.BaseInfo
             var item = input.MapTo<SysDictionary>();
             var dbItem =
                 this._sysDictionaryRepository.FirstOrDefault(
-                    r => r.Category == input.Category && r.Value == input.Value);//存在预算年度
+                    r => r.Category == input.Category && r.Value == input.Value); //存在预算年度
             if (dbItem == null)
             {
                 var defaultYear =
                     this._sysDictionaryRepository.FirstOrDefault(
-                        r => r.Category == input.Category && r.Value4 == true.ToString());//item4:是否是当前年度
+                        r => r.Category == input.Category && r.Value4 == true.ToString()); //item4:是否是当前年度
                 if (defaultYear != null)
                 {
                     defaultYear.Value4 = false.ToString();
                 }
+
                 item.Value4 = true.ToString();
                 await this._sysDictionaryRepository.InsertAsync(item);
             }
@@ -127,7 +170,8 @@ namespace SCBF.BaseInfo
 
         public List<SysDictionaryListDto> GetSimpleList(string category = null)
         {
-            return this._sysDictionaryRepository.GetAllList(r => category == null || r.Category == category).MapTo<List<SysDictionaryListDto>>();
+            return this._sysDictionaryRepository.GetAllList(r => category == null || r.Category == category)
+                .MapTo<List<SysDictionaryListDto>>();
         }
 
         /// <summary>
@@ -135,23 +179,26 @@ namespace SCBF.BaseInfo
         /// </summary>
         public bool IsInSummary(int month)
         {
-            var summaryMonth = this._sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Car_OilWearSummary);
+            var summaryMonth =
+                this._sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Car_OilWearSummary);
             if (summaryMonth == null)
             {
                 throw new UserFriendlyException("未设置汽车的夏季时间区间");
             }
+
             var from = int.Parse(summaryMonth.Value);
-            var to = int.Parse(summaryMonth.Value2);
+            var to   = int.Parse(summaryMonth.Value2);
             if (month >= from && month <= to)
             {
                 return true;
             }
+
             return false;
         }
 
-        public string GetModulePath(string category) { return $"{category}/{DateTime.Today.Year}/{DateTime.Today.Month}/{DateTime.Today.Day}"; }
+        public string GetModulePath(string category)
+        {
+            return $"{category}/{DateTime.Today.Year}/{DateTime.Today.Month}/{DateTime.Today.Day}";
+        }
     }
 }
-
-
-

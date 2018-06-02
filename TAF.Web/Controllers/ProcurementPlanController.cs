@@ -13,8 +13,8 @@ namespace SCBF.Web.Controllers
 
     using Abp.Web.Mvc.Authorization;
 
-    using SCBF.BaseInfo;
-    using SCBF.Purchase;
+    using BaseInfo;
+    using Purchase;
 
     /// <summary>
     /// 采购计划预算关联表控制器
@@ -32,9 +32,22 @@ namespace SCBF.Web.Controllers
 
         public ActionResult ProcurementPlanList()
         {
-            ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Unit);
-            ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Users);
-            return PartialView("_ProcurementPlanIndex");
+            this.ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Unit);
+            this.ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Users);
+            return this.PartialView("_ProcurementPlanIndex");
+        }
+        public ActionResult ProcurementPlanList1()
+        {
+            this.ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Unit);
+            this.ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Users);
+            return this.PartialView("_ProcurementPlanIndex1");
+        }
+
+        public ActionResult ProcurementPlanList2()
+        {
+            this.ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Unit);
+            this.ViewData["list2"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_Users);
+            return this.PartialView("_ProcurementPlanIndex2");
         }
 
     }

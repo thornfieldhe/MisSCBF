@@ -425,6 +425,12 @@ namespace SCBF
                 mapper.CreateMap<StageInfo, StageInfoListDto>()
                     .ForMember(m => m.ProcurementPlanName, n => n.MapFrom(r => r.ProcurementPlan.Name))
                     .ForMember(m => m.Status, n => n.MapFrom(r => r.Status == 0 ? "未提交" : "已提交"));
+
+                mapper.CreateMap<ProcurementPlan, ProcurementPlanEditDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+                mapper.CreateMap<ProcurementPlan, ProcurementPlanListDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+
                 #endregion
             });
         }

@@ -363,6 +363,14 @@
     <Compile Include="Migrations\201805301319511_addTable_unitPool.Designer.cs">
       <DependentUpon>201805301319511_addTable_unitPool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806021330006_modifyTableProcurementPlan.cs" />
+    <Compile Include="Migrations\201806021330006_modifyTableProcurementPlan.Designer.cs">
+      <DependentUpon>201806021330006_modifyTableProcurementPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806021429269_modifyTableProcurementPlan2.cs" />
+    <Compile Include="Migrations\201806021429269_modifyTableProcurementPlan2.Designer.cs">
+      <DependentUpon>201806021429269_modifyTableProcurementPlan2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -594,6 +602,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805301319511_addTable_unitPool.resx">
       <DependentUpon>201805301319511_addTable_unitPool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021330006_modifyTableProcurementPlan.resx">
+      <DependentUpon>201806021330006_modifyTableProcurementPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021429269_modifyTableProcurementPlan2.resx">
+      <DependentUpon>201806021429269_modifyTableProcurementPlan2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

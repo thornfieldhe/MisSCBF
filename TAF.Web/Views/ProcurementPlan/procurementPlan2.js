@@ -66,7 +66,7 @@
             date:"", 
             department:"",
             user:"",
-            type:0
+            type:2
         },
         queryEntity2: {
             name:"",
@@ -74,7 +74,7 @@
             maxResultCount: 5,//每页条数
             skipCount: 0,//过滤条数
             sorting: '',
-            type:0
+            type:2
         },
         queryEntity3: {
             name:"",
@@ -82,7 +82,7 @@
             maxResultCount: 5,//每页条数
             skipCount: 0,//过滤条数
             sorting: '',
-            type:0
+            type:2
         },
         list: {
             options: {
@@ -170,7 +170,7 @@
             date:"",
             department:"",
             user:"",
-            type:0,
+            type:2,
         }
     },
     methods: {

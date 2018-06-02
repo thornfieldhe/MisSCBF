@@ -62,14 +62,11 @@ namespace SCBF.Purchase
             }
 
             var correlatedIds = this.planWithBudgetOutlayRepository.GetAll()
-                .Where(r => r.ProcurementPlan.Year == request.Year.Value).Select(r => r.BudgetOutlayId);
+                .Where(r => r.ProcurementPlan.Date.Year == request.Year.Value).Select(r => r.BudgetOutlayId);
             var query = this.budgetOutlayRepository.GetAll()
-                .Where(r => correlatedIds.All(m => m != r.Id) && r.BudgetReceiptId.HasValue)
-                .WhereIf(!string.IsNullOrEmpty(request.Name), r => r.Name.Contains(request.Name));
-
-            query = !string.IsNullOrWhiteSpace(request.Sorting)
-                        ? query.OrderBy(request.Sorting)
-                        : query.OrderByDescending(r => r.CreationTime);
+                .Where(r => correlatedIds.All(m => m != r.Id) && r.BudgetReceiptId.HasValue && r.Type==request.Type)
+                .WhereIf(!string.IsNullOrEmpty(request.Name), r => r.Name.Contains(request.Name))
+                .OrderByDescending(r => r.CreationTime);
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<PlanWithBudgetOutlayListDto>>();

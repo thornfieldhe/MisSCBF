@@ -14,16 +14,12 @@ namespace SCBF.Purchase
     using System.Linq;
     using System.Linq.Dynamic;
     using System.Threading.Tasks;
-
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
-
     using AutoMapper;
-
-    using SCBF.Purchase.Dto;
-
+    using Dto;
     using TAF.Utility;
 
     /// <summary>
@@ -33,35 +29,35 @@ namespace SCBF.Purchase
     public class ProcurementPlanAppService : TAFAppServiceBase, IProcurementPlanAppService
     {
         private readonly IProcurementPlanRepository _procurementPlanRepository;
-        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly ISysDictionaryRepository   _sysDictionaryRepository;
 
-        public ProcurementPlanAppService(IProcurementPlanRepository procurementPlanRepository, ISysDictionaryRepository sysDictionaryRepository)
+        public ProcurementPlanAppService(IProcurementPlanRepository procurementPlanRepository,
+            ISysDictionaryRepository                                sysDictionaryRepository)
         {
             this._procurementPlanRepository = procurementPlanRepository;
-            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._sysDictionaryRepository   = sysDictionaryRepository;
         }
 
         public ListResultDto<ProcurementPlanListDto> GetAll(ProcurementPlanQueryDto request)
         {
             var query = this._procurementPlanRepository.GetAll()
-
+                .Where(r=>r.Type==request.Type)
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Category), r => r.Category == request.Category)
-                .WhereIf(!string.IsNullOrWhiteSpace(request.Mode), r => r.Mode == request.Mode)
+                .WhereIf(!string.IsNullOrWhiteSpace(request.Mode), r => r.Mode         == request.Mode)
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Code), r => r.Code.Contains(request.Code))
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name))
-                .WhereIf(request.Year.HasValue, r => r.Year == request.Year.Value)
-                .WhereIf(request.Month.HasValue, r => r.Month == request.Month.Value);
-
-            query = !string.IsNullOrWhiteSpace(request.Sorting)
-                        ? query.OrderBy(request.Sorting)
-                        : query.OrderBy(r => r.Name);
+                .WhereIf(request.Department.HasValue, r => r.Department==request.Department.Value)
+                .WhereIf(request.User.HasValue, r => r.User==request.User.Value)
+                .WhereIf(request.Date.HasValue, r => r.Date   == request.Date.Value)
+                .OrderByDescending(r => r.Code);
             var count = query.Count();
-            var list = query.AsQueryable().PageBy(request).ToList();
-            var dtos = list.MapTo<List<ProcurementPlanListDto>>();
+            var list  = query.AsQueryable().PageBy(request).ToList();
+            var dtos  = list.MapTo<List<ProcurementPlanListDto>>();
             foreach (var dto in dtos)
             {
                 dto.User = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == new Guid(dto.User))?.Value;
-                dto.Department = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == new Guid(dto.Department))?.Value;
+                dto.Department = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == new Guid(dto.Department))
+                    ?.Value;
                 switch (dto.Category)
                 {
                     case "Zccg":
@@ -77,6 +73,7 @@ namespace SCBF.Purchase
                         dto.Category = "工程采购";
                         break;
                 }
+
                 switch (dto.Mode)
                 {
                     case "Yqzb":
@@ -117,7 +114,7 @@ namespace SCBF.Purchase
             var item = input.MapTo<ProcurementPlan>();
             if (!input.Id.HasValue)
             {
-                item.Code = GetMaxCode(new DateTime(input.Year,input.Month,1));
+                item.Code = this.GetMaxCode(DateTime.Parse(input.Date) );
                 await this._procurementPlanRepository.InsertAsync(item);
             }
             else
@@ -136,22 +133,14 @@ namespace SCBF.Purchase
 
         private string GetMaxCode(DateTime date)
         {
-            var preCode = date.ToString("SCBF-yyyy-MMdd-");
+            var preCode = $"SCBF-{date:yyyy-MMdd-}";
             var maxCode =
                 this._procurementPlanRepository.Get(r => r.Code.StartsWith(preCode))
                     .OrderByDescending(r => r.Code)
                     .FirstOrDefault()?.Code;
-            if (string.IsNullOrWhiteSpace(maxCode))
-            {
-                return $"{preCode}01";
-            }
-            else
-            {
-                return $"{preCode}{(long.Parse(maxCode.Substring(15)) + 1):00}";
-            }
+            return string.IsNullOrWhiteSpace(maxCode)
+                ? $"{preCode}01"
+                : $"{preCode}{(long.Parse(maxCode.Substring(16)) + 1):00}";
         }
     }
 }
-
-
-

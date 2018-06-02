@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using SCBF.Finance;
+
 namespace SCBF.Purchase.Dto
 {
 
@@ -19,52 +22,47 @@ namespace SCBF.Purchase.Dto
     {
 
         /// <summary>
-        /// Category
+        /// 采购类别 ProcurementPlanCategory
         /// </summary>
-        public string Category
+        public string Category { get; set; }
+
+        /// <summary>
+        /// 采购方式 ProcurementPlanMode
+        /// </summary>
+        public string Mode { get; set; }
+
+        /// <summary>
+        /// 编码
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        /// 采购项目
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 责任部门
+        /// </summary>
+        public Guid? Department { get; set; }
+
+        /// <summary>
+        /// 责任人
+        /// </summary>
+        public Guid? User { get; set; }
+
+        /// <summary>
+        /// Date
+        /// </summary>
+        public DateTime? Date
         {
             get; set;
         }
 
         /// <summary>
-        /// Mode
+        /// 关联的预算计划类型
         /// </summary>
-        public string Mode
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Code
-        /// </summary>
-        public string Code
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Name
-        /// </summary>
-        public string Name
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Year
-        /// </summary>
-        public int? Year
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Month
-        /// </summary>
-        public int? Month
-        {
-            get; set;
-        }
+        public BungetType Type { get; set; }
     }
 }
 

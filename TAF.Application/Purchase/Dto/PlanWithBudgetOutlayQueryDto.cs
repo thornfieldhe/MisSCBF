@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using SCBF.Finance;
+
 namespace SCBF.Purchase.Dto
 {
     using System;
@@ -26,6 +28,11 @@ namespace SCBF.Purchase.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// 关联计划类型
+        /// </summary>
+        public BungetType Type { get; set; }
 
         /// <summary>
         /// Pid

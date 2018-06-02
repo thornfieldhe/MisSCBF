@@ -147,6 +147,11 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Purchase_SystemScore = "Purchase_SystemScore";
 
+        /// <summary>
+        /// 黑名单年限
+        /// </summary>
+        public const string Purchase_BlackList = "Purchase_BlackList";
+
         #endregion
 
         #region 车辆
