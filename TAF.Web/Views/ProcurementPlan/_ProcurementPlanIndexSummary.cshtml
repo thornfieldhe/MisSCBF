@@ -1,0 +1,226 @@
+﻿@using SCBF.BaseInfo.Dto
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">年度采购计划</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary " v-on:click="exportXls()"><i class="fa  fa-download"></i> 导出采购计划</button>
+                    <button type="button" class="btn btn-primary " v-on:click="exportDoc()"><i class="fa  fa-download"></i> 导出采购报告</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+
+                                    <th style="width: 200px;">
+                                        编码
+                                    </th>
+                                    <th style="width: 200px;">
+                                        采购类别
+                                    </th>
+                                    <th style="width: 200px;">
+                                        采购方式
+                                    </th>
+                                    <th style="width: 200px;">
+                                        预算计划
+                                    </th>
+                                    <th style="width: 200px;">
+                                        采购项目
+                                    </th>
+                                    <th style="width: 150px;">
+                                        采购时间
+                                    </th>
+                                    <th style="width: 150px;">
+                                        责任单位
+                                    </th>
+                                    <th style="width: 150px;">
+                                        责任人
+                                    </th>
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code" />
+                                    </th>
+                                    <th>
+                                        <select id="searchCategory" style="width: 100%" v-model="queryEntity.category">
+                                            <option value="">请选择...</option>
+                                            <option value="Zccg">资产(物资)采购</option>
+                                            <option value="Fwcg">服务采购</option>
+                                            <option value="Xxhcg">信息化采购</option>
+                                            <option value="Gccg">工程采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchMode" style="width: 100%" v-model="queryEntity.mode">
+                                            <option value="">请选择...</option>
+                                            <option value="Yqzb">邀请招标</option>
+                                            <option value="Jzxtp">竞争性谈判</option>
+                                            <option value="Xjcg">询价采购</option>
+                                            <option value="Bxcg">比选采购</option>
+                                            <option value="GkzbZdjf">公开招标(最低价法)</option>
+                                            <option value="GkzbZhpff">公开招标(综合评分法)</option>
+                                            <option value="Dylycg">单一来源采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchType" style="width: 100%" v-model="queryEntity.type">
+                                            <option value="">请选择...</option>
+                                            <option value="0">年度预算</option>
+                                            <option value="1">调整后预算</option>
+                                            <option value="2">调整后增加预算</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="采购项目" v-model="queryEntity.name" />
+                                    </th>
+                                    <th>
+                                        <span class="input-icon icon-right">
+                                            <input class="form-control  " placeholder="必填" type="text" id="datePickerDate" readonly="readonly" v-model="queryEntity.date">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <select id="searchDepartment" style="width: 100%" v-model="queryEntity.department">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<SysDictionaryListDto>)ViewData["list1"])
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchUser" style="width: 100%" v-model="queryEntity.user">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list.items">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.category}}</td>
+                                    <td>{{item.mode}}</td>
+                                    <td>{{item.typeName}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.date}}</td>
+                                    <td>{{item.department}}</td>
+                                    <td>{{item.user}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="showLinkDialog(item.id,item.type)"><i class="fa  fa-link"></i> 查看明细</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="9" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 编辑对话框 -->
+<div class="bootbox modal fade modal-primary in" id="linkOutlaysDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">关联明细</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+
+                                    <th style="width: 200px;">
+                                        品名
+                                    </th>
+                                    <th style="width: 200px;">
+                                        计量单位
+                                    </th>
+                                    <th style="width: 100px;">
+                                        数量
+                                    </th>
+                                    <th style="width: 100px;">
+                                        单价
+                                    </th>
+                                    <th style="width: 100px;">
+                                        金额
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="o in list3.items">
+                                    <td>{{o.name}}</td>
+                                    <td>{{o.unit}}</td>
+                                    <td>{{o.amount}}</td>
+                                    <td>{{o.price}}</td>
+                                    <td>{{o.total}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list3.from}} - {{list3.to}} / {{list3.total}} </div>
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container3" class="pagination"></ul>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Views/ProcurementPlan/procurementPlanSummary.js"></script>
+
+
+

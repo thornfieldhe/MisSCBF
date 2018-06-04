@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
+
 namespace SCBF.Purchase.Dto
 {
     using System;
@@ -17,7 +20,7 @@ namespace SCBF.Purchase.Dto
     /// 采购计划列表对象
     /// </summary>
     [AutoMap(typeof(ProcurementPlan))]
-    public class ProcurementPlanListDto
+    public class ProcurementPlanListSummaryDto
     {
         /// <summary>
         /// Id
@@ -62,7 +65,7 @@ namespace SCBF.Purchase.Dto
         /// <summary>
         /// Date
         /// </summary>
-        public string Date
+        public string Month
         {
             get; set;
         }
@@ -92,13 +95,10 @@ namespace SCBF.Purchase.Dto
             get; set;
         }
 
-        /// <summary>
-        /// User
-        /// </summary>
-        public string TypeName
-        {
-            get; set;
-        }
+        public List<BudgetOutlaySummaryDto> Details { get; set; }
+
+        public decimal TotalPrice => this.Details.Sum(r => r.Totale);
+
     }
 }
 

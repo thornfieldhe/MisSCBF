@@ -215,10 +215,12 @@
     <Compile Include="Finance\InvoiceCheckAppService.cs" />
     <Compile Include="Finance\IVoucherAuditAppService.cs" />
     <Compile Include="Finance\VoucherAuditAppService.cs" />
+    <Compile Include="Purchase\Dto\BudgetOutlaySummaryDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayListDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayQueryDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanEditDto.cs" />
+    <Compile Include="Purchase\Dto\ProcurementPlanListSummaryDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanListDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanQueryDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />

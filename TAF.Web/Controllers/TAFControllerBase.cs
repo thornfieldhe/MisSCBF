@@ -17,7 +17,7 @@ namespace SCBF.Web.Controllers
     /// </summary>
     public abstract class TAFControllerBase : AbpController
     {
-        protected IAttachmentAppService _attachmentAppService;
+        protected IAttachmentAppService    _attachmentAppService;
         protected ISysDictionaryAppService _sysDictionaryAppService;
 
         protected TAFControllerBase()
@@ -52,15 +52,16 @@ namespace SCBF.Web.Controllers
                 var defaultPath = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_BashPath);
                 if (defaultPath.Count > 0)
                 {
-                    var virPath = $"{defaultPath[0].Value}/{this._sysDictionaryAppService.GetModulePath(category)}/";
+                    var virPath =
+                        $"{defaultPath[0].Value}/{this._sysDictionaryAppService.GetModulePath(category)}/";
                     var fileSaveLocation = Server.MapPath(virPath);
                     if (!Directory.Exists(fileSaveLocation))
                     {
                         Directory.CreateDirectory(fileSaveLocation);
                     }
 
-                    string fileName = Path.GetFileName(fileData.FileName); // 原始文件名称
-                    string fileExtension = Path.GetExtension(fileName); // 文件扩展名
+                    var fileName      = Path.GetFileName(fileData.FileName); // 原始文件名称
+                    var fileExtension = Path.GetExtension(fileName);         // 文件扩展名
 
                     var fileTypes = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Attachment_Ext);
                     if (fileTypes.Count == 0)
@@ -69,27 +70,27 @@ namespace SCBF.Web.Controllers
                     }
 
                     if (string.IsNullOrEmpty(fileExtension)
-                       || Array.IndexOf(fileTypes[0].Value.Split(','), fileExtension.ToLower()) == -1)
+                        || Array.IndexOf(fileTypes[0].Value.Split(','), fileExtension.ToLower()) == -1)
                     {
                         throw new UserFriendlyException("不允许上传该格式附件");
                     }
                     else
                     {
-                        var saveName = Guid.NewGuid() + fileExtension; // 保存文件名称
-                        fileData.SaveAs(fileSaveLocation + saveName);// 
+                        var saveName = Guid.NewGuid()    + fileExtension; // 保存文件名称
+                        fileData.SaveAs(fileSaveLocation + saveName);     // 
                         var fileInfo = new FileInfo(fileSaveLocation + saveName);
 
 
                         var modelId = act(fileSaveLocation + saveName, param);
                         this._attachmentAppService.Save(
-                             new AttachmentEditDto()
-                             {
-                                 Name = saveName,
-                                 Category = category,
-                                 Ext = fileExtension,
-                                 Path = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
-                                 Size = (decimal)fileInfo.Length / 1024
-                             });
+                            new AttachmentEditDto()
+                            {
+                                Name     = saveName,
+                                Category = category,
+                                Ext      = fileExtension,
+                                Path     = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
+                                Size     = (decimal) fileInfo.Length / 1024
+                            });
                         return modelId;
                     }
                 }
@@ -98,17 +99,14 @@ namespace SCBF.Web.Controllers
                     throw new UserFriendlyException("未配置默认上传路径");
                 }
             }
+
             throw new UserFriendlyException("未上传文件");
         }
 
         protected FileResult DownloadFile(string path)
         {
-            FileInfo fi = new FileInfo(path);
-           
-
-
-            string s        = MimeMapping.GetMimeMapping(fi.Name);
-            
+            var fi = new FileInfo(path);
+            var s  = MimeMapping.GetMimeMapping(fi.Name);
             return File(path, s, Path.GetFileName(path));
         }
     }

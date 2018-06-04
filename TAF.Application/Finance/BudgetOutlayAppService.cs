@@ -34,13 +34,13 @@ namespace SCBF.Finance
     [AbpAuthorize]
     public class BudgetOutlayAppService : TAFAppServiceBase, IBudgetOutlayAppService
     {
-        private readonly IBudgetOutlayRepository  budgetOutlayRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private readonly IBudgetReceiptRepository budgetReceiptRepository;
-        private readonly IActualOutlayRepository  actualOutlayRepository;
-        private readonly ILayerRepository         layerRepository;
-        private readonly IOutlayRepository        outlayRepository;
-        private          IWorkbook                workbook = null;
+        private readonly IBudgetOutlayRepository  _budgetOutlayRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private readonly IBudgetReceiptRepository _budgetReceiptRepository;
+        private readonly IActualOutlayRepository  _actualOutlayRepository;
+        private readonly ILayerRepository         _layerRepository;
+        private readonly IOutlayRepository        _outlayRepository;
+        private          IWorkbook                _workbook = null;
 
         public BudgetOutlayAppService(
             IBudgetOutlayRepository  budgetOutlayRepository,
@@ -50,17 +50,17 @@ namespace SCBF.Finance
             IActualOutlayRepository  actualOutlayRepository,
             IOutlayRepository        outlayRepository)
         {
-            this.budgetOutlayRepository  = budgetOutlayRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
-            this.budgetReceiptRepository = budgetReceiptRepository;
-            this.actualOutlayRepository  = actualOutlayRepository;
-            this.layerRepository         = layerRepository;
-            this.outlayRepository        = outlayRepository;
+            this._budgetOutlayRepository  = budgetOutlayRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
+            this._budgetReceiptRepository = budgetReceiptRepository;
+            this._actualOutlayRepository  = actualOutlayRepository;
+            this._layerRepository         = layerRepository;
+            this._outlayRepository        = outlayRepository;
         }
 
         public List<BudgetOutlayListDto> Get(string sheetName, int type)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -69,7 +69,7 @@ namespace SCBF.Finance
 
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r =>
+                this._budgetOutlayRepository.GetAllList(r =>
                         r.Year == year && r.SheetName == sheetName && !r.HasRelated && (int) r.Type == type)
                     .OrderBy(r => r.Code).ToList().MapTo<List<BudgetOutlayListDto>>();
             return result;
@@ -77,7 +77,7 @@ namespace SCBF.Finance
 
         public List<OutlayListDto> GetAll()
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -86,14 +86,14 @@ namespace SCBF.Finance
 
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r => r.Year == year && r.HasRelated).OrderBy(r => r.Code)
+                this._budgetOutlayRepository.GetAllList(r => r.Year == year && r.HasRelated).OrderBy(r => r.Code)
                     .ToList().MapTo<List<OutlayListDto>>();
             return result;
         }
 
         public List<BudgetOutlaySimpleListDto> GetSimple()
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString()
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString()
                                                                                    && r.Category ==
                                                                                    DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
@@ -103,7 +103,7 @@ namespace SCBF.Finance
 
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.budgetOutlayRepository.GetAllList(r => r.Year == year
+                this._budgetOutlayRepository.GetAllList(r => r.Year == year
                                                             && r.HasRelated).OrderBy(r => r.Code).ToList()
                     .MapTo<List<BudgetOutlaySimpleListDto>>().Where(r => r.UnUsed > 0).ToList();
             return result;
@@ -111,19 +111,19 @@ namespace SCBF.Finance
 
         public List<BudgetPerformanceListDto> GetBudgetPerformances()
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
 
-            var accounts = this.layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account);
+            var accounts = this._layerRepository.GetAllList(r => r.Category == DictionaryCategory.Budget_Account);
 
 
-            var result = this.budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value)
+            var result = this._budgetReceiptRepository.GetAllList(r => r.Year.ToString() == currentYearItem.Value)
                 .OrderBy(r => r.Code).ToList();
-            var result0 = this.budgetOutlayRepository
+            var result0 = this._budgetOutlayRepository
                 .GetAllList(r => r.Year.ToString() == currentYearItem.Value && r.HasRelated).OrderBy(r => r.Code)
                 .ToList();
             var codeList = result.Select(r => r.Code).Distinct().ToList();
@@ -135,7 +135,7 @@ namespace SCBF.Finance
                 var outlay2 = result0.Where(r => r.Code == code && r.Type == BungetType.Adjust).ToList();
                 var outlay3 = result0.Where(r => r.Code == code && r.Type == BungetType.Increase).ToList();
                 var outlay =
-                    this.outlayRepository.FirstOrDefault(r =>
+                    this._outlayRepository.FirstOrDefault(r =>
                         r.Code == code && r.Year.ToString() == currentYearItem.Value);
 
                 if (receipt == null)
@@ -183,7 +183,7 @@ namespace SCBF.Finance
 
         public string Export()
         {
-            var codes = this.layerRepository.GetAll()
+            var codes = this._layerRepository.GetAll()
                 .Where(r => r.Category == DictionaryCategory.Budget_Account)
                 .OrderBy(r => r.LevelCode).Select(r => new {Code = r.LevelCode, Name = r.Name}).ToList();
             var list = this.GetBudgetPerformances();
@@ -255,12 +255,12 @@ namespace SCBF.Finance
             }
 
             return DownloadFileService.Load("budgetOutlay.xls", "预算执行情况.xls", new string[] { })
-                .Excute(result, this.ExportToXls);
+                .ExcuteXls(result, this.ExportToXls);
         }
 
         private WorkbookDesigner ExportToXls(WorkbookDesigner designer, List<BudgetPerformanceListDto> list)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -397,7 +397,7 @@ namespace SCBF.Finance
 
         public void SaveOutlaySummary(OutlaySummaryEditDto item)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -405,7 +405,7 @@ namespace SCBF.Finance
             }
 
             var outlay =
-                this.outlayRepository.FirstOrDefault(r =>
+                this._outlayRepository.FirstOrDefault(r =>
                     r.Code == item.Code && r.Year.ToString() == currentYearItem.Value);
             if (outlay == null)
             {
@@ -418,7 +418,7 @@ namespace SCBF.Finance
                     Total3 = item.Total3,
                     Note   = item.Note,
                 };
-                this.outlayRepository.Insert(outlay);
+                this._outlayRepository.Insert(outlay);
             }
             else
             {
@@ -426,13 +426,13 @@ namespace SCBF.Finance
                 outlay.Total2 = item.Total2;
                 outlay.Total3 = item.Total3;
                 outlay.Note   = item.Note;
-                this.outlayRepository.Update(outlay);
+                this._outlayRepository.Update(outlay);
             }
         }
 
         public OutlaySummaryEditDto GetOutlaySummary(string code)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
@@ -440,7 +440,7 @@ namespace SCBF.Finance
             }
 
             var account =
-                this.layerRepository.FirstOrDefault(
+                this._layerRepository.FirstOrDefault(
                     r => r.Category == DictionaryCategory.Budget_Account && r.LevelCode == code);
             if (account == null)
             {
@@ -448,7 +448,7 @@ namespace SCBF.Finance
             }
 
             var outlay =
-                this.outlayRepository.FirstOrDefault(r => r.Code == code && r.Year.ToString() == currentYearItem.Value);
+                this._outlayRepository.FirstOrDefault(r => r.Code == code && r.Year.ToString() == currentYearItem.Value);
             if (outlay == null)
             {
                 return new OutlaySummaryEditDto
@@ -489,14 +489,14 @@ namespace SCBF.Finance
         /// </returns>
         public List<KeyValue<string, string>> GetSheetNames(int type)
         {
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYear = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
             {
                 throw new UserFriendlyException("未设置预算年度");
             }
 
-            return this.budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value && (int) r.Type == type)
+            return this._budgetOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value && (int) r.Type == type)
                 .Select(r => new KeyValue<string, string> {Key = r.SheetName, Value = r.SheetName}).Distinct().ToList();
         }
 
@@ -504,7 +504,7 @@ namespace SCBF.Finance
         {
             foreach (var value in input.OutlayIds)
             {
-                var item = this.budgetOutlayRepository.FirstOrDefault(r => r.Id == value);
+                var item = this._budgetOutlayRepository.FirstOrDefault(r => r.Id == value);
                 if (item == null)
                 {
                     throw new UserFriendlyException($"该预算支出项目不存在:{value}");
@@ -513,7 +513,7 @@ namespace SCBF.Finance
                 item.Code            = input.Code;
                 item.BudgetReceiptId = input.Id;
                 item.HasRelated      = true;
-                this.budgetOutlayRepository.Update(item);
+                this._budgetOutlayRepository.Update(item);
             }
         }
 
@@ -523,7 +523,7 @@ namespace SCBF.Finance
         /// <returns></returns>
         public List<YearBudgetSummaryDto> GetSummary()
         {
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYear = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
             {
@@ -531,13 +531,13 @@ namespace SCBF.Finance
             }
 
             var year  = currentYear.Value.ToInt();
-            var query = this.budgetReceiptRepository.GetAllList(r => r.Year == year).OrderBy(r => r.Code).ToList();
+            var query = this._budgetReceiptRepository.GetAllList(r => r.Year == year).OrderBy(r => r.Code).ToList();
 
             var list = new List<YearBudgetSummaryDto>();
             foreach (var receipt in query)
             {
                 var name =
-                    this.layerRepository.FirstOrDefault(
+                    this._layerRepository.FirstOrDefault(
                         r => r.Category == DictionaryCategory.Budget_Account && r.LevelCode == receipt.Code);
                 if (name == null)
                 {
@@ -606,18 +606,18 @@ namespace SCBF.Finance
             var modelId = Guid.NewGuid();
             if (path.IndexOf(".xlsx", StringComparison.OrdinalIgnoreCase) > 0) // 2007版本
             {
-                this.workbook = new XSSFWorkbook(fs);
+                this._workbook = new XSSFWorkbook(fs);
             }
             else if (path.IndexOf(".xls", StringComparison.OrdinalIgnoreCase) > 0) // 2003版本
             {
-                this.workbook = new HSSFWorkbook(fs);
+                this._workbook = new HSSFWorkbook(fs);
             }
             else
             {
                 throw new UserFriendlyException("上传文件格式不正确");
             }
 
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r =>
+            var currentYear = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
             {
@@ -625,9 +625,9 @@ namespace SCBF.Finance
             }
 
             var list = new List<BudgetOutlay>();
-            for (var j = 0; j < this.workbook.NumberOfSheets; j++)
+            for (var j = 0; j < this._workbook.NumberOfSheets; j++)
             {
-                var sheet = this.workbook.GetSheetAt(j);
+                var sheet = this._workbook.GetSheetAt(j);
                 //最后一列的标号
                 var rowCount = sheet.LastRowNum + 1;
 
@@ -656,8 +656,8 @@ namespace SCBF.Finance
                 }
             }
 
-            this.budgetOutlayRepository.Delete(r => r.Year.ToString() == currentYear.Value && r.Type == type);
-            this.budgetOutlayRepository.InsertRange(list);
+            this._budgetOutlayRepository.Delete(r => r.Year.ToString() == currentYear.Value && r.Type == type);
+            this._budgetOutlayRepository.InsertRange(list);
             return modelId;
         }
     }

@@ -62,7 +62,7 @@ namespace SCBF.Purchase.Dto
         /// <summary>
         /// 关联的预算计划类型
         /// </summary>
-        public BungetType Type { get; set; }
+        public BungetType? Type { get; set; }
     }
 }
 

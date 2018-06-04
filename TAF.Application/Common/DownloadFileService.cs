@@ -9,9 +9,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Web;
 using Aspose.Cells;
+using Aspose.Words;
+using TAF.Utility;
 
 namespace SCBF.Common
 {
@@ -36,7 +39,7 @@ namespace SCBF.Common
             };
         }
 
-        public string Excute<T>(List<T> list) where T:new()
+        public string ExcuteXls<T>(List<T> list) where T:new()
         {
             this.DeleteOutPutFiles();
             var designer = new WorkbookDesigner();
@@ -57,7 +60,7 @@ namespace SCBF.Common
 
         }
 
-        public string Excute<T>(List<T> list,Func<WorkbookDesigner,List<T>,WorkbookDesigner> func) where T:new()
+        public string ExcuteXls<T>(List<T> list,Func<WorkbookDesigner,List<T>,WorkbookDesigner> func) where T:new()
         {
             this.DeleteOutPutFiles();
             var designer = new WorkbookDesigner();
@@ -68,6 +71,30 @@ namespace SCBF.Common
 
             designer = func(designer, list);
             designer.Save(HttpContext.Current.Server.MapPath($"~//App_Data//Out//{this._fileName}"), FileFormatType.Excel2003XML);
+
+            return HttpContext.Current.Server.MapPath($"~//App_Data//Out//{this._fileName}");
+
+        }
+
+        public string ExcuteDoc<T>(List<T> list, Func<List<T>,KeyValue<DataSet,string[],object[]>> func) where T:new()
+        {
+            this.DeleteOutPutFiles();
+ 
+            var doc = new Document(this._templateFile);
+            var ds  = func(list);
+
+            //合并模版，相当于页面的渲染
+            doc.MailMerge.ExecuteWithRegions(ds.Key);
+            doc.MailMerge.Execute(ds.Value,ds.Item3);
+            doc.Save(HttpContext.Current.Server.MapPath($"~//App_Data//Out//{this._fileName}"));
+//            var docStream = new MemoryStream();
+//            doc.Save(docStream, Aspose.Words.Saving.SaveOptions.CreateSaveOptions(Aspose.Words.SaveFormat.Doc));
+//
+//            var fs = new FileStream(HttpContext.Current.Server.MapPath($"~//App_Data//Out//{this._fileName}"), FileMode.OpenOrCreate);
+//            var w  = new BinaryWriter(fs);
+//            w.Write(docStream.ToArray());
+//            fs.Close();
+//            docStream.Close();
 
             return HttpContext.Current.Server.MapPath($"~//App_Data//Out//{this._fileName}");
 

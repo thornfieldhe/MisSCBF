@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
-                <span class="widget-caption">采购计划</span>
+                <span class="widget-caption">追加采购计划</span>
             </div>
             <div class="widget-body">
                 <div class="table-toolbar">
@@ -17,90 +17,90 @@
 
                                     <th style="width: 200px;">
                                         编码
-                                    </th>  
+                                    </th>
                                     <th style="width: 200px;">
                                         采购类别
-                                    </th>        
+                                    </th>
                                     <th style="width: 200px;">
                                         采购方式
-                                    </th>       
+                                    </th>
                                     <th style="width: 200px;">
                                         采购项目
-                                    </th>        
+                                    </th>
                                     <th style="width: 150px;">
                                         采购时间
-                                    </th>        
+                                    </th>
                                     <th style="width: 150px;">
-                                        责任部门
-                                    </th>        
+                                        责任单位
+                                    </th>
                                     <th style="width: 150px;">
                                         责任人
-                                    </th>        
+                                    </th>
                                     <th style="width: 300px;">
                                         操作
                                     </th>
                                 </tr>
-                            <tr role="row">
-                                <th>
-                                    <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code" />
-                                </th>  
-                                <th>
-                                    <select id="searchCategory" style="width: 100%" v-model="queryEntity.category">
-                                        <option value="">请选择...</option>
-                                                <option value="Zccg">资产(物资)采购</option>
-                                                <option value="Fwcg">服务采购</option>
-                                                <option value="Xxhcg">信息化采购</option>
-                                                <option value="Gccg">工程采购</option>
-                                    </select>
-                                </th>
-                                <th>
-                                    <select id="searchMode" style="width: 100%" v-model="queryEntity.mode">
-                                        <option value="">请选择...</option>
-                                        <option value="Yqzb">邀请招标</option>
-                                        <option value="Jzxtp">竞争性谈判</option>
-                                        <option value="Xjcg">询价采购</option>
-                                        <option value="Bxcg">比选采购</option>
-                                        <option value="GkzbZdjf">公开招标(最低价法)</option>
-                                        <option value="GkzbZhpff">公开招标(综合评分法)</option>
-                                        <option value="Dylycg">单一来源采购</option>
-                                    </select>
-                                </th>
-                                <th>
-                                    <input type="text" class="form-control" placeholder="采购项目" v-model="queryEntity.name"/>
-                                </th>
-                                <th>
-                                                    <span class="input-icon icon-right">
-                                                        <input class="form-control  " placeholder="必填"  type="text" id="datePickerDate" readonly="readonly" v-model="queryEntity.date" >
-                                                        <i class="fa fa-calendar"></i>
-                                                    </span>                    
-                                </th>
-                                <th>
-                                    <select id="searchDepartment" style="width: 100%" v-model="queryEntity.department">
-                                        <option value="">请选择...</option>
-                                        @{
-                                            foreach (var item in (List<SysDictionaryListDto>)ViewData["list1"])
-                                            {
-                                                <option value="@item.Id">@item.Value</option>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code" />
+                                    </th>
+                                    <th>
+                                        <select id="searchCategory" style="width: 100%" v-model="queryEntity.category">
+                                            <option value="">请选择...</option>
+                                            <option value="Zccg">资产(物资)采购</option>
+                                            <option value="Fwcg">服务采购</option>
+                                            <option value="Xxhcg">信息化采购</option>
+                                            <option value="Gccg">工程采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchMode" style="width: 100%" v-model="queryEntity.mode">
+                                            <option value="">请选择...</option>
+                                            <option value="Yqzb">邀请招标</option>
+                                            <option value="Jzxtp">竞争性谈判</option>
+                                            <option value="Xjcg">询价采购</option>
+                                            <option value="Bxcg">比选采购</option>
+                                            <option value="GkzbZdjf">公开招标(最低价法)</option>
+                                            <option value="GkzbZhpff">公开招标(综合评分法)</option>
+                                            <option value="Dylycg">单一来源采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="采购项目" v-model="queryEntity.name" />
+                                    </th>
+                                    <th>
+                                        <span class="input-icon icon-right">
+                                            <input class="form-control  " placeholder="必填" type="text" id="datePickerDate" readonly="readonly" v-model="queryEntity.date">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <select id="searchDepartment" style="width: 100%" v-model="queryEntity.department">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<SysDictionaryListDto>)ViewData["list1"])
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
                                             }
-                                        }
-                                    </select>
-                                </th>
-                                <th>
-                                    <select id="searchUser" style="width: 100%" v-model="queryEntity.user">
-                                        <option value="">请选择...</option>
-                                        @{
-                                            foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
-                                            {
-                                                <option value="@item.Id">@item.Value</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchUser" style="width: 100%" v-model="queryEntity.user">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<SysDictionaryListDto>)ViewData["list2"])
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
                                             }
-                                        }
-                                    </select>
-                                </th>
-                                <th>
-                                    <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
-                                    <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
-                                </th>
-                            </tr>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="item in list.items">
@@ -112,9 +112,9 @@
                                     <td>{{item.department}}</td>
                                     <td>{{item.user}}</td>
                                     <td>
-                                    <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购计划',item.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                        <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购计划',item.id)"><i class="fa fa-edit"></i> 编辑</button>
                                         <button type="button" class="btn   edit" v-on:click="showLinkDialog('关联支出预算',item.id)"><i class="fa  fa-link"></i> 关联</button>
-                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) " ><i class="fa fa-trash-o"></i> 删除</button>
+                                        <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -128,7 +128,7 @@
                                             <div class="dataTables_paginate paging_bootstrap">
                                                 <ul id="container" class="pagination"></ul>
                                             </div>
-                    
+
                                         </div>
                                     </td>
                                 </tr>
@@ -180,7 +180,7 @@
                                         <label class="col-sm-2 control-label no-padding-right">编码<span class="red">*</span></label>
                                         <div class="col-sm-10">
                                             <span class="input-icon icon-right">
-                                                <input type="text" class="form-control "  name="code" v-model="item.code" readonly="readonly"/>
+                                                <input type="text" class="form-control " name="code" v-model="item.code" readonly="readonly" />
                                             </span>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
                                         <label class="col-sm-2 control-label no-padding-right">采购项目<span class="red">*</span></label>
                                         <div class="col-sm-10">
                                             <span class="input-icon icon-right">
-                                                <input type="text" class="form-control " placeholder="必填" name="name" v-model="item.name" v-validate:name="{required:true}"/>
+                                                <input type="text" class="form-control " placeholder="必填" name="name" v-model="item.name" v-validate:name="{required:true}" />
                                             </span>
                                         </div>
                                     </div>
@@ -239,13 +239,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
-                                        <label class="col-sm-2 control-label no-padding-right">采购时间<span class="red" >*</span></label>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购时间<span class="red">*</span></label>
                                         <div class="col-sm-10">
                                             <span class="input-icon icon-right">
-                                                <input class="form-control  " placeholder="必填"  type="text" id="datePickerDate2" readonly="readonly" v-model="item.date" name="date"  v-validate:date="{required:true,dateTime:true}">
+                                                <input class="form-control  " placeholder="必填" type="text" id="datePickerDate2" readonly="readonly" v-model="item.date" name="date" v-validate:date="{required:true,dateTime:true}">
                                                 <i class="fa fa-calendar"></i>
-                                            </span>                    
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label no-padding-right">责任部门<span class="red">*</span></label>
+                                        <label class="col-sm-2 control-label no-padding-right">责任单位<span class="red">*</span></label>
                                         <div class="col-sm-10">
                                             <select id="editDepartment" style="width: 100%" v-model="item.department" name="department" v-validate:department="{required:true}">
                                                 <option value="">请选择...</option>
@@ -292,8 +292,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
-                <button type="submit" class="btn btn-primary" v-on:click="saveNew()" v-show="!modifyEntity.editModel"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存新增 </button>
-                <button type="submit" class="btn btn-primary" v-on:click="save()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>保存关闭</button>
+                <button type="submit" class="btn btn-primary" v-on:click="saveNew()" v-show="!modifyEntity.editModel" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>保存新增 </button>
+                <button type="submit" class="btn btn-primary" v-on:click="save()" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>保存关闭</button>
             </div>
         </div>
     </div>
@@ -312,68 +312,68 @@
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
-                            <tr role="row">
+                                <tr role="row">
 
-                                <th style="width: 200px;">
-                                    品名
-                                </th>
-                                <th style="width: 200px;">
-                                    计量单位
-                                </th>
-                                <th style="width: 100px;">
-                                    数量
-                                </th>
-                                <th style="width: 100px;">
-                                    单价
-                                </th>
-                                <th style="width: 100px;">
-                                    金额
-                                </th>
-                                <th style="width: 300px;">
-                                    操作
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th>
-                                    <input type="text" class="form-control" placeholder="品名" v-model="queryEntity2.name" />
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                    <button type="button" class="btn edit" v-on:click="query2(0,queryEntity2.name)"><i class="fa fa-search"></i> 搜索</button>
-                                    <button type="button" class="btn edit" v-on:click="resetSearch2()"><i class="fa fa-times"></i> 重置</button>
-                                </th>
-                            </tr>
+                                    <th style="width: 200px;">
+                                        品名
+                                    </th>
+                                    <th style="width: 200px;">
+                                        计量单位
+                                    </th>
+                                    <th style="width: 100px;">
+                                        数量
+                                    </th>
+                                    <th style="width: 100px;">
+                                        单价
+                                    </th>
+                                    <th style="width: 100px;">
+                                        金额
+                                    </th>
+                                    <th style="width: 300px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="品名" v-model="queryEntity2.name" />
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query2(0,queryEntity2.name)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch2()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="o in list2.items">
-                                <td>{{o.name}}</td>
-                                <td>{{o.unit}}</td>
-                                <td>{{o.amount}}</td>
-                                <td>{{o.price}}</td>
-                                <td>{{o.total}}</td>
-                                <td>
-                                    <button type="button" class="btn   edit" v-on:click="link(o.id)"><i class="fa  fa-link"></i> 关联</button>
-                                </td>
-                            </tr>
+                                <tr v-for="o in list2.items">
+                                    <td>{{o.name}}</td>
+                                    <td>{{o.unit}}</td>
+                                    <td>{{o.amount}}</td>
+                                    <td>{{o.price}}</td>
+                                    <td>{{o.total}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="link(o.id)"><i class="fa  fa-link"></i> 关联</button>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <td colspan="6" class="DTTTFooter ">
-                                    <div class="col-sm-4">
-                                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list2.from}} - {{list2.to}} / {{list2.total}} </div>
-                                    </div>
-                                    <div class="dataTables_paginate paging_bootstrap">
-                                        <ul id="container2" class="pagination"></ul>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="6" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list2.from}} - {{list2.to}} / {{list2.total}} </div>
+                                        </div>
+                                        <div class="dataTables_paginate paging_bootstrap">
+                                            <ul id="container2" class="pagination"></ul>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -426,7 +426,7 @@
                                             <div class="dataTables_paginate paging_bootstrap">
                                                 <ul id="container3" class="pagination"></ul>
                                             </div>
-                    
+
                                         </div>
                                     </td>
                                 </tr>

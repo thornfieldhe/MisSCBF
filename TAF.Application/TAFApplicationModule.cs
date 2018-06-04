@@ -190,6 +190,7 @@ namespace SCBF
                 .ForMember(m => m.ChangedAmount, n => n.MapFrom(r => r.Amount - r.StockAmount));
 
                 #endregion
+
                 #region 预算模块
 
                 mapper.CreateMap<BudgetReceipt, BudgetReceiptListDto>()
@@ -429,7 +430,8 @@ namespace SCBF
                 mapper.CreateMap<ProcurementPlan, ProcurementPlanEditDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
                 mapper.CreateMap<ProcurementPlan, ProcurementPlanListDto>()
-                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Type, n => n.MapFrom(r => ((int)(r.Type)).ToString()));
 
                 #endregion
             });

@@ -213,8 +213,13 @@
                             requiredPermissionName: PermissionNames.CgUser))
                         .AddItem(new MenuItemDefinition(
                             "menuProcurementPlans2",
-                            L("最佳采购计划"),
+                            L("追加采购计划"),
                             url: "#procurementPlans2",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProcurementPlanSummary",
+                            L("年度采购计划"),
+                            url: "#procurementPlanSummary",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

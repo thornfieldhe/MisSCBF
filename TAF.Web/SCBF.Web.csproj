@@ -824,6 +824,7 @@
     <Content Include="Views\CarOil\carOilReport.js" />
     <Content Include="Views\CarOil\carOil.js" />
     <Content Include="Views\InvoiceCheck\invoiceCheck.js" />
+    <Content Include="Views\ProcurementPlan\procurementPlanSummary.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan1.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan2.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan.js" />
@@ -1019,6 +1020,8 @@
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
     <Content Include="App_Data\Template\budgetOutlay.xls" />
+    <Content Include="App_Data\Template\procurementPlan.xls" />
+    <Content Include="App_Data\Template\procurementPlanReport.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1083,6 +1086,7 @@
     <Content Include="Views\Purchase\_PoolConfig.cshtml" />
     <Content Include="Views\ProcurementPlan\_ProcurementPlanIndex1.cshtml" />
     <Content Include="Views\ProcurementPlan\_ProcurementPlanIndex2.cshtml" />
+    <Content Include="Views\ProcurementPlan\_ProcurementPlanIndexSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
