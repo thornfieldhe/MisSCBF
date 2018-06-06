@@ -66,7 +66,10 @@ namespace SCBF.BaseInfo
         /// <returns></returns>
         public KeyValue<Guid, string> GetRandomItem(string category)
         {
-            var list = this._unitPoolRepository.GetAllList(r => r.Category == category).Select(r=>new KeyValue<Guid,string>(){Key= r.ItemId,Value=string.Empty}).ToList();
+            var list =(from u in this._unitPoolRepository.GetAll()
+                join s in this._sysDictionaryRepository.GetAll() on u.ItemId equals  s.Id
+                where u.Category==category
+                select       new KeyValue<Guid,string>(){Key= s.Id,Value=s.Value}).ToList();
             if (list.Count == 0)
             {
                 list = this._sysDictionaryRepository.GetAllList(r => r.Category == category)

@@ -311,6 +311,8 @@ namespace SCBF
 
                 mapper.CreateMap<BudgetOutlay, PlanWithBudgetOutlayListDto>();
 
+
+
                 #endregion
 
                 #region 车辆模块
@@ -431,7 +433,7 @@ namespace SCBF
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
                 mapper.CreateMap<ProcurementPlan, ProcurementPlanListDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.Type, n => n.MapFrom(r => ((int)(r.Type)).ToString()));
+                    .ForMember(m => m.Type, n => n.MapFrom(r => ((int)(r.Type)).ToString()));   
 
                 #endregion
             });

@@ -61,7 +61,7 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// ProcurementPlanId
+        /// PurchaseId
         /// </summary>
         public Guid ProcurementPlanId
         {

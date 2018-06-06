@@ -371,6 +371,26 @@
     <Compile Include="Migrations\201806021429269_modifyTableProcurementPlan2.Designer.cs">
       <DependentUpon>201806021429269_modifyTableProcurementPlan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041429241_AddTableProcessManagement.cs" />
+    <Compile Include="Migrations\201806041429241_AddTableProcessManagement.Designer.cs">
+      <DependentUpon>201806041429241_AddTableProcessManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061302525_modifytable_processmanage.cs" />
+    <Compile Include="Migrations\201806061302525_modifytable_processmanage.Designer.cs">
+      <DependentUpon>201806061302525_modifytable_processmanage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061443276_modifytable_processmanage3.cs" />
+    <Compile Include="Migrations\201806061443276_modifytable_processmanage3.Designer.cs">
+      <DependentUpon>201806061443276_modifytable_processmanage3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061450317_modifytable_processmanage4.cs" />
+    <Compile Include="Migrations\201806061450317_modifytable_processmanage4.Designer.cs">
+      <DependentUpon>201806061450317_modifytable_processmanage4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061503165_modifytable_processmanage5.cs" />
+    <Compile Include="Migrations\201806061503165_modifytable_processmanage5.Designer.cs">
+      <DependentUpon>201806061503165_modifytable_processmanage5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -403,9 +423,11 @@
     <Compile Include="Repositories\OilCardProofRepository.cs" />
     <Compile Include="Repositories\OilCardRepository.cs" />
     <Compile Include="Repositories\OilRechargeRecordRepository.cs" />
+    <Compile Include="Repositories\ProcessManagementRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\RechargeRecordRepository.cs" />
+    <Compile Include="Repositories\RelationshipRepository.cs" />
     <Compile Include="Repositories\RepairCostRepository.cs" />
     <Compile Include="Repositories\ServicingMaterialRepository.cs" />
     <Compile Include="Repositories\StageInfoActualOutlayRepository.cs" />
@@ -608,6 +630,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806021429269_modifyTableProcurementPlan2.resx">
       <DependentUpon>201806021429269_modifyTableProcurementPlan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041429241_AddTableProcessManagement.resx">
+      <DependentUpon>201806041429241_AddTableProcessManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061302525_modifytable_processmanage.resx">
+      <DependentUpon>201806061302525_modifytable_processmanage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061443276_modifytable_processmanage3.resx">
+      <DependentUpon>201806061443276_modifytable_processmanage3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061450317_modifytable_processmanage4.resx">
+      <DependentUpon>201806061450317_modifytable_processmanage4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061503165_modifytable_processmanage5.resx">
+      <DependentUpon>201806061503165_modifytable_processmanage5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

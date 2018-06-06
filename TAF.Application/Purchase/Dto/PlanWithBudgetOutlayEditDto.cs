@@ -20,7 +20,7 @@ namespace SCBF.Purchase.Dto
     public class PlanWithBudgetOutlayEditDto
     {
         /// <summary>
-        /// ProcurementPlanId
+        /// PurchaseId
         /// </summary>
         public Guid ProcurementPlanId
         {

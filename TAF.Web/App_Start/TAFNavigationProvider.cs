@@ -220,6 +220,11 @@
                             "menuProcurementPlanSummary",
                             L("年度采购计划"),
                             url: "#procurementPlanSummary",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuDesignManage",
+                            L("设计合同管理"),
+                            url: "#designManage",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

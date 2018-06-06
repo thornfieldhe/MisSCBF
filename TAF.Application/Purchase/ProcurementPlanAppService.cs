@@ -139,7 +139,7 @@ namespace SCBF.Purchase
         {
             var result = this.LoadData();
             return DownloadFileService.Load("procurementPlanReport.doc", "年度采购计划报告.doc", new string[] { })
-                .ExcuteDoc<ProcurementPlanListSummaryDto>(result.OrderBy(r=>r.Category).ToList(),this.ExportToDoc);
+                .ExcuteDoc(result.OrderBy(r=>r.Category).ToList(),this.ExportToDoc);
         }
 
         public ProcurementPlanEditDto Get(Guid id)
@@ -288,8 +288,9 @@ namespace SCBF.Purchase
             return designer;
         }
 
-        private KeyValue<DataSet, string[], object[]> ExportToDoc(List<ProcurementPlanListSummaryDto> list)
+        private KeyValue<DataSet, string[], object[]> ExportToDoc(object ls)
         {
+            List <ProcurementPlanListSummaryDto > list=ls as List<ProcurementPlanListSummaryDto>;
             var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)

@@ -109,6 +109,7 @@
     <Compile Include="BaseInfo\Attachment.cs" />
     <Compile Include="BaseInfo\IAttachmentRepository.cs" />
     <Compile Include="BaseInfo\IModuleIdAttachmentRepository.cs" />
+    <Compile Include="BaseInfo\IRelationshipRepository.cs" />
     <Compile Include="BaseInfo\IUnitPoolRepository.cs" />
     <Compile Include="BaseInfo\ModuleIdAttachment.cs" />
     <Compile Include="BaseInfo\UnitPool.cs" />
@@ -157,14 +158,19 @@
     <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Finance\VoucherAudit.cs" />
     <Compile Include="Finance\VoucherAuditPoint.cs" />
+    <Compile Include="Purchase\IProcessManagementRepository.cs" />
     <Compile Include="Purchase\IStageInfoActualOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoBudgetOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoRepository.cs" />
     <Compile Include="Purchase\IStageInfoUserRepository.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlay.cs" />
+    <Compile Include="Purchase\ProcessManagement.cs" />
+    <Compile Include="BaseInfo\Relationship.cs" />
+    <Compile Include="Purchase\ProcessStatus.cs" />
     <Compile Include="Purchase\ProcurementPlan.cs" />
     <Compile Include="Purchase\ProcurementPlanCategory.cs" />
     <Compile Include="Purchase\ProcurementPlanMode.cs" />
+    <Compile Include="Purchase\RelationshipType.cs" />
     <Compile Include="Purchase\StageCategory.cs" />
     <Compile Include="Purchase\StageInfo.cs" />
     <Compile Include="Purchase\StageInfoActualOutlay.cs" />

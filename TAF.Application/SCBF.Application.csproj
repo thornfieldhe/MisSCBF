@@ -174,9 +174,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInfo\AttachmentAppService.cs" />
+    <Compile Include="BaseInfo\Dto\RelationshipEditDto.cs" />
+    <Compile Include="BaseInfo\Dto\RelationshipListDto.cs" />
+    <Compile Include="BaseInfo\Dto\RelationshipQueryDto.cs" />
     <Compile Include="BaseInfo\Dto\UnitPoolEditDto.cs" />
     <Compile Include="BaseInfo\Dto\UnitPoolListDto.cs" />
+    <Compile Include="BaseInfo\IRelationshipAppService.cs" />
     <Compile Include="BaseInfo\IUnitPoolAppService.cs" />
+    <Compile Include="BaseInfo\RelationshipAppService.cs" />
     <Compile Include="BaseInfo\UnitPoolAppService.cs" />
     <Compile Include="Car\ApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\CarOilAppService.cs" />
@@ -219,6 +224,9 @@
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayListDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayQueryDto.cs" />
+    <Compile Include="Purchase\Dto\ProcessManagementEditDto.cs" />
+    <Compile Include="Purchase\Dto\ProcessManagementListDto.cs" />
+    <Compile Include="Purchase\Dto\ProcessManagementQueryDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanEditDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanListSummaryDto.cs" />
     <Compile Include="Purchase\Dto\ProcurementPlanListDto.cs" />
@@ -227,9 +235,11 @@
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
+    <Compile Include="Purchase\IProcessManagementAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />
     <Compile Include="Purchase\IStageInfoeAppService.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlayAppService.cs" />
+    <Compile Include="Purchase\ProcessManagementAppService.cs" />
     <Compile Include="Purchase\ProcurementPlanAppService.cs" />
     <Compile Include="Purchase\StageInfoeAppService.cs" />
     <Compile Include="Storage\Dto\DeliveryBillQueryDto.cs" />

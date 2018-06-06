@@ -61,6 +61,11 @@
             get; set;
         }
 
+        public DbSet<Relationship> Relationships
+        {
+            get; set;
+        }
+
         #endregion
 
         #region 物资
@@ -273,6 +278,11 @@
         }
 
         public DbSet<StageInfoUser> StageInfoUsers
+        {
+            get; set;
+        }
+
+        public DbSet<ProcessManagement> ProcessManagements
         {
             get; set;
         }

@@ -174,6 +174,12 @@ namespace SCBF.BaseInfo
                 .MapTo<List<SysDictionaryListDto>>();
         }
 
+        public List<KeyValue<Guid, string>> GetReadOnlyList(string category)
+        {
+            return this._sysDictionaryRepository.GetAllList(r => r.Category == category)
+                .Select(r => new KeyValue<Guid, string>() {Key = r.Id, Value = r.Value}).ToList();
+        }
+
         /// <summary>
         /// 判断当前月份是否处于夏至时间
         /// </summary>

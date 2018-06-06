@@ -18,7 +18,7 @@ namespace SCBF.Purchase
     /// <summary>
     /// 采购计划表
     /// </summary>
-    public sealed class ProcurementPlan : TAFEntity
+    public class ProcurementPlan : TAFEntity
     {
         /// <summary>
         /// 采购类别 ProcurementPlanCategory
@@ -60,8 +60,9 @@ namespace SCBF.Purchase
         /// </summary>
         public Guid User { get; set; }
 
-        public List<PlanWithBudgetOutlay> PlanWithBudgetOutlays { get; set; }
+        public virtual List<PlanWithBudgetOutlay> PlanWithBudgetOutlays { get; set; }
 
-        public List<StageInfo> StageInfos { get; set; }
+        public virtual List<StageInfo> StageInfos { get; set; }
+
     }
 }

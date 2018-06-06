@@ -76,7 +76,7 @@ namespace SCBF.Common
 
         }
 
-        public string ExcuteDoc<T>(List<T> list, Func<List<T>,KeyValue<DataSet,string[],object[]>> func) where T:new()
+        public string ExcuteDoc(object list, Func<object,KeyValue<DataSet,string[],object[]>> func)
         {
             this.DeleteOutPutFiles();
  

@@ -31,10 +31,10 @@ namespace SCBF.Purchase
     [AbpAuthorize]
     public class StageInfoeAppService : TAFAppServiceBase, IStageInfoeAppService
     {
-        private readonly IStageInfoRepository stageInfoRepository;
-        private readonly IStageInfoUserRepository stageInfoUserRepository;
-        private readonly IModuleIdAttachmentRepository modelAttachmentRepository;
-        private readonly IAttachmentRepository attachmentRepository;
+        private readonly IStageInfoRepository _stageInfoRepository;
+        private readonly IStageInfoUserRepository _stageInfoUserRepository;
+        private readonly IModuleIdAttachmentRepository _modelAttachmentRepository;
+        private readonly IAttachmentRepository _attachmentRepository;
 
         public StageInfoeAppService(
             IStageInfoRepository stageInfoRepository,
@@ -42,15 +42,15 @@ namespace SCBF.Purchase
             IAttachmentRepository attachmentRepository,
             IModuleIdAttachmentRepository modelAttachmentRepository)
         {
-            this.stageInfoRepository = stageInfoRepository;
-            this.stageInfoUserRepository = stageInfoUserRepository;
-            this.modelAttachmentRepository = modelAttachmentRepository;
-            this.attachmentRepository = attachmentRepository;
+            this._stageInfoRepository = stageInfoRepository;
+            this._stageInfoUserRepository = stageInfoUserRepository;
+            this._modelAttachmentRepository = modelAttachmentRepository;
+            this._attachmentRepository = attachmentRepository;
         }
 
         public ListResultDto<StageInfoListDto> GetAll(StageInfoQueryDto request)
         {
-            var query = this.stageInfoRepository.Get(r => r.Category == request.Category)
+            var query = this._stageInfoRepository.Get(r => r.Category == request.Category)
                 .WhereIf(request.Company.HasValue, r => r.Company == request.Company.Value)
                 .WhereIf(request.Status.HasValue, r => r.Status == request.Status.Value)
                 .WhereIf(request.ProcurementPlanId.HasValue, r => r.ProcurementPlanId == request.ProcurementPlanId.Value);
@@ -68,10 +68,10 @@ namespace SCBF.Purchase
 
         public StageInfoEditDto Get(Guid id)
         {
-            var output = this.stageInfoRepository.Get(id);
+            var output = this._stageInfoRepository.Get(id);
             var result = output.MapTo<StageInfoEditDto>();
-            result.AttachmentIds = this.modelAttachmentRepository.Get(r => r.ModuleId == id).Select(r => r.AttachmentId).ToList();
-            result.Attachments = this.attachmentRepository.Get(r => result.AttachmentIds.Contains(r.Id))
+            result.AttachmentIds = this._modelAttachmentRepository.Get(r => r.ModuleId == id).Select(r => r.AttachmentId).ToList();
+            result.Attachments = this._attachmentRepository.Get(r => result.AttachmentIds.Contains(r.Id))
                 .Select(r => r.Name).ToList();
             return result;
         }
@@ -80,36 +80,36 @@ namespace SCBF.Purchase
         {
             Action<StageInfo> act = async (entity) =>
                  {
-                     await stageInfoUserRepository.DeleteAsync(r => r.StageInfoId == entity.Id);
+                     await this._stageInfoUserRepository.DeleteAsync(r => r.StageInfoId == entity.Id);
                      var users = input.Users.Select(r => new StageInfoUser() { StageInfoId = entity.Id, UserId = r })
                          .ToList();
-                     stageInfoUserRepository.InsertRange(users);
+                     this._stageInfoUserRepository.InsertRange(users);
 
-                     await this.modelAttachmentRepository.DeleteAsync(r => r.ModuleId == entity.Id);
+                     await this._modelAttachmentRepository.DeleteAsync(r => r.ModuleId == entity.Id);
                      var attachments = input.AttachmentIds.Select(r => new ModuleIdAttachment() { ModuleId = entity.Id, AttachmentId = r })
                          .ToList();
-                     this.modelAttachmentRepository.InsertRange(attachments);
+                     this._modelAttachmentRepository.InsertRange(attachments);
                  };
 
             var item = input.MapTo<StageInfo>();
             if (!input.Id.HasValue)
             {
-                item = await this.stageInfoRepository.InsertAsync(item);
+                item = await this._stageInfoRepository.InsertAsync(item);
                 act(item);
             }
             else
             {
-                var old = this.stageInfoRepository.Get(input.Id.Value);
+                var old = this._stageInfoRepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
-                await this.stageInfoRepository.UpdateAsync(old);
+                await this._stageInfoRepository.UpdateAsync(old);
                 act(item);
             }
         }
 
         public void Delete(Guid id)
         {
-            this.stageInfoRepository.Delete(id);
-            stageInfoUserRepository.Delete(r => r.StageInfoId == id);
+            this._stageInfoRepository.Delete(id);
+            this._stageInfoUserRepository.Delete(r => r.StageInfoId == id);
         }
     }
 }

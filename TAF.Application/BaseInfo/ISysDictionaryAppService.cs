@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TAF.Utility;
+
 namespace SCBF.BaseInfo
 {
     using System;
@@ -35,6 +37,8 @@ namespace SCBF.BaseInfo
         List<SysDictionaryListDto> GetSimpleList(string category = null);
 
         string GetModulePath(string category);
+
+        List<KeyValue<Guid,string>> GetReadOnlyList(string category);
 
     }
 }
