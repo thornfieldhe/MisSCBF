@@ -391,6 +391,10 @@
     <Compile Include="Migrations\201806061503165_modifytable_processmanage5.Designer.cs">
       <DependentUpon>201806061503165_modifytable_processmanage5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806091330043_modifyTable_attachment.cs" />
+    <Compile Include="Migrations\201806091330043_modifyTable_attachment.Designer.cs">
+      <DependentUpon>201806091330043_modifyTable_attachment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -645,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061503165_modifytable_processmanage5.resx">
       <DependentUpon>201806061503165_modifytable_processmanage5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806091330043_modifyTable_attachment.resx">
+      <DependentUpon>201806091330043_modifyTable_attachment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

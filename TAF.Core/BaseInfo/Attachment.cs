@@ -10,7 +10,6 @@
 namespace SCBF.BaseInfo
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// 附件
@@ -46,6 +45,11 @@ namespace SCBF.BaseInfo
         /// 备注
         /// </summary>
         public string Note { get; set; }
-        
+
+        /// <summary>
+        /// 附件关联对象Id
+        /// </summary>
+        public Guid? ModelId { get; set; }
+
     }
 }

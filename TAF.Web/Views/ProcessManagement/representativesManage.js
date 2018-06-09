@@ -28,7 +28,7 @@
     data: {
         queryEntity: {
             procurementPlanId: "",
-            type: "Purchase_DesignUnit",
+            type: "Purchase_PartyA",
             unit: "",
         },
         queryEntity2: {
@@ -58,7 +58,7 @@
         },
         item: {
             id: "",
-            type: "Purchase_DesignUnit",
+            type: "Purchase_PartyA",
             price: 0,
             status: 0,
             users: [],
@@ -300,7 +300,7 @@
         },
         getUnit: function() {
             var $this = this;
-            abp.services.app.unitPool.getRandomItem("Purchase_DesignUnit")
+            abp.services.app.unitPool.getRandomItem("Purchase_PartyA")
                 .done(function(r) {
                     $this.item.unit = r.key;
                     $this.item.unitName = r.value;

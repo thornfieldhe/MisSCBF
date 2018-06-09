@@ -42,6 +42,11 @@ namespace SCBF.Purchase.Dto
         {
             get; set;
         }
+        
+        /// <summary>
+        /// 单位
+        /// </summary>
+        public Guid Unit { get; set; }
 
         /// <summary>
         /// 单位

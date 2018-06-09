@@ -66,6 +66,14 @@ namespace SCBF.BaseInfo.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// ModelId
+        /// </summary>
+        public Guid? ModelId
+        {
+            get; set;
+        }
     }
 }
 

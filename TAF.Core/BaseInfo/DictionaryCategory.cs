@@ -113,6 +113,11 @@ namespace SCBF.BaseInfo
         public const string Purchase_PartyA = "Purchase_PartyA";
 
         /// <summary>
+        /// 采购附件
+        /// </summary>
+        public const string Purchase_Attachment = "Purchase_Attachment";
+
+        /// <summary>
         /// 采购类型
         /// </summary>
         public const string Purchase_Category = "Purchase_Category";

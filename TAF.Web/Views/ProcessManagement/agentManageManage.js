@@ -28,7 +28,7 @@
     data: {
         queryEntity: {
             procurementPlanId: "",
-            type: "Purchase_DesignUnit",
+            type: "Purchase_BiddingAgency",
             unit: "",
         },
         queryEntity2: {
@@ -58,7 +58,7 @@
         },
         item: {
             id: "",
-            type: "Purchase_DesignUnit",
+            type: "Purchase_BiddingAgency",
             price: 0,
             status: 0,
             users: [],
@@ -195,10 +195,8 @@
         },
         print: function() {
             var $this = this;
-
             abp.services.app.processManagement.saveAsync($this.item)
                 .done(function(m) {
-
                     var url = "/ProcessManagement/Print/" + m;
                     taf.download(url);
                     $this.query(0);
@@ -300,7 +298,7 @@
         },
         getUnit: function() {
             var $this = this;
-            abp.services.app.unitPool.getRandomItem("Purchase_DesignUnit")
+            abp.services.app.unitPool.getRandomItem("Purchase_BiddingAgency")
                 .done(function(r) {
                     $this.item.unit = r.key;
                     $this.item.unitName = r.value;

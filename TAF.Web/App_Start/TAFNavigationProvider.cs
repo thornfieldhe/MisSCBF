@@ -223,8 +223,28 @@
                             requiredPermissionName: PermissionNames.CgUser))
                         .AddItem(new MenuItemDefinition(
                             "menuDesignManage",
-                            L("设计合同管理"),
+                            L("设计招标管理"),
                             url: "#designManage",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuCostManage",
+                            L("造价招标管理"),
+                            url: "#costManage",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuSupervisionManage",
+                            L("监理招标管理"),
+                            url: "#supervisionManage",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuAgentManage",
+                            L("招标代理招标管理"),
+                            url: "#agentManage",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuRepresentativesManage",
+                            L("甲方代表管理"),
+                            url: "#representativesManage",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

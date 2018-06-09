@@ -824,6 +824,10 @@
     <Content Include="Views\CarOil\carOilReport.js" />
     <Content Include="Views\CarOil\carOil.js" />
     <Content Include="Views\InvoiceCheck\invoiceCheck.js" />
+    <Content Include="Views\ProcessManagement\costManage.js" />
+    <Content Include="Views\ProcessManagement\representativesManage.js" />
+    <Content Include="Views\ProcessManagement\supervisionManage.js" />
+    <Content Include="Views\ProcessManagement\agentManageManage.js" />
     <Content Include="Views\ProcessManagement\designManage.js" />
     <Content Include="Views\ProcurementPlan\procurementPlanSummary.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan1.js" />
@@ -1090,6 +1094,10 @@
     <Content Include="Views\ProcurementPlan\_ProcurementPlanIndex2.cshtml" />
     <Content Include="Views\ProcurementPlan\_ProcurementPlanIndexSummary.cshtml" />
     <Content Include="Views\ProcessManagement\_DesignManage.cshtml" />
+    <Content Include="Views\ProcessManagement\_AgentManageManage.cshtml" />
+    <Content Include="Views\ProcessManagement\_CostManage.cshtml" />
+    <Content Include="Views\ProcessManagement\_SupervisionManage.cshtml" />
+    <Content Include="Views\ProcessManagement\_RepresentativesManage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

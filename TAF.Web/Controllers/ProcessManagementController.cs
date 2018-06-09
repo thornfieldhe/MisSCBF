@@ -24,12 +24,13 @@ namespace SCBF.Web.Controllers
     public class ProcessManagementController : TAFControllerBase
     {
         private readonly IProcessManagementAppService _processManagementAppService;
-        private readonly ISysDictionaryAppService     _sysDictionaryAppService;
 
         public ProcessManagementController(IProcessManagementAppService processManagementAppService,
-            ISysDictionaryAppService                                    sysDictionaryAppService)
+            IAttachmentAppService    attachmentAppService,
+            ISysDictionaryAppService sysDictionaryAppService)
         {
             this._processManagementAppService = processManagementAppService;
+            this._attachmentAppService        = attachmentAppService;
             this._sysDictionaryAppService     = sysDictionaryAppService;
         }
 
@@ -42,10 +43,54 @@ namespace SCBF.Web.Controllers
             return PartialView("_DesignManage");
         }
 
-        public FileResult Print([FromUri]Guid id)
+        public ActionResult CostManage()
+        {
+            ViewData["users"] = this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_Users);
+            ViewData["units"] =
+                this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_CostUnit);
+            ViewData["projects1"] = this._processManagementAppService.GetPurchases();
+            return PartialView("_CostManage");
+        }
+
+        public ActionResult SupervisionManage()
+        {
+            ViewData["users"] = this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_Users);
+            ViewData["units"] =
+                this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_ConstructionControlUnit);
+            ViewData["projects1"] = this._processManagementAppService.GetPurchases();
+            return PartialView("_SupervisionManage");
+        }
+
+        public ActionResult AgentManageManage()
+        {
+            ViewData["users"] = this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_Users);
+            ViewData["units"] =
+                this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_BiddingAgency);
+            ViewData["projects1"] = this._processManagementAppService.GetPurchases();
+            return PartialView("_AgentManageManage");
+        }
+
+        public ActionResult RepresentativesManage()
+        {
+            ViewData["users"] = this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_Users);
+            ViewData["units"] =
+                this._sysDictionaryAppService.GetReadOnlyList(DictionaryCategory.Purchase_PartyA);
+            ViewData["projects1"] = this._processManagementAppService.GetPurchases();
+            return PartialView("_RepresentativesManage");
+        }
+
+        public FileResult Print([FromUri] Guid id)
         {
             var file = this._processManagementAppService.Print(id);
-            return    this.DownloadFile(file);
+            return this.DownloadFile(file);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public JsonResult Upload(Guid modelId)
+        {
+            this.UploadFile(DictionaryCategory.Purchase_Attachment, new string[] {modelId.ToString()},
+                this._processManagementAppService.UploadAttachment);
+            return new JsonResult() {Data = "OK"};
         }
     }
 }

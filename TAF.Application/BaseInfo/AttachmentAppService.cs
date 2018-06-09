@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TAF.Utility;
+
 namespace SCBF.BaseInfo
 {
     using System;
@@ -27,22 +29,28 @@ namespace SCBF.BaseInfo
     [AbpAuthorize]
     public class AttachmentAppService : TAFAppServiceBase, IAttachmentAppService
     {
-        private readonly IAttachmentRepository attachmentRepository;
+        private readonly IAttachmentRepository _attachmentRepository;
 
-        private readonly IModuleIdAttachmentRepository moduleIdAttachmentRepository;
+        private readonly IModuleIdAttachmentRepository _moduleIdAttachmentRepository;
 
         public AttachmentAppService(IAttachmentRepository attachmentRepository, IModuleIdAttachmentRepository moduleIdAttachmentRepository)
         {
-            this.attachmentRepository = attachmentRepository;
-            this.moduleIdAttachmentRepository = moduleIdAttachmentRepository;
+            this._attachmentRepository = attachmentRepository;
+            this._moduleIdAttachmentRepository = moduleIdAttachmentRepository;
+        }
+
+        public List<KeyValue<Guid, string, string>> GetAll(Guid modelId)
+        {
+            return this._attachmentRepository.GetAllList(r => r.ModelId == modelId).Select(r =>
+                new KeyValue<Guid, string, string>() {Key = r.Id, Value = r.Name, Item3 = r.Path}).ToList();
         }
 
         public ListResultDto<AttachmentListDto> Get(AttachmentQueryDto request)
         {
-            var relation = this.moduleIdAttachmentRepository.GetAll().WhereIf(
+            var relation = this._moduleIdAttachmentRepository.GetAll().WhereIf(
                 request.ModuleId.HasValue,
                 r => r.ModuleId == request.ModuleId.Value).Select(r => r.AttachmentId);
-            var query = this.attachmentRepository.GetAll()
+            var query = this._attachmentRepository.GetAll()
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Name), r => r.Name.Contains(request.Name)).WhereIf(
                     !string.IsNullOrWhiteSpace(request.Category),
                     r => r.Path.Contains(request.Category))
@@ -61,7 +69,7 @@ namespace SCBF.BaseInfo
         public void Save(AttachmentEditDto input)
         {
             var item = new Attachment();
-            this.attachmentRepository.Insert(input.MapTo(item));
+            this._attachmentRepository.Insert(input.MapTo(item));
         }
 
         public void Download(AttachmentEditDto input)
@@ -71,7 +79,7 @@ namespace SCBF.BaseInfo
 
         public void Delete(Guid id)
         {
-            this.attachmentRepository.Delete(id);
+            this._attachmentRepository.Delete(id);
         }
     }
 }

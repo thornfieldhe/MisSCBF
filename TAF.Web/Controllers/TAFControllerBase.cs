@@ -85,11 +85,12 @@ namespace SCBF.Web.Controllers
                         this._attachmentAppService.Save(
                             new AttachmentEditDto()
                             {
-                                Name     = saveName,
+                                Name     = fileName,
                                 Category = category,
                                 Ext      = fileExtension,
                                 Path     = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
-                                Size     = (decimal) fileInfo.Length / 1024
+                                Size     = (decimal) fileInfo.Length / 1024,
+                                ModelId  = modelId
                             });
                         return modelId;
                     }

@@ -60,7 +60,11 @@ Path.map("#procurementPlans1").to(function () { loadPage("/ProcurementPlan/Procu
 Path.map("#procurementPlans2").to(function () { loadPage("/ProcurementPlan/ProcurementPlanList2", "采购管理", "追加采购计划", "#menuProcurementPlans2", false); });
 Path.map("#procurementPlanSummary").to(function () { loadPage("/ProcurementPlan/ProcurementPlanListSummary", "采购管理", "年度采购计划", "#menuProcurementPlanSummary", false); });
 Path.map("#poolConfig").to(function () { loadPage("/Purchase/PoolConfig", "采购管理", "抽取范围管理", "#menuPoolConfig", false); });
-Path.map("#designManage").to(function () { loadPage("/ProcessManagement/DesignManage", "采购管理", "设计合同管理", "#menuDesignManage", false); });
+Path.map("#designManage").to(function () { loadPage("/ProcessManagement/DesignManage", "采购管理", "设计招标管理", "#menuDesignManage", false); });
+Path.map("#costManage").to(function () { loadPage("/ProcessManagement/CostManage", "采购管理", "造价管理", "#menuCostManage", false); });
+Path.map("#supervisionManage").to(function () { loadPage("/ProcessManagement/SupervisionManage", "采购管理", "监理管理", "#menuSupervisionManage", false); });
+Path.map("#agentManage").to(function () { loadPage("/ProcessManagement/AgentManageManage", "采购管理", "招标代理机构管理", "#menuAgentManage", false); });
+Path.map("#representativesManage").to(function () { loadPage("/ProcessManagement/RepresentativesManage", "采购管理", "甲方代表管理", "#menuRepresentativesManage", false); });
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#maintenanceParts").to(function () { loadPage("/Car/MaintenancePartsList", "车辆管理", "维修部位", "#menuMaintenanceParts", false); });

@@ -63,7 +63,7 @@ namespace SCBF.Purchase
 
             var year = int.Parse(currentYearItem.Value);
             var query = this._processManagementRepository.GetAll()
-                .Where(r => r.Type == request.Type && r.Year==year)
+                .Where(r => r.Type == request.Type && r.Year == year)
                 .WhereIf(request.ProcurementPlanId.HasValue,
                     r => r.PurchaseId == request.ProcurementPlanId.Value)
                 .WhereIf(request.Unit.HasValue, r => r.Unit == request.Unit.Value)
@@ -74,22 +74,22 @@ namespace SCBF.Purchase
 
             foreach (var dto in dtos)
             {
-                var unit = this._sysDictionaryRepository.FirstOrDefault(r => r.Category == request.Type);
+                var unit = this._sysDictionaryRepository.FirstOrDefault(r => r.Category == request.Type && r.Id==dto.Unit);
                 if (unit == null)
                 {
                     throw new UserFriendlyException("未找到单位");
                 }
 
-                var users= (from r in this._relationshipRepository.GetAll()
+                var users = (from r in this._relationshipRepository.GetAll()
                     join p in this._processManagementRepository.GetAll() on r.PrincipalKey equals p.Id
                     join u in this._sysDictionaryRepository.GetAll() on r.ForeignKey equals u.Id
-                    where p.Id==dto.Id
+                    where p.Id == dto.Id
                     select u.Value).ToList();
                 dto.Users = string.Join(",", users);
 
-                dto.UnitName = unit.Value;
+                dto.UnitName     = unit.Value;
                 dto.PurchaseName = this._procurementPlanRepository.FirstOrDefault(r => r.Id == dto.PurchaseId)?.Name;
-                dto.Schedule = dto.Price*0.8M - (from r in this._relationshipRepository.GetAll()
+                dto.Schedule = dto.Price * 0.8M - (from r in this._relationshipRepository.GetAll()
                                    join c in this._actualOutlayRepository.GetAll() on r.ForeignKey equals c.Id
                                    where r.PrincipalKey == dto.Id
                                    select c.Amount).ToList().Sum();
@@ -105,19 +105,20 @@ namespace SCBF.Purchase
             result.Users = this._relationshipRepository.GetAllList(r => r.PrincipalKey == id).Select(r => r.ForeignKey)
                 .ToList();
             result.UnitName = this._sysDictionaryRepository.Single(r => r.Id == result.Unit).Value;
-            result.Schedule = result.Price*0.8M - (from r in this._relationshipRepository.GetAll()
-                               join c in this._actualOutlayRepository.GetAll() on r.ForeignKey equals c.Id
-                               where r.PrincipalKey == result.Id
-                               select c.Amount).ToList().Sum();
+            result.Schedule = result.Price * 0.8M - (from r in this._relationshipRepository.GetAll()
+                                  join c in this._actualOutlayRepository.GetAll() on r.ForeignKey equals c.Id
+                                  where r.PrincipalKey == result.Id
+                                  select c.Amount).ToList().Sum();
             return result;
         }
 
-        public async Task SaveAsync(ProcessManagementEditDto input)
+        public async Task<Guid> SaveAsync(ProcessManagementEditDto input)
         {
             try
             {
-
-                if (this._processManagementRepository.Any(r => r.PurchaseId == input.PurchaseId &&(input.Id!=r.Id|| !input.Id.HasValue) ))
+                if (this._processManagementRepository.Any(r =>
+                    r.PurchaseId == input.PurchaseId && r.Type == input.Type &&
+                    (input.Id != r.Id || !input.Id.HasValue)))
                 {
                     throw new UserFriendlyException("不能重复添加项目");
                 }
@@ -135,28 +136,36 @@ namespace SCBF.Purchase
                 item.Year = year;
                 if (!input.Id.HasValue)
                 {
-                  item=  await this._processManagementRepository.InsertAsync(item);
+                    item = await this._processManagementRepository.InsertAsync(item);
                 }
                 else
                 {
                     var old = this._processManagementRepository.Get(input.Id.Value);
                     if (old.Status == ProcessStatus.Created)
                     {
-                        return;
+                        return old.Id;
                     }
-                    Mapper.Map(input, old);
+
+                    item = Mapper.Map(input, old);
                     await this._processManagementRepository.UpdateAsync(old);
                     await this._relationshipRepository.DeleteAsync(r => r.PrincipalKey == input.Id.Value);
                 }
 
 
                 this._relationshipRepository.InsertRange(input.Users.Select(r =>
-                    new Relationship() {PrincipalKey = item.Id, ForeignKey = r,Type = input.Type}));
+                    new Relationship() {PrincipalKey = item.Id, ForeignKey = r, Type = input.Type}));
+                return item.Id;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+
+        public Guid UploadAttachment(string path, object id)
+        {
+            return new Guid((id as string[]).First());
         }
 
         public string Print(Guid id)
@@ -166,7 +175,7 @@ namespace SCBF.Purchase
             this._processManagementRepository.Update(old);
 
             return DownloadFileService.Load("LetterOfAcceptance.doc", "中标通知书.doc", new string[] { })
-                .ExcuteDoc(old,this.ExportToDoc);
+                .ExcuteDoc(old, this.ExportToDoc);
         }
 
         public ProcessManagementEditDto SavePrice(KeyValue<Guid, decimal> price)
@@ -181,25 +190,26 @@ namespace SCBF.Purchase
 
         public List<KeyValue<Guid, string>> GetPurchases()
         {
-            return    this._procurementPlanRepository.GetAllList()
-                        .Select(r => new KeyValue<Guid, string>() {Key = r.Id, Value = r.Name}).ToList();
+            return this._procurementPlanRepository.GetAllList()
+                .Select(r => new KeyValue<Guid, string>() {Key = r.Id, Value = r.Name}).ToList();
         }
-
 
 
         public void Delete(Guid id)
         {
             this._processManagementRepository.Delete(id);
-            this._relationshipRepository.Delete(r=>r.ForeignKey==id);
+            this._relationshipRepository.Delete(r => r.ForeignKey == id);
         }
 
         private KeyValue<DataSet, string[], object[]> ExportToDoc(object l)
         {
             ProcessManagement input = l as ProcessManagement;
-            var unit    = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == input.Unit).Value;
-            var project = this._procurementPlanRepository.FirstOrDefault(r => r.Id == input.PurchaseId).Name;
-            var date    = $"{DateTime.Now.Year}年{DateTime.Today.Month}月{DateTime.Now.Day}日";
-            return new KeyValue<DataSet, string[], object[]>(new DataSet(), new []{"Unit","Project","Date"},new []{unit,project,date});
+            var               unit  = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == input.Unit).Value;
+            var project =
+                this._procurementPlanRepository.FirstOrDefault(r => r.Id == input.PurchaseId).Name;
+            var date = $"{DateTime.Now.Year}年{DateTime.Today.Month}月{DateTime.Now.Day}日";
+            return new KeyValue<DataSet, string[], object[]>(new DataSet(), new[] {"Unit", "Project", "Date"},
+                new[] {unit, project, date});
         }
     }
 }

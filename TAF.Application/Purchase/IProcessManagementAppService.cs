@@ -26,9 +26,11 @@ namespace SCBF.Purchase
 
         ProcessManagementEditDto Get(Guid id);
 
-        Task SaveAsync(ProcessManagementEditDto input);
+        Task<Guid> SaveAsync(ProcessManagementEditDto input);
 
         void Delete(Guid id);
+
+        Guid UploadAttachment(string path, object id);
 
         ProcessManagementEditDto SavePrice(KeyValue<Guid, decimal> price);
 

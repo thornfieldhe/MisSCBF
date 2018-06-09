@@ -7,21 +7,23 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using TAF.Utility;
+
 namespace SCBF.BaseInfo
 {
     using System;
-    using System.Threading.Tasks;
-    
+    using Abp.Application.Services.Dto;
     using SCBF.BaseInfo.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
+
     /// <summary>
     /// 附件应用接口
     /// </summary>
     public interface IAttachmentAppService : IBaseEntityApplicationService
     {
         ListResultDto<AttachmentListDto> Get(AttachmentQueryDto request);
+
+        List<KeyValue<Guid, string, string>> GetAll(Guid modelId);
 
         void Save(AttachmentEditDto input);
 
