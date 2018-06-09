@@ -1,44 +1,29 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RelationshipEditDto.cs" company=""  author="何翔华">
+// <copyright file="VoucherAuditQueryDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   关系管理编辑对象
+//   实际支出查询对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SCBF.BaseInfo.Dto
-{
-    using System;
+using System;
 
-    using Abp.AutoMapper;
+namespace SCBF.Finance.Dto
+{
+
+    using Abp.Application.Services.Dto;
 
     /// <summary>
-    /// 关系管理编辑对象
+    /// 实际支出查询对象
     /// </summary>
-    [AutoMap(typeof(Relationship))]
-    public class RelationshipEditDto
+    public class ActualAuditQueryDto : PagedAndSortedResultRequestDto
     {
-        /// <summary>
-        /// Id
-        /// </summary>
-        public Guid? Id
-        {
-            get; set;
-        }
 
         /// <summary>
-        /// PrincipalKey
+        /// Text
         /// </summary>
-        public Guid PrincipalKey
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// ForeignKey
-        /// </summary>
-        public Guid ForeignKey
+        public string Text
         {
             get; set;
         }
@@ -47,6 +32,14 @@ namespace SCBF.BaseInfo.Dto
         /// Type
         /// </summary>
         public string Type
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 关联对象Id
+        /// </summary>
+        public Guid? PrincipalKey
         {
             get; set;
         }

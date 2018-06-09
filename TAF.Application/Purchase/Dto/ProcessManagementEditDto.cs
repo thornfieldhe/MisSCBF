@@ -67,6 +67,10 @@ namespace SCBF.Purchase.Dto
         public List<Guid> Users { get; set; }
 
         public int Status { get; set; }
+
+        public decimal Schedule { get; set; }
+
+        public decimal Price { get; set; }
     }
 }
 

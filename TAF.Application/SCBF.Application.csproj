@@ -215,6 +215,7 @@
     <Compile Include="Finance\Dto\InvoiceCheckQueryDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditEditDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditListDto.cs" />
+    <Compile Include="Finance\Dto\ActualAuditQueryDto.cs" />
     <Compile Include="Finance\Dto\VoucherAuditQueryDto.cs" />
     <Compile Include="Finance\IInvoiceCheckAppService.cs" />
     <Compile Include="Finance\InvoiceCheckAppService.cs" />

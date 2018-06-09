@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Application.Services.Dto;
+using Abp.Linq.Extensions;
+
 namespace SCBF.Finance
 {
     using System;
@@ -30,42 +33,45 @@ namespace SCBF.Finance
     [AbpAuthorize]
     public class ActualOutlayAppService : TAFAppServiceBase, IActualOutlayAppService
     {
-        private readonly IActualOutlayRepository actualOutlayRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
-        private IWorkbook workbook = null;
+        private readonly IActualOutlayRepository _actualOutlayRepository;
+        private readonly IRelationshipRepository _relationshipRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
+        private IWorkbook _workbook = null;
 
         public ActualOutlayAppService(
             IActualOutlayRepository actualOutlayRepository,
+            IRelationshipRepository relationshipRepository,
             ISysDictionaryRepository sysDictionaryRepository)
         {
-            this.actualOutlayRepository = actualOutlayRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
+            this._actualOutlayRepository = actualOutlayRepository;
+            this._relationshipRepository = relationshipRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
         }
 
 
         public List<ActualOutlayListDto> Get()
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.actualOutlayRepository.GetAllList(r => r.Year == year && !r.OutlayId.HasValue).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
+                this._actualOutlayRepository.GetAllList(r => r.Year == year && !r.OutlayId.HasValue).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
             return result;
         }
 
         public List<ActualOutlayListDto> GetByOutlayId(Guid outlayId)
         {
-            var currentYearItem = this.sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
             var year = int.Parse(currentYearItem.Value);
             var result =
-                this.actualOutlayRepository.GetAllList(r => r.Year == year && r.OutlayId == outlayId).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
+                this._actualOutlayRepository.GetAllList(r => r.Year == year && r.OutlayId == outlayId).OrderBy(r => r.VoucherNo).ToList().MapTo<List<ActualOutlayListDto>>();
             return result;
         }
 
@@ -75,11 +81,11 @@ namespace SCBF.Finance
             var modelId = Guid.NewGuid();
             if (path.IndexOf(".xlsx", StringComparison.OrdinalIgnoreCase) > 0)// 2007版本
             {
-                this.workbook = new XSSFWorkbook(fs);
+                this._workbook = new XSSFWorkbook(fs);
             }
             else if (path.IndexOf(".xls", StringComparison.OrdinalIgnoreCase) > 0)// 2003版本
             {
-                this.workbook = new HSSFWorkbook(fs);
+                this._workbook = new HSSFWorkbook(fs);
             }
             else
             {
@@ -87,14 +93,14 @@ namespace SCBF.Finance
             }
 
 
-            var currentYear = this.sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
+            var currentYear = this._sysDictionaryRepository.FirstOrDefault(r => r.Category == DictionaryCategory.Budget_Year && r.Value4 == true.ToString());
             if (currentYear == null)
             {
                 throw new UserFriendlyException("未设置预算年度");
             }
 
             var list = new List<ActualOutlay>();
-            var sheet = this.workbook.GetSheetAt(0);
+            var sheet = this._workbook.GetSheetAt(0);
             //最后一列的标号
             var rowCount = sheet.LastRowNum + 1;
 
@@ -116,13 +122,13 @@ namespace SCBF.Finance
                 }
             }
             var lastItem =
-                this.actualOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value)
+                this._actualOutlayRepository.Get(r => r.Year.ToString() == currentYear.Value)
                     .OrderByDescending(r => r.VoucherNo).FirstOrDefault(); //最后一笔凭证
             if (lastItem != null)
             {
                 list.RemoveAll(r => string.CompareOrdinal(r.VoucherNo, lastItem.VoucherNo) <= 0);
             }
-            this.actualOutlayRepository.InsertRange(list);
+            this._actualOutlayRepository.InsertRange(list);
             return modelId;
         }
 
@@ -131,15 +137,55 @@ namespace SCBF.Finance
         {
             foreach (var value in input.OutlayIds)
             {
-                var item = this.actualOutlayRepository.FirstOrDefault(r => r.Id == value);
+                var item = this._actualOutlayRepository.FirstOrDefault(r => r.Id == value);
                 if (item == null)
                 {
                     throw new UserFriendlyException($"该支出项目不存在:{value}");
                 }
 
                 item.OutlayId = input.Id;
-                this.actualOutlayRepository.Update(item);
+                this._actualOutlayRepository.Update(item);
             }
+        }
+
+        public ListResultDto<ActualOutlayListDto> LoadUnLinkOutlays(ActualAuditQueryDto request)
+        {
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r => r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+            var year = int.Parse(currentYearItem.Value);
+
+            var rIds = (from r in this._relationshipRepository.GetAll()
+                where r.Type == request.Type
+                select r.ForeignKey).ToList();
+
+            var result = (from a in this._actualOutlayRepository.GetAll()
+                where !rIds.Contains(a.Id) && a.Year == year &&
+                      (string.IsNullOrEmpty(request.Text)|| a.VoucherNo.Contains(request.Text)||a.Note.Contains(request.Text))
+                select a).OrderByDescending(r=>r.VoucherNo);
+            var count = result.Count();
+            var list = result.AsQueryable().PageBy(request).ToList().MapTo<List<ActualOutlayListDto>>();
+            return new PagedResultDto<ActualOutlayListDto>(count, list);
+        }
+
+        public ListResultDto<ActualOutlayListDto> LoadLinkedOutlays(ActualAuditQueryDto request)
+        {
+            if (!request.PrincipalKey.HasValue)
+            {
+                throw new UserFriendlyException("请输入凭证关联对象");
+            }
+
+            var result = (from a in this._actualOutlayRepository.GetAll()
+                join
+                    r in this._relationshipRepository.GetAll() on a.Id equals r.ForeignKey
+                where r.PrincipalKey == request.PrincipalKey.Value &&
+                      (string.IsNullOrEmpty(request.Text) || a.VoucherNo.Contains(request.Text) ||a.Note.Contains(request.Text))
+                select a).OrderByDescending(r => r.VoucherNo);
+            var count = result.Count();
+            var list  = result.AsQueryable().PageBy(request).ToList().MapTo<List<ActualOutlayListDto>>();
+            return new PagedResultDto<ActualOutlayListDto>(count, list);
         }
     }
 }

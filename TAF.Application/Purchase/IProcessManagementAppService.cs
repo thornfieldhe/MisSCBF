@@ -30,7 +30,7 @@ namespace SCBF.Purchase
 
         void Delete(Guid id);
 
-        void SavePrice(KeyValue<Guid, decimal> price);
+        ProcessManagementEditDto SavePrice(KeyValue<Guid, decimal> price);
 
         string Print(Guid id);
 

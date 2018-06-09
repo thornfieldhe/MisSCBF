@@ -10,25 +10,22 @@
 namespace SCBF.BaseInfo
 {
     using System;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
-    
+
     using SCBF.BaseInfo.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
+
     /// <summary>
     /// 关系管理应用接口
     /// </summary>
     public interface IRelationshipAppService : IBaseEntityApplicationService
     {
-        ListResultDto<RelationshipListDto> GetAll(RelationshipQueryDto request);
 
-        RelationshipEditDto Get(Guid id);
 
-        Task SaveAsync(RelationshipEditDto input);
+        void Add(RelationshipEditDto input);
 
-        void Delete(Guid id);
+        void Remove(Guid id);
+        void RemovePrincipalKey(Guid id);
+        void RemoveForeignKey(Guid id);
+
     }
 }
 

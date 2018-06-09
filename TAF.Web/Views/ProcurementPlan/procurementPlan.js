@@ -90,7 +90,6 @@
                 num_display_entries: 4, //主体页数
                 items_per_page: taf.defatulPageSize, //每页显示1项  
                 callback: function (index, jq) {
-                    console.log(123);
                     main.list.from = main.list.total === 0 ? 0 : main.list.pageSize * index + 1;
                     main.list.index = index;
                     main.list.to = main.list.pageSize * (index + 1) < main.list.total ? main.list.pageSize * (index + 1) : main.list.total;
@@ -118,7 +117,6 @@
                 num_display_entries: 4, //主体页数
                 items_per_page: 5, //每页显示1项  
                 callback: function (index, jq) {
-                    console.log(456);
                     main.list2.from = main.list2.total === 0 ? 0 : main.list2.pageSize * index + 1;
                     main.list2.index = index;
                     main.list2.to = main.list2.pageSize * (index + 1) < main.list2.total ? main.list2.pageSize * (index + 1) : main.list2.total;

@@ -3,7 +3,7 @@
 //   
 // </copyright>
 // <summary>
-//   流程用户关联表
+//   关联表
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ namespace SCBF.BaseInfo
     using System;
 
     /// <summary>
-    /// 流程用户关联表
+    /// 关联表
     /// </summary>
     public class Relationship:TAFEntity
     {

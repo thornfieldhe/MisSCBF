@@ -11,11 +11,8 @@ namespace SCBF.Finance
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using SCBF.Finance.Dto;
-
     using Abp.Application.Services.Dto;
+    using SCBF.Finance.Dto;
 
     /// <summary>
     /// 实际支出应用接口
@@ -31,6 +28,9 @@ namespace SCBF.Finance
 
         void Update(OutlayEditDto input);
 
+        ListResultDto<ActualOutlayListDto> LoadUnLinkOutlays(ActualAuditQueryDto request);
+
+        ListResultDto<ActualOutlayListDto> LoadLinkedOutlays(ActualAuditQueryDto request);
     }
 }
 

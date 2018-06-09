@@ -89,8 +89,8 @@ namespace SCBF.Purchase
 
                 dto.UnitName = unit.Value;
                 dto.PurchaseName = this._procurementPlanRepository.FirstOrDefault(r => r.Id == dto.PurchaseId)?.Name;
-                dto.Schedule = dto.Price - (from r in this._relationshipRepository.GetAll()
-                                   join c in this._actualOutlayRepository.GetAll() on r.PrincipalKey equals c.Id
+                dto.Schedule = dto.Price*0.8M - (from r in this._relationshipRepository.GetAll()
+                                   join c in this._actualOutlayRepository.GetAll() on r.ForeignKey equals c.Id
                                    where r.PrincipalKey == dto.Id
                                    select c.Amount).ToList().Sum();
             }
@@ -105,6 +105,10 @@ namespace SCBF.Purchase
             result.Users = this._relationshipRepository.GetAllList(r => r.PrincipalKey == id).Select(r => r.ForeignKey)
                 .ToList();
             result.UnitName = this._sysDictionaryRepository.Single(r => r.Id == result.Unit).Value;
+            result.Schedule = result.Price*0.8M - (from r in this._relationshipRepository.GetAll()
+                               join c in this._actualOutlayRepository.GetAll() on r.ForeignKey equals c.Id
+                               where r.PrincipalKey == result.Id
+                               select c.Amount).ToList().Sum();
             return result;
         }
 
@@ -113,7 +117,7 @@ namespace SCBF.Purchase
             try
             {
 
-                if (this._processManagementRepository.Any(r => r.PurchaseId == input.PurchaseId))
+                if (this._processManagementRepository.Any(r => r.PurchaseId == input.PurchaseId &&(input.Id!=r.Id|| !input.Id.HasValue) ))
                 {
                     throw new UserFriendlyException("不能重复添加项目");
                 }
@@ -131,7 +135,6 @@ namespace SCBF.Purchase
                 item.Year = year;
                 if (!input.Id.HasValue)
                 {
-
                   item=  await this._processManagementRepository.InsertAsync(item);
                 }
                 else
@@ -159,20 +162,21 @@ namespace SCBF.Purchase
         public string Print(Guid id)
         {
             var old = this._processManagementRepository.Get(id);
-            old.Status = ProcessStatus.AmountDetermined;
+            old.Status = ProcessStatus.NoticePrinted;
             this._processManagementRepository.Update(old);
 
             return DownloadFileService.Load("LetterOfAcceptance.doc", "中标通知书.doc", new string[] { })
                 .ExcuteDoc(old,this.ExportToDoc);
         }
 
-        public void SavePrice(KeyValue<Guid, decimal> price)
+        public ProcessManagementEditDto SavePrice(KeyValue<Guid, decimal> price)
         {
             this._processManagementRepository.Update(price.Key, r =>
             {
                 r.Price  = price.Value;
                 r.Status = ProcessStatus.AmountDetermined;
             });
+            return this.Get(price.Key);
         }
 
         public List<KeyValue<Guid, string>> GetPurchases()
@@ -186,6 +190,7 @@ namespace SCBF.Purchase
         public void Delete(Guid id)
         {
             this._processManagementRepository.Delete(id);
+            this._relationshipRepository.Delete(r=>r.ForeignKey==id);
         }
 
         private KeyValue<DataSet, string[], object[]> ExportToDoc(object l)
