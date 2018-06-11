@@ -433,7 +433,14 @@ namespace SCBF
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
                 mapper.CreateMap<ProcurementPlan, ProcurementPlanListDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
-                    .ForMember(m => m.Type, n => n.MapFrom(r => ((int)(r.Type)).ToString()));   
+                    .ForMember(m => m.Type, n => n.MapFrom(r => ((int)(r.Type)).ToString()));
+
+                mapper.CreateMap<BiddingManagement, BiddingManagementEditDto>()
+                    .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.PlanDateTo, n => n.MapFrom(r => r.PlanDateTo.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.PlanDateEnd, n => n.MapFrom(r => r.PlanDateEnd.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Total, n => n.MapFrom(r => r.Total.ToString()))
+                    .ForMember(m => m.PlanDateFrom, n => n.MapFrom(r => r.PlanDateFrom.ToString("yyyy-MM-dd")));
 
                 #endregion
             });

@@ -245,6 +245,11 @@
                             "menuRepresentativesManage",
                             L("甲方代表管理"),
                             url: "#representativesManage",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBiddingManagements",
+                            L("招标文件管理"),
+                            url: "#biddingManagements",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

@@ -287,6 +287,16 @@
             get; set;
         }
 
+        public DbSet<BiddingManagement> BiddingManagements
+        {
+            get; set;
+        }
+
+        public DbSet<CostList> CostLists
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

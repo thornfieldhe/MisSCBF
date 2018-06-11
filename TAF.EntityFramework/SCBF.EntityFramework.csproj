@@ -395,6 +395,14 @@
     <Compile Include="Migrations\201806091330043_modifyTable_attachment.Designer.cs">
       <DependentUpon>201806091330043_modifyTable_attachment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806101520411_addTable_BiddingManagement.cs" />
+    <Compile Include="Migrations\201806101520411_addTable_BiddingManagement.Designer.cs">
+      <DependentUpon>201806101520411_addTable_BiddingManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806111426579_modifyTable_biddingmanagement.cs" />
+    <Compile Include="Migrations\201806111426579_modifyTable_biddingmanagement.Designer.cs">
+      <DependentUpon>201806111426579_modifyTable_biddingmanagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -404,12 +412,14 @@
     <Compile Include="Repositories\ApplicationForBunkerARepository.cs" />
     <Compile Include="Repositories\ApplicationForBunkerBRepository.cs" />
     <Compile Include="Repositories\ApplyForVehicleMaintenanceRepository.cs" />
+    <Compile Include="Repositories\BiddingManagementRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
     <Compile Include="Repositories\CarOilRepository.cs" />
     <Compile Include="Repositories\CheckBillRepository.cs" />
     <Compile Include="Repositories\CheckRepository.cs" />
+    <Compile Include="Repositories\CostListRepository.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
     <Compile Include="Repositories\DeliveryBillRepository.cs" />
     <Compile Include="Repositories\DriverRepository.cs" />
@@ -652,6 +662,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806091330043_modifyTable_attachment.resx">
       <DependentUpon>201806091330043_modifyTable_attachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806101520411_addTable_BiddingManagement.resx">
+      <DependentUpon>201806101520411_addTable_BiddingManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806111426579_modifyTable_biddingmanagement.resx">
+      <DependentUpon>201806111426579_modifyTable_biddingmanagement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

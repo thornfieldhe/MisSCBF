@@ -56,6 +56,11 @@ namespace SCBF.Purchase
         public Guid Department { get; set; }
 
         /// <summary>
+        /// 年度
+        /// </summary>
+        public int Year { get; set; }
+
+        /// <summary>
         /// 责任人
         /// </summary>
         public Guid User { get; set; }

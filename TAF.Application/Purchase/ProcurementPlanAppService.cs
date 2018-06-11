@@ -126,6 +126,7 @@ namespace SCBF.Purchase
             return new PagedResultDto<ProcurementPlanListDto>(count, dtos);
         }
 
+
         public string ExportExs()
         {
             var result = this.LoadData();
@@ -151,6 +152,15 @@ namespace SCBF.Purchase
         public async Task SaveAsync(ProcurementPlanEditDto input)
         {
             var item = input.MapTo<ProcurementPlan>();
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
+                r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var year = int.Parse(currentYearItem.Value);
+            item.Year = year;
             if (!input.Id.HasValue)
             {
                 item.Code = this.GetMaxCode(DateTime.Parse(input.Date));

@@ -221,7 +221,13 @@
     <Compile Include="Finance\InvoiceCheckAppService.cs" />
     <Compile Include="Finance\IVoucherAuditAppService.cs" />
     <Compile Include="Finance\VoucherAuditAppService.cs" />
+    <Compile Include="Purchase\BiddingManagementAppService.cs" />
+    <Compile Include="Purchase\CostListAppService.cs" />
+    <Compile Include="Purchase\Dto\BiddingManagementEditDto.cs" />
+    <Compile Include="Purchase\Dto\BiddingManagementListDto.cs" />
+    <Compile Include="Purchase\Dto\BiddingManagementQueryDto.cs" />
     <Compile Include="Purchase\Dto\BudgetOutlaySummaryDto.cs" />
+    <Compile Include="Purchase\Dto\CostListDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayListDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayQueryDto.cs" />
@@ -235,6 +241,8 @@
     <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />
+    <Compile Include="Purchase\IBiddingManagementAppService.cs" />
+    <Compile Include="Purchase\ICostListAppService.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\IProcessManagementAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />

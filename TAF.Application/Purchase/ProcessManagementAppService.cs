@@ -120,7 +120,7 @@ namespace SCBF.Purchase
                     r.PurchaseId == input.PurchaseId && r.Type == input.Type &&
                     (input.Id != r.Id || !input.Id.HasValue)))
                 {
-                    throw new UserFriendlyException("不能重复添加项目");
+                    throw new UserFriendlyException("不能重复添加采购计划");
                 }
 
                 var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
@@ -190,7 +190,15 @@ namespace SCBF.Purchase
 
         public List<KeyValue<Guid, string>> GetPurchases()
         {
-            return this._procurementPlanRepository.GetAllList()
+            var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
+                r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
+            if (currentYearItem == null)
+            {
+                throw new UserFriendlyException("预算年度不存在");
+            }
+
+            var year = int.Parse(currentYearItem.Value);
+            return this._procurementPlanRepository.GetAllList(r=>r.Year==year)
                 .Select(r => new KeyValue<Guid, string>() {Key = r.Id, Value = r.Name}).ToList();
         }
 
