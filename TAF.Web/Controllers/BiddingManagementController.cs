@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using SCBF.BaseInfo;
 
 namespace SCBF.Web.Controllers
@@ -40,6 +41,12 @@ namespace SCBF.Web.Controllers
             ViewData["list1"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Purchase_BiddingAgency);
             ViewData["list2"] = this._processManagementAppService.GetPurchases();
             return PartialView("_BiddingManagementIndex");
+        }
+
+        public FileResult DownloadPlan(Guid id)
+        {
+            var file = this._biddingManagementAppService.ExportDoc(id);
+            return this.DownloadFile(file);
         }
     }
 }

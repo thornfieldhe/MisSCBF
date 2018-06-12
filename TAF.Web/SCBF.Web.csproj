@@ -1030,6 +1030,7 @@
     <Content Include="App_Data\Template\budgetOutlay.xls" />
     <Content Include="App_Data\Template\procurementPlan.xls" />
     <Content Include="App_Data\Template\procurementPlanReport.doc" />
+    <Content Include="App_Data\Template\信息化采购模板.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

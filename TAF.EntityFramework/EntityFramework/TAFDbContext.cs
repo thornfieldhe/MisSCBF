@@ -297,6 +297,11 @@
             get; set;
         }
 
+        public DbSet<Tenderer> Tenderers
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -11,12 +11,9 @@ namespace SCBF.Purchase
 {
     using System;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    
+    using Abp.Application.Services.Dto;
     using SCBF.Purchase.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
+
     /// <summary>
     /// 招标文件管理应用接口
     /// </summary>
@@ -26,9 +23,10 @@ namespace SCBF.Purchase
 
         BiddingManagementEditDto Get(Guid id);
 
-        Task SaveAsync(BiddingManagementEditDto input);
+            Task<Guid> SaveAsync(BiddingManagementEditDto input);
 
         void Delete(Guid id);
+        string ExportDoc(Guid id);
     }
 }
 

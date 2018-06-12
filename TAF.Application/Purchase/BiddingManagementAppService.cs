@@ -7,7 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Data;
 using Abp.UI;
+using SCBF.Common;
+using SCBF.Tools;
+using TAF.Utility;
 
 namespace SCBF.Purchase
 {
@@ -136,10 +140,11 @@ namespace SCBF.Purchase
             result.ExpertName = this._sysDictionaryRepository.FirstOrDefault(r => r.Id == output.ExpertId)?.Value;
             result.CostList = this._costListRepository.GetAllList(r => r.BiddingManagementId == id)
                 .MapTo<List<CostListDto>>();
+            result.Tenderers = new List<TendererDto>();
             return result;
         }
 
-        public async Task SaveAsync(BiddingManagementEditDto input)
+        public async Task<Guid> SaveAsync(BiddingManagementEditDto input)
         {
             if (this._biddingManagementRepository.Any(r =>
                 r.PlanId == input.PlanId &&
@@ -151,19 +156,120 @@ namespace SCBF.Purchase
             var item = input.MapTo<BiddingManagement>();
             if (!input.Id.HasValue)
             {
-                await this._biddingManagementRepository.InsertAsync(item);
+              item=  await this._biddingManagementRepository.InsertAsync(item);
             }
             else
             {
-                var old = this._biddingManagementRepository.Get(input.Id.Value);
-                Mapper.Map(input, old);
-                await this._biddingManagementRepository.UpdateAsync(old);
+                item= this._biddingManagementRepository.Get(input.Id.Value);
+                this._costListRepository.Delete(r=>r.BiddingManagementId==item.Id);
+                Mapper.Map(input, item);
+
+
+                await this._biddingManagementRepository.UpdateAsync(item);
             }
+            input.CostList.ForEach(r=>r.BiddingManagementId=item.Id);
+            var details = input.CostList.MapTo<List<CostList>>();
+            this._costListRepository.InsertRange(details);
+            return item.Id;
         }
+
 
         public void Delete(Guid id)
         {
             this._biddingManagementRepository.Delete(id);
+        }
+
+        public string ExportDoc(Guid id)
+        {
+            var item = this._biddingManagementRepository.Get(id);
+            var plan = this._procurementPlanRepository.Get(item.PlanId);
+            var details = this._costListRepository.GetAllList(r => r.BiddingManagementId == id);
+            var result = new KeyValue<BiddingManagement,ProcurementPlan,List<CostList>>( item,  plan,  details);
+            return DownloadFileService.Load("信息化采购模板.doc", $"中国人民武装警察部队四川省边防总队{plan.Name}招标文件.doc", new string[] { })
+                .ExcuteDoc(result,this.ExportToDoc);
+        }
+
+        private KeyValue<DataSet, string[], object[]> ExportToDoc(object arg)
+        {
+            var result = arg as KeyValue<BiddingManagement, ProcurementPlan, List<CostList>>;
+            var biddingAgency = this._sysDictionaryRepository.Get(result.Key.BiddingAgencyId);
+            var value = new[]
+            {
+                "采购项目编号",
+                "招标代理机构",
+                "项目名称",
+                "招标时间大写",
+                "招标时间",
+                "文件发售时间起",
+                "文件发售时间止",
+                "招标代理公司地址",
+                "开标截止时间",
+                "招标代理公司银行",
+                "招标代理公司账号",
+                "招标代理公司联系人2",
+                "招标代理公司电话",
+                "招标代理公司邮箱",
+                "最高限价",
+                "招标代理公司联系人",
+                "工期"
+            };
+
+            var year = StringExtensions.NumberToChinese(DateTime.Now.Year.ToString());
+            var mounth = StringExtensions.NumberToChinese(DateTime.Now.Month.ToString());
+            var day = StringExtensions.NumberToChinese(DateTime.Now.Day.ToString());
+            if (mounth.Length == 2)
+            {
+                mounth = mounth[0] + "十" + mounth[1];
+            }
+
+            if (day.Length == 2)
+            {
+                day = day[0] + "十" + day[1];
+            }
+
+            var item3 = new[]
+            {
+                result.Value.Code,
+                biddingAgency.Value,
+                result.Value.Name,
+                $"{year}年{mounth}月{day}日",
+                DateTime.Now.ToString("yyyy年M月d日"),
+                result.Key.PlanDateFrom.ToString("yyyy年M月d日"),
+                result.Key.PlanDateTo.ToString("yyyy年M月d日"),
+                biddingAgency.Value4,
+                result.Key.PlanDateEnd.ToString("yyyy年M月d日"),
+                biddingAgency.Value2,
+                biddingAgency.Value3,
+                $"{biddingAgency.Value8},{biddingAgency.Value9}",
+                $"{biddingAgency.Value11}   {biddingAgency.Value15}",
+                biddingAgency.Value16,
+                result.Key.Total.ToString("N2"),
+                biddingAgency.Value11,
+                result.Key.Schedule.ToString()
+            };
+
+            var ds=new DataSet();
+            var dt=new DataTable("CostList");
+            dt.Columns.Add("Index");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("Details");
+            dt.Columns.Add("Unit");
+            dt.Columns.Add("Amount");
+            for (var i = 0; i < result.Item3.Count; i++)
+            {
+                var row = dt.NewRow();
+                row["Index"] = i+1;
+                row["Category"] = result.Item3[i].Category;
+                row["Details"]  = result.Item3[i].Details;
+                row["Unit"]     = result.Item3[i].Unit;
+                row["Amount"]   = result.Item3[i].Amount;
+                dt.Rows.Add(row);
+            }
+
+
+            ds.Tables.Add(dt);
+
+            return new KeyValue<DataSet, string[], object[]>(ds,value,item3);
         }
     }
 }

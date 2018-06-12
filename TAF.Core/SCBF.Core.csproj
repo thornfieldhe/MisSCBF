@@ -168,6 +168,7 @@
     <Compile Include="Purchase\IStageInfoBudgetOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoRepository.cs" />
     <Compile Include="Purchase\IStageInfoUserRepository.cs" />
+    <Compile Include="Purchase\ITendererRepository.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlay.cs" />
     <Compile Include="Purchase\ProcessManagement.cs" />
     <Compile Include="BaseInfo\Relationship.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Purchase\StageInfoActualOutlay.cs" />
     <Compile Include="Purchase\StageInfoUser.cs" />
     <Compile Include="Purchase\StageInfoBudgetOutlay.cs" />
+    <Compile Include="Purchase\Tenderer.cs" />
     <Compile Include="Storage\Check.cs" />
     <Compile Include="Storage\CheckBill.cs" />
     <Compile Include="Storage\ICheckBillRepository.cs" />

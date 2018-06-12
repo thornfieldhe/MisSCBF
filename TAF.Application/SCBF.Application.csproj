@@ -241,16 +241,19 @@
     <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />
+    <Compile Include="Purchase\Dto\TendererDto.cs" />
     <Compile Include="Purchase\IBiddingManagementAppService.cs" />
     <Compile Include="Purchase\ICostListAppService.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\IProcessManagementAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />
     <Compile Include="Purchase\IStageInfoeAppService.cs" />
+    <Compile Include="Purchase\ITendererAppService.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\ProcessManagementAppService.cs" />
     <Compile Include="Purchase\ProcurementPlanAppService.cs" />
     <Compile Include="Purchase\StageInfoeAppService.cs" />
+    <Compile Include="Purchase\TendererAppService.cs" />
     <Compile Include="Storage\Dto\DeliveryBillQueryDto.cs" />
     <Compile Include="Tasks\DailyTask.cs" />
     <Compile Include="Tasks\Yearly.cs" />
@@ -380,6 +383,7 @@
     <Compile Include="Roles\IRoleAppService.cs" />
     <Compile Include="Roles\Dto\UpdateRolePermissionsInput.cs" />
     <Compile Include="Tasks\MonthLyTask.cs" />
+    <Compile Include="Tools\Extensions.cs" />
     <Compile Include="Tools\QueryableExtension.cs" />
     <Compile Include="Users\Dto\UserEditDto.cs" />
     <Compile Include="Users\Dto\UserQueryDto.cs" />

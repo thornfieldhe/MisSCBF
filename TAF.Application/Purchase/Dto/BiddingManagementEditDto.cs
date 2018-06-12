@@ -112,6 +112,7 @@ namespace SCBF.Purchase.Dto
         }
 
         public List<CostListDto> CostList { get; set; }
+        public List<TendererDto> Tenderers { get; set; }
     }
 }
 

@@ -403,6 +403,10 @@
     <Compile Include="Migrations\201806111426579_modifyTable_biddingmanagement.Designer.cs">
       <DependentUpon>201806111426579_modifyTable_biddingmanagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806121533455_addTable_Tenderer.cs" />
+    <Compile Include="Migrations\201806121533455_addTable_Tenderer.Designer.cs">
+      <DependentUpon>201806121533455_addTable_Tenderer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -451,6 +455,7 @@
     <Compile Include="Repositories\StockRepository.cs" />
     <Compile Include="Repositories\SysDictionaryRepository.cs" />
     <Compile Include="Repositories\AttachmentRepository.cs" />
+    <Compile Include="Repositories\TendererRepository.cs" />
     <Compile Include="Repositories\UnitPoolRepository.cs" />
     <Compile Include="Repositories\UploadOilCardRoofRepository.cs" />
     <Compile Include="Repositories\UploadOilCarRoofRelationshipRepository.cs" />
@@ -668,6 +673,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806111426579_modifyTable_biddingmanagement.resx">
       <DependentUpon>201806111426579_modifyTable_biddingmanagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121533455_addTable_Tenderer.resx">
+      <DependentUpon>201806121533455_addTable_Tenderer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

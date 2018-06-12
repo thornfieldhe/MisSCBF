@@ -97,7 +97,9 @@
             schedule:0,
             expertName:"", 
             expertId:"", 
-            costList:[]
+            hasPrint:false,
+            costList:[],
+            tenderers:[]
         }
     },
     methods: {
@@ -127,7 +129,8 @@
                 abp.services.app.biddingManagement.get(id)
                     .done(function (m) {
                         $this.item = m;
-                        $("#editPlanId").select2().val($this.item.planId).trigger("change");
+                        $("#editplanId").select2().val($this.item.planId).trigger("change");
+                        $("#editbiddingAgencyId").select2().val($this.item.biddingAgencyId).trigger("change");
                     })
                     .fail(function (m) {
                         $this.fail(m);
@@ -142,6 +145,7 @@
             abp.services.app.biddingManagement.saveAsync($this.item)
             .done(function (m) {
                 $this.query(0);
+                    $("#modifyBiddingManagementDialog").modal("hide");
             })
             .fail(function (m) {
                 $this.fail(m);
@@ -161,6 +165,9 @@
             this.item.expertId= "";
             this.item.total= 0;
             this.item.schedule= 0;
+            this.item.tenderers=[],
+            this.item.costList=[],
+            this.item.hasPrint = false;
         },
         query: function (index) {
             var $this = this;
@@ -199,10 +206,6 @@
         },
         addDetail: function() {
             var $this = this;
-            if ($this.item.id == "") {
-                taf.notify.danger("请先保存招标文件,再新增清单");
-
-            } else {
                 var details = {
                     id: "",
                     biddingManagementId: $this.item.id,
@@ -214,18 +217,84 @@
                 };
 
                 $this.item.costList.push(details);
-            }
         },
-        deleteItem: function(index,id) {
+        deleteItem: function(index) {
             this.item.costList.splice(index,1);
-            abp.services.app.costList.delete(id);
         },
         saveItem: function(item) {
-            abp.services.app.costList.saveAsync(item);
+            item.editStatus = false;
+        },
+        cancelItem: function(item) {
             item.editStatus = false;
         },
         editItem: function(item) {
             item.editStatus = true;
+        },
+        export: function() {
+            var $this = this;
+            $this.item.hasPrint=true;
+            abp.services.app.biddingManagement.saveAsync($this.item)
+                .done(function (m) {
+                    var url = "/BiddingManagement/DownloadPlan/" + m;
+                    taf.download(url);
+                    $("#modifyBiddingManagementDialog").modal("hide");
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        },
+        addTenderer: function() {
+            var $this = this;
+            var tenderer = {
+                id: "",
+                biddingManagementId: $this.item.id,
+                name: "",
+                editStatus: true
+            };
+
+            $this.item.tenderers.push(tenderer);
+        },
+        deleteTenderer: function(index) {
+            this.item.tenderers.splice(index,1);
+        },
+        saveTenderer: function(item) {
+            item.editStatus = false;
+        },
+        editTenderer: function(item) {
+            item.editStatus = true;
+        },
+        cancelTenderer: function(item) {
+            item.editStatus = false;
+        },
+        showModifyTendererDialog: function (id) {
+            var $this = this;
+            $("#modifyTendererDialog").modal("show");
+            if (id !==null) {
+                abp.services.app.biddingManagement.get(id)
+                    .done(function (m) {
+                        $this.item = m;
+                        abp.services.app.tenderer.getAll(id)
+                            .done(function(s) {
+                                $this.item.tenderers = s;
+                            });
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    });
+            }else {
+                $this.modifyEntity.editModel = false;
+                $this.clear();
+            }
+        },
+        saveTenderers: function() {
+            var $this = this;
+            abp.services.app.tenderer.saveAsync($this.item.tenderers)
+                .done(function (m) {
+                    taf.notify.success("投标单位保存成功");
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
         }
     }
 });
