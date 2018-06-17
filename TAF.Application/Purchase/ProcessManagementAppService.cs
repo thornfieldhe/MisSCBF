@@ -162,10 +162,15 @@ namespace SCBF.Purchase
             }
         }
 
-
+        /// <summary>
+        /// 通用的上传附件方法
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Guid UploadAttachment(string path, object id)
         {
-            return new Guid((id as string[]).First());
+            return new Guid((id as string[])[1]);
         }
 
         public string Print(Guid id)

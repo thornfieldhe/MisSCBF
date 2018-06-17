@@ -302,6 +302,11 @@
             get; set;
         }
 
+        public DbSet<BidOpeningManagement> BidOpeningManagements
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

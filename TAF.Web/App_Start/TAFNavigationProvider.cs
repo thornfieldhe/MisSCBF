@@ -248,8 +248,13 @@
                             requiredPermissionName: PermissionNames.CgUser))
                         .AddItem(new MenuItemDefinition(
                             "menuBiddingManagements",
-                            L("招标文件管理"),
+                            L("招标管理"),
                             url: "#biddingManagements",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBidOpeningManagements",
+                            L("开标管理"),
+                            url: "#bidOpeningManagements",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

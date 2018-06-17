@@ -1,0 +1,260 @@
+﻿@using SCBF.BaseInfo.Dto
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">开标管理</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary " v-on:click="showModifyDialog('新增开标',null)"><i class="fa  fa-plus"></i> 新增</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        采购项目编号
+                                    </th>
+                                    <th style="width: 150px;">
+                                        采购类别
+                                    </th>
+                                    <th style="width: 150px;">
+                                        采购方式
+                                    </th>
+                                    <th style="width: 200px;">
+                                        采购项目
+                                    </th>
+                                    <th style="width: 200px;">
+                                        中标单位
+                                    </th>
+                                    <th style="width: 250px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="项目编号" v-model="queryEntity.code" />
+                                    </th>
+                                    <th>
+                                        <select id="searchCategory" style="width: 100%" v-model="queryEntity.category">
+                                            <option value="">请选择...</option>
+                                            <option value="Zccg">资产(物资)采购</option>
+                                            <option value="Fwcg">服务采购</option>
+                                            <option value="Xxhcg">信息化采购</option>
+                                            <option value="Gccg">工程采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchMode" style="width: 100%" v-model="queryEntity.mode">
+                                            <option value="">请选择...</option>
+                                            <option value="Yqzb">邀请招标</option>
+                                            <option value="Jzxtp">竞争性谈判</option>
+                                            <option value="Xjcg">询价采购</option>
+                                            <option value="Bxcg">比选采购</option>
+                                            <option value="GkzbZdjf">公开招标(最低价法)</option>
+                                            <option value="GkzbZhpff">公开招标(综合评分法)</option>
+                                            <option value="Dylycg">单一来源采购</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="项目名称" v-model="queryEntity.name" />
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="中标单位" v-model="queryEntity.successfulTender" />
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list.items">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.category}}</td>
+                                    <td>{{item.mode}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.successfulTender}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑开标',item.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                        <button type="button" class="btn btn-default  " v-on:click="showAttachmentsDialog('附件管理',item.id) "><i class="fa  fa-paperclip"></i> 附件</button>
+                                        <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="12" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                                        </div>
+                                        <div class="col-sm-4 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--上传附件-->
+<div class="bootbox modal fade modal-primary in" id="attachmentsDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">上传<span class="red">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="file" name="fileUpload" id="fileUpload" class="fileUpload" title="上传附件" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <tbody>
+                                <tr v-for="o in list4">
+                                    <td><a href="/app_data/attachment/{{o.item3}}">{{o.value}}</a></td>
+                                    <td>
+
+                                        <button type="button" class="btn   edit" v-on:click="removeAttach(o.key)"><i class="fa  fa-trash-o"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除对话框 -->
+<div class="bootbox modal fade modal-darkorange in" id="deleteBiddingManagementDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除{{deleteEntity.name}}？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="delete(deleteEntity.id)"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyBidOpeningManagementDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v">
+                        <form class="form-horizontal " name="form" novalidate>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">采购计划<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="editPlanId" style="width: 100%" v-model="item.planId" name="planid" v-validate:planid="{required:true}">
+                                                <option value="">请选择...</option>
+                                                @{
+                                                    foreach (var item in (List<TAF.Utility.KeyValue<Guid, string>>)ViewData["list1"])
+                                                    {
+                                                        <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">复审专家<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" readonly="readonly" id="expertName" name="expertName" v-model="item.expertName" v-validate:expertName="{required:true}" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button" v-on:click="getExpert()" :disabled='item.hasPrint>0'>随机抽取</button>
+                                                </span>
+                                            </div>
+
+
+                                            <span class="input-group-btn">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label no-padding-right">投标单位<span class="red">*</span></label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox" v-for="tender in tenders">
+                                                <label for="{{tender}}">
+                                                    <input type="checkbox" :value="tender" v-model="item.successfulTender" name="{{tender}}" id="{{tender}}">
+                                                    <span class=" text">
+                                                        {{tender}}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="save()" v-show="!item.hasPrint>0" disabled="{{!$v.valid }}"><i class='fa    fa-floppy-o'></i>保存 </button>
+                                                        <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa    fa    fa-print'></i>废标 </button>
+                                                        <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa    fa    fa-print'></i>中标通知 </button>
+                                                        <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa    fa    fa-print'></i>生成报告 </button>
+                                                        <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa    fa    fa-print'></i>公示 </button>
+</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/liteuploader.js"></script>
+<script src="~/Views/BidOpeningManagement/bidOpeningManagement.js"></script>
+
+
+

@@ -185,8 +185,21 @@ namespace SCBF.Purchase
             var plan = this._procurementPlanRepository.Get(item.PlanId);
             var details = this._costListRepository.GetAllList(r => r.BiddingManagementId == id);
             var result = new KeyValue<BiddingManagement,ProcurementPlan,List<CostList>>( item,  plan,  details);
-            return DownloadFileService.Load("信息化采购模板.doc", $"中国人民武装警察部队四川省边防总队{plan.Name}招标文件.doc", new string[] { })
-                .ExcuteDoc(result,this.ExportToDoc);
+            if (plan.Category==ProcurementPlanCategory.Xxhcg)
+            {
+                return DownloadFileService.Load("信息化采购模板.doc", $"中国人民武装警察部队四川省边防总队{plan.Name}招标文件.doc", new string[] { })
+                    .ExcuteDoc(result,this.ExportToDoc);
+            }
+
+            if (plan.Category==ProcurementPlanCategory.Zccg)
+            {
+                return DownloadFileService.Load("资产采购模板.doc", $"中国人民武装警察部队四川省边防总队{plan.Name}招标文件.doc", new string[] { })
+                    .ExcuteDoc(result,this.ExportToDoc);
+            }
+
+                //Todo: 处理其他报告类型
+                throw new Exception("未处理");
+
         }
 
         private KeyValue<DataSet, string[], object[]> ExportToDoc(object arg)
@@ -220,11 +233,6 @@ namespace SCBF.Purchase
             if (mounth.Length == 2)
             {
                 mounth = mounth[0] + "十" + mounth[1];
-            }
-
-            if (day.Length == 2)
-            {
-                day = day[0] + "十" + day[1];
             }
 
             var item3 = new[]

@@ -88,7 +88,7 @@ namespace SCBF.Web.Controllers
         [System.Web.Mvc.HttpPost]
         public JsonResult Upload(Guid modelId)
         {
-            this.UploadFile(DictionaryCategory.Purchase_Attachment, new string[] {modelId.ToString()},
+            this.UploadFile(DictionaryCategory.Purchase_Attachment, new string[] {"_theSameFileName",modelId.ToString()},
                 this._processManagementAppService.UploadAttachment);
             return new JsonResult() {Data = "OK"};
         }

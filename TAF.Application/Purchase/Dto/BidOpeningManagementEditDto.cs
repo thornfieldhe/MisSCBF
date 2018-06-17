@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BiddingManagementEditDto.cs" company=""  author="何翔华">
+// <copyright file="BidOpeningManagementEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   招标文件管理编辑对象
+//   开标管理编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,10 +16,10 @@ namespace SCBF.Purchase.Dto
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 招标文件管理编辑对象
+    /// 开标管理编辑对象
     /// </summary>
-    [AutoMap(typeof(BiddingManagement))]
-    public class BiddingManagementEditDto
+    [AutoMap(typeof(BidOpeningManagement))]
+    public class BidOpeningManagementEditDto
     {
         /// <summary>
         /// Id
@@ -46,41 +46,20 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// BiddingAgencyId
+        /// Mode
         /// </summary>
-        public Guid BiddingAgencyId
+        public string Mode
         {
             get; set;
         }
 
         /// <summary>
-        /// Date
+        /// ExpertId
         /// </summary>
-        public string Date
+        public Guid ExpertId
         {
             get; set;
         }
-
-        /// <summary>
-        /// PlanDateFrom
-        /// </summary>
-        public string PlanDateFrom
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// PlanDateTo
-        /// </summary>
-        public string PlanDateTo
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 评审专家
-        /// </summary>
-        public Guid ExpertId { get; set; }
 
         /// <summary>
         /// 评审专家姓名
@@ -88,31 +67,12 @@ namespace SCBF.Purchase.Dto
         public string ExpertName { get; set; }
 
         /// <summary>
-        /// PlanDateEnd
+        /// SuccessfulTender
         /// </summary>
-        public string PlanDateEnd
+        public List<string>  SuccessfulTender
         {
             get; set;
         }
-
-        /// <summary>
-        /// Total
-        /// </summary>
-        public decimal Total
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Schedule
-        /// </summary>
-        public int Schedule
-        {
-            get; set;
-        }
-
-        public List<CostListDto> CostList { get; set; }
-        public List<TendererDto> Tenderers { get; set; }
     }
 }
 

@@ -160,8 +160,10 @@
     <Compile Include="Finance\VoucherAuditPoint.cs" />
     <Compile Include="Purchase\BiddingManagement.cs" />
     <Compile Include="Purchase\BiddingType.cs" />
+    <Compile Include="Purchase\BidOpeningManagement.cs" />
     <Compile Include="Purchase\CostList.cs" />
     <Compile Include="Purchase\IBiddingManagementRepository.cs" />
+    <Compile Include="Purchase\IBidOpeningManagementRepository.cs" />
     <Compile Include="Purchase\ICostListRepository.cs" />
     <Compile Include="Purchase\IProcessManagementRepository.cs" />
     <Compile Include="Purchase\IStageInfoActualOutlayRepository.cs" />

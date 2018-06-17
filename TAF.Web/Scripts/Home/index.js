@@ -66,6 +66,8 @@ Path.map("#supervisionManage").to(function () { loadPage("/ProcessManagement/Sup
 Path.map("#agentManage").to(function () { loadPage("/ProcessManagement/AgentManageManage", "采购管理", "招标代理机构管理", "#menuAgentManage", false); });
 Path.map("#representativesManage").to(function () { loadPage("/ProcessManagement/RepresentativesManage", "采购管理", "甲方代表管理", "#menuRepresentativesManage", false); });
 Path.map("#biddingManagements").to(function () { loadPage("/BiddingManagement/BiddingManagementList", "招标文件管理", "招标文件管理", "#menuBiddingManagements", false); });
+Path.map("#bidOpeningManagements").to(function () { loadPage("/BidOpeningManagement/BidOpeningManagementList", "开标管理", "开标管理", "#menuBidOpeningManagements", false); });
+
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#maintenanceParts").to(function () { loadPage("/Car/MaintenancePartsList", "车辆管理", "维修部位", "#menuMaintenanceParts", false); });

@@ -22,9 +22,9 @@ namespace SCBF.Purchase
         public Guid PlanId { get; set; }
 
         /// <summary>
-        /// 是否已打印招标文件
+        /// 是否已打印招标文件0:未打印,1:已打印,2:已结束
         /// </summary>
-        public bool HasPrint { get; set; }
+        public int HasPrint { get; set; }
 
         /// <summary>
         /// 招标代理机构

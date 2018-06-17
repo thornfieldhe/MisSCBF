@@ -817,6 +817,7 @@
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Views\BidOpeningManagement\bidOpeningManagement.js" />
     <Content Include="Views\Account\changePwd.js" />
     <Content Include="Views\Account\login.js" />
     <Content Include="Views\Account\user.js" />
@@ -965,6 +966,7 @@
     <Compile Include="Controllers\ApplicationForBunkerAController.cs" />
     <Compile Include="Controllers\ApplyForVehicleMaintenanceController.cs" />
     <Compile Include="Controllers\BiddingManagementController.cs" />
+    <Compile Include="Controllers\BidOpeningManagementController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\CarController.cs" />
@@ -1031,6 +1033,7 @@
     <Content Include="App_Data\Template\procurementPlan.xls" />
     <Content Include="App_Data\Template\procurementPlanReport.doc" />
     <Content Include="App_Data\Template\信息化采购模板.doc" />
+    <Content Include="App_Data\Template\资产采购模板.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1102,6 +1105,7 @@
     <Content Include="Views\ProcessManagement\_SupervisionManage.cshtml" />
     <Content Include="Views\ProcessManagement\_RepresentativesManage.cshtml" />
     <Content Include="Views\BiddingManagement\_BiddingManagementIndex.cshtml" />
+    <Content Include="Views\BidOpeningManagement\_BidOpeningManagementIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

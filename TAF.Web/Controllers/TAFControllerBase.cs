@@ -42,7 +42,7 @@ namespace SCBF.Web.Controllers
         /// 通用上传模块
         /// </summary>
         /// <param name="category"></param>
-        /// <param name="param"></param>
+        /// <param name="param">第0条应该是保存文件名称</param>
         /// <param name="act"></param>
         protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act) //Todo: 上传文件方法已经实现
         {
@@ -76,7 +76,8 @@ namespace SCBF.Web.Controllers
                     }
                     else
                     {
-                        var saveName = Guid.NewGuid()    + fileExtension; // 保存文件名称
+                        var saveName = param.Length==0||param[0]!="_theSameFileName"
+                            ?Guid.NewGuid() + fileExtension:fileName ; // 保存文件名称
                         fileData.SaveAs(fileSaveLocation + saveName);     // 
                         var fileInfo = new FileInfo(fileSaveLocation + saveName);
 

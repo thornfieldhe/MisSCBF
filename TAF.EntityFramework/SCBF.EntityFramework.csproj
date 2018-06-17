@@ -407,6 +407,14 @@
     <Compile Include="Migrations\201806121533455_addTable_Tenderer.Designer.cs">
       <DependentUpon>201806121533455_addTable_Tenderer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806160743374_modifyTablebiddingmanagement1.cs" />
+    <Compile Include="Migrations\201806160743374_modifyTablebiddingmanagement1.Designer.cs">
+      <DependentUpon>201806160743374_modifyTablebiddingmanagement1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806160808544_addTable_BidOpeningManagements.cs" />
+    <Compile Include="Migrations\201806160808544_addTable_BidOpeningManagements.Designer.cs">
+      <DependentUpon>201806160808544_addTable_BidOpeningManagements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -417,6 +425,7 @@
     <Compile Include="Repositories\ApplicationForBunkerBRepository.cs" />
     <Compile Include="Repositories\ApplyForVehicleMaintenanceRepository.cs" />
     <Compile Include="Repositories\BiddingManagementRepository.cs" />
+    <Compile Include="Repositories\BidOpeningManagementRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
@@ -676,6 +685,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806121533455_addTable_Tenderer.resx">
       <DependentUpon>201806121533455_addTable_Tenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806160743374_modifyTablebiddingmanagement1.resx">
+      <DependentUpon>201806160743374_modifyTablebiddingmanagement1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806160808544_addTable_BidOpeningManagements.resx">
+      <DependentUpon>201806160808544_addTable_BidOpeningManagements.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

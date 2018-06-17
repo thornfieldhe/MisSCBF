@@ -1,70 +1,72 @@
 ﻿@model List<TAF.Utility.KeyValue<string, int, string>>
 <div class="row">
-        <div class="col-xs-12 col-md-12">
-            <div class="widget">
-                <div class="widget-header bordered-bottom bordered-primary">
-                    <span class="widget-caption">用户管理</span>
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">用户管理</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <add-button title="新增"></add-button>
                 </div>
-                <div class="widget-body">
-                    <div class="table-toolbar">
-                        <add-button title="新增"></add-button>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <table class="table table-striped table-hover table-bordered " style="width: 800px;">
-                                <thead>
-                                    <tr role="row">
-                                        <th style="width: 100px;">
-                                            登录名
-                                        </th>
-                                        <th style="width: 200px;">
-                                            用户
-                                        </th>
-                                        <th style="width: 200px;">
-                                            角色
-                                        </th>
-                                        <th style="width: 300px;">
-                                            操作
-                                        </th>
-                                    </tr>
-                                    <tr role="row">
-                                        <th>
-                                            <input type="text" class="form-control" placeholder="登录名" v-model="queryEntity.userName" />
-                                        </th>
-                                        <th>
-                                            <input type="text" class="form-control" placeholder="用户名" v-model="queryEntity.name" />
-                                        </th>
-                                        <th>
-                                            <select id="searchRoleId" style="width: 100%" v-model="queryEntity.roleId">
-                                                <option value="">请选择...</option>
-                                                @{
-                                                    foreach (var item in Model)
-                                                    {
-                                                        <option value="@item.Value">@item.Key</option>
-                                                    }
-                                                }
-                                            </select>
-                                        </th>
-                                        <th><search-command></search-command></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="item in list">
-                                        <td>{{item.userName}}</td>
-                                        <td>{{item.name}}</td>
-                                        <td>{{item.roles}}</td>
-                                        <td>
-                                            <button type="button" class="btn   edit" v-on:click="resetPwd(item.id,item.name) "><i class="fa fa-edit"></i> 重置密码</button><row-command :id="item.id" title="编辑" :name="item.name"></row-command>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot is="table-foot" colspan="4"></tfoot>
-                            </table>
-                        </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped table-hover table-bordered " style="width: 800px;">
+                            <thead>
+                            <tr role="row">
+                                <th style="width: 100px;">
+                                    登录名
+                                </th>
+                                <th style="width: 200px;">
+                                    用户
+                                </th>
+                                <th style="width: 200px;">
+                                    角色
+                                </th>
+                                <th style="width: 300px;">
+                                    操作
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th>
+                                    <input type="text" class="form-control" placeholder="登录名" v-model="queryEntity.userName"/>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="用户名" v-model="queryEntity.name"/>
+                                </th>
+                                <th>
+                                    <select id="searchRoleId" style="width: 100%" v-model="queryEntity.roleId">
+                                        <option value="">请选择...</option>
+                                        @{
+                                            foreach (var item in Model)
+                                            {
+                                                <option value="@item.Value">@item.Key</option>
+                                            }
+                                        }
+                                    </select>
+                                </th>
+                                <th>
+                                    <search-command></search-command>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in list">
+                                <td>{{item.userName}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.roles}}</td>
+                                <td>
+                                    <button type="button" class="btn   edit" v-on:click="resetPwd(item.id,item.name) "><i class="fa fa-edit"></i> 重置密码</button><row-command :id="item.id" title="编辑" :name="item.name"></row-command>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot is="table-foot" colspan="4"></tfoot>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 <dialog-delete></dialog-delete>
 <form-edit></form-edit>
@@ -86,7 +88,7 @@
                             <label class="col-sm-2 control-label no-padding-right">登录名</label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control " placeholder="必填" name="loginname" v-model="item.userName" disabled="{{editModel}}" v-validate:loginname="{required:true}" />
+                                    <input type="text" class="form-control " placeholder="必填" name="loginname" v-model="item.userName" disabled="{{editModel}}" v-validate:loginname="{required:true}"/>
                                 </span>
                             </div>
                         </div>
@@ -98,7 +100,7 @@
                             <label class="col-sm-2 control-label no-padding-right">用户</label>
                             <div class="col-sm-10">
                                 <span class="input-icon icon-right">
-                                    <input type="text" class="form-control" placeholder="必填" name="name" v-model="item.name" v-validate:username="{required:true}" />
+                                    <input type="text" class="form-control" placeholder="必填" name="name" v-model="item.name" v-validate:username="{required:true}"/>
                                 </span>
                             </div>
                         </div>
@@ -111,16 +113,16 @@
                             <div class="col-sm-10">
                                 <div class="row">
                                     @foreach (var role in Model)
-                        {
-                            <div class="col-lg-4 col-sm-4 col-xs-4">
-                                <div class="checkbox">
-                                    <label for="@role.Item3">
-                                        <input type="checkbox" value="@role.Item3" v-model="item.roles" id="@role.Item3">
-                                        <span class=" text">@role.Key</span>
-                                    </label>
-                                </div>
-                            </div>
-            }
+                                    {
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <div class="checkbox">
+                                                <label for="@role.Item3">
+                                                    <input type="checkbox" value="@role.Item3" v-model="item.roles" id="@role.Item3">
+                                                    <span class=" text">@role.Key</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>

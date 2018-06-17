@@ -442,6 +442,11 @@ namespace SCBF
                     .ForMember(m => m.Total, n => n.MapFrom(r => r.Total.ToString()))
                     .ForMember(m => m.PlanDateFrom, n => n.MapFrom(r => r.PlanDateFrom.ToString("yyyy-MM-dd")));
 
+                mapper.CreateMap<BidOpeningManagementEditDto, BidOpeningManagement>()
+                    .ForMember(m => m.SuccessfulTender, n => n.MapFrom(r => string.Join(",",r.SuccessfulTender)));
+                mapper.CreateMap<BidOpeningManagement, BidOpeningManagementEditDto>()
+                    .ForMember(m => m.SuccessfulTender, n => n.MapFrom(r => r.SuccessfulTender.Split(',').ToList()));
+
                 #endregion
             });
         }

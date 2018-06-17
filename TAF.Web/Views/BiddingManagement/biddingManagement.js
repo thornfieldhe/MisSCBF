@@ -97,10 +97,11 @@
             schedule:0,
             expertName:"", 
             expertId:"", 
-            hasPrint:false,
+            hasPrint:0,
             costList:[],
             tenderers:[]
-        }
+        },
+        list4:[]
     },
     methods: {
         showDeleteDialog: function (id,name) {
@@ -167,7 +168,7 @@
             this.item.schedule= 0;
             this.item.tenderers=[],
             this.item.costList=[],
-            this.item.hasPrint = false;
+            this.item.hasPrint = 0;
         },
         query: function (index) {
             var $this = this;
@@ -232,7 +233,7 @@
         },
         export: function() {
             var $this = this;
-            $this.item.hasPrint=true;
+            $this.item.hasPrint=1;
             abp.services.app.biddingManagement.saveAsync($this.item)
                 .done(function (m) {
                     var url = "/BiddingManagement/DownloadPlan/" + m;
@@ -295,9 +296,51 @@
                 .fail(function (m) {
                     $this.fail(m);
                 });
-        }
+        },
+        showAttachmentsDialog: function(name, id) {
+            var $this = this;
+            $this.modifyEntity.modifyTitle = name;
+            $this.item.id = id;
+            $("#attachmentsDialog").modal("show");
+            $this.query4();
+
+        },
+        removeAttach: function(id) {
+            var $this = this;
+            abp.services.app.attachment.delete(id)
+                .done(function (m) {
+                    $this.query4();
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        }, 
+        query4: function() {
+            var $this = this;
+
+            abp.services.app.attachment.getAll($this.item.id)
+                .done(function(r) {
+                    $this.list4 = r;
+                })
+                .fail(function(r) {
+                    $this.fail(r);
+                });
+        },
     }
 });
 
+
+$(".fileUpload").liteUploader({
+        script: defaultUrl + "ProcessManagement/Upload?modelId=" + main.item.id
+    })
+    .on("lu:success", function (e, response) {
+        main.query4();
+        taf.notify.success("附件上传成功");
+    });
+
+$(".fileUpload").change(function () {
+    $(".fileUpload").data("liteUploader").options.script= defaultUrl + "ProcessManagement/Upload?modelId=" + main.item.id;
+    $(this).data("liteUploader").startUpload();
+});
 
 
