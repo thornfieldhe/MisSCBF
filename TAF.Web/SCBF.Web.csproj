@@ -985,6 +985,7 @@
     <Compile Include="Controllers\OilCardController.cs" />
     <Compile Include="Controllers\OilCardProofController.cs" />
     <Compile Include="Controllers\OilRechargeRecordController.cs" />
+    <Compile Include="Controllers\PerformanceAmountDetailController.cs" />
     <Compile Include="Controllers\ProcessManagementController.cs" />
     <Compile Include="Controllers\ProcurementPlanController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
@@ -1035,6 +1036,7 @@
     <Content Include="App_Data\Template\资产采购模板.doc" />
     <Content Include="App_Data\Template\中标通知书模板.doc" />
     <Content Include="App_Data\Template\招投标计划模板.docx" />
+    <Content Include="App_Data\Template\履约保证金抵扣没收通知书模板.docx" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

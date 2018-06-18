@@ -26,10 +26,10 @@
                                 <th style="width: 200px;">
                                     采购项目
                                 </th>
-                                <th style="width: 200px;">
+                                <th style="width: 150px;">
                                     招标代理机构
                                 </th>
-                                <th style="width: 150px;">
+                                <th style="width: 100px;">
                                     最高限价(元)
                                 </th>
                                 <th style="width: 250px;">
@@ -433,9 +433,9 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
-    <button type="button" class="btn btn-default" v-on:click="addDetail()" v-show="!item.hasPrint>0"><i class='fa   fa fa-plus'></i>新增清单</button>
+    <button type="button" class="btn btn-default" v-on:click="addDetail()" v-show="!item.hasPrint>0"><i class='fa fa-plus'></i>新增清单</button>
     <button type="submit" class="btn btn-primary" v-on:click="save()" v-show="!item.hasPrint>0" disabled="{{!$v.valid }}"><i class='fa    fa-floppy-o'></i>保存 </button>
-    <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa    fa    fa-print'></i>导出招标文件 </button>
+    <button type="submit" class="btn btn-primary" v-on:click="export()" disabled="{{!$v.valid}}"><i class='fa   fa-print'></i>导出招标文件 </button>
 </div>
 </div>
 </div>

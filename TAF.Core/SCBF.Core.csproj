@@ -171,6 +171,8 @@
     <Compile Include="Purchase\IBiddingManagementRepository.cs" />
     <Compile Include="Purchase\IBidOpeningManagementRepository.cs" />
     <Compile Include="Purchase\ICostListRepository.cs" />
+    <Compile Include="Purchase\IPerformanceAmountDetailRepository.cs" />
+    <Compile Include="Purchase\IPerformanceManageRepository.cs" />
     <Compile Include="Purchase\IProcessManagementRepository.cs" />
     <Compile Include="Purchase\IStageInfoActualOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoBudgetOutlayRepository.cs" />

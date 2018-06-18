@@ -231,6 +231,8 @@
     <Compile Include="Purchase\Dto\BidOpeningManagementQueryDto.cs" />
     <Compile Include="Purchase\Dto\BudgetOutlaySummaryDto.cs" />
     <Compile Include="Purchase\Dto\CostListDto.cs" />
+    <Compile Include="Purchase\Dto\PerformanceAmountDetailDto.cs" />
+    <Compile Include="Purchase\Dto\PerformanceManageEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayListDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayQueryDto.cs" />
@@ -248,11 +250,15 @@
     <Compile Include="Purchase\IBiddingManagementAppService.cs" />
     <Compile Include="Purchase\IBidOpeningManagementAppService.cs" />
     <Compile Include="Purchase\ICostListAppService.cs" />
+    <Compile Include="Purchase\IPerformanceAmountDetailAppService.cs" />
+    <Compile Include="Purchase\IPerformanceManageAppService.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\IProcessManagementAppService.cs" />
     <Compile Include="Purchase\IProcurementPlanAppService.cs" />
     <Compile Include="Purchase\IStageInfoeAppService.cs" />
     <Compile Include="Purchase\ITendererAppService.cs" />
+    <Compile Include="Purchase\PerformanceAmountDetailAppService.cs" />
+    <Compile Include="Purchase\PerformanceManageAppService.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlayAppService.cs" />
     <Compile Include="Purchase\ProcessManagementAppService.cs" />
     <Compile Include="Purchase\ProcurementPlanAppService.cs" />

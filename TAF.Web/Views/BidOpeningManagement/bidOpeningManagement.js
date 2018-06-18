@@ -28,6 +28,29 @@
                             });
                     }
                 });
+
+        var datePickerDate = $('#datePickerDate').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate',
+                function(ev) {
+                    datePickerDate.hide();
+                    $this.item.date = $("#datePickerDate").val();
+                })
+            .on('hide',
+                function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                })
+            .data('datepicker');
+        var datePickerDate2 = $('#datePickerDate2').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate',
+                function(ev) {
+                    datePickerDate2.hide();
+                    $this.performanceItem.date = $("#datePickerDate2").val();
+                })
+            .on('hide',
+                function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                })
+            .data('datepicker');
     },
     data:
     {
@@ -66,7 +89,8 @@
                 "",
             expertName:
                 "",
-            price:"",
+            price: "",
+            date: "",
             expertId:
                 "",
             hasPrint:
@@ -76,6 +100,14 @@
             successfulTender:
                 []
         },
+        performanceItem: {
+            id: "",
+            planId: "",
+            hasPrint: 0,
+            marginAmount: 0,
+            date: ""
+        },
+        performanceAmountDetails: [],
         tenders: [],
         list4:
             []
@@ -126,22 +158,61 @@
                 $this.clear();
             }
         },
+        showModifyPerformanceDialog: function(name, id) {
+            var $this = this;
+            $("#modifyPerformanceDialog").modal("show");
+            $this.modifyEntity.modifyTitle = name;
+            $this.modifyEntity.editModel = true;
+            abp.services.app.performanceManage.get(id)
+                .done(function(m) {
+                    $this.performanceItem = m;
+                    if (m.id !== null) {
+                        abp.services.app.performanceAmountDetail.getAll(m.id)
+                            .done(function(m) {
+                                $this.performanceAmountDetails = m;
+                            })
+                            .fail(function(m) {
+                                $this.fail(m);
+                            });
+                    } else {
+                        $this.performanceAmountDetails = [];
+                    }
+                
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+
+            
+        },
         save: function() {
             var $this = this;
 //            if (($this.item.model === "GkzbZhpff" || $this.item.model === "Bxcg") &&
 //                $this.item.successfulTender.length < 3) {
 //                taf.notify.danger("请选择3名候选中标人");
 //            } else {
-                abp.services.app.bidOpeningManagement.saveAsync($this.item)
-                    .done(function(m) {
-                        $this.query(0);
-                        $("#modifyBidOpeningManagementDialog").modal("hide");
-                    })
-                    .fail(function(m) {
-                        $this.fail(m);
-                    });
+            abp.services.app.bidOpeningManagement.saveAsync($this.item)
+                .done(function(m) {
+                    $this.query(0);
+                    $("#modifyBidOpeningManagementDialog").modal("hide");
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
 //            }
-            
+
+        },
+        save2: function() {
+            var $this = this;
+            abp.services.app.performanceManage.saveAsync($this.performanceItem)
+                .done(function(m) {
+                    $this.query(0);
+                    $("#modifyPerformanceDialog").modal("hide");
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+
         },
         clear: function() {
             this.item.id = "";
@@ -149,6 +220,7 @@
             this.item.planId = "";
             this.item.successfulTender = [];
             this.item.expertName = "";
+            this.item.date = "";
             this.item.price = "";
             this.item.expertId = "";
             this.item.hasPrint = 0;
@@ -192,46 +264,60 @@
         export:
             function() {
                 //Todo: 导出报告需要更新状态
-            var $this = this;
-            $this.item.hasPrint=1;
-            abp.services.app.bidOpeningManagement.saveAsync($this.item)
-                .done(function (m) {
-                    var url = "/BiddingManagement/DownloadPlan/" + m;
-                    taf.download(url);
-                    $("#modifyBidOpeningManagementDialog").modal("hide");
-                })
-                .fail(function (m) {
-                    $this.fail(m);
-                });
+                var $this = this;
+                $this.item.hasPrint = 1;
+                abp.services.app.bidOpeningManagement.saveAsync($this.item)
+                    .done(function(m) {
+                        var url = "/BiddingManagement/DownloadPlan/" + m;
+                        taf.download(url);
+                        $("#modifyBidOpeningManagementDialog").modal("hide");
+                    })
+                    .fail(function(m) {
+                        $this.fail(m);
+                    });
             },
         export2:
             function() {
-            
-            var $this = this;
-            $this.item.hasPrint=1;
-            abp.services.app.bidOpeningManagement.saveAsync($this.item)
-                .done(function (m) {
-                    var url = "/BidOpeningManagement/DownloadPlan2/" + m;
-                    taf.download(url);
-                    $("#modifyBidOpeningManagementDialog").modal("hide");
-                })
-                .fail(function (m) {
-                    $this.fail(m);
-                });
+
+                var $this = this;
+                $this.item.hasPrint = 1;
+                abp.services.app.bidOpeningManagement.saveAsync($this.item)
+                    .done(function(m) {
+                        var url = "/BidOpeningManagement/DownloadPlan2/" + m;
+                        taf.download(url);
+                        $("#modifyBidOpeningManagementDialog").modal("hide");
+                    })
+                    .fail(function(m) {
+                        $this.fail(m);
+                    });
             },
         export3:
             function() {
-            var $this = this;
-            $this.item.hasPrint=1;
-            abp.services.app.bidOpeningManagement.saveAsync($this.item)
-                .done(function (m) {
-                    var url = "/BidOpeningManagement/DownloadPlan3/" + m;
-                    taf.download(url);
-                    $("#modifyBidOpeningManagementDialog").modal("hide");
-                })
-                .fail(function (m) {
-                    $this.fail(m);
-                });
+                var $this = this;
+                $this.item.hasPrint = 1;
+                abp.services.app.bidOpeningManagement.saveAsync($this.item)
+                    .done(function(m) {
+                        var url = "/BidOpeningManagement/DownloadPlan3/" + m;
+                        taf.download(url);
+                        $("#modifyBidOpeningManagementDialog").modal("hide");
+                    })
+                    .fail(function(m) {
+                        $this.fail(m);
+                    });
+            },
+        export4:
+            function(id) {
+                var $this = this;
+                $this.item.hasPrint = 1;
+                abp.services.app.bidOpeningManagement.saveAsync($this.item)
+                    .done(function(m) {
+                        var url = "/PerformanceAmountDetail/Download/" + m;
+                        taf.download(url);
+                        $("#modifyPerformanceDialog").modal("hide");
+                    })
+                    .fail(function(m) {
+                        $this.fail(m);
+                    });
             },
         showAttachmentsDialog: function(name, id) {
             var $this = this;
@@ -262,6 +348,77 @@
                     $this.fail(r);
                 });
         },
+        addDetail: function() {
+            var $this = this;
+            var detail = {
+                id: "",
+                performanceManageId: $this.performanceItem.id,
+                name: "",
+                editStatus: true
+            };
+            $this.performanceAmountDetails.push(detail);
+        },
+        deleteDetail: function(id) {
+            abp.services.app.performanceAmountDetail.delete(id)
+                .done(function(m) {
+                    abp.services.app.performanceAmountDetail.getAll($this.performanceItem.id)
+                        .done(function(s) {
+                            $this.performanceAmountDetails = s;
+                        })
+                        .fail(function(s) {
+                            $this.fail(s);
+                        });
+                }).fail(function(m) {
+                    $this.fail(m);
+                });
+
+        },
+        saveDetail: function(item) {
+            var $this = this;
+            if (item.performanceManageId == null) {
+                taf.notify.danger("请先保存履约保证金!");
+            } else {
+                abp.services.app.performanceAmountDetail.saveAsync(item)
+                    .done(function(m) {
+                        abp.services.app.performanceAmountDetail.getAll($this.performanceItem.id)
+                            .done(function(s) {
+                                $this.performanceAmountDetails = s;
+                            })
+                            .fail(function(s) {
+                                $this.fail(s);
+                            });
+                    }).fail(function(m) {
+                        $this.fail(m);
+                    });
+                
+            }
+            
+        },
+        editDetail: function(item) {
+            item.editStatus = true;
+        },
+        cancelDetail: function(item) {
+            abp.services.app.performanceAmountDetail.getAll($this.performanceItem.id)
+                .done(function(s) {
+                    $this.performanceAmountDetails = s;
+                })
+                .fail(function(s) {
+                    $this.fail(s);
+                });
+        },
+        export4: function(id) {
+            var $this = this;
+            $this.performanceItem.hasPrint=1;
+            abp.services.app.performanceManage.saveAsync($this.performanceItem)
+                .done(function (m) {
+                    var url = "/PerformanceAmountDetail/Download/" + id;
+                    taf.download(url);
+                    $("#modifyBiddingManagementDialog").modal("hide");
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        }
     }
 });
 

@@ -1,13 +1,11 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BidOpeningManagementEditDto.cs" company=""  author="何翔华">
+// <copyright file="PerformanceManageEditDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   开标管理编辑对象
+//   履约保证金管理编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-using System.Collections.Generic;
 
 namespace SCBF.Purchase.Dto
 {
@@ -16,10 +14,10 @@ namespace SCBF.Purchase.Dto
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 开标管理编辑对象
+    /// 履约保证金管理编辑对象
     /// </summary>
-    [AutoMap(typeof(BidOpeningManagement))]
-    public class BidOpeningManagementEditDto
+    [AutoMap(typeof(PerformanceManage))]
+    public class PerformanceManageEditDto
     {
         /// <summary>
         /// Id
@@ -46,43 +44,20 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// Mode
+        /// MarginAmount
         /// </summary>
-        public string Mode
+        public decimal MarginAmount
         {
             get; set;
         }
 
         /// <summary>
-        /// ExpertId
+        /// Date
         /// </summary>
-        public Guid ExpertId
+        public string Date
         {
             get; set;
         }
-
-        /// <summary>
-        /// 评审专家姓名
-        /// </summary>
-        public string ExpertName { get; set; }
-
-        /// <summary>
-        /// SuccessfulTender
-        /// </summary>
-        public List<string>  SuccessfulTender
-        {
-            get; set;
-        }
-        
-        /// <summary>
-        /// 合同金额
-        /// </summary>
-        public string Price { get; set; }
-
-        /// <summary>
-        /// 中标时间
-        /// </summary>
-        public string Date { get; set; }
     }
 }
 

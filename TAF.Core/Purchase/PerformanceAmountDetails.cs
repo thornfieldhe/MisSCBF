@@ -19,7 +19,7 @@ namespace SCBF.Purchase
         /// <summary>
         /// 履约管理Id
         /// </summary>
-        public Guid PerformanceId { get; set; }
+        public Guid PerformanceManageId { get; set; }
 
         /// <summary>
         /// 扣除金额
@@ -27,8 +27,23 @@ namespace SCBF.Purchase
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// 扣除原因
+        /// 情况说明
         /// </summary>
         public string Note { get; set; }
+
+        /// <summary>
+        /// 联系人
+        /// </summary>
+        public string User { get; set; }
+
+        /// <summary>
+        /// 联系电话
+        /// </summary>
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// 部门
+        /// </summary>
+        public string Department { get; set; }
     }
 }

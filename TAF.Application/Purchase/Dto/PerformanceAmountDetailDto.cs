@@ -1,13 +1,11 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BidOpeningManagementEditDto.cs" company=""  author="何翔华">
+// <copyright file="PerformanceAmountDetailDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   开标管理编辑对象
+//   履约保证金管理编辑对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-using System.Collections.Generic;
 
 namespace SCBF.Purchase.Dto
 {
@@ -16,10 +14,10 @@ namespace SCBF.Purchase.Dto
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 开标管理编辑对象
+    /// 履约保证金管理编辑对象
     /// </summary>
-    [AutoMap(typeof(BidOpeningManagement))]
-    public class BidOpeningManagementEditDto
+    [AutoMap(typeof(PerformanceAmountDetail))]
+    public class PerformanceAmountDetailDto
     {
         /// <summary>
         /// Id
@@ -30,59 +28,54 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// PlanId
+        /// Amount
         /// </summary>
-        public Guid PlanId
+        public decimal Amount
         {
             get; set;
         }
 
         /// <summary>
-        /// HasPrint
+        /// Note
         /// </summary>
-        public int HasPrint
+        public string Note
         {
             get; set;
         }
 
         /// <summary>
-        /// Mode
+        /// PerformanceManageId
         /// </summary>
-        public string Mode
+        public Guid PerformanceManageId
         {
             get; set;
         }
 
         /// <summary>
-        /// ExpertId
+        /// User
         /// </summary>
-        public Guid ExpertId
+        public string User
         {
             get; set;
         }
 
         /// <summary>
-        /// 评审专家姓名
+        /// Phone
         /// </summary>
-        public string ExpertName { get; set; }
-
-        /// <summary>
-        /// SuccessfulTender
-        /// </summary>
-        public List<string>  SuccessfulTender
+        public string Phone
         {
             get; set;
         }
-        
-        /// <summary>
-        /// 合同金额
-        /// </summary>
-        public string Price { get; set; }
 
         /// <summary>
-        /// 中标时间
+        /// 部门
         /// </summary>
-        public string Date { get; set; }
+        public string Department { get; set; }
+
+        /// <summary>
+        /// EditStatus
+        /// </summary>
+        public bool EditStatus { get; set; }
     }
 }
 

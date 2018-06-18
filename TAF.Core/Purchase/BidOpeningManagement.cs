@@ -40,5 +40,10 @@ namespace SCBF.Purchase
         /// 合同金额
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// 中标时间
+        /// </summary>
+        public DateTime Date { get; set; }
     }
 }

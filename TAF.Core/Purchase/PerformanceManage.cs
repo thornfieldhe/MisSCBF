@@ -32,9 +32,9 @@ namespace SCBF.Purchase
         public decimal MarginAmount { get; set; }
 
         /// <summary>
-        /// 没收通知
+        /// 保证金金额缴纳时间
         /// </summary>
-        public string Note { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }
