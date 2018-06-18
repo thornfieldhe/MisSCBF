@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using SCBF.BaseInfo;
 
 namespace SCBF.Web.Controllers
@@ -39,6 +40,27 @@ namespace SCBF.Web.Controllers
         {
             ViewData["list1"] = this._processManagementAppService.GetPurchases();
             return PartialView("_BidOpeningManagementIndex");
+        }
+
+
+        public FileResult DownloadPlan(Guid id)
+        {
+            var file = this._bidOpeningManagementAppService.ExportDoc1(id);
+            return this.DownloadFile(file);
+        }
+
+
+        public FileResult DownloadPlan2(Guid id)
+        {
+            var file = this._bidOpeningManagementAppService.ExportDoc2(id);
+            return this.DownloadFile(file);
+        }
+
+
+        public FileResult DownloadPlan3(Guid id)
+        {
+            var file = this._bidOpeningManagementAppService.ExportDoc3(id);
+            return this.DownloadFile(file);
         }
     }
 }

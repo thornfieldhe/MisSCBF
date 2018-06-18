@@ -307,6 +307,16 @@
             get; set;
         }
 
+        public DbSet<PerformanceManage> PerformanceManages
+        {
+            get; set;
+        }
+
+        public DbSet<PerformanceAmountDetail> PerformanceAmountDetails
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -82,6 +82,9 @@
     <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
     </Reference>
+    <Reference Include="SharpConfig, Version=1.5.6.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
+      <HintPath>..\packages\sharpconfig.1.5.6\lib\net20\SharpConfig.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -104,6 +107,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TAF.Utility, Version=1.0.0.7, Culture=neutral, PublicKeyToken=ac8105500b09440d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TAF.Utility.1.0.0.8\lib\net452\TAF.Utility.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInfo\Attachment.cs" />
@@ -171,12 +177,15 @@
     <Compile Include="Purchase\IStageInfoRepository.cs" />
     <Compile Include="Purchase\IStageInfoUserRepository.cs" />
     <Compile Include="Purchase\ITendererRepository.cs" />
+    <Compile Include="Purchase\PerformanceAmountDetails.cs" />
+    <Compile Include="Purchase\PerformanceManage.cs" />
     <Compile Include="Purchase\PlanWithBudgetOutlay.cs" />
     <Compile Include="Purchase\ProcessManagement.cs" />
     <Compile Include="BaseInfo\Relationship.cs" />
     <Compile Include="Purchase\ProcessStatus.cs" />
     <Compile Include="Purchase\ProcurementPlan.cs" />
     <Compile Include="Purchase\ProcurementPlanCategory.cs" />
+    <Compile Include="Purchase\ProcurementPlanManagement.cs" />
     <Compile Include="Purchase\ProcurementPlanMode.cs" />
     <Compile Include="Purchase\PurchaseTypeInfo.cs" />
     <Compile Include="Purchase\RelationshipType.cs" />

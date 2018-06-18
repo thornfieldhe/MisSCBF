@@ -68,6 +68,11 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
+        /// 合同金额
+        /// </summary>
+        public string Price { get; set; }
+
+        /// <summary>
         /// SuccessfulTender
         /// </summary>
         public string SuccessfulTender

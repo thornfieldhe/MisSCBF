@@ -54,30 +54,6 @@ namespace SCBF.Purchase.Dto
         }
 
         /// <summary>
-        /// Date
-        /// </summary>
-        public string Date
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// PlanDateFrom
-        /// </summary>
-        public string PlanDateFrom
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// PlanDateTo
-        /// </summary>
-        public string PlanDateTo
-        {
-            get; set;
-        }
-
-        /// <summary>
         /// 评审专家
         /// </summary>
         public Guid ExpertId { get; set; }
@@ -86,6 +62,11 @@ namespace SCBF.Purchase.Dto
         /// 评审专家姓名
         /// </summary>
         public string ExpertName { get; set; }
+
+        /// <summary>
+        /// 主要标的内容
+        /// </summary>
+        public string Note { get; set; }
 
         /// <summary>
         /// PlanDateEnd

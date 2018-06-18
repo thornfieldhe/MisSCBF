@@ -313,46 +313,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
-            <label class="col-sm-4 control-label no-padding-right">招标时间<span class="red">*</span></label>
-            <div class="col-sm-8">
-                <span class="input-icon icon-right">
-                    <input class="form-control  " placeholder="必填" type="text" id="datePickerDate" :disabled='item.hasPrint>0' readonly="readonly" v-model="item.date" name="date" v-validate:date="{required:true,dateTime:true}">
-                    <i class="fa fa-calendar"></i>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="col-sm-4 control-label no-padding-right">文件发售时间起<span class="red">*</span></label>
-            <div class="col-sm-8">
-                <span class="input-icon icon-right">
-                    <input class="form-control  " placeholder="必填" type="text" id="datePickerPlanDateFrom" :disabled='item.hasPrint>0' readonly="readonly" v-model="item.planDateFrom" name="plandatefrom" v-validate:plandatefrom="{required:true,dateTime:true}">
-                    <i class="fa fa-calendar"></i>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="col-sm-4 control-label no-padding-right">文件发售时间止<span class="red">*</span></label>
-            <div class="col-sm-8">
-                <span class="input-icon icon-right">
-                    <input class="form-control  " placeholder="必填" type="text" id="datePickerPlanDateTo" readonly="readonly" :disabled='item.hasPrint>0' v-model="item.planDateTo" name="plandateto" v-validate:plandateto="{required:true,dateTime:true}">
-                    <i class="fa fa-calendar"></i>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="col-sm-4 control-label no-padding-right">投标截至时间<span class="red">*</span></label>
+            <label class="col-sm-4 control-label no-padding-right">开标时间<span class="red">*</span></label>
             <div class="col-sm-8">
                 <span class="input-icon icon-right">
                     <input class="form-control  " placeholder="必填" type="text" id="datePickerPlanDateEnd" readonly="readonly" :disabled='item.hasPrint>0' v-model="item.planDateEnd" name="plandateend" v-validate:plandateend="{required:true,dateTime:true}">
@@ -372,16 +333,28 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="col-sm-4 control-label no-padding-right">工期<span class="red">*</span></label>
-            <div class="col-sm-8">
-                <input type="number" class="form-control" placeholder="必填" id="schedule" name="schedule" v-model="item.schedule" :disabled='item.hasPrint>0' v-validate:schedule="{int:true}"/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-4 control-label no-padding-right">工期<span class="red">*</span></label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" placeholder="必填" id="schedule" name="schedule" v-model="item.schedule" :disabled='item.hasPrint>0' v-validate:schedule="{int:true}"/>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-4 control-label no-padding-right">主要标的内容<span class="red">*</span></label>
+                <div class="col-sm-8">
+                    <span class="input-icon icon-right">
+                        <textarea class="form-control" placeholder="必填" id="note" name="note" v-model="item.note" :disabled='item.hasPrint>0' v-validate:note="{required:true}"></textarea>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="row">
     <div class="col-md-12">
         <label class="no-padding-left">采购清单</label>

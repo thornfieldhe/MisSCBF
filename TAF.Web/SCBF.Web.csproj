@@ -303,9 +303,8 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TAF.Utility, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TAF.Utility.1.0.0.5\lib\net452\TAF.Utility.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="TAF.Utility, Version=1.0.0.7, Culture=neutral, PublicKeyToken=ac8105500b09440d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TAF.Utility.1.0.0.8\lib\net452\TAF.Utility.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -1034,6 +1033,8 @@
     <Content Include="App_Data\Template\procurementPlanReport.doc" />
     <Content Include="App_Data\Template\信息化采购模板.doc" />
     <Content Include="App_Data\Template\资产采购模板.doc" />
+    <Content Include="App_Data\Template\中标通知书模板.doc" />
+    <Content Include="App_Data\Template\招投标计划模板.docx" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

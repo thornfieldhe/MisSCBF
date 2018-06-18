@@ -167,9 +167,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TAF.Utility, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TAF.Utility.1.0.0.5\lib\net452\TAF.Utility.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="TAF.Utility, Version=1.0.0.7, Culture=neutral, PublicKeyToken=ac8105500b09440d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TAF.Utility.1.0.0.8\lib\net452\TAF.Utility.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

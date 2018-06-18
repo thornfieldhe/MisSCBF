@@ -34,26 +34,6 @@
             })
             .data('datepicker');
 
-        var datePickerPlanDateFrom = $('#datePickerPlanDateFrom').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
-                datePickerPlanDateFrom.hide();
-                $this.item.planDateFrom = $("#datePickerPlanDateFrom").val();
-            })   
-            .on('hide', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            })
-            .data('datepicker');
-
-        var datePickerPlanDateTo = $('#datePickerPlanDateTo').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
-                datePickerPlanDateTo.hide();
-                $this.item.planDateTo = $("#datePickerPlanDateTo").val();
-            })   
-            .on('hide', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            })
-            .data('datepicker');
-
         var datePickerPlanDateEnd = $('#datePickerPlanDateEnd').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
                 datePickerPlanDateEnd.hide();
                 $this.item.planDateEnd = $("#datePickerPlanDateEnd").val();
@@ -90,14 +70,13 @@
             planId:"",
             biddingAgencyId:"",
             date:"", 
-            planDateFrom:"", 
-            planDateTo:"", 
             planDateEnd:"", 
             total:0 ,
             schedule:0,
             expertName:"", 
             expertId:"", 
             hasPrint:0,
+            note:"",
             costList:[],
             tenderers:[]
         },
@@ -159,11 +138,10 @@
             this.item.planId= "";
             this.item.biddingAgencyId= "";
             this.item.date= "";
-            this.item.planDateFrom= "";
-            this.item.planDateTo= "";
             this.item.planDateEnd= "";
             this.item.expertName= "";
             this.item.expertId= "";
+            this.item.note= "";
             this.item.total= 0;
             this.item.schedule= 0;
             this.item.tenderers=[],

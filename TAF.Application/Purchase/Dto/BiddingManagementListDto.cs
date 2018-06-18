@@ -79,7 +79,7 @@ namespace SCBF.Purchase.Dto
         public decimal Total { get; set; }
 
         /// <summary>
-        /// 投标截至时间
+        /// 开标时间
         /// </summary>
         public string PlanDateEnd { get; set; }
     }

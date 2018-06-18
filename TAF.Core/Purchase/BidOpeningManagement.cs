@@ -35,5 +35,10 @@ namespace SCBF.Purchase
         /// 中标人
         /// </summary>
         public string SuccessfulTender { get; set; }
+
+        /// <summary>
+        /// 合同金额
+        /// </summary>
+        public decimal Price { get; set; }
     }
 }

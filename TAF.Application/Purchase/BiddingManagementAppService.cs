@@ -115,13 +115,13 @@ namespace SCBF.Purchase
                         item.Category = "资产采购";
                         break;
                     case "Fwcg":
-                        item.Mode = "服务采购";
+                        item.Category = "服务采购";
                         break;
                     case "Xxhcg":
-                        item.Mode = "信息化采购";
+                        item.Category = "信息化采购";
                         break;
                     case "Gccg":
-                        item.Mode = "工程采购";
+                        item.Category = "工程采购";
                         break;
                 }
 
@@ -229,21 +229,21 @@ namespace SCBF.Purchase
 
             var year = StringExtensions.NumberToChinese(DateTime.Now.Year.ToString());
             var mounth = StringExtensions.NumberToChinese(DateTime.Now.Month.ToString());
-            var day = StringExtensions.NumberToChinese(DateTime.Now.Day.ToString());
             if (mounth.Length == 2)
             {
                 mounth = mounth[0] + "十" + mounth[1];
             }
 
+            var baseDateInfo=new ProcurementPlanManagement(result.Value.Mode,result.Key.PlanDateEnd);
             var item3 = new[]
             {
                 result.Value.Code,
                 biddingAgency.Value,
                 result.Value.Name,
-                $"{year}年{mounth}月{day}日",
+                $"{year}年{mounth}月",
                 DateTime.Now.ToString("yyyy年M月d日"),
-                result.Key.PlanDateFrom.ToString("yyyy年M月d日"),
-                result.Key.PlanDateTo.ToString("yyyy年M月d日"),
+                baseDateInfo.Date41.ToString("yyyy年M月d日"),
+                baseDateInfo.Date42.ToString("yyyy年M月d日"),
                 biddingAgency.Value4,
                 result.Key.PlanDateEnd.ToString("yyyy年M月d日"),
                 biddingAgency.Value2,

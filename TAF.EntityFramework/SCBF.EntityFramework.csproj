@@ -415,6 +415,18 @@
     <Compile Include="Migrations\201806160808544_addTable_BidOpeningManagements.Designer.cs">
       <DependentUpon>201806160808544_addTable_BidOpeningManagements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806170923449_addTable_PerformanceManages.cs" />
+    <Compile Include="Migrations\201806170923449_addTable_PerformanceManages.Designer.cs">
+      <DependentUpon>201806170923449_addTable_PerformanceManages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806180823277_modifyTable_BiddingManagement2.cs" />
+    <Compile Include="Migrations\201806180823277_modifyTable_BiddingManagement2.Designer.cs">
+      <DependentUpon>201806180823277_modifyTable_BiddingManagement2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806180937324_modifyTable_Bidopeningmanagement3.cs" />
+    <Compile Include="Migrations\201806180937324_modifyTable_Bidopeningmanagement3.Designer.cs">
+      <DependentUpon>201806180937324_modifyTable_Bidopeningmanagement3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -691,6 +703,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806160808544_addTable_BidOpeningManagements.resx">
       <DependentUpon>201806160808544_addTable_BidOpeningManagements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806170923449_addTable_PerformanceManages.resx">
+      <DependentUpon>201806170923449_addTable_PerformanceManages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806180823277_modifyTable_BiddingManagement2.resx">
+      <DependentUpon>201806180823277_modifyTable_BiddingManagement2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806180937324_modifyTable_Bidopeningmanagement3.resx">
+      <DependentUpon>201806180937324_modifyTable_Bidopeningmanagement3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

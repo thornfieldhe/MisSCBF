@@ -30,6 +30,12 @@ namespace SCBF.Purchase
         Task<Guid> SaveAsync(BidOpeningManagementEditDto input);
 
         void Delete(Guid id);
+        string ExportDoc1(Guid id);
+
+        string ExportDoc2(Guid id);
+
+        string ExportDoc3(Guid id);
+
     }
 }
 

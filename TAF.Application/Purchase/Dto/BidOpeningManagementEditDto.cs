@@ -73,6 +73,11 @@ namespace SCBF.Purchase.Dto
         {
             get; set;
         }
+        
+        /// <summary>
+        /// 合同金额
+        /// </summary>
+        public string Price { get; set; }
     }
 }
 
