@@ -1,35 +1,36 @@
 ﻿var main = new Vue({
     el: "#main",
     mixins: [allMixin],
-    ready: function() {
+    ready: function () {
         var $this = this;
         $this.query(0);
-        $("#searchUnit").select2()
-            .on("change",
-                function(e) {
-                    $this.queryEntity.unit = $("#searchUnit").val();
-                });
-        $("#editUnit").select2()
-            .on("change",
-                function(e) {
-                    $this.item.unit = $("#editUnit").val();
-                });
-        $("#editPurchaseId").select2()
-            .on("change",
-                function(e) {
-                    $this.item.purchaseId = $("#editPurchaseId").val();
-                });
-        $("#searchProject").select2()
-            .on("change",
-                function(e) {
-                    $this.queryEntity.procurementPlanId = $("#searchProject").val();
-                });
+        $("#editPlanId").select2()
+            .on("change", function (e) {
+                $this.item.planId = $("#editPlanId").val(); 
+        });            
+        var datePickerDate1 = $('#datePickerDate1').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
+            datePickerDate1.hide();
+            $this.item.date1 = $("#datePickerDate1").val();
+        })
+        .on('hide', function (event) {
+		        event.preventDefault();
+		        event.stopPropagation();
+	    })
+        .data('datepicker');
+        var datePickerDate2 = $('#datePickerDate2').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
+            datePickerDate2.hide();
+            $this.item.date2 = $("#datePickerDate2").val();
+        })
+        .on('hide', function (event) {
+		        event.preventDefault();
+		        event.stopPropagation();
+	    })
+        .data('datepicker');
     },
     data: {
         queryEntity: {
-            procurementPlanId: "",
-            type: "Purchase_PartyA",
-            unit: "",
+            code:"", 
+            name:""
         },
         queryEntity2: {
             text: "",
@@ -46,26 +47,25 @@
                 num_edge_entries: 1, //边缘页数
                 num_display_entries: 4, //主体页数
                 items_per_page: taf.defatulPageSize, //每页显示1项  
-                callback: function(index, jq) {
+                callback: function (index, jq) {
                     main.list.from = main.list.total === 0 ? 0 : main.list.pageSize * index + 1;
                     main.list.index = index;
-                    main.list.to = main.list.pageSize * (index + 1) < main.list.total
-                        ? main.list.pageSize * (index + 1)
-                        : main.list.total;
+                    main.list.to = main.list.pageSize * (index + 1) < main.list.total ? main.list.pageSize * (index + 1) : main.list.total;
                     main.queryEntity.skipCount = taf.defatulPageSize * index;
                 }
             }
         },
         item: {
-            id: "",
-            type: "Purchase_PartyA",
-            price: 0,
-            status: 0,
-            users: [],
-            unit: "",
-            unitName: "",
-            purchaseId: "",
-            schedule: 0
+            id : "",
+            planId:"",
+            date1:"", 
+            date2:"", 
+            hasPrint:0
+        },
+        item2: {
+            price1:0,
+            price2:0,
+            price3:0
         },
         list2: {
             total: 0,
@@ -112,129 +112,89 @@
         list4: []
     },
     methods: {
-        showDeleteDialog: function(id, name) {
+        showDeleteDialog: function (id,name) {
             var $this = this;
-            $("#deleteProcessManagementDialog").modal("show");
+            $("#deleteProjectManagementDialog").modal("show");
             this.deleteEntity.id = id;
             this.deleteEntity.name = name;
         },
-        delete: function(id) {
+        delete: function (id) {
             var $this = this;
-            abp.services.app.processManagement.delete(id)
-                .done(function(m) {
+            abp.services.app.projectManagement.delete(id)
+                .done(function (m) {
                     $this.query(0);
-                    $("#deleteProcessManagementDialog").modal("hide");
+                    $("#deleteProjectManagementDialog").modal("hide");
                 })
-                .fail(function(m) {
+                .fail(function (m) {
                     $this.fail(m);
                 });
         },
-        showModifyDialog: function(name, id) {
+        showModifyDialog: function (name,id) {
             var $this = this;
-            $("#modifyProcessManagementDialog").modal("show");
+            $("#modifyProjectManagementDialog").modal("show");
             $this.modifyEntity.modifyTitle = name;
-            if (id !== null) {
-                abp.services.app.processManagement.get(id)
-                    .done(function(m) {
+            if (id !==null) {
+                $this.modifyEntity.editModel = true;
+                abp.services.app.projectManagement.get(id)
+                    .done(function (m) {
                         $this.item = m;
-                        $("#editUnit").select2().val($this.item.unit).trigger("change");
-                        $("#editPurchaseId").select2().val($this.item.purchaseId).trigger("change");
+                        $("#editPlanId").select2().val($this.item.planId).trigger("change");
                     })
-                    .fail(function(m) {
+                    .fail(function (m) {
                         $this.fail(m);
                     });
-            } else {
+            }else {
                 $this.modifyEntity.editModel = false;
                 $this.clear();
             }
         },
-        showOutlayDialog: function(name, id) {
+        save:function() {
             var $this = this;
-            $this.modifyEntity.modifyTitle = name;
-            $("#updateOutlayDialog").modal("show");
-            abp.services.app.processManagement.get(id)
-                .done(function(m) {
-                    $this.item = m;
-                    $this.query2(0);
-                    $this.query3(0);
-                })
-                .fail(function(m) {
-                    $this.fail(m);
-                });
+            abp.services.app.projectManagement.saveAsync($this.item)
+            .done(function (m) {
+                $this.query(0);
+                $("#modifyProjectManagementDialog").modal("hide");
+            })
+            .fail(function (m) {
+                $this.fail(m);
+            });
         },
-        showAttachmentsDialog: function(name, id) {
+        saveNew:function() {
             var $this = this;
-            $this.modifyEntity.modifyTitle = name;
-            $this.item.id = id;
-            $("#attachmentsDialog").modal("show");
-            $this.query4();
-
+            abp.services.app.projectManagement.saveAsync($this.item)
+            .done(function (m) {
+                $this.query(0);
+                $this.clear();
+            })
+            .fail(function (m) {
+                $this.fail(m);
+            });
         },
-        savePrice: function() {
-            var $this = this;
-            abp.services.app.processManagement.savePrice({ key: $this.item.id, value: $this.item.price })
-                .done(function(m) {
-                    $this.item = m;
-                })
-                .fail(function(m) {
-                    $this.fail(m);
-                });
-        },
-        save: function() {
-            var $this = this;
-            abp.services.app.processManagement.saveAsync($this.item)
-                .done(function(m) {
-                    $this.query(0);
-                    $("#modifyProcessManagementDialog").modal("hide");
-                })
-                .fail(function(m) {
-                    $this.fail(m);
-                });
-        },
-        print: function() {
-            var $this = this;
-
-            abp.services.app.processManagement.saveAsync($this.item)
-                .done(function(m) {
-
-                    var url = "/ProcessManagement/Print/" + m;
-                    taf.download(url);
-                    $this.query(0);
-                    $("#modifyProcessManagementDialog").modal("hide");
-                })
-                .fail(function(m) {
-                    $this.fail(m);
-                });
-
-        },
-        clear: function() {
+        clear: function () {
             this.item.id = "";
-            this.item.users = [];
-            this.item.price = 0;
-            this.item.unit = "";
-            this.item.unitName = "";
-            this.item.purchaseId = "";
-            $("#editUnit").select2().val("").trigger("change");
-            $("#editPurchaseId").select2().val("").trigger("change");
+            this.item.planId= "";
+            $("#editPlanId").select2().val("").trigger("change");
+            this.item.date1= "";
+            this.item.date2= "";
+            this.item.price= 0;
+            this.item.hasPrint= 0;
         },
-        query: function(index) {
+        query: function (index) {
             var $this = this;
             $this.queryEntity.skipCount = taf.defatulPageSize * index;
-            abp.services.app.processManagement.getAll($this.queryEntity)
-                .done(function(r) {
-                    $this.list.items = r.items;
-                    $this.list.total = r.totalCount;
+            abp.services.app.projectManagement.getAll($this.queryEntity)
+            .done(function (r) {
+                $this.list.items = r.items;
+                $this.list.total = r.totalCount;
                     main.list.from = main.list.total === 0 ? 0 : main.list.pageSize * index + 1;
                     main.list.index = index;
-                    main.list.to = main.list.pageSize * (index + 1) < main.list.total
-                        ? main.list.pageSize * (index + 1)
-                        : main.list.total;
+                    main.list.to = main.list.pageSize * (index + 1) < main.list.total ? main.list.pageSize * (index + 1) : main.list.total;
                     $this.list.index = index;
-                    $(".pagination").pagination(r.totalCount, $this.list.options);
-                })
-                .fail(function(r) {
-                    $this.fail(r);
-                });
+                $(".pagination").pagination(r.totalCount, $this.list.options);
+            })
+            .fail(function (r) {
+                $this.fail(r);
+            });
         },
         query2: function(index) {
             var $this = this;
@@ -276,6 +236,40 @@
                     $this.fail(r);
                 });
         },
+        resetSearch: function () {
+                this.queryEntity.code="";
+                this.queryEntity.name=""; 
+        },
+        showOutlayDialog: function(name, id) {
+            var $this = this;
+            $this.modifyEntity.modifyTitle = name;
+            $("#updateOutlayDialog").modal("show");
+            abp.services.app.projectManagement.get(id)
+                .done(function(m) {
+                    $this.item = m;
+
+                    abp.services.app.projectManagement.computePrice(id)
+                        .done(function(r) {
+                            $this.item2 = r;
+                        })
+                        .fail(function(r) {
+                            $this.fail(r);
+                        });
+                    $this.query2(0);
+                    $this.query3(0,id);
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+        },
+        showAttachmentsDialog: function(name, id) {
+            var $this = this;
+            $this.modifyEntity.modifyTitle = name;
+            $this.item.id = id;
+            $("#attachmentsDialog").modal("show");
+            $this.query4();
+
+        },
         query4: function() {
             var $this = this;
 
@@ -287,48 +281,46 @@
                     $this.fail(r);
                 });
         },
-        resetSearch: function() {
-            this.queryEntity.unit = "";
-            this.queryEntity.procurementPlanId = "";
-            $("#searchUnit").select2().val("").trigger("change");
-            $("#searchProject").select2().val("").trigger("change");
-        },
-        resetSearch2: function () {
-            this.queryEntity2.text="";
-        },
-        getUnit: function() {
+        removeAttach: function(id) {
             var $this = this;
-            abp.services.app.unitPool.getRandomItem("Purchase_PartyA")
-                .done(function(r) {
-                    $this.item.unit = r.key;
-                    $this.item.unitName = r.value;
-                });
-        },
-        link:function(id) {
-            var $this = this;
-            abp.services.app.relationship.add({ principalKey: $this.item.id,foreignKey:id,type:"ProcessCost"})
+            abp.services.app.attachment.delete(id)
                 .done(function (m) {
-                    abp.services.app.processManagement.get($this.item.id)
-                        .done(function(m) {
-                            $this.item = m;
-                            $this.query2(0);
-                            $this.query3(0);
-                        })
-                        .fail(function(m) {
-                            $this.fail(m);
-                        });
+                    $this.query4();
                 })
                 .fail(function (m) {
                     $this.fail(m);
                 });
+        },
+        link:function(r) {
+            var $this = this;
+            console.log(r.amount,$this.item.hasPrint,$this.item2.price2,"eeee");
+            if (r.amount > $this.item2.price2 && $this.item.hasPrint < 3) {
+                taf.notify.danger("付款总额不能超过未付款进度")
+            } else {
+                abp.services.app.relationship.add({ principalKey: $this.item.id,foreignKey:r.id,type:"ProcessCost"})
+                    .done(function (m) {
+                        abp.services.app.projectManagement.computePrice($this.item.id)
+                            .done(function(m) {
+                                $this.item2 = m;
+                                $this.query2(0);
+                                $this.query3(0);
+                            })
+                            .fail(function(m) {
+                                $this.fail(m);
+                            });
+                    })
+                    .fail(function (m) {
+                        $this.fail(m);
+                    });
+            }
         },
         unlink:function(id) {
             var $this = this;
             abp.services.app.relationship.removeForeignKey(id)
                 .done(function (m) {
-                    abp.services.app.processManagement.get($this.item.id)
+                    abp.services.app.projectManagement.computePrice($this.item.id)
                         .done(function(m) {
-                            $this.item = m;
+                            $this.item2 = m;
                             $this.query2(0);
                             $this.query3(0);
                         })
@@ -340,18 +332,9 @@
                     $this.fail(m);
                 });
         },
-        removeAttach: function(id) {
-            var $this = this;
-            abp.services.app.attachment.delete(id)
-                .done(function (m) {
-                     $this.query4();
-                })
-                .fail(function (m) {
-                    $this.fail(m);
-                });
-        }
     }
 });
+
 
 
 $(".fileUpload").liteUploader({

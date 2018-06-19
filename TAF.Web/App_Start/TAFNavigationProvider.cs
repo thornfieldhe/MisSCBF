@@ -255,6 +255,11 @@
                             "menuBidOpeningManagements",
                             L("开标管理"),
                             url: "#bidOpeningManagements",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuProjectManagements",
+                            L("采购过程管理"),
+                            url: "#projectManagements",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

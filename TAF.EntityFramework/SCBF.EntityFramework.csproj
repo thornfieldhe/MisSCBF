@@ -435,6 +435,14 @@
     <Compile Include="Migrations\201806181402359_miodifyTable_PerformanceAmountDetail3.Designer.cs">
       <DependentUpon>201806181402359_miodifyTable_PerformanceAmountDetail3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806191328262_addTable_ProjectManagement.cs" />
+    <Compile Include="Migrations\201806191328262_addTable_ProjectManagement.Designer.cs">
+      <DependentUpon>201806191328262_addTable_ProjectManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806191431054_editTable_ProjectManagement.cs" />
+    <Compile Include="Migrations\201806191431054_editTable_ProjectManagement.Designer.cs">
+      <DependentUpon>201806191431054_editTable_ProjectManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -444,6 +452,7 @@
     <Compile Include="Repositories\ApplicationForBunkerARepository.cs" />
     <Compile Include="Repositories\ApplicationForBunkerBRepository.cs" />
     <Compile Include="Repositories\ApplyForVehicleMaintenanceRepository.cs" />
+    <Compile Include="Repositories\AuditManagementRepository.cs" />
     <Compile Include="Repositories\BiddingManagementRepository.cs" />
     <Compile Include="Repositories\BidOpeningManagementRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
@@ -474,6 +483,7 @@
     <Compile Include="Repositories\PerformanceManageRepository.cs" />
     <Compile Include="Repositories\ProcessManagementRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ProjectManagementRepository.cs" />
     <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\RechargeRecordRepository.cs" />
     <Compile Include="Repositories\RelationshipRepository.cs" />
@@ -728,6 +738,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806181402359_miodifyTable_PerformanceAmountDetail3.resx">
       <DependentUpon>201806181402359_miodifyTable_PerformanceAmountDetail3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806191328262_addTable_ProjectManagement.resx">
+      <DependentUpon>201806191328262_addTable_ProjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806191431054_editTable_ProjectManagement.resx">
+      <DependentUpon>201806191431054_editTable_ProjectManagement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

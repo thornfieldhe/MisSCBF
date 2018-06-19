@@ -834,6 +834,7 @@
     <Content Include="Views\ProcurementPlan\procurementPlan1.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan2.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan.js" />
+    <Content Include="Views\ProjectManagement\projectManagement.js" />
     <Content Include="Views\Purchase\poolConfig.js" />
     <Content Include="Views\StageInfoe\stageInfoe.js" />
     <Content Include="Views\ApplyForVehicleMaintenance\vehicleMaintenanceReport.js" />
@@ -988,6 +989,7 @@
     <Compile Include="Controllers\PerformanceAmountDetailController.cs" />
     <Compile Include="Controllers\ProcessManagementController.cs" />
     <Compile Include="Controllers\ProcurementPlanController.cs" />
+    <Compile Include="Controllers\ProjectManagementController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RechargeRecordController.cs" />
@@ -1109,6 +1111,7 @@
     <Content Include="Views\ProcessManagement\_RepresentativesManage.cshtml" />
     <Content Include="Views\BiddingManagement\_BiddingManagementIndex.cshtml" />
     <Content Include="Views\BidOpeningManagement\_BidOpeningManagementIndex.cshtml" />
+    <Content Include="Views\ProjectManagement\_ProjectManagementIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

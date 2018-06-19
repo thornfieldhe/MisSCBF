@@ -164,16 +164,19 @@
     <Compile Include="Finance\Outlay.cs" />
     <Compile Include="Finance\VoucherAudit.cs" />
     <Compile Include="Finance\VoucherAuditPoint.cs" />
+    <Compile Include="Purchase\AuditManagement.cs" />
     <Compile Include="Purchase\BiddingManagement.cs" />
     <Compile Include="Purchase\BiddingType.cs" />
     <Compile Include="Purchase\BidOpeningManagement.cs" />
     <Compile Include="Purchase\CostList.cs" />
+    <Compile Include="Purchase\IAuditManagementRepository.cs" />
     <Compile Include="Purchase\IBiddingManagementRepository.cs" />
     <Compile Include="Purchase\IBidOpeningManagementRepository.cs" />
     <Compile Include="Purchase\ICostListRepository.cs" />
     <Compile Include="Purchase\IPerformanceAmountDetailRepository.cs" />
     <Compile Include="Purchase\IPerformanceManageRepository.cs" />
     <Compile Include="Purchase\IProcessManagementRepository.cs" />
+    <Compile Include="Purchase\IProjectManagementRepository.cs" />
     <Compile Include="Purchase\IStageInfoActualOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoBudgetOutlayRepository.cs" />
     <Compile Include="Purchase\IStageInfoRepository.cs" />
@@ -189,6 +192,7 @@
     <Compile Include="Purchase\ProcurementPlanCategory.cs" />
     <Compile Include="Purchase\ProcurementPlanManagement.cs" />
     <Compile Include="Purchase\ProcurementPlanMode.cs" />
+    <Compile Include="Purchase\ProjectManagement.cs" />
     <Compile Include="Purchase\PurchaseTypeInfo.cs" />
     <Compile Include="Purchase\RelationshipType.cs" />
     <Compile Include="Purchase\StageCategory.cs" />

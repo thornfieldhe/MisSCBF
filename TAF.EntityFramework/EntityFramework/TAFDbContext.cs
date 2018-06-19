@@ -317,6 +317,16 @@
             get; set;
         }
 
+        public DbSet<ProjectManagement> ProjectManagements
+        {
+            get; set;
+        }
+
+        public DbSet<AuditManagement> AuditManagements
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

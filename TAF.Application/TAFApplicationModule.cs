@@ -448,7 +448,10 @@ namespace SCBF
                 mapper.CreateMap<PerformanceManage, PerformanceManageEditDto>()
                     .ForMember(m => m.Date, n => n.MapFrom(r => r.Date.ToString("yyyy-MM-dd")));
                 mapper.CreateMap<PerformanceManageEditDto, PerformanceManage>();
-
+                
+                mapper.CreateMap<ProjectManagement, ProjectManagementEditDto>()
+                    .ForMember(m => m.Date1, n => n.MapFrom(r => r.Date1.ToString("yyyy-MM-dd")))
+                    .ForMember(m => m.Date2, n => n.MapFrom(r => r.Date2.HasValue?r.Date2.Value.ToString("yyyy-MM-dd"):string.Empty));
                 #endregion
             });
         }
