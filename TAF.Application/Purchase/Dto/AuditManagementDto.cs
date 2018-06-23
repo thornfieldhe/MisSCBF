@@ -3,7 +3,7 @@
 //   
 // </copyright>
 // <summary>
-//   采购过程管理编辑对象
+//   采购过程审计对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace SCBF.Purchase.Dto
     using Abp.AutoMapper;
 
     /// <summary>
-    /// 采购过程管理编辑对象
+    /// 采购过程审计对象
     /// </summary>
     [AutoMap(typeof(AuditManagement))]
     public class AuditManagementDto
@@ -47,6 +47,14 @@ namespace SCBF.Purchase.Dto
         /// Price
         /// </summary>
         public decimal Price
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// EditStatus
+        /// </summary>
+        public bool EditStatus
         {
             get; set;
         }

@@ -1039,6 +1039,8 @@
     <Content Include="App_Data\Template\中标通知书模板.doc" />
     <Content Include="App_Data\Template\招投标计划模板.docx" />
     <Content Include="App_Data\Template\履约保证金抵扣没收通知书模板.docx" />
+    <Content Include="App_Data\Template\质量保证金抵扣没收通知书模板.docx" />
+    <Content Include="App_Data\Template\审计结果公示模板.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

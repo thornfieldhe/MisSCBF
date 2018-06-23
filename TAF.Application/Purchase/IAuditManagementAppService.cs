@@ -21,6 +21,7 @@ namespace SCBF.Purchase
     {
         List<AuditManagementDto> GetAll(Guid id);
 
+        AuditPriceDto GetAuditInfo(Guid id);
 
         Task SaveAsync(AuditManagementDto input);
 

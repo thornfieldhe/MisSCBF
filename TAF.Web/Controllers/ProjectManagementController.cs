@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace SCBF.Web.Controllers
 {
     using System.Web.Mvc;
@@ -35,6 +37,21 @@ namespace SCBF.Web.Controllers
         {
             ViewData["list1"] = this._processManagementAppService.GetPurchases();
             return PartialView("_ProjectManagementIndex");
+        }
+
+        
+
+        public FileResult Download1(Guid id)
+        {
+            var file = this._projectManagementAppService.ExportDoc1(id);
+            return this.DownloadFile(file);
+        }
+
+
+        public FileResult Download2(Guid id)
+        {
+            var file = this._projectManagementAppService.ExportDoc2(id);
+            return this.DownloadFile(file);
         }
     }
 }

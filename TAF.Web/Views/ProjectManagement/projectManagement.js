@@ -67,6 +67,15 @@
             price2:0,
             price3:0
         },
+        item3: {
+            projectId:"",
+            price1:0,
+            price2:0,
+            price3:0,
+            price4:0,
+            price5:0,
+            price6:0
+        },
         list2: {
             total: 0,
             from: 0,
@@ -109,7 +118,9 @@
                 }
             }
         },
-        list4: []
+        list4: [],
+        audits:[],
+        performanceAmountDetails:[]
     },
     methods: {
         showDeleteDialog: function (id,name) {
@@ -332,6 +343,243 @@
                     $this.fail(m);
                 });
         },
+        showModifyAuditDialog: function(name, id) {
+            var $this = this;
+            $this.modifyEntity.modifyTitle = name;
+
+            $("#modifyAuditDialog").modal("show");
+            abp.services.app.projectManagement.get(id)
+                .done(function (m) {
+                    $this.item = m;
+                    abp.services.app.auditManagement.getAuditInfo(id)
+                        .done(function(s) {
+                            $this.item3 = s;
+                        })
+                        .fail(function(s) {
+                            $this.fail(s);
+                        });
+                    abp.services.app.auditManagement.getAll(id)
+                        .done(function(t) {
+                            $this.audits = t;
+                        })
+                        .fail(function(t) {
+                            $this.fail(t);
+                        });
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+
+        },
+        savePrice: function() {
+            var $this = this;
+            abp.services.app.projectManagement.savePrice({ id:$this.item.id,price:$this.item3.price0 ,hasPrint:2})
+                .done(function (m) {
+                    abp.services.app.auditManagement.getAuditInfo($this.item.id)
+                        .done(function(m) {
+                            $this.item3 = m;
+
+                        })
+                        .fail(function(m) {
+                            $this.fail(m);
+                        });
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        },
+         addAudit: function() {
+            var $this = this;
+            var detail = {
+                id: "",
+                projectId: $this.item.id,
+                price: 0,
+                editStatus: true
+            };
+            $this.audits.push(detail);
+        },
+        deleteAudit: function(id) {
+            var $this = this;
+            abp.services.app.auditManagement.delete(id)
+                .done(function(m) {
+                    abp.services.app.auditManagement.getAll($this.item.id)
+                        .done(function(s) {
+                            $this.audits = s;
+                            abp.services.app.auditManagement.getAuditInfo($this.item.id)
+                                .done(function(m) {
+                                    $this.item3 = m;
+
+                                })
+                                .fail(function(m) {
+                                    $this.fail(m);
+                                });
+                        })
+                        .fail(function(s) {
+                            $this.fail(s);
+                        });
+                }).fail(function(m) {
+                    $this.fail(m);
+                });
+        },
+        saveAudit: function(item) {
+            var $this = this;
+                abp.services.app.auditManagement.saveAsync(item)
+                    .done(function(m) {
+                        abp.services.app.auditManagement.getAll($this.item.id)
+                            .done(function(s) {
+                                $this.audits = s;
+                                abp.services.app.auditManagement.getAuditInfo($this.item.id)
+                                    .done(function(m) {
+                                        $this.item3 = m;
+
+                                    })
+                                    .fail(function(m) {
+                                        $this.fail(m);
+                                    });
+                            })
+                            .fail(function(s) {
+                                $this.fail(s);
+                            });
+                    }).fail(function(m) {
+                        $this.fail(m);
+                    });
+
+            
+        },
+        editAudit: function(item) {
+            item.editStatus = true;
+        },
+        cancelAudit: function(item) {
+            var $this = this;
+            abp.services.app.auditManagement.getAll($this.item.id)
+                .done(function(s) {
+                    $this.audits = s;
+                })
+                .fail(function(s) {
+                    $this.fail(s);
+                });
+        },
+        export1: function(id) {
+            var $this = this;
+
+            abp.services.app.projectManagement.savePrice({ id:$this.item.id,price:$this.item3.price0 ,hasPrint:4})
+                .done(function (m) {
+                    var url = "/ProjectManagement/Download1/" + $this.item.id;
+                    taf.download(url);
+                    $("#modifyBiddingManagementDialog").modal("hide");
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        },
+        showModifyPerformanceDialog: function(name, id) {
+            var $this = this;
+            $this.item.id = id;
+            $("#modifyPerformanceDialog").modal("show");
+            $this.modifyEntity.modifyTitle = name;
+            $this.modifyEntity.editModel = true;
+            abp.services.app.projectManagement.get(id)
+                .done(function(m) {
+                    $this.item = m;
+                    if (m.id !== null) {
+                        abp.services.app.performanceAmountDetail.getAll(m.id)
+                            .done(function(m) {
+                                $this.performanceAmountDetails = m;
+                            })
+                            .fail(function(m) {
+                                $this.fail(m);
+                            });
+                    } else {
+                        $this.performanceAmountDetails = [];
+                    }
+                
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+            abp.services.app.auditManagement.getAuditInfo($this.item.id)
+                .done(function(m) {
+                    $this.item3 = m;
+
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+            
+        },
+        addDetail: function() {
+            var $this = this;
+            var detail = {
+                id: "",
+                performanceManageId: $this.item.id,
+                name: "",
+                editStatus: true
+            };
+            $this.performanceAmountDetails.push(detail);
+        },
+        deleteDetail: function(id) {
+            var $this = this;
+            abp.services.app.performanceAmountDetail.delete(id)
+                .done(function(m) {
+                    abp.services.app.performanceAmountDetail.getAll($this.item.id)
+                        .done(function(s) {
+                            $this.performanceAmountDetails = s;
+                        })
+                        .fail(function(s) {
+                            $this.fail(s);
+                        });
+                }).fail(function(m) {
+                    $this.fail(m);
+                });
+
+        },
+        saveDetail: function(item) {
+            var $this = this;
+            if (item.performanceManageId == null) {
+                taf.notify.danger("请先保存履约保证金!");
+            } else {
+                abp.services.app.performanceAmountDetail.saveAsync(item)
+                    .done(function(m) {
+                        abp.services.app.performanceAmountDetail.getAll($this.item.id)
+                            .done(function(s) {
+                                $this.performanceAmountDetails = s;
+                            })
+                            .fail(function(s) {
+                                $this.fail(s);
+                            });
+                    }).fail(function(m) {
+                        $this.fail(m);
+                    });
+                
+            }
+            
+        },
+        editDetail: function(item) {
+            item.editStatus = true;
+        },
+        cancelDetail: function(item) {
+            var $this = this;
+            abp.services.app.performanceAmountDetail.getAll($this.item.id)
+                .done(function(s) {
+                    $this.performanceAmountDetails = s;
+                })
+                .fail(function(s) {
+                    $this.fail(s);
+                });
+        },
+        export2: function(id) {
+            var $this = this;
+            $this.item.hasPrint=4;
+            abp.services.app.projectManagement.saveAsync($this.item)
+                .done(function (m) {
+                    var url = "/ProjectManagement/Download2/" + id;
+                    taf.download(url);
+                    $("#modifyBiddingManagementDialog").modal("hide");
+                })
+                .fail(function (m) {
+                    $this.fail(m);
+                });
+        }
     }
 });
 

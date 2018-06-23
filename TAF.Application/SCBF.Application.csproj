@@ -225,6 +225,7 @@
     <Compile Include="Purchase\BidOpeningManagementAppService.cs" />
     <Compile Include="Purchase\CostListAppService.cs" />
     <Compile Include="Purchase\Dto\AuditManagementDto.cs" />
+    <Compile Include="Purchase\Dto\AuditPriceDto.cs" />
     <Compile Include="Purchase\Dto\BiddingManagementEditDto.cs" />
     <Compile Include="Purchase\Dto\BiddingManagementListDto.cs" />
     <Compile Include="Purchase\Dto\BiddingManagementQueryDto.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Purchase\Dto\ProjectManagementEditDto.cs" />
     <Compile Include="Purchase\Dto\ProjectManagementListDto.cs" />
     <Compile Include="Purchase\Dto\ProjectManagementQueryDto.cs" />
+    <Compile Include="Purchase\Dto\ProjectManagementSavePriceDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoEditDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />

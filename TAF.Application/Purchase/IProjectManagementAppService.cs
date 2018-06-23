@@ -33,6 +33,10 @@ namespace SCBF.Purchase
         /// <param name="id"></param>
         /// <returns></returns>
         ProjectManagementPriceDto ComputePrice(Guid id);
+
+        void SavePrice(ProjectManagementSavePriceDto item);
+        string ExportDoc1(Guid id);
+        string ExportDoc2(Guid id);
     }
 }
 

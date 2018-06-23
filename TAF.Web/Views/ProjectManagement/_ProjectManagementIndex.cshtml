@@ -22,13 +22,13 @@
                                     <th style="width: 150px;">
                                         开工日期
                                     </th>
-                                    <th style="width: 100px;">
+                                    <th style="width: 80px;">
                                         合同金额
                                     </th>
-                                    <th style="width: 100px;">
+                                    <th style="width: 80px;">
                                         审定报价
                                     </th>
-                                    <th style="width: 200px;">
+                                    <th style="width: 250px;">
                                         操作
                                     </th>
                                 </tr>
@@ -61,6 +61,8 @@
                                     <td>
                                         <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购过程',item.id)"><i class="fa fa-edit"></i> 编辑</button>
                                         <button type="button" class="btn btn-default  " v-on:click="showOutlayDialog('关联付款',item.id) "><i class="fa  fa-yen"></i> 费用</button>
+                                        <button type="button" class="btn btn-default  " v-on:click="showModifyAuditDialog('审计',item.id) "><i class="fa  fa-edit"></i> 审计</button>
+                                        <button type="button" class="btn   edit" v-on:click="showModifyPerformanceDialog('编辑质保',item.id)"><i class="fa fa-edit"></i> 质保金</button>
                                         <button type="button" class="btn btn-default  " v-on:click="showAttachmentsDialog('附件管理',item.id) "><i class="fa  fa-paperclip"></i> 附件</button>
                                         <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
                                     </td>
@@ -239,7 +241,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label no-padding-right">合同金额</label>
                                         <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="price1" name="price1" v-model="item2.price1"  readonly="readonly" />
+                                            <input type="number" class="form-control" id="price1" name="price1" v-model="item2.price1" readonly="readonly" />
                                         </div>
                                     </div>
                                 </div>
@@ -271,62 +273,62 @@
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
-                            <tr role="row">
+                                <tr role="row">
 
-                                <th style="width: 200px;">
-                                    凭证号
-                                </th>
-                                <th style="width: 100px;">
-                                    时间
-                                </th>
-                                <th style="width: 100px;">
-                                    金额
-                                </th>
-                                <th style="width: 200px;">
-                                    摘要
-                                </th>
-                                <th style="width: 250px;">
-                                    操作
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th>
-                                    <input type="text" class="form-control" placeholder="凭证号" v-model="queryEntity2.text" />
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                    <button type="button" class="btn edit" v-on:click="query2(0,queryEntity2.text)"><i class="fa fa-search"></i> 搜索</button>
-                                    <button type="button" class="btn edit" v-on:click="resetSearch2()"><i class="fa fa-times"></i> 重置</button>
-                                </th>
-                            </tr>
+                                    <th style="width: 200px;">
+                                        凭证号
+                                    </th>
+                                    <th style="width: 100px;">
+                                        时间
+                                    </th>
+                                    <th style="width: 100px;">
+                                        金额
+                                    </th>
+                                    <th style="width: 200px;">
+                                        摘要
+                                    </th>
+                                    <th style="width: 250px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="凭证号" v-model="queryEntity2.text" />
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query2(0,queryEntity2.text)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch2()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="o in list2.items">
-                                <td>{{o.voucherNo}}</td>
-                                <td>{{o.date}}</td>
-                                <td>{{o.amount}}</td>
-                                <td>{{o.note}}</td>
-                                <td>
-                                    <button type="button" class="btn   edit" v-on:click="link(o)"><i class="fa  fa-link"></i> 关联</button>
-                                </td>
-                            </tr>
+                                <tr v-for="o in list2.items">
+                                    <td>{{o.voucherNo}}</td>
+                                    <td>{{o.date}}</td>
+                                    <td>{{o.amount}}</td>
+                                    <td>{{o.note}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="link(o)"><i class="fa  fa-link"></i> 关联</button>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <td colspan="5" class="DTTTFooter ">
-                                    <div class="col-sm-4">
-                                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list2.from}} - {{list2.to}} / {{list2.total}} </div>
-                                    </div>
-                                    <div class="dataTables_paginate paging_bootstrap">
-                                        <ul id="container2" class="pagination"></ul>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list2.from}} - {{list2.to}} / {{list2.total}} </div>
+                                        </div>
+                                        <div class="dataTables_paginate paging_bootstrap">
+                                            <ul id="container2" class="pagination"></ul>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -335,55 +337,306 @@
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
-                            <tr role="row">
+                                <tr role="row">
 
-                                <th style="width: 200px;">
-                                    凭证号
-                                </th>
-                                <th style="width: 100px;">
-                                    时间
-                                </th>
-                                <th style="width: 100px;">
-                                    金额
-                                </th>
-                                <th style="width: 200px;">
-                                    摘要
-                                </th>
-                                <th style="width: 250px;">
-                                    操作
-                                </th>
-                            </tr>
+                                    <th style="width: 200px;">
+                                        凭证号
+                                    </th>
+                                    <th style="width: 100px;">
+                                        时间
+                                    </th>
+                                    <th style="width: 100px;">
+                                        金额
+                                    </th>
+                                    <th style="width: 200px;">
+                                        摘要
+                                    </th>
+                                    <th style="width: 250px;">
+                                        操作
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="o in list3.items">
-                                <td>{{o.voucherNo}}</td>
-                                <td>{{o.date}}</td>
-                                <td>{{o.amount}}</td>
-                                <td>{{o.note}}</td>
-                                <td>
-                                    <button type="button" class="btn   edit" v-on:click="unlink(o.id)"><i class="fa   fa-unlink"></i> 移除关联</button>
-                                </td>
-                            </tr>
+                                <tr v-for="o in list3.items">
+                                    <td>{{o.voucherNo}}</td>
+                                    <td>{{o.date}}</td>
+                                    <td>{{o.amount}}</td>
+                                    <td>{{o.note}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="unlink(o.id)"><i class="fa   fa-unlink"></i> 移除关联</button>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <td colspan="5" class="DTTTFooter ">
-                                    <div class="col-sm-4">
-                                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list3.from}} - {{list3.to}} / {{list3.total}} </div>
-                                    </div>
-                                    <div class="col-sm-8 ">
-                                        <div class="dataTables_paginate paging_bootstrap">
-                                            <ul id="container3" class="pagination"></ul>
+                                <tr>
+                                    <td colspan="5" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list3.from}} - {{list3.to}} / {{list3.total}} </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container3" class="pagination"></ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 编辑审计对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyAuditDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">报审价<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" placeholder="必填" id="price0" name="price0" v-model="item3.price0" :disabled='item3.hasPrint>=2' />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="button" v-on:click="savePrice()" :disabled='item3.hasPrint>1'>保存</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">剩余资金</label>
+                                <div class="col-sm-9">
+                                    {{item3.price1}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">审定金额</label>
+                                <div class="col-sm-9">
+                                    {{item3.price2}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">审计费</label>
+                                <div class="col-sm-9">
+                                    {{item3.price3}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">质量保证金</label>
+                                <div class="col-sm-9">
+                                    {{item3.price4}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">应付尾款</label>
+                                <div class="col-sm-9">
+                                    {{item3.price5}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">审增减率</label>
+                                <div class="col-sm-9">
+                                    {{item3.price6}}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover table-bordered ">
+                                <thead>
+                                    <tr role="row">
+                                        <th style="width: 50px;">
+                                            序号
+                                        </th>
+                                        <th style="width: 80px;">
+                                            金额
+                                        </th>
+                                        <th style="width: 200px;">
+                                            情况说明
+                                        </th>
+                                        <th style="width: 150px;">
+                                            操作
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="s in audits">
+                                        <td>{{$index+1}}</td>
+                                        <td>
+                                            <div v-show="s.editStatus">
+                                                <input class="form-control  " placeholder="金额" type="number" v-model="s.price">
+                                            </div>
+                                            <div v-show="!s.editStatus">{{s.price}}</div>
+                                        </td>
+                                        <td>
+                                            <div v-show="s.editStatus">
+                                                <input class="form-control  " placeholder="情况说明" type="text" v-model="s.note">
+                                            </div>
+                                            <div v-show="!s.editStatus">{{s.note}}</div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn   edit" v-on:click="saveAudit(s)" v-show="s.editStatus "><i class="fa fa-floppy-o"></i>保存 </button>
+                                            <button type="button" class="btn   edit" v-on:click="cancelAudit(s)" v-show="s.editStatus "><i class="fa fa-mail-reply"></i>取消 </button>
+                                            <button type="button" class="btn   edit" v-on:click="editAudit(s)" v-show="!s.editStatus "><i class="fa fa-edit"></i> 编辑</button>
+                                            <button type="button" class="btn btn-danger  " v-on:click=" deleteAudit(s.id)" v-show="!s.editStatus "><i class="fa fa-trash-o"></i>删除 </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="addAudit()"  v-show=" item3.hasPrint<=2"><i class='fa fa-plus'></i>审增/减 </button>
+                <button type="button" class="btn edit" v-on:click="export1() " v-show=" item3.hasPrint>=2"><i class="fa  fa-print"></i>结果公示 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑质保金对话框 -->
+<div class="bootbox modal fade modal-primary in" id="modifyPerformanceDialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 900px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ modifyEntity.modifyTitle }}</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    <validator name="v2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">金额<span class="red">*</span></label>
+                                    <div class="col-sm-9">
+                                        {{item3.price4}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped table-hover table-bordered ">
+                                    <thead>
+                                        <tr role="row">
+                                            <th style="width: 50px;">
+                                                序号
+                                            </th>
+                                            <th style="width: 80px;">
+                                                金额
+                                            </th>
+                                            <th style="width: 150px;">
+                                                情况说明
+                                            </th>
+                                            <th style="width: 70px;">
+                                                部门
+                                            </th>
+                                            <th style="width: 70px;">
+                                                联系人
+                                            </th>
+                                            <th style="width: 80px;">
+                                                联系电话
+                                            </th>
+                                            <th style="width: 200px;">
+                                                操作
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="s in performanceAmountDetails">
+                                            <td>{{$index+1}}</td>
+                                            <td>
+                                                <div v-show="s.editStatus">
+                                                    <input class="form-control  " placeholder="金额" type="number" v-model="s.amount">
+                                                </div>
+                                                <div v-show="!s.editStatus">{{s.amount}}</div>
+                                            </td>
+                                            <td>
+                                                <div v-show="s.editStatus">
+                                                    <input class="form-control  " placeholder="情况说明" type="text" v-model="s.note">
+                                                </div>
+                                                <div v-show="!s.editStatus">{{s.note}}</div>
+                                            </td>
+                                            <td>
+                                                <div v-show="s.editStatus">
+                                                    <input class="form-control  " placeholder="部门" type="text" v-model="s.department">
+                                                </div>
+                                                <div v-show="!s.editStatus">{{s.department}}</div>
+                                            </td>
+                                            <td>
+                                                <div v-show="s.editStatus">
+                                                    <input class="form-control  " placeholder="联系人" type="text" v-model="s.user">
+                                                </div>
+                                                <div v-show="!s.editStatus">{{s.user}}</div>
+                                            </td>
+                                            <td>
+                                                <div v-show="s.editStatus">
+                                                    <input class="form-control  " placeholder="联系电话" type="text" v-model="s.phone">
+                                                </div>
+                                                <div v-show="!s.editStatus">{{s.phone}}</div>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn   edit" v-on:click="saveDetail(s)" v-show="s.editStatus && item.hasPrint>1 && item.hasPrint<4"><i class="fa fa-floppy-o"></i>保存 </button>
+                                                <button type="button" class="btn   edit" v-on:click="cancelDetail(s)" v-show="s.editStatus && item.hasPrint>1 && item.hasPrint<4"><i class="fa fa-mail-reply"></i>取消 </button>
+                                                <button type="button" class="btn   edit" v-on:click="editDetail(s)" v-show="!s.editStatus && item.hasPrint>1 && item.hasPrint<4"><i class="fa fa-edit"></i> 编辑</button>
+                                                <button type="button" class="btn edit" v-on:click="export2(s.id) " v-show="!s.editStatus && item.hasPrint>1"><i class="fa  fa-print"></i>扣除通知 </button>
+                                                <button type="button" class="btn btn-danger  " v-on:click=" deleteDetail(s.id)" v-show="!s.editStatus && item.hasPrint>1"><i class="fa fa-trash-o"></i>删除 </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </form>
+                    </validator>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
+                <button type="submit" class="btn btn-primary" v-on:click="addDetail()" :disabled='item.hasPrint>1 '><i class='fa fa-plus'></i>保证金扣除 </button>
             </div>
         </div>
     </div>

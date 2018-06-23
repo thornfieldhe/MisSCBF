@@ -25,7 +25,7 @@ namespace SCBF.Purchase
     using SCBF.Purchase.Dto;
 
     /// <summary>
-    /// 履约保证金管理服务
+    /// 保证金管理服务
     /// </summary>
     [AbpAuthorize]
     public class PerformanceAmountDetailAppService : TAFAppServiceBase, IPerformanceAmountDetailAppService
