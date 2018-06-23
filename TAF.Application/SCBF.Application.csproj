@@ -223,6 +223,7 @@
     <Compile Include="Purchase\AuditManagementAppService.cs" />
     <Compile Include="Purchase\BiddingManagementAppService.cs" />
     <Compile Include="Purchase\BidOpeningManagementAppService.cs" />
+    <Compile Include="Purchase\BlacklistAppService.cs" />
     <Compile Include="Purchase\CostListAppService.cs" />
     <Compile Include="Purchase\Dto\AuditManagementDto.cs" />
     <Compile Include="Purchase\Dto\AuditPriceDto.cs" />
@@ -232,8 +233,13 @@
     <Compile Include="Purchase\Dto\BidOpeningManagementEditDto.cs" />
     <Compile Include="Purchase\Dto\BidOpeningManagementListDto.cs" />
     <Compile Include="Purchase\Dto\BidOpeningManagementQueryDto.cs" />
+    <Compile Include="Purchase\Dto\BlacklistListDto.cs" />
+    <Compile Include="Purchase\Dto\BlacklistQueryDto.cs" />
     <Compile Include="Purchase\Dto\BudgetOutlaySummaryDto.cs" />
     <Compile Include="Purchase\Dto\CostListDto.cs" />
+    <Compile Include="Purchase\Dto\EqManagerEditDto.cs" />
+    <Compile Include="Purchase\Dto\EqManagerListDto.cs" />
+    <Compile Include="Purchase\Dto\EqManagerQueryDto.cs" />
     <Compile Include="Purchase\Dto\PerformanceAmountDetailDto.cs" />
     <Compile Include="Purchase\Dto\PerformanceManageEditDto.cs" />
     <Compile Include="Purchase\Dto\PlanWithBudgetOutlayEditDto.cs" />
@@ -255,10 +261,13 @@
     <Compile Include="Purchase\Dto\StageInfoListDto.cs" />
     <Compile Include="Purchase\Dto\StageInfoQueryDto.cs" />
     <Compile Include="Purchase\Dto\TendererDto.cs" />
+    <Compile Include="Purchase\EqManagerAppService.cs" />
     <Compile Include="Purchase\IAuditManagementAppService.cs" />
     <Compile Include="Purchase\IBiddingManagementAppService.cs" />
     <Compile Include="Purchase\IBidOpeningManagementAppService.cs" />
+    <Compile Include="Purchase\IBlacklistAppService.cs" />
     <Compile Include="Purchase\ICostListAppService.cs" />
+    <Compile Include="Purchase\IEqManagerAppService.cs" />
     <Compile Include="Purchase\IPerformanceAmountDetailAppService.cs" />
     <Compile Include="Purchase\IPerformanceManageAppService.cs" />
     <Compile Include="Purchase\IPlanWithBudgetOutlayAppService.cs" />

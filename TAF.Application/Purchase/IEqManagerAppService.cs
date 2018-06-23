@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IProcurementPlanAppService.cs" company="" author="何翔华">
+// <copyright file="IEqManagerAppService.cs" company="" author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   采购计划应用接口
+//   质量评价体系应用接口
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,23 +15,17 @@ namespace SCBF.Purchase
     using SCBF.Purchase.Dto;
 
     /// <summary>
-    /// 采购计划应用接口
+    /// 质量评价体系应用接口
     /// </summary>
-    public interface IProcurementPlanAppService : IBaseEntityApplicationService
+    public interface IEqManagerAppService : IBaseEntityApplicationService
     {
-        ListResultDto<ProcurementPlanListDto> GetAll(ProcurementPlanQueryDto request);
+        ListResultDto<EqManagerListDto> GetAll(EqManagerQueryDto request);
 
-        ProcurementPlanEditDto Get(Guid id);
+        EqManagerEditDto Get(Guid id);
 
-        Task SaveAsync(ProcurementPlanEditDto input);
+        Task SaveAsync(EqManagerEditDto input);
 
         void Delete(Guid id);
-
-        EqManagerEditDto GetInfo(Guid id);
-
-        string ExportExs();
-
-        string ExportDoc();
     }
 }
 

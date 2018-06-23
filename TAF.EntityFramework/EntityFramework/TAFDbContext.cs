@@ -327,6 +327,16 @@
             get; set;
         }
 
+        public DbSet<EqManager> EqManagers
+        {
+            get; set;
+        }
+
+        public DbSet<Blacklist> Blacklists
+        {
+            get; set;
+        }
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

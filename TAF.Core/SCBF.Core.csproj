@@ -168,11 +168,15 @@
     <Compile Include="Purchase\BiddingManagement.cs" />
     <Compile Include="Purchase\BiddingType.cs" />
     <Compile Include="Purchase\BidOpeningManagement.cs" />
+    <Compile Include="Purchase\Blacklist.cs" />
     <Compile Include="Purchase\CostList.cs" />
+    <Compile Include="Purchase\EqManager.cs" />
     <Compile Include="Purchase\IAuditManagementRepository.cs" />
     <Compile Include="Purchase\IBiddingManagementRepository.cs" />
     <Compile Include="Purchase\IBidOpeningManagementRepository.cs" />
+    <Compile Include="Purchase\IBlacklistRepository.cs" />
     <Compile Include="Purchase\ICostListRepository.cs" />
+    <Compile Include="Purchase\IEqManagerRepository.cs" />
     <Compile Include="Purchase\IPerformanceAmountDetailRepository.cs" />
     <Compile Include="Purchase\IPerformanceManageRepository.cs" />
     <Compile Include="Purchase\IProcessManagementRepository.cs" />

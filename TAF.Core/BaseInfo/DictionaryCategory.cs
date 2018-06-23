@@ -157,6 +157,11 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Purchase_BlackList = "Purchase_BlackList";
 
+        /// <summary>
+        /// 供应商
+        /// </summary>
+        public const string Purchase_Supplier = "Purchase_Supplier";
+
         #endregion
 
         #region 车辆

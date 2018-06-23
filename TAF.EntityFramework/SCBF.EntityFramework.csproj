@@ -443,6 +443,14 @@
     <Compile Include="Migrations\201806191431054_editTable_ProjectManagement.Designer.cs">
       <DependentUpon>201806191431054_editTable_ProjectManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806230813280_addTable_EqManagers.cs" />
+    <Compile Include="Migrations\201806230813280_addTable_EqManagers.Designer.cs">
+      <DependentUpon>201806230813280_addTable_EqManagers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806230901113_modifyTalbe_Blacklist.cs" />
+    <Compile Include="Migrations\201806230901113_modifyTalbe_Blacklist.Designer.cs">
+      <DependentUpon>201806230901113_modifyTalbe_Blacklist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -455,6 +463,7 @@
     <Compile Include="Repositories\AuditManagementRepository.cs" />
     <Compile Include="Repositories\BiddingManagementRepository.cs" />
     <Compile Include="Repositories\BidOpeningManagementRepository.cs" />
+    <Compile Include="Repositories\BlacklistRepository.cs" />
     <Compile Include="Repositories\BudgetOutlayRepository.cs" />
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
@@ -467,6 +476,7 @@
     <Compile Include="Repositories\DriverRepository.cs" />
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
+    <Compile Include="Repositories\EqManagerRepository.cs" />
     <Compile Include="Repositories\HisOctaneStoreStockRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
     <Compile Include="Repositories\InvoiceCheckRepository.cs" />
@@ -744,6 +754,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806191431054_editTable_ProjectManagement.resx">
       <DependentUpon>201806191431054_editTable_ProjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806230813280_addTable_EqManagers.resx">
+      <DependentUpon>201806230813280_addTable_EqManagers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806230901113_modifyTalbe_Blacklist.resx">
+      <DependentUpon>201806230901113_modifyTalbe_Blacklist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

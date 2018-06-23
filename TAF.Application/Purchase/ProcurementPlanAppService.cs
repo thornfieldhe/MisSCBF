@@ -37,14 +37,20 @@ namespace SCBF.Purchase
     {
         private readonly IProcurementPlanRepository      _procurementPlanRepository;
         private readonly IPlanWithBudgetOutlayRepository _planWithBudgetOutlayRepository;
+        private readonly IProcessManagementRepository    _processManagementRepository;
+        private readonly IBidOpeningManagementRepository _bidOpeningManagementRepository;
         private readonly ISysDictionaryRepository        _sysDictionaryRepository;
 
         public ProcurementPlanAppService(IProcurementPlanRepository procurementPlanRepository,
             IPlanWithBudgetOutlayRepository                         planWithBudgetOutlayRepository,
+            IProcessManagementRepository                            processManagementRepository,
+            IBidOpeningManagementRepository                         bidOpeningManagementRepository,
             ISysDictionaryRepository                                sysDictionaryRepository)
         {
             this._procurementPlanRepository      = procurementPlanRepository;
             this._planWithBudgetOutlayRepository = planWithBudgetOutlayRepository;
+            this._processManagementRepository    = processManagementRepository;
+            this._bidOpeningManagementRepository = bidOpeningManagementRepository;
             this._sysDictionaryRepository        = sysDictionaryRepository;
         }
 
@@ -132,7 +138,7 @@ namespace SCBF.Purchase
             var result = this.LoadData();
 
             return DownloadFileService.Load("procurementPlan.xls", "年度采购计划.xls", new string[] { })
-                .ExcuteXls(result.OrderBy(r=>r.Category).ToList(), this.ExportToXls);
+                .ExcuteXls(result.OrderBy(r => r.Category).ToList(), this.ExportToXls);
         }
 
 
@@ -140,7 +146,7 @@ namespace SCBF.Purchase
         {
             var result = this.LoadData();
             return DownloadFileService.Load("procurementPlanReport.doc", "年度采购计划报告.doc", new string[] { })
-                .ExcuteDoc(result.OrderBy(r=>r.Category).ToList(),this.ExportToDoc);
+                .ExcuteDoc(result.OrderBy(r => r.Category).ToList(), this.ExportToDoc);
         }
 
         public ProcurementPlanEditDto Get(Guid id)
@@ -177,6 +183,27 @@ namespace SCBF.Purchase
         public void Delete(Guid id)
         {
             this._procurementPlanRepository.Delete(id);
+        }
+
+        public EqManagerEditDto GetInfo(Guid id)
+        {
+            var processes = this._processManagementRepository.Get(r => r.PurchaseId == id);
+            var result = new EqManagerEditDto()
+            {
+                PlanId = id,
+                Unit1  = processes.FirstOrDefault(r => r.Type == DictionaryCategory.Purchase_BiddingAgency).Unit,
+                Unit2 = processes.FirstOrDefault(r => r.Type == DictionaryCategory.Purchase_ConstructionControlUnit)
+                    .Unit,
+                Unit3 = processes.FirstOrDefault(r => r.Type == DictionaryCategory.Purchase_CostUnit).Unit,
+                Unit4 = processes.FirstOrDefault(r => r.Type == DictionaryCategory.Purchase_DesignUnit).Unit,
+                Unit5 = this._bidOpeningManagementRepository.FirstOrDefault(r => r.PlanId == id).SuccessfulTender
+            };
+
+            result.UnitName1 = this._sysDictionaryRepository.Get(result.Unit1.Value).Value;
+            result.UnitName2 = this._sysDictionaryRepository.Get(result.Unit2.Value).Value;
+            result.UnitName3 = this._sysDictionaryRepository.Get(result.Unit3.Value).Value;
+            result.UnitName4 = this._sysDictionaryRepository.Get(result.Unit4.Value).Value;
+            return result;
         }
 
 
@@ -243,7 +270,7 @@ namespace SCBF.Purchase
                     cell0.Value  = list[i].Category;
                     cell1.Value  = list[i].Name;
                     cell2.Value  = list[i].TotalPrice.ToString("N");
-                    cell9.Value  = list[i].Month+"月";
+                    cell9.Value  = list[i].Month + "月";
                     cell10.Value = list[i].Mode;
                     cell11.Value = list[i].Department;
                     cell12.Value = list[i].User;
@@ -255,7 +282,7 @@ namespace SCBF.Purchase
 
 
             var categorie = list.GroupBy(r => r.Category)
-                .Select(r=>new KeyValue<string,int>(){Key =r.Key,Value = r.Sum(l=>l.Details.Count)});
+                .Select(r => new KeyValue<string, int>() {Key = r.Key, Value = r.Sum(l => l.Details.Count)});
             var index2 = 5;
             foreach (var category in categorie)
             {
@@ -264,7 +291,7 @@ namespace SCBF.Purchase
             }
 
             var details = list.SelectMany(r => r.Details).ToList();
-            var index = 5;
+            var index   = 5;
             for (var i = 0; i < details.Count; i++)
             {
                 var cell3 = designer.Workbook.Worksheets[0].Cells[index, 3];
@@ -273,23 +300,23 @@ namespace SCBF.Purchase
                 var cell6 = designer.Workbook.Worksheets[0].Cells[index, 6];
                 var cell7 = designer.Workbook.Worksheets[0].Cells[index, 7];
                 var cell8 = designer.Workbook.Worksheets[0].Cells[index, 8];
-                cell3.Value=details[i].Name;
-                cell4.Value=details[i].Unit;
-                cell5.Value=details[i].Amount.ToString("N");
-                cell6.Value=details[i].Price.ToString("N");
-                cell7.Value=details[i].Totale.ToString("N");
-                cell8.Value=details[i].Code;
-                index ++ ;
+                cell3.Value = details[i].Name;
+                cell4.Value = details[i].Unit;
+                cell5.Value = details[i].Amount.ToString("N");
+                cell6.Value = details[i].Price.ToString("N");
+                cell7.Value = details[i].Totale.ToString("N");
+                cell8.Value = details[i].Code;
+                index++;
             }
 
             for (var i = 5; i < 500; i++)
             {
-                if ( designer.Workbook.Worksheets[0].Cells[i, 4].StringValue == "")
+                if (designer.Workbook.Worksheets[0].Cells[i, 4].StringValue == "")
                 {
                     break;
                 }
 
-                for (var j = 0; j <=12; j++)
+                for (var j = 0; j <= 12; j++)
                 {
                     designer.Workbook.Worksheets[0].Cells[i, j].SetStyle(st);
                 }
@@ -300,19 +327,20 @@ namespace SCBF.Purchase
 
         private KeyValue<DataSet, string[], object[]> ExportToDoc(object ls)
         {
-            List <ProcurementPlanListSummaryDto > list=ls as List<ProcurementPlanListSummaryDto>;
+            List<ProcurementPlanListSummaryDto> list = ls as List<ProcurementPlanListSummaryDto>;
             var currentYearItem = this._sysDictionaryRepository.FirstOrDefault(r =>
                 r.Value4 == true.ToString() && r.Category == DictionaryCategory.Budget_Year);
             if (currentYearItem == null)
             {
                 throw new UserFriendlyException("预算年度不存在");
             }
+
             var categorie = list.GroupBy(r => r.Category)
-                .Select(r=>new KeyValue<string,int>(){Key =r.Key,Value = r.Sum(l=>l.Details.Count)});
+                .Select(r => new KeyValue<string, int>() {Key = r.Key, Value = r.Sum(l => l.Details.Count)});
             var keys = new string[] {"Year", "Category", "Project", "Date"};
             var values = new object[]
                 {currentYearItem.Value, categorie.Count(), list.Count, DateTime.Now.ToString("yyy-MM-dd")};
-            var ds=new DataSet();
+            var ds = new DataSet();
             var dt = new DataTable("List");
             dt.Columns.Add("Amount");
             dt.Columns.Add("Name");
@@ -322,18 +350,18 @@ namespace SCBF.Purchase
             dt.Columns.Add("User");
             foreach (var item in list)
             {
-                var row=dt.NewRow();
-                row["Amount"] = (item.TotalPrice /10000).ToString("N");
-                row["Name"] = item.Name;
-                row["Month"] = item.Month;
-                row["Mode"] = item.Mode;
+                var row = dt.NewRow();
+                row["Amount"]     = (item.TotalPrice / 10000).ToString("N");
+                row["Name"]       = item.Name;
+                row["Month"]      = item.Month;
+                row["Mode"]       = item.Mode;
                 row["Department"] = item.Department;
-                row["User"] = item.User;
+                row["User"]       = item.User;
                 dt.Rows.Add(row);
             }
 
             ds.Tables.Add(dt);
-            return new KeyValue<DataSet,string[],object[]>(ds,keys,values);
+            return new KeyValue<DataSet, string[], object[]>(ds, keys, values);
         }
 
         private List<ProcurementPlanListSummaryDto> LoadData()

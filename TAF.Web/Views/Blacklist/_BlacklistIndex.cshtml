@@ -1,0 +1,101 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-primary">
+                <span class="widget-caption">黑名单管理</span>
+            </div>
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <button type="button" class="btn btn-primary" v-on:click="export()"><i class="fa  fa-print"></i> 导出黑名单函</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered ">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        类型
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        单位名称
+                                    </th>        
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <select id="searchType" style="width: 100%" v-model="queryEntity.type">
+                                            <option value="">请选择...</option>
+                                            <option value="Purchase_BiddingAgency">招标代理单位</option>
+                                            <option value="Purchase_ConstructionControlUnit">监理单位</option>
+                                            <option value="Purchase_CostUnit">造价单位</option>
+                                            <option value="Purchase_DesignUnit">设计单位</option>
+                                            <option value="Purchase_Supplier">供应商</option>
+                                        </select>
+                                    </th>        
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="单位名称" v-model="queryEntity.name" />
+                                    </th>        
+                                    <th>
+                                    <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                    <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in list.items">
+                                    <td>{{item.type}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>
+                                    <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) " ><i class="fa fa-trash-o"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+                    
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除对话框 -->
+<div class="bootbox modal fade modal-darkorange in" id="deleteBlacklistDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+                <div v-model="title"></div>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">确认删除{{deleteEntity.name}}？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa   fa-mail-reply"></i> 取消</button>
+                <button type="button" class="btn btn-danger" v-on:click="delete(deleteEntity.id)"><i class="fa   fa-trash-o"></i>删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Views/Blacklist/blacklist.js"></script>
+
+
+

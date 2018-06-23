@@ -260,6 +260,16 @@
                             "menuProjectManagements",
                             L("采购过程管理"),
                             url: "#projectManagements",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuEqManagers",
+                            L("质量评价体系"),
+                            url: "#eqManagers",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuBlacklists",
+                            L("黑名单管理"),
+                            url: "#blacklists",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

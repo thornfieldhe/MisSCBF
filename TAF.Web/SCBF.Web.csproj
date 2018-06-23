@@ -822,8 +822,10 @@
     <Content Include="Views\Account\user.js" />
     <Content Include="Views\ActualOutlay\actualOutlay.js" />
     <Content Include="Views\BiddingManagement\biddingManagement.js" />
+    <Content Include="Views\Blacklist\blacklist.js" />
     <Content Include="Views\CarOil\carOilReport.js" />
     <Content Include="Views\CarOil\carOil.js" />
+    <Content Include="Views\EqManager\eqManager.js" />
     <Content Include="Views\InvoiceCheck\invoiceCheck.js" />
     <Content Include="Views\ProcessManagement\costManage.js" />
     <Content Include="Views\ProcessManagement\representativesManage.js" />
@@ -967,6 +969,7 @@
     <Compile Include="Controllers\ApplyForVehicleMaintenanceController.cs" />
     <Compile Include="Controllers\BiddingManagementController.cs" />
     <Compile Include="Controllers\BidOpeningManagementController.cs" />
+    <Compile Include="Controllers\BlacklistController.cs" />
     <Compile Include="Controllers\BudgetOutlayController.cs" />
     <Compile Include="Controllers\BudgetReceiptController.cs" />
     <Compile Include="Controllers\CarController.cs" />
@@ -977,6 +980,7 @@
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\EntryBillController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
+    <Compile Include="Controllers\EqManagerController.cs" />
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HisOilStockController.cs" />
     <Compile Include="Controllers\HisStockController.cs" />
@@ -1041,6 +1045,7 @@
     <Content Include="App_Data\Template\履约保证金抵扣没收通知书模板.docx" />
     <Content Include="App_Data\Template\质量保证金抵扣没收通知书模板.docx" />
     <Content Include="App_Data\Template\审计结果公示模板.doc" />
+    <Content Include="App_Data\Template\黑名单函模板.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1114,6 +1119,8 @@
     <Content Include="Views\BiddingManagement\_BiddingManagementIndex.cshtml" />
     <Content Include="Views\BidOpeningManagement\_BidOpeningManagementIndex.cshtml" />
     <Content Include="Views\ProjectManagement\_ProjectManagementIndex.cshtml" />
+    <Content Include="Views\EqManager\_EqManagerIndex.cshtml" />
+    <Content Include="Views\Blacklist\_BlacklistIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
