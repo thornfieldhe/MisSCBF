@@ -837,6 +837,7 @@
     <Content Include="Views\ProcurementPlan\procurementPlan2.js" />
     <Content Include="Views\ProcurementPlan\procurementPlan.js" />
     <Content Include="Views\ProjectManagement\projectManagement.js" />
+    <Content Include="Views\Purchase\downloadFiles.js" />
     <Content Include="Views\Purchase\poolConfig.js" />
     <Content Include="Views\StageInfoe\stageInfoe.js" />
     <Content Include="Views\ApplyForVehicleMaintenance\vehicleMaintenanceReport.js" />
@@ -1121,6 +1122,7 @@
     <Content Include="Views\ProjectManagement\_ProjectManagementIndex.cshtml" />
     <Content Include="Views\EqManager\_EqManagerIndex.cshtml" />
     <Content Include="Views\Blacklist\_BlacklistIndex.cshtml" />
+    <Content Include="Views\Purchase\_DownloadFiles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

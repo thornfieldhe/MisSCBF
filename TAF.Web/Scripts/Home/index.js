@@ -70,6 +70,7 @@ Path.map("#bidOpeningManagements").to(function () { loadPage("/BidOpeningManagem
 Path.map("#projectManagements").to(function() {loadPage("/ProjectManagement/ProjectManagementList", "采购管理", "采购过程管理", "#menuProjectManagements", false);});
 Path.map("#eqManagers").to(function () { loadPage("/EqManager/EqManagerList", "采购管理", "质量评价体系", "#menuEqManagers", false); });
 Path.map("#blacklists").to(function () { loadPage("/Blacklist/BlacklistList", "采购管理", "黑名单管理", "#menuBlacklists", false);});
+Path.map("#downloadFiles").to(function () { loadPage("/Purchase/DownloadFiles", "采购管理", "项目资料下载", "#menuDownloadFiles", false);});
 
 Path.map("#carBaseInfos").to(function () { loadPage("/Car/InfoList", "车辆管理", "基础信息", "#menuCarInfos", false); });
 Path.map("#maintenanceParts").to(function () { loadPage("/Car/MaintenancePartsList", "车辆管理", "维修部位", "#menuMaintenanceParts", false); });

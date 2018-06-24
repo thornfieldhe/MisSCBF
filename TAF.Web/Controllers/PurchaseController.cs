@@ -29,6 +29,11 @@ namespace SCBF.Web.Controllers
         {
             return this.PartialView("_PoolConfig");
         }
+
+        public ActionResult DownloadFiles()
+        {
+            return this.PartialView("_DownloadFiles");
+        }
     }
 
 

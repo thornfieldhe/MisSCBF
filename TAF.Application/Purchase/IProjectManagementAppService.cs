@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace SCBF.Purchase
 {
     using System;
@@ -34,8 +36,12 @@ namespace SCBF.Purchase
         /// <returns></returns>
         ProjectManagementPriceDto ComputePrice(Guid id);
 
+        List<Guid> GetAttachments(Guid id);
+
         void SavePrice(ProjectManagementSavePriceDto item);
+
         string ExportDoc1(Guid id);
+
         string ExportDoc2(Guid id);
     }
 }

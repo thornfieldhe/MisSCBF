@@ -342,5 +342,30 @@ namespace SCBF.Purchase
         {
             this._projectManagementRepository.Delete(id);
         }
+
+        public List<Guid> GetAttachments(Guid id)
+        {
+            var plan = this._procurementPlanRepository.Get(id);
+            var result = new List<Guid>();
+            var l2 = this._processManagementRepository
+                .FirstOrDefault(r => r.PurchaseId == id && r.Type == DictionaryCategory.Purchase_DesignUnit);
+            var l3 = this._processManagementRepository
+                .FirstOrDefault(r => r.PurchaseId == id && r.Type == DictionaryCategory.Purchase_CostUnit);
+            var l4 = this._processManagementRepository
+                .FirstOrDefault(r => r.PurchaseId == id && r.Type == DictionaryCategory.Purchase_ConstructionControlUnit);
+            var l5 = this._processManagementRepository
+                .FirstOrDefault(r => r.PurchaseId == id && r.Type == DictionaryCategory.Purchase_BiddingAgency);
+            var l6 = this._biddingManagementRepository.FirstOrDefault(r=>r.PlanId==id);
+            var l7 = this._bidOpeningManagementRepository.FirstOrDefault(r=>r.PlanId==id);
+            var l8 = this._projectManagementRepository.FirstOrDefault(r=>r.PlanId ==id);
+            result.Add(l2==null? Guid.Empty:l2.Id);
+            result.Add(l3==null? Guid.Empty:l3.Id);
+            result.Add(l4==null? Guid.Empty:l4.Id);
+            result.Add(l5==null? Guid.Empty:l5.Id);
+            result.Add(l6==null? Guid.Empty:l6.Id);
+            result.Add(l7==null? Guid.Empty:l7.Id);
+            result.Add(l8==null? Guid.Empty:l8.Id);
+            return result;
+        }
     }
 }

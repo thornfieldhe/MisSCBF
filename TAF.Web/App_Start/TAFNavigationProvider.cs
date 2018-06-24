@@ -270,6 +270,11 @@
                             "menuBlacklists",
                             L("黑名单管理"),
                             url: "#blacklists",
+                            requiredPermissionName: PermissionNames.CgUser))
+                        .AddItem(new MenuItemDefinition(
+                            "menuDownloadFiles",
+                            L("项目资料下载"),
+                            url: "#downloadFiles",
                             requiredPermissionName: PermissionNames.CgUser)))
                 .AddItem(
                     new MenuItemDefinition(

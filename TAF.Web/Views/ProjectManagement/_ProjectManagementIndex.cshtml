@@ -9,81 +9,84 @@
                     <button type="button" class="btn btn-primary " v-on:click="showModifyDialog('新增采购过程管理',null)"><i class="fa  fa-plus"></i> 新增</button>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover table-bordered ">
-                            <thead>
-                                <tr role="row">
-                                    <th style="width: 200px;">
-                                        采购项目编号
-                                    </th>
-                                    <th style="width: 200px;">
-                                        采购项目
-                                    </th>
-                                    <th style="width: 150px;">
-                                        开工日期
-                                    </th>
-                                    <th style="width: 80px;">
-                                        合同金额
-                                    </th>
-                                    <th style="width: 80px;">
-                                        审定报价
-                                    </th>
-                                    <th style="width: 250px;">
-                                        操作
-                                    </th>
-                                </tr>
-                                <tr role="row">
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="项目编号" v-model="queryEntity.code" />
-                                    </th>
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="项目名称" v-model="queryEntity.name" />
-                                    </th>
-                                    <th>
-                                    </th>
-                                    <th>
-                                    </th>
-                                    <th>
-                                    </th>
-                                    <th>
-                                        <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
-                                        <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in list.items">
-                                    <td>{{item.code}}</td>
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.date1}}</td>
-                                    <td>{{item.price1}}</td>
-                                    <td>{{item.price2}}</td>
-                                    <td>
-                                        <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购过程',item.id)"><i class="fa fa-edit"></i> 编辑</button>
-                                        <button type="button" class="btn btn-default  " v-on:click="showOutlayDialog('关联付款',item.id) "><i class="fa  fa-yen"></i> 费用</button>
-                                        <button type="button" class="btn btn-default  " v-on:click="showModifyAuditDialog('审计',item.id) "><i class="fa  fa-edit"></i> 审计</button>
-                                        <button type="button" class="btn   edit" v-on:click="showModifyPerformanceDialog('编辑质保',item.id)"><i class="fa fa-edit"></i> 质保金</button>
-                                        <button type="button" class="btn btn-default  " v-on:click="showAttachmentsDialog('附件管理',item.id) "><i class="fa  fa-paperclip"></i> 附件</button>
-                                        <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="6" class="DTTTFooter ">
-                                        <div class="col-sm-4">
-                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
-                                        </div>
-                                        <div class="col-sm-8 ">
-                                            <div class="dataTables_paginate paging_bootstrap">
-                                                <ul id="container" class="pagination"></ul>
+                    <div class="col-md-12 ">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-hover table-bordered ">
+                                <thead>
+                                    <tr role="row">
+                                        <th style="width: 200px;">
+                                            采购项目编号
+                                        </th>
+                                        <th style="width: 200px;">
+                                            采购项目
+                                        </th>
+                                        <th style="width: 150px;">
+                                            开工日期
+                                        </th>
+                                        <th style="width: 80px;">
+                                            合同金额
+                                        </th>
+                                        <th style="width: 80px;">
+                                            审定报价
+                                        </th>
+                                        <th style="width: 250px;">
+                                            操作
+                                        </th>
+                                    </tr>
+                                    <tr role="row">
+                                        <th>
+                                            <input type="text" class="form-control" placeholder="项目编号" v-model="queryEntity.code" />
+                                        </th>
+                                        <th>
+                                            <input type="text" class="form-control" placeholder="项目名称" v-model="queryEntity.name" />
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                        </th>
+                                        <th>
+                                            <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                            <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in list.items">
+                                        <td>{{item.code}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.date1}}</td>
+                                        <td>{{item.price1}}</td>
+                                        <td>{{item.price2}}</td>
+                                        <td>
+                                            <button type="button" class="btn   edit" v-on:click="showModifyDialog('编辑采购过程',item.id)"><i class="fa fa-edit"></i> 编辑</button>
+                                            <button type="button" class="btn btn-default  " v-on:click="showOutlayDialog('关联付款',item.id) "><i class="fa  fa-yen"></i> 费用</button>
+                                            <button type="button" class="btn btn-default  " v-on:click="showModifyAuditDialog('审计',item.id) "><i class="fa  fa-edit"></i> 审计</button>
+                                            <button type="button" class="btn   edit" v-on:click="showModifyPerformanceDialog('编辑质保',item.id)"><i class="fa fa-edit"></i> 质保金</button>
+                                            <button type="button" class="btn btn-default  " v-on:click="showAttachmentsDialog('附件管理',item.id) "><i class="fa  fa-paperclip"></i> 附件</button>
+                                            <button type="button" class="btn btn-danger  " v-on:click="showDeleteDialog(item.id,item.name) "><i class="fa fa-trash-o"></i> 删除</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" class="DTTTFooter ">
+                                            <div class="col-sm-4">
+                                                <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
                                             </div>
+                                            <div class="col-sm-8 ">
+                                                <div class="dataTables_paginate paging_bootstrap">
+                                                    <ul id="container" class="pagination"></ul>
+                                                </div>
 
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
