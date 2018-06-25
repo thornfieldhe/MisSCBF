@@ -39,7 +39,7 @@ namespace SCBF.Web.Controllers
             return PartialView("_ProjectManagementIndex");
         }
 
-        
+
 
         public FileResult Download1(Guid id)
         {
@@ -51,6 +51,13 @@ namespace SCBF.Web.Controllers
         public FileResult Download2(Guid id)
         {
             var file = this._projectManagementAppService.ExportDoc2(id);
+            return this.DownloadFile(file);
+        }
+
+
+        public FileResult DownloadReport()
+        {
+            var file = this._projectManagementAppService.ExportDoc3();
             return this.DownloadFile(file);
         }
     }

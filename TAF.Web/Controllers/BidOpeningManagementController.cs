@@ -62,6 +62,7 @@ namespace SCBF.Web.Controllers
             var file = this._bidOpeningManagementAppService.ExportDoc3(id);
             return this.DownloadFile(file);
         }
+
     }
 }
 

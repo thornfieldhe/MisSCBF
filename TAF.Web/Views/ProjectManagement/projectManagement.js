@@ -579,6 +579,10 @@
                 .fail(function (m) {
                     $this.fail(m);
                 });
+        },
+        export: function(id) {
+                    var url = "/ProjectManagement/DownloadReport";
+                    taf.download(url);
         }
     }
 });

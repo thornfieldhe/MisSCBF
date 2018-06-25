@@ -451,6 +451,10 @@
     <Compile Include="Migrations\201806230901113_modifyTalbe_Blacklist.Designer.cs">
       <DependentUpon>201806230901113_modifyTalbe_Blacklist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806251422164_modifyTable_blacklist2.cs" />
+    <Compile Include="Migrations\201806251422164_modifyTable_blacklist2.Designer.cs">
+      <DependentUpon>201806251422164_modifyTable_blacklist2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -760,6 +764,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806230901113_modifyTalbe_Blacklist.resx">
       <DependentUpon>201806230901113_modifyTalbe_Blacklist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251422164_modifyTable_blacklist2.resx">
+      <DependentUpon>201806251422164_modifyTable_blacklist2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

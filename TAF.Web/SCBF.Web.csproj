@@ -1047,6 +1047,7 @@
     <Content Include="App_Data\Template\质量保证金抵扣没收通知书模板.docx" />
     <Content Include="App_Data\Template\审计结果公示模板.doc" />
     <Content Include="App_Data\Template\黑名单函模板.doc" />
+    <Content Include="App_Data\Template\年度采购工作情况报告模板.doc" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
