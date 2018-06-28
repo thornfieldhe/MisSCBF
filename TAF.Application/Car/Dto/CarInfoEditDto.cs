@@ -9,8 +9,8 @@
 
 namespace SCBF.Car.Dto
 {
-    using Abp.AutoMapper;
     using System;
+    using Abp.AutoMapper;
 
     /// <summary>
     /// 车辆信息编辑对象
@@ -21,7 +21,7 @@ namespace SCBF.Car.Dto
         /// <summary>
         /// Id
         /// </summary>
-        public Guid Id
+        public Guid? Id
         {
             get; set;
         }

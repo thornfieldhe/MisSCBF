@@ -66,7 +66,7 @@
     },
     methods: {
         clearItem: function () {
-            this.item.id = "00000000-0000-0000-0000-000000000000";
+            this.item.id = "";
             this.item.clxh= "";
             this.item.cjh= "";
             this.item.fdjh= "";
@@ -92,14 +92,6 @@
 var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
-        var zbsjFrom = $('#zbsjFrom').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
-            zbsjFrom.hide();
-            main.queryEntity.zbsjFrom = $("#zbsjFrom").val();
-        }).data('datepicker');
-        var zbsjTo = $('#zbsjTo').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
-            zbsjTo.hide();
-            main.queryEntity.zbsjTo = $("#zbsjTo").val();
-        }).data('datepicker');
         $("#searchClzk").select2().on("change", function (e) { main.queryEntity.clzk = $("#searchClzk").val(); });
         $("#searchDriver").select2().on("change", function (e) { main.queryEntity.driver = $("#searchDriver").val(); });
     },
@@ -114,7 +106,10 @@ var main = new Vue({
             clzk:"", 
             xszh: "",
             driver:""
-        }
+        },
+        list4:[],
+        selectId:"",
+        modifyEntity: { modifyTitle: "" }
     },
     events: {
         'onResetSearch': function () {
@@ -147,11 +142,54 @@ var main = new Vue({
                 .fail(function (m) {
                     $this.fail(m);
                 });
-        }
+        },
+        showAttachmentsDialog: function(name, id) {
+            var $this = this;
+            $this.modifyEntity.modifyTitle = name;
+            $this.selectId = id;
+            $("#attachmentsDialog").modal("show");
+            $this.query4();
+
+        },
+        removeAttach: function(id) {
+            var $this = this;
+            abp.services.app.attachment.delete(id)
+                .done(function(m) {
+                    $this.query4();
+                })
+                .fail(function(m) {
+                    $this.fail(m);
+                });
+        },
+        query4: function() {
+            var $this = this;
+
+            abp.services.app.attachment.getAll($this.selectId)
+                .done(function(r) {
+                    $this.list4 = r;
+                })
+                .fail(function(r) {
+                    $this.fail(r);
+                });
+        },
     }
 });
 
 main.query(0);
 
 
+$(".fileUpload").liteUploader({
+        script: defaultUrl + "ProcessManagement/Upload?modelId=" + main.selectId
+    })
+    .on("lu:success",
+        function(e, response) {
+            main.query4();
+            taf.notify.success("附件上传成功");
+        });
+
+$(".fileUpload").change(function() {
+    $(".fileUpload").data("liteUploader").options.script =
+        defaultUrl + "ProcessManagement/Upload?modelId=" + main.selectId;
+    $(this).data("liteUploader").startUpload();
+});
 

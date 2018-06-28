@@ -9,6 +9,11 @@
 
 namespace SCBF.Car
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
@@ -16,11 +21,6 @@ namespace SCBF.Car
     using AutoMapper;
     using SCBF.BaseInfo;
     using SCBF.Car.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
     using TAF.Utility;
 
     /// <summary>
@@ -83,13 +83,13 @@ namespace SCBF.Car
         public async Task SaveAsync(CarInfoEditDto input)
         {
             var item = input.MapTo<CarInfo>();
-            if (input.Id == Guid.Empty)
+            if (!input.Id.HasValue)
             {
                 await this.carInfoRepository.InsertAsync(item);
             }
             else
             {
-                var old = this.carInfoRepository.Get(input.Id);
+                var old = this.carInfoRepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
                 await this.carInfoRepository.UpdateAsync(old);
             }

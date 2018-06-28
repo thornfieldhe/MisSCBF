@@ -5,14 +5,16 @@
         var $this = this;
         $("#searchEditOilCardId").select2()
             .on("change", function (e) {
-                abp.services.app.oilCard.getAmount($("#searchEditOilCardId").val())
-                    .done(function (m) {
-                        $this.item.hisAmount = m;
-                        $this.item.oilCardId = $("#searchEditOilCardId").val();
-                    })
-                    .fail(function (m) {
-                        $this.fail(m);
-                    });
+                if ($("#searchEditOilCardId").val()!=="") {
+                    abp.services.app.oilCard.getAmount($("#searchEditOilCardId").val())
+                        .done(function (m) {
+                            $this.item.hisAmount = m;
+                            $this.item.oilCardId = $("#searchEditOilCardId").val();
+                        })
+                        .fail(function (m) {
+                            $this.fail(m);
+                        });
+                }
             }); 
         var datePickerDate = $('#datePickerDate').datepicker({ format: 'yyyy-mm-dd' }).on('changeDate', function (ev) {
             datePickerDate.hide();

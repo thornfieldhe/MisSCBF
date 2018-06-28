@@ -10,7 +10,6 @@
 namespace SCBF.Car.Dto
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     using Abp.AutoMapper;
 

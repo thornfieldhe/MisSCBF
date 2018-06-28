@@ -9,6 +9,12 @@
 
 namespace SCBF.Car
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.UI;
@@ -17,12 +23,6 @@ namespace SCBF.Car
     using NPOI.XSSF.UserModel;
     using SCBF.BaseInfo;
     using SCBF.Car.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
     using TAF.Utility;
 
     /// <summary>
@@ -228,7 +228,8 @@ namespace SCBF.Car
             }
 
             this.uploadOilCardRoofRepository.Delete(r => r.Month == yearmonth); // 删除当月凭证单
-            this.uploadOilCardRoofRepository.InsertRange(list); // 重新插入凭证数据
+
+            this.uploadOilCardRoofRepository.InsertRange(list); // 重新插入未匹配上的凭证数据
 
             var list1 = list.Select(r => new KeyValue<string, Guid, decimal>() { Key = r.CarCode + r.Date.ToString("yyyyMM"), Value = r.Id, Item3 = r.AmountOfMoney }).ToList(); // 消耗凭证表
 
@@ -248,6 +249,7 @@ namespace SCBF.Car
                           }).ToList();
 
             this.uploadOilCarRoofRelationshipRepository.InsertRange(list10);
+
             return modeId;
         }
     }

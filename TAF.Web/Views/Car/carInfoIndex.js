@@ -89,10 +89,7 @@ var main = new Vue({
             } else if (id === "pminorRepairAmount") {
                 $this.title = "小修控制额";
                 $this.category = "Car_MinorRepair";
-            } else if (id === "pmaintenanceParts") {
-                $this.title = "维修部位";
-                $this.category = "Car_MaintenanceParts";
-            } else if (id === "pmanHours") {
+            }  else if (id === "pmanHours") {
                 $this.title = "工时";
                 $this.category = "Car_ManHours";
             } else if (id === "pservicingMaterials") {
