@@ -1,4 +1,5 @@
-﻿<div class="row">
+﻿@using SCBF.BaseInfo.Dto
+<div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
@@ -11,112 +12,129 @@
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
-                            <tr role="row">
-                                <th style="width: 200px;">
-                                    编号
-                                </th>   
-                                <th style="width: 200px;">
-                                    车辆型号
-                                </th>   
-                                <th style="width: 200px;">
-                                    车牌号
-                                </th>        
-                                <th style="width: 200px;">
-                                    行驶公里数
-                                </th>        
-                                <th style="width: 200px;">
-                                    驾驶员
-                                </th>        
-                                <th style="width: 200px;">
-                                    故障描述
-                                </th>        
-                                <th style="width: 200px;">
-                                    车场鉴定意见
-                                </th>        
-                                <th style="width: 200px;">
-                                    审核状态
-                                </th>        
-                                <th style="width: 200px;">
-                                    操作
-                                </th>
-                            </tr>
-                            <tr role="row">
-                                <th>
-                                    <input type="text" class="form-control" placeholder="编号" v-model="queryEntity.code" />
-                                </th> 
-                                <th>
-                                    <select id="searchCarInfoId" style="width: 100%" v-model="queryEntity.carInfoId">
-                                        <option value="">请选择...</option>
-                                        @{
-                                            foreach (var item in (List<TAF.Utility.KeyValue<string, Guid>>)ViewData["list2"])
-                                            {
-                                                <option value="@item.Value">@item.Key</option>
+                                <tr role="row">
+                                    <th style="width: 200px;">
+                                        编号
+                                    </th>
+                                    <th style="width: 200px;">
+                                        车辆型号
+                                    </th>
+                                    <th style="width: 200px;">
+                                        车牌号
+                                    </th>
+                                    <th style="width: 150px;">
+                                        行驶公里数
+                                    </th>
+                                    <th style="width: 100px;">
+                                        驾驶员
+                                    </th>
+                                    <th style="width: 200px;">
+                                        维修厂
+                                    </th>
+                                    <th style="width: 200px;">
+                                        故障描述
+                                    </th>
+                                    <th style="width: 200px;">
+                                        车场鉴定意见
+                                    </th>
+                                    <th style="width: 150px;">
+                                        审核状态
+                                    </th>
+                                    <th style="width: 200px;">
+                                        操作
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="编号" v-model="queryEntity.code" />
+                                    </th>
+                                    <th>
+                                        <select id="searchCarInfoId" style="width: 100%" v-model="queryEntity.carInfoId">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<TAF.Utility.KeyValue<string, Guid>>)ViewData["list2"])
+                                                {
+                                                    <option value="@item.Value">@item.Key</option>
+                                                }
                                             }
-                                        }
-                                    </select>
-                                </th>
-                                <th>
-                                </th> 
-                                <th>
-                                </th>
-                                <th>
-                                    <select id="searchDriverId" style="width: 100%" v-model="queryEntity.driverId">
-                                        <option value="">请选择...</option>
-                                        @{
-                                            foreach (var item in (List<TAF.Utility.KeyValue<Guid, string>>)ViewData["list1"])
-                                            {
-                                                <option value="@item.Key">@item.Value</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <select id="searchDriverId" style="width: 100%" v-model="queryEntity.driverId">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<TAF.Utility.KeyValue<Guid, string>>)ViewData["list1"])
+                                                {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                }
                                             }
-                                        }
-                                    </select>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                </th>
-                                <th>
-                                    <select id="searchStatus" style="width: 100%" v-model="queryEntity.status">
-                                        <option value="">请选择...</option>
-                                        <option value="0" selected="selected">等待审核</option>
-                                        <option value="1">审核通过</option>
-                                        <option value="2">审核拒绝</option>
-                                    </select>
-                                </th>
-                                <th>
-                                    <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
-                                    <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
-                                </th>
-                            </tr>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select id="searchServiceDepotId" style="width: 100%" v-model="queryEntity.serviceDepotId">
+                                            <option value="">请选择...</option>
+                                            @{
+                                                foreach (var item in (List<SysDictionaryListDto>)ViewData["list3"])
+                                                {
+                                                    <option value="@item.Id">@item.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <select id="searchStatus" style="width: 100%" v-model="queryEntity.status">
+                                            <option value="">请选择...</option>
+                                            <option value="0" selected="selected">等待审核</option>
+                                            <option value="1">审核通过</option>
+                                            <option value="2">审核拒绝</option>
+                                            <option value="3">审核拒绝</option>
+                                            <option value="4">审核拒绝</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <button type="button" class="btn edit" v-on:click="query(0)"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="button" class="btn edit" v-on:click="resetSearch()"><i class="fa fa-times"></i> 重置</button>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="m in list.items">
-                                <td>{{m.code}}</td>
-                                <td>{{m.clxh}}</td>
-                                <td>{{m.cph}}</td>
-                                <td>{{m.killomiters}}</td>
-                                <td>{{m.driverName}}</td>
-                                <td>{{m.note}}</td>
-                                <td>{{m.note2}}</td>
-                                <td>{{m.status}}</td>
-                                <td>
-                                    <button type="button" class="btn   edit" v-on:click="showModifyDialog(m.code,m.id) "><i class="fa fa-edit"></i> 编辑</button>
-                                </td>
-                            </tr>
+                                <tr v-for="m in list.items">
+                                    <td>{{m.code}}</td>
+                                    <td>{{m.clxh}}</td>
+                                    <td>{{m.cph}}</td>
+                                    <td>{{m.killomiters}}</td>
+                                    <td>{{m.driverName}}</td>
+                                    <td>{{m.serviceDepot}}</td>
+                                    <td>{{m.note}}</td>
+                                    <td>{{m.note2}}</td>
+                                    <td>{{m.status}}</td>
+                                    <td>
+                                        <button type="button" class="btn   edit" v-on:click="showModifyDialog(m.code,m.id) " v-show="m.status=='等待审核'"><i class="fa fa-edit"></i> 编辑</button>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
-                            <tr>
-                                <td colspan="9" class="DTTTFooter ">
-                                    <div class="col-sm-4">
-                                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
-                                    </div>
-                                    <div class="col-sm-8 ">
-                                        <div class="dataTables_paginate paging_bootstrap">
-                                            <ul id="container" class="pagination"></ul>
+                                <tr>
+                                    <td colspan="10" class="DTTTFooter ">
+                                        <div class="col-sm-4">
+                                            <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
                                         </div>
-                    
-                                    </div>
-                                </td>
-                            </tr>
+                                        <div class="col-sm-8 ">
+                                            <div class="dataTables_paginate paging_bootstrap">
+                                                <ul id="container" class="pagination"></ul>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -141,36 +159,36 @@
                         <form class="form-horizontal " name="form" novalidate>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right">编号</label>
                                         <div class="col-sm-9">
-                                            <label class=" control-label no-padding-left">{{item.code}}</label> 
+                                            <label class=" control-label no-padding-left">{{item.code}}</label>
                                         </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="form-group" >
-                                    <label class="col-sm-3 control-label no-padding-right">车牌号</label>
-                                    <div class="col-sm-9">
-                                        <label class=" control-label no-padding-left">{{item.cph}}</label> 
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group" >
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right">车牌号</label>
+                                    <div class="col-sm-9">
+                                        <label class=" control-label no-padding-left">{{item.cph}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right">车辆型号</label>
                                     <div class="col-sm-9">
-                                        <label class=" control-label no-padding-left">{{item.clxh}}</label> 
+                                        <label class=" control-label no-padding-left">{{item.clxh}}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right">行驶公里数</label>
                                         <div class="col-sm-9">
-                                            <label class=" control-label no-padding-left">{{item.killomiters}}</label> 
+                                            <label class=" control-label no-padding-left">{{item.killomiters}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -178,18 +196,28 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right">驾驶员</label>
                                         <div class="col-sm-9">
-                                            <label class=" control-label no-padding-left">{{item.driverName}}</label> 
+                                            <label class=" control-label no-padding-left">{{item.driverName}}</label>
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
-                                        <label class="col-sm-3 control-label no-padding-right">故障描述<span class="red" >*</span></label>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">维修厂<span class="red">*</span></label>
+                                        <div class="col-sm-9">
+                                            <label class=" control-label no-padding-left">{{item.serviceDepot}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">故障描述<span class="red">*</span></label>
                                         <div class="col-sm-9">
                                             <span class="input-icon icon-right">
                                                 <textarea rows="4" class="form-control " placeholder="必填" name="note" v-model="item.note" readonly="readonly"></textarea>
@@ -200,11 +228,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group" >
-                                        <label class="col-sm-3 control-label no-padding-right">车场日鉴定意见<span class="red" >*</span></label>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">车场日鉴定意见<span class="red">*</span></label>
                                         <div class="col-sm-9">
                                             <span class="input-icon icon-right">
-                                                <textarea rows="4" class="form-control " placeholder="必填" name="note2" v-model="item.note2"  v-validate:note2="{required:true}"></textarea>
+                                                <textarea rows="4" class="form-control " placeholder="必填" name="note2" v-model="item.note2" v-validate:note2="{required:true}"></textarea>
                                             </span>
                                         </div>
                                     </div>
@@ -216,8 +244,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
-                <button type="submit" class="btn btn-primary" v-on:click="refuse()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>审核拒绝 </button>
-                <button type="submit" class="btn btn-primary" v-on:click="approve()"  disabled="{{!$v.valid}}" ><i class='fa    fa-floppy-o'></i>审核通过</button>
+                <button type="submit" class="btn btn-primary" v-on:click="refuse()" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>审核拒绝 </button>
+                <button type="submit" class="btn btn-primary" v-on:click="approve()" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>审核通过</button>
             </div>
         </div>
     </div>

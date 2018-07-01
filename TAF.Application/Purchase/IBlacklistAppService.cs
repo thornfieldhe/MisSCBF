@@ -19,7 +19,7 @@ namespace SCBF.Purchase
     public interface IBlacklistAppService : IBaseEntityApplicationService
     {
         ListResultDto<BlacklistListDto> GetAll(BlacklistQueryDto request);
-
+        void RemoveFromList();
         void Delete(Guid id);
         string ExportDoc();
     }

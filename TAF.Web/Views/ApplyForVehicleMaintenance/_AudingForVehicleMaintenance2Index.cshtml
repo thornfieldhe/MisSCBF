@@ -35,6 +35,9 @@
                                     驾驶员
                                 </th>
                                 <th style="width: 200px;">
+                                    维修厂
+                                </th>
+                                <th style="width: 200px;">
                                     故障描述
                                 </th>
                                 <th style="width: 200px;">
@@ -58,6 +61,7 @@
                                 <td>{{item.cph}}</td>
                                 <td>{{item.killomiters}}</td>
                                 <td>{{item.driverName}}</td>
+                                <td>{{item.serviceDepot}}</td>
                                 <td>{{item.note}}</td>
                                 <td>{{item.note2}}</td>
                                 <td>{{item.note3}}</td>
@@ -456,8 +460,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa   fa-mail-reply'></i>取消</button>
-                <button type="submit" class="btn btn-primary" v-on:click="addMaterial()" v-show="materials.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>新增关闭</button>
-                <button type="submit" class="btn btn-primary" v-on:click="updateMaterial()" v-show="!materials.item.addState" disabled="{{!$v.valid}}"><i class='fa    fa-floppy-o'></i>保存关闭</button>
+                <button type="submit" class="btn btn-primary" v-on:click="addMaterial()" v-show="materials.item.addState" disabled="{{!$v1.valid}}"><i class='fa    fa-floppy-o'></i>新增关闭</button>
+                <button type="submit" class="btn btn-primary" v-on:click="updateMaterial()" v-show="!materials.item.addState" disabled="{{!$v1.valid}}"><i class='fa    fa-floppy-o'></i>保存关闭</button>
             </div>
         </div>
     </div>

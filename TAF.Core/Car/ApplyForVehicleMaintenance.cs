@@ -44,6 +44,11 @@ namespace SCBF.Car
         public Guid DriverId { get; set; }
 
         /// <summary>
+        /// 维修单位Id
+        /// </summary>
+        public Guid ServiceDepotId { get; set; }
+
+        /// <summary>
         /// 故障描述
         /// </summary>
         public string Note { get; set; }

@@ -7,10 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace SCBF.Car
 {
-    using SCBF.Car.Dto;
     using System.Collections.Generic;
+    using SCBF.Car.Dto;
     using TAF.Utility;
 
     /// <summary>
@@ -18,13 +20,13 @@ namespace SCBF.Car
     /// </summary>
     public interface IHisStoreStockAppService : IBaseEntityApplicationService
     {
-        KeyValue<decimal, decimal> Get(int month, int category);
+        KeyValue<decimal, decimal> GetOilStore(int monthFrom,int montTo, Guid octaneStoreId);
 
         List<HisOilStoreListDto> GetOilStoreHis(int quarter);
 
         List<HisOilCardListDto> GetOilCardHis(int quarter);
 
-        decimal GetChangedAmount(int month, int category);
+        decimal GetChangedAmount(int month, int category, Guid octaneStoreId);
 
         void BackupData();
     }

@@ -9,6 +9,11 @@
 
 namespace SCBF.Car
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
@@ -17,11 +22,6 @@ namespace SCBF.Car
     using AutoMapper;
     using SCBF.BaseInfo;
     using SCBF.Car.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 实物油料加油审批单服务
@@ -221,10 +221,10 @@ namespace SCBF.Car
             foreach (var item in dtos)
             {
                 item.OctaneStoreName = store.First(r => r.Value == item.OctaneStoreId).Key;
-                var amount = this.hisStoreStockAppService.Get(month, 1);
+                var amount = this.hisStoreStockAppService.GetOilStore(month-1,month+1,item.OctaneStoreId);
                 item.AmountFrom = amount.Key;
                 item.AmountTo = amount.Value;
-                item.ChangedAmount = this.hisStoreStockAppService.GetChangedAmount(month, 1);
+                item.ChangedAmount = this.hisStoreStockAppService.GetChangedAmount(month, 1, item.OctaneStoreId);
             }
 
             return new List<ApplicationForBunkerBListDto>(dtos);

@@ -245,6 +245,10 @@
         {
             get; set;
         }
+        public DbSet<CarRepairTime> CarRepairTimes
+        {
+            get; set;
+        }
 
         #endregion
 

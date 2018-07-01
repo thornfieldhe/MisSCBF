@@ -10,11 +10,13 @@
 // ReSharper disable All
 
 
+using SCBF.BaseInfo;
+
 namespace SCBF.Web.Controllers
 {
+    using System.Web.Mvc;
     using Abp.Web.Mvc.Authorization;
     using SCBF.Car;
-    using System.Web.Mvc;
 
     /// <summary>
     /// 车辆送修申请单控制器
@@ -22,32 +24,36 @@ namespace SCBF.Web.Controllers
     [AbpMvcAuthorize]
     public class ApplyForVehicleMaintenanceController : TAFControllerBase
     {
-        private readonly IApplyForVehicleMaintenanceAppService applyForVehicleMaintenanceAppService;
-        private readonly IDriverAppService driverAppService;
-        private readonly ICarInfoAppService carInfoAppService;
+        private readonly IApplyForVehicleMaintenanceAppService _applyForVehicleMaintenanceAppService;
+        private readonly IDriverAppService _driverAppService;
+        private readonly ICarInfoAppService _carInfoAppService;
 
         public ApplyForVehicleMaintenanceController(
             IApplyForVehicleMaintenanceAppService applyForVehicleMaintenanceAppService,
             IDriverAppService driverAppService,
+            ISysDictionaryAppService sysDictionaryAppService,
             ICarInfoAppService carInfoAppService
             )
         {
-            this.applyForVehicleMaintenanceAppService = applyForVehicleMaintenanceAppService;
-            this.driverAppService = driverAppService;
-            this.carInfoAppService = carInfoAppService;
+            this._applyForVehicleMaintenanceAppService = applyForVehicleMaintenanceAppService;
+            this._driverAppService = driverAppService;
+            this._carInfoAppService = carInfoAppService;
+            this._sysDictionaryAppService = sysDictionaryAppService;
         }
 
         public ActionResult ApplyForVehicleMaintenanceList()
         {
-            ViewData["list1"] = driverAppService.GetSimpleList();
-            ViewData["list2"] = carInfoAppService.GetSimple();
+            ViewData["list1"] = this._driverAppService.GetSimpleList();
+            ViewData["list2"] = this._carInfoAppService.GetSimple();
+            ViewData["list3"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_ServiceDepot);
             return PartialView("_ApplyForVehicleMaintenanceIndex");
         }
 
         public ActionResult AudingForVehicleMaintenanceList()
         {
-            ViewData["list1"] = driverAppService.GetSimpleList();
-            ViewData["list2"] = carInfoAppService.GetSimple();
+            ViewData["list1"] = this._driverAppService.GetSimpleList();
+            ViewData["list2"] = this._carInfoAppService.GetSimple();
+            ViewData["list3"] = this._sysDictionaryAppService.GetSimpleList(DictionaryCategory.Car_ServiceDepot);
             return PartialView("_AudingForVehicleMaintenanceIndex");
         }
 

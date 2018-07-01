@@ -1,55 +1,45 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ApplyForVehicleMaintenanceQueryDto.cs" company=""  author="何翔华">
+// <copyright file="CarRepairTimeListDto.cs" company=""  author="何翔华">
 //   
 // </copyright>
 // <summary>
-//   车辆送修申请单查询对象
+//   车辆维修耗时管理列表对象
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace SCBF.Car.Dto
 {
-    using System;
-    using Abp.Application.Services.Dto;
-
     /// <summary>
-    /// 车辆送修申请单查询对象
+    /// 车辆返修率对象
     /// </summary>
-    public class ApplyForVehicleMaintenanceQueryDto : PagedAndSortedResultRequestDto
+    public class CarRepairTimeListDto
     {
-
         /// <summary>
-        /// CarInfoId
+        /// 返修率
         /// </summary>
-        public Guid? CarInfoId
+        public string Value1
         {
             get; set;
         }
 
         /// <summary>
-        /// DriverId
+        /// 维修效率
         /// </summary>
-        public Guid? DriverId
+        public string Value2
         {
             get; set;
         }
 
         /// <summary>
-        /// ServiceDepotId
+        /// 维修厂
         /// </summary>
-        public Guid? ServiceDepotId
+        public string ServiceDepot
         {
             get; set;
         }
-
-        /// <summary>
-        /// Status
-        /// </summary>
-        public int? Status
-        {
-            get; set;
-        }
-    }
+    }  
+    
+    
 }
 
 

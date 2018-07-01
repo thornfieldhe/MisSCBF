@@ -125,12 +125,14 @@
     <Compile Include="Car\ApplyForVehicleMaintenance.cs" />
     <Compile Include="Car\CarInfo.cs" />
     <Compile Include="Car\CarOil.cs" />
+    <Compile Include="Car\CarRepairTime.cs" />
     <Compile Include="Car\Driver.cs" />
     <Compile Include="Car\IApplicationForBunkerARepository.cs" />
     <Compile Include="Car\IApplicationForBunkerBRepository.cs" />
     <Compile Include="Car\IApplyForVehicleMaintenanceRepository.cs" />
     <Compile Include="Car\ICarInfoRepository.cs" />
     <Compile Include="Car\ICarOilRepository.cs" />
+    <Compile Include="Car\ICarRepairTimeRepository.cs" />
     <Compile Include="Car\IDriverRepository.cs" />
     <Compile Include="Car\IHisOctaneStoreStockRepository.cs" />
     <Compile Include="Car\IMaintenanceDeliveryRepository.cs" />

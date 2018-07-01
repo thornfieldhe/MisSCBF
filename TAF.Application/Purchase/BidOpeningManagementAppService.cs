@@ -190,8 +190,8 @@ namespace SCBF.Purchase
 
         public string ExportDoc1(Guid id)
         {
-            // var item    = this._biddingManagementRepository.Get(id);
-            // var plan    = this._procurementPlanRepository.Get(item.PlanId);
+            // var item    = this._biddingManagementRepository.GetOilStore(id);
+            // var plan    = this._procurementPlanRepository.GetOilStore(item.PlanId);
             // if (plan.Category ==ProcurementPlanCategory.Xxhcg)
             // {
             //     return DownloadFileService.Load("信息化采购模板.doc", $"中国人民武装警察部队四川省边防总队{plan.Name}招标文件.doc", new string[] { })

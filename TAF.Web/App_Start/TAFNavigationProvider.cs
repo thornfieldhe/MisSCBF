@@ -438,6 +438,12 @@
                                 "menuVehicleMaintenanceReport",
                                 L("车辆维修情况报告"),
                                 url: "#vehicleMaintenanceReport",
+                                requiredPermissionName: PermissionNames.ClUser))
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menuCarRepairTimes",
+                                L("维修厂考评"),
+                                url: "#carRepairTimes",
                                 requiredPermissionName: PermissionNames.ClUser)));
         }
 

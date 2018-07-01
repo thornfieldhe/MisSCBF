@@ -9,8 +9,8 @@
 
 namespace SCBF.Car.Dto
 {
-    using Abp.AutoMapper;
     using System;
+    using Abp.AutoMapper;
 
     /// <summary>
     /// 车辆送修申请单编辑对象
@@ -53,6 +53,16 @@ namespace SCBF.Car.Dto
         {
             get; set;
         }
+
+        /// <summary>
+        /// 维修单位Id
+        /// </summary>
+        public Guid? ServiceDepotId { get; set; }
+
+        /// <summary>
+        /// 维修单位
+        /// </summary>
+        public string ServiceDepot { get; set; }
 
         /// <summary>
         /// DriverId

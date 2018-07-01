@@ -29,18 +29,18 @@ namespace SCBF.Car
     [AbpAuthorize]
     public class CarInfoAppService : TAFAppServiceBase, ICarInfoAppService
     {
-        private readonly ICarInfoRepository carInfoRepository;
-        private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly ICarInfoRepository _carInfoRepository;
+        private readonly ISysDictionaryRepository _sysDictionaryRepository;
 
         public CarInfoAppService(ICarInfoRepository carInfoRepository, ISysDictionaryRepository sysDictionaryRepository)
         {
-            this.carInfoRepository = carInfoRepository;
-            this.sysDictionaryRepository = sysDictionaryRepository;
+            this._carInfoRepository = carInfoRepository;
+            this._sysDictionaryRepository = sysDictionaryRepository;
         }
 
         public ListResultDto<CarInfoListDto> GetAll(CarInfoQueryDto request)
         {
-            var query = this.carInfoRepository.GetAll()
+            var query = this._carInfoRepository.GetAll()
 
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Clxh), r => r.Clxh.Contains(request.Clxh))
                 .WhereIf(!string.IsNullOrWhiteSpace(request.Cjh), r => r.Cjh.Contains(request.Cjh))
@@ -58,7 +58,7 @@ namespace SCBF.Car
             var count = query.Count();
             var list = query.AsQueryable().PageBy(request).ToList();
             var dtos = list.MapTo<List<CarInfoListDto>>();
-            var octaneRatings = this.sysDictionaryRepository.GetAllList(r => r.Category == DictionaryCategory.Car_OctaneRating)
+            var octaneRatings = this._sysDictionaryRepository.GetAllList(r => r.Category == DictionaryCategory.Car_OctaneRating)
                 .ToDictionary(r => r.Id, t => t.Value);
             foreach (var dto in dtos)
             {
@@ -71,12 +71,12 @@ namespace SCBF.Car
 
         public List<KeyValue<string, Guid>> GetSimple()
         {
-            return this.carInfoRepository.GetAllList().Select(r => new KeyValue<string, Guid>() { Key = r.Cph, Value = r.Id }).ToList();
+            return this._carInfoRepository.GetAllList().Select(r => new KeyValue<string, Guid>() { Key = r.Cph, Value = r.Id }).ToList();
         }
 
         public CarInfoEditDto Get(Guid id)
         {
-            var output = this.carInfoRepository.Get(id);
+            var output = this._carInfoRepository.Get(id);
             return output.MapTo<CarInfoEditDto>();
         }
 
@@ -85,19 +85,36 @@ namespace SCBF.Car
             var item = input.MapTo<CarInfo>();
             if (!input.Id.HasValue)
             {
-                await this.carInfoRepository.InsertAsync(item);
+                await this._carInfoRepository.InsertAsync(item);
             }
             else
             {
-                var old = this.carInfoRepository.Get(input.Id.Value);
+                var old = this._carInfoRepository.Get(input.Id.Value);
                 Mapper.Map(input, old);
-                await this.carInfoRepository.UpdateAsync(old);
+                await this._carInfoRepository.UpdateAsync(old);
             }
         }
 
         public void Delete(Guid id)
         {
-            this.carInfoRepository.Delete(id);
+            this._carInfoRepository.Delete(id);
+        }
+
+        /// <summary>
+        /// 更新车辆状态
+        /// </summary>
+        public void ModifyStatus()
+        {
+            var state = this._sysDictionaryRepository.GetAllList(r => r.Category == DictionaryCategory.Car_Status);
+            var state1 = state.Find(r => r.Value == "新车");
+            var state2 = state.Find(r => r.Value == "勘用");
+            var date = DateTime.Now.AddYears(-1);
+            var cars = this._carInfoRepository.GetAllList(r=>r.Zbsj> date && r.ClzkId==state1.Id);
+            foreach (var car in cars)
+            {
+                car.ClzkId = state2.Id;
+                this._carInfoRepository.Update(car);
+            }
         }
     }
 }

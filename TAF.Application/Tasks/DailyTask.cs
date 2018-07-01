@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using SCBF.Car;
+using SCBF.Purchase;
+
 namespace SCBF.Tasks
 {
 
@@ -15,7 +18,7 @@ namespace SCBF.Tasks
 
     using Quartz;
 
-    using SCBF.Storage;
+    using Storage;
 
     /// <summary>
     /// 每日更新当日库存
@@ -24,17 +27,25 @@ namespace SCBF.Tasks
     {
         public static readonly string Schedule = "59 40 23 * * ? ";//每日23:40:00
 
-        private readonly IHisStockAppService hisStockAppService;
+        private readonly IHisStockAppService _hisStockAppService;
+        private readonly ICarInfoAppService _carInfoAppService;
+        private readonly IBlacklistAppService _blacklistAppService;
 
-        public DailyTask(IHisStockAppService hisStockAppService)
+        public DailyTask(IHisStockAppService hisStockAppService,
+            ICarInfoAppService carInfoAppService,
+            IBlacklistAppService blacklistAppService)
         {
-            this.hisStockAppService = hisStockAppService;
+            this._hisStockAppService = hisStockAppService;
+            this._carInfoAppService = carInfoAppService;
+            this._blacklistAppService = blacklistAppService;
         }
 
 
         public override void Execute(IJobExecutionContext context)
         {
-            hisStockAppService.BackupData();
+            this._hisStockAppService.BackupData();
+            this._carInfoAppService.ModifyStatus();
+            this._blacklistAppService.RemoveFromList();
         }
     }
 }

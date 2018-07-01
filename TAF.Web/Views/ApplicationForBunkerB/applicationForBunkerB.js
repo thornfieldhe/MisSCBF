@@ -1,5 +1,6 @@
-﻿    mixins: [itemMixin],
-    template: "#applicationForBunkerBFormBody",
+﻿Vue.component("form-body", {    
+mixins: [itemMixin],
+    template:"#applicationForBunkerBFormBody",
     ready: function () {
         var $this = this;
         $("#editOctaneStoreId").select2()

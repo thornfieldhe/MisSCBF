@@ -95,6 +95,9 @@ var main = new Vue({
             } else if (id === "pservicingMaterials") {
                 $this.title = "维修材料";
                 $this.category = "Car_ServicingMaterials";
+            }else if (id === "pserviceDepot") {
+                $this.title = "维修厂";
+                $this.category = "Car_ServiceDepot";
             }
             $this.queryEntity.category = $this.category;
             $this.query(0);

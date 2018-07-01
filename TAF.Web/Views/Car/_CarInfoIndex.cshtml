@@ -33,7 +33,7 @@
     </li>
     <li class=" ">
         <a data-toggle="tab" href="#oilHostingUnit" aria-expanded="true" id="poilHostingUnit">
-            油料代管单位名称
+            油料代管单位
 
         </a>
     </li>
@@ -76,6 +76,11 @@
         </a>
     </li>
     <li class=" ">
+        <a data-toggle="tab" href="#serviceDepot" aria-expanded="true" id="pserviceDepot">
+            维修厂
+        </a>
+    </li>
+    <li class=" ">
         <a data-toggle="tab" href="#servicingMaterials" aria-expanded="true" id="pservicingMaterials">
             维修材料
         </a>
@@ -91,7 +96,7 @@
     <div class="table-toolbar">
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -121,7 +126,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('驾驶等级','Car_DriveLevel')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -151,7 +156,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('部长','Car_Minister')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -181,7 +186,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('助理员','Car_Attendant')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -211,14 +216,23 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('油料代管单位名称','Car_OilHostingUnit')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-12">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
                     <th style="width: 200px;">
                         油料代管单位名称
                     </th>
+                    <th style="width: 200px;">
+                        地址
+                    </th>
                     <th style="width: 100px;">
+                        联系人
+                    </th>
+                    <th style="width: 100px;">
+                        电话号码
+                    </th>
+                    <th style="width: 150px;">
                         操作
                     </th>
                 </tr>
@@ -226,12 +240,15 @@
                 <tbody>
                 <tr v-for="item in list">
                     <td>{{item.value}}</td>
+                    <td>{{item.value2}}</td>
+                    <td>{{item.value3}}</td>
+                    <td>{{item.value4}}</td>
                     <td>
                         <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
                     </td>
                 </tr>
                 </tbody>
-                <tfoot is="table-foot" colspan="2"></tfoot>
+                <tfoot is="table-foot" colspan="5"></tfoot>
             </table>
         </div>
     </div>
@@ -241,7 +258,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('油料标号','Car_OctaneRating')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -270,11 +287,53 @@
         </div>
     </div>
 </div>
+<div id="serviceDepot" class="tab-pane ">
+    <div class="table-toolbar">
+        <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('维修厂名称','Car_ServiceDepot')"><i class="fa  fa-plus"></i> 新增</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table table-striped table-hover table-bordered ">
+                <thead>
+                <tr role="row">
+                    <th style="width: 100px;">
+                        维修厂名称
+                    </th>
+                    <th style="width: 250px;">
+                        地址
+                    </th>
+                    <th style="width: 100px;">
+                        法人代表
+                    </th>
+                    <th style="width: 100px;">
+                        电话号码
+                    </th>
+                    <th style="width: 100px;">
+                        操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in list">
+                    <td>{{item.value}}</td>
+                    <td>{{item.value2}}</td>
+                    <td>{{item.value3}}</td>
+                    <td>{{item.value4}}</td>
+                    <td>
+                        <row-command :id="item.id" title="编辑" :name="item.value"></row-command>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot is="table-foot" colspan="5"></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
 <div id="oilWearSummary" class="tab-pane ">
     <div class="table-toolbar">
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -307,7 +366,7 @@
     <div class="table-toolbar">
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -341,7 +400,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('大修控制额','Car_Overhaul')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -375,7 +434,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('中修控制额','Car_Repair')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -409,7 +468,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('小修控制额','Car_MinorRepair')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -444,7 +503,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('工时','Car_ManHours')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -482,7 +541,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('维修材料','Car_ServicingMaterials')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -520,7 +579,7 @@
         <a href="javascript:void(0);" class="btn btn-primary " v-on:click="newItem('会计年度','Car_Year')"><i class="fa  fa-plus"></i> 新增</a>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-8">
             <table class="table table-striped table-hover table-bordered ">
                 <thead>
                 <tr role="row">
@@ -675,6 +734,90 @@
                                 <div class="col-sm-9">
                                     <span class="input-icon icon-right">
                                         <input type="number" class="form-control " placeholder="必填" name="value" v-model="item.value3" v-validate:value2="{required:true}" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_OilHostingUnit'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">地址<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value2" v-model="item.value2"  />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_OilHostingUnit'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">联系人<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value3" v-model="item.value3"  />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_OilHostingUnit'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">电话号码<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value4" v-model="item.value4"  />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_ServiceDepot'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">地址<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value2" v-model="item.value2"  />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_ServiceDepot'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">法人代表<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value3" v-model="item.value3"  />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="item.category=='Car_ServiceDepot'">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">电话号码<span class="red">*</span></label>
+                                <div class="col-sm-9">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control " placeholder="必填" name="value4" v-model="item.value4"  />
                                     </span>
                                 </div>
                             </div>

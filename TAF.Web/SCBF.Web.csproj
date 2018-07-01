@@ -825,6 +825,7 @@
     <Content Include="Views\Blacklist\blacklist.js" />
     <Content Include="Views\CarOil\carOilReport.js" />
     <Content Include="Views\CarOil\carOil.js" />
+    <Content Include="Views\CarRepairTime\carRepairTime.js" />
     <Content Include="Views\EqManager\eqManager.js" />
     <Content Include="Views\InvoiceCheck\invoiceCheck.js" />
     <Content Include="Views\ProcessManagement\costManage.js" />
@@ -976,6 +977,7 @@
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CarInfoController.cs" />
     <Compile Include="Controllers\CarOilController.cs" />
+    <Compile Include="Controllers\CarRepairTimeController.cs" />
     <Compile Include="Controllers\CheckBillController.cs" />
     <Compile Include="Controllers\DeliveryBillController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -1124,6 +1126,7 @@
     <Content Include="Views\EqManager\_EqManagerIndex.cshtml" />
     <Content Include="Views\Blacklist\_BlacklistIndex.cshtml" />
     <Content Include="Views\Purchase\_DownloadFiles.cshtml" />
+    <Content Include="Views\CarRepairTime\_CarRepairTimeIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

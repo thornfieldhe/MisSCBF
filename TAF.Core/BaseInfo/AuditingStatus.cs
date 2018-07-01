@@ -62,14 +62,29 @@ namespace SCBF.BaseInfo
     /// </summary>
     public static class VehicleMaintenanceStatus
     {
+        /// <summary>
+        /// 已提交请求
+        /// </summary>
         public static int Pending => 0;
 
+        /// <summary>
+        /// 审核通过
+        /// </summary>
         public static int Approved => 1;
 
+        /// <summary>
+        /// 审核拒绝
+        /// </summary>
         public static int Refused => 2;
 
-        public static int Servicing => 3;// 维修中
+        /// <summary>
+        /// 维修中
+        /// </summary>
+        public static int Servicing => 3;
 
-        public static int Serviced=> 4;// 维修结束
+        /// <summary>
+        /// 维修结束
+        /// </summary>
+        public static int Serviced=> 4;
     }
 }

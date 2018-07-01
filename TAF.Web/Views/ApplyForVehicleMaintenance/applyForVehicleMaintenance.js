@@ -17,22 +17,30 @@
             .on("change", function (e) {
                 $this.queryEntity.status = $("#searchStatus").val(); 
             });   
-        
+         
+        $("#searchServiceDepotId").select2()
+            .on("change", function (e) {
+                $this.queryEntity.serviceDepotId = $("#searchServiceDepotId").val(); 
+            });  
         $("#editCarInfoId").select2()
             .on("change", function (e) {
                 $this.item.carInfoId = $("#editCarInfoId").val(); 
             });  
-
         $("#editDriverId").select2()
             .on("change", function (e) {
                 $this.item.driverId = $("#editDriverId").val(); 
-        });            
+        });  
+        $("#editServiceDepotId").select2()
+            .on("change", function (e) {
+                $this.item.serviceDepotId = $("#editServiceDepotId").val(); 
+        });           
     },
     data: {
         queryEntity: {
             carInfoId:"",
             driverId:"",
-            status:""
+            status:"",
+            serviceDepotId:""
         },
         list: {
             options: {
@@ -62,7 +70,8 @@
             driverId: "00000000-0000-0000-0000-000000000000",
             carInfoId: "00000000-0000-0000-0000-000000000000",
             code: "",
-            status:""
+            status:"",
+            serviceDepotId:""
         }
     },
     methods: {
@@ -140,9 +149,11 @@
             this.queryEntity.driverId = "";
             this.queryEntity.status = "";
             this.queryEntity.code = "";
+            this.queryEntity.serviceDepotId = "";
             $("#searchStatus").select2().val("").trigger("change");
             $("#searchCarInfoId").select2().val("").trigger("change");
             $("#searchDriverId").select2().val("").trigger("change");
+            $("#searchServiceDepotId").select2().val("").trigger("change");
         }
     }
 });

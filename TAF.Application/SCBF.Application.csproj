@@ -184,6 +184,7 @@
     <Compile Include="BaseInfo\UnitPoolAppService.cs" />
     <Compile Include="Car\ApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\CarOilAppService.cs" />
+    <Compile Include="Car\CarRepairTimeAppService.cs" />
     <Compile Include="Car\Dto\CarOilReportDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceEditDto.cs" />
     <Compile Include="Car\Dto\ApplyForVehicleMaintenanceListDto.cs" />
@@ -192,6 +193,8 @@
     <Compile Include="Car\Dto\CarOilEditDto.cs" />
     <Compile Include="Car\Dto\CarOilListDto.cs" />
     <Compile Include="Car\Dto\CarOilQueryDto.cs" />
+    <Compile Include="Car\Dto\CarRepairTimeListDto.cs" />
+    <Compile Include="Car\Dto\CarRepairTimeQueryDto.cs" />
     <Compile Include="Car\Dto\HisOilCardListDto.cs" />
     <Compile Include="Car\Dto\HisOilStoreListDto.cs" />
     <Compile Include="Car\Dto\HisStockDto.cs" />
@@ -205,6 +208,7 @@
     <Compile Include="Car\HisStoreStockAppService.cs" />
     <Compile Include="Car\IApplyForVehicleMaintenanceAppService.cs" />
     <Compile Include="Car\ICarOilAppService.cs" />
+    <Compile Include="Car\ICarRepairTimeAppService.cs" />
     <Compile Include="Car\IHisStoreStockAppService.cs" />
     <Compile Include="Car\IRepairCostAppService.cs" />
     <Compile Include="Car\RepairCostAppService.cs" />

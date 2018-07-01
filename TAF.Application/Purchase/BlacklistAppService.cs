@@ -135,6 +135,17 @@ namespace SCBF.Purchase
 
             return new KeyValue<DataSet, string[], object[]>(ds, value, item3);
         }
+
+        /// <summary>
+        /// 从黑名单中移除单位
+        /// </summary>
+        public void RemoveFromList()
+        {
+            var limitYear = int.Parse(this._sysDictionaryRepository
+                .FirstOrDefault(r => r.Category == DictionaryCategory.Purchase_BlackList).Value);
+            var limitDate = DateTime.Now.AddYears(-limitYear);
+            this._blacklistRepository.Delete(r => r.CreationTime >= limitDate);
+        }
     }
 }
 

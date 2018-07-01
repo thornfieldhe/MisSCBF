@@ -9,11 +9,11 @@
 
 namespace SCBF.Car
 {
-    using Abp.Application.Services.Dto;
-    using SCBF.Car.Dto;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Abp.Application.Services.Dto;
+    using SCBF.Car.Dto;
     using TAF.Utility;
 
     /// <summary>
@@ -30,6 +30,8 @@ namespace SCBF.Car
         Task SaveAsync(CarInfoEditDto input);
 
         void Delete(Guid id);
+
+        void ModifyStatus();
     }
 }
 

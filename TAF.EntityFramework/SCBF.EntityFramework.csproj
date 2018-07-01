@@ -455,6 +455,14 @@
     <Compile Include="Migrations\201806251422164_modifyTable_blacklist2.Designer.cs">
       <DependentUpon>201806251422164_modifyTable_blacklist2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.cs" />
+    <Compile Include="Migrations\201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.Designer.cs">
+      <DependentUpon>201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806301505070_addTable_CarRepairTimes.cs" />
+    <Compile Include="Migrations\201806301505070_addTable_CarRepairTimes.Designer.cs">
+      <DependentUpon>201806301505070_addTable_CarRepairTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -472,6 +480,7 @@
     <Compile Include="Repositories\BudgetReceiptRepository.cs" />
     <Compile Include="Repositories\CarInfoRepository.cs" />
     <Compile Include="Repositories\CarOilRepository.cs" />
+    <Compile Include="Repositories\CarRepairTimeRepository.cs" />
     <Compile Include="Repositories\CheckBillRepository.cs" />
     <Compile Include="Repositories\CheckRepository.cs" />
     <Compile Include="Repositories\CostListRepository.cs" />
@@ -767,6 +776,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806251422164_modifyTable_blacklist2.resx">
       <DependentUpon>201806251422164_modifyTable_blacklist2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.resx">
+      <DependentUpon>201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806301505070_addTable_CarRepairTimes.resx">
+      <DependentUpon>201806301505070_addTable_CarRepairTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

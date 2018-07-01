@@ -1,4 +1,5 @@
-﻿<div class="row">
+﻿@using SCBF.BaseInfo.Dto
+<div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-primary">
@@ -22,11 +23,14 @@
                                     <th style="width: 200px;">
                                         车牌号
                                     </th>        
-                                    <th style="width: 200px;">
+                                    <th style="width: 150px;">
                                         行驶公里数
                                     </th>        
-                                    <th style="width: 200px;">
+                                    <th style="width: 100px;">
                                         驾驶员
+                                    </th>         
+                                    <th style="width: 200px;">
+                                        维修厂
                                     </th>        
                                     <th style="width: 200px;">
                                         故障描述
@@ -34,7 +38,7 @@
                                     <th style="width: 200px;">
                                         车场鉴定意见
                                     </th>        
-                                    <th style="width: 200px;">
+                                    <th style="width: 150px;">
                                         审核状态
                                     </th>        
                                     <th style="width: 200px;">
@@ -72,6 +76,17 @@
                                     </select>
                                 </th>
                                 <th>
+                                    <select id="searchServiceDepotId" style="width: 100%" v-model="queryEntity.serviceDepotId">
+                                        <option value="">请选择...</option>
+                                        @{
+                                            foreach (var item in (List<SysDictionaryListDto>)ViewData["list3"])
+                                            {
+                                                <option value="@item.Id">@item.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                </th>
+                                <th>
                                 </th>
                                 <th>
                                 </th>
@@ -96,6 +111,7 @@
                                     <td>{{m.cph}}</td>
                                     <td>{{m.killomiters}}</td>
                                     <td>{{m.driverName}}</td>
+                                    <td>{{m.serviceDepot}}</td>
                                     <td>{{m.note}}</td>
                                     <td>{{m.note2}}</td>
                                     <td>{{m.status}}</td>
@@ -105,7 +121,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="9" class="DTTTFooter ">
+                                    <td colspan="10" class="DTTTFooter ">
                                         <div class="col-sm-4">
                                             <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite"> {{list.from}} - {{list.to}} / {{list.total}} </div>
                                         </div>
@@ -185,6 +201,24 @@
                                                     foreach (var item in (List<TAF.Utility.KeyValue<Guid, string>>)ViewData["list1"])
                                                     {
                                                         <option value="@item.Key">@item.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label no-padding-right">维修厂<span class="red" >*</span></label>
+                                        <div class="col-sm-10">
+                                            <select id="editServiceDepotId" style="width: 100%" v-model="item.serviceDepotId" name="serviceDepotId"  v-validate:serviceDepotId="{required:true}">
+                                                <option value="">请选择...</option>
+                                                @{
+                                                    foreach (var item in (List<SysDictionaryListDto>)ViewData["list3"])
+                                                    {
+                                                        <option value="@item.Id">@item.Value</option>
                                                     }
                                                 }
                                             </select>
