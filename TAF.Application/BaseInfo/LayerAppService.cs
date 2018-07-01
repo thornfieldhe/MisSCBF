@@ -23,7 +23,7 @@ namespace SCBF.BaseInfo
 
     using AutoMapper;
 
-    using SCBF.BaseInfo.Dto;
+    using Dto;
 
     using TAF.Utility;
 
@@ -33,19 +33,19 @@ namespace SCBF.BaseInfo
     [AbpAuthorize]
     internal class LayerAppService : TAFAppServiceBase, ILayerAppService
     {
-        private readonly ILayerRepository layerRepository;
-        private readonly IProductRepository productRepository;
+        private readonly ILayerRepository _layerRepository;
+        private readonly IProductRepository _productRepository;
 
         public LayerAppService(ILayerRepository layerRepository
             , IProductRepository productRepository)
         {
-            this.layerRepository = layerRepository;
-            this.productRepository = productRepository;
+            this._layerRepository = layerRepository;
+            this._productRepository = productRepository;
         }
 
         public ListResultDto<LayerListDto> GetAll(LayerQueryDto request)
         {
-            var query = this.layerRepository.GetAll()
+            var query = this._layerRepository.GetAll()
 
                 .WhereIf(request.PId.HasValue, r => r.PId == request.PId.Value)
                 .Where(r => r.Category == request.Category);
@@ -60,7 +60,7 @@ namespace SCBF.BaseInfo
                 dtos,
                 item =>
                 {
-                    item.PName = item.PId.HasValue ? this.layerRepository.Get(item.PId.Value).Name : string.Empty;
+                    item.PName = item.PId.HasValue ? this._layerRepository.Get(item.PId.Value).Name : string.Empty;
                 });
             return new PagedResultDto<LayerListDto>(count, dtos);
         }
@@ -68,7 +68,7 @@ namespace SCBF.BaseInfo
         public List<TreeItemDto> GetAllByCategory(string category)
         {
             
-            var list = this.layerRepository.GetAll()
+            var list = this._layerRepository.GetAll()
                 .Where(r => r.Category == category)
                  .OrderBy(r => r.LevelCode).ToList();
             return list.MapTo<List<TreeItemDto>>();
@@ -77,25 +77,25 @@ namespace SCBF.BaseInfo
 
         public LayerEditDto Get(Guid id)
         {
-            var output = this.layerRepository.Get(id);
+            var output = this._layerRepository.Get(id);
             return output.MapTo<LayerEditDto>();
         }
 
-        public async Task SaveAsync(LayerEditDto input)
+        public async Task<Layer> SaveAsync(LayerEditDto input)
         {
             var item = input.MapTo<Layer>();
-            var maxLevelCode = GetMaxLevelCode(input);
+            var maxLevelCode = this.GetMaxLevelCode(input,input.Category);
             if (input.Id == Guid.Empty)
             {
                 item.LevelCode = maxLevelCode;
                 item.Level = maxLevelCode.Length / 2;
-                await this.layerRepository.InsertAsync(item);
+             return   await this._layerRepository.InsertAsync(item);
             }
             else
             {
-                var old = this.layerRepository.Get(input.Id);
+                var old = this._layerRepository.Get(input.Id);
                 var changed =
-                    this.layerRepository.GetAllList(r => r.LevelCode.StartsWith(old.LevelCode) && r.Level != old.Level);
+                    this._layerRepository.GetAllList(r => r.LevelCode.StartsWith(old.LevelCode) && r.Level != old.Level);
                 changed.ForEach(
                     r =>
                         {
@@ -106,7 +106,7 @@ namespace SCBF.BaseInfo
                 old.Level = old.LevelCode.Length / 2;
 
                 Mapper.Map(input, old);
-                await this.layerRepository.UpdateAsync(old);
+             return   await this._layerRepository.UpdateAsync(old);
             }
         }
 
@@ -116,13 +116,13 @@ namespace SCBF.BaseInfo
             if (input.Id == Guid.Empty)
             {
                 item.Level = item.LevelCode.Length;
-                await this.layerRepository.InsertAsync(item);
+                await this._layerRepository.InsertAsync(item);
             }
             else
             {
-                var old = this.layerRepository.Get(input.Id);
+                var old = this._layerRepository.Get(input.Id);
                 var changed =
-                    this.layerRepository.GetAllList(r => r.LevelCode.StartsWith(old.LevelCode) && r.Level != old.Level);
+                    this._layerRepository.GetAllList(r => r.LevelCode.StartsWith(old.LevelCode) && r.Level != old.Level);
                 changed.ForEach(
                     r =>
                     {
@@ -132,40 +132,40 @@ namespace SCBF.BaseInfo
                 old.Level = old.LevelCode.Length;
 
                 Mapper.Map(input, old);
-                await this.layerRepository.UpdateAsync(old);
+                await this._layerRepository.UpdateAsync(old);
             }
         }
 
         public void Delete(Guid id)
         {
-            var item = this.layerRepository.Get(id);
+            var item = this._layerRepository.Get(id);
             if (item == null)
             {
                 throw new UserFriendlyException("对象不存在");
             }
 
-            if (this.layerRepository.Count(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id) > 0)
+            if (this._layerRepository.Count(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id) > 0)
             {
                 throw new UserFriendlyException("包含子节点,删除失败");
             }
-            this.layerRepository.Delete(id);
+            this._layerRepository.Delete(id);
         }
 
 
         public void DeleteProductCategory(Guid id)
         {
-            var item = this.layerRepository.Get(id);
+            var item = this._layerRepository.Get(id);
             if (item == null)
             {
                 throw new UserFriendlyException("商品分类不存在");
             }
 
-            if (this.layerRepository.Any(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id))
+            if (this._layerRepository.Any(r => r.Category == item.Category && r.LevelCode.StartsWith(item.LevelCode) && r.Id != item.Id))
             {
                 throw new UserFriendlyException("分类下包含子分类,删除失败");
             }
 
-            if (this.productRepository.Any(r => r.CategoryId == item.Id))
+            if (this._productRepository.Any(r => r.CategoryId == item.Id))
             {
                 throw new UserFriendlyException("分类下包含子商品,删除失败");
             }
@@ -176,14 +176,14 @@ namespace SCBF.BaseInfo
         /// 获取当前最新层级
         /// </summary>
         /// <returns></returns>
-        private string GetMaxLevelCode(LayerEditDto input)
+        private string GetMaxLevelCode(LayerEditDto input,string category)
         {
-            var maxItem = layerRepository.GetAll().OrderByDescending(r => r.LevelCode).FirstOrDefault(r => r.PId == input.PId);
+            var maxItem = this._layerRepository.GetAll().Where(r=>r.Category==category).OrderByDescending(r => r.LevelCode).FirstOrDefault(r => r.PId == input.PId);
 
             //当前层级没有项目
             if (maxItem == null)
             {
-                var parent = layerRepository.FirstOrDefault(r => r.Id == input.PId);
+                var parent = this._layerRepository.FirstOrDefault(r => r.Id == input.PId);
 
                 //父层级不存在,即为第一条数据;父级存在，即为父级下第一条数据
                 return parent == null ? "01" : string.Format("{0}{1}", parent.LevelCode, "01");

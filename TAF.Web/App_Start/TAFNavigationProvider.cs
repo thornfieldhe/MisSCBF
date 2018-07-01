@@ -444,7 +444,19 @@
                                 "menuCarRepairTimes",
                                 L("维修厂考评"),
                                 url: "#carRepairTimes",
-                                requiredPermissionName: PermissionNames.ClUser)));
+                                requiredPermissionName: PermissionNames.ClUser)))
+                 .AddItem(
+                    new MenuItemDefinition(
+                            "EquipManager",
+                            L("装备管理"),
+                            url: "#",
+                            icon: "menu-icon fa fa-suitcase",
+                            requiredPermissionName: PermissionNames.Default).AddItem(
+                            new MenuItemDefinition(
+                                "menuEquip",
+                                L("装备管理"),
+                                url: "#equipList",
+                                requiredPermissionName: PermissionNames.PagesAdmins)));
         }
 
         /// <summary>

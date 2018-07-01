@@ -59,6 +59,11 @@ namespace SCBF.BaseInfo
         public const string Attachment_BashPath = "Attachment_BasePath";
 
         /// <summary>
+        /// 附件默认路径
+        /// </summary>
+        public const string Attachment_Equip = "Attachment_Equip";
+
+        /// <summary>
         /// 附件后缀
         /// </summary>
         public const string Attachment_Ext = "Attachment_Ext";
@@ -261,6 +266,14 @@ namespace SCBF.BaseInfo
         /// </summary>
         public const string Car_ServicingMaterials = "Car_ServicingMaterials";
 
+        #endregion
+
+        #region 装备
+
+        /// <summary>
+        /// 装备分类
+        /// </summary>
+        public const string Equip_Category = "Equip_Category";
         #endregion
 
     }

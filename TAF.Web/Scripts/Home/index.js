@@ -100,6 +100,7 @@ Path.map("#clearingForVehicleMaintenances").to(function () { loadPage("/ApplyFor
 Path.map("#vehicleMaintenanceReport").to(function () { loadPage("/ApplyForVehicleMaintenance/VehicleMaintenanceReport", "车辆管理", "车辆维修情况报告", "#menuVehicleMaintenanceReport", false); });
 Path.map("#carRepairTimes").to(function () { loadPage("/CarRepairTime/CarRepairTimeList", "车辆管理", "维修厂考评", "#menuCarRepairTimes", false); });
 
+Path.map("#equipList").to(function () { loadPage("/Equip/EquipList", "装备管理", "装备管理", "#menuEquip", false); });
 
 Path.map("#index").to(function () { loadPage("/Home/Dashboard", "主页", "主页", "#menuHome", true); });
 Path.root("#index");

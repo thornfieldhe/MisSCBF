@@ -66,9 +66,13 @@
             this.item.name = "";
             this.item.pId = "";
             this.item.pName = "";
+            this.item.id = "";
+            this.item.code = "";
+            $("[name='parentName']").val("");
             $('#spinboxOrder').spinbox('value', 0);
             this.onAdd = false;
             this.$resetValidation();
+
         },
         loadTree: function () {
             var $this = this;

@@ -157,6 +157,8 @@
     <Compile Include="Car\OilRechargeRecord.cs" />
     <Compile Include="Car\RechargeRecord.cs" />
     <Compile Include="Car\UploadOilCardRoof.cs" />
+    <Compile Include="EquipObject\IEquipRepository.cs" />
+    <Compile Include="Equip\Equip.cs" />
     <Compile Include="Finance\IInvoiceCheckRepository.cs" />
     <Compile Include="Finance\IInvoiceRepository.cs" />
     <Compile Include="Finance\Invoice.cs" />

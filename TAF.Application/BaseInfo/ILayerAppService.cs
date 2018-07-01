@@ -9,11 +9,11 @@
 
 namespace SCBF.BaseInfo
 {
-    using Abp.Application.Services.Dto;
-    using SCBF.BaseInfo.Dto;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Abp.Application.Services.Dto;
+    using SCBF.BaseInfo.Dto;
 
     /// <summary>
     /// 商品类别应用接口
@@ -22,7 +22,7 @@ namespace SCBF.BaseInfo
     {
         List<TreeItemDto> GetAllByCategory(string category);
 
-        Task SaveAsync(LayerEditDto input);
+        Task<Layer> SaveAsync(LayerEditDto input);
 
         Task SaveAccountAsync(LayerEditDto input);
 

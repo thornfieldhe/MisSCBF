@@ -463,6 +463,10 @@
     <Compile Include="Migrations\201806301505070_addTable_CarRepairTimes.Designer.cs">
       <DependentUpon>201806301505070_addTable_CarRepairTimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807010736233_addTable_Equip.cs" />
+    <Compile Include="Migrations\201807010736233_addTable_Equip.Designer.cs">
+      <DependentUpon>201807010736233_addTable_Equip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -490,6 +494,7 @@
     <Compile Include="Repositories\EntryBillRepository.cs" />
     <Compile Include="Repositories\EntryRepository.cs" />
     <Compile Include="Repositories\EqManagerRepository.cs" />
+    <Compile Include="Repositories\EquipRepository.cs" />
     <Compile Include="Repositories\HisOctaneStoreStockRepository.cs" />
     <Compile Include="Repositories\HisStockRepository.cs" />
     <Compile Include="Repositories\InvoiceCheckRepository.cs" />
@@ -782,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806301505070_addTable_CarRepairTimes.resx">
       <DependentUpon>201806301505070_addTable_CarRepairTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807010736233_addTable_Equip.resx">
+      <DependentUpon>201807010736233_addTable_Equip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

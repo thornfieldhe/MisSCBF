@@ -213,6 +213,11 @@
     <Compile Include="Car\IRepairCostAppService.cs" />
     <Compile Include="Car\RepairCostAppService.cs" />
     <Compile Include="Common\DownloadFileService.cs" />
+    <Compile Include="EquipObject\Dto\EquipEditDto.cs" />
+    <Compile Include="EquipObject\Dto\EquipListDto.cs" />
+    <Compile Include="EquipObject\Dto\EquipQueryDto.cs" />
+    <Compile Include="EquipObject\EquipAppService.cs" />
+    <Compile Include="EquipObject\IEquipAppService.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckEditDto.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckListDto.cs" />
     <Compile Include="Finance\Dto\InvoiceCheckQueryDto.cs" />

@@ -1,4 +1,6 @@
-﻿namespace SCBF.EntityFramework
+﻿using SCBF.EquipObject;
+
+namespace SCBF.EntityFramework
 {
     using System.Data.Common;
     using System.Data.Entity;
@@ -249,7 +251,7 @@
         {
             get; set;
         }
-
+        
         #endregion
 
         #region 采购
@@ -343,6 +345,14 @@
 
         #endregion
 
+
+        #region 装备
+        public DbSet<Equip> Equips
+        {
+            get; set;
+        }
+
+        #endregion
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DeliveryMap());

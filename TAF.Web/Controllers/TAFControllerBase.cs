@@ -44,7 +44,7 @@ namespace SCBF.Web.Controllers
         /// <param name="category"></param>
         /// <param name="param">第0条应该是保存文件名称</param>
         /// <param name="act"></param>
-        protected Guid UploadFile(string category, string[] param, Func<string, object, Guid> act) //Todo: 上传文件方法已经实现
+        protected string UploadFile(string category, string[] param, Func<string, object, Guid> act) //Todo: 上传文件方法已经实现
         {
             var fileData = this.Request.Files[0];
             if (fileData != null)
@@ -78,22 +78,25 @@ namespace SCBF.Web.Controllers
                     {
                         var saveName = param.Length==0||param[0]!="_theSameFileName"
                             ?Guid.NewGuid() + fileExtension:fileName ; // 保存文件名称
-                        fileData.SaveAs(fileSaveLocation + saveName);     // 
-                        var fileInfo = new FileInfo(fileSaveLocation + saveName);
+                        var newFileName = fileSaveLocation + saveName;
+                        fileData.SaveAs(newFileName);     // 
+                        var fileInfo = new FileInfo(newFileName);
 
-
-                        var modelId = act(fileSaveLocation + saveName, param);
-                        this._attachmentAppService.Save(
-                            new AttachmentEditDto()
-                            {
-                                Name     = fileName,
-                                Category = category,
-                                Ext      = fileExtension,
-                                Path     = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
-                                Size     = (decimal) fileInfo.Length / 1024,
-                                ModelId  = modelId
-                            });
-                        return modelId;
+                        if (act != null)
+                        {
+                            var modelId = act(newFileName, param);
+                            this._attachmentAppService.Save(
+                                new AttachmentEditDto()
+                                {
+                                    Name     = fileName,
+                                    Category = category,
+                                    Ext      = fileExtension,
+                                    Path     = $"{this._sysDictionaryAppService.GetModulePath(category)}/{saveName}",
+                                    Size     = (decimal) fileInfo.Length / 1024,
+                                    ModelId  = modelId
+                                });
+                        }
+                        return (virPath +saveName).Replace("~","").Replace("/",@"\");
                     }
                 }
                 else
