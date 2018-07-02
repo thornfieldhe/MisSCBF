@@ -103,6 +103,16 @@ namespace SCBF.Migrations.SeedData
                             IsStatic = true
                         });
 
+                var zbUser =
+                    Context.Roles.Add(
+                        new Role
+                        {
+                            Name        = StaticRoleNames.Host.ZbUser,
+                            DisplayName = StaticRoleNames.Host.ZbUserName,
+                            IsStatic    = true
+                        });
+
+
                 Context.SaveChanges();
             }
         }

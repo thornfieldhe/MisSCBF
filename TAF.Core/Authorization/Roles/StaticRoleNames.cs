@@ -71,12 +71,12 @@ namespace SCBF.Authorization.Roles
             public const string GcUser = "YfUser";
 
             /// <summary>
-            /// 营房管理员
+            /// 工程管理员
             /// </summary>
             public const string GcUserName = "工程";
 
             /// <summary>
-            /// 普通采购角色
+            /// 普通工程角色
             /// </summary>
             public const string CgUser = "CgUser";
 
@@ -84,6 +84,16 @@ namespace SCBF.Authorization.Roles
             /// 采购管理员
             /// </summary>
             public const string CgUserName = "采购";
+
+            /// <summary>
+            /// 普通装备员角色
+            /// </summary>
+            public const string ZbUser = "ZbUser";
+
+            /// <summary>
+            /// 装备管理员
+            /// </summary>
+            public const string ZbUserName = "装备";
         }
     }
 }

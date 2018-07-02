@@ -11,6 +11,7 @@
         public const string GcUser = "Pages.GcUser";
         public const string WzUser = "Pages.WzUser";
         public const string CgUser = "Pages.CgUser";
+        public const string ZbUser = "Pages.ZbUser";
 
 
         public const string PagesAdmins = "Pages.Admins";

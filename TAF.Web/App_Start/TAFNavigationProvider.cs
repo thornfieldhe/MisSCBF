@@ -456,7 +456,7 @@
                                 "menuEquip",
                                 L("装备管理"),
                                 url: "#equipList",
-                                requiredPermissionName: PermissionNames.PagesAdmins)));
+                                requiredPermissionName: PermissionNames.ZbUser)));
         }
 
         /// <summary>

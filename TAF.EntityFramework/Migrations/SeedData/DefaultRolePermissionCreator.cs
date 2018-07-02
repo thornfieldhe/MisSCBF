@@ -28,7 +28,7 @@ namespace SCBF.Migrations.SeedData
 
         public override void Create()
         {
-            var hasExcuted = this.Context.Permissions.Any(r => r.Name == PermissionNames.CgUser && r.TenantId==null);
+            var hasExcuted = this.Context.Permissions.Any(r => r.Name == PermissionNames.ZbUser && r.TenantId==null);
             if(!hasExcuted)
             {
                 //基础
@@ -111,6 +111,24 @@ namespace SCBF.Migrations.SeedData
                         Name = PermissionNames.Default,
                         IsGranted = true,
                         RoleId = roleGcUser.Id
+                    });
+
+                //装备
+                var roleZbUser = this.Context.Roles.First(r => r.Name == StaticRoleNames.Host.ZbUser);
+                this.Context.Permissions.Add(
+                    new RolePermissionSetting
+                    {
+                        Name = PermissionNames.ZbUser,
+                        IsGranted = true,
+                        RoleId = roleZbUser.Id
+                    });
+
+                this.Context.Permissions.Add(
+                    new RolePermissionSetting
+                    {
+                        Name = PermissionNames.Default,
+                        IsGranted = true,
+                        RoleId = roleZbUser.Id
                     });
 
                 //物资
@@ -215,6 +233,14 @@ namespace SCBF.Migrations.SeedData
                         Name = PermissionNames.CgUser,
                         IsGranted = true,
                         RoleId = adminUser.Id
+                    });
+
+                this.Context.Permissions.Add(
+                    new RolePermissionSetting
+                    {
+                        Name      = PermissionNames.ZbUser,
+                        IsGranted = true,
+                        RoleId    = roleZbUser.Id
                     });
 
                 this.Context.SaveChanges();
