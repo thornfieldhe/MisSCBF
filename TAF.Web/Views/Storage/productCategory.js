@@ -53,6 +53,7 @@
                     $this.item = m;
                     $this.item.pName =  $this.item.pId==="00000000-0000-0000-0000-000000000000"?"": _.find(main.list, function(o) {return o.id===$this.item.pId}).name;
                     $this.onAdd = false;
+                    $("[name='parentName']").val($this.item.pName);
                 })
             .fail(function (m) {
                 $this.fail(m);

@@ -68,7 +68,6 @@ var main = new Vue({
             productCode:"", 
             productName:"", 
             code: "",
-            storageId:"",
             billId:"",
         }
     },

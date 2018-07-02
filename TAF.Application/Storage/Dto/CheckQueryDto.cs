@@ -9,8 +9,8 @@
 
 namespace SCBF.Storage.Dto
 {
-    using Abp.Application.Services.Dto;
     using System;
+    using Abp.Application.Services.Dto;
 
     /// <summary>
     /// 盘点查询对象

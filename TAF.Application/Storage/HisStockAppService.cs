@@ -9,6 +9,10 @@
 
 namespace SCBF.Storage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
@@ -16,10 +20,6 @@ namespace SCBF.Storage
     using Abp.UI;
     using SCBF.BaseInfo;
     using SCBF.Storage.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
     using TAF.Utility;
 
     /// <summary>
@@ -178,6 +178,9 @@ namespace SCBF.Storage
 
             switch (quarter)
             {
+                case 0:
+                    dtTo = new DateTime(year,3 , 31);
+                    break;
                 case 1:
                     dtTo = new DateTime(year, 6, 30);
                     break;

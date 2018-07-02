@@ -9,17 +9,16 @@
 
 namespace SCBF.Storage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using Abp.Authorization;
     using Abp.UI;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using NPOI.XSSF.UserModel;
     using SCBF.BaseInfo;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-
     using TAF.Utility;
 
     /// <summary>
@@ -75,9 +74,9 @@ namespace SCBF.Storage
                 throw new UserFriendlyException("未设置预算年度");
             }
 
-            var stockId = param as Guid?;
+            var stockId = param as string[];
 
-            if (!stockId.HasValue)
+            if (stockId.Length==0)
             {
                 throw new UserFriendlyException("请选择仓库");
             }
@@ -87,7 +86,7 @@ namespace SCBF.Storage
                 Code = this.GetMaxCode(),
                 Date = DateTime.Now,
                 Year = currentYear.Value.ToInt(),
-                StorageId = stockId.Value,
+                StorageId = new Guid(stockId[0]),
                 Id = Guid.NewGuid(),
                 Checks = new List<Check>()
             };
@@ -107,7 +106,8 @@ namespace SCBF.Storage
                         throw new UserFriendlyException($"商品编码[{code}]不存在");
                     }
 
-                    var stockAmount = this.stockRepository.GetAllList(r => r.ProductId == product.Id && r.StorageId == stockId.Value).Sum(r => r.Amount);
+                    var sId = new Guid(stockId[0]);
+                    var stockAmount = this.stockRepository.GetAllList(r => r.ProductId == product.Id && r.StorageId ==sId).Sum(r => r.Amount);
                     var changeAmount = amount - stockAmount;
                     decimal price;
                     if (changeAmount < 0)

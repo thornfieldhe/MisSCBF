@@ -9,17 +9,17 @@
 
 namespace SCBF.Storage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Threading.Tasks;
     using Abp.Application.Services.Dto;
     using Abp.Authorization;
     using Abp.AutoMapper;
     using Abp.Linq.Extensions;
     using AutoMapper;
     using SCBF.Storage.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 盘点服务
