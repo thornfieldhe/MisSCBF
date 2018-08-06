@@ -43,26 +43,35 @@ namespace SCBF.Storage
 
         public async Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input)
         {
-            var item = input.MapTo<EntryBill>();
-            item.Entries.ForEach(r => r.EntryBillId = item.Id);
+	        try{
+		        var item = input.MapTo<EntryBill>();
+		        item.Entries.ForEach(r => {
+			                             r.EntryBillId = item.Id;
+										 r.Id=Guid.NewGuid();
+		                             });
 
-            item.Code = this.GetMaxCode();
-            await this.entryBillRepository.InsertAsync(item);
+		        item.Code = this.GetMaxCode();
+		        await this.entryBillRepository.InsertAsync(item);
 
-            // 更新库存信息
-            foreach (var entry in input.Items)
-            {
-                var stock = new Stock()
-                {
-                    Amount = entry.Amount,
-                    ProductId = entry.ProductId,
-                    StorageId = entry.StorageId,
-                    Price = entry.Price
-                };
-                await this.stockRepository.InsertAsync(stock);
-            }
-            this.CurrentUnitOfWork.SaveChanges();
-            return this.entryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.EntryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
+		        // 更新库存信息
+		        foreach (var entry in input.Items)
+		        {
+			        var stock = new Stock()
+			                    {
+				                    Amount = entry.Amount,
+				                    ProductId = entry.ProductId,
+				                    StorageId = entry.StorageId,
+				                    Price = entry.Price
+			                    };
+			        await this.stockRepository.InsertAsync(stock);
+		        }
+		        this.CurrentUnitOfWork.SaveChanges();
+		        return this.entryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.EntryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
+	        }
+			catch(Exception es)
+			{
+				throw es;
+			}
         }
 
         private string GetMaxCode()
