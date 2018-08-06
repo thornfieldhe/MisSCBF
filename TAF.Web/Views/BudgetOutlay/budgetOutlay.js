@@ -6,6 +6,7 @@
             abp.services.app.budgetOutlay.get($("#searchSheet").val(),0)
                 .done(function (r) {
                     $this.list = r;
+                    $this.selectItems.length=0;
             });
         });
         $(".fileUpload").liteUploader({

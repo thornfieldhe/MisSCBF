@@ -7,13 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using Abp.AutoMapper;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-
-    using Abp.AutoMapper;
-
-    /// <summary>
+	/// <summary>
     /// 年度预算收入列表对象
     /// </summary>
     [AutoMap(typeof(BudgetReceipt))]

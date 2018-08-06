@@ -324,13 +324,13 @@
                                 "menuApplicationForBunkerAs",
                                 L("油料卡加油申请单"),
                                 url: "#applicationForBunkerAs",
-                                requiredPermissionName: PermissionNames.Default))
+                                requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuApplicationForBunkerAs2",
                                 L("油料卡加油补签单"),
                                 url: "#applicationForBunkerAs2",
-                                requiredPermissionName: PermissionNames.Default))
+                                requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuApplicationForAuditA",
@@ -366,13 +366,13 @@
                                 "menuApplicationForBunkerBs",
                                 L("实物油料加油申请单"),
                                 url: "#applicationForBunkerBs",
-                                requiredPermissionName: PermissionNames.Default))
+                                requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuApplicationForBunkerBs2",
                                 L("实物油料加油补签单"),
                                 url: "#applicationForBunkerBs2",
-                                requiredPermissionName: PermissionNames.Default))
+                                requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuApplicationForAuditB",
@@ -414,7 +414,7 @@
                                 "menuApplyForVehicleMaintenances",
                                 L("车辆送修申请单"),
                                 url: "#applyForVehicleMaintenances",
-                                requiredPermissionName: PermissionNames.Default))
+                                requiredPermissionName: PermissionNames.ClUser))
                         .AddItem(
                             new MenuItemDefinition(
                                 "menuAuditingForVehicleMaintenances",

@@ -7,17 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using SCBF.Finance.Dto;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
-    
-    using SCBF.Finance.Dto;
-    
-   using Abp.Application.Services.Dto;
-    
-    /// <summary>
+	/// <summary>
     /// 凭证审核归纳表应用接口
     /// </summary>
     public interface IVoucherAuditAppService : IBaseEntityApplicationService

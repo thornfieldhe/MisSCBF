@@ -7,23 +7,23 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.UI;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using SCBF.BaseInfo;
+using SCBF.Finance.Dto;
+using TAF.Utility;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.UI;
-    using BaseInfo;
-    using Dto;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
-    using NPOI.XSSF.UserModel;
-    using TAF.Utility;
-
-    /// <summary>
+	/// <summary>
     /// 年度预算收入服务
     /// </summary>
     [AbpAuthorize]
@@ -94,7 +94,7 @@ namespace SCBF.Finance
         public List<KeyValue<Guid, string, string, decimal>> GetSimple(int type)
         {
             return this.Get(type, true).OrderBy(r => r.Code).ToList().Select(r =>
-                new KeyValue<Guid, string, string, decimal>()
+                new KeyValue<Guid, string, string, decimal>
                 {
                     Key   = r.Id,
                     Value = r.Code,
@@ -285,8 +285,8 @@ namespace SCBF.Finance
                 var row = sheet.GetRow(i);
                 if (!string.IsNullOrEmpty(row.GetCell(0).ToStr()))
                 {
-                    var item = new BudgetReceipt()
-                    {
+                    var item = new BudgetReceipt
+                               {
                         Type     = type,
                         Code     = row.GetCell(0).ToStr(),
                         Column1  = row.GetCell(4).ToStr().ToDecimal(),

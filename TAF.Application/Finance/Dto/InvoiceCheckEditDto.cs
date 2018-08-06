@@ -7,14 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using Abp.AutoMapper;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
-    using Abp.AutoMapper;
-
-    /// <summary>
+	/// <summary>
     /// 发票录入编辑对象
     /// </summary>
     [AutoMap(typeof(InvoiceCheck))]

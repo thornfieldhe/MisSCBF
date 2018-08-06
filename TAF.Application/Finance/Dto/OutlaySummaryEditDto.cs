@@ -7,12 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using Abp.AutoMapper;
+
 namespace SCBF.Finance.Dto
 {
-    using Abp.AutoMapper;
-    using System;
-
-    /// <summary>
+	/// <summary>
     /// 财务编辑对象
     /// </summary>
     [AutoMap(typeof(Outlay))]

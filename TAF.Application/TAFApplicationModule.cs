@@ -93,8 +93,7 @@ namespace SCBF
                     .ForMember(m => m.Unit, n => n.MapFrom(r => r.Product.Unit))
                     .ForMember(m => m.StorageName, n => n.MapFrom(r => r.Storage.Value));
 
-                mapper.CreateMap<StockBillEditDto, EntryBill>()
-                    .ForMember(m => m.Entries, n => n.MapFrom(r => r.Items));
+                mapper.CreateMap<StockBillEditDto, EntryBill>();
                 mapper.CreateMap<ProductStockListDto, Entry>();
                 mapper.CreateMap<Entry, ProductStockListDto>()
                     .ForMember(m => m.Name, n => n.MapFrom(r => r.Product.Name))

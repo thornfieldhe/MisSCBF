@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using SCBF.Finance.Dto;
+using TAF.Utility;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using SCBF.Finance.Dto;
-    using TAF.Utility;
-
-    /// <summary>
+	/// <summary>
     /// 年度预算收入应用接口
     /// </summary>
     public interface IBudgetReceiptAppService : IBaseEntityApplicationService

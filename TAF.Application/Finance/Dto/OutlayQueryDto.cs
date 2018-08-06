@@ -7,13 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Application.Services.Dto;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-    
-    using Abp.Application.Services.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 财务查询对象
     /// </summary>
     public class OutlayQueryDto : PagedAndSortedResultRequestDto

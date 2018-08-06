@@ -7,27 +7,25 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.AutoMapper;
 using Abp.Linq.Extensions;
+using Abp.UI;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using SCBF.BaseInfo;
+using SCBF.Finance.Dto;
+using TAF.Utility;
 
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.UI;
-    using NPOI.HSSF.UserModel;
-    using NPOI.SS.UserModel;
-    using NPOI.XSSF.UserModel;
-    using SCBF.BaseInfo;
-    using SCBF.Finance.Dto;
-    using TAF.Utility;
-
-    /// <summary>
+	/// <summary>
     /// 实际支出服务
     /// </summary>
     [AbpAuthorize]
@@ -36,7 +34,7 @@ namespace SCBF.Finance
         private readonly IActualOutlayRepository _actualOutlayRepository;
         private readonly IRelationshipRepository _relationshipRepository;
         private readonly ISysDictionaryRepository _sysDictionaryRepository;
-        private IWorkbook _workbook = null;
+        private IWorkbook _workbook;
 
         public ActualOutlayAppService(
             IActualOutlayRepository actualOutlayRepository,
@@ -109,8 +107,8 @@ namespace SCBF.Finance
                 var row = sheet.GetRow(i);
                 if (row.GetCell(1) != null && !string.IsNullOrEmpty(row.GetCell(1).ToString()))
                 {
-                    var item = new ActualOutlay()
-                    {
+                    var item = new ActualOutlay
+                               {
                         Amount = row.GetCell(2).ToStr().ToDecimal(),
                         Date = row.GetCell(1).ToStr().ToDate(),
                         Note = row.GetCell(3).ToStr(),

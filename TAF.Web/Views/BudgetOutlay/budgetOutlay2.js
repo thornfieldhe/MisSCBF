@@ -6,6 +6,7 @@
             abp.services.app.budgetOutlay.get($("#searchSheet").val(),1)
                 .done(function (r) {
                     $this.list = r;
+                    $this.selectItems.length=0;
             });
         });
         $(".fileUpload").liteUploader({
@@ -43,6 +44,7 @@
             abp.services.app.budgetReceipt.getSimple(1)
                 .done(function (r) {
                     $this.list2 = r;
+                    $this.selectItems=[];
                 });
         },
         update: function () {

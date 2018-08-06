@@ -7,12 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Application.Services.Dto;
+
 namespace SCBF.Finance.Dto
 {
-
-    using Abp.Application.Services.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 凭证审核归纳表查询对象
     /// </summary>
     public class VoucherAuditQueryDto : PagedAndSortedResultRequestDto

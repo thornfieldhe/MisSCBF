@@ -9,89 +9,83 @@
 
 namespace SCBF.Storage
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using SCBF.Storage.Dto;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading.Tasks;
+	using Abp.Authorization;
+	using Abp.AutoMapper;
+	using SCBF.Storage.Dto;
 
-    /// <summary>
-    /// 入库单服务
-    /// </summary>
-    [AbpAuthorize]
-    public class EntryBillAppService : TAFAppServiceBase, IEntryBillAppService
-    {
-        private readonly IEntryBillRepository entryBillRepository;
-        private readonly IEntryRepository entryRepository;
-        private readonly IStockRepository stockRepository;
+	/// <summary>
+	/// 入库单服务
+	/// </summary>
+	[AbpAuthorize]
+	public class EntryBillAppService : TAFAppServiceBase, IEntryBillAppService
+	{
+		private readonly IEntryBillRepository entryBillRepository;
+		private readonly IEntryRepository entryRepository;
+		private readonly IStockRepository stockRepository;
 
-        public EntryBillAppService(IEntryBillRepository entryBillRepository
-            , IEntryRepository entryRepository
-            , IStockRepository stockRepository)
-        {
-            this.entryBillRepository = entryBillRepository;
-            this.stockRepository = stockRepository;
-            this.entryRepository = entryRepository;
-        }
+		public EntryBillAppService(IEntryBillRepository entryBillRepository
+		                         , IEntryRepository entryRepository
+		                         , IStockRepository stockRepository)
+		{
+			this.entryBillRepository = entryBillRepository;
+			this.stockRepository = stockRepository;
+			this.entryRepository = entryRepository;
+		}
 
-        public StockBillEditDto New()
-        {
-            return new StockBillEditDto { Code = this.GetMaxCode(), Id = Guid.NewGuid() };
-        }
+		public StockBillEditDto New()
+		{
+			return new StockBillEditDto {Code = this.GetMaxCode(), Id = Guid.NewGuid()};
+		}
 
-        public async Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input)
-        {
-	        try{
-		        var item = input.MapTo<EntryBill>();
-		        item.Entries.ForEach(r => {
-			                             r.EntryBillId = item.Id;
-										 r.Id=Guid.NewGuid();
-		                             });
+		public async Task<List<ProductStockListDto>> SaveAsync(StockBillEditDto input)
+		{
+			var item = input.MapTo<EntryBill>();
+			item.Entries.ForEach (r =>
+			                      {
+				                      r.EntryBillId = item.Id;
+				                      r.Id = Guid.NewGuid();
+			                      });
 
-		        item.Code = this.GetMaxCode();
-		        await this.entryBillRepository.InsertAsync(item);
+			item.Code = this.GetMaxCode();
+			await this.entryBillRepository.InsertAsync (item);
 
-		        // 更新库存信息
-		        foreach (var entry in input.Items)
-		        {
-			        var stock = new Stock()
-			                    {
-				                    Amount = entry.Amount,
-				                    ProductId = entry.ProductId,
-				                    StorageId = entry.StorageId,
-				                    Price = entry.Price
-			                    };
-			        await this.stockRepository.InsertAsync(stock);
-		        }
-		        this.CurrentUnitOfWork.SaveChanges();
-		        return this.entryRepository.GetAllIncluding(r => r.Product, r => r.Storage).Where(r => r.EntryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
-	        }
-			catch(Exception es)
+			// 更新库存信息
+			foreach (var entry in input.Items)
 			{
-				throw es;
+				var stock = new Stock()
+				            {
+					            Amount = entry.Amount
+					          , ProductId = entry.ProductId
+					          , StorageId = entry.StorageId
+					          , Price = entry.Price
+				            };
+				await this.stockRepository.InsertAsync (stock);
 			}
-        }
 
-        private string GetMaxCode()
-        {
-            var preCode = DateTime.Today.ToString("yyyyMMdd");
-            var maxCode =
-                this.entryBillRepository.Get(r => r.Code.StartsWith("RK" + preCode))
-                    .OrderByDescending(r => r.Code)
-                    .FirstOrDefault()?.Code;
-            if (string.IsNullOrWhiteSpace(maxCode))
-            {
-                return $"RK{preCode}001";
-            }
-            else
-            {
-                return $"RK{(long.Parse(maxCode.Substring(2)) + 1):000}";
-            }
-        }
-    }
+			this.CurrentUnitOfWork.SaveChanges();
+			return this.entryRepository.GetAllIncluding (r => r.Product, r => r.Storage)
+					.Where (r => r.EntryBillId == item.Id).ToList().MapTo<List<ProductStockListDto>>();
+		}
+
+		private string GetMaxCode()
+		{
+			var preCode = DateTime.Today.ToString ("yyyyMMdd");
+			var maxCode =
+						this.entryBillRepository.Get (r => r.Code.StartsWith ("RK" + preCode))
+								.OrderByDescending (r => r.Code)
+								.FirstOrDefault()?.Code;
+			if (string.IsNullOrWhiteSpace (maxCode))
+			{
+				return $"RK{preCode}001";
+			}
+			else
+			{
+				return $"RK{(long.Parse (maxCode.Substring (2)) + 1):000}";
+			}
+		}
+	}
 }
-
-
-

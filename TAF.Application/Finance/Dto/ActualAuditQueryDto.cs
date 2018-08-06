@@ -8,13 +8,11 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using Abp.Application.Services.Dto;
 
 namespace SCBF.Finance.Dto
 {
-
-    using Abp.Application.Services.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 实际支出查询对象
     /// </summary>
     public class ActualAuditQueryDto : PagedAndSortedResultRequestDto

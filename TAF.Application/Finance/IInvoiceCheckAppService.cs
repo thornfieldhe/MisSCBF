@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using SCBF.Finance.Dto;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Threading.Tasks;
-    using Abp.Application.Services.Dto;
-    using SCBF.Finance.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 发票录入应用接口
     /// </summary>
     public interface IInvoiceCheckAppService : IBaseEntityApplicationService

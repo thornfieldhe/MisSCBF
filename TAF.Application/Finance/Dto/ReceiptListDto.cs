@@ -7,11 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-
-    /// <summary>
+	/// <summary>
     /// 预算执行情况表
     /// </summary>
     public class ReceiptListDto

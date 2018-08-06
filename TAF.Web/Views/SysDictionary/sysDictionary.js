@@ -8,7 +8,7 @@
     data: function () {
         return {
             item: {
-                id: "",            
+                id: "00000000-0000-0000-0000-000000000000",            
                 value: "",
                 note: "",
                 category: "",
@@ -46,7 +46,7 @@
     },
     methods: {
         clearItem: function () {
-            this.item.id = "";
+            this.item.id = "00000000-0000-0000-0000-000000000000";
             this.item.value= "";
             this.item.note= "";
             this.item.category= "";

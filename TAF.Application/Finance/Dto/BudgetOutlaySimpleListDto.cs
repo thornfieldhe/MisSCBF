@@ -7,13 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using Abp.AutoMapper;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-
-    using Abp.AutoMapper;
-
-    /// <summary>
+	/// <summary>
     /// 
     /// </summary>
     [AutoMap(typeof(BudgetOutlay))]

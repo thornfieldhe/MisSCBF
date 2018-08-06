@@ -7,25 +7,22 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.Linq.Extensions;
+using Abp.UI;
+using AutoMapper;
+using SCBF.Finance.Dto;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
-    using Abp.UI;
-
-    using AutoMapper;
-
-    using SCBF.Finance.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 发票录入服务
     /// </summary>
     [AbpAuthorize]
@@ -79,7 +76,7 @@ namespace SCBF.Finance
                 var list = new List<Invoice>();
                 for (long i = input.From; i <= input.To.Value; i++)
                 {
-                    list.Add(new Invoice() { Code = i.ToString(), InvoiceCheckId = r.Id });
+                    list.Add(new Invoice { Code = i.ToString(), InvoiceCheckId = r.Id });
                 }
                 this._invoiceRepository.InsertRange(list);
             }
@@ -92,7 +89,7 @@ namespace SCBF.Finance
                 var list = new List<Invoice>();
                 for (long i = input.From; i <= input.To.Value; i++)
                 {
-                    list.Add(new Invoice() { Code = i.ToString(), Id = Guid.NewGuid(), InvoiceCheckId = old.Id });
+                    list.Add(new Invoice { Code = i.ToString(), Id = Guid.NewGuid(), InvoiceCheckId = old.Id });
                 }
 
                 this._invoiceRepository.InsertRange(list);

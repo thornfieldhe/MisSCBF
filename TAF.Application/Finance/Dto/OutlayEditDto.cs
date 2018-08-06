@@ -7,14 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
 namespace SCBF.Finance.Dto
 {
-    using System;
-    using System.Collections.Generic;
-
-    using Abp.AutoMapper;
-
-    /// <summary>
+	/// <summary>
     /// 支出编辑对象
     /// </summary>
     public class OutlayEditDto

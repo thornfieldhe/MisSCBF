@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using Abp.Application.Services.Dto;
+using SCBF.Finance.Dto;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using Abp.Application.Services.Dto;
-    using SCBF.Finance.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 实际支出应用接口
     /// </summary>
     public interface IActualOutlayAppService : IBaseEntityApplicationService

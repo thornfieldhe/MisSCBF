@@ -9,26 +9,24 @@
 
 namespace SCBF.Users
 {
-    using System.Threading.Tasks;
+	using System.Threading.Tasks;
+	using Abp.Application.Services.Dto;
+	using SCBF.Users.Dto;
 
-    using Abp.Application.Services.Dto;
+	public interface IUserAppService : IBaseEntityApplicationService
+	{
+		ListResultDto<UserListDto> GetAll(UserQueryDto request);
 
-    using SCBF.Users.Dto;
+		UserEditDto Get(long id);
 
-    public interface IUserAppService : IBaseEntityApplicationService
-    {
-        ListResultDto<UserListDto> GetAll(UserQueryDto request);
+		Task SaveAsync(UserEditDto input);
 
-        UserEditDto Get(long id);
+		void Delete(long id);
 
-        Task SaveAsync(UserEditDto input);
+		Task<ListResultDto<UserListDto>> GetAllAsync(UserQueryDto request);
 
-        void Delete(long id);
+		void ChangePwd(PwdEditDto input);
 
-        Task<ListResultDto<UserListDto>> GetAllAsync(UserQueryDto request);
-
-        void ChangePwd(PwdEditDto input);
-
-        void ResetPwd(long id);
-    }
+		void ResetPwd(long id);
+	}
 }

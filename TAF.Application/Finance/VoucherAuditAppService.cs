@@ -7,24 +7,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.Linq.Extensions;
+using AutoMapper;
+using SCBF.Finance.Dto;
+
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Threading.Tasks;
-
-    using Abp.Application.Services.Dto;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.Linq.Extensions;
-
-    using AutoMapper;
-
-    using SCBF.Finance.Dto;
-
-    /// <summary>
+	/// <summary>
     /// 凭证审核归纳表服务
     /// </summary>
     [AbpAuthorize]

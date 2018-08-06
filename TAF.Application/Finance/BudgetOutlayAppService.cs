@@ -7,28 +7,26 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using Abp.Authorization;
+using Abp.AutoMapper;
+using Abp.UI;
 using Aspose.Cells;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using SCBF.BaseInfo;
 using SCBF.Common;
+using SCBF.Finance.Dto;
+using TAF.Utility;
 
 namespace SCBF.Finance
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using Abp.Authorization;
-    using Abp.AutoMapper;
-    using Abp.UI;
-    using BaseInfo;
-    using Dto;
-    using TAF.Utility;
-
-    /// <summary>
+	/// <summary>
     /// 支出预算服务
     /// </summary>
     [AbpAuthorize]
@@ -40,7 +38,7 @@ namespace SCBF.Finance
         private readonly IActualOutlayRepository  _actualOutlayRepository;
         private readonly ILayerRepository         _layerRepository;
         private readonly IOutlayRepository        _outlayRepository;
-        private          IWorkbook                _workbook = null;
+        private          IWorkbook                _workbook;
 
         public BudgetOutlayAppService(
             IBudgetOutlayRepository  budgetOutlayRepository,
@@ -172,7 +170,7 @@ namespace SCBF.Finance
                     Total22 = outlay == null ? 0 : outlay.Total1,
                     Total24 = outlay == null ? 0 : outlay.Total2,
                     Total25 = outlay == null ? 0 : outlay.Total3,
-                    Note    = outlay?.Note,
+                    Note    = outlay?.Note
                 };
 
                 list.Add(performance);
@@ -185,7 +183,7 @@ namespace SCBF.Finance
         {
             var codes = this._layerRepository.GetAll()
                 .Where(r => r.Category == DictionaryCategory.Budget_Account)
-                .OrderBy(r => r.LevelCode).Select(r => new {Code = r.LevelCode, Name = r.Name}).ToList();
+                .OrderBy(r => r.LevelCode).Select(r => new {Code = r.LevelCode, r.Name}).ToList();
             var list = this.GetBudgetPerformances();
             var newCodes = list.Select(r => r.Code).ToList();
             foreach (var item in list)
@@ -210,7 +208,7 @@ namespace SCBF.Finance
             newCodes.Sort();
             var result = new List<BudgetPerformanceListDto>
             {
-                new BudgetPerformanceListDto()
+                new BudgetPerformanceListDto
                 {
                     Code    = string.Empty,
                     Id      = Guid.NewGuid(),
@@ -242,12 +240,12 @@ namespace SCBF.Finance
                     var codeName = codes.FirstOrDefault(r => r.Code == code);
                     if (codeName == null) continue;
 
-                    item = new BudgetPerformanceListDto()
-                    {
+                    item = new BudgetPerformanceListDto
+                           {
                         Code   = codeName.Code,
                         Id     = Guid.NewGuid(),
                         Name   = codeName.Name,
-                        Total4 = -1234, // 给个特定值,填充行数据时替换成空
+                        Total4 = -1234 // 给个特定值,填充行数据时替换成空
                     };
                 }
 
@@ -344,7 +342,7 @@ namespace SCBF.Finance
                 {
                     Font                = {Size = 8, Name = "宋体"},
                     Pattern             = BackgroundType.Solid,
-                    HorizontalAlignment = Aspose.Cells.TextAlignmentType.Center
+                    HorizontalAlignment = TextAlignmentType.Center
                 };
                 st.Borders[BorderType.LeftBorder].LineStyle   = CellBorderType.Thin; //应用边界线 左边界线
                 st.Borders[BorderType.RightBorder].LineStyle  = CellBorderType.Thin; //应用边界线 右边界线
@@ -409,14 +407,14 @@ namespace SCBF.Finance
                     r.Code == item.Code && r.Year.ToString() == currentYearItem.Value);
             if (outlay == null)
             {
-                outlay = new Outlay()
-                {
+                outlay = new Outlay
+                         {
                     Code   = item.Code,
                     Year   = currentYearItem.Value.ToInt(),
                     Total1 = item.Total1,
                     Total2 = item.Total2,
                     Total3 = item.Total3,
-                    Note   = item.Note,
+                    Note   = item.Note
                 };
                 this._outlayRepository.Insert(outlay);
             }
@@ -576,8 +574,8 @@ namespace SCBF.Finance
                 list.Add(dto);
             }
 
-            list = list.GroupBy(r => new {Code = r.Code, Name = r.Name}).Select(r =>
-                    new YearBudgetSummaryDto()
+            list = list.GroupBy(r => new {r.Code, r.Name}).Select(r =>
+                    new YearBudgetSummaryDto
                     {
                         Name    = r.Key.Name,
                         Code    = r.Key.Code,
@@ -637,8 +635,8 @@ namespace SCBF.Finance
                     var row = sheet.GetRow(i);
                     if (!string.IsNullOrEmpty(row.GetCell(1).ToStr()))
                     {
-                        var item = new BudgetOutlay()
-                        {
+                        var item = new BudgetOutlay
+                                   {
                             Type      = type,
                             SheetName = sheet.SheetName,
                             Name      = row.GetCell(0).ToStr(),
