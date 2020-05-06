@@ -95,6 +95,7 @@ namespace SCBF.Web.Controllers
                                     Size     = (decimal) fileInfo.Length / 1024,
                                     ModelId  = modelId
                                 });
+                            return modelId.ToString();
                         }
                         return (virPath +saveName).Replace("~","").Replace("/",@"\");
                     }

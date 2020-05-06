@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="D:\WorkStation\SCBF-Mis" t="IncludeFlat">
+    <e p="C:\Users\thorn\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\thorn\AppData\Local\JetBrains\Rider2020.1\resharper-host\temp\ReSharperHost\v201\SolutionCaches\_SCBF.747935544.00" t="ExcludeRecursive" />
+    <e p="C:\Users\thorn\AppData\Roaming\JetBrains\Rider2020.1\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\thorn\AppData\Roaming\JetBrains\Rider2020.1\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\thorn\AppData\Roaming\JetBrains\Rider2020.1\scratches" t="IncludeRecursive" />
+    <e p="D:\WorkStation\MisSCBF" t="IncludeFlat">
       <e p=".nuget" t="Include">
         <e p="NuGet.Config" t="Include" />
         <e p="NuGet.exe" t="Include" />
@@ -40,16 +45,25 @@
             <e p="LayerEditDto.cs" t="Include" />
             <e p="LayerListDto.cs" t="Include" />
             <e p="LayerQueryDto.cs" t="Include" />
+            <e p="RelationshipEditDto.cs" t="Include" />
+            <e p="RelationshipListDto.cs" t="Include" />
+            <e p="RelationshipQueryDto.cs" t="Include" />
             <e p="SysDictionaryEditDto.cs" t="Include" />
             <e p="SysDictionaryListDto.cs" t="Include" />
             <e p="SysDictionaryQueryDto.cs" t="Include" />
             <e p="TreeItemDto.cs" t="Include" />
+            <e p="UnitPoolEditDto.cs" t="Include" />
+            <e p="UnitPoolListDto.cs" t="Include" />
           </e>
           <e p="IAttachmentAppService.cs" t="Include" />
           <e p="ILayerAppService.cs" t="Include" />
+          <e p="IRelationshipAppService.cs" t="Include" />
           <e p="ISysDictionaryAppService.cs" t="Include" />
+          <e p="IUnitPoolAppService.cs" t="Include" />
           <e p="LayerAppService.cs" t="Include" />
+          <e p="RelationshipAppService.cs" t="Include" />
           <e p="SysDictionaryAppService.cs" t="Include" />
+          <e p="UnitPoolAppService.cs" t="Include" />
         </e>
         <e p="Bin" t="ExcludeRecursive" />
         <e p="Car" t="Include">
@@ -58,6 +72,7 @@
           <e p="ApplyForVehicleMaintenanceAppService.cs" t="Include" />
           <e p="CarInfoAppService.cs" t="Include" />
           <e p="CarOilAppService.cs" t="Include" />
+          <e p="CarRepairTimeAppService.cs" t="Include" />
           <e p="DriverAppService.cs" t="Include" />
           <e p="Dto" t="Include">
             <e p="ApplicationForBunkerAEditDto.cs" t="Include" />
@@ -77,6 +92,8 @@
             <e p="CarOilListDto.cs" t="Include" />
             <e p="CarOilQueryDto.cs" t="Include" />
             <e p="CarOilReportDto.cs" t="Include" />
+            <e p="CarRepairTimeListDto.cs" t="Include" />
+            <e p="CarRepairTimeQueryDto.cs" t="Include" />
             <e p="DriverEditDto.cs" t="Include" />
             <e p="DriverListDto.cs" t="Include" />
             <e p="HisOilCardListDto.cs" t="Include" />
@@ -109,6 +126,7 @@
           <e p="IApplyForVehicleMaintenanceAppService.cs" t="Include" />
           <e p="ICarInfoAppService.cs" t="Include" />
           <e p="ICarOilAppService.cs" t="Include" />
+          <e p="ICarRepairTimeAppService.cs" t="Include" />
           <e p="IDriverAppService.cs" t="Include" />
           <e p="IHisStoreStockAppService.cs" t="Include" />
           <e p="IOctaneStoreAppService.cs" t="Include" />
@@ -124,11 +142,24 @@
           <e p="RechargeRecordAppService.cs" t="Include" />
           <e p="RepairCostAppService.cs" t="Include" />
         </e>
+        <e p="Common" t="Include">
+          <e p="DownloadFileService.cs" t="Include" />
+        </e>
+        <e p="EquipObject" t="Include">
+          <e p="Dto" t="Include">
+            <e p="EquipEditDto.cs" t="Include" />
+            <e p="EquipListDto.cs" t="Include" />
+            <e p="EquipQueryDto.cs" t="Include" />
+          </e>
+          <e p="EquipAppService.cs" t="Include" />
+          <e p="IEquipAppService.cs" t="Include" />
+        </e>
         <e p="Finance" t="Include">
           <e p="ActualOutlayAppService.cs" t="Include" />
           <e p="BudgetOutlayAppService.cs" t="Include" />
           <e p="BudgetReceiptAppService.cs" t="Include" />
           <e p="Dto" t="Include">
+            <e p="ActualAuditQueryDto.cs" t="Include" />
             <e p="ActualOutlayListDto.cs" t="Include" />
             <e p="BudgetOutlayListDto.cs" t="Include" />
             <e p="BudgetOutlaySimpleListDto.cs" t="Include" />
@@ -173,23 +204,72 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="Purchase" t="Include">
+          <e p="AuditManagementAppService.cs" t="Include" />
+          <e p="BiddingManagementAppService.cs" t="Include" />
+          <e p="BidOpeningManagementAppService.cs" t="Include" />
+          <e p="BlacklistAppService.cs" t="Include" />
+          <e p="CostListAppService.cs" t="Include" />
           <e p="Dto" t="Include">
+            <e p="AuditManagementDto.cs" t="Include" />
+            <e p="AuditPriceDto.cs" t="Include" />
+            <e p="BiddingManagementEditDto.cs" t="Include" />
+            <e p="BiddingManagementListDto.cs" t="Include" />
+            <e p="BiddingManagementQueryDto.cs" t="Include" />
+            <e p="BidOpeningManagementEditDto.cs" t="Include" />
+            <e p="BidOpeningManagementListDto.cs" t="Include" />
+            <e p="BidOpeningManagementQueryDto.cs" t="Include" />
+            <e p="BlacklistListDto.cs" t="Include" />
+            <e p="BlacklistQueryDto.cs" t="Include" />
+            <e p="BudgetOutlaySummaryDto.cs" t="Include" />
+            <e p="CostListDto.cs" t="Include" />
+            <e p="EqManagerEditDto.cs" t="Include" />
+            <e p="EqManagerListDto.cs" t="Include" />
+            <e p="EqManagerQueryDto.cs" t="Include" />
+            <e p="PerformanceAmountDetailDto.cs" t="Include" />
+            <e p="PerformanceManageEditDto.cs" t="Include" />
             <e p="PlanWithBudgetOutlayEditDto.cs" t="Include" />
             <e p="PlanWithBudgetOutlayListDto.cs" t="Include" />
             <e p="PlanWithBudgetOutlayQueryDto.cs" t="Include" />
+            <e p="ProcessManagementEditDto.cs" t="Include" />
+            <e p="ProcessManagementListDto.cs" t="Include" />
+            <e p="ProcessManagementQueryDto.cs" t="Include" />
             <e p="ProcurementPlanEditDto.cs" t="Include" />
             <e p="ProcurementPlanListDto.cs" t="Include" />
+            <e p="ProcurementPlanListSummaryDto.cs" t="Include" />
             <e p="ProcurementPlanQueryDto.cs" t="Include" />
+            <e p="ProjectManagementEditDto.cs" t="Include" />
+            <e p="ProjectManagementListDto.cs" t="Include" />
+            <e p="ProjectManagementPriceEditDto.cs" t="Include" />
+            <e p="ProjectManagementQueryDto.cs" t="Include" />
+            <e p="ProjectManagementSavePriceDto.cs" t="Include" />
             <e p="StageInfoEditDto.cs" t="Include" />
             <e p="StageInfoListDto.cs" t="Include" />
             <e p="StageInfoQueryDto.cs" t="Include" />
+            <e p="TendererDto.cs" t="Include" />
           </e>
+          <e p="EqManagerAppService.cs" t="Include" />
+          <e p="IAuditManagementAppService.cs" t="Include" />
+          <e p="IBiddingManagementAppService.cs" t="Include" />
+          <e p="IBidOpeningManagementAppService.cs" t="Include" />
+          <e p="IBlacklistAppService.cs" t="Include" />
+          <e p="ICostListAppService.cs" t="Include" />
+          <e p="IEqManagerAppService.cs" t="Include" />
+          <e p="IPerformanceAmountDetailAppService.cs" t="Include" />
+          <e p="IPerformanceManageAppService.cs" t="Include" />
           <e p="IPlanWithBudgetOutlayAppService.cs" t="Include" />
+          <e p="IProcessManagementAppService.cs" t="Include" />
           <e p="IProcurementPlanAppService.cs" t="Include" />
+          <e p="IProjectManagementAppService.cs" t="Include" />
           <e p="IStageInfoeAppService.cs" t="Include" />
+          <e p="ITendererAppService.cs" t="Include" />
+          <e p="PerformanceAmountDetailAppService.cs" t="Include" />
+          <e p="PerformanceManageAppService.cs" t="Include" />
           <e p="PlanWithBudgetOutlayAppService.cs" t="Include" />
+          <e p="ProcessManagementAppService.cs" t="Include" />
           <e p="ProcurementPlanAppService.cs" t="Include" />
+          <e p="ProjectManagementAppService.cs" t="Include" />
           <e p="StageInfoeAppService.cs" t="Include" />
+          <e p="TendererAppService.cs" t="Include" />
         </e>
         <e p="Roles" t="Include">
           <e p="Dto" t="Include">
@@ -260,6 +340,7 @@
           <e p="Yearly.cs" t="Include" />
         </e>
         <e p="Tools" t="Include">
+          <e p="Extensions.cs" t="Include" />
           <e p="QueryableExtension.cs" t="Include" />
         </e>
         <e p="Users" t="Include">
@@ -296,10 +377,14 @@
           <e p="IAttachmentRepository.cs" t="Include" />
           <e p="ILayerRepository.cs" t="Include" />
           <e p="IModuleIdAttachmentRepository.cs" t="Include" />
+          <e p="IRelationshipRepository.cs" t="Include" />
           <e p="ISysDictionaryRepository.cs" t="Include" />
+          <e p="IUnitPoolRepository.cs" t="Include" />
           <e p="Layer.cs" t="Include" />
           <e p="ModuleIdAttachment.cs" t="Include" />
+          <e p="Relationship.cs" t="Include" />
           <e p="SysDictionary.cs" t="Include" />
+          <e p="UnitPool.cs" t="Include" />
         </e>
         <e p="Bin" t="ExcludeRecursive" />
         <e p="Car" t="Include">
@@ -308,6 +393,7 @@
           <e p="ApplyForVehicleMaintenance.cs" t="Include" />
           <e p="CarInfo.cs" t="Include" />
           <e p="CarOil.cs" t="Include" />
+          <e p="CarRepairTime.cs" t="Include" />
           <e p="Driver.cs" t="Include" />
           <e p="HisCarStoreStock.cs" t="Include" />
           <e p="IApplicationForBunkerARepository.cs" t="Include" />
@@ -315,6 +401,7 @@
           <e p="IApplyForVehicleMaintenanceRepository.cs" t="Include" />
           <e p="ICarInfoRepository.cs" t="Include" />
           <e p="ICarOilRepository.cs" t="Include" />
+          <e p="ICarRepairTimeRepository.cs" t="Include" />
           <e p="IDriverRepository.cs" t="Include" />
           <e p="IHisOctaneStoreStockRepository.cs" t="Include" />
           <e p="IMaintenanceDeliveryRepository.cs" t="Include" />
@@ -342,6 +429,12 @@
         </e>
         <e p="Editions" t="Include">
           <e p="EditionManager.cs" t="Include" />
+        </e>
+        <e p="Equip" t="Include">
+          <e p="Equip.cs" t="Include" />
+        </e>
+        <e p="EquipObject" t="Include">
+          <e p="IEquipRepository.cs" t="Include" />
         </e>
         <e p="Features" t="Include">
           <e p="FeatureValueStore.cs" t="Include" />
@@ -382,21 +475,48 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="Purchase" t="Include">
+          <e p="AuditManagement.cs" t="Include" />
+          <e p="BiddingManagement.cs" t="Include" />
+          <e p="BiddingType.cs" t="Include" />
+          <e p="BidOpeningManagement.cs" t="Include" />
+          <e p="Blacklist.cs" t="Include" />
+          <e p="CostList.cs" t="Include" />
+          <e p="EqManager.cs" t="Include" />
+          <e p="IAuditManagementRepository.cs" t="Include" />
+          <e p="IBiddingManagementRepository.cs" t="Include" />
+          <e p="IBidOpeningManagementRepository.cs" t="Include" />
+          <e p="IBlacklistRepository.cs" t="Include" />
+          <e p="ICostListRepository.cs" t="Include" />
+          <e p="IEqManagerRepository.cs" t="Include" />
+          <e p="IPerformanceAmountDetailRepository.cs" t="Include" />
+          <e p="IPerformanceManageRepository.cs" t="Include" />
           <e p="IPlanWithBudgetOutlayRepository.cs" t="Include" />
+          <e p="IProcessManagementRepository.cs" t="Include" />
           <e p="IProcurementPlanRepository.cs" t="Include" />
+          <e p="IProjectManagementRepository.cs" t="Include" />
           <e p="IStageInfoActualOutlayRepository.cs" t="Include" />
           <e p="IStageInfoBudgetOutlayRepository.cs" t="Include" />
           <e p="IStageInfoRepository.cs" t="Include" />
           <e p="IStageInfoUserRepository.cs" t="Include" />
+          <e p="ITendererRepository.cs" t="Include" />
+          <e p="PerformanceAmountDetails.cs" t="Include" />
+          <e p="PerformanceManage.cs" t="Include" />
           <e p="PlanWithBudgetOutlay.cs" t="Include" />
+          <e p="ProcessManagement.cs" t="Include" />
+          <e p="ProcessStatus.cs" t="Include" />
           <e p="ProcurementPlan.cs" t="Include" />
           <e p="ProcurementPlanCategory.cs" t="Include" />
+          <e p="ProcurementPlanManagement.cs" t="Include" />
           <e p="ProcurementPlanMode.cs" t="Include" />
+          <e p="ProjectManagement.cs" t="Include" />
+          <e p="PurchaseTypeInfo.cs" t="Include" />
+          <e p="RelationshipType.cs" t="Include" />
           <e p="StageCategory.cs" t="Include" />
           <e p="StageInfo.cs" t="Include" />
           <e p="StageInfoActualOutlay.cs" t="Include" />
           <e p="StageInfoBudgetOutlay.cs" t="Include" />
           <e p="StageInfoUser.cs" t="Include" />
+          <e p="Tenderer.cs" t="Include" />
         </e>
         <e p="SCBF.Core.csproj" t="IncludeRecursive" />
         <e p="Storage" t="Include">
@@ -620,6 +740,87 @@
           <e p="201711131401091_addTable_moduleAttachments.cs" t="Include" />
           <e p="201711131401091_addTable_moduleAttachments.Designer.cs" t="Include" />
           <e p="201711131401091_addTable_moduleAttachments.resx" t="Include" />
+          <e p="201805301319511_addTable_unitPool.cs" t="Include" />
+          <e p="201805301319511_addTable_unitPool.Designer.cs" t="Include" />
+          <e p="201805301319511_addTable_unitPool.resx" t="Include" />
+          <e p="201806021330006_modifyTableProcurementPlan.cs" t="Include" />
+          <e p="201806021330006_modifyTableProcurementPlan.Designer.cs" t="Include" />
+          <e p="201806021330006_modifyTableProcurementPlan.resx" t="Include" />
+          <e p="201806021429269_modifyTableProcurementPlan2.cs" t="Include" />
+          <e p="201806021429269_modifyTableProcurementPlan2.Designer.cs" t="Include" />
+          <e p="201806021429269_modifyTableProcurementPlan2.resx" t="Include" />
+          <e p="201806041429241_AddTableProcessManagement.cs" t="Include" />
+          <e p="201806041429241_AddTableProcessManagement.Designer.cs" t="Include" />
+          <e p="201806041429241_AddTableProcessManagement.resx" t="Include" />
+          <e p="201806061302525_modifytable_processmanage.cs" t="Include" />
+          <e p="201806061302525_modifytable_processmanage.Designer.cs" t="Include" />
+          <e p="201806061302525_modifytable_processmanage.resx" t="Include" />
+          <e p="201806061443276_modifytable_processmanage3.cs" t="Include" />
+          <e p="201806061443276_modifytable_processmanage3.Designer.cs" t="Include" />
+          <e p="201806061443276_modifytable_processmanage3.resx" t="Include" />
+          <e p="201806061450317_modifytable_processmanage4.cs" t="Include" />
+          <e p="201806061450317_modifytable_processmanage4.Designer.cs" t="Include" />
+          <e p="201806061450317_modifytable_processmanage4.resx" t="Include" />
+          <e p="201806061503165_modifytable_processmanage5.cs" t="Include" />
+          <e p="201806061503165_modifytable_processmanage5.Designer.cs" t="Include" />
+          <e p="201806061503165_modifytable_processmanage5.resx" t="Include" />
+          <e p="201806091330043_modifyTable_attachment.cs" t="Include" />
+          <e p="201806091330043_modifyTable_attachment.Designer.cs" t="Include" />
+          <e p="201806091330043_modifyTable_attachment.resx" t="Include" />
+          <e p="201806101520411_addTable_BiddingManagement.cs" t="Include" />
+          <e p="201806101520411_addTable_BiddingManagement.Designer.cs" t="Include" />
+          <e p="201806101520411_addTable_BiddingManagement.resx" t="Include" />
+          <e p="201806111426579_modifyTable_biddingmanagement.cs" t="Include" />
+          <e p="201806111426579_modifyTable_biddingmanagement.Designer.cs" t="Include" />
+          <e p="201806111426579_modifyTable_biddingmanagement.resx" t="Include" />
+          <e p="201806121533455_addTable_Tenderer.cs" t="Include" />
+          <e p="201806121533455_addTable_Tenderer.Designer.cs" t="Include" />
+          <e p="201806121533455_addTable_Tenderer.resx" t="Include" />
+          <e p="201806160743374_modifyTablebiddingmanagement1.cs" t="Include" />
+          <e p="201806160743374_modifyTablebiddingmanagement1.Designer.cs" t="Include" />
+          <e p="201806160743374_modifyTablebiddingmanagement1.resx" t="Include" />
+          <e p="201806160808544_addTable_BidOpeningManagements.cs" t="Include" />
+          <e p="201806160808544_addTable_BidOpeningManagements.Designer.cs" t="Include" />
+          <e p="201806160808544_addTable_BidOpeningManagements.resx" t="Include" />
+          <e p="201806170923449_addTable_PerformanceManages.cs" t="Include" />
+          <e p="201806170923449_addTable_PerformanceManages.Designer.cs" t="Include" />
+          <e p="201806170923449_addTable_PerformanceManages.resx" t="Include" />
+          <e p="201806180823277_modifyTable_BiddingManagement2.cs" t="Include" />
+          <e p="201806180823277_modifyTable_BiddingManagement2.Designer.cs" t="Include" />
+          <e p="201806180823277_modifyTable_BiddingManagement2.resx" t="Include" />
+          <e p="201806180937324_modifyTable_Bidopeningmanagement3.cs" t="Include" />
+          <e p="201806180937324_modifyTable_Bidopeningmanagement3.Designer.cs" t="Include" />
+          <e p="201806180937324_modifyTable_Bidopeningmanagement3.resx" t="Include" />
+          <e p="201806181024375_modifyTable_PerformanceManage3.cs" t="Include" />
+          <e p="201806181024375_modifyTable_PerformanceManage3.Designer.cs" t="Include" />
+          <e p="201806181024375_modifyTable_PerformanceManage3.resx" t="Include" />
+          <e p="201806181402359_miodifyTable_PerformanceAmountDetail3.cs" t="Include" />
+          <e p="201806181402359_miodifyTable_PerformanceAmountDetail3.Designer.cs" t="Include" />
+          <e p="201806181402359_miodifyTable_PerformanceAmountDetail3.resx" t="Include" />
+          <e p="201806191328262_addTable_ProjectManagement.cs" t="Include" />
+          <e p="201806191328262_addTable_ProjectManagement.Designer.cs" t="Include" />
+          <e p="201806191328262_addTable_ProjectManagement.resx" t="Include" />
+          <e p="201806191431054_editTable_ProjectManagement.cs" t="Include" />
+          <e p="201806191431054_editTable_ProjectManagement.Designer.cs" t="Include" />
+          <e p="201806191431054_editTable_ProjectManagement.resx" t="Include" />
+          <e p="201806230813280_addTable_EqManagers.cs" t="Include" />
+          <e p="201806230813280_addTable_EqManagers.Designer.cs" t="Include" />
+          <e p="201806230813280_addTable_EqManagers.resx" t="Include" />
+          <e p="201806230901113_modifyTalbe_Blacklist.cs" t="Include" />
+          <e p="201806230901113_modifyTalbe_Blacklist.Designer.cs" t="Include" />
+          <e p="201806230901113_modifyTalbe_Blacklist.resx" t="Include" />
+          <e p="201806251422164_modifyTable_blacklist2.cs" t="Include" />
+          <e p="201806251422164_modifyTable_blacklist2.Designer.cs" t="Include" />
+          <e p="201806251422164_modifyTable_blacklist2.resx" t="Include" />
+          <e p="201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.cs" t="Include" />
+          <e p="201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.Designer.cs" t="Include" />
+          <e p="201806301213471_modifyTalbe_ApplyForVehicleMaintenance3.resx" t="Include" />
+          <e p="201806301505070_addTable_CarRepairTimes.cs" t="Include" />
+          <e p="201806301505070_addTable_CarRepairTimes.Designer.cs" t="Include" />
+          <e p="201806301505070_addTable_CarRepairTimes.resx" t="Include" />
+          <e p="201807010736233_addTable_Equip.cs" t="Include" />
+          <e p="201807010736233_addTable_Equip.Designer.cs" t="Include" />
+          <e p="201807010736233_addTable_Equip.resx" t="Include" />
           <e p="AbpZeroDbMigrator.cs" t="Include" />
           <e p="Configuration.cs" t="Include" />
           <e p="SeedData" t="Include">
@@ -646,17 +847,25 @@
           <e p="ApplicationForBunkerBRepository.cs" t="Include" />
           <e p="ApplyForVehicleMaintenanceRepository.cs" t="Include" />
           <e p="AttachmentRepository.cs" t="Include" />
+          <e p="AuditManagementRepository.cs" t="Include" />
+          <e p="BiddingManagementRepository.cs" t="Include" />
+          <e p="BidOpeningManagementRepository.cs" t="Include" />
+          <e p="BlacklistRepository.cs" t="Include" />
           <e p="BudgetOutlayRepository.cs" t="Include" />
           <e p="BudgetReceiptRepository.cs" t="Include" />
           <e p="CarInfoRepository.cs" t="Include" />
           <e p="CarOilRepository.cs" t="Include" />
+          <e p="CarRepairTimeRepository.cs" t="Include" />
           <e p="CheckBillRepository.cs" t="Include" />
           <e p="CheckRepository.cs" t="Include" />
+          <e p="CostListRepository.cs" t="Include" />
           <e p="DeliveryBillRepository.cs" t="Include" />
           <e p="DeliveryRepository.cs" t="Include" />
           <e p="DriverRepository.cs" t="Include" />
           <e p="EntryBillRepository.cs" t="Include" />
           <e p="EntryRepository.cs" t="Include" />
+          <e p="EqManagerRepository.cs" t="Include" />
+          <e p="EquipRepository.cs" t="Include" />
           <e p="HisOctaneStoreStockRepository.cs" t="Include" />
           <e p="HisStockRepository.cs" t="Include" />
           <e p="InvoiceCheckRepository.cs" t="Include" />
@@ -669,11 +878,16 @@
           <e p="OilCardProofRepository.cs" t="Include" />
           <e p="OilCardRepository.cs" t="Include" />
           <e p="OilRechargeRecordRepository.cs" t="Include" />
+          <e p="PerformanceAmountDetailRepository.cs" t="Include" />
+          <e p="PerformanceManageRepository.cs" t="Include" />
           <e p="PlanWithBudgetOutlayRepository.cs" t="Include" />
+          <e p="ProcessManagementRepository.cs" t="Include" />
           <e p="ProcurementPlanRepository.cs" t="Include" />
           <e p="ProductRepository.cs" t="Include" />
+          <e p="ProjectManagementRepository.cs" t="Include" />
           <e p="ReceiptRepository.cs" t="Include" />
           <e p="RechargeRecordRepository.cs" t="Include" />
+          <e p="RelationshipRepository.cs" t="Include" />
           <e p="RepairCostRepository.cs" t="Include" />
           <e p="ServicingMaterialRepository.cs" t="Include" />
           <e p="StageInfoActualOutlayRepository.cs" t="Include" />
@@ -682,6 +896,8 @@
           <e p="StageInfoUserRepository.cs" t="Include" />
           <e p="StockRepository.cs" t="Include" />
           <e p="SysDictionaryRepository.cs" t="Include" />
+          <e p="TendererRepository.cs" t="Include" />
+          <e p="UnitPoolRepository.cs" t="Include" />
           <e p="UploadOilCardRoofRepository.cs" t="Include" />
           <e p="UploadOilCarRoofRelationshipRepository.cs" t="Include" />
           <e p="VoucherAuditRepository.cs" t="Include" />
@@ -734,7 +950,22 @@
             </e>
           </e>
         </e>
-        <e p="App_Data" t="Include" />
+        <e p="App_Data" t="Include">
+          <e p="template" t="Include">
+            <e p="budgetOutlay.xls" t="Include" />
+            <e p="procurementPlan.xls" t="Include" />
+            <e p="procurementPlanReport.doc" t="Include" />
+            <e p="中标通知书模板.doc" t="Include" />
+            <e p="信息化采购模板.doc" t="Include" />
+            <e p="审计结果公示模板.doc" t="Include" />
+            <e p="履约保证金抵扣没收通知书模板.docx" t="Include" />
+            <e p="年度采购工作情况报告模板.doc" t="Include" />
+            <e p="招投标计划模板.docx" t="Include" />
+            <e p="质量保证金抵扣没收通知书模板.docx" t="Include" />
+            <e p="资产采购模板.doc" t="Include" />
+            <e p="黑名单函模板.doc" t="Include" />
+          </e>
+        </e>
         <e p="App_Start" t="Include">
           <e p="BundleConfig.cs" t="Include" />
           <e p="RouteConfig.cs" t="Include" />
@@ -873,6 +1104,444 @@
                 <e p="jquery.sparkline.js" t="Include" />
                 <e p="sparkline-init.js" t="Include" />
               </e>
+            </e>
+            <e p="ckeditor" t="Include">
+              <e p="adapters" t="Include">
+                <e p="jquery.js" t="Include" />
+              </e>
+              <e p="build-config.js" t="Include" />
+              <e p="ckeditor.js" t="Include" />
+              <e p="config.js" t="Include" />
+              <e p="contents.css" t="Include" />
+              <e p="lang" t="Include">
+                <e p="en.js" t="Include" />
+                <e p="zh-cn.js" t="Include" />
+              </e>
+              <e p="plugins" t="Include">
+                <e p="a11yhelp" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="a11yhelp.js" t="Include" />
+                    <e p="lang" t="Include">
+                      <e p="_translationstatus.txt" t="Include" />
+                      <e p="af.js" t="Include" />
+                      <e p="ar.js" t="Include" />
+                      <e p="az.js" t="Include" />
+                      <e p="bg.js" t="Include" />
+                      <e p="ca.js" t="Include" />
+                      <e p="cs.js" t="Include" />
+                      <e p="cy.js" t="Include" />
+                      <e p="da.js" t="Include" />
+                      <e p="de-ch.js" t="Include" />
+                      <e p="de.js" t="Include" />
+                      <e p="el.js" t="Include" />
+                      <e p="en-au.js" t="Include" />
+                      <e p="en-gb.js" t="Include" />
+                      <e p="en.js" t="Include" />
+                      <e p="eo.js" t="Include" />
+                      <e p="es-mx.js" t="Include" />
+                      <e p="es.js" t="Include" />
+                      <e p="et.js" t="Include" />
+                      <e p="eu.js" t="Include" />
+                      <e p="fa.js" t="Include" />
+                      <e p="fi.js" t="Include" />
+                      <e p="fo.js" t="Include" />
+                      <e p="fr-ca.js" t="Include" />
+                      <e p="fr.js" t="Include" />
+                      <e p="gl.js" t="Include" />
+                      <e p="gu.js" t="Include" />
+                      <e p="he.js" t="Include" />
+                      <e p="hi.js" t="Include" />
+                      <e p="hr.js" t="Include" />
+                      <e p="hu.js" t="Include" />
+                      <e p="id.js" t="Include" />
+                      <e p="it.js" t="Include" />
+                      <e p="ja.js" t="Include" />
+                      <e p="km.js" t="Include" />
+                      <e p="ko.js" t="Include" />
+                      <e p="ku.js" t="Include" />
+                      <e p="lt.js" t="Include" />
+                      <e p="lv.js" t="Include" />
+                      <e p="mk.js" t="Include" />
+                      <e p="mn.js" t="Include" />
+                      <e p="nb.js" t="Include" />
+                      <e p="nl.js" t="Include" />
+                      <e p="no.js" t="Include" />
+                      <e p="oc.js" t="Include" />
+                      <e p="pl.js" t="Include" />
+                      <e p="pt-br.js" t="Include" />
+                      <e p="pt.js" t="Include" />
+                      <e p="ro.js" t="Include" />
+                      <e p="ru.js" t="Include" />
+                      <e p="si.js" t="Include" />
+                      <e p="sk.js" t="Include" />
+                      <e p="sl.js" t="Include" />
+                      <e p="sq.js" t="Include" />
+                      <e p="sr-latn.js" t="Include" />
+                      <e p="sr.js" t="Include" />
+                      <e p="sv.js" t="Include" />
+                      <e p="th.js" t="Include" />
+                      <e p="tr.js" t="Include" />
+                      <e p="tt.js" t="Include" />
+                      <e p="ug.js" t="Include" />
+                      <e p="uk.js" t="Include" />
+                      <e p="vi.js" t="Include" />
+                      <e p="zh-cn.js" t="Include" />
+                      <e p="zh.js" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="about" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="about.js" t="Include" />
+                    <e p="hidpi" t="Include">
+                      <e p="logo_ckeditor.png" t="Include" />
+                    </e>
+                    <e p="logo_ckeditor.png" t="Include" />
+                  </e>
+                </e>
+                <e p="clipboard" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="paste.js" t="Include" />
+                  </e>
+                </e>
+                <e p="colordialog" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="colordialog.css" t="Include" />
+                    <e p="colordialog.js" t="Include" />
+                  </e>
+                </e>
+                <e p="copyformatting" t="Include">
+                  <e p="cursors" t="Include">
+                    <e p="cursor-disabled.svg" t="Include" />
+                    <e p="cursor.svg" t="Include" />
+                  </e>
+                  <e p="styles" t="Include">
+                    <e p="copyformatting.css" t="Include" />
+                  </e>
+                </e>
+                <e p="dialog" t="Include">
+                  <e p="dialogDefinition.js" t="Include" />
+                </e>
+                <e p="div" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="div.js" t="Include" />
+                  </e>
+                </e>
+                <e p="find" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="find.js" t="Include" />
+                  </e>
+                </e>
+                <e p="flash" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="flash.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="placeholder.png" t="Include" />
+                  </e>
+                </e>
+                <e p="forms" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="button.js" t="Include" />
+                    <e p="checkbox.js" t="Include" />
+                    <e p="form.js" t="Include" />
+                    <e p="hiddenfield.js" t="Include" />
+                    <e p="radio.js" t="Include" />
+                    <e p="select.js" t="Include" />
+                    <e p="textarea.js" t="Include" />
+                    <e p="textfield.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="hiddenfield.gif" t="Include" />
+                  </e>
+                </e>
+                <e p="icons.png" t="Include" />
+                <e p="icons_hidpi.png" t="Include" />
+                <e p="iframe" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="iframe.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="placeholder.png" t="Include" />
+                  </e>
+                </e>
+                <e p="image" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="image.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="noimage.png" t="Include" />
+                  </e>
+                </e>
+                <e p="link" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="anchor.js" t="Include" />
+                    <e p="link.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="anchor.png" t="Include" />
+                    <e p="hidpi" t="Include">
+                      <e p="anchor.png" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="liststyle" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="liststyle.js" t="Include" />
+                  </e>
+                </e>
+                <e p="magicline" t="Include">
+                  <e p="images" t="Include">
+                    <e p="hidpi" t="Include">
+                      <e p="icon-rtl.png" t="Include" />
+                      <e p="icon.png" t="Include" />
+                    </e>
+                    <e p="icon-rtl.png" t="Include" />
+                    <e p="icon.png" t="Include" />
+                  </e>
+                </e>
+                <e p="pagebreak" t="Include">
+                  <e p="images" t="Include">
+                    <e p="pagebreak.gif" t="Include" />
+                  </e>
+                </e>
+                <e p="pastefromword" t="Include">
+                  <e p="filter" t="Include">
+                    <e p="default.js" t="Include" />
+                  </e>
+                </e>
+                <e p="preview" t="Include">
+                  <e p="preview.html" t="Include" />
+                </e>
+                <e p="scayt" t="Include">
+                  <e p="CHANGELOG.md" t="Include" />
+                  <e p="dialogs" t="Include">
+                    <e p="dialog.css" t="Include" />
+                    <e p="options.js" t="Include" />
+                    <e p="toolbar.css" t="Include" />
+                  </e>
+                  <e p="LICENSE.md" t="Include" />
+                  <e p="README.md" t="Include" />
+                  <e p="skins" t="Include">
+                    <e p="moono-lisa" t="Include">
+                      <e p="scayt.css" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="showblocks" t="Include">
+                  <e p="images" t="Include">
+                    <e p="block_address.png" t="Include" />
+                    <e p="block_blockquote.png" t="Include" />
+                    <e p="block_div.png" t="Include" />
+                    <e p="block_h1.png" t="Include" />
+                    <e p="block_h2.png" t="Include" />
+                    <e p="block_h3.png" t="Include" />
+                    <e p="block_h4.png" t="Include" />
+                    <e p="block_h5.png" t="Include" />
+                    <e p="block_h6.png" t="Include" />
+                    <e p="block_p.png" t="Include" />
+                    <e p="block_pre.png" t="Include" />
+                  </e>
+                </e>
+                <e p="smiley" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="smiley.js" t="Include" />
+                  </e>
+                  <e p="images" t="Include">
+                    <e p="angel_smile.gif" t="Include" />
+                    <e p="angel_smile.png" t="Include" />
+                    <e p="angry_smile.gif" t="Include" />
+                    <e p="angry_smile.png" t="Include" />
+                    <e p="broken_heart.gif" t="Include" />
+                    <e p="broken_heart.png" t="Include" />
+                    <e p="confused_smile.gif" t="Include" />
+                    <e p="confused_smile.png" t="Include" />
+                    <e p="cry_smile.gif" t="Include" />
+                    <e p="cry_smile.png" t="Include" />
+                    <e p="devil_smile.gif" t="Include" />
+                    <e p="devil_smile.png" t="Include" />
+                    <e p="embaressed_smile.gif" t="Include" />
+                    <e p="embarrassed_smile.gif" t="Include" />
+                    <e p="embarrassed_smile.png" t="Include" />
+                    <e p="envelope.gif" t="Include" />
+                    <e p="envelope.png" t="Include" />
+                    <e p="heart.gif" t="Include" />
+                    <e p="heart.png" t="Include" />
+                    <e p="kiss.gif" t="Include" />
+                    <e p="kiss.png" t="Include" />
+                    <e p="lightbulb.gif" t="Include" />
+                    <e p="lightbulb.png" t="Include" />
+                    <e p="omg_smile.gif" t="Include" />
+                    <e p="omg_smile.png" t="Include" />
+                    <e p="regular_smile.gif" t="Include" />
+                    <e p="regular_smile.png" t="Include" />
+                    <e p="sad_smile.gif" t="Include" />
+                    <e p="sad_smile.png" t="Include" />
+                    <e p="shades_smile.gif" t="Include" />
+                    <e p="shades_smile.png" t="Include" />
+                    <e p="teeth_smile.gif" t="Include" />
+                    <e p="teeth_smile.png" t="Include" />
+                    <e p="thumbs_down.gif" t="Include" />
+                    <e p="thumbs_down.png" t="Include" />
+                    <e p="thumbs_up.gif" t="Include" />
+                    <e p="thumbs_up.png" t="Include" />
+                    <e p="tongue_smile.gif" t="Include" />
+                    <e p="tongue_smile.png" t="Include" />
+                    <e p="tounge_smile.gif" t="Include" />
+                    <e p="whatchutalkingabout_smile.gif" t="Include" />
+                    <e p="whatchutalkingabout_smile.png" t="Include" />
+                    <e p="wink_smile.gif" t="Include" />
+                    <e p="wink_smile.png" t="Include" />
+                  </e>
+                </e>
+                <e p="specialchar" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="lang" t="Include">
+                      <e p="_translationstatus.txt" t="Include" />
+                      <e p="af.js" t="Include" />
+                      <e p="ar.js" t="Include" />
+                      <e p="az.js" t="Include" />
+                      <e p="bg.js" t="Include" />
+                      <e p="ca.js" t="Include" />
+                      <e p="cs.js" t="Include" />
+                      <e p="cy.js" t="Include" />
+                      <e p="da.js" t="Include" />
+                      <e p="de-ch.js" t="Include" />
+                      <e p="de.js" t="Include" />
+                      <e p="el.js" t="Include" />
+                      <e p="en-au.js" t="Include" />
+                      <e p="en-ca.js" t="Include" />
+                      <e p="en-gb.js" t="Include" />
+                      <e p="en.js" t="Include" />
+                      <e p="eo.js" t="Include" />
+                      <e p="es-mx.js" t="Include" />
+                      <e p="es.js" t="Include" />
+                      <e p="et.js" t="Include" />
+                      <e p="eu.js" t="Include" />
+                      <e p="fa.js" t="Include" />
+                      <e p="fi.js" t="Include" />
+                      <e p="fr-ca.js" t="Include" />
+                      <e p="fr.js" t="Include" />
+                      <e p="gl.js" t="Include" />
+                      <e p="he.js" t="Include" />
+                      <e p="hr.js" t="Include" />
+                      <e p="hu.js" t="Include" />
+                      <e p="id.js" t="Include" />
+                      <e p="it.js" t="Include" />
+                      <e p="ja.js" t="Include" />
+                      <e p="km.js" t="Include" />
+                      <e p="ko.js" t="Include" />
+                      <e p="ku.js" t="Include" />
+                      <e p="lt.js" t="Include" />
+                      <e p="lv.js" t="Include" />
+                      <e p="nb.js" t="Include" />
+                      <e p="nl.js" t="Include" />
+                      <e p="no.js" t="Include" />
+                      <e p="oc.js" t="Include" />
+                      <e p="pl.js" t="Include" />
+                      <e p="pt-br.js" t="Include" />
+                      <e p="pt.js" t="Include" />
+                      <e p="ro.js" t="Include" />
+                      <e p="ru.js" t="Include" />
+                      <e p="si.js" t="Include" />
+                      <e p="sk.js" t="Include" />
+                      <e p="sl.js" t="Include" />
+                      <e p="sq.js" t="Include" />
+                      <e p="sv.js" t="Include" />
+                      <e p="th.js" t="Include" />
+                      <e p="tr.js" t="Include" />
+                      <e p="tt.js" t="Include" />
+                      <e p="ug.js" t="Include" />
+                      <e p="uk.js" t="Include" />
+                      <e p="vi.js" t="Include" />
+                      <e p="zh-cn.js" t="Include" />
+                      <e p="zh.js" t="Include" />
+                    </e>
+                    <e p="specialchar.js" t="Include" />
+                  </e>
+                </e>
+                <e p="table" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="table.js" t="Include" />
+                  </e>
+                </e>
+                <e p="tableselection" t="Include">
+                  <e p="styles" t="Include">
+                    <e p="tableselection.css" t="Include" />
+                  </e>
+                </e>
+                <e p="tabletools" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="tableCell.js" t="Include" />
+                  </e>
+                </e>
+                <e p="templates" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="templates.css" t="Include" />
+                    <e p="templates.js" t="Include" />
+                  </e>
+                  <e p="templates" t="Include">
+                    <e p="default.js" t="Include" />
+                    <e p="images" t="Include">
+                      <e p="template1.gif" t="Include" />
+                      <e p="template2.gif" t="Include" />
+                      <e p="template3.gif" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="widget" t="Include">
+                  <e p="images" t="Include">
+                    <e p="handle.png" t="Include" />
+                  </e>
+                </e>
+                <e p="wsc" t="Include">
+                  <e p="dialogs" t="Include">
+                    <e p="ciframe.html" t="Include" />
+                    <e p="tmpFrameset.html" t="Include" />
+                    <e p="wsc.css" t="Include" />
+                    <e p="wsc.js" t="Include" />
+                    <e p="wsc_ie.js" t="Include" />
+                  </e>
+                  <e p="LICENSE.md" t="Include" />
+                  <e p="README.md" t="Include" />
+                  <e p="skins" t="Include">
+                    <e p="moono-lisa" t="Include">
+                      <e p="wsc.css" t="Include" />
+                    </e>
+                  </e>
+                </e>
+              </e>
+              <e p="skins" t="Include">
+                <e p="moono-lisa" t="Include">
+                  <e p="dialog.css" t="Include" />
+                  <e p="dialog_ie.css" t="Include" />
+                  <e p="dialog_ie8.css" t="Include" />
+                  <e p="dialog_iequirks.css" t="Include" />
+                  <e p="editor.css" t="Include" />
+                  <e p="editor_gecko.css" t="Include" />
+                  <e p="editor_ie.css" t="Include" />
+                  <e p="editor_ie8.css" t="Include" />
+                  <e p="editor_iequirks.css" t="Include" />
+                  <e p="icons.png" t="Include" />
+                  <e p="icons_hidpi.png" t="Include" />
+                  <e p="images" t="Include">
+                    <e p="arrow.png" t="Include" />
+                    <e p="close.png" t="Include" />
+                    <e p="hidpi" t="Include">
+                      <e p="close.png" t="Include" />
+                      <e p="lock-open.png" t="Include" />
+                      <e p="lock.png" t="Include" />
+                      <e p="refresh.png" t="Include" />
+                    </e>
+                    <e p="lock-open.png" t="Include" />
+                    <e p="lock.png" t="Include" />
+                    <e p="refresh.png" t="Include" />
+                    <e p="spinner.gif" t="Include" />
+                  </e>
+                  <e p="README.md" t="Include" />
+                </e>
+              </e>
+              <e p="styles.js" t="Include" />
             </e>
             <e p="colorpicker" t="Include">
               <e p="jquery.minicolors.js" t="Include" />
@@ -1397,6 +2066,7 @@
               <e p="ueditor.parse.js" t="Include" />
               <e p="ueditor.parse.min.js" t="Include" />
             </e>
+            <e p="underscore.string.min.js" t="Include" />
             <e p="vue-router.min.js" t="Include" />
             <e p="vue-validator.min.js" t="Include" />
             <e p="vue.min.js" t="Include" />
@@ -1504,16 +2174,22 @@
           <e p="ApplicationForBunkerAController.cs" t="Include" />
           <e p="ApplicationForBunkerBController.cs" t="Include" />
           <e p="ApplyForVehicleMaintenanceController.cs" t="Include" />
+          <e p="BiddingManagementController.cs" t="Include" />
+          <e p="BidOpeningManagementController.cs" t="Include" />
+          <e p="BlacklistController.cs" t="Include" />
           <e p="BudgetOutlayController.cs" t="Include" />
           <e p="BudgetReceiptController.cs" t="Include" />
           <e p="CarController.cs" t="Include" />
           <e p="CarInfoController.cs" t="Include" />
           <e p="CarOilController.cs" t="Include" />
+          <e p="CarRepairTimeController.cs" t="Include" />
           <e p="CheckBillController.cs" t="Include" />
           <e p="DeliveryBillController.cs" t="Include" />
           <e p="DriverController.cs" t="Include" />
           <e p="EntryBillController.cs" t="Include" />
           <e p="EntryController.cs" t="Include" />
+          <e p="EqManagerController.cs" t="Include" />
+          <e p="EquipController.cs" t="Include" />
           <e p="FinanceController.cs" t="Include" />
           <e p="HisOilStockController.cs" t="Include" />
           <e p="HisStockController.cs" t="Include" />
@@ -1523,8 +2199,11 @@
           <e p="OilCardController.cs" t="Include" />
           <e p="OilCardProofController.cs" t="Include" />
           <e p="OilRechargeRecordController.cs" t="Include" />
+          <e p="PerformanceAmountDetailController.cs" t="Include" />
+          <e p="ProcessManagementController.cs" t="Include" />
           <e p="ProcurementPlanController.cs" t="Include" />
           <e p="ProductController.cs" t="Include" />
+          <e p="ProjectManagementController.cs" t="Include" />
           <e p="PurchaseController.cs" t="Include" />
           <e p="RechargeRecordController.cs" t="Include" />
           <e p="Results" t="Include">
@@ -1580,7 +2259,6 @@
           <e p="version.json" t="Include" />
         </e>
         <e p="Views" t="Include">
-          <e p="_ViewStart.cshtml" t="Include" />
           <e p="Account" t="Include">
             <e p="_ChangePwd.cshtml" t="Include" />
             <e p="_UserIndex.cshtml" t="Include" />
@@ -1629,6 +2307,18 @@
             <e p="audingForVehicleMaintenance3.js" t="Include" />
             <e p="vehicleMaintenanceReport.js" t="Include" />
           </e>
+          <e p="BiddingManagement" t="Include">
+            <e p="_BiddingManagementIndex.cshtml" t="Include" />
+            <e p="biddingManagement.js" t="Include" />
+          </e>
+          <e p="BidOpeningManagement" t="Include">
+            <e p="_BidOpeningManagementIndex.cshtml" t="Include" />
+            <e p="bidOpeningManagement.js" t="Include" />
+          </e>
+          <e p="Blacklist" t="Include">
+            <e p="_BlacklistIndex.cshtml" t="Include" />
+            <e p="blacklist.js" t="Include" />
+          </e>
           <e p="BudgetOutlay" t="Include">
             <e p="_BudgetOutlayIndex.cshtml" t="Include" />
             <e p="_BudgetOutlayIndex2.cshtml" t="Include" />
@@ -1667,6 +2357,10 @@
             <e p="carOil.js" t="Include" />
             <e p="carOilReport.js" t="Include" />
           </e>
+          <e p="CarRepairTime" t="Include">
+            <e p="_CarRepairTimeIndex.cshtml" t="Include" />
+            <e p="carRepairTime.js" t="Include" />
+          </e>
           <e p="CheckBill" t="Include">
             <e p="_CheckBillIndex.cshtml" t="Include" />
             <e p="checkBill.js" t="Include" />
@@ -1686,6 +2380,14 @@
           <e p="EntryBill" t="Include">
             <e p="_EntryBillIndex.cshtml" t="Include" />
             <e p="entryBill.js" t="Include" />
+          </e>
+          <e p="EqManager" t="Include">
+            <e p="_EqManagerIndex.cshtml" t="Include" />
+            <e p="eqManager.js" t="Include" />
+          </e>
+          <e p="Equip" t="Include">
+            <e p="_EquipList.cshtml" t="Include" />
+            <e p="equipList.js" t="Include" />
           </e>
           <e p="Finance" t="Include">
             <e p="_AccountList.cshtml" t="Include" />
@@ -1730,9 +2432,27 @@
             <e p="_OilRechargeRecordIndex.cshtml" t="Include" />
             <e p="oilRechargeRecord.js" t="Include" />
           </e>
+          <e p="ProcessManagement" t="Include">
+            <e p="_AgentManageManage.cshtml" t="Include" />
+            <e p="_CostManage.cshtml" t="Include" />
+            <e p="_DesignManage.cshtml" t="Include" />
+            <e p="_RepresentativesManage.cshtml" t="Include" />
+            <e p="_SupervisionManage.cshtml" t="Include" />
+            <e p="agentManageManage.js" t="Include" />
+            <e p="costManage.js" t="Include" />
+            <e p="designManage.js" t="Include" />
+            <e p="representativesManage.js" t="Include" />
+            <e p="supervisionManage.js" t="Include" />
+          </e>
           <e p="ProcurementPlan" t="Include">
             <e p="_ProcurementPlanIndex.cshtml" t="Include" />
+            <e p="_ProcurementPlanIndex1.cshtml" t="Include" />
+            <e p="_ProcurementPlanIndex2.cshtml" t="Include" />
+            <e p="_ProcurementPlanIndexSummary.cshtml" t="Include" />
             <e p="procurementPlan.js" t="Include" />
+            <e p="procurementPlan1.js" t="Include" />
+            <e p="procurementPlan2.js" t="Include" />
+            <e p="procurementPlanSummary.js" t="Include" />
           </e>
           <e p="Product" t="Include">
             <e p="_ProductIndex.cshtml" t="Include" />
@@ -1740,8 +2460,16 @@
             <e p="product.js" t="Include" />
             <e p="productInfoIndex.js" t="Include" />
           </e>
+          <e p="ProjectManagement" t="Include">
+            <e p="_ProjectManagementIndex.cshtml" t="Include" />
+            <e p="projectManagement.js" t="Include" />
+          </e>
           <e p="Purchase" t="Include">
+            <e p="_DownloadFiles.cshtml" t="Include" />
+            <e p="_PoolConfig.cshtml" t="Include" />
             <e p="_PurchaseInfoIndex.cshtml" t="Include" />
+            <e p="downloadFiles.js" t="Include" />
+            <e p="poolConfig.js" t="Include" />
             <e p="purchaseInfoIndex.js" t="Include" />
           </e>
           <e p="RechargeRecord" t="Include">
@@ -1845,6 +2573,5 @@
         </e>
       </e>
     </e>
-    <e p="Z:\ReshapperCache\_SCBF.-1544252979.00" t="ExcludeRecursive" />
   </component>
 </project>

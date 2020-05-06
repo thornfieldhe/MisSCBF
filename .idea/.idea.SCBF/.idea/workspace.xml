@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="44deb107-9bb0-482a-88a3-ef9c3d33466c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/contentModel.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/indexLayout.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/riderModule.iml" />
-      <change beforePath="$PROJECT_DIR$/.vs/SCBF/v15/.suo" afterPath="$PROJECT_DIR$/.vs/SCBF/v15/.suo" />
-      <change beforePath="$PROJECT_DIR$/.vs/SCBF/v15/sqlite3/storage.ide" afterPath="$PROJECT_DIR$/.vs/SCBF/v15/sqlite3/storage.ide" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCBF.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SCBF.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.EntityFramework/SCBF.EntityFramework.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.EntityFramework/SCBF.EntityFramework.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/SCBF.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/SCBF.Web.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Web.config" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,143 +55,89 @@
     <expand />
     <select />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="SCBF" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BudgetOutlayController.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/BudgetOutlayController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-              <folding>
-                <marker date="1504796112084" expanded="true" signature="0:373" ph="/*   支出预算控制器 ... */" />
-                <marker date="1504796112084" expanded="true" signature="405:2594" ph="{...}" />
-                <marker date="1504796112084" expanded="false" signature="418:519" ph="..." />
-                <marker date="1504796112084" expanded="true" signature="525:573" ph="/// 支出预算控制器 ... " />
-                <marker date="1504796112084" expanded="true" signature="655:2592" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="941:1159" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="1215:1432" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="1488:1705" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="1761:1978" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="2026:2100" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="2149:2224" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="2273:2348" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="2393:2463" ph="{...}" />
-                <marker date="1504796112084" expanded="true" signature="2512:2586" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TAFControllerBase.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="44" column="101" lean-forward="false" selection-start-line="44" selection-start-column="101" selection-end-line="44" selection-end-column="101" />
-              <folding>
-                <marker date="1524068983834" expanded="false" signature="6:106" ph="..." />
-                <marker date="1524068983834" expanded="true" signature="138:3854" ph="{...}" />
-                <marker date="1524068983834" expanded="false" signature="151:233" ph="..." />
-                <marker date="1524068983834" expanded="true" signature="239:319" ph="/// Derive all Controllers from this class. ... " />
-                <marker date="1524068983834" expanded="true" signature="379:3852" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="556:647" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="697:859" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="744:849" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="926:1007" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="1017:1196" ph="/// 通用上传模块 ... " />
-                <marker date="1524068983834" expanded="true" signature="1313:3846" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="1407:3782" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="1583:3645" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="1848:1961" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="2291:2407" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="2571:2686" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="2711:3627" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="3190:3563" ph="{...}" />
-                <marker date="1524068983834" expanded="true" signature="3666:3768" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BudgetOutlayAppService.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <marker date="1497363825290" expanded="true" signature="0:372" ph="/*   支出预算服务 ... */" />
-                <marker date="1497363825290" expanded="true" signature="396:18047" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="409:769" ph="..." />
-                <marker date="1497363825290" expanded="true" signature="775:822" ph="/// 支出预算服务 ... " />
-                <marker date="1497363825290" expanded="true" signature="926:18045" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="1769:2163" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="2237:2883" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="2449:2537" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="2928:3500" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="3141:3229" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="3560:4171" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="3784:3872" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="4242:8113" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="4454:4542" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="5266:8077" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="5873:5990" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="6071:8022" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="8179:9348" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="8391:8479" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="8646:9063" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="8715:8994" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="9080:9338" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="9415:10568" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="9627:9715" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="9925:10021" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="10184:10428" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="10263:10413" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="10639:10729" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="10800:10892" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="10963:11057" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="11067:11248" ph="/// 获取导入sheet的名称 ... " />
-                <marker date="1497363825290" expanded="true" signature="11318:11862" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="11522:11610" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="11911:12434" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="11972:12424" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="12111:12223" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="12444:12533" ph="/// 获取年度预算简表 ... " />
-                <marker date="1497363825290" expanded="true" signature="12588:15520" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="12792:12880" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="13176:15485" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="13418:13518" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="13586:15439" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="15594:18039" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="15809:15891" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="15983:16065" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="16082:16172" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="16367:16455" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="16572:17830" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="16775:17816" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="16911:17798" ph="{...}" />
-                <marker date="1497363825290" expanded="true" signature="17012:17735" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Account/Login.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/MonthLyTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///_LayoutWithEmpty.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/Yearly.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/DailyTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E773F173-3B4A-4BCC-B516-DA9AFBB7F4AB/41/9b4f9c7d/DbConnectionOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/BidOpeningManagementAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.WebApi/app.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///AccountController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/IBudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/web.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFAppServiceBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///_VoucherAuditIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/ICheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/EntryBill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/EntryBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolePermissionCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Models/Account/LoginFormViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/000F5452-2AD1-45BF-987B-3043022F9799/76/f64a1a7e/RetryAction`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/InitialHostDbBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolesCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductStockListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/CheckQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///AccountController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BiddingManagementController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3CB8E177-CC0C-466C-9289-82EC5A98AB2E/74/0ea401d7/UnitOfWorkInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3CB8E177-CC0C-466C-9289-82EC5A98AB2E/61/3f724ef6/ApplicationService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/StockBillEditDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/CheckBill/_CheckBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/ActualOutlayController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0025BC3E-2252-4BA9-A352-D7F62FAA5B3F/21/cfc534be/DefaultSqlExecutionStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/EntryBill/_EntryBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC8E7B41-D288-4C8D-900A-2DEB12DC9189/bc/56c005da/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.WebApi/Api/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BudgetOutlayController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CC0E8972-6F60-40E1-A646-DEC1584576AC/09/d0c6a463/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.Debug.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/OilCard/_OilCardIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/log4net.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Global.asax.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Account/_ChangePwd.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/TendererAppService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Web.config" />
+        <option value="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/Account/Login.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/CheckAppService.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" />
       </list>
     </option>
   </component>
@@ -176,69 +147,22 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="32" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
-  </component>
+  <component name="ProjectId" id="1bSnqpu4zNmw5dfKfjqOomqPgw1" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator currentView="SolutionExplorer" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="SolutionExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="SCBF (8 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="SCBF (8 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="SCBF.Application" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-file-system" value="false" />
-        <option name="show-all-items" value="false" />
-      </pane>
-      <pane id="Scratches" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="&#9;null&#9;null&#10;budgapp&#9;null&#9;null&#10;budgetoutlaylist&#9;null&#9;null" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
@@ -246,9 +170,9 @@
       <option name="PROGRAM_PARAMETERS" value="/config:$PROJECT_DIR$/.idea/config/applicationhost.config /site:SCBF.Web /apppool:Clr4IntegratedAppPool" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TAF.Web" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <envs />
-      <option name="USE_MONO" value="0" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/TAF.Web/SCBF.Web.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -256,10 +180,10 @@
       <option name="PROJECT_KIND" value="Web" />
       <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6" />
       <browser url="http://localhost:5011/" />
+      <method v="2">
+        <option name="Build" />
+      </method>
     </configuration>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -273,326 +197,241 @@
       <updated>1524066813186</updated>
       <workItem from="1524066817408" duration="945000" />
       <workItem from="1524067799566" duration="1037000" />
+      <workItem from="1588634601082" duration="117000" />
+      <workItem from="1588634788453" duration="2556000" />
+      <workItem from="1588728387272" duration="6074000" />
+      <workItem from="1588766666933" duration="897000" />
+      <workItem from="1588767965491" duration="9436000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1982000" />
-  </component>
-  <component name="TodoView" selected-index="3">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="2576" height="1056" extended-state="6" />
-    <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3373232" sideWeight="0.4936407" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Errors In Solution" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.49523053" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5031521" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49682036" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.4968479" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908705" sideWeight="0.4984375" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49841017" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.4936407" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13712242" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3298887" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1872019" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16312057" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915073" sideWeight="0.9472656" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588766996443">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="-1506" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588636566344" />
+    <state x="414" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588766996443" />
+    <state width="411" height="464" key="DebuggerActiveHint" timestamp="1588775292002">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="411" height="464" key="DebuggerActiveHint/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775292002" />
+    <state x="92" y="132" width="1736" height="856" key="DiffContextDialog" timestamp="1588734260426">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="92" y="132" width="1736" height="856" key="DiffContextDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588734260426" />
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom" timestamp="1588775732487">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
+    <state width="1877" height="374" key="GridCell.Tab.0.center" timestamp="1588775732487">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616390" />
+    <state width="1877" height="374" key="GridCell.Tab.0.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
+    <state width="1877" height="374" key="GridCell.Tab.0.left" timestamp="1588775732487">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616388" />
+    <state width="1877" height="374" key="GridCell.Tab.0.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
+    <state width="1877" height="374" key="GridCell.Tab.0.right" timestamp="1588775732487">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.0.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
+    <state width="1877" height="374" key="GridCell.Tab.0.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom" timestamp="1588775914916">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
+    <state width="1877" height="374" key="GridCell.Tab.1.center" timestamp="1588775914916">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616392" />
+    <state width="1877" height="374" key="GridCell.Tab.1.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
+    <state width="1877" height="374" key="GridCell.Tab.1.left" timestamp="1588775914916">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
+    <state width="1877" height="374" key="GridCell.Tab.1.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
+    <state width="1877" height="374" key="GridCell.Tab.1.right" timestamp="1588775914916">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.1.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616392" />
+    <state width="1877" height="374" key="GridCell.Tab.1.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.2.center" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
+    <state width="1877" height="374" key="GridCell.Tab.2.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.2.left" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
+    <state width="1877" height="374" key="GridCell.Tab.2.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.2.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom" timestamp="1588775955994">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
+    <state width="1877" height="374" key="GridCell.Tab.3.center" timestamp="1588775955994">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
+    <state width="1877" height="374" key="GridCell.Tab.3.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
+    <state width="1877" height="374" key="GridCell.Tab.3.left" timestamp="1588775955994">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
+    <state width="1877" height="374" key="GridCell.Tab.3.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
+    <state width="1877" height="374" key="GridCell.Tab.3.right" timestamp="1588775955994">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.3.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
+    <state width="1877" height="374" key="GridCell.Tab.3.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
+    <state width="1877" height="374" key="GridCell.Tab.4.bottom" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.4.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616397" />
+    <state width="1877" height="374" key="GridCell.Tab.4.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.4.center" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.4.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616396" />
+    <state width="1877" height="374" key="GridCell.Tab.4.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.4.left" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.4.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616395" />
+    <state width="1877" height="374" key="GridCell.Tab.4.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.4.right" timestamp="1588775732408">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="374" key="GridCell.Tab.4.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616396" />
+    <state width="1877" height="374" key="GridCell.Tab.4.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state x="772" y="271" key="RollbackChangesDialog" timestamp="1588770506291">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="772" y="271" key="RollbackChangesDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588770506291" />
+    <state x="698" y="220" key="SettingsEditor" timestamp="1588634709845">
+      <screen x="0" y="40" width="2560" height="1040" />
+    </state>
+    <state x="698" y="220" key="SettingsEditor/-1920.-37.1920.1040/0.40.2560.1040@0.40.2560.1040" timestamp="1588634709845" />
+    <state width="498" height="457" key="SwitcherDM" timestamp="1588776697283">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="498" height="457" key="SwitcherDM/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588776697283" />
+    <state x="92" y="132" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588733914407">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="92" y="132" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588733914407" />
+    <state x="-1920" y="-37" width="1615" height="1019" key="dock-window-1" timestamp="1588635343545">
+      <screen x="-1920" y="-37" width="1920" height="1040" />
+    </state>
+    <state x="-1920" y="-37" width="1615" height="1019" key="dock-window-1/-1920.-37.1920.1040/0.40.2560.1040@0.40.2560.1040" timestamp="1588635343545" />
+    <state x="631" y="302" width="981" height="617" key="find.popup" timestamp="1588734703074">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="631" y="302" width="981" height="617" key="find.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588734703074" />
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1588772106335">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588772106335" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/BudgetOutlayController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding>
-            <marker date="1504796112084" expanded="true" signature="0:373" ph="/*   支出预算控制器 ... */" />
-            <marker date="1504796112084" expanded="true" signature="405:2594" ph="{...}" />
-            <marker date="1504796112084" expanded="false" signature="418:519" ph="..." />
-            <marker date="1504796112084" expanded="true" signature="525:573" ph="/// 支出预算控制器 ... " />
-            <marker date="1504796112084" expanded="true" signature="655:2592" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="941:1159" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1215:1432" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1488:1705" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1761:1978" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2026:2100" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2149:2224" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2273:2348" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2393:2463" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2512:2586" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding>
-            <marker date="1524068983834" expanded="false" signature="6:106" ph="..." />
-            <marker date="1524068983834" expanded="true" signature="138:3854" ph="{...}" />
-            <marker date="1524068983834" expanded="false" signature="151:233" ph="..." />
-            <marker date="1524068983834" expanded="true" signature="239:319" ph="/// Derive all Controllers from this class. ... " />
-            <marker date="1524068983834" expanded="true" signature="379:3852" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="556:647" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="697:859" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="744:849" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="926:1007" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1017:1196" ph="/// 通用上传模块 ... " />
-            <marker date="1524068983834" expanded="true" signature="1313:3846" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1407:3782" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1583:3645" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1848:1961" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2291:2407" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2571:2686" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2711:3627" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="3190:3563" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="3666:3768" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1497363825290" expanded="true" signature="0:372" ph="/*   支出预算服务 ... */" />
-            <marker date="1497363825290" expanded="true" signature="396:18047" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="409:769" ph="..." />
-            <marker date="1497363825290" expanded="true" signature="775:822" ph="/// 支出预算服务 ... " />
-            <marker date="1497363825290" expanded="true" signature="926:18045" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="1769:2163" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2237:2883" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2449:2537" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2928:3500" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3141:3229" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3560:4171" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3784:3872" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="4242:8113" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="4454:4542" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="5266:8077" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="5873:5990" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="6071:8022" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8179:9348" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8391:8479" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8646:9063" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8715:8994" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9080:9338" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9415:10568" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9627:9715" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9925:10021" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10184:10428" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10263:10413" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10639:10729" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10800:10892" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10963:11057" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11067:11248" ph="/// 获取导入sheet的名称 ... " />
-            <marker date="1497363825290" expanded="true" signature="11318:11862" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11522:11610" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11911:12434" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11972:12424" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12111:12223" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12444:12533" ph="/// 获取年度预算简表 ... " />
-            <marker date="1497363825290" expanded="true" signature="12588:15520" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12792:12880" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13176:15485" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13418:13518" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13586:15439" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15594:18039" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15809:15891" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15983:16065" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16082:16172" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16367:16455" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16572:17830" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16775:17816" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16911:17798" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="17012:17735" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.WebApi/Api/Controllers/AccountController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="88" column="132" lean-forward="false" selection-start-line="88" selection-start-column="132" selection-end-line="88" selection-end-column="132" />
-          <folding>
-            <marker date="1494942556524" expanded="false" signature="6:268" ph="..." />
-            <marker date="1494942556524" expanded="true" signature="300:4118" ph="{...}" />
-            <marker date="1494942556524" expanded="false" signature="313:440" ph="..." />
-            <marker date="1494942556524" expanded="true" signature="495:4116" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="575:625" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="715:808" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="869:931" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1027:1675" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1821:2254" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1981:2244" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="2396:3906" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="2434:3896" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="3956:4110" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="4003:4100" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1497363825290" expanded="true" signature="0:372" ph="/*   支出预算服务 ... */" />
-            <marker date="1497363825290" expanded="true" signature="396:18047" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="409:769" ph="..." />
-            <marker date="1497363825290" expanded="true" signature="775:822" ph="/// 支出预算服务 ... " />
-            <marker date="1497363825290" expanded="true" signature="926:18045" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="1769:2163" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2237:2883" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2449:2537" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="2928:3500" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3141:3229" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3560:4171" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="3784:3872" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="4242:8113" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="4454:4542" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="5266:8077" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="5873:5990" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="6071:8022" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8179:9348" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8391:8479" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8646:9063" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="8715:8994" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9080:9338" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9415:10568" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9627:9715" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="9925:10021" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10184:10428" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10263:10413" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10639:10729" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10800:10892" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="10963:11057" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11067:11248" ph="/// 获取导入sheet的名称 ... " />
-            <marker date="1497363825290" expanded="true" signature="11318:11862" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11522:11610" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11911:12434" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="11972:12424" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12111:12223" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12444:12533" ph="/// 获取年度预算简表 ... " />
-            <marker date="1497363825290" expanded="true" signature="12588:15520" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="12792:12880" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13176:15485" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13418:13518" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="13586:15439" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15594:18039" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15809:15891" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="15983:16065" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16082:16172" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16367:16455" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16572:17830" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16775:17816" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="16911:17798" ph="{...}" />
-            <marker date="1497363825290" expanded="true" signature="17012:17735" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/BudgetOutlayController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding>
-            <marker date="1504796112084" expanded="true" signature="0:373" ph="/*   支出预算控制器 ... */" />
-            <marker date="1504796112084" expanded="true" signature="405:2594" ph="{...}" />
-            <marker date="1504796112084" expanded="false" signature="418:519" ph="..." />
-            <marker date="1504796112084" expanded="true" signature="525:573" ph="/// 支出预算控制器 ... " />
-            <marker date="1504796112084" expanded="true" signature="655:2592" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="941:1159" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1215:1432" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1488:1705" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="1761:1978" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2026:2100" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2149:2224" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2273:2348" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2393:2463" ph="{...}" />
-            <marker date="1504796112084" expanded="true" signature="2512:2586" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.WebApi/Api/Controllers/AccountController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="90" column="22" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
-          <folding>
-            <marker date="1494942556524" expanded="false" signature="6:268" ph="..." />
-            <marker date="1494942556524" expanded="true" signature="300:4118" ph="{...}" />
-            <marker date="1494942556524" expanded="false" signature="313:440" ph="..." />
-            <marker date="1494942556524" expanded="true" signature="495:4116" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="575:625" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="715:808" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="869:931" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1027:1675" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1821:2254" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="1981:2244" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="2396:3906" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="2434:3896" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="3956:4110" ph="{...}" />
-            <marker date="1494942556524" expanded="true" signature="4003:4100" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="44" column="101" lean-forward="false" selection-start-line="44" selection-start-column="101" selection-end-line="44" selection-end-column="101" />
-          <folding>
-            <marker date="1524068983834" expanded="false" signature="6:106" ph="..." />
-            <marker date="1524068983834" expanded="true" signature="138:3854" ph="{...}" />
-            <marker date="1524068983834" expanded="false" signature="151:233" ph="..." />
-            <marker date="1524068983834" expanded="true" signature="239:319" ph="/// Derive all Controllers from this class. ... " />
-            <marker date="1524068983834" expanded="true" signature="379:3852" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="556:647" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="697:859" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="744:849" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="926:1007" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1017:1196" ph="/// 通用上传模块 ... " />
-            <marker date="1524068983834" expanded="true" signature="1313:3846" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1407:3782" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1583:3645" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="1848:1961" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2291:2407" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2571:2686" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="2711:3627" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="3190:3563" ph="{...}" />
-            <marker date="1524068983834" expanded="true" signature="3666:3768" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs</url>
+          <line>81</line>
+          <properties documentPath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" initialLine="81">
+            <startOffsets>
+              <option value="2640" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2649" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs</url>
+          <line>109</line>
+          <properties documentPath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" initialLine="109">
+            <startOffsets>
+              <option value="3516" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3539" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs</url>
+          <line>132</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs" initialLine="132">
+            <startOffsets>
+              <option value="5282" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5325" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs</url>
+          <line>99</line>
+          <properties documentPath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" initialLine="98">
+            <startOffsets>
+              <option value="4046" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4107" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -467,10 +467,6 @@
     <Compile Include="Migrations\201807010736233_addTable_Equip.Designer.cs">
       <DependentUpon>201807010736233_addTable_Equip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808061550496_update1.cs" />
-    <Compile Include="Migrations\201808061550496_update1.Designer.cs">
-      <DependentUpon>201808061550496_update1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultCreator.cs" />
@@ -794,9 +790,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807010736233_addTable_Equip.resx">
       <DependentUpon>201807010736233_addTable_Equip.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808061550496_update1.resx">
-      <DependentUpon>201808061550496_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

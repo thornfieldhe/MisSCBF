@@ -65,17 +65,22 @@ namespace SCBF.Web.Controllers
 
         public ActionResult Login(string returnUrl = "")
         {
-            if (string.IsNullOrWhiteSpace(returnUrl))
-            {
-                returnUrl = this.Request.ApplicationPath;
-            }
-
-            return this.View(
-                new LoginFormViewModel
+            try{
+                if (string.IsNullOrWhiteSpace(returnUrl))
                 {
-                    ReturnUrl = returnUrl,
-                    IsMultiTenancyEnabled = this._multiTenancyConfig.IsEnabled
-                });
+                    returnUrl = this.Request.ApplicationPath;
+                }
+                return this.View(
+                    new LoginFormViewModel
+                    {
+                        ReturnUrl             = returnUrl,
+                        IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled
+                    
+                    });
+            } catch(Exception ex){
+
+                throw ex;
+            }
         }
 
         /// <summary>

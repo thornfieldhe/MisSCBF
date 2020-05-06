@@ -44,7 +44,8 @@ namespace SCBF.Web.Controllers
         public ContentResult Upload(Guid? stockId)
         {
             var billId = this.UploadFile(DictionaryCategory.Attachment_Check, new string[] { stockId.ToString() }, this.checkBillAppService.LoadCheckFile);
-            return new ContentResult() { Content = billId.ToString() };
+            
+            return new ContentResult() { Content = billId };
         }
     }
 }

@@ -62,6 +62,7 @@ var main = new Vue({
     mixins: [indexMixin],
     ready: function () {
         $("#searchStorageId").select2().on("change", function (e) { main.queryEntity.storageId = $("#searchStorageId").val(); });
+        this.query(0);
     },
     data: {
         queryEntity: {
@@ -104,8 +105,8 @@ $(".fileUpload").liteUploader({
     })
     .on("lu:success", function (e, response) {
         main.queryEntity.billId = response;
-        main.query(0);
         taf.notify.success("盘点报告导入成功");
+        main.query(0);
     });
 
 $(".fileUpload").change(function () {

@@ -15,6 +15,7 @@
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Utility.dll" /&gt;&#xD;
   &lt;Assembly Path="d:\WorkStation\SCBF-Mis\TAF.Web\Bin\TAF.Core.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:Boolean x:Key="/Default/Environment/Hierarchy/EntityFrameworkOptions/IsAlreadyNotifiedAboutEntityFramework/@EntryValue">True</s:Boolean>
 	
 	<s:Int64 x:Key="/Default/Environment/SearchAndNavigation/DefaultOccurrencesGroupingIndex/@EntryValue">3</s:Int64>
 	

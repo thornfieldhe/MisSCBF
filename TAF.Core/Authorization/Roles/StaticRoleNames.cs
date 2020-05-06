@@ -5,95 +5,95 @@ namespace SCBF.Authorization.Roles
         public static class Host
         {
             /// <summary>
-            /// »ù´¡
+            /// åŸºç¡€
             /// </summary>
             public const string Default = "Default";
 
             /// <summary>
-            /// »ù´¡
+            /// åŸºç¡€
             /// </summary>
-            public const string DefaultName = "ÆÕÍ¨ÓÃ»§";
+            public const string DefaultName = "æ™®é€šç”¨æˆ·";
 
             /// <summary>
-            /// ÏµÍ³¹ÜÀíÔ±
+            /// ç³»ç»Ÿç®¡ç†å‘˜
             /// </summary>
             public const string Admin = "Admin";
 
             /// <summary>
-            /// ÏµÍ³¹ÜÀíÔ±
+            /// ç³»ç»Ÿç®¡ç†å‘˜
             /// </summary>
-            public const string AdminName = "ÏµÍ³¹ÜÀíÔ±";
+            public const string AdminName = "ç³»ç»Ÿç®¡ç†å‘˜";
 
 
             /// <summary>
-            /// ÆÕÍ¨²ÆÎñ½ÇÉ«
+            /// æ™®é€šè´¢åŠ¡è§’è‰²
             /// </summary>
             public const string CwUser = "CwUser";
 
             /// <summary>
-            /// ²ÆÎñ¹ÜÀíÔ±
+            /// è´¢åŠ¡ç®¡ç†å‘˜
             /// </summary>
-            public const string CwUserName = "²ÆÎñ";
+            public const string CwUserName = "è´¢åŠ¡";
 
             /// <summary>
-            /// ÆÕÍ¨³µÁ¾½ÇÉ«
+            /// æ™®é€šè½¦è¾†è§’è‰²
             /// </summary>
             public const string ClUser = "ClUser";
 
             /// <summary>
-            /// ³µÁ¾¹ÜÀíÔ±
+            /// è½¦è¾†ç®¡ç†å‘˜
             /// </summary>
-            public const string ClUserName = "³µÁ¾";
+            public const string ClUserName = "è½¦è¾†";
 
             /// <summary>
-            /// ÆÕÍ¨²ÍÌü½ÇÉ«
+            /// æ™®é€šé¤å…è§’è‰²
             /// </summary>
             public const string CtUser = "CtUser";
 
             /// <summary>
-            /// ²ÍÌü¹ÜÀíÔ±
+            /// é¤å…ç®¡ç†å‘˜
             /// </summary>
-            public const string CtUserName = "²ÍÌü";
+            public const string CtUserName = "é¤å…";
 
             /// <summary>
-            /// ÆÕÍ¨Îï×Ê½ÇÉ«
+            /// æ™®é€šç‰©èµ„è§’è‰²
             /// </summary>
             public const string WzUser = "WzUser";
 
             /// <summary>
-            /// Îï×Ê¹ÜÀíÔ±
+            /// ç‰©èµ„ç®¡ç†å‘˜
             /// </summary>
-            public const string WzUserName = "Îï×Ê";
+            public const string WzUserName = "ç‰©èµ„";
 
             /// <summary>
-            /// ÆÕÍ¨Óª·¿½ÇÉ«
+            /// æ™®é€šè¥æˆ¿è§’è‰²
             /// </summary>
             public const string GcUser = "YfUser";
 
             /// <summary>
-            /// ¹¤³Ì¹ÜÀíÔ±
+            /// å·¥ç¨‹ç®¡ç†å‘˜
             /// </summary>
-            public const string GcUserName = "¹¤³Ì";
+            public const string GcUserName = "å·¥ç¨‹";
 
             /// <summary>
-            /// ÆÕÍ¨¹¤³Ì½ÇÉ«
+            /// æ™®é€šå·¥ç¨‹è§’è‰²
             /// </summary>
             public const string CgUser = "CgUser";
 
             /// <summary>
-            /// ²É¹º¹ÜÀíÔ±
+            /// é‡‡è´­ç®¡ç†å‘˜
             /// </summary>
-            public const string CgUserName = "²É¹º";
+            public const string CgUserName = "é‡‡è´­";
 
             /// <summary>
-            /// ÆÕÍ¨×°±¸Ô±½ÇÉ«
+            /// æ™®é€šè£…å¤‡å‘˜è§’è‰²
             /// </summary>
             public const string ZbUser = "ZbUser";
 
             /// <summary>
-            /// ×°±¸¹ÜÀíÔ±
+            /// è£…å¤‡ç®¡ç†å‘˜
             /// </summary>
-            public const string ZbUserName = "×°±¸";
+            public const string ZbUserName = "è£…å¤‡";
         }
     }
 }
