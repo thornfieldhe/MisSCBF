@@ -34,7 +34,19 @@
                 .done(function (r) {
                     $this.bindItems($this, r);
                 });
-        }
+        },
+         export:
+             function() {
+                if(this.queryEntity.dateFrom==""|| this.queryEntity.dateTo==""){
+                    taf.notify.danger("出入库起止时间不能为空！");
+                console.log(141);
+                }else{
+                console.log(111);
+                window.location="HisStock/DownloadHisStock/"+this.queryEntity.dateFrom+"/" +this.queryEntity.dateTo;
+//                    var url = "HisStock/DownloadHisStock/"+this.queryEntity.dateFrom+"/" +this.queryEntity.dateTo;
+//                    taf.download(url);
+                }
+             }
     }
 });
 

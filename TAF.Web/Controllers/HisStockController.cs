@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Web.Http;
+
 namespace SCBF.Web.Controllers
 {
     using System;
@@ -43,6 +45,12 @@ namespace SCBF.Web.Controllers
         public ActionResult QuerytockChange()
         {
             return PartialView("_StockChange");
+        }
+        
+        public FileResult DownloadHisStock([FromUri]string from,[FromUri]string to)
+        {
+            var file =  hisStockAppService.ExportExs( DateTime.Parse(from) ,DateTime.Parse( to));
+            return    this.DownloadFile(file);
         }
     }
 }

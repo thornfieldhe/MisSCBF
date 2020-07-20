@@ -7,6 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Abp.Domain.Repositories;
+using Aspose.Cells;
+using SCBF.Common;
+using SCBF.Users;
+
 namespace SCBF.Storage
 {
     using System;
@@ -33,23 +38,29 @@ namespace SCBF.Storage
         private readonly IDeliveryRepository deliveryRepository;
         private readonly IEntryRepository entryRepository;
         private readonly ISysDictionaryRepository sysDictionaryRepository;
+        private readonly IRepository<User, long> _userRepository;
 
         public HisStockAppService(
             IHisStockRepository hisStockRepository,
             IStockRepository stockRepository,
             IDeliveryRepository deliveryRepository,
             IEntryRepository entryRepository,
-            ISysDictionaryRepository sysDictionaryRepository)
+            ISysDictionaryRepository sysDictionaryRepository
+          , IRepository<User, long> userRepository)
         {
             this.hisStockRepository = hisStockRepository;
             this.stockRepository = stockRepository;
             this.entryRepository = entryRepository;
             this.deliveryRepository = deliveryRepository;
             this.sysDictionaryRepository = sysDictionaryRepository;
+            _userRepository = userRepository;
         }
 
         public ListResultDto<HisStockListDto> GetAll(HisStockQueryDto request)
         {
+            if (request.DateTo.HasValue){
+                request.DateTo = request.DateTo.Value.AddDays(1);
+            }
             var query1 = this.entryRepository.GetAll()
                 .WhereIf(request.Name != null, r => r.Product.Name.Contains(request.Name))
                 .WhereIf(request.Code != null, r => r.EntryBill.Code.Contains(request.Code))
@@ -71,10 +82,16 @@ namespace SCBF.Storage
                         ? query2.OrderBy(request.Sorting).MapTo<List<HisStockListDto>>()
                         : query2.OrderBy(r => r.CreationTime).MapTo<List<HisStockListDto>>();
             var count = query1.Count() + query2.Count();
-            var list = list1.Union(list2).ToList().AsQueryable().PageBy(request).ToList();
-            var dtos = list.MapTo<List<HisStockListDto>>();
+            var list = list1.Union(list2).ToList().AsQueryable().OrderByDescending(r=>r.CreationTime).PageBy(request).ToList();
 
-            return new PagedResultDto<HisStockListDto>(count, dtos);
+            var userIds = list.Select(r => r.CreatorUserId.ToLong()).Distinct().ToList();
+            var users = _userRepository.GetAllList(r => userIds.Contains(r.Id))
+                                       .Select(r => new{r.Id, r.Name}).ToList();
+            
+            foreach (var l in list){
+                l.CreatorUserId = users.First(r => r.Id.ToString() == l.CreatorUserId).Name;
+            }
+            return new PagedResultDto<HisStockListDto>(count, list);
         }
 
         public ListResultDto<StockChangeListDto> GetStockChange(DateRangeQueryDto request)
@@ -232,6 +249,82 @@ namespace SCBF.Storage
                 hisStock.Id = Guid.NewGuid();
             }
             this.hisStockRepository.InsertRange(stocks);
+        }
+        
+        private List<HisStockListDto> LoadData(DateTime dateFrom, DateTime dataTo){
+            dataTo = dataTo.AddDays(1);
+            var list1 = entryRepository.GetAllList(r => r.CreationTime >= dateFrom
+                                                     && r.CreationTime <= dataTo).MapTo<List<HisStockListDto>>();
+            var list2 = deliveryRepository.GetAllList(r => r.CreationTime >= dateFrom
+                                                        && r.CreationTime <= dataTo).MapTo<List<HisStockListDto>>();
+
+            var list = list1.Union(list2).ToList().AsQueryable().OrderByDescending(r=>r.CreationTime).ToList();
+
+            var userIds = list.Select(r => r.CreatorUserId.ToLong()).Distinct().ToList();
+            var users = _userRepository.GetAllList(r => userIds.Contains(r.Id))
+                                       .Select(r => new{r.Id, r.Name}).ToList();
+            
+            foreach (var l in list){
+                l.CreatorUserId = users.First(r => r.Id.ToString() == l.CreatorUserId).Name;
+            }
+            return list; 
+        }
+        
+        public string ExportExs(DateTime dateFrom,DateTime dataTo){
+            var result = LoadData(dateFrom,dataTo);
+            var dtos   = result.MapTo<List<HisStockListDto>>();
+            return DownloadFileService.Load("HisStock.xls", "出入库记录.xls", new string[]{ })
+                                      .ExcuteXls(dtos.OrderBy(r => r.ProductName).ToList(), this.ExportToXls);
+        }
+
+        private WorkbookDesigner ExportToXls(WorkbookDesigner designer, List<HisStockListDto> list){
+            designer.Workbook.Worksheets[0].Name = DateTime.Today.ToString("yy-MM-dd");
+            // 设置样式
+            var st = new Style{
+                Font                = {Size = 10, Name = "宋体"}
+              , Pattern             = BackgroundType.Solid
+              , HorizontalAlignment = TextAlignmentType.Center
+            };
+            st.Borders[BorderType.LeftBorder].LineStyle   = CellBorderType.Thin; //应用边界线 左边界线
+            st.Borders[BorderType.RightBorder].LineStyle  = CellBorderType.Thin; //应用边界线 右边界线
+            st.Borders[BorderType.TopBorder].LineStyle    = CellBorderType.Thin; //应用边界线 上边界线
+            st.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin; //应用边界线 下边界线
+
+
+            var numStart = 2;
+            for(var i = 0; i < list.Count; i++){
+                var cell0 = designer.Workbook.Worksheets[0].Cells[i+numStart, 0];
+                var cell1 = designer.Workbook.Worksheets[0].Cells[i+numStart, 1];
+                var cell2 = designer.Workbook.Worksheets[0].Cells[i+numStart, 2];
+                var cell3 = designer.Workbook.Worksheets[0].Cells[i+numStart, 3];
+                var cell4 = designer.Workbook.Worksheets[0].Cells[i+numStart, 4];
+                var cell5 = designer.Workbook.Worksheets[0].Cells[i+numStart, 5];
+                var cell6 = designer.Workbook.Worksheets[0].Cells[i+numStart, 6];
+                var cell7 = designer.Workbook.Worksheets[0].Cells[i+numStart, 7];
+                var cell8 = designer.Workbook.Worksheets[0].Cells[i+numStart, 8];
+
+                cell0.Value = i+1;
+                cell1.Value = list[i].Date;
+                cell2.Value = list[i].Code;
+                cell3.Value = list[i].ProductCode;
+                cell4.Value = list[i].ProductName;
+                cell5.Value = list[i].Specifications;
+                cell6.Value = list[i].Unit;
+                cell7.Value = list[i].Amount.ToString("N");
+                cell8.Value = list[i].CreatorUserId;
+                
+                cell0.SetStyle(st);
+                cell1.SetStyle(st);
+                cell2.SetStyle(st);
+                cell3.SetStyle(st);
+                cell4.SetStyle(st);
+                cell5.SetStyle(st);
+                cell6.SetStyle(st);
+                cell7.SetStyle(st);
+                cell8.SetStyle(st);
+            }
+
+            return designer;
         }
     }
 }

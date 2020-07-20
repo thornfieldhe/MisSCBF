@@ -64,10 +64,12 @@ var taf = {
         //action属性设置请求路径,(如有需要,可直接在路径后面跟参数)
         //例如:htpp://127.0.0.1/test?id=123
         form.attr("action",url);
+console.log("url0:"+url);
 
         //将表单放置在页面(body)中
         $("body").append(form);
 
+console.log("from:"+form);
         //表单提交
         form.submit();
     },

@@ -18,7 +18,12 @@
                 .done(function (r) {
                     $this.bindItems($this, r);
                 });
-        }
+        },
+        export:
+            function() {
+                var url = "/Stock/DownloadStock" ;
+                taf.download(url);
+            }
     }
 });
 

@@ -33,6 +33,7 @@ namespace SCBF.Web
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
 
+            
             app.MapSignalR();
 
             Database.SetInitializer<TAFDbContext>(null);

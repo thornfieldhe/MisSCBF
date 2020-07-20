@@ -5,69 +5,72 @@
                 <span class="widget-caption">库存</span>
             </div>
             <div class="widget-body">
-                <div class="table-toolbar">
-                </div>
+                   <div class="table-toolbar">
+                        <button type="submit" class="btn btn-primary" v-on:click="export()"><i class='fa    fa    fa-print'></i>导出库存 </button>
+                    </div>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered ">
                             <thead>
-                                <tr role="row">
-                                    <th style="width: 200px;">
-                                        编码
-                                    </th>        
-                                    <th style="width: 200px;">
-                                        品名
-                                    </th>        
-                                    <th style="width: 200px;">
-                                        规格型号
-                                    </th>        
-                                    <th style="width: 200px;">
-                                        单位
-                                    </th>          
-                                    <th style="width: 200px;">
-                                        单价
-                                    </th>             
-                                    <th style="width: 200px;">
-                                        数量
-                                    </th>              
-                                    <th style="width: 200px;">
-                                        小计
-                                    </th> 
-                                    <th style="width: 200px;">
-                                        操作
-                                    </th>        
-                                </tr>
-                                <tr role="row">
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code" />
-                                    </th>        
-                                    <th>
-                                        <input type="text" class="form-control" placeholder="品名" v-model="queryEntity.productName" />
-                                    </th>        
-                                    <th>
-                                    </th>        
-                                    <th>
-                                    </th>        
-                                    <th>
-                                    </th>        
-                                    <th>
-                                    </th>        
-                                    <th>
-                                    </th>        
-                                    <th><search-command></search-command></th>
-                                </tr>
+                            <tr role="row">
+                                <th style="width: 200px;">
+                                    编码
+                                </th>
+                                <th style="width: 200px;">
+                                    品名
+                                </th>
+                                <th style="width: 200px;">
+                                    规格型号
+                                </th>
+                                <th style="width: 200px;">
+                                    单位
+                                </th>
+                                <th style="width: 200px;">
+                                    单价
+                                </th>
+                                <th style="width: 200px;">
+                                    数量
+                                </th>
+                                <th style="width: 200px;">
+                                    小计
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th>
+                                    <input type="text" class="form-control" placeholder="编码" v-model="queryEntity.code"/>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="品名" v-model="queryEntity.productName"/>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                    <search-command></search-command>
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="item in list">
-                                    <td>{{item.code}}</td>
-                                    <td>{{item.productName}}</td>
-                                    <td>{{item.specifications}}</td>
-                                    <td>{{item.unit}}</td>
-                                    <td>{{item.price}}</td>
-                                    <td>{{item.amount}}</td>
-                                    <td>{{item.total}}</td>
-                                    <td></td>
-                                </tr>
+                            <tr v-for="item in list">
+                                <td>{{item.code}}</td>
+                                <td>{{item.productName}}</td>
+                                <td>{{item.specifications}}</td>
+                                <td>{{item.unit}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.amount}}</td>
+                                <td>{{item.total}}</td>
+                                <td></td>
+                            </tr>
                             </tbody>
                             <tfoot is="table-foot" colspan="8"></tfoot>
                         </table>
@@ -78,6 +81,3 @@
     </div>
 </div>
 <script src="~/Views/Stock/stock.js"></script>
-
-
-

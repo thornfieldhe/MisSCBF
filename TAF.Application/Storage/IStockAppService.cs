@@ -28,6 +28,8 @@ namespace SCBF.Storage
         Task SaveAsync(StockEditDto input);
 
         void Delete(Guid id);
+
+        string ExportExs();
     }
 }
 

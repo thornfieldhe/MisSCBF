@@ -19,24 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44deb107-9bb0-482a-88a3-ef9c3d33466c" name="Default" comment="">
+    <list default="true" id="44deb107-9bb0-482a-88a3-ef9c3d33466c" name="Default" comment="修复bug">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SCBF/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCBF.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SCBF.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/Storage/Dto/HisStockListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/Storage/Dto/HisStockListDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/Storage/HisStockAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/Storage/HisStockAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/Storage/IHisStockAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/Storage/IHisStockAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/Storage/IStockAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/Storage/IStockAppService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Application/Storage/StockAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/Storage/StockAppService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.EntityFramework/SCBF.EntityFramework.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.EntityFramework/SCBF.EntityFramework.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.EntityFramework/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.EntityFramework/App.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/App_Start/RouteConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/App_Start/RouteConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/App_Start/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/App_Start/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/HisStockController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/HisStockController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Controllers/StockController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Controllers/StockController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TAF.Web/SCBF.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/SCBF.Web.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TAF.Web/Web.config" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Web.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Scripts/Common/utility.js" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Scripts/Common/utility.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/HisStock/_QueryStockList.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/HisStock/_QueryStockList.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/HisStock/queryStock.js" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/HisStock/queryStock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/Stock/stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/Stock/stock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,85 +62,165 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Account/Login.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFAppServiceBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/CheckBill/_CheckBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/BudgetOutlay/_BudgetPerformance.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/201806021330006_modifyTableProcurementPlan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/MonthLyTask.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///_LayoutWithEmpty.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/Yearly.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Application/Tasks/DailyTask.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E773F173-3B4A-4BCC-B516-DA9AFBB7F4AB/41/9b4f9c7d/DbConnectionOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/BidOpeningManagementAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.WebApi/app.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///AccountController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/IBudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/MultiTenancy/TenantAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/MultiTenancy/ITenantAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Car/_CarInfoIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Users/UserAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Car/HisStoreStockAppService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Web/Views/web.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFAppServiceBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///_VoucherAuditIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/ICheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/EntryBill.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/EntryBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolePermissionCreator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Models/Account/LoginFormViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/000F5452-2AD1-45BF-987B-3043022F9799/76/f64a1a7e/RetryAction`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/InitialHostDbBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolesCreator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductStockListDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/CheckQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///AccountController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BiddingManagementController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3CB8E177-CC0C-466C-9289-82EC5A98AB2E/74/0ea401d7/UnitOfWorkInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3CB8E177-CC0C-466C-9289-82EC5A98AB2E/61/3f724ef6/ApplicationService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/StockBillEditDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/CheckBill/_CheckBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/ActualOutlayController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0025BC3E-2252-4BA9-A352-D7F62FAA5B3F/21/cfc534be/DefaultSqlExecutionStrategy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/EntryBill/_EntryBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC8E7B41-D288-4C8D-900A-2DEB12DC9189/bc/56c005da/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.WebApi/Api/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BudgetOutlayController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CC0E8972-6F60-40E1-A646-DEC1584576AC/09/d0c6a463/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.Debug.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/OilCard/_OilCardIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/log4net.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TAF.Web/Global.asax.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Car/ApplyForVehicleMaintenanceAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/BudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Common/DownloadFileService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/IBudgetReceiptAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Users/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/CheckQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Account/_ChangePwd.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/HisStock/_QueryStockList.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/IDeliveryRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/Delivery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/HisStock.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/IStockAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/CheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/ProductAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/BaseInfo/SysDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/IHisStockAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/HisStockAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/BaseInfo/ISysDictionaryRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Finance/IBudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/BaseInfo/DictionaryCategory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/DeliveryBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/EntryBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/StockAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/EntryAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/BaseInfo/UnitPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/BaseInfo/Layer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolePermissionCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/BudgetReceipt/_BudgetReceiptIndex3.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/StockListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/StockQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductStockQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductQueryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Models/Account/LoginFormViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/HisStockListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/DefaultRolesCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductEditDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Purchase/IStageInfoBudgetOutlayRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/SeedData/InitialHostDbBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Purchase/IPlanWithBudgetOutlayRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/000F5452-2AD1-45BF-987B-3043022F9799/76/f64a1a7e/RetryAction`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/StockBillEditDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/Storage/EntryBill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/Dto/ProductStockListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/BaseInfo/LayerAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Account/Login.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/App_Start/BundleConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/App_Start/TAFNavigationProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/HisStock/_HisStockIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ProcurementPlan/_ProcurementPlanIndexSummary.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/App_Start/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/assets/js/ueditor/net/App_Code/ListFileHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/App_Start/RouteConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/log4net.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Global.asax.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BD1B6EA4-F54D-4146-A29C-2A12CD6EC436/0a/77276e29/__Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/BaseInfo/Dto/SysDictionaryListDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/ProcessManagementController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BiddingManagementController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3CB8E177-CC0C-466C-9289-82EC5A98AB2E/1f/cb1233ea/AuditingInterceptor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Web.Debug.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/IPlanWithBudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.WebApi/Api/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/TendererAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/BidOpeningManagementController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/PlanWithBudgetOutlayAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/StockController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/ActualOutlayController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/CarController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/ProcurementPlanController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/EntryBill/_EntryBillIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/ProcurementPlanAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/assets/js/ueditor/net/App_Code/PathFormater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BD1B6EA4-F54D-4146-A29C-2A12CD6EC436/63/db8ee8ff/DateTimeParse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/32BB25FF-E216-4F75-A53F-BBC73557B80B/96/979f513b/RouteParser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Controllers/HisStockController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/201708130939372_modifytable_applyforVehicleMaintenance4.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/BidOpeningManagementAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/OilCard/_OilCardIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CC73190B-AB9D-435C-8315-10FF295C572A/21/deb4d4d0/UrlParameter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/201512241146128_Upgrade_To_Module_Zero_0_7_6.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/SysDictionary/_SysDictionaryIndex.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.WebApi/app.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Purchase/Dto/BudgetOutlaySummaryDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Core/TAFEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Storage/ICheckBillAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.EntityFramework/Migrations/201707201500413_addinitData_summaryRange.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/HisStock/_StockChange.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Application/Sessions/SessionAppService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TAF.Web/Views/Purchase/_DownloadFiles.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/TAF.Web/Views/BidOpeningManagement/_BidOpeningManagementIndex.cshtml" />
         <option value="$PROJECT_DIR$/TAF.Web/Views/ProjectManagement/_ProjectManagementIndex.cshtml" />
-        <option value="$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" />
         <option value="$PROJECT_DIR$/TAF.Web/Views/ApplyForVehicleMaintenance/_AudingForVehicleMaintenance2Index.cshtml" />
-        <option value="$PROJECT_DIR$/TAF.Web/Web.config" />
         <option value="$PROJECT_DIR$/TAF.Core/Authorization/Roles/StaticRoleNames.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Views/Shared/_LayoutWithEmpty.cshtml" />
-        <option value="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Views/Account/Login.cshtml" />
-        <option value="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" />
         <option value="$PROJECT_DIR$/TAF.Application/Storage/CheckAppService.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Controllers/TAFControllerBase.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Controllers/CheckBillController.cs" />
         <option value="$PROJECT_DIR$/TAF.Web/Views/CheckBill/checkBill.js" />
+        <option value="$PROJECT_DIR$/TAF.Core/BaseInfo/Layer.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/EntryBillAppService.cs" />
+        <option value="$PROJECT_DIR$/TAF.Core/Users/User.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Web.config" />
+        <option value="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/IStockAppService.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Controllers/StockController.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/Stock/stock.js" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/Dto/HisStockListDto.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/IHisStockAppService.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/Stock/_StockIndex.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/VoucherAudit/_VoucherAuditIndex.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Application/TAFApplicationModule.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/StockAppService.cs" />
+        <option value="$PROJECT_DIR$/TAF.Application/Storage/HisStockAppService.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Controllers/HisStockController.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Scripts/Common/utility.js" />
+        <option value="$PROJECT_DIR$/TAF.Web/App_Start/Startup.cs" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/HisStock/_QueryStockList.cshtml" />
+        <option value="$PROJECT_DIR$/TAF.Web/Views/HisStock/queryStock.js" />
+        <option value="$PROJECT_DIR$/TAF.Web/App_Start/RouteConfig.cs" />
       </list>
     </option>
   </component>
@@ -156,12 +239,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.4715447" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.40433604" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="&#9;null&#9;null&#10;budgapp&#9;null&#9;null&#10;budgetoutlaylist&#9;null&#9;null" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.60662526" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -201,8 +285,23 @@
       <workItem from="1588634788453" duration="2556000" />
       <workItem from="1588728387272" duration="6074000" />
       <workItem from="1588766666933" duration="897000" />
-      <workItem from="1588767965491" duration="9436000" />
+      <workItem from="1588767965491" duration="9537000" />
+      <workItem from="1589272638833" duration="964000" />
+      <workItem from="1589364007912" duration="596000" />
+      <workItem from="1594605633303" duration="6495000" />
+      <workItem from="1594779128158" duration="4433000" />
+      <workItem from="1595245721768" duration="1870000" />
+      <workItem from="1595250216753" duration="9545000" />
+      <workItem from="1595262567867" duration="5479000" />
     </task>
+    <task id="LOCAL-00001" summary="修复bug">
+      <created>1588777680903</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588777680903</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,8 +331,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="修复bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复bug" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="969" y="254" key="#Plugins" timestamp="1595263014788">
+      <screen x="0" y="40" width="2560" height="1040" />
+    </state>
+    <state x="969" y="254" key="#Plugins/0.40.2560.1040@0.40.2560.1040" timestamp="1595263014788" />
     <state x="414" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588766996443">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -243,110 +348,131 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="411" height="464" key="DebuggerActiveHint/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775292002" />
-    <state x="92" y="132" width="1736" height="856" key="DiffContextDialog" timestamp="1588734260426">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="123" y="132" width="2315" height="856" key="DiffContextDialog" timestamp="1595265709995">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state x="92" y="132" width="1736" height="856" key="DiffContextDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588734260426" />
-    <state width="1877" height="374" key="GridCell.Tab.0.bottom" timestamp="1588775732487">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="123" y="132" width="2315" height="856" key="DiffContextDialog/0.40.2560.1040@0.40.2560.1040" timestamp="1595265709995" />
+    <state width="1876" height="223" key="GridCell.Tab.0.bottom" timestamp="1595268069851">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.0.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
-    <state width="1877" height="374" key="GridCell.Tab.0.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
-    <state width="1877" height="374" key="GridCell.Tab.0.center" timestamp="1588775732487">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.0.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.0.bottom/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069851" />
+    <state width="1876" height="223" key="GridCell.Tab.0.center" timestamp="1595268069851">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.0.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616390" />
-    <state width="1877" height="374" key="GridCell.Tab.0.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
-    <state width="1877" height="374" key="GridCell.Tab.0.left" timestamp="1588775732487">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.0.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.0.center/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069851" />
+    <state width="1876" height="223" key="GridCell.Tab.0.left" timestamp="1595268069851">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.0.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616388" />
-    <state width="1877" height="374" key="GridCell.Tab.0.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
-    <state width="1877" height="374" key="GridCell.Tab.0.right" timestamp="1588775732487">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.0.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748552" />
+    <state width="1876" height="223" key="GridCell.Tab.0.left/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069851" />
+    <state width="1876" height="223" key="GridCell.Tab.0.right" timestamp="1595268069851">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.0.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
-    <state width="1877" height="374" key="GridCell.Tab.0.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732487" />
-    <state width="1877" height="374" key="GridCell.Tab.1.bottom" timestamp="1588775914916">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.0.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.0.right/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069851" />
+    <state width="1876" height="223" key="GridCell.Tab.1.bottom" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.1.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
-    <state width="1877" height="374" key="GridCell.Tab.1.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
-    <state width="1877" height="374" key="GridCell.Tab.1.center" timestamp="1588775914916">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.1.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.1.bottom/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.1.center" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.1.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616392" />
-    <state width="1877" height="374" key="GridCell.Tab.1.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
-    <state width="1877" height="374" key="GridCell.Tab.1.left" timestamp="1588775914916">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.1.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.1.center/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.1.left" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.1.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616391" />
-    <state width="1877" height="374" key="GridCell.Tab.1.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
-    <state width="1877" height="374" key="GridCell.Tab.1.right" timestamp="1588775914916">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.1.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.1.left/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.1.right" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.1.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616392" />
-    <state width="1877" height="374" key="GridCell.Tab.1.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775914916" />
-    <state width="1877" height="374" key="GridCell.Tab.2.bottom" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.1.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.1.right/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.2.bottom" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.2.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
-    <state width="1877" height="374" key="GridCell.Tab.2.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.2.center" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.2.bottom/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.2.center" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.2.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
-    <state width="1877" height="374" key="GridCell.Tab.2.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.2.left" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.2.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.2.center/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.2.left" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.2.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
-    <state width="1877" height="374" key="GridCell.Tab.2.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.2.right" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.2.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.2.left/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.2.right" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.2.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616393" />
-    <state width="1877" height="374" key="GridCell.Tab.2.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.3.bottom" timestamp="1588775955994">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.2.right/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.3.bottom" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.3.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
-    <state width="1877" height="374" key="GridCell.Tab.3.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
-    <state width="1877" height="374" key="GridCell.Tab.3.center" timestamp="1588775955994">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.3.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.3.bottom/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.3.center" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.3.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
-    <state width="1877" height="374" key="GridCell.Tab.3.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
-    <state width="1877" height="374" key="GridCell.Tab.3.left" timestamp="1588775955994">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.3.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.3.center/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.3.left" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.3.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
-    <state width="1877" height="374" key="GridCell.Tab.3.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
-    <state width="1877" height="374" key="GridCell.Tab.3.right" timestamp="1588775955994">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.3.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748553" />
+    <state width="1876" height="223" key="GridCell.Tab.3.left/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.3.right" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.3.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616394" />
-    <state width="1877" height="374" key="GridCell.Tab.3.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775955994" />
-    <state width="1877" height="374" key="GridCell.Tab.4.bottom" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.3.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.3.right/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.4.bottom" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.4.bottom/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616397" />
-    <state width="1877" height="374" key="GridCell.Tab.4.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.4.center" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.4.bottom/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.4.bottom/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.4.center" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.4.center/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616396" />
-    <state width="1877" height="374" key="GridCell.Tab.4.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.4.left" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.4.center/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.4.center/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.4.left" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.4.left/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616395" />
-    <state width="1877" height="374" key="GridCell.Tab.4.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
-    <state width="1877" height="374" key="GridCell.Tab.4.right" timestamp="1588775732408">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1877" height="374" key="GridCell.Tab.4.left/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.4.left/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
+    <state width="1876" height="223" key="GridCell.Tab.4.right" timestamp="1595268069757">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="1877" height="374" key="GridCell.Tab.4.right/-1920.-37.1920.1040/0.40.2560.1040@-1920.-37.1920.1040" timestamp="1588639616396" />
-    <state width="1877" height="374" key="GridCell.Tab.4.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588775732408" />
+    <state width="1877" height="374" key="GridCell.Tab.4.right/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777748554" />
+    <state width="1876" height="223" key="GridCell.Tab.4.right/0.40.2560.1040@0.40.2560.1040" timestamp="1595268069757" />
     <state x="772" y="271" key="RollbackChangesDialog" timestamp="1588770506291">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -355,26 +481,41 @@
       <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state x="698" y="220" key="SettingsEditor/-1920.-37.1920.1040/0.40.2560.1040@0.40.2560.1040" timestamp="1588634709845" />
-    <state width="498" height="457" key="SwitcherDM" timestamp="1588776697283">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="664" height="457" key="SwitcherDM" timestamp="1595267567139">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state width="498" height="457" key="SwitcherDM/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588776697283" />
-    <state x="92" y="132" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588733914407">
+    <state width="664" height="457" key="SwitcherDM/0.40.2560.1040@0.40.2560.1040" timestamp="1595267567139" />
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1588777685136">
       <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588777685136" />
+    <state x="123" y="132" width="2315" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1595266492635">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state x="92" y="132" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588733914407" />
-    <state x="-1920" y="-37" width="1615" height="1019" key="dock-window-1" timestamp="1588635343545">
-      <screen x="-1920" y="-37" width="1920" height="1040" />
+    <state x="123" y="132" width="2315" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.40.2560.1040@0.40.2560.1040" timestamp="1595266492635" />
+    <state x="1038" y="40" width="1538" height="793" key="dock-window-1" timestamp="1595264241903">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state x="-1920" y="-37" width="1615" height="1019" key="dock-window-1/-1920.-37.1920.1040/0.40.2560.1040@0.40.2560.1040" timestamp="1588635343545" />
-    <state x="631" y="302" width="981" height="617" key="find.popup" timestamp="1588734703074">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="1038" y="40" width="1538" height="793" key="dock-window-1/0.40.2560.1040@0.40.2560.1040" timestamp="1595264241903" />
+    <state x="690" y="101" width="1538" height="793" key="dock-window-2" timestamp="1595266492635">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
-    <state x="631" y="302" width="981" height="617" key="find.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588734703074" />
-    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1588772106335">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="690" y="101" width="1538" height="793" key="dock-window-2/0.40.2560.1040@0.40.2560.1040" timestamp="1595266492635" />
+    <state x="842" y="303" width="1309" height="672" key="find.popup" timestamp="1595266401066">
+      <screen x="0" y="40" width="2560" height="1040" />
     </state>
-    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1588772106335" />
+    <state x="505" y="248" width="785" height="532" key="find.popup/0.40.1536.824@0.40.1536.824" timestamp="1594784265265" />
+    <state x="631" y="302" width="981" height="617" key="find.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1594614436103" />
+    <state x="842" y="303" width="1309" height="672" key="find.popup/0.40.2560.1040@0.40.2560.1040" timestamp="1595266401066" />
+    <state x="830" y="265" width="1120" height="680" key="search.everywhere.popup" timestamp="1595265319367">
+      <screen x="0" y="40" width="2560" height="1040" />
+    </state>
+    <state x="498" y="218" width="672" height="538" key="search.everywhere.popup/0.40.1536.824@0.40.1536.824" timestamp="1594786243484" />
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/3360.40.1536.824/1920.122.1440.860@0.40.1920.1040" timestamp="1594614009209" />
+    <state x="830" y="265" width="1120" height="680" key="search.everywhere.popup/0.40.2560.1040@0.40.2560.1040" timestamp="1595265319367" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -393,29 +534,9 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs</url>
-          <line>109</line>
-          <properties documentPath="$PROJECT_DIR$/TAF.Web/Controllers/AccountController.cs" initialLine="109">
-            <startOffsets>
-              <option value="3516" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3539" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs</url>
           <line>132</line>
-          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs" initialLine="132">
-            <startOffsets>
-              <option value="5282" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5325" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFB7CC07-39BB-40C1-8D57-153BFE48D2D3/3b/47ce3064/AbpLogInManager`3.cs" initialLine="132" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">

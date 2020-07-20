@@ -36,6 +36,13 @@ namespace SCBF.Web.Controllers
             var list = new List<KeyValue<string, Guid>>();
             return PartialView("_StockIndex" ,list);
         }
+        
+        
+        public FileResult DownloadStock()
+        {
+            var file =  this.stockAppService.ExportExs();
+            return    this.DownloadFile(file);
+        }
     }
 }
 

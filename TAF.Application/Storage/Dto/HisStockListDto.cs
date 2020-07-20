@@ -72,6 +72,13 @@ namespace SCBF.Storage.Dto
         {
             get; set;
         }
+        /// <summary>
+        /// Unit
+        /// </summary>
+        public string Unit
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Total
@@ -98,7 +105,13 @@ namespace SCBF.Storage.Dto
 
         public string User { get; set; }
 
+        public DateTime CreationTime{ get; set; }
 
+        public string CreatorUserId
+        {
+            get; set;
+        }
+        
         public HisStoreReportCategory Category { get; set; }
     }
 }

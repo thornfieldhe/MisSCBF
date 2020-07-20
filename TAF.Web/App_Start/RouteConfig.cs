@@ -30,6 +30,17 @@ namespace SCBF.Web
                     id = UrlParameter.Optional
                 }
             );
+            routes.MapRoute(
+                name: "HisStock",
+                url: "{controller}/{action}/{from}/{to}",
+                defaults: new
+                {
+                    controller = "HisStock",
+                    action     = "DownloadHisStock",
+                    from         = UrlParameter.Optional,
+                    to         = UrlParameter.Optional
+                }
+            );
         }
     }
 }

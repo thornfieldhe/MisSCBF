@@ -951,10 +951,13 @@
           </e>
         </e>
         <e p="App_Data" t="Include">
+          <e p="Out" t="Include" />
           <e p="template" t="Include">
             <e p="budgetOutlay.xls" t="Include" />
+            <e p="HisStock.xls" t="Include" />
             <e p="procurementPlan.xls" t="Include" />
             <e p="procurementPlanReport.doc" t="Include" />
+            <e p="Stock.xls" t="Include" />
             <e p="中标通知书模板.doc" t="Include" />
             <e p="信息化采购模板.doc" t="Include" />
             <e p="审计结果公示模板.doc" t="Include" />

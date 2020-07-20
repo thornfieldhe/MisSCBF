@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace SCBF.Storage
 {
     using System.Collections.Generic;
@@ -28,6 +30,8 @@ namespace SCBF.Storage
         ListResultDto<HisStockListDto> GetAll(HisStockQueryDto request);
 
         ListResultDto<StockChangeListDto> GetStockChange(DateRangeQueryDto request);
+
+        string ExportExs(DateTime dateFrom, DateTime dataTo);
     }
 }
 
